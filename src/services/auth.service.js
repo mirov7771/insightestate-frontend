@@ -1,20 +1,33 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:3000/api/auth/";
+const API_URL = "http://77.238.232.18:8080/auth/";
 
-const register = (username, email, password) => {
-  return axios.post(API_URL + "signup", {
+async function register (
     username,
     email,
     password,
+    phone,
+    location
+) {
+  const response = await axios.post(API_URL + "sign-up/end", {
+    fio: username,
+    login: email,
+    password: password,
+    mobileNumber: phone,
+    location
   });
-};
+  if (response.status === 200) {
+    return this.login(email, password);
+  }
+  throw new Error('Registration failed');
+}
 
 const login = (username, password) => {
+  const basicAuth = 'Basic ' + btoa(username + ':' + password);
+  console.log(basicAuth);
   return axios
-    .post(API_URL + "signin", {
-      username,
-      password,
+    .post(API_URL + "sign-in", {}, {
+      headers: { 'Authorization': basicAuth }
     })
     .then((response) => {
       if (response.data.username) {
@@ -25,22 +38,25 @@ const login = (username, password) => {
     });
 };
 
-const logout = () => {
-  localStorage.removeItem("user");
-  return axios.post(API_URL + "signout").then((response) => {
-    return response.data;
+const signUp = (username) => {
+  return axios.post(API_URL + "sign-up", {
+    login: username
   });
-};
+}
 
-const getCurrentUser = () => {
-  return JSON.parse(localStorage.getItem("user"));
-};
+const signUpCheck = (username, confirmCode) => {
+  return axios.post(API_URL + "sign-up/confirm-code/check", {
+    login: username,
+    confirmCode
+  });
+}
+
 
 const AuthService = {
   register,
   login,
-  logout,
-  getCurrentUser,
+  signUp,
+  signUpCheck
 }
 
 export default AuthService;
