@@ -6,6 +6,7 @@ import CheckButton from "react-validation/build/button";
 
 import AuthService from "../services/auth.service";
 import Politics from "../elements/Politics";
+import {REDIRECT_URL} from "../constants/constants";
 
 const required = (value) => {
   if (!value) {
@@ -51,7 +52,7 @@ const Login = () => {
         (response) => {
           console.log(response)
           setLoading(false);
-          window.location.href = `https://www.insightestate.com/listing?accessToken=${response['accessToken']}`
+          window.location.href = `${REDIRECT_URL}?accessToken=${response['accessToken']}`
           // navigate("/profile");
           // window.location.reload();
         },

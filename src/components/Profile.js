@@ -5,6 +5,7 @@ import CheckButton from "react-validation/build/button";
 
 import AuthService from "../services/auth.service";
 import {useSearchParams} from "react-router-dom";
+import {REDIRECT_URL} from "../constants/constants";
 
 const validPhone = (value) => {
   if (value.length < 5 || value.length > 16) {
@@ -112,7 +113,7 @@ const Profile = (props) => {
         (response) => {
           setMessage("Данные обновлены! В течении нескольких секунд вы будете перенаправлены на сайт");
           setSuccessful(true);
-          window.location.href = 'https://www.insightestate.com/listing'
+          window.location.href = REDIRECT_URL
         },
         (error) => {
           const resMessage =
@@ -205,7 +206,7 @@ const Profile = (props) => {
                 </div>
 
                 <div className="form-group center_registration">
-                  <a href="https://www.insightestate.com/listing" className="button">Вернуться</a>
+                  <a href={REDIRECT_URL} className="button">Вернуться</a>
                 </div>
               </div>
           )}

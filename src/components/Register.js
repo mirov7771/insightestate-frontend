@@ -6,7 +6,7 @@ import { isEmail } from "validator";
 
 import AuthService from "../services/auth.service";
 import {useCookies} from "react-cookie";
-import Politics from "../elements/Politics";
+import {REDIRECT_URL} from "../constants/constants";
 
 const required = (value) => {
   if (!value) {
@@ -138,7 +138,7 @@ const Register = (props) => {
         (response) => {
           setMessage("Поздравляем! Регистрация завершена, в течении нескольких секунд вы будете перенаправлены на сайт");
           setSuccessful(true);
-          window.location.href = `https://www.insightestate.com/listing?accessToken=${response['accessToken']}`
+          window.location.href = `${REDIRECT_URL}?accessToken=${response['accessToken']}`
         },
         (error) => {
           const resMessage =

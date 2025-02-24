@@ -1,7 +1,8 @@
 import axios from "axios";
+import {AUTH_URL, PROFILE_URL} from "../constants/constants";
 
-const API_URL = "http://77.238.232.18:8080/auth/";
-const API_USERS_URL = "http://77.238.232.18:8080/users/";
+const API_URL = AUTH_URL;
+const API_USERS_URL = PROFILE_URL;
 
 async function register (
     username,
