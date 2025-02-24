@@ -6,7 +6,7 @@ import CheckButton from "react-validation/build/button";
 
 import AuthService from "../services/auth.service";
 import Politics from "../elements/Politics";
-import {REDIRECT_URL} from "../constants/constants";
+import {REDIRECT_URL, ROUTES} from "../constants/constants";
 
 const required = (value) => {
   if (!value) {
@@ -53,8 +53,6 @@ const Login = () => {
           console.log(response)
           setLoading(false);
           window.location.href = `${REDIRECT_URL}?accessToken=${response['accessToken']}`
-          // navigate("/profile");
-          // window.location.reload();
         },
         () => {
           setLoading(false);
@@ -112,7 +110,7 @@ const Login = () => {
             </div>
 
             <div className="form-group center_registration">
-              <a href="/sign-up" className="button">Регистрация</a>
+              <a href={ROUTES.signUp} className="button">Регистрация</a>
             </div>
 
             {message && (

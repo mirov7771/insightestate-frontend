@@ -7,6 +7,7 @@ import CheckButton from "react-validation/build/button";
 import AuthService from "../services/auth.service";
 import {useCookies} from "react-cookie";
 import Politics from "../elements/Politics";
+import {ROUTES} from "../constants/constants";
 
 const required = (value) => {
   if (!value) {
@@ -50,7 +51,7 @@ const SignUpEnd = () => {
           code
       ).then(
         () => {
-          navigate("/register");
+          navigate(ROUTES.register);
           window.location.reload();
         },
         (error) => {
@@ -104,7 +105,7 @@ const SignUpEnd = () => {
           </div>
 
           <div className="form-group center">
-            <a href="/" className="button">Войти</a>
+            <a href={ROUTES.login} className="button">Войти</a>
           </div>
 
           {message && (

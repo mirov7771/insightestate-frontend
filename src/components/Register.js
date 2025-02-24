@@ -6,7 +6,7 @@ import { isEmail } from "validator";
 
 import AuthService from "../services/auth.service";
 import {useCookies} from "react-cookie";
-import {REDIRECT_URL} from "../constants/constants";
+import {REDIRECT_URL, ROUTES} from "../constants/constants";
 
 const required = (value) => {
   if (!value) {
@@ -244,7 +244,7 @@ const Register = (props) => {
                 </div>
 
                 <div className="form-group center">
-                  <a href="/" className="button">Войти</a>
+                  <a href={ROUTES.login} className="button">Войти</a>
                 </div>
               </div>
           )}
