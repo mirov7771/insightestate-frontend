@@ -2,21 +2,9 @@ import React, {useState, useRef, useEffect} from "react";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
-import { isEmail } from "validator";
 
 import AuthService from "../services/auth.service";
-import {useCookies} from "react-cookie";
 import {useSearchParams} from "react-router-dom";
-
-const validEmail = (value) => {
-  if (!isEmail(value)) {
-    return (
-      <div className="invalid-feedback d-block">
-        Email не валидный
-      </div>
-    );
-  }
-};
 
 const validPhone = (value) => {
   if (value.length < 5 || value.length > 16) {
@@ -89,11 +77,6 @@ const Profile = (props) => {
   const onChangeUsername = (e) => {
     const username = e.target.value;
     setUsername(username);
-  };
-
-  const onChangeEmail = (e) => {
-    const email = e.target.value;
-    setEmail(email);
   };
 
   const onChangeLocation = (e) => {
@@ -176,9 +159,8 @@ const Profile = (props) => {
                       className="form-control"
                       name="email"
                       value={email}
-                      onChange={onChangeEmail}
-                      validations={[validEmail]}
                       placeholder="Email"
+                      disabled={true}
                   />
                 </div>
 
