@@ -51,7 +51,7 @@ const Login = () => {
         (response) => {
           console.log(response)
           setLoading(false);
-          window.location.replace(`https://www.insightestate.com/listing?accessToken=${response['accessToken']}`)
+          window.location.href = `https://www.insightestate.com/listing?accessToken=${response['accessToken']}`
           // navigate("/profile");
           // window.location.reload();
         },

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, {useState, useRef, useEffect} from "react";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
@@ -6,17 +6,7 @@ import { isEmail } from "validator";
 
 import AuthService from "../services/auth.service";
 import {useCookies} from "react-cookie";
-import Politics from "../elements/Politics";
-
-const required = (value) => {
-  if (!value) {
-    return (
-      <div className="invalid-feedback d-block">
-        Обязательное поле
-      </div>
-    );
-  }
-};
+import {useSearchParams} from "react-router-dom";
 
 const validEmail = (value) => {
   if (!isEmail(value)) {
@@ -69,20 +59,32 @@ const vpassword = (value) => {
 };
 
 
-const Register = (props) => {
+const Profile = (props) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const form = useRef();
   const checkBtn = useRef();
-  const [cookies, setCookie] = useCookies()
 
-  const cookieEmail = cookies['client-email']
   const [username, setUsername] = useState("");
-  const [email, setEmail] = useState(cookieEmail || "");
-  const [password, setPassword] = useState("");
-  const [password2, setPassword2] = useState("");
+  const [email, setEmail] = useState(searchParams.get('login') || "");
+  const [password, setPassword] = useState(searchParams.get('password') || "");
   const [phone, setPhone] = useState("");
   const [location, setLocation] = useState("");
   const [successful, setSuccessful] = useState(false);
   const [message, setMessage] = useState("");
+  const [dataLoaded, setDataLoaded] = useState(false);
+
+  useEffect(() => {
+    if (!dataLoaded) {
+      AuthService.profile(email, password).then((response) => {
+        console.log(response);
+        setUsername(response.data.fio);
+        setLocation(response.data.location);
+        setPhone(response.data.mobileNumber);
+        setDataLoaded(true);
+      })
+    }
+  })
 
   const onChangeUsername = (e) => {
     const username = e.target.value;
@@ -109,36 +111,25 @@ const Register = (props) => {
     setPassword(password);
   };
 
-  const onChangePassword2 = (e) => {
-    const password = e.target.value;
-    setPassword2(password);
-  };
-
   const handleRegister = (e) => {
     e.preventDefault();
-
-    if (password !== password2) {
-      setMessage("Пароли не совпадают");
-      setSuccessful(false);
-      return;
-    }
     setMessage("");
     setSuccessful(false);
 
     form.current.validateAll();
 
     if (checkBtn.current.context._errors.length === 0) {
-      AuthService.register(
-          username,
+      AuthService.profileUpdate(
           email,
           password,
+          username,
           phone,
           location
       ).then(
         (response) => {
-          setMessage("Поздравляем! Регистрация завершена, в течении нескольких секунд вы будете перенаправлены на сайт");
+          setMessage("Данные обновлены! В течении нескольких секунд вы будете перенаправлены на сайт");
           setSuccessful(true);
-          window.location.href = `https://www.insightestate.com/listing?accessToken=${response['accessToken']}`
+          window.location.href = 'https://www.insightestate.com/listing'
         },
         (error) => {
           const resMessage =
@@ -174,7 +165,7 @@ const Register = (props) => {
                       name="username"
                       value={username}
                       onChange={onChangeUsername}
-                      validations={[required, vusername]}
+                      validations={[vusername]}
                       placeholder="Фамилия и Имя"
                   />
                 </div>
@@ -186,7 +177,7 @@ const Register = (props) => {
                       name="email"
                       value={email}
                       onChange={onChangeEmail}
-                      validations={[required, validEmail]}
+                      validations={[validEmail]}
                       placeholder="Email"
                   />
                 </div>
@@ -198,7 +189,7 @@ const Register = (props) => {
                       name="phone"
                       value={phone}
                       onChange={onChangePhone}
-                      validations={[required, validPhone]}
+                      validations={[validPhone]}
                       placeholder="Номер телефона"
                   />
                 </div>
@@ -210,7 +201,7 @@ const Register = (props) => {
                       name="location"
                       value={location}
                       onChange={onChangeLocation}
-                      validations={[required, validLocation]}
+                      validations={[validLocation]}
                       placeholder="Локация"
                   />
                 </div>
@@ -222,29 +213,17 @@ const Register = (props) => {
                       name="password"
                       value={password}
                       onChange={onChangePassword}
-                      validations={[required, vpassword]}
+                      validations={[vpassword]}
                       placeholder="Пароль"
                   />
                 </div>
 
                 <div className="form-group">
-                  <Input
-                      type="password"
-                      className="form-control"
-                      name="password2"
-                      value={password2}
-                      onChange={onChangePassword2}
-                      validations={[required, vpassword]}
-                      placeholder="Повторите пароль"
-                  />
+                  <button className="btn btn-primary btn-block">Сохранить</button>
                 </div>
 
-                <div className="form-group">
-                  <button className="btn btn-primary btn-block">Зарегистрироваться</button>
-                </div>
-
-                <div className="form-group center">
-                  <a href="/" className="button">Войти</a>
+                <div className="form-group center_registration">
+                  <a href="https://www.insightestate.com/listing" className="button">Вернуться</a>
                 </div>
               </div>
           )}
@@ -268,4 +247,4 @@ const Register = (props) => {
   );
 };
 
-export default Register;
+export default Profile;

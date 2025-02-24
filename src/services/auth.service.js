@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const API_URL = "http://77.238.232.18:8080/auth/";
+const API_USERS_URL = "http://77.238.232.18:8080/users/";
 
 async function register (
     username,
@@ -51,12 +52,36 @@ const signUpCheck = (username, confirmCode) => {
   });
 }
 
+const profile = (username, password) => {
+  const basicAuth = 'Basic ' + btoa(username + ':' + password);
+  return axios.get(API_USERS_URL + "me", {
+    headers: { 'Authorization': basicAuth }
+  })
+}
+
+const profileUpdate = (
+    login,
+    password,
+    username,
+    phone,
+    location
+) => {
+  const basicAuth = 'Basic ' + btoa(login + ':' + password);
+  return axios.put(API_USERS_URL + "me", {
+    fio: username,
+    mobileNumber: phone,
+    location: location,
+    password: password
+  }, {headers: { 'Authorization': basicAuth }})
+}
 
 const AuthService = {
   register,
   login,
   signUp,
-  signUpCheck
+  signUpCheck,
+  profile,
+  profileUpdate
 }
 
 export default AuthService;
