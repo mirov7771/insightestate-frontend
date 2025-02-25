@@ -1,0 +1,98 @@
+const webpack = require('webpack');
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+module.exports = (env, argv) => {
+  const isProduction = argv.mode === 'production';
+
+  return {
+    devtool: isProduction ? undefined : 'eval-source-map',
+    entry: './src/index.tsx',
+    output: {
+      filename: '[name].[hash].js',
+      path: path.resolve(__dirname, 'dist'),
+      publicPath: '/',
+    },
+    resolve: {
+      extensions: ['.tsx', '.ts', '.js'],
+      alias: {
+        '@': path.resolve(__dirname, 'src'), // Алиас для папки src
+      },
+    },
+    module: {
+      rules: [
+        {
+          test: /\.tsx?$/,
+          use: 'ts-loader',
+          exclude: /node_modules/,
+        },
+        {
+          test: /\.module\.scss$/, // Обработка SCSS-модулей
+          use: [
+            isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
+            {
+              loader: 'css-loader',
+              options: {
+                modules: {
+                  localIdentName: '[name]__[local]___[hash:base64:5]',
+                  exportLocalsConvention: 'asIs',
+                  namedExport: false,
+                },
+              },
+            },
+            'postcss-loader', // PostCSS для модульных SCSS
+            'sass-loader',
+          ],
+        },
+        {
+          test: /\.scss$/,
+          exclude: /\.module\.scss$/, // Обработка обычных SCSS файлов
+          use: [
+            isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
+            'css-loader',
+            'postcss-loader',
+            'sass-loader',
+          ],
+        },
+        {
+          test: /\.css$/,
+          use: [
+            isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
+            'css-loader',
+            'postcss-loader',
+          ],
+        },
+        {
+          test: /\.svg$/,
+          use: [
+            {
+              loader: '@svgr/webpack', // Обработка SVG как React-компонента
+              options: {
+                svgo: true, // Включение минификации SVG
+              },
+            },
+          ],
+        },
+      ],
+    },
+    plugins: [
+      new CleanWebpackPlugin(),
+      new HtmlWebpackPlugin({
+        template: './src/index.html',
+      }),
+      new MiniCssExtractPlugin({
+        filename: '[name].css', // Генерация CSS-файлов
+        chunkFilename: '[id].css',
+      }),
+    ],
+    devServer: {
+      static: './dist',
+      port: 3000,
+      open: true,
+      hot: true,
+      historyApiFallback: true,
+    },
+  };
+};

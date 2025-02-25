@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+  --font--body: Roboto, sans-serif;
+  --font--serif: Roboto, sans-serif;
+  --font--wide: "Roboto Condensed", sans-serif;
+
+  --light: white;
+  --white: white;
+  --dark: #17181c;
+  --border-dark: #17181c29;
+  --border-light: #ffffff29;
+  --bg-1: #f6f6f2;
+  --bg-2: #ede8e2;
+  --accent: #a9d0e6;
+  --black: #0e0e0e;
+  --semi-transparent-white: #fff0;
+  --accent-2: #164ac3;
+  --light-orange: #fff7e8;
+  --dark-orange: #734a00;
+
+  --text--text-body: 16px;
+  --text--text-small: 14px;
+  --text--label: 12px;
+  --text--text-big: 20px;
+  --text--button: 16px;
+
+  --letter-spacing--0: 0px;
+  --letter-spacing--0-7px: .7px;
+  --letter-spacing--1: -.01em;
+  --letter-spacing--2: -.02em;
+  --letter-spacing--2-0: .02em;
+  --letter-spacing--3: -.03em;
+  --letter-spacing--4: -.04em;
+  --letter-spacing--4-0: .04em;
+  --letter-spacing--5: -.05em;
+  --letter-spacing--8: -.08em;
+  --letter-spacing--8-0: .08em;
+
+  --heading--h0: 72px;
+  --heading--h1: 72px;
+  --heading--h2: 56px;
+  --heading--h3: 48px;
+  --heading--h4: 32px;
+  --heading--h5: 24px;
+  --heading--h6: 20px;
+
+  --radius--xxsmall: 8px;
+  --radius--xsmall: 12px;
+  --radius--small: 16px;
+  --radius--medium: 24px;
+  --radius--regular: 32px;
+  --radius--big: 40px;
+  --radius--round: 100vw;
+
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background-color: var(--light);
+  font-family: var(--font--body);
+  color: var(--dark);
+  font-size: var(--text--text-body);
+  letter-spacing: var(--letter-spacing--1);
+  line-height: 150%;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--font--body);
+  margin: 0;
+}
+
+h1 {
+  font: var(--heading--h1);
+}
+
+h2 {
+  font: var(--heading--h2);
+}
+
+h3 {
+  font: var(--heading--h3);
+}
+
+h4 {
+  font: var(--heading--h4);
+}
+
+h5 {
+  font: var(--heading--h5);
+}
+
+p {
+  margin: 0;
+}
+
+strong {
+  font-weight: 600;
+}
+
+ul {
+  padding: 0;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: #efeff5;
+  padding: 32px 24px 0;
+  overflow-x: hidden;
+  position: relative;
+}
