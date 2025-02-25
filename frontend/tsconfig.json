@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "jsx": "react-jsx",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./dist",
+    "moduleResolution": "node",
+    "isolatedModules": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "./src/",
+    "paths": {
+      "@/*": ["./*"], // Алиас для папки src
+    },
+    "downlevelIteration": true,
+    "lib": ["DOM", "ESNext", "ESNext.Intl"],
+  },
+  "include": ["src/**/*", "src/global.d.ts"],
+  "exclude": ["node_modules"]
+}
