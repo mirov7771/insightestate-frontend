@@ -1,11 +1,36 @@
-.layout {
+.wrap {
   margin: 0 auto;
   width: 100%;
   max-width: 1736px;
-  display: grid;
+}
+
+.header {
+  margin-bottom: 48px;
+  display: inline-block;
+}
+
+.layout {
+  width: 100%;
+  column-gap: 90px;
+  grid-template-rows: auto;
   grid-template-columns: 1fr 2fr;
+  grid-auto-columns: 1fr;
+  place-items: start stretch;
+  display: grid;
 }
 
 .main {
-  background-color: #5de2ee;
+  grid-column-gap: 2rem;
+  grid-row-gap: 2rem;
+  grid-template-rows: auto auto;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-columns: 1fr;
+  display: grid;
+}
+
+.pagination {
+  margin-top: 48px;
+  text-align: center;
+  grid-column-start: 2;
+  grid-column-end: span 1;
 }
