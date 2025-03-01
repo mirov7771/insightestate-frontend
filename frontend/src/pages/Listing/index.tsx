@@ -17,10 +17,10 @@ export const Listing: FC = () => {
           <Card />
           <Card />
           <Card />
+          <div className={styles.pagination}>
+            <Pagination totalPages={9} />
+          </div>
         </main>
-        <div className={styles.pagination}>
-          <Pagination totalPages={9} />
-        </div>
       </div>
     </div>
   );
