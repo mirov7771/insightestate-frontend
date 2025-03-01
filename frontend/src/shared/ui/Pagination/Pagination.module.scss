@@ -1,0 +1,27 @@
+.pagination {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  &__buttons {
+    display: flex;
+  }
+
+  &__pages {
+  }
+
+  &__button {
+    color: #333;
+    background-color: #fafafa;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 9px 20px;
+    font-size: 14px;
+    display: block;
+    cursor: pointer;
+  }
+}
