@@ -1,7 +1,8 @@
 .radio {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 16px;
+  cursor: pointer;
 
   &__input {
     display: none;
@@ -18,8 +19,8 @@
   &__custom {
     position: relative;
     display: flex;
-    width: 16px;
-    height: 16px;
+    width: 24px;
+    height: 24px;
     border-radius: 50%;
     border: 1px solid var(--border-dark);
     background-color: var(--light);
@@ -31,8 +32,8 @@
     &::after {
       content: '';
       display: flex;
-      width: 10px;
-      height: 10px;
+      width: 16px;
+      height: 16px;
       border-radius: 50%;
       position: absolute;
       background-color: var(--border-dark);

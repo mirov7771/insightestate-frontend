@@ -1,24 +1,20 @@
-import { ChangeEvent, FC, useEffect, useState } from 'react';
+import { ChangeEvent, FC } from 'react';
 import { Home } from '@/shared/assets/icons';
 import styles from './Filter.module.scss';
 import { useFilters } from '@/widgets/Filter/model/useFilters';
 import { Accordion, Checkbox } from '@/shared/ui';
 
 export const PropertyType: FC = () => {
-  const { setFilters } = useFilters();
-  const [filter, setFilter] = useState<string[]>([]);
+  const { setFilters, types } = useFilters();
 
   const handleClick = (e: ChangeEvent<HTMLInputElement>) => {
-    setFilter((prevState) =>
-      prevState.includes(e.target.name)
-        ? prevState.filter((val) => val !== e.target.name)
-        : [...prevState, e.target.name]
-    );
+    setFilters((filtersState) => ({
+      ...filtersState,
+      types: filtersState.types?.includes(e.target.name)
+        ? filtersState.types?.filter((val) => val !== e.target.name)
+        : [...(filtersState.types || []), e.target.name],
+    }));
   };
-
-  useEffect(() => {
-    setFilters((filtersState) => ({ ...filtersState, types: filter }));
-  }, [filter]);
 
   return (
     <Accordion icon={<Home />} title="Тип объекта">
@@ -27,13 +23,13 @@ export const PropertyType: FC = () => {
           label="Вилла"
           name="VILLA"
           onChange={handleClick}
-          checked={filter.includes('VILLA')}
+          checked={types?.includes('VILLA')}
         />
         <Checkbox
           label="Квартира"
           name="APARTMENT"
           onChange={handleClick}
-          checked={filter.includes('APARTMENT')}
+          checked={types?.includes('APARTMENT')}
         />
       </div>
     </Accordion>

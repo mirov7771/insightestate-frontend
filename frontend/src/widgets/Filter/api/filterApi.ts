@@ -1,7 +1,7 @@
 import { api } from '@/shared/api';
 import { AxiosResponse } from 'axios';
 
-type Estate = {
+export type Estate = {
   beachTravelTime: number;
   buildEndDate: string;
   grade: number;
@@ -39,11 +39,11 @@ type ResponseGetEstate = {
 export const filterApi = {
   getEstate: async (params?: GetEstateParams): Promise<AxiosResponse<ResponseGetEstate>> => {
     try {
-      const { data } = await api.get('v1/estate', {
+      const response = await api.get<ResponseGetEstate>('v1/estate', {
         params: { ...params, pageSize: 4 },
       });
 
-      return data;
+      return response;
     } catch (error) {
       throw error;
     }
