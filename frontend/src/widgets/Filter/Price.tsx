@@ -1,7 +1,7 @@
 import { ChangeEvent, FC, useState } from 'react';
 import { Coins } from '@/shared/assets/icons';
 import styles from './Filter.module.scss';
-import { Accordion, Checkbox, RadioButton } from '@/shared/ui';
+import { Accordion, RadioButton } from '@/shared/ui';
 import { useFilters } from '@/widgets/Filter/model/useFilters';
 
 export const Price: FC = () => {
