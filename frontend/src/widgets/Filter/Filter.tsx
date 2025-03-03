@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import styles from './Filter.module.scss';
 import { PropertyType } from './PropertyType';
 import { CompletionDate } from './CompletionDate';

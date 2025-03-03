@@ -1,9 +1,11 @@
-import { ChangeEvent, FC, useState } from 'react';
+import { ChangeEvent, FC, useEffect, useState } from 'react';
 import { Home } from '@/shared/assets/icons';
 import styles from './Filter.module.scss';
+import { useFilters } from '@/widgets/Filter/model/useFilters';
 import { Accordion, Checkbox } from '@/shared/ui';
 
 export const PropertyType: FC = () => {
+  const { setFilters } = useFilters();
   const [filter, setFilter] = useState<string[]>([]);
 
   const handleClick = (e: ChangeEvent<HTMLInputElement>) => {
@@ -13,6 +15,10 @@ export const PropertyType: FC = () => {
         : [...prevState, e.target.name]
     );
   };
+
+  useEffect(() => {
+    setFilters((filtersState) => ({ ...filtersState, types: filter }));
+  }, [filter]);
 
   return (
     <Accordion icon={<Home />} title="Тип объекта">

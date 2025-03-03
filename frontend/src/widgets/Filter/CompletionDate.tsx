@@ -1,9 +1,11 @@
-import { ChangeEvent, FC, useState } from 'react';
+import { ChangeEvent, FC, useEffect, useState } from 'react';
 import { Calendar } from '@/shared/assets/icons';
 import styles from './Filter.module.scss';
 import { Accordion, Checkbox } from '@/shared/ui';
+import { useFilters } from '@/widgets/Filter/model/useFilters';
 
 export const CompletionDate: FC = () => {
+  const { setFilters } = useFilters();
   const [filter, setFilter] = useState<number[]>([]);
 
   const handleClick = (e: ChangeEvent<HTMLInputElement>) => {
@@ -13,6 +15,10 @@ export const CompletionDate: FC = () => {
         : [...prevState, Number(e.target.value)]
     );
   };
+
+  useEffect(() => {
+    setFilters((filtersState) => ({ ...filtersState, buildEndYears: filter }));
+  }, [filter]);
 
   return (
     <Accordion icon={<Calendar />} title="Дата сдачи объекта">
