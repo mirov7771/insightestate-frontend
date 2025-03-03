@@ -1,35 +1,57 @@
 import { FC } from 'react';
 import styles from './Card.module.scss';
 import { Beach, VectorRating } from '@/shared/assets/icons';
+import { Estate } from '@/widgets/Filter/api/filterApi';
 
-export const Card: FC = () => {
+const DEFAULT_IMG =
+  'https://cdn.prod.website-files.com/672b5797ac1486cdfc5122ac/67aa547c02740c42abf52609_675f0debfa47fa6400a3c65a_Exterior_03.jpeg';
+
+type CardProps = Estate;
+
+export const Card: FC<CardProps> = ({
+  id,
+  level,
+  beachTravelTime,
+  grade,
+  buildEndDate,
+  priceMin,
+  facilityImages,
+  interiorImages,
+  exteriorImages,
+}) => {
+  const img = facilityImages?.[0] || interiorImages?.[0] || exteriorImages?.[0] || DEFAULT_IMG;
+
   return (
     <div className={styles.card}>
-      <a href="#" className={styles.card__image}>
-        <img
-          src="https://cdn.prod.website-files.com/672b5797ac1486cdfc5122ac/67aa547c02740c42abf52609_675f0debfa47fa6400a3c65a_Exterior_03.jpeg"
-          alt=""
-        />
+      <a href={`/listing/${id}`} className={styles.card__image}>
+        <img src={img} alt="" />
         <div className={styles.card__rating}>
-          9,3 <VectorRating />
+          {grade} <VectorRating />
         </div>
         <div className={styles.card__details}>
-          <span className={styles.card__details__item}>31.12.2028</span>
-          <span className={styles.card__details__item}>Люкс</span>
+          {buildEndDate !== '-' && (
+            <span className={styles.card__details__item}>{buildEndDate}</span>
+          )}
+          <span className={styles.card__details__item}>{level}</span>
           <span className={styles.card__details__item}>
-            <Beach /> 1 мин
+            <Beach /> {beachTravelTime} мин
           </span>
         </div>
       </a>
-      <a href="#" className={styles.card__title}>
+      <a href={`/listing/${id}`} className={styles.card__title}>
         LAGUNA BEACH RESIDENCES BAYSIDE
       </a>
       <p>
-        <strong>Стоимость от</strong> $661 006
+        <strong>Стоимость от</strong>{' '}
+        {Intl.NumberFormat('en-US', {
+          style: 'currency',
+          currency: 'USD',
+          maximumFractionDigits: 0,
+        }).format(priceMin)}
       </p>
-      <p>
+      {/*<p>
         Доходность до <strong>136%</strong> за 10 лет
-      </p>
+      </p>*/}
     </div>
   );
 };
