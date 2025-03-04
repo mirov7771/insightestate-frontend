@@ -17,7 +17,7 @@ export const Pagination: FC<PaginationProps> = ({
   return (
     <div className={styles.pagination}>
       <div className={styles.pagination__buttons}>
-        {pageNumber !== 1 && (
+        {pageNumber !== 0 && (
           <button className={styles.pagination__button} onClick={goToPreviousPage}>
             {'< Назад'}
           </button>

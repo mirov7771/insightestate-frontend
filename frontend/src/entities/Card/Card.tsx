@@ -18,6 +18,7 @@ export const Card: FC<CardProps> = ({
   facilityImages,
   interiorImages,
   exteriorImages,
+  name
 }) => {
   const img = facilityImages?.[0] || interiorImages?.[0] || exteriorImages?.[0] || DEFAULT_IMG;
 
@@ -39,7 +40,7 @@ export const Card: FC<CardProps> = ({
         </div>
       </a>
       <a href={`/listing/${id}`} className={styles.card__title}>
-        LAGUNA BEACH RESIDENCES BAYSIDE
+          {name}
       </a>
       <p>
         <strong>Стоимость от</strong>{' '}

@@ -31,7 +31,7 @@ export const FiltersProvider: FC<PropsWithChildren> = ({ children }) => {
   const [estates, setEstates] = useState<Estate[]>([]);
 
   useEffect(() => {
-    filterApi.getEstate({ pageNumber: 1 }).then((response) => {
+    filterApi.getEstate({ pageNumber: 0 }).then((response) => {
       setEstates(response.data.items);
     });
   }, []);
