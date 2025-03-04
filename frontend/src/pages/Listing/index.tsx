@@ -5,7 +5,7 @@ import { Card } from '@/entities/Card/Card';
 import { Pagination } from '@/shared/ui';
 import { useFilters } from '@/widgets/Filter/model/useFilters';
 
-export const Listing: FC = () => {
+const Listing: FC = () => {
   const { setFilters, pageNumber, estates, totalPages } = useFilters();
 
   return (
@@ -42,3 +42,5 @@ export const Listing: FC = () => {
     </div>
   );
 };
+
+export default Listing;

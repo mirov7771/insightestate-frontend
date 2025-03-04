@@ -1,15 +1,17 @@
+@use 'sass:color';
+
 .button {
   border: none;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 6px;
+  border-radius: 20px;
   width: fit-content;
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 
   &:disabled {
-    background-color: var(--border-light);
-    color: var(--border-dark);
+    background-color: #eff2f3;
+    color: #9ca2a6;
     cursor: default;
     pointer-events: none;
   }
@@ -19,7 +21,7 @@
     color: var(--light);
 
     &:hover {
-      background-color: darken(#04b0be);
+      background-color: color.scale(#04b0be, $lightness: -15%);
       color: var(--light);
       cursor: pointer;
     }
@@ -29,8 +31,8 @@
     }
 
     &:active {
-      background-color: var(--color-accent-yellow);
-      color: var(--color-neutral-dark-grey);
+      background-color: color.scale(#04b0be, $lightness: -30%);
+      color: var(--light);
     }
 
     .button_loading:disabled & {

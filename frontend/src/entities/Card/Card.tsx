@@ -24,7 +24,7 @@ export const Card: FC<CardProps> = ({
 
   return (
     <div className={styles.card}>
-      <a href={`/listing/${id}`} className={styles.card__image}>
+      <a href={`/property/${id}`} className={styles.card__image}>
         <img src={img} alt="" />
         <div className={styles.card__rating}>
           {grade} <VectorRating />
@@ -39,7 +39,7 @@ export const Card: FC<CardProps> = ({
           </span>
         </div>
       </a>
-      <a href={`/listing/${id}`} className={styles.card__title}>
+      <a href={`/property/${id}`} className={styles.card__title}>
         {name}
       </a>
       <p>
