@@ -32,7 +32,7 @@ export const Listing: FC = () => {
               goToNextPage={() =>
                 setFilters((filtersState) => ({
                   ...filtersState,
-                  pageNumber: Math.min((pageNumber as number) + 1, 9),
+                  pageNumber: Math.min((pageNumber as number) + 1, totalPages),
                 }))
               }
             />
