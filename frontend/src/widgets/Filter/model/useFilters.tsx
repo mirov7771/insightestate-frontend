@@ -41,11 +41,14 @@ export const FiltersProvider: FC<PropsWithChildren> = ({ children }) => {
   useEffect(() => {
     filterApi.getEstate(filters).then((response) => {
       setEstates(response.data.items);
-      setTotalPages(response.data.totalPages)
+      setTotalPages(response.data.totalPages);
     });
   }, [filters]);
 
-  const contextValue = useMemo(() => ({ ...filters, setFilters, estates, totalPages }), [filters, estates, totalPages]);
+  const contextValue = useMemo(
+    () => ({ ...filters, setFilters, estates, totalPages }),
+    [filters, estates, totalPages]
+  );
 
   return <FiltersContext.Provider value={contextValue}>{children}</FiltersContext.Provider>;
 };

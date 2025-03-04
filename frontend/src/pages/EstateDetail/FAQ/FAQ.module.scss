@@ -1,0 +1,14 @@
+.header {
+  font-size: var(--heading--h4);
+  letter-spacing: var(--letter-spacing--2);
+  text-transform: uppercase;
+  font-weight: 900;
+  line-height: 100%;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--bg-2);
+}
+
+.accordion__title {
+  font-size: var(--heading--h6);
+  font-weight: 600;
+}

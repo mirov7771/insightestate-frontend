@@ -5,7 +5,7 @@ import { Card } from '@/entities/Card/Card';
 import { Pagination } from '@/shared/ui';
 import { useFilters } from '@/widgets/Filter/model/useFilters';
 
-export const Listing: FC = () => {
+const Listing: FC = () => {
   const { setFilters, pageNumber, estates, totalPages } = useFilters();
 
   return (
@@ -32,7 +32,7 @@ export const Listing: FC = () => {
               goToNextPage={() =>
                 setFilters((filtersState) => ({
                   ...filtersState,
-                  pageNumber: Math.min((pageNumber as number) + 1, 9),
+                  pageNumber: Math.min((pageNumber as number) + 1, totalPages),
                 }))
               }
             />
@@ -42,3 +42,5 @@ export const Listing: FC = () => {
     </div>
   );
 };
+
+export default Listing;

@@ -1,0 +1,18 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--bg-2);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: var(--heading--h4);
+  text-transform: uppercase;
+  font-weight: 800;
+}
