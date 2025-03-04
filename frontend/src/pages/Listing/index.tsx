@@ -6,7 +6,7 @@ import { Pagination } from '@/shared/ui';
 import { useFilters } from '@/widgets/Filter/model/useFilters';
 
 export const Listing: FC = () => {
-  const { setFilters, pageNumber, estates } = useFilters();
+  const { setFilters, pageNumber, estates, totalPages } = useFilters();
 
   return (
     <div className={styles.wrap}>
@@ -21,7 +21,7 @@ export const Listing: FC = () => {
           ))}
           <div className={styles.pagination}>
             <Pagination
-              totalPages={9}
+              totalPages={totalPages}
               pageNumber={pageNumber as number}
               goToPreviousPage={() =>
                 setFilters((filtersState) => ({

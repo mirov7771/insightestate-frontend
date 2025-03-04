@@ -22,6 +22,7 @@ export const DEFAULT_FILTERS = {
 type FiltersContextValues = GetEstateParams & {
   estates: Estate[];
   setFilters: Dispatch<SetStateAction<GetEstateParams>>;
+  totalPages: number;
 };
 
 const FiltersContext = createContext<FiltersContextValues | undefined>(undefined);
@@ -29,6 +30,7 @@ const FiltersContext = createContext<FiltersContextValues | undefined>(undefined
 export const FiltersProvider: FC<PropsWithChildren> = ({ children }) => {
   const [filters, setFilters] = useState<GetEstateParams>(DEFAULT_FILTERS);
   const [estates, setEstates] = useState<Estate[]>([]);
+  const [totalPages, setTotalPages] = useState<number>(0);
 
   useEffect(() => {
     filterApi.getEstate({ pageNumber: 0 }).then((response) => {
@@ -39,10 +41,11 @@ export const FiltersProvider: FC<PropsWithChildren> = ({ children }) => {
   useEffect(() => {
     filterApi.getEstate(filters).then((response) => {
       setEstates(response.data.items);
+      setTotalPages(response.data.totalPages)
     });
   }, [filters]);
 
-  const contextValue = useMemo(() => ({ ...filters, setFilters, estates }), [filters, estates]);
+  const contextValue = useMemo(() => ({ ...filters, setFilters, estates, totalPages }), [filters, estates, totalPages]);
 
   return <FiltersContext.Provider value={contextValue}>{children}</FiltersContext.Provider>;
 };

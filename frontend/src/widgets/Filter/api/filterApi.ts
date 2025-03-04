@@ -34,6 +34,7 @@ type ResponseGetEstate = {
   items: Array<Estate>;
   pageNumber: number;
   pageSize: number;
+  totalPages: number;
 };
 
 export const filterApi = {
