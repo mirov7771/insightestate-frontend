@@ -66,14 +66,20 @@ module.exports = (env, argv) => {
         },
         {
           test: /\.svg$/,
-          use: [
+          oneOf: [
             {
-              loader: '@svgr/webpack', // Обработка SVG как React-компонента
-              options: {
-                svgo: true, // Включение минификации SVG
-              },
+              issuer: /\.[jt]sx?$/,
+              resourceQuery: /react/, // Используется при импорте с `?react`
+              use: ['@svgr/webpack'],
+            },
+            {
+              type: 'asset/resource', // Обрабатывает SVG как файл
             },
           ],
+        },
+        {
+          test: /\.(png|jpe?g|gif|webp)$/i, // Поддержка форматов PNG, JPEG, GIF, WebP
+          type: 'asset/resource', // Загружает файлы в папку output и возвращает URL
         },
       ],
     },

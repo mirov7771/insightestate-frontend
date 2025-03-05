@@ -4,7 +4,7 @@ import styles from './FAQ.module.scss';
 
 export const FAQ: FC = () => {
   return (
-    <>
+    <section>
       <h4 className={styles.header}>Ответы на вопросы</h4>
       <Accordion
         title={
@@ -132,6 +132,6 @@ export const FAQ: FC = () => {
           Эти документы подтверждают законность сделки и права нового владельца.
         </p>
       </Accordion>
-    </>
+    </section>
   );
 };
