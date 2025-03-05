@@ -1,7 +1,8 @@
 import './App.scss';
 import { Routes, Route, BrowserRouter } from 'react-router';
-import { Listing } from '@/pages/Listing';
 import { FiltersProvider } from '@/widgets/Filter/model/useFilters';
+import Listing from '@/pages/Listing';
+import EstateDetail from '@/pages/EstateDetail';
 
 const App = () => {
   return (
@@ -17,7 +18,7 @@ const App = () => {
           }
         />
         <Route path="/property">
-          <Route path=":id" element={<h1>Property page</h1>} />
+          <Route path=":id" element={<EstateDetail />} />
         </Route>
       </Routes>
     </BrowserRouter>
