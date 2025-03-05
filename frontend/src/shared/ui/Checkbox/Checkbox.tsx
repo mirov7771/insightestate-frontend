@@ -1,6 +1,6 @@
 import { FC, InputHTMLAttributes } from 'react';
 import styles from './Checkbox.module.scss';
-import Tick from './Tick.svg';
+import Tick from './Tick.svg?react';
 
 type CheckboxProps = InputHTMLAttributes<HTMLInputElement> & {
   label?: string;

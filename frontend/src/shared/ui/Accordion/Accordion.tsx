@@ -1,7 +1,7 @@
 import { FC, ReactNode, useState } from 'react';
 import styles from './Accordion.module.scss';
-import Plus from './plus.svg';
-import Minus from './minus.svg';
+import Plus from './plus.svg?react';
+import Minus from './minus.svg?react';
 
 type AccordionProps = {
   children: ReactNode;
