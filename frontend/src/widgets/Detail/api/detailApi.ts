@@ -19,7 +19,7 @@ export type EstateDetail = {
     product?: string,
     profitability?: Profitability,
     location: Location,
-    infrastructure?: Infrastructure,
+    infrastructure?: InfrastructureDto,
     options?: Options,
     price?: Price,
     roomLayouts?: RoomLayouts,
@@ -67,7 +67,7 @@ type Time = {
     car?: number
 }
 
-type Infrastructure = {
+export type InfrastructureDto = {
     beachTime?: Time,
     airportTime?: Time,
     mallTime?: Time,
@@ -92,7 +92,7 @@ export type RoomLayouts = {
     three?: RoomLayout
 }
 
-type Options = {
+export type Options = {
     gym?: boolean,
     childRoom?: boolean,
     shop?: boolean,

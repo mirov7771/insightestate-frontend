@@ -8,19 +8,23 @@ import { AverageYield } from './Section/AverageYield/AverageYield';
 import { Infrastructure } from './Section/Infrastructure/Infrastructure';
 import { ProjectPlan } from './Section/ProjectPlan/ProjectPlan';
 import { Map } from './Section/Map/Map';
-import {detailApi, Profitability, RoomLayouts} from "@/widgets/Detail/api/detailApi";
+import {detailApi, Profitability, RoomLayouts, InfrastructureDto, Options} from "@/widgets/Detail/api/detailApi";
 
 const EstateDetail: FC = () => {
   const { id } = useParams<{ id: string }>();
   const [name, setName] = useState<string>('')
   const [roomLayouts, setRoomLayouts] = useState<RoomLayouts>()
   const [profitability, setProfitability] = useState<Profitability>()
+  const [infrastructure, setInfrastructure] = useState<InfrastructureDto>()
+  const [options, setOptions] = useState<Options>()
 
   useEffect(() => {
     detailApi.getDetail(id).then(r => {
       setName(r.data.name)
       setRoomLayouts(r.data.roomLayouts)
       setProfitability(r.data.profitability)
+      setInfrastructure(r.data.infrastructure)
+      setOptions(r.data.options)
     })
   }, []);
 
@@ -32,7 +36,14 @@ const EstateDetail: FC = () => {
           <ApartmentLayouts {...roomLayouts}/>
           <PaymentSchedule />
           <AverageYield {...profitability}/>
-          <Infrastructure />
+          <Infrastructure
+              beachTime={infrastructure?.beachTime?.car}
+              airportTime={infrastructure?.airportTime?.car}
+              mallTime={infrastructure?.mallTime?.car}
+              gym={options?.gym || false}
+              childRoom={options?.childRoom || false}
+              coworking={options?.coworking || false}
+          />
           <ProjectPlan />
           <Map />
           <FAQ />
