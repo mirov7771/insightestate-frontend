@@ -32,7 +32,7 @@ type Developer = {
     name?: string,
 }
 
-type Grade = {
+export type Grade = {
     main?: number,
     investmentSecurity?: number,
     investmentPotential?: number,

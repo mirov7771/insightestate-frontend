@@ -8,7 +8,7 @@ import { AverageYield } from './Section/AverageYield/AverageYield';
 import { Infrastructure } from './Section/Infrastructure/Infrastructure';
 import { ProjectPlan } from './Section/ProjectPlan/ProjectPlan';
 import { Map } from './Section/Map/Map';
-import {detailApi, Profitability, RoomLayouts, InfrastructureDto, Options} from "@/widgets/Detail/api/detailApi";
+import {detailApi, Profitability, RoomLayouts, InfrastructureDto, Options, Grade} from "@/widgets/Detail/api/detailApi";
 
 const EstateDetail: FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -17,6 +17,7 @@ const EstateDetail: FC = () => {
   const [profitability, setProfitability] = useState<Profitability>()
   const [infrastructure, setInfrastructure] = useState<InfrastructureDto>()
   const [options, setOptions] = useState<Options>()
+  const [grade, setGrade] = useState<Grade>()
 
   useEffect(() => {
     detailApi.getDetail(id).then(r => {
@@ -25,6 +26,7 @@ const EstateDetail: FC = () => {
       setProfitability(r.data.profitability)
       setInfrastructure(r.data.infrastructure)
       setOptions(r.data.options)
+      setGrade(r.data.grade)
     })
   }, []);
 
@@ -34,7 +36,7 @@ const EstateDetail: FC = () => {
         <main className={styles.main}>
           <h1 className={styles.title}>{name}</h1>
           <ApartmentLayouts {...roomLayouts}/>
-          <PaymentSchedule />
+          <PaymentSchedule {...grade}/>
           <AverageYield {...profitability}/>
           <Infrastructure
               beachTime={infrastructure?.beachTime?.car}
