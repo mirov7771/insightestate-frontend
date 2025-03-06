@@ -2,13 +2,9 @@ import { FC } from 'react';
 import { Section } from '../Section';
 import { Button } from '@/shared/ui';
 import styles from './AverageYield.module.scss';
-import {Profitability} from "@/widgets/Detail/api/detailApi";
+import { Profitability } from '@/widgets/Detail/api/detailApi';
 
-export const AverageYield: FC<Profitability> = ({
-    roi,
-    irr,
-    capRateFirstYear
-}) => {
+export const AverageYield: FC<Profitability> = ({ roi, irr, capRateFirstYear }) => {
   return (
     <Section title="Средняя доходность" rightSide={<Button>Индивидуальный расчет</Button>}>
       <div className={styles.wrapper}>
