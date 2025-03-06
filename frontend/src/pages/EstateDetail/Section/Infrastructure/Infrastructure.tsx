@@ -9,42 +9,35 @@ import shopping from '@/shared/assets/icons/ShoppingCart.svg';
 import airport from '@/shared/assets/icons/Airport.svg';
 
 export const Infrastructure: FC<{
-  beachTime?: number,
-  airportTime?: number,
-  mallTime?: number,
-  gym: boolean,
-  childRoom: boolean,
-  coworking: boolean,
-}> = ({
-    beachTime,
-    airportTime,
-    mallTime,
-    gym,
-    childRoom,
-    coworking
-}) => {
+  childRoom: boolean;
+  coworking: boolean;
+  gym: boolean;
+  airportTime?: number;
+  beachTime?: number;
+  mallTime?: number;
+}> = ({ beachTime, airportTime, mallTime, gym, childRoom, coworking }) => {
   console.log(beachTime);
   return (
     <Section title="Инфраструктура и Особенности">
       <div className={styles.wrapper}>
-        {childRoom ?
-            <div className={styles.item}>
-              <img src={baby} className={styles.item__icon} alt="icon" />
-              <span>Детская комната</span>
-            </div> : <div/>
-        }
-        {coworking ?
-            <div className={styles.item}>
-              <img src={macbook} className={styles.item__icon} alt="icon" />
-              <span>Коворкинг</span>
-          </div> : <div/>
-        }
-        {gym ?
-            <div className={styles.item}>
-              <img src={trainers} className={styles.item__icon} alt="icon"/>
-              <span>Спортивный зал</span>
-            </div> : <div/>
-        }
+        {childRoom && (
+          <div className={styles.item}>
+            <img src={baby} className={styles.item__icon} alt="icon" />
+            <span>Детская комната</span>
+          </div>
+        )}
+        {coworking && (
+          <div className={styles.item}>
+            <img src={macbook} className={styles.item__icon} alt="icon" />
+            <span>Коворкинг</span>
+          </div>
+        )}
+        {gym && (
+          <div className={styles.item}>
+            <img src={trainers} className={styles.item__icon} alt="icon" />
+            <span>Спортивный зал</span>
+          </div>
+        )}
       </div>
       {/* ------ */}
       <div className={styles.wrapper}>
