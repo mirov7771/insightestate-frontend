@@ -2,8 +2,13 @@ import React, { FC } from 'react';
 import { Section } from '../Section';
 import { Button } from '@/shared/ui';
 import styles from './ApartmentLayouts.module.scss';
+import {RoomLayouts} from "@/widgets/Detail/api/detailApi";
 
-export const ApartmentLayouts: FC = () => {
+export const ApartmentLayouts: FC<RoomLayouts> = ({
+    one,
+    two,
+    three
+}) => {
   return (
     <Section title="Доступные планировки" rightSide={<Button>Подобрать индивидуально</Button>}>
       <div>
@@ -14,18 +19,18 @@ export const ApartmentLayouts: FC = () => {
         </div>
         <div className={styles.item}>
           <span>1 спальня</span>
-          <span>26 — 39</span>
-          <span>89 554 — 169 494</span>
+          <span>{one?.square?.min} - {one?.square?.max}</span>
+          <span>{one?.pricePerMeter?.min} - {one?.pricePerMeter?.max}</span>
         </div>
         <div className={styles.item}>
           <span>2 спальни</span>
-          <span>57 — 65</span>
-          <span>198 101 — 288 552</span>
+          <span>{two?.square?.min} - {two?.square?.max}</span>
+          <span>{two?.pricePerMeter?.min} - {two?.pricePerMeter?.max}</span>
         </div>
         <div className={styles.item}>
           <span>3 спальни</span>
-          <span>113 — 123</span>
-          <span>394 233 — 512 887</span>
+          <span>{three?.square?.min} - {two?.square?.max}</span>
+          <span>{three?.pricePerMeter?.min} - {two?.pricePerMeter?.max}</span>
         </div>
       </div>
     </Section>
