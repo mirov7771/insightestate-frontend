@@ -18,6 +18,7 @@ import Constructing from './Constructing.svg?react';
 import Diamond from './Diamond.svg?react';
 import ButtonWhatsUp from './ButtonWhatsUp.svg?react';
 import ButtonEmail from './ButtonEmail.svg?react';
+import Logo from './Logo.svg?react';
 
 export {
   Bed,
@@ -40,4 +41,5 @@ export {
   Diamond,
   ButtonWhatsUp,
   ButtonEmail,
+  Logo,
 };

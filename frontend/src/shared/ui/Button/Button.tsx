@@ -2,6 +2,7 @@ import { ButtonHTMLAttributes, FC, PropsWithChildren } from 'react';
 import styles from './Button.module.scss';
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+  bold?: boolean;
   loading?: boolean;
   size?: 'l' | 'm' | 's';
   variant?: 'primary' | 'secondary' | 'cta';
@@ -15,6 +16,7 @@ export const Button: FC<PropsWithChildren<ButtonProps>> = ({
   wide = false,
   className,
   loading,
+  bold = false,
   ...props
 }) => {
   const buttonClassNames = [
@@ -23,6 +25,7 @@ export const Button: FC<PropsWithChildren<ButtonProps>> = ({
     styles[`button__variant-${variant}`],
     loading ? styles.button_loading : '',
     wide ? styles[`button__wide`] : '',
+    bold ? styles.button__bold : '',
     className,
   ]
     .filter(Boolean)
