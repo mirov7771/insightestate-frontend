@@ -61,18 +61,18 @@
     }
 
     .button_loading:disabled & {
-      background-color: var(--color-neutral-light-grey);
-      color: var(--color-neutral-black);
+      background-color: var(--border-light);
+      color: var(--border-dark);
     }
   }
 
   &__variant-cta {
-    background-color: var(--color-accent-blue);
-    color: var(--color-neutral-white);
+    background-color: var(--light);
+    color: var(--dark);
 
     &:hover {
-      background-color: var(--color-accent-blue-hover);
-      color: var(--color-neutral-white);
+      background-color: var(--bg-1);
+      color: var(--dark);
       cursor: pointer;
     }
 
@@ -81,13 +81,13 @@
     }
 
     &:active {
-      background-color: var(--color-accent-blue-active);
-      color: var(--color-neutral-white);
+      background-color: var(--bg-1);
+      color: var(--dark);
     }
 
     .button_loading:disabled & {
-      background-color: var(--color-accent-blue);
-      color: var(--color-neutral-white);
+      background-color: var(--border-light);
+      color: var(--border-dark);
     }
   }
 

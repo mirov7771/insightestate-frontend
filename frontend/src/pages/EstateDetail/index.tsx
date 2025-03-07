@@ -16,6 +16,7 @@ import {
   Options,
   Grade,
 } from '@/widgets/Detail/api/detailApi';
+import { Gallery } from '@/pages/EstateDetail/Gallery/Gallery';
 
 const EstateDetail: FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -25,6 +26,7 @@ const EstateDetail: FC = () => {
   const [infrastructure, setInfrastructure] = useState<InfrastructureDto>();
   const [options, setOptions] = useState<Options>();
   const [grade, setGrade] = useState<Grade>();
+  const [gallery, setGallery] = useState<string[]>([]);
 
   useEffect(() => {
     detailApi.getDetail(id).then((r) => {
@@ -34,14 +36,20 @@ const EstateDetail: FC = () => {
       setInfrastructure(r.data.infrastructure);
       setOptions(r.data.options);
       setGrade(r.data.grade);
+      setGallery([
+        ...(r.data.exteriorImages || []),
+        ...(r.data.interiorImages || []),
+        ...(r.data.facilityImages || []),
+      ]);
     });
   }, []);
 
   return (
     <div className={styles.wrap}>
+      <h1 className={styles.title}>{name}</h1>
+      {!!gallery.length && <Gallery images={gallery} />}
       <div className={styles.layout}>
         <main className={styles.main}>
-          <h1 className={styles.title}>{name}</h1>
           <ApartmentLayouts {...roomLayouts} />
           <PaymentSchedule {...grade} />
           <AverageYield {...profitability} />
@@ -54,7 +62,7 @@ const EstateDetail: FC = () => {
             coworking={options?.coworking || false}
           />
           <ProjectPlan />
-          <Map />
+          {/*<Map />*/}
           <FAQ />
         </main>
         <div></div>

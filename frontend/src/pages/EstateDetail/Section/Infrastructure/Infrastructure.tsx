@@ -16,7 +16,6 @@ export const Infrastructure: FC<{
   beachTime?: number;
   mallTime?: number;
 }> = ({ beachTime, airportTime, mallTime, gym, childRoom, coworking }) => {
-  console.log(beachTime);
   return (
     <Section title="Инфраструктура и Особенности">
       <div className={styles.wrapper}>
