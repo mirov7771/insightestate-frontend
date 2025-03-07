@@ -29,3 +29,8 @@
   letter-spacing: var(--letter-spacing--2);
   color: var(--dark);
 }
+
+.aside {
+  position: sticky;
+  top: 24px;
+}
