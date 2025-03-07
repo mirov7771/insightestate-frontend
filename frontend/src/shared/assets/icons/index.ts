@@ -10,6 +10,7 @@ import BabyFace from './BabyFace.svg?react';
 import PerformanceMacbook from './PerformanceMacbook.svg?react';
 import ShoppingCart from './ShoppingCart.svg?react';
 import Trainers from './Trainers.svg?react';
+import Cross from './Cross.svg?react';
 
 export {
   Bed,
@@ -24,4 +25,5 @@ export {
   PerformanceMacbook,
   ShoppingCart,
   Trainers,
+  Cross,
 };
