@@ -16,6 +16,11 @@
     border-radius: 25px;
     padding: 10px;
 
+    & svg {
+      width: 25px;
+      height: 25px;
+    }
+
     &_result {
       color: var(--light);
       cursor: pointer;
