@@ -19,6 +19,10 @@ import Diamond from './Diamond.svg?react';
 import ButtonWhatsUp from './ButtonWhatsUp.svg?react';
 import ButtonEmail from './ButtonEmail.svg?react';
 import Logo from './Logo.svg?react';
+import BlackWhatsApp from './BlackWhatsApp.svg?react';
+import InstagramBlack from './InstagramBlack.svg?react';
+import TelegramBlack from './TelegramBlack.svg?react';
+import YoutubeBlack from './YoutubeBlack.svg?react';
 
 export {
   Bed,
@@ -42,4 +46,8 @@ export {
   ButtonWhatsUp,
   ButtonEmail,
   Logo,
+  BlackWhatsApp,
+  InstagramBlack,
+  TelegramBlack,
+  YoutubeBlack,
 };
