@@ -7,7 +7,6 @@ import { PaymentSchedule } from './Section/PaymentSchedule/PaymentSchedule';
 import { AverageYield } from './Section/AverageYield/AverageYield';
 import { Infrastructure } from './Section/Infrastructure/Infrastructure';
 import { ProjectPlan } from './Section/ProjectPlan/ProjectPlan';
-import { Map } from './Section/Map/Map';
 import {
   detailApi,
   Profitability,
@@ -17,6 +16,9 @@ import {
   Grade,
 } from '@/widgets/Detail/api/detailApi';
 import { Gallery } from '@/pages/EstateDetail/Gallery/Gallery';
+import { Rating } from '@/pages/EstateDetail/Rating/Rating';
+import { Info } from '@/pages/EstateDetail/Info/Info';
+import { Manager } from '@/pages/EstateDetail/Manager/Manager';
 
 const EstateDetail: FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -51,7 +53,7 @@ const EstateDetail: FC = () => {
       <div className={styles.layout}>
         <main className={styles.main}>
           <ApartmentLayouts {...roomLayouts} />
-          <PaymentSchedule {...grade} />
+          <PaymentSchedule />
           <AverageYield {...profitability} />
           <Infrastructure
             beachTime={infrastructure?.beachTime?.car}
@@ -65,7 +67,11 @@ const EstateDetail: FC = () => {
           {/*<Map />*/}
           <FAQ />
         </main>
-        <div></div>
+        <aside className={styles.aside}>
+          <Rating {...grade} />
+          <Info />
+          <Manager />
+        </aside>
       </div>
     </div>
   );

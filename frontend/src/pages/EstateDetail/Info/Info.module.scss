@@ -1,0 +1,35 @@
+.info {
+  margin-top: 32px;
+  background-color: var(--bg-1);
+  padding: 32px;
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+
+    &:first-child {
+      padding-top: 0;
+    }
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+
+    &:not(:last-child) {
+      border-bottom: 1px solid var(--border-dark);
+    }
+  }
+
+  .text {
+    font-weight: 600;
+    display: flex;
+    gap: 12px;
+
+    & > svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}

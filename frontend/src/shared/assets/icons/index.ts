@@ -11,6 +11,13 @@ import PerformanceMacbook from './PerformanceMacbook.svg?react';
 import ShoppingCart from './ShoppingCart.svg?react';
 import Trainers from './Trainers.svg?react';
 import Cross from './Cross.svg?react';
+import Car from './Car.svg?react';
+import CityBuilding from './CityBuildings.svg?react';
+import Conference from './Conference.svg?react';
+import Constructing from './Constructing.svg?react';
+import Diamond from './Diamond.svg?react';
+import ButtonWhatsUp from './ButtonWhatsUp.svg?react';
+import ButtonEmail from './ButtonEmail.svg?react';
 
 export {
   Bed,
@@ -26,4 +33,11 @@ export {
   ShoppingCart,
   Trainers,
   Cross,
+  Car,
+  CityBuilding,
+  Conference,
+  Constructing,
+  Diamond,
+  ButtonWhatsUp,
+  ButtonEmail,
 };
