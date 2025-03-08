@@ -6,7 +6,7 @@ import { RoomLayouts } from '@/widgets/Detail/api/detailApi';
 
 export const ApartmentLayouts: FC<RoomLayouts> = ({ one, two, three }) => {
   return (
-    <Section title="Доступные планировки" rightSide={<Button>Подобрать индивидуально</Button>}>
+    <Section title="Доступные планировки" rightSide={<Button>Добавить в подборку</Button>}>
       <div>
         <div className={`${styles.item__header} ${styles.item}`}>
           <span>Планировка</span>

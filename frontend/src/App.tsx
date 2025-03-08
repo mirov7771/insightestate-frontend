@@ -4,6 +4,7 @@ import { FiltersProvider } from '@/widgets/Filter/model/useFilters';
 import Layout from '@/widgets/Layout/Layout';
 import Listing from '@/pages/Listing';
 import EstateDetail from '@/pages/EstateDetail';
+import OfferCollection from '@/pages/OfferCollection';
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
           <Route path="/property">
             <Route path=":id" element={<EstateDetail />} />
           </Route>
+          <Route path="/offer-collection" element={<OfferCollection />} />
         </Route>
       </Routes>
     </BrowserRouter>

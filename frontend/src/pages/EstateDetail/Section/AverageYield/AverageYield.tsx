@@ -6,7 +6,7 @@ import { Profitability } from '@/widgets/Detail/api/detailApi';
 
 export const AverageYield: FC<Profitability> = ({ roi, irr, capRateFirstYear }) => {
   return (
-    <Section title="Средняя доходность" rightSide={<Button>Индивидуальный расчет</Button>}>
+    <Section title="Средняя доходность">
       <div className={styles.wrapper}>
         <div className={styles.item}>
           <span className={styles.bold}>ROI за 10 лет</span>

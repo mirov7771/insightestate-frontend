@@ -19,20 +19,20 @@ export const Header: FC = () => {
           </Link>
         </li>
         <li className={styles.menu__item}>
-          <Link className={styles.menu__link} to="about">
-            О нас
+          <Link className={styles.menu__link} to="offer-collection">
+            Сформировать оффер
           </Link>
         </li>
-        <li className={styles.menu__item}>
-          <Link className={styles.menu__link} to="faq">
-            Ответы на вопросы
-          </Link>
-        </li>
-        <li className={styles.menu__item}>
-          <Link className={styles.menu__link} to="contact">
-            Контакты
-          </Link>
-        </li>
+      {/*  <li className={styles.menu__item}>*/}
+      {/*    <Link className={styles.menu__link} to="faq">*/}
+      {/*      Ответы на вопросы*/}
+      {/*    </Link>*/}
+      {/*  </li>*/}
+      {/*  <li className={styles.menu__item}>*/}
+      {/*    <Link className={styles.menu__link} to="contact">*/}
+      {/*      Контакты*/}
+      {/*    </Link>*/}
+      {/*  </li>*/}
       </menu>
       <div className={styles.right}>
         <Button bold>Узнать больше</Button>

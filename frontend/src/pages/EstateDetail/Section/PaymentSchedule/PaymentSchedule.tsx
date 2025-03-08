@@ -5,7 +5,7 @@ import styles from './PaymentSchedule.module.scss';
 
 export const PaymentSchedule = () => {
   return (
-    <Section title="График платежей" rightSide={<Button>Получить персональный план</Button>}>
+    <Section title="График платежей">
       <div className={styles.wrapper}>
         <img src={payment} alt="payment" />
       </div>
