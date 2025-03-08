@@ -1,5 +1,4 @@
 import { Section } from '@/pages/EstateDetail/Section/Section';
-import { Button } from '@/shared/ui';
 import payment from './payment.svg';
 import styles from './PaymentSchedule.module.scss';
 

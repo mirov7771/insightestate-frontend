@@ -1,6 +1,5 @@
 import { FC } from 'react';
 import { Section } from '../Section';
-import { Button } from '@/shared/ui';
 import styles from './AverageYield.module.scss';
 import { Profitability } from '@/widgets/Detail/api/detailApi';
 
