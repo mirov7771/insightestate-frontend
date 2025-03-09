@@ -23,6 +23,10 @@ import BlackWhatsApp from './BlackWhatsApp.svg?react';
 import InstagramBlack from './InstagramBlack.svg?react';
 import TelegramBlack from './TelegramBlack.svg?react';
 import YoutubeBlack from './YoutubeBlack.svg?react';
+import Dollar from './Dollar.svg?react';
+import Man from './Man.svg?react';
+import Riskt from './Riskt.svg?react';
+import Yes from './Yes.svg?react';
 
 export {
   Bed,
@@ -50,4 +54,8 @@ export {
   InstagramBlack,
   TelegramBlack,
   YoutubeBlack,
+  Dollar,
+  Man,
+  Riskt,
+  Yes
 };
