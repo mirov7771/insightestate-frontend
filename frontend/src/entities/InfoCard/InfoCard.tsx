@@ -8,8 +8,10 @@ export const InfoCard: FC<InfoCardProps> = ({
 }) => {
     return (
         <div className={styles.whyCard}>
-            {title}
-            {description}
+            <h4 className={styles.title}>
+                <strong>{title}</strong>
+            </h4>
+            <p>{description}</p>
         </div>
     )
 }
