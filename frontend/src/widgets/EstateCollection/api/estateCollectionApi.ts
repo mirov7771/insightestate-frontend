@@ -17,15 +17,18 @@ export type EstateCollection = {
 }
 
 export type Estate = {
+    id: string,
     name: string;
     grade?: Grade;
     profitability?: Profitability;
     price?: Price;
-    buildEndDate?: string;
+    buildEndDate: string;
     exteriorImages?: string[];
     facilityImages?: string[];
     interiorImages?: string[];
     infrastructure?: InfrastructureDto;
+    level: 'COMFORT' | 'LUX' | 'PREMIUM' | 'UNKNOWN';
+    projectId: string;
 };
 
 export const estateCollectionApi = {

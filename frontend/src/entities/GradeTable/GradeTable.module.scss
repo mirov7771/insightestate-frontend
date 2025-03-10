@@ -13,3 +13,13 @@
   border:1px solid black;
 }
 
+.main {
+  margin-top: 20px;
+  display: grid;
+  grid-column-gap: 2rem;
+  grid-row-gap: 2rem;
+  grid-template-rows: auto auto;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-columns: 1fr;
+}
+

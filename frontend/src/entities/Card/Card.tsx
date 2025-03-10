@@ -20,7 +20,7 @@ export const Card: FC<CardProps> = ({
   exteriorImages,
   name,
 }) => {
-  const img = facilityImages?.[0] || interiorImages?.[0] || exteriorImages?.[0] || DEFAULT_IMG;
+  const img = exteriorImages?.[0] || facilityImages?.[0] || interiorImages?.[0] || DEFAULT_IMG;
 
   return (
     <div className={styles.card}>
