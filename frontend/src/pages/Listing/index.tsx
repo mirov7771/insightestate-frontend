@@ -4,15 +4,9 @@ import { Filter } from '@/widgets/Filter/Filter';
 import { Card } from '@/entities/Card/Card';
 import { Pagination } from '@/shared/ui';
 import { useFilters } from '@/widgets/Filter/model/useFilters';
-import { useSearchParams } from "react-router";
 
 const Listing: FC = () => {
-  const [searchParams, setSearchParams] = useSearchParams()
   const { setFilters, pageNumber, estates, totalPages } = useFilters();
-
-    useEffect(() => {
-        localStorage.setItem('basicToken', searchParams.get('basicToken') || '');
-    }, []);
 
   return (
     <div className={styles.wrap}>
