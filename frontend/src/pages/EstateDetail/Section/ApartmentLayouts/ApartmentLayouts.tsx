@@ -12,7 +12,7 @@ export const ApartmentLayouts: FC<RoomLayouts & {estateId?: string}> = ({ one, t
   useEffect(() => {
     estateCollectionApi.getEstateCollection(token!!).then((r) => {
       setCollectionId(r.data.items[0]?.id)
-      setInCollection(isInCollection(r.data.items[0].estates))
+      setInCollection(isInCollection(r.data.items[0]?.estates))
     }).catch((e) => console.log(e))
   }, []);
 
@@ -20,17 +20,21 @@ export const ApartmentLayouts: FC<RoomLayouts & {estateId?: string}> = ({ one, t
     if (!collectionId) {
       estateCollectionApi.createCollection(token!!).then((r) => {
         setCollectionId(r.data.id)
+        addItemToCollection(r.data.id, estateId!!)
       }).catch((e) => console.log(e))
+    } else {
+      addItemToCollection(collectionId, estateId!!)
     }
-    if (collectionId) {
-      estateCollectionApi.addToCollection(token!!, collectionId, estateId!!)
-          .then((r) => {
-            alert("Объект успешно добавлен в вашу подборку!")
-            setInCollection(true)
-            console.log(r)
-          })
-          .catch((e) => console.log(e))
-    }
+  }
+
+  const addItemToCollection = (id: string, estateId: string)=> {
+    estateCollectionApi.addToCollection(token!!, id, estateId)
+        .then((r) => {
+          alert("Объект успешно добавлен в вашу подборку!")
+          setInCollection(true)
+          console.log(r)
+        })
+        .catch((e) => console.log(e))
   }
 
   const deleteFromCollection = () => {
@@ -46,6 +50,8 @@ export const ApartmentLayouts: FC<RoomLayouts & {estateId?: string}> = ({ one, t
   }
 
   function isInCollection(estate: Estate[]): boolean {
+    if (!estate || estate.length === 0)
+      return false
     const e = estate.find((value) => value.id === estateId)
     console.log("Estate", e)
     return e?.id !== null && e?.id !== undefined
