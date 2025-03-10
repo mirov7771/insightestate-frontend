@@ -67,7 +67,7 @@ export const Footer: FC = () => {
             </div>
             <div className={styles.info}>
               <span className={styles.label}>Юридическая информация</span>
-              <Link className={styles.info__link} to="privacy">
+              <Link className={styles.info__link} to="https://www.insightestate.com/privacy">
                 Политика обработки данных
               </Link>
             </div>
