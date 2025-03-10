@@ -74,7 +74,7 @@ export type InfrastructureDto = {
   schoolRadius?: number;
 };
 
-type Price = {
+export type Price = {
   avg?: number;
   max?: number;
   min?: number;

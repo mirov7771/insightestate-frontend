@@ -1,11 +1,20 @@
-import { FC } from 'react';
+import {FC, useEffect, useState} from 'react';
 import styles from './OfferCollection.module.scss';
 import {AnalyzeSteps, InfoCards} from "@/shared/constants/constants";
 import {InfoCard} from "@/entities/InfoCard/InfoCard";
 import {AnalyzeStepCard} from "@/entities/AnalyzeStepCard/AnalyzeStepCard";
 import {AnalyzeTable} from "@/entities/AnalyzeTable/AnalyzeTable";
+import {EstateCollection, estateCollectionApi} from "@/widgets/EstateCollection/api/estateCollectionApi";
+import {GradeTable} from "@/entities/GradeTable/GradeTable";
 
 const OfferCollection: FC = () => {
+  const [estateCollection, setEstateCollection] = useState<EstateCollection>()
+    useEffect(() => {
+        estateCollectionApi.getEstateCollection().then((r) => {
+            setEstateCollection(r.data.items[0])
+        })
+    }, []);
+
   return (
     <div>
       <div className={styles.wrap}>
@@ -33,10 +42,11 @@ const OfferCollection: FC = () => {
       </div>
       <div className={styles.wrap}>
         <h1 className={styles.title}>Лучшие проекты исходя из ваших пожеланий</h1>
+          {estateCollection ? <GradeTable {...estateCollection} /> : <></>}
       </div>
       <div className={styles.wrap}>
         <h1 className={styles.title}>Сравнительная таблица</h1>
-        <AnalyzeTable />
+          {estateCollection ? <AnalyzeTable {...estateCollection} /> : <></>}
       </div>
     </div>
   );
