@@ -16,13 +16,21 @@ const OfferCollection: FC = () => {
   useEffect(() => {
       estateCollectionApi.getEstateCollection(id!!).then((r) => {
           setEstateCollection(r.data.items[0])
-          setCSize(r.data.items.length)
+          setCSize(r.data.items[0]?.estates?.length)
           setLoaded(true)
       }).catch(e => {
           console.log(e)
           setLoaded(true)
       })
   }, []);
+
+  function getName(): string {
+      if (cSize === 1)
+          return "объект"
+      if (cSize < 5)
+          return "объекта"
+      return "объектов"
+  }
 
   return (
     <div>
@@ -39,7 +47,7 @@ const OfferCollection: FC = () => {
           <div className={styles.wrap_blue}>
             <div className={styles.wrap_blue_inside}>
             <h1 className={styles.title_blue}>
-              Собрали для вас 99 объектов, отобрав их через нашу систему аналитики
+              Собрали для вас {cSize} {getName()}, отобрав их через нашу систему аналитики
             </h1>
               <p className={styles.p_blue}>
                   Мы используем комплексный подход к оценке инвестиционной привлекательности и выбору лучшего объекта для инвестиций
