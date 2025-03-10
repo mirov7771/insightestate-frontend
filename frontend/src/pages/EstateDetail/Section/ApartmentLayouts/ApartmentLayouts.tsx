@@ -46,7 +46,9 @@ export const ApartmentLayouts: FC<RoomLayouts & {estateId?: string}> = ({ one, t
   }
 
   function isInCollection(estate: Estate[]): boolean {
-    return estate.find((value) => value.id === estateId)?.id !== null
+    const e = estate.find((value) => value.id === estateId)
+    console.log("Estate", e)
+    return e?.id !== null && e?.id !== undefined
   }
 
   console.log(collectionId)
