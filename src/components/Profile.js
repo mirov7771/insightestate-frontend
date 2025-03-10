@@ -55,8 +55,9 @@ const Profile = (props) => {
   const checkBtn = useRef();
 
   const [username, setUsername] = useState("");
-  const [email, setEmail] = useState(searchParams.get('login') || "");
-  const [password, setPassword] = useState(searchParams.get('password') || "");
+  const [basicToken, setBasicToken] = useState(searchParams.get('basicToken') || '')
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
   const [location, setLocation] = useState("");
   const [successful, setSuccessful] = useState(false);
@@ -65,8 +66,12 @@ const Profile = (props) => {
 
   useEffect(() => {
     if (!dataLoaded) {
-      AuthService.profile(email, password).then((response) => {
+      const token = atob(basicToken.replace('Basic ', '')).split(':')
+      console.log(token)
+      AuthService.profile(basicToken).then((response) => {
         console.log(response);
+        setEmail(token[0])
+        setPassword(token[1])
         setUsername(response.data.fio);
         setLocation(response.data.location);
         setPhone(response.data.mobileNumber);
@@ -108,12 +113,14 @@ const Profile = (props) => {
           password,
           username,
           phone,
-          location
+          location,
+          basicToken
       ).then(
         (response) => {
           setMessage("Данные обновлены! В течении нескольких секунд вы будете перенаправлены на сайт");
           setSuccessful(true);
-          window.location.href = REDIRECT_URL
+          const newBasicToken = 'Basic ' + btoa(email + ':' + password);
+          window.location.href = `${REDIRECT_URL}?basicToken=${newBasicToken}`
         },
         (error) => {
           const resMessage =

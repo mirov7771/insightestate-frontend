@@ -53,8 +53,7 @@ const signUpCheck = (username, confirmCode) => {
   });
 }
 
-const profile = (username, password) => {
-  const basicAuth = 'Basic ' + btoa(username + ':' + password);
+const profile = (basicAuth) => {
   return axios.get(API_USERS_URL + "me", {
     headers: { 'Authorization': basicAuth }
   })
@@ -65,9 +64,9 @@ const profileUpdate = (
     password,
     username,
     phone,
-    location
+    location,
+    basicAuth
 ) => {
-  const basicAuth = 'Basic ' + btoa(login + ':' + password);
   return axios.put(API_USERS_URL + "me", {
     fio: username,
     mobileNumber: phone,
