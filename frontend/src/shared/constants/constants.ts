@@ -52,3 +52,27 @@ export type InfoCardProps = {
     title: string,
     description: string
 }
+
+export const AnalyzeSteps: AnalyzeStepProps[] = [
+    {
+        id: '01',
+        title: 'Cобираем данные',
+        description: 'Собираем 100+ параметров по каждому проекту, оцениваем по четырем направлениям: безопасность вложений, инвестиционный потенциал, комфорт жизни и расположение'
+    },
+    {
+        id: '02',
+        title: 'Проводим анализ',
+        description: 'Сравниваем проекты между собой в рамках единой логики'
+    },
+    {
+        id: '03',
+        title: 'Просчитываем финансы',
+        description: 'Считаем бизнес-модель под конкретный запрос, бюджет и приоритеты. Видим реалистичный IRR* и ROI* на 5 и 10 лет'
+    }
+]
+
+export type AnalyzeStepProps = {
+    id: string,
+    title: string,
+    description: string
+}

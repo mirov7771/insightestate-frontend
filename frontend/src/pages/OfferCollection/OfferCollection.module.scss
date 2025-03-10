@@ -48,11 +48,26 @@ $header-height: 72px;
   background-color: #28304f;
 }
 
+.wrap_blue_inside {
+  align-content: center;
+  margin: 30px auto;
+  width: 60%;
+  padding: 20px 12px;
+  background-color: #28304f;
+}
+
 .title_blue {
   text-align: center;
   font-family: var(--font--wide);
   font-weight: 800;
   font-size: var(--heading--h3);
   letter-spacing: var(--letter-spacing--2);
+  color: var(--white);
+  margin-bottom: 1rem;
+}
+
+.p_blue {
+  text-align: center;
+  margin-bottom: 2rem;
   color: var(--white);
 }
