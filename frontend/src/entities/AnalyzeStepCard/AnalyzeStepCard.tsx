@@ -5,11 +5,12 @@ import styles from './AnalyzeStepCard.module.scss';
 export const AnalyzeStepCard: FC<AnalyzeStepProps> = ({
     title,
     id,
-    description
+    description,
+    style
 }) => {
 
     return (
-        <div className={styles.infoCard}>
+        <div className={styles[style]}>
             <div className={styles.icon}>
                 {id}
             </div>

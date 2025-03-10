@@ -1,4 +1,4 @@
-.infoCard {
+.infoCard1 {
   background-color: #fafbff;
   border: .0625rem solid #17181c29;
   border-radius: 1.25rem;
@@ -6,6 +6,38 @@
   height: 23rem;
   padding: 1.56rem 1rem 1.56rem 1.56rem;
   margin-top: 30px;
+  background-image: url(./images/shutterstock_2498306647-2.webp);
+  background-position: 400% -40%;
+  background-repeat: no-repeat;
+  background-size: 330px;
+}
+
+.infoCard2 {
+  background-color: #fafbff;
+  border: .0625rem solid #17181c29;
+  border-radius: 1.25rem;
+  width: 21.25rem;
+  height: 23rem;
+  padding: 1.56rem 1rem 1.56rem 1.56rem;
+  margin-top: 30px;
+  background-image: url(./images/shutterstock_2418757623-2.webp);
+  background-position: 500% -80%;
+  background-repeat: no-repeat;
+  background-size: 330px;
+}
+
+.infoCard3 {
+  background-color: #fafbff;
+  border: .0625rem solid #17181c29;
+  border-radius: 1.25rem;
+  width: 21.25rem;
+  height: 23rem;
+  padding: 1.56rem 1rem 1.56rem 1.56rem;
+  margin-top: 30px;
+  background-image: url(./images/Mask-group.webp);
+  background-position: 100% -40%;
+  background-repeat: no-repeat;
+  background-size: 443px;
 }
 
 .title {
