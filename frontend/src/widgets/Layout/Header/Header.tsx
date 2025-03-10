@@ -11,11 +11,15 @@ export const Header: FC = () => {
   }, []);
   const basicToken = localStorage.getItem('basicToken')
   const profileUrl = `http://insight-estate.site:443/profile?basicToken=${basicToken}`
+  const offerCollection = `offer-collection/${basicToken?.replace('Basic ', '')}`
+  const goTo = () => {
+      window.location.href = 'https://api.whatsapp.com/send/?phone=66811486462&text&type=phone_number&app_absent=0'
+  }
   console.log(`basicToken ${basicToken}, profileUrl ${profileUrl}`)
   return (
     <header className={styles.header}>
       <div className={styles.logo}>
-        <Link to="/">
+        <Link to="/listing">
           <Logo />
         </Link>
       </div>
@@ -26,7 +30,7 @@ export const Header: FC = () => {
           </Link>
         </li>
         <li className={styles.menu__item}>
-          <Link className={styles.menu__link} to="offer-collection">
+          <Link className={styles.menu__link} to={offerCollection}>
             Сформировать оффер
           </Link>
         </li>
@@ -42,7 +46,7 @@ export const Header: FC = () => {
         {/*  </li>*/}
       </menu>
       <div className={styles.right}>
-        <Button bold>Узнать больше</Button>
+        <Button bold onClick={goTo}>Узнать больше</Button>
       </div>
     </header>
   );

@@ -23,7 +23,9 @@ const App = () => {
           <Route path="/property">
             <Route path=":id" element={<EstateDetail />} />
           </Route>
-          <Route path="/offer-collection" element={<OfferCollection />} />
+          <Route path="/offer-collection">
+            <Route path=":id" element={<OfferCollection />} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>

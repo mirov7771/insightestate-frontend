@@ -32,13 +32,13 @@ export type Estate = {
 };
 
 export const estateCollectionApi = {
-    getEstateCollection: async (): Promise<AxiosResponse<ResponseGetEstateCollection>> => {
+    getEstateCollection: async (token: string): Promise<AxiosResponse<ResponseGetEstateCollection>> => {
         try {
             return await api.get<ResponseGetEstateCollection>(
                 '/v1/estate-collections?pageNumber=0&pageSize=25',
                 {headers:
                         {
-                            Authorization: localStorage.getItem('basicToken')
+                            Authorization: `Basic ${token}`
                         }
                 },
             );

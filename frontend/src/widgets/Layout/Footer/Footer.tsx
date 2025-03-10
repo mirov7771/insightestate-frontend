@@ -14,17 +14,12 @@ export const Footer: FC = () => {
             </Link>
           </li>
           <li className={styles.menu__item}>
-            <Link className={styles.menu__link} to="about">
+            <Link className={styles.menu__link} to="https://www.insightestate.com/about">
               О нас
             </Link>
           </li>
           <li className={styles.menu__item}>
-            <Link className={styles.menu__link} to="faq">
-              Ответы на вопросы
-            </Link>
-          </li>
-          <li className={styles.menu__item}>
-            <Link className={styles.menu__link} to="contact">
+            <Link className={styles.menu__link} to="https://www.insightestate.com/contact">
               Контакты
             </Link>
           </li>
