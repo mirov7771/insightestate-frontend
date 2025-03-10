@@ -52,7 +52,7 @@ const EstateDetail: FC = () => {
       {!!gallery.length && <Gallery images={gallery} />}
       <div className={styles.layout}>
         <main className={styles.main}>
-          <ApartmentLayouts {...roomLayouts} />
+          <ApartmentLayouts {...roomLayouts} estateId={id}/>
           <PaymentSchedule />
           <AverageYield {...profitability} />
           <Infrastructure

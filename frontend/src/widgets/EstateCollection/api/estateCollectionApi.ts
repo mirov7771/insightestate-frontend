@@ -31,6 +31,10 @@ export type Estate = {
     projectId: string;
 };
 
+export type CreateCollectionRs = {
+    id: string;
+}
+
 export const estateCollectionApi = {
     getEstateCollection: async (token: string): Promise<AxiosResponse<ResponseGetEstateCollection>> => {
         try {
@@ -38,7 +42,7 @@ export const estateCollectionApi = {
                 '/v1/estate-collections?pageNumber=0&pageSize=25',
                 {headers:
                         {
-                            Authorization: `Basic ${token}`
+                            Authorization: `Basic ${token.replace('Basic ', '')}`
                         }
                 },
             );
@@ -46,4 +50,51 @@ export const estateCollectionApi = {
             throw error;
         }
     },
+    createCollection: async (token: string): Promise<AxiosResponse<CreateCollectionRs>> => {
+        try {
+            return await api.post<CreateCollectionRs>(
+                '/v1/estate-collections',
+                {
+                  name: `Подборка ${token.replace('Basic ', '')}`
+                },
+                {headers:
+                        {
+                            Authorization: `Basic ${token.replace('Basic ', '')}`
+                        }
+                },
+            );
+        } catch (error) {
+            throw error;
+        }
+    },
+    addToCollection: async (token: string, id: string, estateId: string): Promise<AxiosResponse<void>> => {
+        try {
+            return await api.post<void>(
+                `/v1/estate-collections/${id}/estate?estateId=${estateId}`,
+                {
+                },
+                {headers:
+                        {
+                            Authorization: `Basic ${token.replace('Basic ', '')}`
+                        }
+                },
+            );
+        } catch (error) {
+            throw error;
+        }
+    },
+    deleteFromCollection: async (token: string, id: string, estateId: string): Promise<AxiosResponse<void>> => {
+        try {
+            return await api.delete<void>(
+                `/v1/estate-collections/${id}/estate?estateId=${estateId}`,
+                {headers:
+                        {
+                            Authorization: `Basic ${token.replace('Basic ', '')}`
+                        }
+                },
+            );
+        } catch (error) {
+            throw error;
+        }
+    }
 };

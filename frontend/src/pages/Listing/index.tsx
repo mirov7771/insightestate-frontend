@@ -1,4 +1,4 @@
-import {FC, useEffect} from 'react';
+import {FC} from 'react';
 import styles from './Listing.module.scss';
 import { Filter } from '@/widgets/Filter/Filter';
 import { Card } from '@/entities/Card/Card';

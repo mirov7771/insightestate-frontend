@@ -1,12 +1,60 @@
-import React, { FC } from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import { Section } from '../Section';
 import { Button } from '@/shared/ui';
 import styles from './ApartmentLayouts.module.scss';
 import { RoomLayouts } from '@/widgets/Detail/api/detailApi';
+import {Estate, estateCollectionApi} from "@/widgets/EstateCollection/api/estateCollectionApi";
 
-export const ApartmentLayouts: FC<RoomLayouts> = ({ one, two, three }) => {
+export const ApartmentLayouts: FC<RoomLayouts & {estateId?: string}> = ({ one, two, three, estateId }) => {
+  const [collectionId, setCollectionId] = useState<string>('')
+  const [inCollection, setInCollection] = useState<boolean>(false)
+  const token = localStorage.getItem('basicToken')
+  useEffect(() => {
+    estateCollectionApi.getEstateCollection(token!!).then((r) => {
+      setCollectionId(r.data.items[0]?.id)
+      setInCollection(isInCollection(r.data.items[0].estates))
+    }).catch((e) => console.log(e))
+  }, []);
+
+  const addToCollection = () => {
+    if (!collectionId) {
+      estateCollectionApi.createCollection(token!!).then((r) => {
+        setCollectionId(r.data.id)
+      }).catch((e) => console.log(e))
+    }
+    if (collectionId) {
+      estateCollectionApi.addToCollection(token!!, collectionId, estateId!!)
+          .then((r) => {
+            alert("Объект успешно добавлен в вашу подборку!")
+            setInCollection(true)
+            console.log(r)
+          })
+          .catch((e) => console.log(e))
+    }
+  }
+
+  const deleteFromCollection = () => {
+    if (collectionId) {
+      estateCollectionApi.deleteFromCollection(token!!, collectionId, estateId!!)
+          .then((r) => {
+            alert("Объект удален из вашей подборки!")
+            setInCollection(false)
+            console.log(r)
+          })
+          .catch((e) => console.log(e))
+    }
+  }
+
+  function isInCollection(estate: Estate[]): boolean {
+    return estate.find((value) => value.id === estateId)?.id !== null
+  }
+
+  console.log(collectionId)
   return (
-    <Section title="Доступные планировки" rightSide={<Button>Добавить в подборку</Button>}>
+    <Section title="Доступные планировки" rightSide={
+      inCollection ? <Button onClick={deleteFromCollection}>Удалить из подборки</Button> : <Button onClick={addToCollection}>Добавить в подборку</Button>
+      }
+    >
       <div>
         <div className={`${styles.item__header} ${styles.item}`}>
           <span>Планировка</span>
