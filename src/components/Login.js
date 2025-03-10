@@ -52,7 +52,8 @@ const Login = () => {
         (response) => {
           console.log(response)
           setLoading(false);
-          window.location.href = `${REDIRECT_URL}?accessToken=${response['accessToken']}`
+          const basicToken = 'Basic ' + btoa(username + ':' + password);
+          window.location.href = `${REDIRECT_URL}?accessToken=${response['accessToken']}&basicToken=${basicToken}`
         },
         () => {
           setLoading(false);

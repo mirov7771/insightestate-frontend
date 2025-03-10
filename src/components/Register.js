@@ -138,7 +138,8 @@ const Register = (props) => {
         (response) => {
           setMessage("Поздравляем! Регистрация завершена, в течении нескольких секунд вы будете перенаправлены на сайт");
           setSuccessful(true);
-          window.location.href = `${REDIRECT_URL}?accessToken=${response['accessToken']}`
+          const basicToken = 'Basic ' + btoa(email + ':' + password);
+          window.location.href = `${REDIRECT_URL}?accessToken=${response['accessToken']}&basicToken=${basicToken}`
         },
         (error) => {
           const resMessage =

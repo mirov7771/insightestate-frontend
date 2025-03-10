@@ -32,14 +32,13 @@ export type Estate = {
 };
 
 export const estateCollectionApi = {
-    //TODO Получать реальный токен
     getEstateCollection: async (): Promise<AxiosResponse<ResponseGetEstateCollection>> => {
         try {
             return await api.get<ResponseGetEstateCollection>(
                 '/v1/estate-collections?pageNumber=0&pageSize=25',
                 {headers:
                         {
-                            Authorization: 'Basic YXJ0dXJtaXJvdjc3N0BnbWFpbC5jb206MTIzNDU2'
+                            Authorization: localStorage.getItem('basicToken')
                         }
                 },
             );

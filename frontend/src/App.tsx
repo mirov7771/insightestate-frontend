@@ -1,5 +1,5 @@
 import './App.scss';
-import { Routes, Route, BrowserRouter } from 'react-router';
+import {Routes, Route, BrowserRouter} from 'react-router';
 import { FiltersProvider } from '@/widgets/Filter/model/useFilters';
 import Layout from '@/widgets/Layout/Layout';
 import Listing from '@/pages/Listing';
