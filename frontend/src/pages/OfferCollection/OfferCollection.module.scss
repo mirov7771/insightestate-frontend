@@ -9,8 +9,7 @@ $header-height: 72px;
 
 .wrap_mobile {
   margin: 20px auto;
-  width: 90%;
-  padding-right: 20px;
+  width: 100%;
 }
 
 .layout {
@@ -35,7 +34,6 @@ $header-height: 72px;
 
 .main_mobile {
   display: block;
-  margin-left: 0.5rem;
 }
 
 .title {
@@ -87,7 +85,6 @@ $header-height: 72px;
 .wrap_blue_inside_mobile {
   align-content: center;
   width: 100%;
-  padding-right: 30px;
   margin-top: 20px;
   background-color: #28304f;
 }
