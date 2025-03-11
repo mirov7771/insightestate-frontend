@@ -43,14 +43,22 @@ const OfferCollection: FC = () => {
         })
   }
 
-  console.log(isMobile)
+    function copyTask() { const el = document.createElement('input');
+        el.value = window.location.href;
+        document.body.appendChild(el);
+        el.select(); document.execCommand('copy');
+        document.body.removeChild(el);
+        alert('Ссылка скопирована!')
+    }
+
+    console.log(isMobile)
   return (
     <div>
       {cSize > 0 ?
       <>
           <div className={isMobile ? styles.wrap_mobile : styles.wrap}>
               <h1 className={isMobile ? styles.title_mobile : styles.title}>Почему инвесторы выбирают Пхукет?</h1>
-              {clickable ? <Button onClick={copyLink}>Скопировать ссылку</Button> : <></>}
+              {clickable ? <Button onClick={copyTask}>Скопировать ссылку</Button> : <></>}
               <main className={isMobile ? styles.main_mobile : styles.main}>
                   {InfoCards.map((infoCard) => (
                       <InfoCard key={infoCard.id} {...infoCard} isMobile={isMobile}/>
