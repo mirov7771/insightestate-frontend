@@ -8,6 +8,7 @@ import {EstateCollection, estateCollectionApi} from "@/widgets/EstateCollection/
 import {GradeTable} from "@/entities/GradeTable/GradeTable";
 import {useParams} from "react-router";
 import {Button} from "@/shared/ui";
+import {isMobile} from 'react-device-detect';
 
 const OfferCollection: FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -42,47 +43,48 @@ const OfferCollection: FC = () => {
         })
   }
 
+  console.log(isMobile)
   return (
     <div>
       {cSize > 0 ?
       <>
-          <div className={styles.wrap}>
-              <h1 className={styles.title}>Почему инвесторы выбирают Пхукет?</h1>
+          <div className={isMobile ? styles.wrap_mobile : styles.wrap}>
+              <h1 className={isMobile ? styles.title_mobile : styles.title}>Почему инвесторы выбирают Пхукет?</h1>
               {clickable ? <Button onClick={copyLink}>Скопировать ссылку</Button> : <></>}
-              <main className={styles.main}>
+              <main className={isMobile ? styles.main_mobile : styles.main}>
                   {InfoCards.map((infoCard) => (
-                      <InfoCard key={infoCard.id} {...infoCard} />
+                      <InfoCard key={infoCard.id} {...infoCard} isMobile={isMobile}/>
                   ))}
               </main>
           </div>
-          <div className={styles.wrap_blue}>
-            <div className={styles.wrap_blue_inside}>
-            <h1 className={styles.title_blue}>
+          <div className={isMobile ? styles.wrap_blue_mobile : styles.wrap_blue}>
+            <div className={isMobile ? styles.wrap_blue_inside_mobile : styles.wrap_blue_inside}>
+            <h1 className={isMobile ? styles.title_blue_mobile : styles.title_blue}>
               Собрали для вас {cSize} {getName()}, отобрав их через нашу систему аналитики
             </h1>
-              <p className={styles.p_blue}>
+              <p className={isMobile ? styles.p_blue_mobile : styles.p_blue}>
                   Мы используем комплексный подход к оценке инвестиционной привлекательности и выбору лучшего объекта для инвестиций
               </p>
-              <main className={styles.main}>
+              <main className={isMobile ? styles.main_mobile : styles.main}>
                   {AnalyzeSteps.map((infoCard) => (
-                      <AnalyzeStepCard key={infoCard.id} {...infoCard} />
+                      <AnalyzeStepCard key={infoCard.id} {...infoCard} isMobile={isMobile} />
                   ))}
               </main>
             </div>
           </div>
-          <div className={styles.wrap}>
-            <h1 className={styles.title}>Лучшие проекты исходя из ваших пожеланий</h1>
-              {estateCollection ? <GradeTable {...estateCollection} clickable={clickable}/> : <></>}
+          <div className={isMobile ? styles.wrap_mobile : styles.wrap}>
+            <h1 className={isMobile ? styles.title_mobile : styles.title}>Лучшие проекты исходя из ваших пожеланий</h1>
+              {estateCollection ? <GradeTable {...estateCollection} clickable={clickable} isMobile={isMobile}/> : <></>}
           </div>
-          <div className={styles.wrap}>
-            <h1 className={styles.title}>Сравнительная таблица</h1>
+          <div className={isMobile ? styles.wrap_mobile : styles.wrap}>
+            <h1 className={isMobile ? styles.title_mobile : styles.title}>Сравнительная таблица</h1>
               {estateCollection ? <AnalyzeTable {...estateCollection} /> : <></>}
           </div>
       </> : (
           loaded ?
           <div>
-              <div className={styles.wrap}>
-                  <h4 className={styles.title}>Для формирования оффера, добавьте объекты в подборку</h4>
+              <div className={isMobile ? styles.wrap_mobile : styles.wrap}>
+                  <h4 className={isMobile ? styles.title_mobile : styles.title}>Для формирования оффера, добавьте объекты в подборку</h4>
               </div>
           </div> : <></>)
       }

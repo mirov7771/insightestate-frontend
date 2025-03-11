@@ -7,6 +7,12 @@ $header-height: 72px;
   padding: 0 12px;
 }
 
+.wrap_mobile {
+  margin: 20px auto;
+  width: 90%;
+  padding-right: 20px;
+}
+
 .layout {
   width: 100%;
   column-gap: 90px;
@@ -27,11 +33,25 @@ $header-height: 72px;
   display: grid;
 }
 
+.main_mobile {
+  display: block;
+  margin-left: 0.5rem;
+}
+
 .title {
   text-align: center;
   font-family: var(--font--wide);
   font-weight: 800;
   font-size: var(--heading--h3);
+  letter-spacing: var(--letter-spacing--2);
+  color: var(--dark);
+}
+
+.title_mobile {
+  text-align: center;
+  font-family: var(--font--wide);
+  font-weight: 600;
+  font-size: 30px;
   letter-spacing: var(--letter-spacing--2);
   color: var(--dark);
 }
@@ -56,6 +76,22 @@ $header-height: 72px;
   background-color: #28304f;
 }
 
+.wrap_blue_mobile {
+  margin: 30px auto;
+  width: 100%;
+  background-color: #28304f;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.wrap_blue_inside_mobile {
+  align-content: center;
+  width: 100%;
+  padding-right: 30px;
+  margin-top: 20px;
+  background-color: #28304f;
+}
+
 .title_blue {
   text-align: center;
   font-family: var(--font--wide);
@@ -66,8 +102,25 @@ $header-height: 72px;
   margin-bottom: 1rem;
 }
 
+.title_blue_mobile {
+  text-align: center;
+  font-family: var(--font--wide);
+  font-weight: 600;
+  font-size: 30px;
+  letter-spacing: var(--letter-spacing--2);
+  color: var(--white);
+  margin-bottom: 1rem;
+}
+
 .p_blue {
   text-align: center;
   margin-bottom: 2rem;
   color: var(--white);
+}
+
+.p_blue_mobile {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--white);
+  font-size: 13px;
 }

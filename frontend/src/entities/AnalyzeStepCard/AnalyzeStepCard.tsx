@@ -2,22 +2,23 @@ import {FC} from "react";
 import {AnalyzeStepProps} from "@/shared/constants/constants";
 import styles from './AnalyzeStepCard.module.scss';
 
-export const AnalyzeStepCard: FC<AnalyzeStepProps> = ({
+export const AnalyzeStepCard: FC<AnalyzeStepProps & {isMobile: boolean}> = ({
     title,
     id,
     description,
-    style
+    style,
+    isMobile
 }) => {
 
     return (
-        <div className={styles[style]}>
-            <div className={styles.icon}>
+        <div className={isMobile ? styles[`${style}Mobile`] : styles[style]}>
+            <div className={isMobile ? styles.icon_mobile : styles.icon}>
                 {id}
             </div>
-            <h4 className={styles.title}>
+            <h4 className={isMobile ? styles.title_mobile : styles.title}>
                 <strong>{title}</strong>
             </h4>
-            <p>{description}</p>
+            {isMobile ? <p className={styles.p_mobile}>{description}</p> : <p>{description}</p>}
         </div>
     )
 }

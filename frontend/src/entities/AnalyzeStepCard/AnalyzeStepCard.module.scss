@@ -40,6 +40,48 @@
   background-size: 443px;
 }
 
+.infoCard1Mobile {
+  background-color: #fafbff;
+  border: .0625rem solid #17181c29;
+  border-radius: 1.25rem;
+  width: 21.25rem;
+  height: 11rem;
+  padding: 1rem 1rem 1rem 1rem;
+  margin-top: 30px;
+  background-image: url(./images/shutterstock_2498306647-2.webp);
+  background-position: 400%;
+  background-repeat: no-repeat;
+  background-size: 330px;
+}
+
+.infoCard2Mobile {
+  background-color: #fafbff;
+  border: .0625rem solid #17181c29;
+  border-radius: 1.25rem;
+  width: 21.25rem;
+  height: 11rem;
+  padding: 1rem 1rem 1rem 1rem;
+  margin-top: 30px;
+  background-image: url(./images/shutterstock_2418757623-2.webp);
+  background-position: 500%;
+  background-repeat: no-repeat;
+  background-size: 330px;
+}
+
+.infoCard3Mobile {
+  background-color: #fafbff;
+  border: .0625rem solid #17181c29;
+  border-radius: 1.25rem;
+  width: 21.25rem;
+  height: 11rem;
+  padding: 1rem 1rem 1rem 1rem;
+  margin-top: 30px;
+  background-image: url(./images/Mask-group.webp);
+  background-position: 100%;
+  background-repeat: no-repeat;
+  background-size: 443px;
+}
+
 .title {
   margin-bottom: 1.25rem;
 }
@@ -53,4 +95,25 @@
   height: 3.13rem;
   margin-bottom: 2rem;
   display: flex;
+}
+
+.icon_mobile {
+  border: .0625rem solid #28304f;
+  border-radius: 100%;
+  justify-content: center;
+  align-items: center;
+  width: 2rem;
+  height: 2rem;
+  margin-bottom: 1rem;
+  display: flex;
+}
+
+.title_mobile {
+  margin-bottom: 0.35rem;
+  font-size: 20px;
+}
+
+.p_mobile {
+  font-size: 13px;
+  width: 100%;
 }

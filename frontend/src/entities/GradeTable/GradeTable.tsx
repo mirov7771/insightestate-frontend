@@ -3,9 +3,10 @@ import styles from './GradeTable.module.scss';
 import {Estate, EstateCollection} from "@/widgets/EstateCollection/api/estateCollectionApi";
 import {Card} from "@/entities/Card/Card";
 
-export const GradeTable: FC<EstateCollection & {clickable: boolean}> = ({
+export const GradeTable: FC<EstateCollection & {clickable: boolean, isMobile: boolean}> = ({
   estates,
-  clickable
+  clickable,
+  isMobile
 }) => {
     return (
         <div className={styles.masterNeighbourhood2}>
@@ -24,7 +25,7 @@ export const GradeTable: FC<EstateCollection & {clickable: boolean}> = ({
                 {estates.map((estate) => <GradeRow {...estate}/>)}
                 </tbody>
             </table>
-            <main className={styles.main}>
+            <main className={isMobile ? styles.main_mobile : styles.main}>
                 {estates.map((estate) => (
                     <Card key={estate.id}
                           id={estate.id}

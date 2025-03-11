@@ -3,21 +3,22 @@ import {InfoCardProps} from "@/shared/constants/constants";
 import styles from './InfoCard.module.scss';
 import { Dollar, Yes, Riskt, Man } from '@/shared/assets/icons';
 
-export const InfoCard: FC<InfoCardProps> = ({
+export const InfoCard: FC<InfoCardProps & {isMobile: boolean}> = ({
     title,
     image,
-    description
+    description,
+    isMobile
 }) => {
 
     return (
-        <div className={styles.infoCard}>
-            <div className={styles.icon}>
+        <div className={isMobile ? styles.infoCard_mobile : styles.infoCard}>
+            <div className={isMobile ? styles.icon_mobile : styles.icon}>
             {image === 'Yes' ? <Yes /> : (image === 'Man' ? <Man /> : (image === 'Riskt' ? <Riskt /> : <Dollar />))}
             </div>
-            <h4 className={styles.title}>
+            <h4 className={isMobile ? styles.title_mobile : styles.title}>
                 <strong>{title}</strong>
             </h4>
-            <p>{description}</p>
+            {isMobile ? <p className={styles.p_mobile}>{description}</p> : <p>{description}</p>}
         </div>
     )
 }
