@@ -1,15 +1,12 @@
-import {FC, useEffect} from 'react';
+import {FC} from 'react';
 import styles from './Header.module.scss';
 import { Logo } from '@/shared/assets/icons';
-import {Link, useSearchParams} from 'react-router';
+import {Link} from 'react-router';
 import { Button } from '@/shared/ui';
 
-export const Header: FC = () => {
-  const [searchParams, setSearchParams] = useSearchParams()
-  useEffect(() => {
-      localStorage.setItem('basicToken', searchParams.get('basicToken') || localStorage.getItem('basicToken') || '');
-  }, []);
-  const basicToken = localStorage.getItem('basicToken')
+export const Header: FC<{basicToken: string}> = ({
+    basicToken
+}) => {
   const profileUrl = `http://insight-estate.site:443/profile?basicToken=${basicToken}`
   const offerCollection = `offer-collection/${basicToken?.replace('Basic ', '')}`
   const goTo = () => {

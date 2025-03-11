@@ -17,7 +17,7 @@ const Listing: FC = () => {
         </aside>
         <main className={styles.main}>
           {estates.map((estate) => (
-            <Card key={estate.id} {...estate} />
+            <Card key={estate.id} {...estate} clickable={true}/>
           ))}
           <div className={styles.pagination}>
             <Pagination

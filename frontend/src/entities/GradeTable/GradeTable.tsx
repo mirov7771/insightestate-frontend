@@ -3,8 +3,9 @@ import styles from './GradeTable.module.scss';
 import {Estate, EstateCollection} from "@/widgets/EstateCollection/api/estateCollectionApi";
 import {Card} from "@/entities/Card/Card";
 
-export const GradeTable: FC<EstateCollection> = ({
-  estates
+export const GradeTable: FC<EstateCollection & {clickable: boolean}> = ({
+  estates,
+  clickable
 }) => {
     return (
         <div className={styles.masterNeighbourhood2}>
@@ -38,6 +39,7 @@ export const GradeTable: FC<EstateCollection> = ({
                           name={estate.name}
                           projectId={estate.projectId}
                           roi={estate.profitability?.roi || 0}
+                          clickable={clickable}
                     />
                 ))}
             </main>

@@ -8,7 +8,7 @@ const DEFAULT_IMG =
 
 type CardProps = Estate;
 
-export const Card: FC<CardProps> = ({
+export const Card: FC<CardProps & {clickable: boolean}> = ({
   id,
   level,
   beachTravelTime,
@@ -19,29 +19,52 @@ export const Card: FC<CardProps> = ({
   interiorImages,
   exteriorImages,
   name,
+  clickable
 }) => {
   const img = exteriorImages?.[0] || facilityImages?.[0] || interiorImages?.[0] || DEFAULT_IMG;
 
   return (
     <div className={styles.card}>
-      <a href={`/property/${id}`} className={styles.card__image}>
-        <img src={img} alt="" />
-        <div className={styles.card__rating}>
-          {grade} <VectorRating />
-        </div>
-        <div className={styles.card__details}>
-          {buildEndDate !== '-' && (
-            <span className={styles.card__details__item}>{buildEndDate}</span>
-          )}
-          <span className={styles.card__details__item}>{level}</span>
-          <span className={styles.card__details__item}>
+      {clickable ?
+          <a href={`/property/${id}`} className={styles.card__image}>
+              <img src={img} alt="" />
+              <div className={styles.card__rating}>
+                  {grade} <VectorRating />
+              </div>
+              <div className={styles.card__details}>
+                  {buildEndDate !== '-' && (
+                      <span className={styles.card__details__item}>{buildEndDate}</span>
+                  )}
+                  <span className={styles.card__details__item}>{level}</span>
+                  <span className={styles.card__details__item}>
             <Beach /> {beachTravelTime} мин
           </span>
-        </div>
-      </a>
-      <a href={`/property/${id}`} className={styles.card__title}>
-        {name}
-      </a>
+              </div>
+          </a> :
+          <a className={styles.card__image}>
+              <img src={img} alt="" />
+              <div className={styles.card__rating}>
+                  {grade} <VectorRating />
+              </div>
+              <div className={styles.card__details}>
+                  {buildEndDate !== '-' && (
+                      <span className={styles.card__details__item}>{buildEndDate}</span>
+                  )}
+                  <span className={styles.card__details__item}>{level}</span>
+                  <span className={styles.card__details__item}>
+            <Beach /> {beachTravelTime} мин
+          </span>
+              </div>
+          </a>
+      }
+      {clickable ?
+          <a href={`/property/${id}`} className={styles.card__title}>
+              {name}
+          </a> :
+          <a className={styles.card__title}>
+              {name}
+          </a>
+      }
       <p>
         <strong>Стоимость от</strong>{' '}
         {Intl.NumberFormat('en-US', {
