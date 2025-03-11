@@ -60,7 +60,7 @@ export const ApartmentLayouts: FC<RoomLayouts & {estateId?: string}> = ({ one, t
   console.log(collectionId)
   return (
     <Section title="Доступные планировки" rightSide={
-      inCollection ? <Button onClick={deleteFromCollection}>Удалить из подборки</Button> : <Button onClick={addToCollection}>Добавить в подборку</Button>
+      inCollection ? <Button disabled={token === null || token === undefined || token === ''} onClick={deleteFromCollection}>Удалить из подборки</Button> : <Button disabled={token === null || token === undefined || token === ''} onClick={addToCollection}>Добавить в подборку</Button>
       }
     >
       <div>

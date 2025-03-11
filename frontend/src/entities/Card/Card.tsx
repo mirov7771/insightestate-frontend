@@ -41,7 +41,7 @@ export const Card: FC<CardProps & {clickable: boolean}> = ({
           </span>
               </div>
           </a> :
-          <a className={styles.card__image}>
+          <a href={`/property/${id}`} target='_blank' className={styles.card__image}>
               <img src={img} alt="" />
               <div className={styles.card__rating}>
                   {grade} <VectorRating />
@@ -61,7 +61,7 @@ export const Card: FC<CardProps & {clickable: boolean}> = ({
           <a href={`/property/${id}`} className={styles.card__title}>
               {name}
           </a> :
-          <a className={styles.card__title}>
+          <a href={`/property/${id}`} target='_blank' className={styles.card__title}>
               {name}
           </a>
       }

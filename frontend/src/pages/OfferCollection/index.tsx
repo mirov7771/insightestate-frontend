@@ -4,7 +4,7 @@ import {AnalyzeSteps, InfoCards} from "@/shared/constants/constants";
 import {InfoCard} from "@/entities/InfoCard/InfoCard";
 import {AnalyzeStepCard} from "@/entities/AnalyzeStepCard/AnalyzeStepCard";
 import {AnalyzeTable} from "@/entities/AnalyzeTable/AnalyzeTable";
-import {EstateCollection, estateCollectionApi} from "@/widgets/EstateCollection/api/estateCollectionApi";
+import {AgentInfo, EstateCollection, estateCollectionApi} from "@/widgets/EstateCollection/api/estateCollectionApi";
 import {GradeTable} from "@/entities/GradeTable/GradeTable";
 import {useParams} from "react-router";
 import {Button} from "@/shared/ui";
@@ -18,6 +18,8 @@ const OfferCollection: FC = () => {
   const clickable = localStorage.getItem('basicToken') !== null
         && localStorage.getItem('basicToken') !== undefined
         && localStorage.getItem('basicToken') !== ''
+  const [agentInfo, setAgentInfo] = useState<AgentInfo>()
+
   useEffect(() => {
       estateCollectionApi.getEstateCollection(id!!).then((r) => {
           setEstateCollection(r.data.items[0])
@@ -28,6 +30,12 @@ const OfferCollection: FC = () => {
           setLoaded(true)
       })
   }, []);
+
+    useEffect(() => {
+        estateCollectionApi.getAgentInfo(id!!).then((r) => {
+            setAgentInfo(r.data)
+        })
+    }, []);
 
   function getName(): string {
       if (cSize === 1)
@@ -43,16 +51,16 @@ const OfferCollection: FC = () => {
         })
   }
 
-    function copyTask() { const el = document.createElement('input');
-        el.value = window.location.href;
-        document.body.appendChild(el);
-        el.select();
-        document.execCommand('copy');
-        document.body.removeChild(el);
-        alert('Ссылка скопирована!')
-    }
+  function copyTask() { const el = document.createElement('input');
+      el.value = window.location.href;
+      document.body.appendChild(el);
+      el.select();
+      document.execCommand('copy');
+      document.body.removeChild(el);
+      alert('Ссылка скопирована!')
+  }
 
-    console.log(isMobile)
+  console.log(isMobile)
   return (
     <div>
       {cSize > 0 ?
@@ -88,6 +96,20 @@ const OfferCollection: FC = () => {
           <div className={isMobile ? styles.wrap_mobile : styles.wrap}>
             <h1 className={isMobile ? styles.title_mobile : styles.title}>Сравнительная таблица</h1>
               {estateCollection ? <AnalyzeTable {...estateCollection} isMobile={isMobile}/> : <></>}
+          </div>
+          <div className={isMobile ? styles.wrap_mobile_info : styles.wrap_info}>
+              <div className={isMobile ? styles.item_mobile : styles.item}>
+                  <span>Агент:  {agentInfo?.fio}</span>
+              </div>
+              <div className={isMobile ? styles.item_mobile : styles.item}>
+                  <span>Email:  {agentInfo?.login}</span>
+              </div>
+              <div className={isMobile ? styles.item_mobile : styles.item}>
+                  <span>Телефон:  {agentInfo?.mobileNumber}</span>
+              </div>
+              <div className={isMobile ? styles.item_mobile : styles.item}>
+                  <span>Расположение:  {agentInfo?.location}</span>
+              </div>
           </div>
       </> : (
           loaded ?

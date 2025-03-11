@@ -7,9 +7,23 @@ $header-height: 72px;
   padding: 0 12px;
 }
 
+.wrap_info {
+  margin: 20px auto;
+  width: 100%;
+  max-width: 1736px;
+  padding: 0 12px;
+  border-top: solid;
+}
+
 .wrap_mobile {
   margin: 20px auto;
   width: 100%;
+}
+
+.wrap_mobile_info {
+  margin: 20px auto;
+  width: 100%;
+  border-top: solid;
 }
 
 .layout {
@@ -119,5 +133,14 @@ $header-height: 72px;
   text-align: center;
   margin-bottom: 2rem;
   color: var(--white);
+  font-size: 13px;
+}
+
+.item {
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.item_mobile {
   font-size: 13px;
 }

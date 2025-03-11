@@ -35,6 +35,13 @@ export type CreateCollectionRs = {
     id: string;
 }
 
+export type AgentInfo = {
+    login?: string;
+    fio?: string;
+    mobileNumber?: string;
+    location?: string;
+}
+
 export const estateCollectionApi = {
     getEstateCollection: async (token: string): Promise<AxiosResponse<ResponseGetEstateCollection>> => {
         try {
@@ -87,6 +94,20 @@ export const estateCollectionApi = {
         try {
             return await api.delete<void>(
                 `/v1/estate-collections/${id}/estate?estateId=${estateId}`,
+                {headers:
+                        {
+                            Authorization: `Basic ${token.replace('Basic ', '')}`
+                        }
+                },
+            );
+        } catch (error) {
+            throw error;
+        }
+    },
+    getAgentInfo: async (token: string): Promise<AxiosResponse<AgentInfo>> => {
+        try {
+            return await api.get<AgentInfo>(
+                `/users/me`,
                 {headers:
                         {
                             Authorization: `Basic ${token.replace('Basic ', '')}`
