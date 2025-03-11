@@ -11,19 +11,36 @@ export const GradeTable: FC<EstateCollection & {clickable: boolean, isMobile: bo
     return (
         <div className={styles.masterNeighbourhood2}>
             <table className={styles.tb}>
-                <tbody>
-                <tr>
-                    <th className={styles.th}>Название проекта</th>
-                    <th className={styles.th}>Безопасность вложений</th>
-                    <th className={styles.th}>Инвестиционный потенциал</th>
-                    <th className={styles.th}>Расположение объекта</th>
-                    <th className={styles.th}>Комфорт жизни</th>
-                    <th className={styles.th}>Общая оценка</th>
-                </tr>
-                </tbody>
-                <tbody>
-                {estates.map((estate) => <GradeRow {...estate}/>)}
-                </tbody>
+                {isMobile ?
+                    <tbody className={styles.tbody_mobile}>
+                    <tr>
+                        <th className={styles.th}>Название проекта</th>
+                        <th className={styles.th}>Безопасность вложений</th>
+                        <th className={styles.th}>Инвестиционный потенциал</th>
+                        <th className={styles.th}>Расположение объекта</th>
+                        <th className={styles.th}>Комфорт жизни</th>
+                        <th className={styles.th}>Общая оценка</th>
+                    </tr>
+                    </tbody> :
+                    <tbody>
+                    <tr>
+                        <th className={styles.th}>Название проекта</th>
+                        <th className={styles.th}>Безопасность вложений</th>
+                        <th className={styles.th}>Инвестиционный потенциал</th>
+                        <th className={styles.th}>Расположение объекта</th>
+                        <th className={styles.th}>Комфорт жизни</th>
+                        <th className={styles.th}>Общая оценка</th>
+                    </tr>
+                    </tbody>
+                }
+                {isMobile ?
+                    <tbody className={styles.tbody_mobile}>
+                        {estates.map((estate) => <GradeRow {...estate}/>)}
+                    </tbody> :
+                    <tbody>
+                        {estates.map((estate) => <GradeRow {...estate}/>)}
+                    </tbody>
+                }
             </table>
             <main className={isMobile ? styles.main_mobile : styles.main}>
                 {estates.map((estate) => (

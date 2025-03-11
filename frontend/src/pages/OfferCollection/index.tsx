@@ -78,7 +78,7 @@ const OfferCollection: FC = () => {
           </div>
           <div className={isMobile ? styles.wrap_mobile : styles.wrap}>
             <h1 className={isMobile ? styles.title_mobile : styles.title}>Сравнительная таблица</h1>
-              {estateCollection ? <AnalyzeTable {...estateCollection} /> : <></>}
+              {estateCollection ? <AnalyzeTable {...estateCollection} isMobile={isMobile}/> : <></>}
           </div>
       </> : (
           loaded ?
