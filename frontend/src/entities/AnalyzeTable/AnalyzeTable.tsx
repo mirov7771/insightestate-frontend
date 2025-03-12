@@ -12,12 +12,12 @@ export const AnalyzeTable: FC<EstateCollection & {isMobile: boolean}> = ({
                 {isMobile ?
                     <tbody className={styles.tbody_mobile}>
                     <tr>
-                        <th className={styles.th}>Название проекта</th>
-                        <th className={styles.th}>Общая оценка</th>
+                        <th className={styles.th}>Название<br/>проекта</th>
+                        <th className={styles.th}>Общая<br/>оценка</th>
                         <th className={styles.th}>Цена, от ($)</th>
-                        <th className={styles.th}>Дата сдачи</th>
+                        <th className={styles.th}>Дата<br/>сдачи</th>
                         <th className={styles.th}>IRR (%)</th>
-                        <th className={styles.th}>10Y ROI (%)</th>
+                        <th className={styles.th}>10Y<br/>ROI (%)</th>
                     </tr>
                     </tbody> :
                     <tbody>

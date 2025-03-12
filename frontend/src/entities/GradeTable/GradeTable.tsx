@@ -14,12 +14,12 @@ export const GradeTable: FC<EstateCollection & {clickable: boolean, isMobile: bo
                 {isMobile ?
                     <tbody className={styles.tbody_mobile}>
                     <tr>
-                        <th className={styles.th}>Название проекта</th>
-                        <th className={styles.th}>Безопасность вложений</th>
-                        <th className={styles.th}>Инвестиционный потенциал</th>
-                        <th className={styles.th}>Расположение объекта</th>
-                        <th className={styles.th}>Комфорт жизни</th>
-                        <th className={styles.th}>Общая оценка</th>
+                        <th className={styles.th}>Название<br/>проекта</th>
+                        <th className={styles.th}>Безопасность<br/>вложений</th>
+                        <th className={styles.th}>Инвестиционный<br/>потенциал</th>
+                        <th className={styles.th}>Расположение<br/>объекта</th>
+                        <th className={styles.th}>Комфорт<br/>жизни</th>
+                        <th className={styles.th}>Общая<br/>оценка</th>
                     </tr>
                     </tbody> :
                     <tbody>
