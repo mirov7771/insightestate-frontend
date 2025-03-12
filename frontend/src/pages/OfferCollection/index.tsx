@@ -9,6 +9,7 @@ import {GradeTable} from "@/entities/GradeTable/GradeTable";
 import {useParams} from "react-router";
 import {Button} from "@/shared/ui";
 import {isMobile} from 'react-device-detect';
+import {ButtonEmail, ButtonWhatsUp} from "@/shared/assets/icons";
 
 const OfferCollection: FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -106,18 +107,14 @@ const OfferCollection: FC = () => {
             <h1 className={isMobile ? styles.title_mobile : styles.title}>Сравнительная таблица</h1>
               {estateCollection ? <AnalyzeTable {...estateCollection} isMobile={isMobile}/> : <></>}
           </div>
-          <div className={isMobile ? styles.wrap_mobile_info : styles.wrap_info}>
-              <div className={isMobile ? styles.item_mobile : styles.item}>
-                  <span>Агент:  {agentInfo?.fio}</span>
-              </div>
-              <div className={isMobile ? styles.item_mobile : styles.item}>
-                  <span>Email:  {agentInfo?.login}</span>
-              </div>
-              <div className={isMobile ? styles.item_mobile : styles.item}>
-                  <span>Телефон:  {agentInfo?.mobileNumber}</span>
-              </div>
-              <div className={isMobile ? styles.item_mobile : styles.item}>
-                  <span>Расположение:  {agentInfo?.location}</span>
+          <div className={styles.socials_main}>
+              <div className={isMobile ? styles.socials_mobile : styles.socials}>
+                  {isMobile ? <h5>{agentInfo?.fio}<br/>{agentInfo?.mobileNumber}</h5> : <h5>{agentInfo?.fio} {agentInfo?.mobileNumber}</h5>}
+                  <div className={styles.socials__messengers}>
+                      <a href={`mailto:${agentInfo?.login}`}>
+                          <ButtonEmail />
+                      </a>
+                  </div>
               </div>
           </div>
       </> : (
