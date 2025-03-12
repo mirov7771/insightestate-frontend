@@ -71,7 +71,7 @@ const OfferCollection: FC = () => {
                   <div className={isMobile ? styles.info_mobile : styles.info}>
                       <h1 className={isMobile ? styles.title_mobile : styles.title}>Формирование оффера</h1>
                       <p className={isMobile ? styles.p_black_mobile : styles.p_black}>
-                          Информация под этим блоком является оффером для вашего клиента, каждый объект который вы добавляете появляется на этой странице. Чтобы отправить страницу клиенту нажмите <Button variant='secondary' className={styles.link} onClick={copyLink}>Скопировать ссылку</Button>
+                          Информация под этим блоком является оффером для вашего клиента, каждый объект который вы добавляете появляется на этой странице. Чтобы отправить страницу клиенту нажмите <Button variant='secondary' className={styles.link} onClick={copyTask}>Скопировать ссылку</Button>
                       </p>
                   </div>
               </div> :
