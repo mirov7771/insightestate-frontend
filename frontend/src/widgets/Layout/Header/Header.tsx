@@ -43,7 +43,7 @@ export const Header: FC<{basicToken: string}> = ({
         {/*  </li>*/}
       </menu>
       <div className={styles.right}>
-        <Button bold onClick={goTo}>Узнать больше</Button>
+        {/*<Button bold onClick={goTo}>Узнать больше</Button>*/}
       </div>
     </header>
   );

@@ -36,3 +36,14 @@ $header-height: 72px;
   position: sticky;
   top: $header-height + 8px;
 }
+
+.text {
+  font-weight: 600;
+  display: flex;
+  gap: 12px;
+
+  & > svg {
+    width: 20px;
+    height: 20px;
+  }
+}

@@ -14,15 +14,18 @@ import {
   InfrastructureDto,
   Options,
   Grade,
+  Location
 } from '@/widgets/Detail/api/detailApi';
 import { Gallery } from '@/pages/EstateDetail/Gallery/Gallery';
 import { Rating } from '@/pages/EstateDetail/Rating/Rating';
 import { Info } from '@/pages/EstateDetail/Info/Info';
 import { Manager } from '@/pages/EstateDetail/Manager/Manager';
+import { LocationImg } from '@/shared/assets/icons';
 
 const EstateDetail: FC = () => {
   const { id } = useParams<{ id: string }>();
   const [name, setName] = useState<string>('');
+  const [location, setLocation] = useState<Location>();
   const [roomLayouts, setRoomLayouts] = useState<RoomLayouts>();
   const [profitability, setProfitability] = useState<Profitability>();
   const [infrastructure, setInfrastructure] = useState<InfrastructureDto>();
@@ -33,6 +36,7 @@ const EstateDetail: FC = () => {
   useEffect(() => {
     detailApi.getDetail(id).then((r) => {
       setName(r.data.name);
+      setLocation(r.data.location)
       setRoomLayouts(r.data.roomLayouts);
       setProfitability(r.data.profitability);
       setInfrastructure(r.data.infrastructure);
@@ -49,6 +53,10 @@ const EstateDetail: FC = () => {
   return (
     <div className={styles.wrap}>
       <h1 className={styles.title}>{name}</h1>
+      <p className={styles.text}>
+        <LocationImg />
+        {location?.name}
+      </p>
       {!!gallery.length && <Gallery images={gallery} />}
       <div className={styles.layout}>
         <main className={styles.main}>
@@ -63,7 +71,7 @@ const EstateDetail: FC = () => {
             childRoom={options?.childRoom || false}
             coworking={options?.coworking || false}
           />
-          <ProjectPlan />
+          {/*<ProjectPlan />*/}
           {/*<Map />*/}
           <FAQ />
         </main>

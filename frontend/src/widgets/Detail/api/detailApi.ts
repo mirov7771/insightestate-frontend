@@ -48,7 +48,7 @@ type ProjectUnitCount = {
   total?: number;
 };
 
-type Location = {
+export type Location = {
   beach?: string;
   district?: string;
   mapUrl?: string;

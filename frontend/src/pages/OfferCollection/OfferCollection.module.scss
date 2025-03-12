@@ -144,3 +144,44 @@ $header-height: 72px;
 .item_mobile {
   font-size: 13px;
 }
+
+.p_black {
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  color: var(--black);
+}
+
+.p_black_mobile {
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  color: var(--black);
+  font-size: 13px;
+}
+
+.link {
+  display: contents;
+  color: blue;
+}
+
+.info {
+  background-color: #fafbff;
+  border: .0625rem solid #17181c29;
+  border-radius: 1.25rem;
+  height: 12rem;
+  padding: 1.56rem 1rem 1.56rem 1.56rem;
+  margin-top: 30px;
+  width: 80%;
+  margin-left: 10%;
+}
+
+.info_mobile {
+  background-color: #fafbff;
+  border: .0625rem solid #17181c29;
+  border-radius: 1.25rem;
+  width: 100%;
+  height: 11rem;
+  padding: 1rem 1rem 1rem 1rem;
+  margin-top: 30px;
+}

@@ -30,7 +30,7 @@ export const ApartmentLayouts: FC<RoomLayouts & {estateId?: string}> = ({ one, t
   const addItemToCollection = (id: string, estateId: string)=> {
     estateCollectionApi.addToCollection(token!!, id, estateId)
         .then((r) => {
-          alert("Объект успешно добавлен в вашу подборку!")
+          alert("Объект добавлен.\n\nОбъект успешно добавлен в подборку, перейдите в раздел «Сформировать оффер» чтобы посмотреть все объекты.")
           setInCollection(true)
           console.log(r)
         })
@@ -41,7 +41,7 @@ export const ApartmentLayouts: FC<RoomLayouts & {estateId?: string}> = ({ one, t
     if (collectionId) {
       estateCollectionApi.deleteFromCollection(token!!, collectionId, estateId!!)
           .then((r) => {
-            alert("Объект удален из вашей подборки!")
+            alert("Объект удален.\n\nОбъект удален из подборки, но вы можете его вернуть нажав на кнопку «Добавить объект»")
             setInCollection(false)
             console.log(r)
           })

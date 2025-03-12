@@ -65,9 +65,18 @@ const OfferCollection: FC = () => {
     <div>
       {cSize > 0 ?
       <>
+          {clickable ?
+              <div className={isMobile ? styles.wrap_mobile : styles.wrap}>
+                  <div className={isMobile ? styles.info_mobile : styles.info}>
+                      <h1 className={isMobile ? styles.title_mobile : styles.title}>Формирование оффера</h1>
+                      <p className={isMobile ? styles.p_black_mobile : styles.p_black}>
+                          Информация под этим блоком является оффером для вашего клиента, каждый объект который вы добавляете появляется на этой странице. Чтобы отправить страницу клиенту нажмите <Button variant='secondary' className={styles.link} onClick={copyLink}>Скопировать ссылку</Button>
+                      </p>
+                  </div>
+              </div> :
+              <></>}
           <div className={isMobile ? styles.wrap_mobile : styles.wrap}>
               <h1 className={isMobile ? styles.title_mobile : styles.title}>Почему инвесторы выбирают Пхукет?</h1>
-              {clickable ? <Button onClick={copyTask}>Скопировать ссылку</Button> : <></>}
               <main className={isMobile ? styles.main_mobile : styles.main}>
                   {InfoCards.map((infoCard) => (
                       <InfoCard key={infoCard.id} {...infoCard} isMobile={isMobile}/>
