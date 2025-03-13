@@ -90,6 +90,9 @@ export type RoomLayouts = {
   one?: RoomLayout;
   three?: RoomLayout;
   two?: RoomLayout;
+  villaThree?: RoomLayout
+  villaFour?: RoomLayout
+  villaFive?: RoomLayout
 };
 
 export type Options = {

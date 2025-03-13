@@ -5,7 +5,9 @@ import styles from './ApartmentLayouts.module.scss';
 import { RoomLayouts } from '@/widgets/Detail/api/detailApi';
 import {Estate, estateCollectionApi} from "@/widgets/EstateCollection/api/estateCollectionApi";
 
-export const ApartmentLayouts: FC<RoomLayouts & {estateId?: string}> = ({ one, two, three, estateId }) => {
+export const ApartmentLayouts: FC<RoomLayouts & {estateId?: string}> = ({
+  one, two, three, villaThree, villaFour, villaFive, estateId
+}) => {
   const [collectionId, setCollectionId] = useState<string>('')
   const [inCollection, setInCollection] = useState<boolean>(false)
   const token = localStorage.getItem('basicToken')
@@ -69,15 +71,17 @@ export const ApartmentLayouts: FC<RoomLayouts & {estateId?: string}> = ({ one, t
           <span>Площадь, м2</span>
           <span>Стоимость, $</span>
         </div>
-        <div className={styles.item}>
-          <span>1 спальня</span>
-          <span>
+        {one ?
+            <div className={styles.item}>
+              <span>1 спальня</span>
+              <span>
             {one?.square?.min || one?.square?.max} - {one?.square?.max || one?.square?.min}
           </span>
-          <span>
+              <span>
             {one?.pricePerMeter?.min || one?.pricePerMeter?.max} - {one?.pricePerMeter?.max || one?.pricePerMeter?.min}
           </span>
-        </div>
+            </div> : <></>}
+        {two ?
         <div className={styles.item}>
           <span>2 спальни</span>
           <span>
@@ -87,6 +91,8 @@ export const ApartmentLayouts: FC<RoomLayouts & {estateId?: string}> = ({ one, t
             {two?.pricePerMeter?.min || two?.pricePerMeter?.max} - {two?.pricePerMeter?.max || two?.pricePerMeter?.min}
           </span>
         </div>
+          : <></>}
+        {three ?
         <div className={styles.item}>
           <span>3 спальни</span>
           <span>
@@ -96,6 +102,40 @@ export const ApartmentLayouts: FC<RoomLayouts & {estateId?: string}> = ({ one, t
             {three?.pricePerMeter?.min || two?.pricePerMeter?.max} - {two?.pricePerMeter?.max || three?.pricePerMeter?.min}
           </span>
         </div>
+            : <></>}
+        {villaThree ?
+            <div className={styles.item}>
+              <span>Вилла 3 спальни</span>
+              <span>
+            {villaThree?.square?.min || villaThree?.square?.max} - {villaThree?.square?.max || villaThree?.square?.min}
+          </span>
+              <span>
+            {villaThree?.pricePerMeter?.min || villaThree?.pricePerMeter?.max} - {villaThree?.pricePerMeter?.max || villaThree?.pricePerMeter?.min}
+          </span>
+            </div>
+            : <></>}
+        {villaFour ?
+        <div className={styles.item}>
+          <span>Вилла 4 спальни</span>
+          <span>
+            {villaFour?.square?.min || villaFour?.square?.max} - {villaFour?.square?.max || villaFour?.square?.min}
+          </span>
+          <span>
+            {villaFour?.pricePerMeter?.min || villaFour?.pricePerMeter?.max} - {villaFour?.pricePerMeter?.max || villaFour?.pricePerMeter?.min}
+          </span>
+        </div>
+            : <></>}
+        {villaFive ?
+            <div className={styles.item}>
+              <span>Вилла 5 спален</span>
+              <span>
+            {villaFive?.square?.min || villaFive?.square?.max} - {villaFive?.square?.max || villaFive?.square?.min}
+          </span>
+              <span>
+            {villaFive?.pricePerMeter?.min || villaFive?.pricePerMeter?.max} - {villaFive?.pricePerMeter?.max || villaFive?.pricePerMeter?.min}
+          </span>
+            </div>
+            : <></>}
       </div>
     </Section>
   );
