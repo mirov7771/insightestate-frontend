@@ -87,9 +87,13 @@ type RoomLayout = {
 };
 
 export type RoomLayouts = {
+  studio?: RoomLayout;
   one?: RoomLayout;
   three?: RoomLayout;
   two?: RoomLayout;
+  four?: RoomLayout;
+  five?: RoomLayout;
+  villaTwo?: RoomLayout
   villaThree?: RoomLayout
   villaFour?: RoomLayout
   villaFive?: RoomLayout
