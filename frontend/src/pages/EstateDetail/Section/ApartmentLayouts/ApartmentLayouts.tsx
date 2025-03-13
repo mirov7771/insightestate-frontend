@@ -72,28 +72,28 @@ export const ApartmentLayouts: FC<RoomLayouts & {estateId?: string}> = ({ one, t
         <div className={styles.item}>
           <span>1 спальня</span>
           <span>
-            {one?.square?.min} - {one?.square?.max}
+            {one?.square?.min || one?.square?.max} - {one?.square?.max || one?.square?.min}
           </span>
           <span>
-            {one?.pricePerMeter?.min} - {one?.pricePerMeter?.max}
+            {one?.pricePerMeter?.min || one?.pricePerMeter?.max} - {one?.pricePerMeter?.max || one?.pricePerMeter?.min}
           </span>
         </div>
         <div className={styles.item}>
           <span>2 спальни</span>
           <span>
-            {two?.square?.min} - {two?.square?.max}
+            {two?.square?.min || two?.square?.max} - {two?.square?.max || two?.square?.min}
           </span>
           <span>
-            {two?.pricePerMeter?.min} - {two?.pricePerMeter?.max}
+            {two?.pricePerMeter?.min || two?.pricePerMeter?.max} - {two?.pricePerMeter?.max || two?.pricePerMeter?.min}
           </span>
         </div>
         <div className={styles.item}>
           <span>3 спальни</span>
           <span>
-            {three?.square?.min} - {two?.square?.max}
+            {three?.square?.min || two?.square?.max} - {two?.square?.max || three?.square?.min}
           </span>
           <span>
-            {three?.pricePerMeter?.min} - {two?.pricePerMeter?.max}
+            {three?.pricePerMeter?.min || two?.pricePerMeter?.max} - {two?.pricePerMeter?.max || three?.pricePerMeter?.min}
           </span>
         </div>
       </div>
