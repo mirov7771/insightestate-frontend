@@ -61,7 +61,7 @@ const EstateDetail: FC = () => {
       <div className={styles.layout}>
         <main className={styles.main}>
           <ApartmentLayouts {...roomLayouts} estateId={id}/>
-          <PaymentSchedule />
+          <PaymentSchedule id={id!!} name={name}/>
           <AverageYield {...profitability} />
           <Infrastructure
             beachTime={infrastructure?.beachTime?.car}

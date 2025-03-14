@@ -15,8 +15,7 @@ export const ApartmentLayouts: FC<RoomLayouts & {estateId?: string}> = ({
   villaTwo,
   villaThree,
   villaFour,
-  villaFive,
-                                                                          estateId
+  villaFive, estateId
 }) => {
   const [collectionId, setCollectionId] = useState<string>('')
   const [inCollection, setInCollection] = useState<boolean>(false)

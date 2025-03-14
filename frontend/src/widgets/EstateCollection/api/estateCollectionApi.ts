@@ -42,6 +42,15 @@ export type AgentInfo = {
     location?: string;
 }
 
+export type HelpWithClientRq = {
+    name: string,
+    lastName: string,
+    phone: string,
+    objectName: string,
+    objectId: string,
+    location: string
+}
+
 export const estateCollectionApi = {
     getEstateCollection: async (token: string): Promise<AxiosResponse<ResponseGetEstateCollection>> => {
         try {
@@ -117,5 +126,22 @@ export const estateCollectionApi = {
         } catch (error) {
             throw error;
         }
-    }
+    },
+    helpWithClient: async (token: string, rq: HelpWithClientRq): Promise<AxiosResponse<void>> => {
+        try {
+            return await api.post<void>(
+                `/users/help`,
+                {
+                    rq
+                },
+                {headers:
+                        {
+                            Authorization: `Basic ${token.replace('Basic ', '')}`
+                        }
+                },
+            );
+        } catch (error) {
+            throw error;
+        }
+    },
 };
