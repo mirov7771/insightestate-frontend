@@ -35,7 +35,7 @@ const OfferCollection: FC = () => {
     useEffect(() => {
         estateCollectionApi.getAgentInfo(id!!).then((r) => {
             setAgentInfo(r.data)
-        })
+        }).catch(e => console.log(e))
     }, []);
 
   function getName(): string {

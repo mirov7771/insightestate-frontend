@@ -4,8 +4,9 @@ import { Button } from '@/shared/ui';
 import styles from './ApartmentLayouts.module.scss';
 import { RoomLayouts } from '@/widgets/Detail/api/detailApi';
 import {Estate, estateCollectionApi} from "@/widgets/EstateCollection/api/estateCollectionApi";
+import {BaseUserModal} from "@/widgets/Modal/BaseUserModal";
 
-export const ApartmentLayouts: FC<RoomLayouts & {estateId?: string}> = ({
+export const ApartmentLayouts: FC<RoomLayouts & {estateId?: string, id: string, name: string}> = ({
   studio,
   one,
   two,
@@ -15,11 +16,22 @@ export const ApartmentLayouts: FC<RoomLayouts & {estateId?: string}> = ({
   villaTwo,
   villaThree,
   villaFour,
-  villaFive, estateId
+  villaFive,
+  estateId,
+  id,
+  name
 }) => {
   const [collectionId, setCollectionId] = useState<string>('')
   const [inCollection, setInCollection] = useState<boolean>(false)
   const token = localStorage.getItem('basicToken')
+  const [baseUserModal, setBaseUserModal] = useState(false)
+  const handleOpenBaseUserModal = () => {
+    setBaseUserModal(true)
+  }
+
+  const handleCloseBaseUserModal = () => {
+    setBaseUserModal(false)
+  }
   useEffect(() => {
     estateCollectionApi.getEstateCollection(token!!).then((r) => {
       setCollectionId(r.data.items[0]?.id)
@@ -70,8 +82,16 @@ export const ApartmentLayouts: FC<RoomLayouts & {estateId?: string}> = ({
 
   console.log(collectionId)
   return (
+    <>
     <Section title="Доступные планировки" rightSide={
-      inCollection ? <Button disabled={token === null || token === undefined || token === ''} onClick={deleteFromCollection}>Удалить из подборки</Button> : <Button disabled={token === null || token === undefined || token === ''} onClick={addToCollection}>Добавить в подборку</Button>
+      <>
+      {inCollection ? <Button disabled={token === null || token === undefined || token === ''} onClick={deleteFromCollection}>Удалить из подборки</Button> : <Button disabled={token === null || token === undefined || token === ''} onClick={addToCollection}>Добавить в подборку</Button>}
+        <Button
+            disabled={token === null || token === undefined || token === ''}
+            onClick={handleOpenBaseUserModal}>
+          Помощь с клиентом
+        </Button>
+      </>
       }
     >
       <div>
@@ -190,5 +210,15 @@ export const ApartmentLayouts: FC<RoomLayouts & {estateId?: string}> = ({
             : <></>}
       </div>
     </Section>
+      <BaseUserModal
+          open={baseUserModal}
+          onClose={handleCloseBaseUserModal}
+          onOpen={handleOpenBaseUserModal}
+          anchor='bottom'
+          id={id}
+          object={name}
+          token={token!!}
+      />
+      </>
   );
 };

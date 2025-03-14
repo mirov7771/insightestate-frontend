@@ -6,7 +6,6 @@ import { ApartmentLayouts } from './Section/ApartmentLayouts/ApartmentLayouts';
 import { PaymentSchedule } from './Section/PaymentSchedule/PaymentSchedule';
 import { AverageYield } from './Section/AverageYield/AverageYield';
 import { Infrastructure } from './Section/Infrastructure/Infrastructure';
-import { ProjectPlan } from './Section/ProjectPlan/ProjectPlan';
 import {
   detailApi,
   Profitability,
@@ -60,8 +59,8 @@ const EstateDetail: FC = () => {
       {!!gallery.length && <Gallery images={gallery} />}
       <div className={styles.layout}>
         <main className={styles.main}>
-          <ApartmentLayouts {...roomLayouts} estateId={id}/>
-          <PaymentSchedule id={id!!} name={name}/>
+          <ApartmentLayouts {...roomLayouts} estateId={id} id={id!!} name={name}/>
+          <PaymentSchedule />
           <AverageYield {...profitability} />
           <Infrastructure
             beachTime={infrastructure?.beachTime?.car}
