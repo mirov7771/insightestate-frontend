@@ -24,12 +24,8 @@ $header-height: 72px;
 }
 
 .title {
-  font-family: var(--font--wide);
-  text-transform: uppercase;
-  font-weight: 800;
-  font-size: var(--heading--h3);
-  letter-spacing: var(--letter-spacing--2);
-  color: var(--dark);
+  display: flex;
+  gap: 10px;
 }
 
 .aside {

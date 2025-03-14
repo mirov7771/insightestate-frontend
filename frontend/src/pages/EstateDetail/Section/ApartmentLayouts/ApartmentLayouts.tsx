@@ -1,12 +1,9 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, {FC} from 'react';
 import { Section } from '../Section';
-import { Button } from '@/shared/ui';
 import styles from './ApartmentLayouts.module.scss';
 import { RoomLayouts } from '@/widgets/Detail/api/detailApi';
-import {Estate, estateCollectionApi} from "@/widgets/EstateCollection/api/estateCollectionApi";
-import {BaseUserModal} from "@/widgets/Modal/BaseUserModal";
 
-export const ApartmentLayouts: FC<RoomLayouts & {estateId?: string, id: string, name: string}> = ({
+export const ApartmentLayouts: FC<RoomLayouts & {estateId?: string}> = ({
   studio,
   one,
   two,
@@ -16,84 +13,11 @@ export const ApartmentLayouts: FC<RoomLayouts & {estateId?: string, id: string, 
   villaTwo,
   villaThree,
   villaFour,
-  villaFive,
-  estateId,
-  id,
-  name
+  villaFive
 }) => {
-  const [collectionId, setCollectionId] = useState<string>('')
-  const [inCollection, setInCollection] = useState<boolean>(false)
-  const token = localStorage.getItem('basicToken')
-  const [baseUserModal, setBaseUserModal] = useState(false)
-  const handleOpenBaseUserModal = () => {
-    setBaseUserModal(true)
-  }
-
-  const handleCloseBaseUserModal = () => {
-    setBaseUserModal(false)
-  }
-  useEffect(() => {
-    estateCollectionApi.getEstateCollection(token!!).then((r) => {
-      setCollectionId(r.data.items[0]?.id)
-      setInCollection(isInCollection(r.data.items[0]?.estates))
-    }).catch((e) => console.log(e))
-  }, []);
-
-  const addToCollection = () => {
-    if (!collectionId) {
-      estateCollectionApi.createCollection(token!!).then((r) => {
-        setCollectionId(r.data.id)
-        addItemToCollection(r.data.id, estateId!!)
-      }).catch((e) => console.log(e))
-    } else {
-      addItemToCollection(collectionId, estateId!!)
-    }
-  }
-
-  const addItemToCollection = (id: string, estateId: string)=> {
-    estateCollectionApi.addToCollection(token!!, id, estateId)
-        .then((r) => {
-          alert("Объект добавлен.\n\nОбъект успешно добавлен в подборку, перейдите в раздел «Сформировать оффер» чтобы посмотреть все объекты.")
-          setInCollection(true)
-          console.log(r)
-        })
-        .catch((e) => console.log(e))
-  }
-
-  const deleteFromCollection = () => {
-    if (collectionId) {
-      estateCollectionApi.deleteFromCollection(token!!, collectionId, estateId!!)
-          .then((r) => {
-            alert("Объект удален.\n\nОбъект удален из подборки, но вы можете его вернуть нажав на кнопку «Добавить объект»")
-            setInCollection(false)
-            console.log(r)
-          })
-          .catch((e) => console.log(e))
-    }
-  }
-
-  function isInCollection(estate: Estate[]): boolean {
-    if (!estate || estate.length === 0)
-      return false
-    const e = estate.find((value) => value.id === estateId)
-    console.log("Estate", e)
-    return e?.id !== null && e?.id !== undefined
-  }
-
-  console.log(collectionId)
   return (
     <>
-    <Section title="Доступные планировки" rightSide={
-      <>
-      {inCollection ? <Button disabled={token === null || token === undefined || token === ''} onClick={deleteFromCollection}>Удалить из подборки</Button> : <Button disabled={token === null || token === undefined || token === ''} onClick={addToCollection}>Добавить в подборку</Button>}
-        <Button
-            disabled={token === null || token === undefined || token === ''}
-            onClick={handleOpenBaseUserModal}>
-          Помощь с клиентом
-        </Button>
-      </>
-      }
-    >
+    <Section title="Доступные планировки">
       <div>
         <div className={`${styles.item__header} ${styles.item}`}>
           <span>Планировка</span>
@@ -210,15 +134,6 @@ export const ApartmentLayouts: FC<RoomLayouts & {estateId?: string, id: string, 
             : <></>}
       </div>
     </Section>
-      <BaseUserModal
-          open={baseUserModal}
-          onClose={handleCloseBaseUserModal}
-          onOpen={handleOpenBaseUserModal}
-          anchor='bottom'
-          id={id}
-          object={name}
-          token={token!!}
-      />
       </>
   );
 };
