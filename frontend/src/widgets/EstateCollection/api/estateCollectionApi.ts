@@ -131,9 +131,7 @@ export const estateCollectionApi = {
         try {
             return await api.post<void>(
                 `/users/help`,
-                {
-                    rq
-                },
+                rq,
                 {headers:
                         {
                             Authorization: `Basic ${token.replace('Basic ', '')}`
