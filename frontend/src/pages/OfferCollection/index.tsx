@@ -6,13 +6,14 @@ import {AnalyzeStepCard} from "@/entities/AnalyzeStepCard/AnalyzeStepCard";
 import {AnalyzeTable} from "@/entities/AnalyzeTable/AnalyzeTable";
 import {AgentInfo, EstateCollection, estateCollectionApi} from "@/widgets/EstateCollection/api/estateCollectionApi";
 import {GradeTable} from "@/entities/GradeTable/GradeTable";
-import {useParams} from "react-router";
+import {useParams, useSearchParams} from "react-router";
 import {Button} from "@/shared/ui";
 import {isMobile} from 'react-device-detect';
 import {ButtonEmail} from "@/shared/assets/icons";
 
 const OfferCollection: FC = () => {
   const { id } = useParams<{ id: string }>();
+  const [searchParams, setSearchParams] = useSearchParams()
   const [estateCollection, setEstateCollection] = useState<EstateCollection>()
   const [cSize, setCSize] = useState<number>(0)
   const [loaded, setLoaded] = useState<boolean>(false)

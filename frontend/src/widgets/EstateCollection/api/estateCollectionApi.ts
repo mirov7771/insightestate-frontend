@@ -66,12 +66,12 @@ export const estateCollectionApi = {
             throw error;
         }
     },
-    createCollection: async (token: string): Promise<AxiosResponse<CreateCollectionRs>> => {
+    createCollection: async (token: string, name?: string): Promise<AxiosResponse<CreateCollectionRs>> => {
         try {
             return await api.post<CreateCollectionRs>(
                 '/v1/estate-collections',
                 {
-                  name: `Подборка ${token.replace('Basic ', '')}`
+                  name: name || `Подборка ${token.replace('Basic ', '')}`
                 },
                 {headers:
                         {
@@ -103,6 +103,20 @@ export const estateCollectionApi = {
         try {
             return await api.delete<void>(
                 `/v1/estate-collections/${id}/estate?estateId=${estateId}`,
+                {headers:
+                        {
+                            Authorization: `Basic ${token.replace('Basic ', '')}`
+                        }
+                },
+            );
+        } catch (error) {
+            throw error;
+        }
+    },
+    deleteCollection: async (token: string, id: string): Promise<AxiosResponse<void>> => {
+        try {
+            return await api.delete<void>(
+                `/v1/estate-collections/${id}`,
                 {headers:
                         {
                             Authorization: `Basic ${token.replace('Basic ', '')}`

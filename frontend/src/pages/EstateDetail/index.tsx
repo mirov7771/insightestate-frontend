@@ -22,8 +22,9 @@ import { Manager } from '@/pages/EstateDetail/Manager/Manager';
 import { LocationImg } from '@/shared/assets/icons';
 import {Section} from "@/pages/EstateDetail/Section/Section";
 import {Button} from "@/shared/ui";
-import {Estate, estateCollectionApi} from "@/widgets/EstateCollection/api/estateCollectionApi";
+import {Estate, EstateCollection, estateCollectionApi} from "@/widgets/EstateCollection/api/estateCollectionApi";
 import {BaseUserModal} from "@/widgets/Modal/BaseUserModal";
+import {UserCollectionModal} from "@/widgets/Modal/UserCollectionModal";
 
 const EstateDetail: FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -41,12 +42,20 @@ const EstateDetail: FC = () => {
   const [collectionId, setCollectionId] = useState<string>('')
 
   const [baseUserModal, setBaseUserModal] = useState(false)
+  const [userCollectionModal, setUserCollectionModal] = useState(false)
+
   const handleOpenBaseUserModal = () => {
     setBaseUserModal(true)
   }
-
   const handleCloseBaseUserModal = () => {
     setBaseUserModal(false)
+  }
+
+  const handleOpenUserCollectionModal = () => {
+    setUserCollectionModal(true)
+  }
+  const handleCloseUserCollectionModal = () => {
+    setUserCollectionModal(false)
   }
 
   useEffect(() => {
@@ -126,7 +135,7 @@ const EstateDetail: FC = () => {
                   onClick={deleteFromCollection}>Удалить из подборки
               </Button> :
               <Button disabled={token === null || token === undefined || token === ''}
-                      onClick={addToCollection}>
+                      onClick={handleOpenUserCollectionModal}>
                 Добавить в подборку
               </Button>
           }
@@ -173,6 +182,14 @@ const EstateDetail: FC = () => {
           anchor='bottom'
           id={id!!}
           object={name}
+          token={token!!}
+      />
+      <UserCollectionModal
+          open={userCollectionModal}
+          onClose={handleCloseUserCollectionModal}
+          onOpen={handleOpenUserCollectionModal}
+          anchor='bottom'
+          id={id!!}
           token={token!!}
       />
     </div>

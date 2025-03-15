@@ -63,4 +63,3 @@ export const StyledWrapperText = styled.div`
   background: white;
   border-radius: 12px;
 `
-
