@@ -50,7 +50,7 @@ const ItemCollection: FC<EstateCollection & {token: string}> = ({
                 <img className={styles.colImage} src={img} alt="" />
                 <p>{name}</p>
                 <div className={styles.card__details}>
-                    <span className={styles.card__details__item}>Количество объектов: {estates.length}</span>
+                    <span className={styles.card__details__item}>Количество объектов: {estates?.length || 0}</span>
                 </div>
                 <Spacer width={100} height={8}/>
                 <div className={styles.buttons}>

@@ -2,11 +2,16 @@ import {FC} from "react";
 import styles from './GradeTable.module.scss';
 import {Estate, EstateCollection} from "@/widgets/EstateCollection/api/estateCollectionApi";
 import {Card} from "@/entities/Card/Card";
+import {Button} from "@/widgets/Button/Button";
 
-export const GradeTable: FC<EstateCollection & {clickable: boolean, isMobile: boolean}> = ({
+export const GradeTable: FC<EstateCollection & {
+    clickable: boolean, isMobile: boolean, collectionId?: string, token?: string
+}> = ({
   estates,
   clickable,
-  isMobile
+  isMobile,
+  collectionId,
+  token
 }) => {
     return (
         <div className={styles.masterNeighbourhood2}>
@@ -44,21 +49,25 @@ export const GradeTable: FC<EstateCollection & {clickable: boolean, isMobile: bo
             </table>
             <main className={isMobile ? styles.main_mobile : styles.main}>
                 {estates.map((estate) => (
-                    <Card key={estate.id}
-                          id={estate.id}
-                          level={estate.level}
-                          beachTravelTime={estate.infrastructure?.beachTime?.car || 0}
-                          grade={estate.grade?.main || 0}
-                          buildEndDate={estate.buildEndDate}
-                          priceMin={estate.price?.min || 0}
-                          facilityImages={estate.facilityImages}
-                          interiorImages={estate.interiorImages}
-                          exteriorImages={estate.exteriorImages}
-                          name={estate.name}
-                          projectId={estate.projectId}
-                          roi={estate.profitability?.roi || 0}
-                          clickable={clickable}
-                    />
+                    <>
+                        <Card key={estate.id}
+                              id={estate.id}
+                              level={estate.level}
+                              beachTravelTime={estate.infrastructure?.beachTime?.car || 0}
+                              grade={estate.grade?.main || 0}
+                              buildEndDate={estate.buildEndDate}
+                              priceMin={estate.price?.min || 0}
+                              facilityImages={estate.facilityImages}
+                              interiorImages={estate.interiorImages}
+                              exteriorImages={estate.exteriorImages}
+                              name={estate.name}
+                              projectId={estate.projectId}
+                              roi={estate.profitability?.roi || 0}
+                              clickable={clickable}
+                              collectionId={collectionId}
+                              token={token}
+                        />
+                    </>
                 ))}
             </main>
         </div>
