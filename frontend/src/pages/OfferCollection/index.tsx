@@ -9,7 +9,7 @@ import {GradeTable} from "@/entities/GradeTable/GradeTable";
 import {useParams} from "react-router";
 import {Button} from "@/shared/ui";
 import {isMobile} from 'react-device-detect';
-import {ButtonEmail, ButtonWhatsUp} from "@/shared/assets/icons";
+import {ButtonEmail} from "@/shared/assets/icons";
 
 const OfferCollection: FC = () => {
   const { id } = useParams<{ id: string }>();

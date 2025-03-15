@@ -3,7 +3,7 @@ import styles from './Card.module.scss';
 import { Beach, VectorRating } from '@/shared/assets/icons';
 import { Estate } from '@/widgets/Filter/api/filterApi';
 
-const DEFAULT_IMG =
+export const DEFAULT_IMG =
   'https://cdn.prod.website-files.com/672b5797ac1486cdfc5122ac/67aa547c02740c42abf52609_675f0debfa47fa6400a3c65a_Exterior_03.jpeg';
 
 type CardProps = Estate;

@@ -2,7 +2,6 @@ import {FC} from 'react';
 import styles from './Header.module.scss';
 import { Logo } from '@/shared/assets/icons';
 import {Link} from 'react-router';
-import { Button } from '@/shared/ui';
 
 export const Header: FC<{basicToken: string}> = ({
     basicToken
@@ -30,6 +29,11 @@ export const Header: FC<{basicToken: string}> = ({
           <Link className={styles.menu__link} to={offerCollection}>
             Сформировать оффер
           </Link>
+        </li>
+        <li className={styles.menu__item}>
+            <Link className={styles.menu__link} to="user-collection">
+                Мои подборки
+            </Link>
         </li>
         <li className={styles.menu__item}>
           <Link className={styles.menu__link} to={profileUrl}>

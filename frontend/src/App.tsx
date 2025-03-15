@@ -5,6 +5,7 @@ import Layout from '@/widgets/Layout/Layout';
 import Listing from '@/pages/Listing';
 import EstateDetail from '@/pages/EstateDetail';
 import OfferCollection from '@/pages/OfferCollection';
+import {UserCollection} from "@/pages/UserCollection";
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
           <Route path="/offer-collection">
             <Route path=":id" element={<OfferCollection />} />
           </Route>
+          <Route path="/user-collection" element={<UserCollection />}/>
         </Route>
       </Routes>
     </BrowserRouter>
