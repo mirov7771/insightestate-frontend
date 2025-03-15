@@ -56,7 +56,7 @@ export const UserCollectionModal: FC<TModalProps & {id: string, token: string}> 
     const addItemToCollection = (id: string, estateId: string)=> {
         estateCollectionApi.addToCollection(token!!, id, estateId)
             .then((r) => {
-                alert("Объект добавлен.\n\nОбъект успешно добавлен в подборку, перейдите в раздел «Сформировать оффер» чтобы посмотреть все объекты.")
+                alert("Объект добавлен.\n\nОбъект успешно добавлен в подборку, перейдите в раздел «Мои подборки» чтобы посмотреть все объекты и сформировать оффер.")
                 console.log(r)
             })
             .catch((e) => console.log(e))

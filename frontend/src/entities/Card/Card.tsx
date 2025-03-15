@@ -78,16 +78,9 @@ export const Card: FC<CardProps & {
           </a>
       }
       {clickable ?
-          <div className={styles.buttons}>
-            <a href={`/property/${id}`} className={styles.card__title}>
-                {name}
-            </a>
-            <Button
-              onClick={deleteFromCollection}
-            >
-              Удалить
-            </Button>
-          </div>:
+          <a href={`/property/${id}`} className={styles.card__title}>
+              {name}
+          </a> :
           <a href={`/property/${id}`} target='_blank' className={styles.card__title}>
               {name}
           </a>
@@ -100,6 +93,14 @@ export const Card: FC<CardProps & {
           maximumFractionDigits: 0,
         }).format(priceMin)}
       </p>
+      {
+        collectionId ?
+          <Button
+              onClick={deleteFromCollection}
+          >
+            Удалить
+          </Button> : <></>
+      }
       {/*<p>
         Доходность до <strong>136%</strong> за 10 лет
       </p>*/}

@@ -42,7 +42,7 @@ const ItemCollection: FC<EstateCollection & {token: string}> = ({
     }
 
     const goToCollection = () => {
-        navigate(`/offer-collection/${id}?byId=true`)
+        navigate(`/offer-collection/${id}?token=${token}`)
     }
     return (
         <div className={styles.card}>

@@ -6,13 +6,14 @@ import {AnalyzeStepCard} from "@/entities/AnalyzeStepCard/AnalyzeStepCard";
 import {AnalyzeTable} from "@/entities/AnalyzeTable/AnalyzeTable";
 import {AgentInfo, EstateCollection, estateCollectionApi} from "@/widgets/EstateCollection/api/estateCollectionApi";
 import {GradeTable} from "@/entities/GradeTable/GradeTable";
-import {useParams} from "react-router";
+import {useParams, useSearchParams} from "react-router";
 import {Button} from "@/shared/ui";
 import {isMobile} from 'react-device-detect';
 import {ButtonEmail} from "@/shared/assets/icons";
 
 const OfferCollection: FC = () => {
   const { id } = useParams<{ id: string }>();
+  const [searchParams, setSearchParams] = useSearchParams()
   const [estateCollection, setEstateCollection] = useState<EstateCollection>()
   const [cSize, setCSize] = useState<number>(0)
   const [loaded, setLoaded] = useState<boolean>(false)
@@ -23,9 +24,11 @@ const OfferCollection: FC = () => {
   const [agentInfo, setAgentInfo] = useState<AgentInfo>()
 
   useEffect(() => {
-      estateCollectionApi.getEstateCollection(id!!).then((r) => {
-          setEstateCollection(r.data.items[0])
-          setCSize(r.data.items[0]?.estates?.length)
+      const token = searchParams.get('token')
+      estateCollectionApi.getEstateCollection(token!!).then((r) => {
+          const coll = findById(r.data.items, id!!)
+          setEstateCollection(coll)
+          setCSize(coll?.estates?.length || 0)
           setLoaded(true)
       }).catch(e => {
           console.log(e)
@@ -33,11 +36,15 @@ const OfferCollection: FC = () => {
       })
   }, []);
 
-    useEffect(() => {
-        estateCollectionApi.getAgentInfo(id!!).then((r) => {
-            setAgentInfo(r.data)
-        }).catch(e => console.log(e))
-    }, []);
+  useEffect(() => {
+      estateCollectionApi.getAgentInfo(id!!).then((r) => {
+          setAgentInfo(r.data)
+      }).catch(e => console.log(e))
+  }, []);
+
+  function findById(list: EstateCollection[], id: string) {
+      return list.findLast((value) => value.id === id)
+  }
 
   function getName(): string {
       if (cSize === 1)
@@ -45,12 +52,6 @@ const OfferCollection: FC = () => {
       if (cSize < 5)
           return "объекта"
       return "объектов"
-  }
-
-  const copyLink = () => {
-        navigator.clipboard.writeText(window.location.href).then(() => {
-            alert('Ссылка скопирована!')
-        })
   }
 
   function copyTask() { const el = document.createElement('input');

@@ -26,11 +26,6 @@ export const Header: FC<{basicToken: string}> = ({
           </Link>
         </li>
         <li className={styles.menu__item}>
-          <Link className={styles.menu__link} to={offerCollection}>
-            Сформировать оффер
-          </Link>
-        </li>
-        <li className={styles.menu__item}>
             <Link className={styles.menu__link} to="user-collection">
                 Мои подборки
             </Link>
