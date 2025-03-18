@@ -6,6 +6,8 @@ import { NumberOfBedrooms } from './NumberOfBedrooms';
 import { Price } from './Price';
 import { Potential } from './Potential';
 import { DEFAULT_FILTERS, useFilters } from '@/widgets/Filter/model/useFilters';
+import {Airport} from "@/widgets/Filter/Airport";
+import {Beach} from "@/widgets/Filter/Beach";
 
 export const Filter: FC = () => {
   const { setFilters } = useFilters();
@@ -26,6 +28,8 @@ export const Filter: FC = () => {
       <NumberOfBedrooms />
       <Price />
       <Potential />
+      <Beach />
+      <Airport />
     </>
   );
 };

@@ -16,6 +16,8 @@ export const DEFAULT_FILTERS = {
   types: [],
   rooms: [],
   grades: [],
+  airportTravelTimes: [],
+  beachTravelTimes: [],
   pageNumber: 1,
 };
 
