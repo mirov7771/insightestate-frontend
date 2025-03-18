@@ -1,5 +1,5 @@
 export type TIconProps = {
-    className?: string
-    fill?: string
-    stroke?: string
-}
+  className?: string;
+  fill?: string;
+  stroke?: string;
+};

@@ -6,6 +6,7 @@ import { ApartmentLayouts } from './Section/ApartmentLayouts/ApartmentLayouts';
 import { PaymentSchedule } from './Section/PaymentSchedule/PaymentSchedule';
 import { AverageYield } from './Section/AverageYield/AverageYield';
 import { Infrastructure } from './Section/Infrastructure/Infrastructure';
+import { Map } from './Section/Map/Map';
 import {
   detailApi,
   Profitability,
@@ -13,21 +14,22 @@ import {
   InfrastructureDto,
   Options,
   Grade,
-  Location, ProjectUnitCount
+  Location,
+  ProjectUnitCount,
 } from '@/widgets/Detail/api/detailApi';
 import { Gallery } from '@/pages/EstateDetail/Gallery/Gallery';
 import { Rating } from '@/pages/EstateDetail/Rating/Rating';
 import { Info } from '@/pages/EstateDetail/Info/Info';
 import { Manager } from '@/pages/EstateDetail/Manager/Manager';
 import { LocationImg } from '@/shared/assets/icons';
-import {Section} from "@/pages/EstateDetail/Section/Section";
-import {Button} from "@/shared/ui";
-import {BaseUserModal} from "@/widgets/Modal/BaseUserModal";
-import {UserCollectionModal} from "@/widgets/Modal/UserCollectionModal";
+import { Section } from '@/pages/EstateDetail/Section/Section';
+import { Button } from '@/shared/ui';
+import { BaseUserModal } from '@/widgets/Modal/BaseUserModal';
+import { UserCollectionModal } from '@/widgets/Modal/UserCollectionModal';
 
 const EstateDetail: FC = () => {
   const { id } = useParams<{ id: string }>();
-  const token = localStorage.getItem('basicToken')
+  const token = localStorage.getItem('basicToken');
   const [name, setName] = useState<string>('');
   const [location, setLocation] = useState<Location>();
   const [roomLayouts, setRoomLayouts] = useState<RoomLayouts>();
@@ -36,73 +38,79 @@ const EstateDetail: FC = () => {
   const [options, setOptions] = useState<Options>();
   const [grade, setGrade] = useState<Grade>();
   const [gallery, setGallery] = useState<string[]>([]);
-  const [description, setDescription] = useState<string>()
-  const [floors, setFloors] = useState<number>(1)
-  const [project, setProject] = useState<ProjectUnitCount>()
-  const [buildEndDate, setBuildEndDate] = useState<string>()
-  const [level, setLevel] = useState<string>()
-  const [type, setType] = useState<string>()
-  const [developer, setDeveloper] = useState<string>()
-  const [parkingSize, setParkingSize] = useState<number>()
-
-  const [baseUserModal, setBaseUserModal] = useState(false)
-  const [userCollectionModal, setUserCollectionModal] = useState(false)
+  const [description, setDescription] = useState<string>();
+  const [floors, setFloors] = useState<number>(1);
+  const [project, setProject] = useState<ProjectUnitCount>();
+  const [buildEndDate, setBuildEndDate] = useState<string>();
+  const [level, setLevel] = useState<string>();
+  const [type, setType] = useState<string>();
+  const [developer, setDeveloper] = useState<string>();
+  const [parkingSize, setParkingSize] = useState<number>();
+  const [baseUserModal, setBaseUserModal] = useState(false);
+  const [userCollectionModal, setUserCollectionModal] = useState(false);
+  const [map, setMap] = useState('');
 
   const handleOpenBaseUserModal = () => {
-    setBaseUserModal(true)
-  }
+    setBaseUserModal(true);
+  };
   const handleCloseBaseUserModal = () => {
-    setBaseUserModal(false)
-  }
+    setBaseUserModal(false);
+  };
 
   const handleOpenUserCollectionModal = () => {
-    setUserCollectionModal(true)
-  }
+    setUserCollectionModal(true);
+  };
   const handleCloseUserCollectionModal = () => {
-    setUserCollectionModal(false)
-  }
+    setUserCollectionModal(false);
+  };
 
   useEffect(() => {
     detailApi.getDetail(id).then((r) => {
       setName(r.data.name);
-      setLocation(r.data.location)
+      setLocation(r.data.location);
       setRoomLayouts(r.data.roomLayouts);
       setProfitability(r.data.profitability);
       setInfrastructure(r.data.infrastructure);
       setOptions(r.data.options);
       setGrade(r.data.grade);
-      setDescription(r.data.shortDescriptionRu)
-      setFloors(r.data.floors)
-      setProject(r.data.unitCount)
-      setBuildEndDate(r.data.buildEndDate)
-      setLevel(r.data.level)
+      setDescription(r.data.shortDescriptionRu);
+      setFloors(r.data.floors);
+      setProject(r.data.unitCount);
+      setBuildEndDate(r.data.buildEndDate);
+      setLevel(r.data.level);
       setGallery([
         ...(r.data.exteriorImages || []),
         ...(r.data.interiorImages || []),
         ...(r.data.facilityImages || []),
       ]);
-      setType(r.data.type)
-      setDeveloper(r.data.developer?.name)
-      setParkingSize(r.data.options?.parkingSize)
+      setType(r.data.type);
+      setDeveloper(r.data.developer?.name);
+      setParkingSize(r.data.options?.parkingSize);
+      setMap(r.data.location.mapUrl || '');
     });
   }, []);
 
   return (
     <div className={styles.wrap}>
-      <Section title={name} rightSide={
-        <div className={styles.title}>
-          <Button disabled={token === null || token === undefined || token === ''}
-                  onClick={handleOpenUserCollectionModal}>
-            Добавить в подборку
-          </Button>
-          <Button
+      <Section
+        title={name}
+        rightSide={
+          <div className={styles.title}>
+            <Button
               disabled={token === null || token === undefined || token === ''}
-              onClick={handleOpenBaseUserModal}>
-            Помощь с клиентом
-          </Button>
-        </div>
-      }>
-      </Section>
+              onClick={handleOpenUserCollectionModal}
+            >
+              Добавить в подборку
+            </Button>
+            <Button
+              disabled={token === null || token === undefined || token === ''}
+              onClick={handleOpenBaseUserModal}
+            >
+              Помощь с клиентом
+            </Button>
+          </div>
+        }
+      ></Section>
       <p className={styles.text}>
         <LocationImg />
         {location?.name}
@@ -110,13 +118,14 @@ const EstateDetail: FC = () => {
       {!!gallery.length && <Gallery images={gallery} />}
       <div className={styles.layout}>
         <main className={styles.main}>
-          {description ?
-              <Section title="Описание">
-                <span>{description}</span>
-              </Section>
-              :
-              <></>}
-          <ApartmentLayouts {...roomLayouts} estateId={id}/>
+          {description ? (
+            <Section title="Описание">
+              <span>{description}</span>
+            </Section>
+          ) : (
+            <></>
+          )}
+          <ApartmentLayouts {...roomLayouts} estateId={id} />
           <PaymentSchedule />
           <AverageYield {...profitability} />
           <Infrastructure
@@ -128,40 +137,40 @@ const EstateDetail: FC = () => {
             coworking={options?.coworking || false}
           />
           {/*<ProjectPlan />*/}
-          {/*<Map />*/}
+          <Map url={map} />
           <FAQ />
         </main>
         <aside className={styles.aside}>
           <Rating {...grade} />
           <Info
-              infrastructure={infrastructure}
-              floors={floors}
-              project={project}
-              buildEndDate={buildEndDate}
-              level={level || 'UNKNOWN'}
-              type={type || 'VILLA'}
-              developer={developer}
-              parkingSize={parkingSize}
+            infrastructure={infrastructure}
+            floors={floors}
+            project={project}
+            buildEndDate={buildEndDate}
+            level={level || 'UNKNOWN'}
+            type={type || 'VILLA'}
+            developer={developer}
+            parkingSize={parkingSize}
           />
           <Manager />
         </aside>
       </div>
       <BaseUserModal
-          open={baseUserModal}
-          onClose={handleCloseBaseUserModal}
-          onOpen={handleOpenBaseUserModal}
-          anchor='bottom'
-          id={id!!}
-          object={name}
-          token={token!!}
+        open={baseUserModal}
+        onClose={handleCloseBaseUserModal}
+        onOpen={handleOpenBaseUserModal}
+        anchor="bottom"
+        id={id!!}
+        object={name}
+        token={token!!}
       />
       <UserCollectionModal
-          open={userCollectionModal}
-          onClose={handleCloseUserCollectionModal}
-          onOpen={handleOpenUserCollectionModal}
-          anchor='bottom'
-          id={id!!}
-          token={token!!}
+        open={userCollectionModal}
+        onClose={handleCloseUserCollectionModal}
+        onOpen={handleOpenUserCollectionModal}
+        anchor="bottom"
+        id={id!!}
+        token={token!!}
       />
     </div>
   );

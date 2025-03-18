@@ -1,4 +1,4 @@
-import {FC} from 'react';
+import { FC } from 'react';
 import styles from './Listing.module.scss';
 import { Filter } from '@/widgets/Filter/Filter';
 import { Card } from '@/entities/Card/Card';
@@ -17,7 +17,7 @@ const Listing: FC = () => {
         </aside>
         <main className={styles.main}>
           {estates.map((estate) => (
-            <Card key={estate.id} {...estate} clickable={true}/>
+            <Card key={estate.id} {...estate} clickable={true} />
           ))}
           <div className={styles.pagination}>
             <Pagination

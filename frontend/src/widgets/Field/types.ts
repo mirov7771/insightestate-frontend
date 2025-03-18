@@ -1,3 +1,3 @@
-import { TextFieldProps } from '@mui/material'
+import { TextFieldProps } from '@mui/material';
 
-export type TFieldProps = TextFieldProps & { onClearField?: () => void }
+export type TFieldProps = TextFieldProps & { onClearField?: () => void };
