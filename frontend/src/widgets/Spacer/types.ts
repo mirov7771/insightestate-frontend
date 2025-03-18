@@ -1,4 +1,4 @@
 export type TSpacerProps = {
-    width: number | string
-    height: number | string
-}
+  height: number | string;
+  width: number | string;
+};

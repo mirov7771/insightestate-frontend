@@ -1,8 +1,8 @@
-import { SwipeableDrawerProps } from '@mui/material'
+import { SwipeableDrawerProps } from '@mui/material';
 
 export type TModalProps = {
-    open: SwipeableDrawerProps['open']
-    onClose: SwipeableDrawerProps['onClose']
-    onOpen: SwipeableDrawerProps['onOpen']
-    anchor: SwipeableDrawerProps['anchor']
-}
+  anchor: SwipeableDrawerProps['anchor'];
+  onClose: SwipeableDrawerProps['onClose'];
+  onOpen: SwipeableDrawerProps['onOpen'];
+  open: SwipeableDrawerProps['open'];
+};

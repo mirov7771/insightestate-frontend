@@ -12,29 +12,22 @@ import {
   Home,
 } from '@/shared/assets/icons';
 import {
-    EstateType,
-    InfrastructureDto, LevelType, ProjectUnitCount,
+  EstateType,
+  InfrastructureDto,
+  LevelType,
+  ProjectUnitCount,
 } from '@/widgets/Detail/api/detailApi';
 
 export const Info: FC<{
-    infrastructure?: InfrastructureDto,
-    floors: number,
-    project?: ProjectUnitCount,
-    buildEndDate?: string,
-    level: string,
-    type: string,
-    developer?: string,
-    parkingSize?: number
-}> = ({
-    infrastructure,
-    floors,
-    project,
-    buildEndDate,
-    level,
-    type,
-    developer,
-    parkingSize
-}) => {
+  floors: number;
+  level: string;
+  type: string;
+  buildEndDate?: string;
+  developer?: string;
+  infrastructure?: InfrastructureDto;
+  parkingSize?: number;
+  project?: ProjectUnitCount;
+}> = ({ infrastructure, floors, project, buildEndDate, level, type, developer, parkingSize }) => {
   return (
     <div className={styles.info}>
       <div className={styles.info__item}>
@@ -68,10 +61,10 @@ export const Info: FC<{
         <span className={styles.text}>{project?.total}</span>
       </div>
       <div className={styles.info__item}>
-               <span className={styles.text}>
-                  <Beach /> До пляжа
-               </span>
-          <span className={styles.text}>{infrastructure?.beachTime?.car} мин</span>
+        <span className={styles.text}>
+          <Beach /> До пляжа
+        </span>
+        <span className={styles.text}>{infrastructure?.beachTime?.car} мин</span>
       </div>
       <div className={styles.info__item}>
         <span className={styles.text}>
@@ -79,14 +72,16 @@ export const Info: FC<{
         </span>
         <span className={styles.text}>{infrastructure?.airportTime?.car} мин</span>
       </div>
-        {parkingSize ?
-      <div className={styles.info__item}>
-        <span className={styles.text}>
-          <Car /> Парковка
-        </span>
-        <span className={styles.text}>{parkingSize}</span>
-      </div> : <></>
-        }
+      {parkingSize ? (
+        <div className={styles.info__item}>
+          <span className={styles.text}>
+            <Car /> Парковка
+          </span>
+          <span className={styles.text}>{parkingSize}</span>
+        </div>
+      ) : (
+        <></>
+      )}
       <div className={styles.info__item}>
         <span className={styles.text}>
           <Constructing /> Застройщик

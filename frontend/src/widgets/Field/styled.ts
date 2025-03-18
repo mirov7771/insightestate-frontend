@@ -1,6 +1,6 @@
-import styled from '@emotion/styled'
-import { TextField } from '@mui/material'
-import { theme } from '@/theme/theme'
+import styled from '@emotion/styled';
+import { TextField } from '@mui/material';
+import { theme } from '@/theme/theme';
 
 export const StyledField = styled(TextField)`
   & .MuiInputLabel-root {
@@ -62,4 +62,4 @@ export const StyledField = styled(TextField)`
       color: ${theme.colors.error};
     }
   }
-`
+`;

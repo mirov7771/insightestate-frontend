@@ -2,6 +2,7 @@ import { api } from '@/shared/api';
 import { AxiosResponse } from 'axios';
 
 export type EstateDetail = {
+  floors: number;
   id: string;
   landPurchased: boolean;
   location: Location;
@@ -11,7 +12,6 @@ export type EstateDetail = {
   developer?: Developer;
   eiaEnabled?: boolean;
   exteriorImages?: string[];
-  facilityImages?: string[];
   grade?: Grade;
   infrastructure?: InfrastructureDto;
   interiorImages?: string[];
@@ -26,7 +26,7 @@ export type EstateDetail = {
   status?: string;
   type?: string;
   unitCount?: ProjectUnitCount;
-  floors: number;
+  facilityImages?: string[];
 };
 
 export type Developer = {
@@ -88,16 +88,16 @@ type RoomLayout = {
 };
 
 export type RoomLayouts = {
-  studio?: RoomLayout;
+  five?: RoomLayout;
+  four?: RoomLayout;
   one?: RoomLayout;
+  studio?: RoomLayout;
   three?: RoomLayout;
   two?: RoomLayout;
-  four?: RoomLayout;
-  five?: RoomLayout;
-  villaTwo?: RoomLayout
-  villaThree?: RoomLayout
-  villaFour?: RoomLayout
-  villaFive?: RoomLayout
+  villaFive?: RoomLayout;
+  villaFour?: RoomLayout;
+  villaThree?: RoomLayout;
+  villaTwo?: RoomLayout;
 };
 
 export type Options = {
@@ -105,22 +105,21 @@ export type Options = {
   coworking?: boolean;
   entertainment?: boolean;
   gym?: boolean;
-  shop?: boolean;
   parkingSize?: number;
+  shop?: boolean;
 };
 
 export const LevelType = new Map<string, string>([
   ['COMFORT', 'Комфорт'],
   ['LUX', 'Люкс'],
   ['PREMIUM', 'Премиум'],
-  ['UNKNOWN', 'Не указан']
+  ['UNKNOWN', 'Не указан'],
 ]);
 
 export const EstateType = new Map<string, string>([
   ['VILLA', 'Вилла'],
-  ['APARTMENT', 'Квартира']
-])
-
+  ['APARTMENT', 'Квартира'],
+]);
 
 export const detailApi = {
   getDetail: async (id: string | undefined): Promise<AxiosResponse<EstateDetail>> => {
