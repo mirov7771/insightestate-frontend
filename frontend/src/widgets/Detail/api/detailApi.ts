@@ -26,9 +26,10 @@ export type EstateDetail = {
   status?: string;
   type?: string;
   unitCount?: ProjectUnitCount;
+  floors: number;
 };
 
-type Developer = {
+export type Developer = {
   name?: string;
 };
 
@@ -40,7 +41,7 @@ export type Grade = {
   projectLocation?: number;
 };
 
-type ProjectUnitCount = {
+export type ProjectUnitCount = {
   available?: number;
   build?: number;
   finished?: number;
@@ -105,7 +106,21 @@ export type Options = {
   entertainment?: boolean;
   gym?: boolean;
   shop?: boolean;
+  parkingSize?: number;
 };
+
+export const LevelType = new Map<string, string>([
+  ['COMFORT', 'Комфорт'],
+  ['LUX', 'Люкс'],
+  ['PREMIUM', 'Премиум'],
+  ['UNKNOWN', 'Не указан']
+]);
+
+export const EstateType = new Map<string, string>([
+  ['VILLA', 'Вилла'],
+  ['APARTMENT', 'Квартира']
+])
+
 
 export const detailApi = {
   getDetail: async (id: string | undefined): Promise<AxiosResponse<EstateDetail>> => {

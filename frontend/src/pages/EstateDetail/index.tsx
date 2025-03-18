@@ -13,7 +13,7 @@ import {
   InfrastructureDto,
   Options,
   Grade,
-  Location
+  Location, ProjectUnitCount
 } from '@/widgets/Detail/api/detailApi';
 import { Gallery } from '@/pages/EstateDetail/Gallery/Gallery';
 import { Rating } from '@/pages/EstateDetail/Rating/Rating';
@@ -36,6 +36,14 @@ const EstateDetail: FC = () => {
   const [options, setOptions] = useState<Options>();
   const [grade, setGrade] = useState<Grade>();
   const [gallery, setGallery] = useState<string[]>([]);
+  const [description, setDescription] = useState<string>()
+  const [floors, setFloors] = useState<number>(1)
+  const [project, setProject] = useState<ProjectUnitCount>()
+  const [buildEndDate, setBuildEndDate] = useState<string>()
+  const [level, setLevel] = useState<string>()
+  const [type, setType] = useState<string>()
+  const [developer, setDeveloper] = useState<string>()
+  const [parkingSize, setParkingSize] = useState<number>()
 
   const [baseUserModal, setBaseUserModal] = useState(false)
   const [userCollectionModal, setUserCollectionModal] = useState(false)
@@ -63,11 +71,19 @@ const EstateDetail: FC = () => {
       setInfrastructure(r.data.infrastructure);
       setOptions(r.data.options);
       setGrade(r.data.grade);
+      setDescription(r.data.shortDescriptionRu)
+      setFloors(r.data.floors)
+      setProject(r.data.unitCount)
+      setBuildEndDate(r.data.buildEndDate)
+      setLevel(r.data.level)
       setGallery([
         ...(r.data.exteriorImages || []),
         ...(r.data.interiorImages || []),
         ...(r.data.facilityImages || []),
       ]);
+      setType(r.data.type)
+      setDeveloper(r.data.developer?.name)
+      setParkingSize(r.data.options?.parkingSize)
     });
   }, []);
 
@@ -94,6 +110,12 @@ const EstateDetail: FC = () => {
       {!!gallery.length && <Gallery images={gallery} />}
       <div className={styles.layout}>
         <main className={styles.main}>
+          {description ?
+              <Section title="Описание">
+                <span>{description}</span>
+              </Section>
+              :
+              <></>}
           <ApartmentLayouts {...roomLayouts} estateId={id}/>
           <PaymentSchedule />
           <AverageYield {...profitability} />
@@ -111,7 +133,16 @@ const EstateDetail: FC = () => {
         </main>
         <aside className={styles.aside}>
           <Rating {...grade} />
-          <Info />
+          <Info
+              infrastructure={infrastructure}
+              floors={floors}
+              project={project}
+              buildEndDate={buildEndDate}
+              level={level || 'UNKNOWN'}
+              type={type || 'VILLA'}
+              developer={developer}
+              parkingSize={parkingSize}
+          />
           <Manager />
         </aside>
       </div>
