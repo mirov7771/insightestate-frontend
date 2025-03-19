@@ -2,11 +2,13 @@ import { Section } from '@/pages/EstateDetail/Section/Section';
 import payment from './payment.svg';
 import styles from './PaymentSchedule.module.scss';
 import React, {FC, useEffect, useState} from 'react';
+import {ScheduleByProject} from "@/widgets/Detail/api/detailApi";
 
 export const PaymentSchedule: FC<{
     projectId: string
 }> = ({projectId}) => {
   const [type, setType] = useState<number>(0)
+  const [items, setItems] = useState<string[]>()
     useEffect(() => {
         switch (projectId) {
             case 'TH-HKT-KL-00050':
@@ -91,7 +93,21 @@ export const PaymentSchedule: FC<{
             case 'TH-BKK-KS-00089':
                 setType(13) //30%,70%
                 break;
+            case 'TH-HKT-BT-00004':
+            case 'TH-HKT-BT-00064':
+            case 'TH-HKT-BT-00039':
+                setType(14) //30%,20%,50%
+                break;
+            case 'TH-HKT-BT-00009':
+            case 'TH-HKT-RW-00029':
+                setType(15) //35%,15%,20%,20%,10%
+                break;
+            case 'TH-HKT-BT-00018':
+            case 'TH-HKT-BT-00019':
+                setType(16) //35%,15%,10%,15%,15%,10%
+                break;
         }
+        setItems(ScheduleByProject.get(projectId))
         console.log(projectId, type)
     }, [projectId]);
   return (
@@ -312,9 +328,68 @@ export const PaymentSchedule: FC<{
                                                                     <span>70%</span>
                                                                 </div>
                                                             </div> :
+                                                            type === 14 ?
+                                                                <div>
+                                                                    <div className={`${styles.item__header} ${styles.item}`}>
+                                                                        <span>1 платеж</span>
+                                                                        <span>2 платеж</span>
+                                                                        <span>3 платеж</span>
+                                                                    </div>
+                                                                    <div className={styles.item}>
+                                                                        <span>30%</span>
+                                                                        <span>20%</span>
+                                                                        <span>50%</span>
+                                                                    </div>
+                                                                </div> :
+                                                                type === 15 ?
+                                                                    <div>
+                                                                        <div className={`${styles.item__header} ${styles.item}`}>
+                                                                            <span>1 платеж</span>
+                                                                            <span>2 платеж</span>
+                                                                            <span>3 платеж</span>
+                                                                            <span>4 платеж</span>
+                                                                            <span>5 платеж</span>
+                                                                        </div>
+                                                                        <div className={styles.item}>
+                                                                            <span>35%</span>
+                                                                            <span>15%</span>
+                                                                            <span>20%</span>
+                                                                            <span>20%</span>
+                                                                            <span>10%</span>
+                                                                        </div>
+                                                                    </div> :
+                                                                    type === 16 ?
+                                                                        <div>
+                                                                            <div className={`${styles.item__header} ${styles.item}`}>
+                                                                                <span>1 платеж</span>
+                                                                                <span>2 платеж</span>
+                                                                                <span>3 платеж</span>
+                                                                                <span>4 платеж</span>
+                                                                                <span>5 платеж</span>
+                                                                                <span>6 платеж</span>
+                                                                            </div>
+                                                                            <div className={styles.item}>
+                                                                                <span>35%</span>
+                                                                                <span>15%</span>
+                                                                                <span>10%</span>
+                                                                                <span>15%</span>
+                                                                                <span>15%</span>
+                                                                                <span>10%</span>
+                                                                            </div>
+                                                                        </div> :
 
                         <div className={styles.wrapper}>
+                            {items && items.length > 0 ?
+                                <>
+                                    <div className={`${styles.item__header} ${styles.item}`}>
+                                        {items?.map((item, index) => <span>{index+1} платеж</span>)}
+                                    </div>
+                                    <div className={styles.item}>
+                                        {items?.map((item) => <span>{item}</span>)}
+                                    </div>
+                                </> :
                             <img src={payment} alt="payment" />
+                            }
                         </div>
         }
     </Section>
