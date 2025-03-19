@@ -50,6 +50,7 @@ const EstateDetail: FC = () => {
   const [userCollectionModal, setUserCollectionModal] = useState(false);
   const [map, setMap] = useState('');
   const [projectId, setProjectId] = useState<string>('')
+  const [companyEnabled, setCompanyEnabled] = useState<boolean>(false)
 
   const handleOpenBaseUserModal = () => {
     setBaseUserModal(true);
@@ -89,6 +90,7 @@ const EstateDetail: FC = () => {
       setParkingSize(r.data.options?.parkingSize);
       setMap(r.data.location.mapUrl || '');
       setProjectId(r.data.projectId)
+      setCompanyEnabled(r.data.managementCompany?.enabled || false)
     });
   }, []);
 
@@ -153,6 +155,7 @@ const EstateDetail: FC = () => {
             type={type || 'VILLA'}
             developer={developer}
             parkingSize={parkingSize}
+            companyEnabled={companyEnabled}
           />
           <Manager />
         </aside>

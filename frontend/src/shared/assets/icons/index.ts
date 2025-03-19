@@ -28,6 +28,8 @@ import Man from './Man.svg?react';
 import Riskt from './Riskt.svg?react';
 import Yes from './Yes.svg?react';
 import LocationImg from './LocationImg.svg?react';
+import Money from './Money.svg?react'
+import LocationImg2 from './LocationImg2.svg?react';
 
 export {
   Bed,
@@ -60,4 +62,6 @@ export {
   Riskt,
   Yes,
   LocationImg,
+  Money,
+  LocationImg2
 };

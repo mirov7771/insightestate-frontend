@@ -18,7 +18,9 @@ export const DEFAULT_FILTERS = {
   grades: [],
   airportTravelTimes: [],
   beachTravelTimes: [],
-  pageNumber: 1,
+  pageNumber: 0,
+  beachName: undefined,
+  managementCompanyEnabled: undefined
 };
 
 type FiltersContextValues = GetEstateParams & {

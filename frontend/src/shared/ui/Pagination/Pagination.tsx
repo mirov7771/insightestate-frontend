@@ -33,7 +33,7 @@ export const Pagination: FC<PaginationProps> = ({
         )}
       </div>
       <span className={styles.pagination__pages}>
-        {pageNumber} / {totalPages}
+        {pageNumber + 1} / {totalPages}
       </span>
     </div>
   );

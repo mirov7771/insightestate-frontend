@@ -27,6 +27,7 @@ export type EstateDetail = {
   type?: string;
   unitCount?: ProjectUnitCount;
   facilityImages?: string[];
+  managementCompany?: ManagementCompany,
 };
 
 export type Developer = {
@@ -108,6 +109,10 @@ export type Options = {
   parkingSize?: number;
   shop?: boolean;
 };
+
+export type ManagementCompany = {
+  enabled?: boolean;
+}
 
 export const LevelType = new Map<string, string>([
   ['COMFORT', 'Комфорт'],

@@ -27,6 +27,8 @@ export type GetEstateParams = {
   price?: string;
   rooms?: string[];
   types?: string[];
+  beachName?: string,
+  managementCompanyEnabled?: string;
 };
 
 type ResponseGetEstate = {

@@ -26,7 +26,7 @@ const Listing: FC = () => {
               goToPreviousPage={() =>
                 setFilters((filtersState) => ({
                   ...filtersState,
-                  pageNumber: (pageNumber as number) - 1 || 1,
+                  pageNumber: (pageNumber as number) - 1 || 0,
                 }))
               }
               goToNextPage={() =>

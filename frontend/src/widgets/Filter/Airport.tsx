@@ -1,5 +1,5 @@
 import { ChangeEvent, FC, useEffect, useState } from 'react';
-import { Vector } from '@/shared/assets/icons';
+import { Airport as AirportIcon } from '@/shared/assets/icons';
 import styles from './Filter.module.scss';
 import { Accordion, Checkbox } from '@/shared/ui';
 import { useFilters } from '@/widgets/Filter/model/useFilters';
@@ -30,7 +30,7 @@ export const Airport: FC = () => {
   }, [filter]);
 
   return (
-    <Accordion icon={<Vector />} title="Время до аэропорта">
+    <Accordion icon={<AirportIcon />} title="Время до аэропорта">
       <div className={styles.content}>
         <Checkbox
           value="1"

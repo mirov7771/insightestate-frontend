@@ -8,6 +8,8 @@ import { Potential } from './Potential';
 import { DEFAULT_FILTERS, useFilters } from '@/widgets/Filter/model/useFilters';
 import {Airport} from "@/widgets/Filter/Airport";
 import {Beach} from "@/widgets/Filter/Beach";
+import {Company} from "@/widgets/Filter/Company";
+import {Region} from "@/widgets/Filter/Region";
 
 export const Filter: FC = () => {
   const { setFilters } = useFilters();
@@ -30,6 +32,8 @@ export const Filter: FC = () => {
       <Potential />
       <Beach />
       <Airport />
+      <Company />
+      <Region />
     </>
   );
 };

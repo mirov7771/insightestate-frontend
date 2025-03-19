@@ -1,15 +1,15 @@
 import { FC } from 'react';
 import styles from './Info.module.scss';
 import {
-  Airport,
-  Beach,
-  Calendar,
-  Car,
-  CityBuilding,
-  Conference,
-  Constructing,
-  Diamond,
-  Home,
+    Airport,
+    Beach,
+    Calendar,
+    Car,
+    CityBuilding,
+    Conference,
+    Constructing,
+    Diamond,
+    Home, Money,
 } from '@/shared/assets/icons';
 import {
   EstateType,
@@ -27,7 +27,8 @@ export const Info: FC<{
   infrastructure?: InfrastructureDto;
   parkingSize?: number;
   project?: ProjectUnitCount;
-}> = ({ infrastructure, floors, project, buildEndDate, level, type, developer, parkingSize }) => {
+  companyEnabled: boolean;
+}> = ({ infrastructure, floors, project, buildEndDate, level, type, developer, parkingSize, companyEnabled }) => {
   return (
     <div className={styles.info}>
       <div className={styles.info__item}>
@@ -87,6 +88,12 @@ export const Info: FC<{
           <Constructing /> Застройщик
         </span>
         <span className={styles.text_developer}>{developer}</span>
+      </div>
+      <div className={styles.info__item}>
+          <span className={styles.text}>
+            <Money /> Наличие уставного капитала
+          </span>
+          <span className={styles.text_developer}>{companyEnabled ? 'Да' : 'Нет'}</span>
       </div>
     </div>
   );
