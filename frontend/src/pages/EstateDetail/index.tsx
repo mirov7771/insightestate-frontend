@@ -49,6 +49,7 @@ const EstateDetail: FC = () => {
   const [baseUserModal, setBaseUserModal] = useState(false);
   const [userCollectionModal, setUserCollectionModal] = useState(false);
   const [map, setMap] = useState('');
+  const [projectId, setProjectId] = useState<string>('')
 
   const handleOpenBaseUserModal = () => {
     setBaseUserModal(true);
@@ -87,6 +88,7 @@ const EstateDetail: FC = () => {
       setDeveloper(r.data.developer?.name);
       setParkingSize(r.data.options?.parkingSize);
       setMap(r.data.location.mapUrl || '');
+      setProjectId(r.data.projectId)
     });
   }, []);
 
@@ -126,7 +128,7 @@ const EstateDetail: FC = () => {
             <></>
           )}
           <ApartmentLayouts {...roomLayouts} estateId={id} />
-          <PaymentSchedule />
+          <PaymentSchedule projectId={projectId}/>
           <AverageYield {...profitability} />
           <Infrastructure
             beachTime={infrastructure?.beachTime?.car}
