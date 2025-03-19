@@ -7,6 +7,7 @@ import {ScheduleByProject} from "@/widgets/Detail/api/detailApi";
 export const PaymentSchedule: FC<{
     projectId: string
 }> = ({projectId}) => {
+    //TODO переделать этот костыль, брать данные с бэка когда они там появятся
   const [type, setType] = useState<number>(0)
   const [items, setItems] = useState<string[]>()
     useEffect(() => {

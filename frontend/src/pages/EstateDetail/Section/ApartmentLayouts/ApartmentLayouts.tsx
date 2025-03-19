@@ -32,8 +32,8 @@ export const ApartmentLayouts: FC<RoomLayouts & { estateId?: string }> = ({
                 {studio?.square?.max || studio?.square?.min}
               </span>
               <span>
-                {studio?.pricePerMeter?.min || studio?.pricePerMeter?.max} -{' '}
-                {studio?.pricePerMeter?.max || studio?.pricePerMeter?.min}
+                {studio?.price?.min || studio?.price?.max} -{' '}
+                {studio?.price?.max || studio?.price?.min}
               </span>
             </div>
           ) : (
@@ -46,8 +46,8 @@ export const ApartmentLayouts: FC<RoomLayouts & { estateId?: string }> = ({
                 {one?.square?.min || one?.square?.max} - {one?.square?.max || one?.square?.min}
               </span>
               <span>
-                {one?.pricePerMeter?.min || one?.pricePerMeter?.max} -{' '}
-                {one?.pricePerMeter?.max || one?.pricePerMeter?.min}
+                {one?.price?.min || one?.price?.max} -{' '}
+                {one?.price?.max || one?.price?.min}
               </span>
             </div>
           ) : (
@@ -60,8 +60,8 @@ export const ApartmentLayouts: FC<RoomLayouts & { estateId?: string }> = ({
                 {two?.square?.min || two?.square?.max} - {two?.square?.max || two?.square?.min}
               </span>
               <span>
-                {two?.pricePerMeter?.min || two?.pricePerMeter?.max} -{' '}
-                {two?.pricePerMeter?.max || two?.pricePerMeter?.min}
+                {two?.price?.min || two?.price?.max} -{' '}
+                {two?.price?.max || two?.price?.min}
               </span>
             </div>
           ) : (
@@ -75,8 +75,8 @@ export const ApartmentLayouts: FC<RoomLayouts & { estateId?: string }> = ({
                 {three?.square?.max || three?.square?.min}
               </span>
               <span>
-                {three?.pricePerMeter?.min || three?.pricePerMeter?.max} -{' '}
-                {three?.pricePerMeter?.max || three?.pricePerMeter?.min}
+                {three?.price?.min || three?.price?.max} -{' '}
+                {three?.price?.max || three?.price?.min}
               </span>
             </div>
           ) : (
@@ -89,8 +89,8 @@ export const ApartmentLayouts: FC<RoomLayouts & { estateId?: string }> = ({
                 {four?.square?.min || four?.square?.max} - {four?.square?.max || four?.square?.min}
               </span>
               <span>
-                {four?.pricePerMeter?.min || four?.pricePerMeter?.max} -{' '}
-                {four?.pricePerMeter?.max || four?.pricePerMeter?.min}
+                {four?.price?.min || four?.price?.max} -{' '}
+                {four?.price?.max || four?.price?.min}
               </span>
             </div>
           ) : (
@@ -103,8 +103,8 @@ export const ApartmentLayouts: FC<RoomLayouts & { estateId?: string }> = ({
                 {five?.square?.min || five?.square?.max} - {five?.square?.max || five?.square?.min}
               </span>
               <span>
-                {five?.pricePerMeter?.min || five?.pricePerMeter?.max} -{' '}
-                {five?.pricePerMeter?.max || five?.pricePerMeter?.min}
+                {five?.price?.min || five?.price?.max} -{' '}
+                {five?.price?.max || five?.price?.min}
               </span>
             </div>
           ) : (
@@ -118,8 +118,8 @@ export const ApartmentLayouts: FC<RoomLayouts & { estateId?: string }> = ({
                 {villaTwo?.square?.max || villaTwo?.square?.min}
               </span>
               <span>
-                {villaTwo?.pricePerMeter?.min || villaTwo?.pricePerMeter?.max} -{' '}
-                {villaTwo?.pricePerMeter?.max || villaTwo?.pricePerMeter?.min}
+                {villaTwo?.price?.min || villaTwo?.price?.max} -{' '}
+                {villaTwo?.price?.max || villaTwo?.price?.min}
               </span>
             </div>
           ) : (
@@ -133,8 +133,8 @@ export const ApartmentLayouts: FC<RoomLayouts & { estateId?: string }> = ({
                 {villaThree?.square?.max || villaThree?.square?.min}
               </span>
               <span>
-                {villaThree?.pricePerMeter?.min || villaThree?.pricePerMeter?.max} -{' '}
-                {villaThree?.pricePerMeter?.max || villaThree?.pricePerMeter?.min}
+                {villaThree?.price?.min || villaThree?.price?.max} -{' '}
+                {villaThree?.price?.max || villaThree?.price?.min}
               </span>
             </div>
           ) : (
@@ -148,8 +148,8 @@ export const ApartmentLayouts: FC<RoomLayouts & { estateId?: string }> = ({
                 {villaFour?.square?.max || villaFour?.square?.min}
               </span>
               <span>
-                {villaFour?.pricePerMeter?.min || villaFour?.pricePerMeter?.max} -{' '}
-                {villaFour?.pricePerMeter?.max || villaFour?.pricePerMeter?.min}
+                {villaFour?.price?.min || villaFour?.price?.max} -{' '}
+                {villaFour?.price?.max || villaFour?.price?.min}
               </span>
             </div>
           ) : (
@@ -163,8 +163,8 @@ export const ApartmentLayouts: FC<RoomLayouts & { estateId?: string }> = ({
                 {villaFive?.square?.max || villaFive?.square?.min}
               </span>
               <span>
-                {villaFive?.pricePerMeter?.min || villaFive?.pricePerMeter?.max} -{' '}
-                {villaFive?.pricePerMeter?.max || villaFive?.pricePerMeter?.min}
+                {villaFive?.price?.min || villaFive?.price?.max} -{' '}
+                {villaFive?.price?.max || villaFive?.price?.min}
               </span>
             </div>
           ) : (
