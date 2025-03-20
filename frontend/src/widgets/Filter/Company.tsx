@@ -12,7 +12,7 @@ export const Company: FC = () => {
   };
 
   return (
-    <Accordion icon={<Money />} title="Стоимость">
+    <Accordion icon={<Money />} title="Наличие УК">
       <div className={styles.content}>
         <RadioButton
           name="managementCompanyEnabled"
