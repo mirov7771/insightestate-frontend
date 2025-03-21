@@ -26,6 +26,7 @@ import { Section } from '@/pages/EstateDetail/Section/Section';
 import { Button } from '@/shared/ui';
 import { BaseUserModal } from '@/widgets/Modal/BaseUserModal';
 import { UserCollectionModal } from '@/widgets/Modal/UserCollectionModal';
+import {AiModal} from "@/widgets/Modal/AiModal";
 
 const EstateDetail: FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -47,6 +48,7 @@ const EstateDetail: FC = () => {
   const [developer, setDeveloper] = useState<string>();
   const [parkingSize, setParkingSize] = useState<number>();
   const [baseUserModal, setBaseUserModal] = useState(false);
+  const [aiModal, setAiModal] = useState(false);
   const [userCollectionModal, setUserCollectionModal] = useState(false);
   const [map, setMap] = useState('');
   const [projectId, setProjectId] = useState<string>('')
@@ -64,6 +66,13 @@ const EstateDetail: FC = () => {
   };
   const handleCloseUserCollectionModal = () => {
     setUserCollectionModal(false);
+  };
+
+  const handleOpenAiModal = () => {
+    setAiModal(true);
+  };
+  const handleCloseAiModal = () => {
+    setAiModal(false);
   };
 
   useEffect(() => {
@@ -111,6 +120,12 @@ const EstateDetail: FC = () => {
               onClick={handleOpenBaseUserModal}
             >
               Помощь с клиентом
+            </Button>
+            <Button
+                disabled={token === null || token === undefined || token === ''}
+                onClick={handleOpenAiModal}
+            >
+              AI подборщик объектов
             </Button>
           </div>
         }
@@ -176,6 +191,12 @@ const EstateDetail: FC = () => {
         anchor="bottom"
         id={id!!}
         token={token!!}
+      />
+      <AiModal
+          open={aiModal}
+          onClose={handleCloseAiModal}
+          onOpen={handleOpenAiModal}
+          anchor="bottom"
       />
     </div>
   );
