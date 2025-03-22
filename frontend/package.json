@@ -51,6 +51,7 @@
     "@react-google-maps/api": "^2.20.6",
     "@storybook/react": "^8.6.4",
     "axios": "^1.7.9",
+    "buffer": "^6.0.3",
     "qs": "^6.14.0",
     "react": "^19.0.0",
     "react-alert": "^7.0.3",

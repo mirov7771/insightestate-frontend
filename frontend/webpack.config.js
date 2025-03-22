@@ -20,6 +20,10 @@ module.exports = (env, argv) => {
       alias: {
         '@': path.resolve(__dirname, 'src'), // Алиас для папки src
       },
+      fallback: {
+        // add this line to resolve.fallback
+        "buffer": require.resolve("buffer")
+      }
     },
     module: {
       rules: [
@@ -91,6 +95,9 @@ module.exports = (env, argv) => {
       new MiniCssExtractPlugin({
         filename: '[name].css', // Генерация CSS-файлов
         chunkFilename: '[id].css',
+      }),
+      new webpack.ProvidePlugin({
+        Buffer: ['buffer', 'Buffer'],
       }),
     ],
     devServer: {

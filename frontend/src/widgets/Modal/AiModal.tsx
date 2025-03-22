@@ -9,6 +9,7 @@ import {
 import { Spacer } from '../Spacer/Spacer';
 import { Text } from '../Text/Text';
 import {BaseField} from "@/widgets/BaseField/BaseField";
+import {useNavigate} from "react-router";
 
 export const AiModal: FC<TModalProps> = ({
   onClose,
@@ -16,6 +17,7 @@ export const AiModal: FC<TModalProps> = ({
   anchor,
   onOpen
 }) => {
+  const navigate = useNavigate();
   const [isNew, setIsNew] = useState<boolean>(false);
   const [name, setName] = useState<string>('');
   const onChangeName = (e: ChangeEvent<HTMLInputElement>) => {
@@ -24,6 +26,11 @@ export const AiModal: FC<TModalProps> = ({
   const handleIsNew = () => {
     setIsNew(true);
   };
+  const goTo = (e: ChangeEvent) => {
+    const encodedString = Buffer.from(name).toString('base64');
+    navigate(`/ai-listing?request=${encodedString}`)
+    onClose(e)
+  }
 
   useEffect(() => {
     setIsNew(false)
@@ -73,7 +80,7 @@ export const AiModal: FC<TModalProps> = ({
               <StyledButton color="secondary" variant="contained" size="medium" onClick={handleIsNew}>
                 Подобрать на основе описания
               </StyledButton> :
-              <StyledButton color="secondary" variant="contained" size="medium" onClick={onClose}>
+              <StyledButton color="secondary" variant="contained" size="medium" onClick={goTo}>
                 Сформировать подборку
               </StyledButton>
         }
