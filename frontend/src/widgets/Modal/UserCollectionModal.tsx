@@ -38,6 +38,10 @@ export const UserCollectionModal: FC<TModalProps & { id: string; token: string }
       .catch((e) => console.log(e));
   }, []);
 
+  useEffect(() => {
+    setIsNew(false)
+  }, [open]);
+
   const onChangeName = (e: ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
   };

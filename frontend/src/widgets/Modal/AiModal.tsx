@@ -24,6 +24,11 @@ export const AiModal: FC<TModalProps> = ({
   const handleIsNew = () => {
     setIsNew(true);
   };
+
+  useEffect(() => {
+    setIsNew(false)
+  }, [open]);
+
   return (
     <>
       <StyledSwipeableDrawer
@@ -55,10 +60,8 @@ export const AiModal: FC<TModalProps> = ({
                       onChange={onChangeName}
                       value={name}
                       name="name"
-                      rows={10}
-                      inputMode='text'
-                      minRows={10}
-                      maxRows={10}
+                      rows={7}
+                      multiline={true}
                       label="Введите ваш запрос"
                   />
             }
