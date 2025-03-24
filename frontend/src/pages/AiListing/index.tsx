@@ -1,10 +1,16 @@
-import { FC } from 'react';
+import {FC, useEffect, useState} from 'react';
 import styles from './AiListing.module.scss';
 import { Card } from '@/entities/Card/Card';
-import { useFilters } from '@/widgets/Filter/model/useFilters';
+import {Estate, filterApi} from "@/widgets/Filter/api/filterApi";
 
 export const AiListing: FC = () => {
-  const { estates } = useFilters();
+  const [ estates, setEstates ] = useState<Estate[]>([]);
+
+    useEffect(() => {
+        filterApi.getEstateWithParams().then((r) => {
+            setEstates(r.data.items)
+        })
+    }, []);
 
   return (
     <div className={styles.wrap}>

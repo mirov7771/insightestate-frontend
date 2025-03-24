@@ -1,5 +1,5 @@
-import { api } from '@/shared/api';
-import { AxiosResponse } from 'axios';
+import {api} from '@/shared/api';
+import {AxiosResponse} from 'axios';
 
 export type Estate = {
   beachTravelTime: number;
@@ -47,6 +47,15 @@ export const filterApi = {
       });
 
       return response;
+    } catch (error) {
+      throw error;
+    }
+  },
+  getEstateWithParams: async (params?: GetEstateParams): Promise<AxiosResponse<ResponseGetEstate>> => {
+    try {
+      return await api.get<ResponseGetEstate>('v1/estate', {
+        params: {...params},
+      });
     } catch (error) {
       throw error;
     }
