@@ -35,44 +35,61 @@ export const Info: FC<{
         <span className={styles.text}>
           <Diamond /> Класс
         </span>
-        <span className={styles.text}>{LevelType.get(level)}</span>
+        <span className={styles.text}>{LevelType.get(level) || 'Не указан'}</span>
       </div>
       <div className={styles.info__item}>
         <span className={styles.text}>
           <Home /> Тип объекта
         </span>
-        <span className={styles.text}>{EstateType.get(type)}</span>
+        <span className={styles.text}>{EstateType.get(type) || 'Вилла'}</span>
       </div>
-      <div className={styles.info__item}>
-        <span className={styles.text}>
-          <Calendar /> Дата сдачи
-        </span>
-        <span className={styles.text}>{buildEndDate}</span>
-      </div>
-      <div className={styles.info__item}>
-        <span className={styles.text}>
-          <CityBuilding /> Всего этажей
-        </span>
-        <span className={styles.text}>{floors}</span>
-      </div>
-      <div className={styles.info__item}>
-        <span className={styles.text}>
-          <Conference /> Всего квартир
-        </span>
-        <span className={styles.text}>{project?.total}</span>
-      </div>
-      <div className={styles.info__item}>
-        <span className={styles.text}>
-          <Beach /> До пляжа
-        </span>
-        <span className={styles.text}>{infrastructure?.beachTime?.car} мин</span>
-      </div>
-      <div className={styles.info__item}>
-        <span className={styles.text}>
-          <Airport /> До аэропорта
-        </span>
-        <span className={styles.text}>{infrastructure?.airportTime?.car} мин</span>
-      </div>
+        {buildEndDate ?
+            <div className={styles.info__item}>
+                <span className={styles.text}>
+                  <Calendar /> Дата сдачи
+                </span>
+                <span className={styles.text}>{buildEndDate}</span>
+            </div> :
+            <></>
+        }
+        {floors ?
+            <div className={styles.info__item}>
+                <span className={styles.text}>
+                  <CityBuilding /> Всего этажей
+                </span>
+                <span className={styles.text}>{floors}</span>
+            </div> :
+            <></>
+        }
+        {project?.total ?
+            <div className={styles.info__item}>
+                <span className={styles.text}>
+                  <Conference /> Всего квартир
+                </span>
+                <span className={styles.text}>{project?.total}</span>
+            </div>
+            : <></>
+        }
+        {infrastructure?.beachTime?.car ?
+            <div className={styles.info__item}>
+                <span className={styles.text}>
+                  <Beach /> До пляжа
+                </span>
+                <span className={styles.text}>{infrastructure?.beachTime?.car} мин</span>
+            </div>
+            :
+            <></>
+        }
+        {infrastructure?.airportTime?.car ?
+            <div className={styles.info__item}>
+                <span className={styles.text}>
+                  <Airport /> До аэропорта
+                </span>
+                <span className={styles.text}>{infrastructure?.airportTime?.car} мин</span>
+            </div>
+            :
+            <></>
+        }
       {parkingSize ? (
         <div className={styles.info__item}>
           <span className={styles.text}>
@@ -83,12 +100,15 @@ export const Info: FC<{
       ) : (
         <></>
       )}
-      <div className={styles.info__item}>
-        <span className={styles.text}>
-          <Constructing /> Застройщик
-        </span>
-        <span className={styles.text_developer}>{developer}</span>
-      </div>
+        {developer ?
+            <div className={styles.info__item}>
+                <span className={styles.text}>
+                  <Constructing /> Застройщик
+                </span>
+                <span className={styles.text_developer}>{developer}</span>
+            </div> :
+            <></>
+        }
       <div className={styles.info__item}>
           <span className={styles.text}>
             <Money /> Наличие уставного капитала
