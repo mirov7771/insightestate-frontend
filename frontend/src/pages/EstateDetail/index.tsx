@@ -172,7 +172,7 @@ const EstateDetail: FC = () => {
             parkingSize={parkingSize}
             companyEnabled={companyEnabled}
           />
-          <Manager />
+          {/*<Manager />*/}
         </aside>
       </div>
       <BaseUserModal
