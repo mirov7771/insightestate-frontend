@@ -63,3 +63,11 @@ label {
   width: 50%;
   padding-left: 5%;
 }
+
+.spam {
+  font-weight: 200;
+  font-size: 12px;
+  margin: auto;
+  width: 50%;
+  padding-left: 7%;
+}

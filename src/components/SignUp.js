@@ -112,6 +112,11 @@ const SignUp = () => {
           <CheckButton style={{display: "none"}} ref={checkBtn}/>
         </Form>
       </div>
+
+      <div className="form-group spam">
+        Не видите письмо? Проверьте папку «Спам» — код мог попасть туда
+      </div>
+
     </div>
   );
 };
