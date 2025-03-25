@@ -78,6 +78,7 @@ export const BaseUserModal: FC<TModalProps & { id: string; object: string; token
         onClose={onClose}
         anchor={anchor}
         disableSwipeToOpen
+        bottom={agree ? 10 : 20}
       >
         <StyledUpperWrapperProgress>
           {agree ? (

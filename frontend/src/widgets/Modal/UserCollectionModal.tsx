@@ -91,6 +91,7 @@ export const UserCollectionModal: FC<TModalProps & { id: string; token: string }
         onClose={onClose}
         anchor={anchor}
         disableSwipeToOpen
+        bottom={40}
       >
         <StyledUpperWrapperProgress>
           <StyledWrapperProgress>

@@ -44,6 +44,7 @@ export const AiModal: FC<TModalProps> = ({
         onClose={onClose}
         anchor={anchor}
         disableSwipeToOpen
+        bottom={30}
       >
         <StyledUpperWrapperProgress>
           <StyledWrapperProgress>
