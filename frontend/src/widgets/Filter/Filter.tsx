@@ -10,6 +10,7 @@ import {Airport} from "@/widgets/Filter/Airport";
 import {Beach} from "@/widgets/Filter/Beach";
 import {Company} from "@/widgets/Filter/Company";
 import {Region} from "@/widgets/Filter/Region";
+import {City} from "@/widgets/Filter/City";
 
 export const Filter: FC = () => {
   const { setFilters } = useFilters();
@@ -25,6 +26,7 @@ export const Filter: FC = () => {
           Сбросить фильтры
         </span>
       </div>
+      <City />
       <PropertyType />
       <CompletionDate />
       <NumberOfBedrooms />

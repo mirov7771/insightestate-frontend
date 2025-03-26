@@ -29,6 +29,7 @@ export type GetEstateParams = {
   types?: string[];
   beachName?: string,
   managementCompanyEnabled?: string;
+  city?: string;
 };
 
 type ResponseGetEstate = {

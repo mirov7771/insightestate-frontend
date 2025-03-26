@@ -31,6 +31,7 @@ import LocationImg from './LocationImg.svg?react';
 import Money from './Money.svg?react'
 import LocationImg2 from './LocationImg2.svg?react';
 import Info from './Info.svg?react'
+import City from './City.svg?react'
 
 export {
   Bed,
@@ -65,5 +66,6 @@ export {
   LocationImg,
   Money,
   LocationImg2,
-  Info
+  Info,
+  City
 };

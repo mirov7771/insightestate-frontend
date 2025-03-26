@@ -20,7 +20,8 @@ export const DEFAULT_FILTERS = {
   beachTravelTimes: [],
   pageNumber: 0,
   beachName: undefined,
-  managementCompanyEnabled: undefined
+  managementCompanyEnabled: undefined,
+  city: undefined
 };
 
 type FiltersContextValues = GetEstateParams & {
