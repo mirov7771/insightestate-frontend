@@ -10,21 +10,14 @@ import {
 import { Spacer } from '../Spacer/Spacer';
 import { Text } from '../Text/Text';
 
-export const InfoModal: FC<TModalProps & {
-  title: string;
-  text?: string;
-  children?: React.ReactNode
-  bottom: number
-}> = ({
-  onClose,
-  open,
-  anchor,
-  onOpen,
-  title,
-  text,
-  bottom,
-  children
-}) => {
+export const InfoModal: FC<
+  TModalProps & {
+    bottom: number;
+    title: string;
+    children?: React.ReactNode;
+    text?: string;
+  }
+> = ({ onClose, open, anchor, onOpen, title, text, bottom, children }) => {
   return (
     <>
       <StyledSwipeableDrawer
@@ -45,7 +38,7 @@ export const InfoModal: FC<TModalProps & {
             <Spacer width="100%" height={8} />
             <StyledWrapperText>
               <Text size="m" align="left" colorTheme={'black200'}>
-                  {text ? text : children}
+                {text ? text : children}
               </Text>
             </StyledWrapperText>
             <Spacer width="100%" height={8} />

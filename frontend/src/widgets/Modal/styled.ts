@@ -2,12 +2,14 @@ import styled from '@emotion/styled';
 import { SwipeableDrawer, SwipeableDrawerProps } from '@mui/material';
 import { Button } from '@/widgets/Button/Button';
 
-export const StyledSwipeableDrawer = styled(SwipeableDrawer)<SwipeableDrawerProps & {bottom: number}>`
+export const StyledSwipeableDrawer = styled(SwipeableDrawer)<
+  SwipeableDrawerProps & { bottom: number }
+>`
   & .MuiDrawer-paper {
     border-radius: 15px;
     padding: 5px 2px 20px;
     max-height: 100%;
-    margin-bottom: ${({bottom}) => (`${bottom}vh`)};
+    margin-bottom: ${({ bottom }) => `${bottom}vh`};
     margin-left: 30vw;
     width: 40%;
   }

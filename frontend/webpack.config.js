@@ -22,8 +22,8 @@ module.exports = (env, argv) => {
       },
       fallback: {
         // add this line to resolve.fallback
-        "buffer": require.resolve("buffer")
-      }
+        buffer: require.resolve('buffer'),
+      },
     },
     module: {
       rules: [
@@ -47,7 +47,14 @@ module.exports = (env, argv) => {
               },
             },
             'postcss-loader', // PostCSS для модульных SCSS
-            'sass-loader',
+            {
+              loader: 'sass-loader',
+              options: {
+                sassOptions: {
+                  includePaths: [path.resolve(__dirname, 'src/sass')],
+                },
+              },
+            },
           ],
         },
         {
@@ -57,7 +64,14 @@ module.exports = (env, argv) => {
             isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
             'css-loader',
             'postcss-loader',
-            'sass-loader',
+            {
+              loader: 'sass-loader',
+              options: {
+                sassOptions: {
+                  includePaths: [path.resolve(__dirname, 'src/sass')],
+                },
+              },
+            },
           ],
         },
         {

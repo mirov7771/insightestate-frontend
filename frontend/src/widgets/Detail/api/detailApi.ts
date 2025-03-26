@@ -12,22 +12,22 @@ export type EstateDetail = {
   developer?: Developer;
   eiaEnabled?: boolean;
   exteriorImages?: string[];
+  facilityImages?: string[];
   grade?: Grade;
   infrastructure?: InfrastructureDto;
   interiorImages?: string[];
   level?: string;
+  managementCompany?: ManagementCompany;
   options?: Options;
   price?: Price;
   product?: string;
   profitability?: Profitability;
-  projectCount?: ProjectUnitCount;
-  roomLayouts?: RoomLayouts;
   shortDescriptionRu?: string;
   status?: string;
   type?: string;
   unitCount?: ProjectUnitCount;
-  facilityImages?: string[];
-  managementCompany?: ManagementCompany,
+  projectCount?: ProjectUnitCount;
+  roomLayouts?: RoomLayouts;
 };
 
 export type Developer = {
@@ -112,7 +112,7 @@ export type Options = {
 
 export type ManagementCompany = {
   enabled?: boolean;
-}
+};
 
 export const LevelType = new Map<string, string>([
   ['COMFORT', 'Комфорт'],

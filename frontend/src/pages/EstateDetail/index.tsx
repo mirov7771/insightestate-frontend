@@ -26,7 +26,7 @@ import { Section } from '@/pages/EstateDetail/Section/Section';
 import { Button } from '@/shared/ui';
 import { BaseUserModal } from '@/widgets/Modal/BaseUserModal';
 import { UserCollectionModal } from '@/widgets/Modal/UserCollectionModal';
-import {AiModal} from "@/widgets/Modal/AiModal";
+import { AiModal } from '@/widgets/Modal/AiModal';
 
 const EstateDetail: FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -51,8 +51,8 @@ const EstateDetail: FC = () => {
   const [aiModal, setAiModal] = useState(false);
   const [userCollectionModal, setUserCollectionModal] = useState(false);
   const [map, setMap] = useState('');
-  const [projectId, setProjectId] = useState<string>('')
-  const [companyEnabled, setCompanyEnabled] = useState<boolean>(false)
+  const [projectId, setProjectId] = useState<string>('');
+  const [companyEnabled, setCompanyEnabled] = useState<boolean>(false);
 
   const handleOpenBaseUserModal = () => {
     setBaseUserModal(true);
@@ -98,8 +98,8 @@ const EstateDetail: FC = () => {
       setDeveloper(r.data.developer?.name);
       setParkingSize(r.data.options?.parkingSize);
       setMap(r.data.location.mapUrl || '');
-      setProjectId(r.data.projectId)
-      setCompanyEnabled(r.data.managementCompany?.enabled || false)
+      setProjectId(r.data.projectId);
+      setCompanyEnabled(r.data.managementCompany?.enabled || false);
     });
   }, []);
 
@@ -122,8 +122,8 @@ const EstateDetail: FC = () => {
               Помощь с клиентом
             </Button>
             <Button
-                disabled={token === null || token === undefined || token === ''}
-                onClick={handleOpenAiModal}
+              disabled={token === null || token === undefined || token === ''}
+              onClick={handleOpenAiModal}
             >
               AI подборщик объектов
             </Button>
@@ -145,7 +145,7 @@ const EstateDetail: FC = () => {
             <></>
           )}
           <ApartmentLayouts {...roomLayouts} estateId={id} />
-          <PaymentSchedule projectId={projectId}/>
+          <PaymentSchedule projectId={projectId} />
           <AverageYield {...profitability} />
           <Infrastructure
             beachTime={infrastructure?.beachTime?.car}
@@ -193,10 +193,10 @@ const EstateDetail: FC = () => {
         token={token!!}
       />
       <AiModal
-          open={aiModal}
-          onClose={handleCloseAiModal}
-          onOpen={handleOpenAiModal}
-          anchor="bottom"
+        open={aiModal}
+        onClose={handleCloseAiModal}
+        onOpen={handleOpenAiModal}
+        anchor="bottom"
       />
     </div>
   );
