@@ -18,14 +18,14 @@ export const City: FC = () => {
           name="city"
           value="Phuket"
           onChange={handleClick}
-          checked={city === 'Пхукет'}
+          checked={city === 'Phuket'}
           label="Phuket"
         />
         <RadioButton
           name="city"
           value="Bangkok"
           onChange={handleClick}
-          checked={city === 'Бангкок'}
+          checked={city === 'Bangkok'}
           label="Bangkok"
         />
       </div>
