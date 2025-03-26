@@ -30,6 +30,7 @@ import Yes from './Yes.svg?react';
 import LocationImg from './LocationImg.svg?react';
 import Money from './Money.svg?react'
 import LocationImg2 from './LocationImg2.svg?react';
+import Info from './Info.svg?react'
 
 export {
   Bed,
@@ -63,5 +64,6 @@ export {
   Yes,
   LocationImg,
   Money,
-  LocationImg2
+  LocationImg2,
+  Info
 };

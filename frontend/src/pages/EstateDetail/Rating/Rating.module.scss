@@ -32,3 +32,13 @@
     }
   }
 }
+
+.info_icon {
+  display: flex;
+  gap: 10px;
+  z-index: -1;
+}
+
+.icon {
+  margin-top: 0.5vh;
+}

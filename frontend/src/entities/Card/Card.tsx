@@ -32,7 +32,7 @@ export const Card: FC<
   collectionId,
   token,
 }) => {
-  const img = exteriorImages?.[0] || facilityImages?.[0] || interiorImages?.[0] || DEFAULT_IMG;
+    const img = exteriorImages?.[0] || facilityImages?.[0] || interiorImages?.[0] || DEFAULT_IMG;
     const [infoModal, setInfoModal] = useState(false);
     const [infoTitle, setInfoTitle] = useState('');
     const [infoText, setInfoText] = useState('');
@@ -41,7 +41,6 @@ export const Card: FC<
     };
     const handleCloseInfoModal = () => {
         setInfoModal(false);
-        window.location.reload()
     };
 
   const deleteFromCollection = () => {
@@ -57,12 +56,20 @@ export const Card: FC<
     }
   };
 
+  const openRatingInfo = () => {
+      setInfoTitle("Что означает наша оценка объекта?")
+      setInfoText("Каждый объект недвижимости оценивается нами по 100+ параметрам, от цены за квадратный метр до высоты потолков или наличия детского клуба в пешей доступности. Мы выставляем каждому объекту общий рейтинг и оценки по четырем ключевым направлениям: безопасность вложений, инвестиционный потенциал, расположение объекта и комфорт жизни.")
+      handleOpenInfoModal()
+  }
+
   return (
     <div className={styles.card}>
       {clickable ? (
-        <a href={`/property/${id}`} className={styles.card__image}>
-          <img src={img} alt="" />
-          <div className={styles.card__rating}>
+        <div className={styles.card__image}>
+          <a href={`/property/${id}`} target="_blank" className={styles.card__image} rel="noreferrer">
+            <img src={img} alt=""    />
+          </a>
+          <div className={styles.card__rating} onClick={openRatingInfo}>
             {grade} <VectorRating />
           </div>
           <div className={styles.card__details}>
@@ -74,11 +81,13 @@ export const Card: FC<
               <Beach /> {beachTravelTime} мин
             </span>
           </div>
-        </a>
+        </div>
       ) : (
-        <a href={`/property/${id}`} target="_blank" className={styles.card__image} rel="noreferrer">
-          <img src={img} alt="" />
-          <div className={styles.card__rating}>
+        <div className={styles.card__image}>
+            <a href={`/property/${id}`} target="_blank" className={styles.card__image} rel="noreferrer">
+                <img src={img} alt=""    />
+            </a>
+          <div className={styles.card__rating} onClick={openRatingInfo}>
             {grade} <VectorRating />
           </div>
           <div className={styles.card__details}>
@@ -90,7 +99,7 @@ export const Card: FC<
               <Beach /> {beachTravelTime} мин
             </span>
           </div>
-        </a>
+        </div>
       )}
       {clickable ? (
         <a href={`/property/${id}`} className={styles.card__title}>

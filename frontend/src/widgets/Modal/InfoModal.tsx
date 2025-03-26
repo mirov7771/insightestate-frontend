@@ -10,14 +10,20 @@ import {
 import { Spacer } from '../Spacer/Spacer';
 import { Text } from '../Text/Text';
 
-export const InfoModal: FC<TModalProps & { title: string; text: string; bottom: number }> = ({
+export const InfoModal: FC<TModalProps & {
+  title: string;
+  text?: string;
+  children?: React.ReactNode
+  bottom: number
+}> = ({
   onClose,
   open,
   anchor,
   onOpen,
   title,
   text,
-  bottom
+  bottom,
+  children
 }) => {
   return (
     <>
@@ -39,7 +45,7 @@ export const InfoModal: FC<TModalProps & { title: string; text: string; bottom: 
             <Spacer width="100%" height={8} />
             <StyledWrapperText>
               <Text size="m" align="left" colorTheme={'black200'}>
-                {text}
+                  {text ? text : children}
               </Text>
             </StyledWrapperText>
             <Spacer width="100%" height={8} />
