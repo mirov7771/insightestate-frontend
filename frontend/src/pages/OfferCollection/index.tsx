@@ -14,6 +14,7 @@ import { useParams, useSearchParams } from 'react-router';
 import { Button } from '@/shared/ui';
 import { isMobile } from 'react-device-detect';
 import { ButtonEmail } from '@/shared/assets/icons';
+import {InfoModal} from "@/widgets/Modal/InfoModal";
 
 const OfferCollection: FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -27,6 +28,15 @@ const OfferCollection: FC = () => {
     localStorage.getItem('basicToken') !== undefined &&
     localStorage.getItem('basicToken') !== '';
   const [agentInfo, setAgentInfo] = useState<AgentInfo>();
+  const [infoModal, setInfoModal] = useState(false);
+  const [infoTitle, setInfoTitle] = useState('');
+  const [infoText, setInfoText] = useState('');
+  const handleOpenInfoModal = () => {
+    setInfoModal(true);
+  };
+  const handleCloseInfoModal = () => {
+    setInfoModal(false);
+  };
 
   useEffect(() => {
     const token = searchParams.get('token');
@@ -75,7 +85,9 @@ const OfferCollection: FC = () => {
     el.select();
     document.execCommand('copy');
     document.body.removeChild(el);
-    alert('Ссылка скопирована!');
+    setInfoTitle('Ссылка скопирована');
+    setInfoText('Вы можете делится данной ссылкой с клиентами');
+    handleOpenInfoModal()
   }
 
   console.log(isMobile);
@@ -157,9 +169,12 @@ const OfferCollection: FC = () => {
                   {agentInfo?.mobileNumber}
                 </h5>
               ) : (
-                <h5>
-                  {agentInfo?.fio} {agentInfo?.mobileNumber}
-                </h5>
+                  <>
+                    <h5>
+                      {agentInfo?.fio}
+                    </h5>
+                    <p>{agentInfo?.mobileNumber}</p>
+                  </>
               )}
               <div className={styles.socials__messengers}>
                 <a href={`mailto:${agentInfo?.login}`}>
@@ -180,6 +195,15 @@ const OfferCollection: FC = () => {
       ) : (
         <></>
       )}
+      <InfoModal
+          open={infoModal}
+          onClose={handleCloseInfoModal}
+          onOpen={handleOpenInfoModal}
+          anchor="bottom"
+          title={infoTitle}
+          text={infoText}
+          bottom={30}
+      />
     </div>
   );
 };

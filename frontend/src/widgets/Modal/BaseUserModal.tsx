@@ -56,8 +56,7 @@ export const BaseUserModal: FC<TModalProps & { id: string; object: string; token
         objectName: object,
         objectId: id,
       })
-      .then((r) => {
-        alert('Ваша заявка отправлена!\nВ ближайшее время с Вами свяжутся наши менеджеры');
+      .then(() => {
         onClose(e);
       })
       .catch((e) => {

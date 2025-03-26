@@ -14,6 +14,7 @@ import {
   estateCollectionApi,
 } from '@/widgets/EstateCollection/api/estateCollectionApi';
 import Select from 'react-dropdown-select';
+import {InfoModal} from "@/widgets/Modal/InfoModal";
 
 export const UserCollectionModal: FC<TModalProps & { id: string; token: string }> = ({
   onClose,
@@ -27,6 +28,15 @@ export const UserCollectionModal: FC<TModalProps & { id: string; token: string }
   const [name, setName] = useState<string>('');
   const [collectionId, setCollectionId] = useState<string>('');
   const [collections, setCollections] = useState<EstateCollection[]>();
+  const [infoModal, setInfoModal] = useState(false);
+  const [infoTitle, setInfoTitle] = useState('');
+  const [infoText, setInfoText] = useState('');
+  const handleOpenInfoModal = () => {
+    setInfoModal(true);
+  };
+  const handleCloseInfoModal = () => {
+    setInfoModal(false);
+  };
 
   useEffect(() => {
     estateCollectionApi
@@ -70,10 +80,9 @@ export const UserCollectionModal: FC<TModalProps & { id: string; token: string }
     estateCollectionApi
       .addToCollection(token!!, id, estateId)
       .then((r) => {
-        alert(
-          'Объект добавлен.\n\nОбъект успешно добавлен в подборку, перейдите в раздел «Мои подборки» чтобы посмотреть все объекты и сформировать оффер.'
-        );
-        console.log(r);
+        setInfoTitle("Объект добавлен")
+        setInfoText("Объект успешно добавлен в подборку, перейдите в раздел «Мои подборки» чтобы посмотреть все объекты и сформировать оффер")
+        handleOpenInfoModal()
       })
       .catch((e) => console.log(e));
   };
@@ -138,6 +147,15 @@ export const UserCollectionModal: FC<TModalProps & { id: string; token: string }
           </StyledButton>
         )}
       </StyledSwipeableDrawer>
+      <InfoModal
+          open={infoModal}
+          onClose={handleCloseInfoModal}
+          onOpen={handleOpenInfoModal}
+          anchor="bottom"
+          title={infoTitle}
+          text={infoText}
+          bottom={30}
+      />
     </>
   );
 };

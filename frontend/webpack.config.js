@@ -82,8 +82,12 @@ module.exports = (env, argv) => {
           ],
         },
         {
-          test: /\.(png|jpe?g|gif|webp)$/i, // Поддержка форматов PNG, JPEG, GIF, WebP
+          test: /\.(png|jpe?g|gif|webp|ico)$/i, // Поддержка форматов PNG, JPEG, GIF, WebP
           type: 'asset/resource', // Загружает файлы в папку output и возвращает URL
+        },
+        {
+          test: /\.(svg|png|jpg|jpeg|gif|ico)$/,
+          exclude: /node_modules/,
         },
       ],
     },
