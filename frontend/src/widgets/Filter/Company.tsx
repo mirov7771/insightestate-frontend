@@ -1,5 +1,5 @@
 import { ChangeEvent, FC } from 'react';
-import {Money} from '@/shared/assets/icons';
+import { Money } from '@/shared/assets/icons';
 import styles from './Filter.module.scss';
 import { Accordion, RadioButton } from '@/shared/ui';
 import { useFilters } from '@/widgets/Filter/model/useFilters';

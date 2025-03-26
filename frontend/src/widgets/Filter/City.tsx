@@ -1,5 +1,5 @@
 import { ChangeEvent, FC } from 'react';
-import {City as CityImg} from '@/shared/assets/icons';
+import { City as CityImg } from '@/shared/assets/icons';
 import styles from './Filter.module.scss';
 import { Accordion, RadioButton } from '@/shared/ui';
 import { useFilters } from '@/widgets/Filter/model/useFilters';

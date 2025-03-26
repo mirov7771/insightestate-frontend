@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { Section } from '../Section';
 import styles from './ApartmentLayouts.module.scss';
 import { RoomLayouts } from '@/widgets/Detail/api/detailApi';
-import {formatNumber} from "@/shared/utils";
+import { formatNumber } from '@/shared/utils';
 
 export const ApartmentLayouts: FC<RoomLayouts & { estateId?: string }> = ({
   studio,

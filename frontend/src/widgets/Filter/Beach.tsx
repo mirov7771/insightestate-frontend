@@ -51,22 +51,22 @@ export const Beach: FC = () => {
           label="11-30 мин пешком"
         />
         <Checkbox
-            value="11"
-            onChange={handleClick}
-            checked={beachTravelTimes?.includes('11')}
-            label="Менее 5 мин на машине"
+          value="11"
+          onChange={handleClick}
+          checked={beachTravelTimes?.includes('11')}
+          label="Менее 5 мин на машине"
         />
         <Checkbox
-            value="12"
-            onChange={handleClick}
-            checked={beachTravelTimes?.includes('12')}
-            label="6-10 мин на машине"
+          value="12"
+          onChange={handleClick}
+          checked={beachTravelTimes?.includes('12')}
+          label="6-10 мин на машине"
         />
         <Checkbox
-            value="13"
-            onChange={handleClick}
-            checked={beachTravelTimes?.includes('13')}
-            label="11-30 мин на машине"
+          value="13"
+          onChange={handleClick}
+          checked={beachTravelTimes?.includes('13')}
+          label="11-30 мин на машине"
         />
       </div>
     </Accordion>

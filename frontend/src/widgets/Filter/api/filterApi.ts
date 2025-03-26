@@ -1,5 +1,5 @@
-import {api} from '@/shared/api';
-import {AxiosResponse} from 'axios';
+import { api } from '@/shared/api';
+import { AxiosResponse } from 'axios';
 
 export type Estate = {
   beachTravelTime: number;
@@ -18,18 +18,18 @@ export type Estate = {
 
 export type GetEstateParams = {
   airportTravelTimes?: string[];
+  beachName?: string;
   beachTravelTimes?: string[];
   buildEndYears?: number[];
+  city?: string;
   grades?: string[];
+  managementCompanyEnabled?: string;
   pageNumber?: number;
   pageSize?: number;
   parking?: boolean;
   price?: string;
-  rooms?: string[];
   types?: string[];
-  beachName?: string,
-  managementCompanyEnabled?: string;
-  city?: string;
+  rooms?: string[];
 };
 
 type ResponseGetEstate = {
@@ -52,10 +52,12 @@ export const filterApi = {
       throw error;
     }
   },
-  getEstateWithParams: async (params?: GetEstateParams): Promise<AxiosResponse<ResponseGetEstate>> => {
+  getEstateWithParams: async (
+    params?: GetEstateParams
+  ): Promise<AxiosResponse<ResponseGetEstate>> => {
     try {
       return await api.get<ResponseGetEstate>('v1/estate', {
-        params: {...params},
+        params: { ...params },
       });
     } catch (error) {
       throw error;

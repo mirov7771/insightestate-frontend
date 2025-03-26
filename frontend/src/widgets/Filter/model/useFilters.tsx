@@ -21,15 +21,15 @@ export const DEFAULT_FILTERS = {
   pageNumber: 0,
   beachName: undefined,
   managementCompanyEnabled: undefined,
-  city: undefined
+  city: undefined,
 };
 
 type FiltersContextValues = GetEstateParams & {
   estates: Estate[];
-  setFilters: Dispatch<SetStateAction<GetEstateParams>>;
-  totalPages: number;
   hasMore: boolean;
   loading: boolean;
+  setFilters: Dispatch<SetStateAction<GetEstateParams>>;
+  totalPages: number;
 };
 
 const FiltersContext = createContext<FiltersContextValues | undefined>(undefined);
@@ -38,23 +38,29 @@ export const FiltersProvider: FC<PropsWithChildren> = ({ children }) => {
   const [filters, setFilters] = useState<GetEstateParams>(DEFAULT_FILTERS);
   const [estates, setEstates] = useState<Estate[]>([]);
   const [totalPages, setTotalPages] = useState<number>(0);
-  const [hasMore, setHasMore] = useState<boolean>(false)
-  const [loading, setLoading] = useState<boolean>(true)
+  const [hasMore, setHasMore] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    filterApi.getEstate({ pageNumber: 0 }).then((response) => {
-      setEstates(response.data.items);
-      setHasMore(response.data.hasMore);
-    }).finally(() => setLoading(false));
+    filterApi
+      .getEstate({ pageNumber: 0 })
+      .then((response) => {
+        setEstates(response.data.items);
+        setHasMore(response.data.hasMore);
+      })
+      .finally(() => setLoading(false));
   }, []);
 
   useEffect(() => {
-    setLoading(true)
-    filterApi.getEstate(filters).then((response) => {
-      setEstates(response.data.items);
-      setTotalPages(response.data.totalPages);
-      setHasMore(response.data.hasMore);
-    }).finally(() => setLoading(false));
+    setLoading(true);
+    filterApi
+      .getEstate(filters)
+      .then((response) => {
+        setEstates(response.data.items);
+        setTotalPages(response.data.totalPages);
+        setHasMore(response.data.hasMore);
+      })
+      .finally(() => setLoading(false));
   }, [filters]);
 
   const contextValue = useMemo(

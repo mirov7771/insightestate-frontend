@@ -6,7 +6,7 @@ import Listing from '@/pages/Listing';
 import EstateDetail from '@/pages/EstateDetail';
 import OfferCollection from '@/pages/OfferCollection';
 import { UserCollection } from '@/pages/UserCollection';
-import {AiListing} from "@/pages/AiListing";
+import { AiListing } from '@/pages/AiListing';
 
 const App = () => {
   return (
@@ -30,12 +30,12 @@ const App = () => {
           </Route>
           <Route path="/user-collection" element={<UserCollection />} />
           <Route
-              path="/ai-listing"
-              element={
-                <FiltersProvider>
-                  <AiListing />
-                </FiltersProvider>
-              }
+            path="/ai-listing"
+            element={
+              <FiltersProvider>
+                <AiListing />
+              </FiltersProvider>
+            }
           />
         </Route>
       </Routes>

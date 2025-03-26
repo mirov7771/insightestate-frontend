@@ -1,4 +1,4 @@
-import React, {ChangeEvent, FC, useEffect, useState} from 'react';
+import React, { ChangeEvent, FC, useEffect, useState } from 'react';
 import { TModalProps } from './types';
 import {
   StyledSwipeableDrawer,
@@ -66,7 +66,7 @@ export const BaseUserModal: FC<TModalProps & { id: string; object: string; token
   };
 
   useEffect(() => {
-    setAgree(false)
+    setAgree(false);
   }, [open]);
 
   return (
