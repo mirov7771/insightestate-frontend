@@ -109,6 +109,7 @@ module.exports = (env, argv) => {
       new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
         template: './src/index.html',
+        favicon: './src/favicon.ico',
       }),
       new MiniCssExtractPlugin({
         filename: '[name].css', // Генерация CSS-файлов

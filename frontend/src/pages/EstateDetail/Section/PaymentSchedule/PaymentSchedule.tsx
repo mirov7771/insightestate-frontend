@@ -1,8 +1,22 @@
 import { Section } from '@/pages/EstateDetail/Section/Section';
 import payment from './payment.svg';
 import styles from './PaymentSchedule.module.scss';
-import React, { FC, useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { ScheduleByProject } from '@/widgets/Detail/api/detailApi';
+
+const createClass = (items: string[]) => {
+  const classes: Record<number, string> = {
+    1: styles.item__one,
+    2: styles.item__two,
+    3: styles.item__three,
+    4: styles.item__four,
+    5: styles.item__five,
+    6: styles.item__six,
+    7: styles.item__seven,
+  };
+
+  return classes[items.length] || styles.item__one;
+};
 
 export const PaymentSchedule: FC<{
   projectId: string;
@@ -117,22 +131,22 @@ export const PaymentSchedule: FC<{
       <Section title="График платежей">
         {type === 1 ? (
           <div>
-            <div className={`${styles.item__header} ${styles.item}`}>
+            <div className={`${styles.item__header} ${styles.item} ${styles.item__one}`}>
               <span>1 платеж</span>
             </div>
-            <div className={styles.item}>
+            <div className={`${styles.item} ${styles.item__one}`}>
               <span>100%</span>
             </div>
           </div>
         ) : type === 2 ? (
           <div>
-            <div className={`${styles.item__header} ${styles.item}`}>
+            <div className={`${styles.item__header} ${styles.item} ${styles.item__four}`}>
               <span>1 платеж</span>
               <span>2 платеж</span>
               <span>3 платеж</span>
               <span>4 платеж</span>
             </div>
-            <div className={styles.item}>
+            <div className={`${styles.item} ${styles.item__four}`}>
               <span>35%</span>
               <span>30%</span>
               <span>30%</span>
@@ -141,13 +155,13 @@ export const PaymentSchedule: FC<{
           </div>
         ) : type === 3 ? (
           <div>
-            <div className={`${styles.item__header} ${styles.item}`}>
+            <div className={`${styles.item__header} ${styles.item} ${styles.item__four}`}>
               <span>1 платеж</span>
               <span>2 платеж</span>
               <span>3 платеж</span>
               <span>4 платеж</span>
             </div>
-            <div className={styles.item}>
+            <div className={`${styles.item} ${styles.item__four}`}>
               <span>25%</span>
               <span>25%</span>
               <span>25%</span>
@@ -156,14 +170,14 @@ export const PaymentSchedule: FC<{
           </div>
         ) : type === 4 ? (
           <div>
-            <div className={`${styles.item__header} ${styles.item}`}>
+            <div className={`${styles.item__header} ${styles.item} ${styles.item__five}`}>
               <span>1 платеж</span>
               <span>2 платеж</span>
               <span>3 платеж</span>
               <span>4 платеж</span>
               <span>5 платеж</span>
             </div>
-            <div className={styles.item}>
+            <div className={`${styles.item} ${styles.item__five}`}>
               <span>20%</span>
               <span>20%</span>
               <span>20%</span>
@@ -173,7 +187,7 @@ export const PaymentSchedule: FC<{
           </div>
         ) : type === 5 ? (
           <div>
-            <div className={`${styles.item__header} ${styles.item}`}>
+            <div className={`${styles.item__header} ${styles.item} ${styles.item__six}`}>
               <span>1 платеж</span>
               <span>2 платеж</span>
               <span>3 платеж</span>
@@ -181,7 +195,7 @@ export const PaymentSchedule: FC<{
               <span>5 платеж</span>
               <span>6 платеж</span>
             </div>
-            <div className={styles.item}>
+            <div className={`${styles.item} ${styles.item__six}`}>
               <span>20%</span>
               <span>7.5%</span>
               <span>7.5%</span>
@@ -192,7 +206,7 @@ export const PaymentSchedule: FC<{
           </div>
         ) : type === 6 ? (
           <div>
-            <div className={`${styles.item__header} ${styles.item}`}>
+            <div className={`${styles.item__header} ${styles.item} ${styles.item__seven}`}>
               <span>1 платеж</span>
               <span>2 платеж</span>
               <span>3 платеж</span>
@@ -201,7 +215,7 @@ export const PaymentSchedule: FC<{
               <span>6 платеж</span>
               <span>7 платеж</span>
             </div>
-            <div className={styles.item}>
+            <div className={`${styles.item} ${styles.item__seven}`}>
               <span>35%</span>
               <span>20%</span>
               <span>15%</span>
@@ -213,7 +227,7 @@ export const PaymentSchedule: FC<{
           </div>
         ) : type === 7 ? (
           <div>
-            <div className={`${styles.item__header} ${styles.item}`}>
+            <div className={`${styles.item__header} ${styles.item} ${styles.item__six}`}>
               <span>1 платеж</span>
               <span>2 платеж</span>
               <span>3 платеж</span>
@@ -221,7 +235,7 @@ export const PaymentSchedule: FC<{
               <span>5 платеж</span>
               <span>6 платеж</span>
             </div>
-            <div className={styles.item}>
+            <div className={`${styles.item} ${styles.item__six}`}>
               <span>30%</span>
               <span>15%</span>
               <span>15%</span>
@@ -232,14 +246,14 @@ export const PaymentSchedule: FC<{
           </div>
         ) : type === 8 ? (
           <div>
-            <div className={`${styles.item__header} ${styles.item}`}>
+            <div className={`${styles.item__header} ${styles.item} ${styles.item__five}`}>
               <span>1 платеж</span>
               <span>2 платеж</span>
               <span>3 платеж</span>
               <span>4 платеж</span>
               <span>5 платеж</span>
             </div>
-            <div className={styles.item}>
+            <div className={`${styles.item} ${styles.item__five}`}>
               <span>35%</span>
               <span>20%</span>
               <span>20%</span>
@@ -249,14 +263,14 @@ export const PaymentSchedule: FC<{
           </div>
         ) : type === 9 ? (
           <div>
-            <div className={`${styles.item__header} ${styles.item}`}>
+            <div className={`${styles.item__header} ${styles.item} ${styles.item__five}`}>
               <span>1 платеж</span>
               <span>2 платеж</span>
               <span>3 платеж</span>
               <span>4 платеж</span>
               <span>5 платеж</span>
             </div>
-            <div className={styles.item}>
+            <div className={`${styles.item} ${styles.item__five}`}>
               <span>35%</span>
               <span>25%</span>
               <span>25%</span>
@@ -266,13 +280,13 @@ export const PaymentSchedule: FC<{
           </div>
         ) : type === 10 ? (
           <div>
-            <div className={`${styles.item__header} ${styles.item}`}>
+            <div className={`${styles.item__header} ${styles.item} ${styles.item__four}`}>
               <span>1 платеж</span>
               <span>2 платеж</span>
               <span>3 платеж</span>
               <span>4 платеж</span>
             </div>
-            <div className={styles.item}>
+            <div className={`${styles.item} ${styles.item__four}`}>
               <span>20%</span>
               <span>15%</span>
               <span>15%</span>
@@ -281,7 +295,7 @@ export const PaymentSchedule: FC<{
           </div>
         ) : type === 11 ? (
           <div>
-            <div className={`${styles.item__header} ${styles.item}`}>
+            <div className={`${styles.item__header} ${styles.item} ${styles.item__six}`}>
               <span>1 платеж</span>
               <span>2 платеж</span>
               <span>3 платеж</span>
@@ -289,7 +303,7 @@ export const PaymentSchedule: FC<{
               <span>5 платеж</span>
               <span>6 платеж</span>
             </div>
-            <div className={styles.item}>
+            <div className={`${styles.item} ${styles.item__six}`}>
               <span>35%</span>
               <span>20%</span>
               <span>20%</span>
@@ -300,7 +314,7 @@ export const PaymentSchedule: FC<{
           </div>
         ) : type === 12 ? (
           <div>
-            <div className={`${styles.item__header} ${styles.item}`}>
+            <div className={`${styles.item__header} ${styles.item} ${styles.item__six}`}>
               <span>1 платеж</span>
               <span>2 платеж</span>
               <span>3 платеж</span>
@@ -308,7 +322,7 @@ export const PaymentSchedule: FC<{
               <span>5 платеж</span>
               <span>6 платеж</span>
             </div>
-            <div className={styles.item}>
+            <div className={`${styles.item} ${styles.item__six}`}>
               <span>30%</span>
               <span>20%</span>
               <span>15%</span>
@@ -319,23 +333,23 @@ export const PaymentSchedule: FC<{
           </div>
         ) : type === 13 ? (
           <div>
-            <div className={`${styles.item__header} ${styles.item}`}>
+            <div className={`${styles.item__header} ${styles.item} ${styles.item__two}`}>
               <span>1 платеж</span>
               <span>2 платеж</span>
             </div>
-            <div className={styles.item}>
+            <div className={`${styles.item} ${styles.item__two}`}>
               <span>30%</span>
               <span>70%</span>
             </div>
           </div>
         ) : type === 14 ? (
           <div>
-            <div className={`${styles.item__header} ${styles.item}`}>
+            <div className={`${styles.item__header} ${styles.item} ${styles.item__three}`}>
               <span>1 платеж</span>
               <span>2 платеж</span>
               <span>3 платеж</span>
             </div>
-            <div className={styles.item}>
+            <div className={`${styles.item} ${styles.item__three}`}>
               <span>30%</span>
               <span>20%</span>
               <span>50%</span>
@@ -343,14 +357,14 @@ export const PaymentSchedule: FC<{
           </div>
         ) : type === 15 ? (
           <div>
-            <div className={`${styles.item__header} ${styles.item}`}>
+            <div className={`${styles.item__header} ${styles.item} ${styles.item__five}`}>
               <span>1 платеж</span>
               <span>2 платеж</span>
               <span>3 платеж</span>
               <span>4 платеж</span>
               <span>5 платеж</span>
             </div>
-            <div className={styles.item}>
+            <div className={`${styles.item} ${styles.item__five}`}>
               <span>35%</span>
               <span>15%</span>
               <span>20%</span>
@@ -360,7 +374,7 @@ export const PaymentSchedule: FC<{
           </div>
         ) : type === 16 ? (
           <div>
-            <div className={`${styles.item__header} ${styles.item}`}>
+            <div className={`${styles.item__header} ${styles.item} ${styles.item__six}`}>
               <span>1 платеж</span>
               <span>2 платеж</span>
               <span>3 платеж</span>
@@ -368,7 +382,7 @@ export const PaymentSchedule: FC<{
               <span>5 платеж</span>
               <span>6 платеж</span>
             </div>
-            <div className={styles.item}>
+            <div className={`${styles.item} ${styles.item__six}`}>
               <span>35%</span>
               <span>15%</span>
               <span>10%</span>
@@ -381,10 +395,12 @@ export const PaymentSchedule: FC<{
           <div className={styles.wrapper}>
             {items && items.length > 0 ? (
               <>
-                <div className={`${styles.item__header} ${styles.item}`}>
+                <div className={`${styles.item__header} ${styles.item} ${createClass(items)}`}>
                   {items?.map((item, index) => <span>{index + 1} платеж</span>)}
                 </div>
-                <div className={styles.item}>{items?.map((item) => <span>{item}</span>)}</div>
+                <div className={`${styles.item} ${createClass(items)}`}>
+                  {items?.map((item) => <span>{item}</span>)}
+                </div>
               </>
             ) : (
               <img src={payment} alt="payment" />

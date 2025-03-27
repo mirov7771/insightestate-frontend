@@ -14,7 +14,7 @@ export const Section: FC<PropsWithChildren<SectionProps>> = ({
   return (
     <section className={styles.section}>
       <div className={styles.header}>
-        <span className={styles.title}>{title}</span>
+        <h5 className={styles.title}>{title}</h5>
         {rightSide}
       </div>
       <div>{children}</div>

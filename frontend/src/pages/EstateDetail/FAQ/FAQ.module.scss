@@ -1,14 +1,23 @@
+@use '~@/sass/index' as *;
+
 .header {
-  font-size: var(--heading--h4);
   letter-spacing: var(--letter-spacing--2);
   text-transform: uppercase;
   font-weight: 900;
   line-height: 100%;
   padding-bottom: 40px;
   border-bottom: 1px solid var(--bg-2);
+
+  @media (min-width: $media-md) {
+    font-size: var(--heading--h5);
+  }
 }
 
 .accordion__title {
-  font-size: var(--heading--h6);
+  font-size: var(--text--text-body);
   font-weight: 600;
+
+  @media (min-width: $media-md) {
+    font-size: var(--heading--h6);
+  }
 }
