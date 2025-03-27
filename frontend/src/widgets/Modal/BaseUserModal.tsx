@@ -11,6 +11,7 @@ import { Spacer } from '../Spacer/Spacer';
 import { Text } from '../Text/Text';
 import { BaseField } from '@/widgets/BaseField/BaseField';
 import { estateCollectionApi } from '@/widgets/EstateCollection/api/estateCollectionApi';
+import { isMobile } from 'react-device-detect';
 
 export const BaseUserModal: FC<TModalProps & { id: string; object: string; token: string }> = ({
   onClose,
@@ -78,6 +79,7 @@ export const BaseUserModal: FC<TModalProps & { id: string; object: string; token
         anchor={anchor}
         disableSwipeToOpen
         bottom={agree ? 10 : 20}
+        isMobile={isMobile}
       >
         <StyledUpperWrapperProgress>
           {agree ? (

@@ -9,6 +9,7 @@ import {
 } from './styled';
 import { Spacer } from '../Spacer/Spacer';
 import { Text } from '../Text/Text';
+import { isMobile } from 'react-device-detect';
 
 export const InfoModal: FC<
   TModalProps & {
@@ -27,6 +28,7 @@ export const InfoModal: FC<
         anchor={anchor}
         disableSwipeToOpen
         bottom={bottom}
+        isMobile={isMobile}
       >
         <StyledUpperWrapperProgress>
           <StyledWrapperProgress>

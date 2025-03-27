@@ -15,6 +15,7 @@ import {
 } from '@/widgets/EstateCollection/api/estateCollectionApi';
 import Select from 'react-dropdown-select';
 import { InfoModal } from '@/widgets/Modal/InfoModal';
+import { isMobile } from 'react-device-detect';
 
 export const UserCollectionModal: FC<TModalProps & { id: string; token: string }> = ({
   onClose,
@@ -103,6 +104,7 @@ export const UserCollectionModal: FC<TModalProps & { id: string; token: string }
         anchor={anchor}
         disableSwipeToOpen
         bottom={40}
+        isMobile={isMobile}
       >
         <StyledUpperWrapperProgress>
           <StyledWrapperProgress>
