@@ -139,7 +139,7 @@ const EstateDetail: FC = () => {
         <main className={styles.main}>
           {description ? (
             <Section title="Описание">
-              <span>{description}</span>
+              <span className={styles.description}>{description}</span>
             </Section>
           ) : (
             <></>

@@ -4,13 +4,23 @@ import 'react-image-gallery/styles/css/image-gallery.css';
 import './Gallery.scss';
 import { Button } from '@/shared/ui';
 import { Cross } from '@/shared/assets/icons';
+import { useWindowResize } from '@/shared/utils/useWindowResize';
 
 type GalleryProps = {
   images: string[];
 };
 
 const renderImg =
-  (images: ReactImageGalleryItem[], isFullscreen: boolean) => (img: ReactImageGalleryItem) => {
+  ({
+    images,
+    isFullscreen,
+    windowWidth,
+  }: {
+    images: ReactImageGalleryItem[];
+    isFullscreen: boolean;
+    windowWidth: number;
+  }) =>
+  (img: ReactImageGalleryItem) => {
     const currentImages = isFullscreen ? images.slice(0, 2) : images;
 
     const currentIndex = currentImages.findIndex(
@@ -21,12 +31,13 @@ const renderImg =
     return (
       <div className="custom-slide">
         <img src={img.original} alt="" />
-        {!isFullscreen && <img src={nextItem.original} alt="" />}
+        {!isFullscreen && windowWidth >= 992 && <img src={nextItem.original} alt="" />}
       </div>
     );
   };
 
 export const Gallery: FC<GalleryProps> = ({ images }) => {
+  const { width } = useWindowResize();
   const [isFullscreen, setIsFullscreen] = useState(false);
   const renderImages: ReactImageGalleryItem[] = images.map((img) => ({
     original: img,
@@ -36,7 +47,7 @@ export const Gallery: FC<GalleryProps> = ({ images }) => {
     <section style={{ margin: '24px 0' }}>
       <ImageGallery
         items={renderImages}
-        renderItem={renderImg(renderImages, isFullscreen)}
+        renderItem={renderImg({ images: renderImages, isFullscreen, windowWidth: width })}
         showPlayButton={false}
         onScreenChange={(fullscreen) => setIsFullscreen(fullscreen)}
         renderFullscreenButton={(onClick, isFullscreen) =>

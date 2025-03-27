@@ -109,7 +109,7 @@ export const Rating: FC<Grade> = ({
       <div className={styles.rating}>
         {main && (
           <div className={styles.rating__item}>
-            <span>Наша итоговая оценка</span>
+            <span className={styles.rating__text}>Наша итоговая оценка</span>
             <span
               className={`${styles.rating__score} ${styles.rating__score_result}`}
               onClick={openRatingInfo}
@@ -120,7 +120,7 @@ export const Rating: FC<Grade> = ({
         )}
         {investmentSecurity && (
           <div className={styles.rating__item}>
-            <span>Безопасность вложений</span>
+            <span className={styles.rating__text}>Безопасность вложений</span>
             <span className={styles.rating__score} onClick={handleSecurity}>
               {investmentSecurity.toPrecision(2)}
             </span>
@@ -128,7 +128,7 @@ export const Rating: FC<Grade> = ({
         )}
         {investmentPotential && (
           <div className={styles.rating__item}>
-            <span>Инвестиционный потенциал</span>
+            <span className={styles.rating__text}>Инвестиционный потенциал</span>
             <span className={styles.rating__score} onClick={handleInvest}>
               {investmentPotential.toPrecision(2)}
             </span>
@@ -136,7 +136,7 @@ export const Rating: FC<Grade> = ({
         )}
         {projectLocation && (
           <div className={styles.rating__item}>
-            <span>Расположение проекта</span>
+            <span className={styles.rating__text}>Расположение проекта</span>
             <span className={styles.rating__score} onClick={handleLocation}>
               {projectLocation.toPrecision(2)}
             </span>
@@ -144,7 +144,7 @@ export const Rating: FC<Grade> = ({
         )}
         {comfortOfLife && (
           <div className={styles.rating__item}>
-            <span>Комфорт жизни</span>
+            <span className={styles.rating__text}>Комфорт жизни</span>
             <span className={styles.rating__score} onClick={handleComfort}>
               {comfortOfLife.toPrecision(2)}
             </span>

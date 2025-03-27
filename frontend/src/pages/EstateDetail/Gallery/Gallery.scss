@@ -1,3 +1,5 @@
+@use '~@/sass/index' as *;
+
 .custom-gallery {
   .custom-slide {
     display: flex;
@@ -8,9 +10,13 @@
     overflow: hidden;
 
     img {
-      width: 50%; /* Два изображения в ряд */
+      width: 100%;
       height: auto;
       object-fit: cover;
+
+      @media (min-width: $media-lg) {
+        width: 50%; /* Два изображения в ряд */
+      }
     }
   }
 
@@ -33,42 +39,65 @@
   }
 
   .fullscreen .image-gallery-slide img {
-    max-width: 80%; /* Ограничиваем ширину */
+    max-width: 100%; /* Ограничиваем ширину */
     max-height: 80vh; /* Ограничиваем высоту */
     object-fit: contain; /* Подгоняет изображение без обрезки */
     display: block;
     margin: auto; /* Центрирование */
     border-radius: 10px; /* Добавляем закругление */
+
+    @media (min-width: $media-lg) {
+      max-width: 80%; /* Ограничиваем ширину */
+      max-height: 80vh; /* Ограничиваем высоту */
+    }
   }
 
   .button {
     position: absolute;
-    right: 20%;
     top: 50%;
-    transform: translateY(-50%);
+    left: 50%;
+    transform: translate(-50%);
     font-weight: bold;
+    white-space: nowrap;
+
+    @media (min-width: $media-lg) {
+      right: 20%;
+      top: 50%;
+      transform: translate(-50%);
+    }
   }
 
   &.fullscreen-modal {
     .button {
-      right: 10px;
-      top: 0;
-      width: 40px;
-      height: 40px;
+      left: 100%;
+      top: 10px;
+      width: 20px;
+      height: 20px;
       color: red;
-      transform: translateY(0);
+      transform: translate(-100%, -100%);
       transition: transform 0.2s ease-in-out;
 
-      & > svg {
+      @media (min-width: $media-lg) {
         width: 40px;
         height: 40px;
-        color: var(--light);
-        cursor: pointer;
+        transform: translate(-100%) rotate(0);
+
+        &:hover {
+          color: var(--bg-1);
+          transform: translate(-100%) rotate(90deg);
+        }
       }
 
-      &:hover {
-        color: var(--bg-1);
-        transform: rotate(90deg);
+      & > svg {
+        width: 20px;
+        height: 20px;
+        color: var(--light);
+        cursor: pointer;
+
+        @media (min-width: $media-lg) {
+          width: 40px;
+          height: 40px;
+        }
       }
     }
   }

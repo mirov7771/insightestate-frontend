@@ -119,7 +119,7 @@ export const Info: FC<{
           <span className={styles.text}>
             <Constructing /> Застройщик
           </span>
-          <span className={styles.text_developer}>{developer}</span>
+          <span className={styles.text}>{developer}</span>
         </div>
       ) : (
         <></>
@@ -128,7 +128,7 @@ export const Info: FC<{
         <span className={styles.text}>
           <Money /> Наличие уставного капитала
         </span>
-        <span className={styles.text_developer}>{companyEnabled ? 'Да' : 'Нет'}</span>
+        <span className={styles.text}>{companyEnabled ? 'Да' : 'Нет'}</span>
       </div>
     </div>
   );

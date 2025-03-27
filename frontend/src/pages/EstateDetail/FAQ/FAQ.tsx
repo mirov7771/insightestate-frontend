@@ -5,7 +5,7 @@ import styles from './FAQ.module.scss';
 export const FAQ: FC = () => {
   return (
     <section>
-      <h4 className={styles.header}>Ответы на вопросы</h4>
+      <h5 className={styles.header}>Ответы на вопросы</h5>
       <Accordion
         title={
           <span className={styles.accordion__title}>
