@@ -1,3 +1,5 @@
+@use '~@/sass/index' as *;
+
 .label {
   font-size: var(--text--label);
   color: var(--dark);
@@ -11,19 +13,31 @@
 }
 
 .footer {
-  padding-top: 80px;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+
+  @media (min-width: $media-md) {
+    padding-top: 80px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 0;
+  }
 }
 
 .menu {
   list-style-type: none;
   display: flex;
   flex-direction: column;
-  padding: 0 0 32px 45px;
-  margin: 0;
+  padding: 0;
   gap: 12px;
-  border-right: 1px solid #17181c33;
+  margin: 64px 0 0;
+
+  @media (min-width: $media-md) {
+    padding: 0 0 32px 45px;
+    border-right: 1px solid #17181c33;
+    margin: 24px 0 0;
+  }
 
   &__item {
     font-size: var(--heading--h4);
@@ -58,7 +72,14 @@
 
 .right {
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
+  gap: 64px;
+  padding-bottom: 12px;
+
+  @media (min-width: $media-md) {
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
 
   &__wrapper {
     display: flex;
