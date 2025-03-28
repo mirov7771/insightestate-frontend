@@ -5,6 +5,7 @@ import './Gallery.scss';
 import { Button } from '@/shared/ui';
 import { Cross } from '@/shared/assets/icons';
 import { useWindowResize } from '@/shared/utils/useWindowResize';
+import {localField} from "@/i18n/localField";
 
 type GalleryProps = {
   images: string[];
@@ -57,7 +58,7 @@ export const Gallery: FC<GalleryProps> = ({ images }) => {
             </span>
           ) : (
             <Button variant="cta" className="button" onClick={onClick}>
-              Больше фотографий +
+                {localField('more_photos')}
             </Button>
           )
         }

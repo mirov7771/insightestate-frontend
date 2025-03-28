@@ -39,7 +39,8 @@ export const messages = {
         add_to_collection: 'Add to collection',
         help_with_client: 'Help with client',
         ai_collection: 'AI search',
-        description: 'Description'
+        description: 'Description',
+        more_photos: 'More +'
     },
     [LOCALES.RUSSIAN]: {
         language: 'Язык',
@@ -79,6 +80,7 @@ export const messages = {
         add_to_collection: 'Добавить в подборку',
         help_with_client: 'Помощь с клиентом',
         ai_collection: 'AI подборщик объектов',
-        description: 'Описание'
+        description: 'Описание',
+        more_photos: 'Больше фотографий +'
     }
 }

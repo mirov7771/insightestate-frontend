@@ -1,10 +1,16 @@
-import React, { FC } from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import { Accordion } from '@/shared/ui';
 import styles from './FAQ.module.scss';
 
 export const FAQ: FC = () => {
+  const [locale, setLocale] = useState<string>(localStorage.getItem("language") || 'ru')
+    useEffect(() => {
+        setLocale(localStorage.getItem("language") || 'ru')
+    }, []);
   return (
     <section>
+     {locale === 'ru' ?
+      <>
       <h5 className={styles.header}>Ответы на вопросы</h5>
       <Accordion
         title={
@@ -15,9 +21,8 @@ export const FAQ: FC = () => {
       >
         Иностранцы могут:
         <br />– купить квартиру (кондоминиум) в полную собственность (Freehold);
-        <br />– оформить долгосрочную аренду земли (Leasehold); – владеть зданием, построенным на
-        арендованной земле.
-        <br />
+        <br />– оформить долгосрочную аренду земли (Leasehold);
+        <br />– владеть зданием, построенным на арендованной земле.
         <br />
         Для других типов недвижимости есть ограничения, но в таких случаях можно зарегистрировать
         собственность через тайскую компанию.
@@ -132,6 +137,121 @@ export const FAQ: FC = () => {
           Эти документы подтверждают законность сделки и права нового владельца.
         </p>
       </Accordion>
+      </> :
+         <>
+             <h5 className={styles.header}>FAQ</h5>
+             <Accordion
+                 title={
+                     <span className={styles.accordion__title}>
+            Can foreigners buy (own) a property in Thailand?
+          </span>
+                 }
+             >
+                 Foreigners can:
+                 <br />— buy a fully owned apartment (condominium) (Freehold);
+                 <br />— apply for a long-term land lease (Leasehold);
+                 <br />— own a building built on leased land.
+                 <br />
+                 There are restrictions for other types of real estate, but in such cases it is possible to register property through a Thai company.
+             </Accordion>
+             <Accordion
+                 title={
+                     <span className={styles.accordion__title}>What is the difference between Leasehold and Freehold ownership?</span>
+                 }
+             >
+                 <p>
+                     <strong>Freehold</strong> — full ownership of real estate without time limits. The owner has the right to sell, rent or inherit the property.{' '}
+                 </p>
+                 <br />
+                 <p>
+                     <strong>Leasehold</strong> — this is a long-term lease for a period of 30 years with the right to renew 2 times for 30 years, that is, the entire leasehold right can be retained for up to 90 years. Leasehold can be sold, leased, or inherited.
+                 </p>
+             </Accordion>
+             <Accordion
+                 title={
+                     <span className={styles.accordion__title}>
+            Which type of ownership to choose?
+          </span>
+                 }
+             >
+                 <p>The choice of ownership depends on the purpose of buying the property:</p>
+                 <br />
+                 <p>
+                     Leasehold (long-term lease) — suitable for those who consider the property as an investment with the possibility of further resale. This form of ownership simplifies the sales process and reduces tax costs.
+                 </p>
+                 <br />
+                 <p>
+                     Freehold (full ownership) is suitable for those who are planning long-term ownership of a property or want maximum legal protection for their rights. Freehold is often chosen for personal residence or long-term investment.
+                 </p>
+                 <br />
+                 <p>We can also help you register full ownership if you want to buy land.</p>
+             </Accordion>
+             <Accordion
+                 title={
+                     <span className={styles.accordion__title}>
+                    Which documents do I need to buy property in Thailand?
+                    </span>
+                 }
+             >
+                 <p>
+                     <strong>On the primary market:</strong>
+                 </p>
+                 <ol>
+                     <li>Passport.</li>
+                     <li>Reservation agreement.</li>
+                     <li>Purchase and sale contract.</li>
+                     <li>
+                         A document (receipt) received from the developer confirming the transfer of funds from abroad.
+                     </li>
+                 </ol>
+
+                 <p>
+                     <strong>On the secondary market:</strong>
+                 </p>
+                 <ol>
+                     <li> Passport.</li>
+                     <li> Purchase agreement.</li>
+                     <li> Title deed (Chanot).</li>
+                     <li> Certificate of payment of all taxes and fees related to real estate.</li>
+                 </ol>
+             </Accordion>
+             <Accordion
+                 title={
+                     <span className={styles.accordion__title}>Do I need legal counsel to invest in property?</span>
+                 }
+             >
+                 <p>
+                     Yes, checking legal purity is one of the main stages in making a deal. The company's legal department protects the interests of our clients, conducts a full legal review of all developer documents and checks the contract for compliance with Thai legislation.
+                 </p>
+             </Accordion>
+             <Accordion
+                 title={
+                     <span className={styles.accordion__title}>Can I buy a property through power of attorney?</span>
+                 }
+             >
+                 <p>
+                     Yes, the deal can be made by proxy. To do this, the power of attorney must be certified by a lawyer or notary. This is convenient if you cannot personally attend the registration of the transaction at the Land Department.
+                 </p>
+             </Accordion>
+             <Accordion
+                 title={
+                     <span className={styles.accordion__title}>
+                        Which documents do I get after buying the property?
+                    </span>
+                 }
+             >
+                 <p>
+                     The buyer gets a <strong>number of documents</strong>, including: <br />
+                     — purchase agreement; <br />
+                     — proof of ownership; <br />
+                     — tax and registration receipts; <br />
+                     — certificate of conformity for new buildings. <br />
+                     <br />
+                     These documents confirm the legality of the transaction and the rights of the new owner.
+                 </p>
+             </Accordion>
+         </>
+     }
     </section>
   );
 };
