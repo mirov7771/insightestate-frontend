@@ -34,7 +34,12 @@ export const messages = {
         object_delete_message: 'The item has been removed from the collection, but you can return it by clicking the "Add to collection" button',
         object_info_title: 'What does “Overall score” mean?',
         object_info_message: 'We assess 100+ parameters per each project, starting from obvious price per sqm up to ceiling height or whether you can walk to the nearest kids playground. Each parameter contributes to one of the four pillars: investment security, investment potential, location, and quality of life. These four pillars constitute an overall score for the project.',
-        ok: 'Ok'
+        ok: 'Ok',
+        selection: 'Selection',
+        add_to_collection: 'Add to collection',
+        help_with_client: 'Help with client',
+        ai_collection: 'AI search',
+        description: 'Description'
     },
     [LOCALES.RUSSIAN]: {
         language: 'Язык',
@@ -69,6 +74,11 @@ export const messages = {
         object_delete_message: 'Объект удален из подборки, но вы можете его вернуть нажав на кнопку «Добавить в подборку»',
         object_info_title: 'Что означает наша оценка объекта?',
         object_info_message: 'Каждый объект недвижимости оценивается нами по 100+ параметрам, от цены за квадратный метр до высоты потолков или наличия детского клуба в пешей доступности. Мы выставляем каждому объекту общий рейтинг и оценки по четырем ключевым направлениям: безопасность вложений, инвестиционный потенциал, расположение объекта и комфорт жизни.',
-        ok: 'Понятно'
+        ok: 'Понятно',
+        selection: 'Подборка',
+        add_to_collection: 'Добавить в подборку',
+        help_with_client: 'Помощь с клиентом',
+        ai_collection: 'AI подборщик объектов',
+        description: 'Описание'
     }
 }

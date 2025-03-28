@@ -3,6 +3,7 @@ import styles from './AiListing.module.scss';
 import { Card } from '@/entities/Card/Card';
 import { Estate, filterApi, GetEstateParams } from '@/widgets/Filter/api/filterApi';
 import { useSearchParams } from 'react-router';
+import {localField} from "@/i18n/localField";
 
 function getAmountFromRequest(request: string): string {
   const rq = Buffer.from(request, 'base64').toString();
@@ -44,7 +45,7 @@ export const AiListing: FC = () => {
 
   return (
     <div className={styles.wrap}>
-      <h1 className={styles.header}>Подборка</h1>
+      <h1 className={styles.header}>{localField('selection')}</h1>
       <div>
         <main className={styles.main}>
           {estates.map((estate) => (

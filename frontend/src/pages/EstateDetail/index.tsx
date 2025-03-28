@@ -26,6 +26,7 @@ import { Button } from '@/shared/ui';
 import { BaseUserModal } from '@/widgets/Modal/BaseUserModal';
 import { UserCollectionModal } from '@/widgets/Modal/UserCollectionModal';
 import { AiModal } from '@/widgets/Modal/AiModal';
+import {localField} from "@/i18n/localField";
 
 const EstateDetail: FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -112,19 +113,19 @@ const EstateDetail: FC = () => {
               disabled={token === null || token === undefined || token === ''}
               onClick={handleOpenUserCollectionModal}
             >
-              Добавить в подборку
+              {localField('add_to_collection')}
             </Button>
             <Button
               disabled={token === null || token === undefined || token === ''}
               onClick={handleOpenBaseUserModal}
             >
-              Помощь с клиентом
+              {localField('help_with_client')}
             </Button>
             <Button
               disabled={token === null || token === undefined || token === ''}
               onClick={handleOpenAiModal}
             >
-              AI подборщик объектов
+              {localField('ai_collection')}
             </Button>
           </div>
         }
@@ -137,7 +138,7 @@ const EstateDetail: FC = () => {
       <div className={styles.layout}>
         <main className={styles.main}>
           {description ? (
-            <Section title="Описание">
+            <Section title={localField('description')}>
               <span className={styles.description}>{description}</span>
             </Section>
           ) : (

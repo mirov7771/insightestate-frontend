@@ -33,7 +33,12 @@ type fields = 'city' |
     'object_delete_message' |
     'object_info_title' |
     'object_info_message' |
-    'ok'
+    'ok' |
+    'selection' |
+    'add_to_collection' |
+    'help_with_client' |
+    'ai_collection' |
+    'description'
 
 export const localField = (field: fields) => {
     const locale = localStorage.getItem('language')
