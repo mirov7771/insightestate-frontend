@@ -3,6 +3,7 @@ import { Money } from '@/shared/assets/icons';
 import styles from './Filter.module.scss';
 import { Accordion, RadioButton } from '@/shared/ui';
 import { useFilters } from '@/widgets/Filter/model/useFilters';
+import {localField} from "@/i18n/localField";
 
 export const Company: FC = () => {
   const { setFilters, managementCompanyEnabled } = useFilters();
@@ -12,7 +13,7 @@ export const Company: FC = () => {
   };
 
   return (
-    <Accordion icon={<Money />} title="Наличие УК">
+    <Accordion icon={<Money />} title={localField('uk')}>
       <div className={styles.content}>
         <RadioButton
           name="managementCompanyEnabled"

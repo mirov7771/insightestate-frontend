@@ -2,6 +2,7 @@ import { FC } from 'react';
 import styles from './Header.module.scss';
 import { Logo } from '@/shared/assets/icons';
 import { Link } from 'react-router';
+import {Dropdown} from "@/widgets/Dropdown/Dropdown";
 
 export const Header: FC<{ basicToken: string }> = ({ basicToken }) => {
   const profileUrl = `http://insight-estate.site:443/profile?basicToken=${basicToken}`;
@@ -41,7 +42,10 @@ export const Header: FC<{ basicToken: string }> = ({ basicToken }) => {
         {/*    </Link>*/}
         {/*  </li>*/}
       </menu>
-      <div className={styles.right}>{/*<Button bold onClick={goTo}>Узнать больше</Button>*/}</div>
+      <div className={styles.right}>
+        <Dropdown />
+        {/*<Button bold onClick={goTo}>Узнать больше</Button>*/}
+      </div>
     </header>
   );
 };

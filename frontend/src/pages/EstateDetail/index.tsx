@@ -20,7 +20,6 @@ import {
 import { Gallery } from '@/pages/EstateDetail/Gallery/Gallery';
 import { Rating } from '@/pages/EstateDetail/Rating/Rating';
 import { Info } from '@/pages/EstateDetail/Info/Info';
-import { Manager } from '@/pages/EstateDetail/Manager/Manager';
 import { LocationImg } from '@/shared/assets/icons';
 import { Section } from '@/pages/EstateDetail/Section/Section';
 import { Button } from '@/shared/ui';
@@ -84,7 +83,7 @@ const EstateDetail: FC = () => {
       setInfrastructure(r.data.infrastructure);
       setOptions(r.data.options);
       setGrade(r.data.grade);
-      setDescription(r.data.shortDescriptionRu);
+      setDescription(localStorage.getItem('language') === 'en' ? r.data.shortDescriptionEn : r.data.shortDescriptionRu);
       setFloors(r.data.floors);
       setProject(r.data.unitCount);
       setBuildEndDate(r.data.buildEndDate);

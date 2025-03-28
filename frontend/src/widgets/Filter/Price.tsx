@@ -3,6 +3,7 @@ import { Coins } from '@/shared/assets/icons';
 import styles from './Filter.module.scss';
 import { Accordion, RadioButton } from '@/shared/ui';
 import { useFilters } from '@/widgets/Filter/model/useFilters';
+import {localField} from "@/i18n/localField";
 
 export const Price: FC = () => {
   const { setFilters, price } = useFilters();
@@ -12,7 +13,7 @@ export const Price: FC = () => {
   };
 
   return (
-    <Accordion icon={<Coins />} title="Стоимость">
+    <Accordion icon={<Coins />} title={localField('price')}>
       <div className={styles.content}>
         <RadioButton
           name="price"

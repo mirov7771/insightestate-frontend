@@ -3,6 +3,7 @@ import { City as CityImg } from '@/shared/assets/icons';
 import styles from './Filter.module.scss';
 import { Accordion, RadioButton } from '@/shared/ui';
 import { useFilters } from '@/widgets/Filter/model/useFilters';
+import {localField} from "@/i18n/localField";
 
 export const City: FC = () => {
   const { setFilters, city } = useFilters();
@@ -12,7 +13,7 @@ export const City: FC = () => {
   };
 
   return (
-    <Accordion icon={<CityImg />} title="Город">
+    <Accordion icon={<CityImg />} title={localField('city')}>
       <div className={styles.content}>
         <RadioButton
           name="city"

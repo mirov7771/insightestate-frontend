@@ -3,6 +3,7 @@ import { Home } from '@/shared/assets/icons';
 import styles from './Filter.module.scss';
 import { useFilters } from '@/widgets/Filter/model/useFilters';
 import { Accordion, Checkbox } from '@/shared/ui';
+import {localField} from "@/i18n/localField";
 
 export const PropertyType: FC = () => {
   const { setFilters, types } = useFilters();
@@ -17,7 +18,7 @@ export const PropertyType: FC = () => {
   };
 
   return (
-    <Accordion icon={<Home />} title="Тип объекта">
+    <Accordion icon={<Home />} title={localField('type_of_place')}>
       <div className={styles.content}>
         <Checkbox
           label="Вилла"

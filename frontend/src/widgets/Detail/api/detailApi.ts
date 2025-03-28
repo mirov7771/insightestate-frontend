@@ -23,6 +23,7 @@ export type EstateDetail = {
   product?: string;
   profitability?: Profitability;
   shortDescriptionRu?: string;
+  shortDescriptionEn?: string;
   status?: string;
   type?: string;
   unitCount?: ProjectUnitCount;

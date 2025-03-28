@@ -1,0 +1,33 @@
+.container {
+  position: relative;
+  display: inline-block;
+}
+.button {
+  padding: 0;
+  width: 100px;
+  border: 0;
+  background-color: #fff;
+  color: #333;
+  cursor: pointer;
+  outline: 0;
+  font-size: 17px;
+  text-decoration: none;
+  text-align: right;
+}
+
+.dropdown {
+  position: absolute;
+  ul {
+    list-style: none;
+    padding: 0;
+    margin-left: 2vw;
+  }
+  li {
+    padding: 8px 12px;
+  }
+
+  li:hover {
+    background-color: rgba(0, 0, 0, 0.14);
+    cursor: pointer;
+  }
+}

@@ -3,6 +3,7 @@ import { Calendar } from '@/shared/assets/icons';
 import styles from './Filter.module.scss';
 import { Accordion, Checkbox } from '@/shared/ui';
 import { useFilters } from '@/widgets/Filter/model/useFilters';
+import {localField} from "@/i18n/localField";
 
 export const CompletionDate: FC = () => {
   const { setFilters, buildEndYears } = useFilters();
@@ -19,7 +20,7 @@ export const CompletionDate: FC = () => {
   };
 
   return (
-    <Accordion icon={<Calendar />} title="Дата сдачи объекта">
+    <Accordion icon={<Calendar />} title={localField('completion_date')}>
       <div className={styles.content}>
         <Checkbox
           label="2025"

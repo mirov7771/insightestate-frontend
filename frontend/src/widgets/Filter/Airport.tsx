@@ -3,6 +3,7 @@ import { Airport as AirportIcon } from '@/shared/assets/icons';
 import styles from './Filter.module.scss';
 import { Accordion, Checkbox } from '@/shared/ui';
 import { useFilters } from '@/widgets/Filter/model/useFilters';
+import {localField} from "@/i18n/localField";
 
 export const Airport: FC = () => {
   const { setFilters, airportTravelTimes } = useFilters();
@@ -30,7 +31,7 @@ export const Airport: FC = () => {
   }, [filter]);
 
   return (
-    <Accordion icon={<AirportIcon />} title="Время до аэропорта">
+    <Accordion icon={<AirportIcon />} title={localField('airport_time')}>
       <div className={styles.content}>
         <Checkbox
           value="1"

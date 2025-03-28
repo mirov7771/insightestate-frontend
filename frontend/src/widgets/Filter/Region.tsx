@@ -3,6 +3,7 @@ import { LocationImg2 } from '@/shared/assets/icons';
 import styles from './Filter.module.scss';
 import { Accordion, RadioButton } from '@/shared/ui';
 import { useFilters } from '@/widgets/Filter/model/useFilters';
+import {localField} from "@/i18n/localField";
 
 export const Region: FC = () => {
   const { setFilters, beachName } = useFilters();
@@ -12,7 +13,7 @@ export const Region: FC = () => {
   };
 
   return (
-    <Accordion icon={<LocationImg2 />} title="Район">
+    <Accordion icon={<LocationImg2 />} title={localField('region')}>
       <div className={styles.content}>
         <RadioButton
           name="beachName"
