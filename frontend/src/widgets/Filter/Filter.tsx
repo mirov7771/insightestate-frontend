@@ -11,6 +11,7 @@ import { Beach } from '@/widgets/Filter/Beach';
 import { Company } from '@/widgets/Filter/Company';
 import { Region } from '@/widgets/Filter/Region';
 import { City } from '@/widgets/Filter/City';
+import {localField} from "@/i18n/localField";
 
 export const Filter: FC = () => {
   const { setFilters } = useFilters();
@@ -21,9 +22,9 @@ export const Filter: FC = () => {
   return (
     <>
       <div className={styles.header}>
-        <h5>Параметры поиска</h5>
+        <h5>{localField('filter_params')}</h5>
         <span className={styles.reset} onClick={resetFilters}>
-          Сбросить фильтры
+          {localField('filter_clear')}
         </span>
       </div>
       <City />

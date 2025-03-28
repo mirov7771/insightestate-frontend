@@ -3,6 +3,7 @@ import styles from './Rating.module.scss';
 import { Info, VectorRating } from '@/shared/assets/icons';
 import { Grade } from '@/widgets/Detail/api/detailApi';
 import { InfoModal } from '@/widgets/Modal/InfoModal';
+import {localField} from "@/i18n/localField";
 
 export const Rating: FC<Grade> = ({
   investmentPotential,
@@ -89,9 +90,9 @@ export const Rating: FC<Grade> = ({
   };
 
   const openRatingInfo = () => {
-    setInfoTitle('Что означает наша оценка объекта?');
+    setInfoTitle(localField('object_info_title'));
     setInfoText(
-      'Каждый объект недвижимости оценивается нами по 100+ параметрам, от цены за квадратный метр до высоты потолков или наличия детского клуба в пешей доступности. Мы выставляем каждому объекту общий рейтинг и оценки по четырем ключевым направлениям: безопасность вложений, инвестиционный потенциал, расположение объекта и комфорт жизни.'
+      localField('object_info_message')
     );
     setChildren(undefined);
     handleOpenInfoModal();

@@ -22,7 +22,18 @@ type fields = 'city' |
     'juridical_info' |
     'politics' |
     'footer_info' |
-    'rights_reserved'
+    'rights_reserved' |
+    'not_found' |
+    'projects' |
+    'filter_params' |
+    'filter_clear' |
+    'price_from' |
+    'min' |
+    'object_delete_title' |
+    'object_delete_message' |
+    'object_info_title' |
+    'object_info_message' |
+    'ok'
 
 export const localField = (field: fields) => {
     const locale = localStorage.getItem('language')

@@ -23,7 +23,18 @@ export const messages = {
         juridical_info: 'Legal Information',
         politics: 'Data Processing Policy',
         footer_info: 'The information is provided solely for informational purposes and is not a public offer. Investments involve risks of losing investments. Past results do not guarantee future results. The rating and qualification system of facilities is based on open data and expert assessments. The final rating is formed according to an internal algorithm, which is the intellectual property of the company. Terms, rates and data are subject to change without prior notice.',
-        rights_reserved: 'All rights reserved.'
+        rights_reserved: 'All rights reserved.',
+        not_found: 'Properties not found',
+        projects: 'Projects',
+        filter_params: 'Filters',
+        filter_clear: 'Clear all filters',
+        price_from: 'Cost from',
+        min: 'min',
+        object_delete_title: 'Object deleted',
+        object_delete_message: 'The item has been removed from the collection, but you can return it by clicking the "Add to collection" button',
+        object_info_title: 'What does “Overall score” mean?',
+        object_info_message: 'We assess 100+ parameters per each project, starting from obvious price per sqm up to ceiling height or whether you can walk to the nearest kids playground. Each parameter contributes to one of the four pillars: investment security, investment potential, location, and quality of life. These four pillars constitute an overall score for the project.',
+        ok: 'Ok'
     },
     [LOCALES.RUSSIAN]: {
         language: 'Язык',
@@ -47,6 +58,17 @@ export const messages = {
         juridical_info: 'Юридическая информация',
         politics: 'Политика обработки данных',
         footer_info: 'Информация предоставляется исключительно в информационных целях и не является публичной офертой. Инвестиции сопряжены с рисками потери вложений. Прошлые результаты не гарантируют будущих. Система рейтинга и квалификации объектов основывается на открытых данных и экспертных оценках. Итоговый рейтинг формируется по внутреннему алгоритму, который является интеллектуальной собственностью компании. Условия, ставки и данные могут быть изменены без предварительного уведомления.',
-        rights_reserved: 'Все права защищены.'
+        rights_reserved: 'Все права защищены.',
+        not_found: 'По запрашиваемым параметрам объекты не найдены',
+        projects: 'Объекты',
+        filter_params: 'Параметры поиска',
+        filter_clear: 'Сбросить фильтры',
+        price_from: 'Стоимость от',
+        min: 'мин',
+        object_delete_title: 'Объект удален',
+        object_delete_message: 'Объект удален из подборки, но вы можете его вернуть нажав на кнопку «Добавить в подборку»',
+        object_info_title: 'Что означает наша оценка объекта?',
+        object_info_message: 'Каждый объект недвижимости оценивается нами по 100+ параметрам, от цены за квадратный метр до высоты потолков или наличия детского клуба в пешей доступности. Мы выставляем каждому объекту общий рейтинг и оценки по четырем ключевым направлениям: безопасность вложений, инвестиционный потенциал, расположение объекта и комфорт жизни.',
+        ok: 'Понятно'
     }
 }

@@ -5,6 +5,7 @@ import { Estate } from '@/widgets/Filter/api/filterApi';
 import { Button } from '@/shared/ui';
 import { estateCollectionApi } from '@/widgets/EstateCollection/api/estateCollectionApi';
 import { InfoModal } from '@/widgets/Modal/InfoModal';
+import {localField} from "@/i18n/localField";
 
 export const DEFAULT_IMG =
   'https://cdn.prod.website-files.com/672b5797ac1486cdfc5122ac/67aa547c02740c42abf52609_675f0debfa47fa6400a3c65a_Exterior_03.jpeg';
@@ -48,10 +49,8 @@ export const Card: FC<
       estateCollectionApi
         .deleteFromCollection(token!!, collectionId, id!!)
         .then(() => {
-          setInfoTitle('Объект удален');
-          setInfoText(
-            'Объект удален из подборки, но вы можете его вернуть нажав на кнопку «Добавить в подборку»'
-          );
+          setInfoTitle(localField('object_delete_title'));
+          setInfoText(localField('object_delete_message'));
           handleOpenInfoModal();
         })
         .catch((e) => console.log(e));
@@ -59,10 +58,8 @@ export const Card: FC<
   };
 
   const openRatingInfo = () => {
-    setInfoTitle('Что означает наша оценка объекта?');
-    setInfoText(
-      'Каждый объект недвижимости оценивается нами по 100+ параметрам, от цены за квадратный метр до высоты потолков или наличия детского клуба в пешей доступности. Мы выставляем каждому объекту общий рейтинг и оценки по четырем ключевым направлениям: безопасность вложений, инвестиционный потенциал, расположение объекта и комфорт жизни.'
-    );
+    setInfoTitle(localField('object_info_title'));
+    setInfoText(localField('object_info_message'));
     handleOpenInfoModal();
   };
 
@@ -87,7 +84,7 @@ export const Card: FC<
             )}
             <span className={styles.card__details__item}>{level}</span>
             <span className={styles.card__details__item}>
-              <Beach /> {beachTravelTime} мин
+              <Beach /> {beachTravelTime}{' '}{localField('min')}
             </span>
           </div>
         </div>
@@ -110,7 +107,7 @@ export const Card: FC<
             )}
             <span className={styles.card__details__item}>{level}</span>
             <span className={styles.card__details__item}>
-              <Beach /> {beachTravelTime} мин
+              <Beach /> {beachTravelTime}{' '}{localField('min')}
             </span>
           </div>
         </div>
@@ -125,7 +122,7 @@ export const Card: FC<
         </a>
       )}
       <p>
-        <strong>Стоимость от</strong>{' '}
+        <strong>{localField('price_from')}</strong>{' '}
         {Intl.NumberFormat('en-US', {
           style: 'currency',
           currency: 'USD',

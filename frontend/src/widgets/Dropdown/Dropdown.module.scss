@@ -17,13 +17,17 @@
 
 .dropdown {
   position: absolute;
+  background-color: #fff;
+  box-shadow: 0 2px 5px #0003;
+  margin-left: 1vw;
+  width: 100%;
   ul {
     list-style: none;
     padding: 0;
-    margin-left: 2vw;
   }
   li {
     padding: 8px 12px;
+    text-align: center;
   }
 
   li:hover {
