@@ -30,7 +30,6 @@ export const Dropdown: FC = () => {
             >
                 {localField('language')}
             </button>
-            <ArrowDown />
             {dropdownState.open && (
             <div className={styles.dropdown}>
                 <ul>
