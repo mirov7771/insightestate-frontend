@@ -2,6 +2,7 @@ import { FC } from 'react';
 import styles from './Footer.module.scss';
 import { Link } from 'react-router';
 import { BlackWhatsApp, InstagramBlack, TelegramBlack, YoutubeBlack } from '@/shared/assets/icons';
+import {localField} from "@/i18n/localField";
 
 export const Footer: FC = () => {
   return (
@@ -10,23 +11,23 @@ export const Footer: FC = () => {
         <menu className={styles.menu}>
           <li className={styles.menu__item}>
             <Link className={styles.menu__link} to="listing">
-              Недвижимость
+              {localField('properties')}
             </Link>
           </li>
           <li className={styles.menu__item}>
-            <Link className={styles.menu__link} to="https://www.insightestate.com/about">
-              О нас
+            <Link className={styles.menu__link} to="https://www.insightestate.com/about" target="_blank">
+              {localField('about_us')}
             </Link>
           </li>
           <li className={styles.menu__item}>
-            <Link className={styles.menu__link} to="https://www.insightestate.com/contact">
-              Контакты
+            <Link className={styles.menu__link} to="https://www.insightestate.com/contact" target="_blank">
+              {localField('contacts')}
             </Link>
           </li>
         </menu>
         <div className={styles.right}>
           <div className={styles.info}>
-            <span className={styles.label}>Подписывайтесь</span>
+            <span className={styles.label}>{localField('subscribe')}</span>
             <ul className={styles.info__links}>
               <li className={styles.info__item}>
                 <a href="https://wa.me/66816315759" target="_blank" rel="noreferrer">
@@ -60,15 +61,15 @@ export const Footer: FC = () => {
           </div>
           <div className={styles.right__wrapper}>
             <div className={styles.info}>
-              <span className={styles.label}>Задайте вопрос</span>
+              <span className={styles.label}>{localField('ask_question')}</span>
               <a className={styles.info__link} href="mailto:info@insightestate.com">
                 info@insightestate.com
               </a>
             </div>
             <div className={styles.info}>
-              <span className={styles.label}>Юридическая информация</span>
-              <Link className={styles.info__link} to="https://www.insightestate.com/privacy">
-                Политика обработки данных
+              <span className={styles.label}>{localField('juridical_info')}</span>
+              <Link className={styles.info__link} to="https://www.insightestate.com/privacy" target="_blank">
+                {localField('politics')}
               </Link>
             </div>
           </div>
@@ -76,15 +77,10 @@ export const Footer: FC = () => {
       </footer>
       <div className={styles.disclaimer}>
         <p>
-          Информация предоставляется исключительно в информационных целях и не является публичной
-          офертой. Инвестиции сопряжены с рисками потери вложений. Прошлые результаты не гарантируют
-          будущих. Система рейтинга и квалификации объектов основывается на открытых данных и
-          экспертных оценках. Итоговый рейтинг формируется по внутреннему алгоритму, который
-          является интеллектуальной собственностью компании. Условия, ставки и данные могут быть
-          изменены без предварительного уведомления.
+          {localField('footer_info')}
         </p>
         <br />
-        <p>© 2025 Insight Estate. Все права защищены.</p>
+        <p>© 2025 Insight Estate.{' '}{localField('rights_reserved')}</p>
       </div>
     </div>
   );

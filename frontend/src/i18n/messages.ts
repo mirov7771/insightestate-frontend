@@ -12,7 +12,18 @@ export const messages = {
         number_of_bedrooms: 'Number of bedrooms',
         price: 'Price range',
         potential: 'Investment priority',
-        uk: 'Authorized capital'
+        uk: 'Authorized capital',
+        properties: 'Properties',
+        selections: 'My selections',
+        profile: 'My profile',
+        about_us: 'About us',
+        contacts: 'Contacts',
+        subscribe: 'Contact us',
+        ask_question: 'Send us your request',
+        juridical_info: 'Legal Information',
+        politics: 'Data Processing Policy',
+        footer_info: 'The information is provided solely for informational purposes and is not a public offer. Investments involve risks of losing investments. Past results do not guarantee future results. The rating and qualification system of facilities is based on open data and expert assessments. The final rating is formed according to an internal algorithm, which is the intellectual property of the company. Terms, rates and data are subject to change without prior notice.',
+        rights_reserved: 'All rights reserved.'
     },
     [LOCALES.RUSSIAN]: {
         language: 'Язык',
@@ -25,6 +36,17 @@ export const messages = {
         number_of_bedrooms: 'Количество спален',
         price: 'Стоимость',
         potential: 'Комфорт и инвестиционный потенциал',
-        uk: 'Наличие УК'
+        uk: 'Наличие УК',
+        properties: 'Недвижимость',
+        selections: 'Мои подборки',
+        profile: 'Мой профиль',
+        about_us: 'О нас',
+        contacts: 'Контакты',
+        subscribe: 'Подписывайтесь',
+        ask_question: 'Задайте вопрос',
+        juridical_info: 'Юридическая информация',
+        politics: 'Политика обработки данных',
+        footer_info: 'Информация предоставляется исключительно в информационных целях и не является публичной офертой. Инвестиции сопряжены с рисками потери вложений. Прошлые результаты не гарантируют будущих. Система рейтинга и квалификации объектов основывается на открытых данных и экспертных оценках. Итоговый рейтинг формируется по внутреннему алгоритму, который является интеллектуальной собственностью компании. Условия, ставки и данные могут быть изменены без предварительного уведомления.',
+        rights_reserved: 'Все права защищены.'
     }
 }

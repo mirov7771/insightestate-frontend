@@ -11,7 +11,18 @@ type fields = 'city' |
     'price' |
     'potential' |
     'uk' |
-    'language'
+    'language' |
+    'properties' |
+    'selections' |
+    'profile' |
+    'about_us' |
+    'contacts' |
+    'subscribe' |
+    'ask_question' |
+    'juridical_info' |
+    'politics' |
+    'footer_info' |
+    'rights_reserved'
 
 export const localField = (field: fields) => {
     const locale = localStorage.getItem('language')

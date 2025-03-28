@@ -3,6 +3,7 @@ import styles from './Header.module.scss';
 import { Logo } from '@/shared/assets/icons';
 import { Link } from 'react-router';
 import {Dropdown} from "@/widgets/Dropdown/Dropdown";
+import {localField} from "@/i18n/localField";
 
 export const Header: FC<{ basicToken: string }> = ({ basicToken }) => {
   const profileUrl = `http://insight-estate.site:443/profile?basicToken=${basicToken}`;
@@ -23,17 +24,17 @@ export const Header: FC<{ basicToken: string }> = ({ basicToken }) => {
       <menu className={styles.menu}>
         <li className={styles.menu__item}>
           <Link className={styles.menu__link} to="listing">
-            Недвижимость
+            {localField('properties')}
           </Link>
         </li>
         <li className={styles.menu__item}>
           <Link className={styles.menu__link} to="user-collection">
-            Мои подборки
+            {localField('selections')}
           </Link>
         </li>
         <li className={styles.menu__item}>
           <Link className={styles.menu__link} to={profileUrl}>
-            Мой профиль
+            {localField('profile')}
           </Link>
         </li>
         {/*  <li className={styles.menu__item}>*/}
