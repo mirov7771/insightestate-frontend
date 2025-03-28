@@ -40,7 +40,17 @@ export const messages = {
         help_with_client: 'Help with client',
         ai_collection: 'AI search',
         description: 'Description',
-        more_photos: 'More +'
+        more_photos: 'More +',
+        yes: 'Yes',
+        no: 'No',
+        developer: 'Developer',
+        parking: 'Parking',
+        class: 'Level',
+        to_airport: 'Airport',
+        to_beach: 'Beach',
+        total_aparts: 'Total apartments',
+        total_floors: 'Floors',
+        not_selected: 'No info'
     },
     [LOCALES.RUSSIAN]: {
         language: 'Язык',
@@ -81,6 +91,16 @@ export const messages = {
         help_with_client: 'Помощь с клиентом',
         ai_collection: 'AI подборщик объектов',
         description: 'Описание',
-        more_photos: 'Больше фотографий +'
+        more_photos: 'Больше фотографий +',
+        yes: 'Да',
+        no: 'Нет',
+        developer: 'Застройщик',
+        parking: 'Парковка',
+        class: 'Класс',
+        to_airport: 'До аэропорта',
+        to_beach: 'До пляжа',
+        total_aparts: 'Всего квартир',
+        total_floors: 'Всего этажей',
+        not_selected: 'Не указан'
     }
 }

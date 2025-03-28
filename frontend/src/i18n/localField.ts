@@ -39,7 +39,17 @@ type fields = 'city' |
     'help_with_client' |
     'ai_collection' |
     'description' |
-    'more_photos'
+    'more_photos' |
+    'yes' |
+    'no' |
+    'developer' |
+    'parking' |
+    'class' |
+    'to_airport' |
+    'to_beach' |
+    'total_aparts' |
+    'total_floors' |
+    'not_selected'
 
 export const localField = (field: fields) => {
     const locale = localStorage.getItem('language')

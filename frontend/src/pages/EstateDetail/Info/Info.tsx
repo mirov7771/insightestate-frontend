@@ -18,6 +18,7 @@ import {
   LevelType,
   ProjectUnitCount,
 } from '@/widgets/Detail/api/detailApi';
+import {localField} from "@/i18n/localField";
 
 export const Info: FC<{
   companyEnabled: boolean;
@@ -44,20 +45,20 @@ export const Info: FC<{
     <div className={styles.info}>
       <div className={styles.info__item}>
         <span className={styles.text}>
-          <Diamond /> Класс
+          <Diamond /> {localField('class')}
         </span>
-        <span className={styles.text}>{LevelType.get(level) || 'Не указан'}</span>
+        <span className={styles.text}>{LevelType.get(level) || localField('not_selected')}</span>
       </div>
       <div className={styles.info__item}>
         <span className={styles.text}>
-          <Home /> Тип объекта
+          <Home /> {localField('type_of_place')}
         </span>
-        <span className={styles.text}>{EstateType.get(type) || 'Вилла'}</span>
+        <span className={styles.text}>{EstateType.get(type) || 'Villa'}</span>
       </div>
       {buildEndDate ? (
         <div className={styles.info__item}>
           <span className={styles.text}>
-            <Calendar /> Дата сдачи
+            <Calendar /> {localField('completion_date')}
           </span>
           <span className={styles.text}>{buildEndDate}</span>
         </div>
@@ -67,7 +68,7 @@ export const Info: FC<{
       {floors ? (
         <div className={styles.info__item}>
           <span className={styles.text}>
-            <CityBuilding /> Всего этажей
+            <CityBuilding /> {localField('total_floors')}
           </span>
           <span className={styles.text}>{floors}</span>
         </div>
@@ -77,7 +78,7 @@ export const Info: FC<{
       {project?.total ? (
         <div className={styles.info__item}>
           <span className={styles.text}>
-            <Conference /> Всего квартир
+            <Conference /> {localField('total_aparts')}
           </span>
           <span className={styles.text}>{project?.total}</span>
         </div>
@@ -87,9 +88,9 @@ export const Info: FC<{
       {infrastructure?.beachTime?.car ? (
         <div className={styles.info__item}>
           <span className={styles.text}>
-            <Beach /> До пляжа
+            <Beach /> {localField('to_beach')}
           </span>
-          <span className={styles.text}>{infrastructure?.beachTime?.car} мин</span>
+          <span className={styles.text}>{infrastructure?.beachTime?.car} {localField('min')}</span>
         </div>
       ) : (
         <></>
@@ -97,9 +98,9 @@ export const Info: FC<{
       {infrastructure?.airportTime?.car ? (
         <div className={styles.info__item}>
           <span className={styles.text}>
-            <Airport /> До аэропорта
+            <Airport /> {localField('to_airport')}
           </span>
-          <span className={styles.text}>{infrastructure?.airportTime?.car} мин</span>
+          <span className={styles.text}>{infrastructure?.airportTime?.car} {localField('min')}</span>
         </div>
       ) : (
         <></>
@@ -107,7 +108,7 @@ export const Info: FC<{
       {parkingSize ? (
         <div className={styles.info__item}>
           <span className={styles.text}>
-            <Car /> Парковка
+            <Car /> {localField('parking')}
           </span>
           <span className={styles.text}>{parkingSize}</span>
         </div>
@@ -117,7 +118,7 @@ export const Info: FC<{
       {developer ? (
         <div className={styles.info__item}>
           <span className={styles.text}>
-            <Constructing /> Застройщик
+            <Constructing /> {localField('developer')}
           </span>
           <span className={styles.text}>{developer}</span>
         </div>
@@ -126,9 +127,9 @@ export const Info: FC<{
       )}
       <div className={styles.info__item}>
         <span className={styles.text}>
-          <Money /> Наличие уставного капитала
+          <Money /> {localField('uk')}
         </span>
-        <span className={styles.text}>{companyEnabled ? 'Да' : 'Нет'}</span>
+        <span className={styles.text}>{companyEnabled ? localField('yes') : localField('no')}</span>
       </div>
     </div>
   );
