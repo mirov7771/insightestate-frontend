@@ -18,7 +18,7 @@ import {
   LevelType,
   ProjectUnitCount,
 } from '@/widgets/Detail/api/detailApi';
-import {localField} from "@/i18n/localField";
+import { localField } from '@/i18n/localField';
 
 export const Info: FC<{
   companyEnabled: boolean;
@@ -90,7 +90,9 @@ export const Info: FC<{
           <span className={styles.text}>
             <Beach /> {localField('to_beach')}
           </span>
-          <span className={styles.text}>{infrastructure?.beachTime?.car} {localField('min')}</span>
+          <span className={styles.text}>
+            {infrastructure?.beachTime?.car} {localField('min')}
+          </span>
         </div>
       ) : (
         <></>
@@ -100,7 +102,9 @@ export const Info: FC<{
           <span className={styles.text}>
             <Airport /> {localField('to_airport')}
           </span>
-          <span className={styles.text}>{infrastructure?.airportTime?.car} {localField('min')}</span>
+          <span className={styles.text}>
+            {infrastructure?.airportTime?.car} {localField('min')}
+          </span>
         </div>
       ) : (
         <></>

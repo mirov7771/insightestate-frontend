@@ -11,7 +11,7 @@ import { Beach } from '@/widgets/Filter/Beach';
 import { Company } from '@/widgets/Filter/Company';
 import { Region } from '@/widgets/Filter/Region';
 import { City } from '@/widgets/Filter/City';
-import {localField} from "@/i18n/localField";
+import { localField } from '@/i18n/localField';
 
 export const Filter: FC = () => {
   const { setFilters } = useFilters();

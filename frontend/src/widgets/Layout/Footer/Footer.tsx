@@ -2,7 +2,7 @@ import { FC } from 'react';
 import styles from './Footer.module.scss';
 import { Link } from 'react-router';
 import { BlackWhatsApp, InstagramBlack, TelegramBlack, YoutubeBlack } from '@/shared/assets/icons';
-import {localField} from "@/i18n/localField";
+import { localField } from '@/i18n/localField';
 
 export const Footer: FC = () => {
   return (
@@ -15,12 +15,20 @@ export const Footer: FC = () => {
             </Link>
           </li>
           <li className={styles.menu__item}>
-            <Link className={styles.menu__link} to="https://www.insightestate.com/about" target="_blank">
+            <Link
+              className={styles.menu__link}
+              to="https://www.insightestate.com/about"
+              target="_blank"
+            >
               {localField('about_us')}
             </Link>
           </li>
           <li className={styles.menu__item}>
-            <Link className={styles.menu__link} to="https://www.insightestate.com/contact" target="_blank">
+            <Link
+              className={styles.menu__link}
+              to="https://www.insightestate.com/contact"
+              target="_blank"
+            >
               {localField('contacts')}
             </Link>
           </li>
@@ -68,7 +76,11 @@ export const Footer: FC = () => {
             </div>
             <div className={styles.info}>
               <span className={styles.label}>{localField('juridical_info')}</span>
-              <Link className={styles.info__link} to="https://www.insightestate.com/privacy" target="_blank">
+              <Link
+                className={styles.info__link}
+                to="https://www.insightestate.com/privacy"
+                target="_blank"
+              >
                 {localField('politics')}
               </Link>
             </div>
@@ -76,11 +88,9 @@ export const Footer: FC = () => {
         </div>
       </footer>
       <div className={styles.disclaimer}>
-        <p>
-          {localField('footer_info')}
-        </p>
+        <p>{localField('footer_info')}</p>
         <br />
-        <p>© 2025 Insight Estate.{' '}{localField('rights_reserved')}</p>
+        <p>© 2025 Insight Estate. {localField('rights_reserved')}</p>
       </div>
     </div>
   );

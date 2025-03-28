@@ -28,8 +28,8 @@ export type GetEstateParams = {
   pageSize?: number;
   parking?: boolean;
   price?: string;
-  types?: string[];
   rooms?: string[];
+  types?: string[];
 };
 
 type ResponseGetEstate = {

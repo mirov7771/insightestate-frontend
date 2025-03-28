@@ -2,8 +2,8 @@ import { FC } from 'react';
 import styles from './Header.module.scss';
 import { Logo } from '@/shared/assets/icons';
 import { Link } from 'react-router';
-import {Dropdown} from "@/widgets/Dropdown/Dropdown";
-import {localField} from "@/i18n/localField";
+import { Dropdown } from '@/widgets/Dropdown/Dropdown';
+import { localField } from '@/i18n/localField';
 
 export const Header: FC<{ basicToken: string }> = ({ basicToken }) => {
   const profileUrl = `http://insight-estate.site:443/profile?basicToken=${basicToken}`;

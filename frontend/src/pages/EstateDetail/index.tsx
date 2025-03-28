@@ -26,7 +26,7 @@ import { Button } from '@/shared/ui';
 import { BaseUserModal } from '@/widgets/Modal/BaseUserModal';
 import { UserCollectionModal } from '@/widgets/Modal/UserCollectionModal';
 import { AiModal } from '@/widgets/Modal/AiModal';
-import {localField} from "@/i18n/localField";
+import { localField } from '@/i18n/localField';
 
 const EstateDetail: FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -84,7 +84,11 @@ const EstateDetail: FC = () => {
       setInfrastructure(r.data.infrastructure);
       setOptions(r.data.options);
       setGrade(r.data.grade);
-      setDescription(localStorage.getItem('language') === 'en' ? r.data.shortDescriptionEn : r.data.shortDescriptionRu);
+      setDescription(
+        localStorage.getItem('language') === 'en'
+          ? r.data.shortDescriptionEn
+          : r.data.shortDescriptionRu
+      );
       setFloors(r.data.floors);
       setProject(r.data.unitCount);
       setBuildEndDate(r.data.buildEndDate);

@@ -3,7 +3,7 @@ import styles from './Rating.module.scss';
 import { Info, VectorRating } from '@/shared/assets/icons';
 import { Grade } from '@/widgets/Detail/api/detailApi';
 import { InfoModal } from '@/widgets/Modal/InfoModal';
-import {localField} from "@/i18n/localField";
+import { localField } from '@/i18n/localField';
 
 export const Rating: FC<Grade> = ({
   investmentPotential,
@@ -91,9 +91,7 @@ export const Rating: FC<Grade> = ({
 
   const openRatingInfo = () => {
     setInfoTitle(localField('object_info_title'));
-    setInfoText(
-      localField('object_info_message')
-    );
+    setInfoText(localField('object_info_message'));
     setChildren(undefined);
     handleOpenInfoModal();
   };

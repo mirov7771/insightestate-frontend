@@ -3,7 +3,7 @@ import { LocationImg2 } from '@/shared/assets/icons';
 import styles from './Filter.module.scss';
 import { Accordion, RadioButton } from '@/shared/ui';
 import { useFilters } from '@/widgets/Filter/model/useFilters';
-import {localField} from "@/i18n/localField";
+import { localField } from '@/i18n/localField';
 
 export const Region: FC = () => {
   const { setFilters, beachName } = useFilters();

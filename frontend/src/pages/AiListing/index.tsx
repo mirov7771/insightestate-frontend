@@ -3,7 +3,7 @@ import styles from './AiListing.module.scss';
 import { Card } from '@/entities/Card/Card';
 import { Estate, filterApi, GetEstateParams } from '@/widgets/Filter/api/filterApi';
 import { useSearchParams } from 'react-router';
-import {localField} from "@/i18n/localField";
+import { localField } from '@/i18n/localField';
 
 function getAmountFromRequest(request: string): string {
   const rq = Buffer.from(request, 'base64').toString();

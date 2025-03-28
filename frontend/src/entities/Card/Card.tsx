@@ -5,7 +5,7 @@ import { Estate } from '@/widgets/Filter/api/filterApi';
 import { Button } from '@/shared/ui';
 import { estateCollectionApi } from '@/widgets/EstateCollection/api/estateCollectionApi';
 import { InfoModal } from '@/widgets/Modal/InfoModal';
-import {localField} from "@/i18n/localField";
+import { localField } from '@/i18n/localField';
 
 export const DEFAULT_IMG =
   'https://cdn.prod.website-files.com/672b5797ac1486cdfc5122ac/67aa547c02740c42abf52609_675f0debfa47fa6400a3c65a_Exterior_03.jpeg';
@@ -84,7 +84,7 @@ export const Card: FC<
             )}
             <span className={styles.card__details__item}>{level}</span>
             <span className={styles.card__details__item}>
-              <Beach /> {beachTravelTime}{' '}{localField('min')}
+              <Beach /> {beachTravelTime} {localField('min')}
             </span>
           </div>
         </div>
@@ -107,7 +107,7 @@ export const Card: FC<
             )}
             <span className={styles.card__details__item}>{level}</span>
             <span className={styles.card__details__item}>
-              <Beach /> {beachTravelTime}{' '}{localField('min')}
+              <Beach /> {beachTravelTime} {localField('min')}
             </span>
           </div>
         </div>

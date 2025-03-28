@@ -10,7 +10,7 @@ import {
 import { Spacer } from '../Spacer/Spacer';
 import { Text } from '../Text/Text';
 import { isMobile } from 'react-device-detect';
-import {localField} from "@/i18n/localField";
+import { localField } from '@/i18n/localField';
 
 export const InfoModal: FC<
   TModalProps & {
@@ -49,7 +49,7 @@ export const InfoModal: FC<
         </StyledUpperWrapperProgress>
         <Spacer width="100%" height={24} />
         <StyledButton color="secondary" variant="contained" size="medium" onClick={onClose}>
-            {localField('ok')}
+          {localField('ok')}
         </StyledButton>
       </StyledSwipeableDrawer>
     </>

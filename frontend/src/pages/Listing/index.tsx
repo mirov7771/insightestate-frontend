@@ -5,7 +5,7 @@ import { Card } from '@/entities/Card/Card';
 import { Pagination } from '@/shared/ui';
 import { useFilters } from '@/widgets/Filter/model/useFilters';
 import { Watch } from 'react-loader-spinner';
-import {localField} from "@/i18n/localField";
+import { localField } from '@/i18n/localField';
 
 const Listing: FC = () => {
   const { setFilters, pageNumber, estates, totalPages, hasMore, loading } = useFilters();

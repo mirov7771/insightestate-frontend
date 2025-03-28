@@ -32,7 +32,7 @@ import Money from './Money.svg?react';
 import LocationImg2 from './LocationImg2.svg?react';
 import Info from './Info.svg?react';
 import City from './City.svg?react';
-import ArrowDown from './ArrowDown.svg?react'
+import ArrowDown from './ArrowDown.svg?react';
 
 export {
   Bed,
@@ -69,5 +69,5 @@ export {
   LocationImg2,
   Info,
   City,
-  ArrowDown
+  ArrowDown,
 };

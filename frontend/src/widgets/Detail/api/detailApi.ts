@@ -22,13 +22,13 @@ export type EstateDetail = {
   price?: Price;
   product?: string;
   profitability?: Profitability;
-  shortDescriptionRu?: string;
+  projectCount?: ProjectUnitCount;
+  roomLayouts?: RoomLayouts;
   shortDescriptionEn?: string;
+  shortDescriptionRu?: string;
   status?: string;
   type?: string;
   unitCount?: ProjectUnitCount;
-  projectCount?: ProjectUnitCount;
-  roomLayouts?: RoomLayouts;
 };
 
 export type Developer = {

@@ -4,17 +4,17 @@ import { Button } from '@/widgets/Button/Button';
 
 export const StyledSwipeableDrawer = styled(SwipeableDrawer)<
   SwipeableDrawerProps & {
-    bottom: number,
-    isMobile: boolean,
-}
+    bottom: number;
+    isMobile: boolean;
+  }
 >`
   & .MuiDrawer-paper {
     border-radius: 15px;
     padding: 5px 2px 20px;
     max-height: 100%;
     margin-bottom: ${({ bottom }) => `${bottom}vh`};
-    margin-left: ${({ isMobile }) => isMobile ? '0' : '30vw'};
-    width: ${({ isMobile }) => isMobile ? '100%' : '40%'};
+    margin-left: ${({ isMobile }) => (isMobile ? '0' : '30vw')};
+    width: ${({ isMobile }) => (isMobile ? '100%' : '40%')};
   }
 `;
 export const StyledWrapperProgress = styled.div`
