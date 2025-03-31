@@ -58,6 +58,23 @@ type fields =
   | 'project_location'
   | 'comfort'
   | 'info_title'
+  | 'project_plan'
+  | 'payment_schedule'
+  | 'payment'
+  | 'map'
+  | 'infrastructure'
+  | 'yield'
+  | 'roi'
+  | 'irr'
+  | 'net'
+  | 'layouts'
+  | 'plan'
+  | 'size_sqm'
+  | 'price_range'
+  | 'bedroom'
+  | 'bedrooms'
+  | 'bedrooms2'
+  | 'villa'
     ;
 
 export const localField = (field: fields) => {

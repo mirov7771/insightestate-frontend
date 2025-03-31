@@ -7,6 +7,7 @@ import trainers from '@/shared/assets/icons/Trainers.svg';
 import beach from '@/shared/assets/icons/Beach.svg';
 import shopping from '@/shared/assets/icons/ShoppingCart.svg';
 import airport from '@/shared/assets/icons/Airport.svg';
+import {localField} from "@/i18n/localField";
 
 export const Infrastructure: FC<{
   childRoom: boolean;
@@ -17,7 +18,7 @@ export const Infrastructure: FC<{
   mallTime?: number;
 }> = ({ beachTime, airportTime, mallTime, gym, childRoom, coworking }) => {
   return (
-    <Section title="Инфраструктура и Особенности">
+    <Section title={localField('infrastructure')}>
       <div className={styles.wrapper}>
         {childRoom && (
           <div className={styles.item}>

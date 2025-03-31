@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { Section } from '../Section';
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
+import {localField} from "@/i18n/localField";
 
 const containerStyle = {
   width: '100%',
@@ -30,7 +31,7 @@ export const Map: FC<MapProps> = ({ url }) => {
   const result = getCoordinatesFromUrl(url);
 
   return isLoaded && result ? (
-    <Section title="Расположение">
+    <Section title={localField('map')}>
       <GoogleMap mapContainerStyle={containerStyle} center={result} zoom={17}>
         <Marker position={result} />
       </GoogleMap>
