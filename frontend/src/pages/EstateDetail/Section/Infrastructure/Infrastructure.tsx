@@ -23,19 +23,19 @@ export const Infrastructure: FC<{
         {childRoom && (
           <div className={styles.item}>
             <img src={baby} className={styles.item__icon} alt="icon" />
-            <span>Детская комната</span>
+            <span>{localField('kids')}</span>
           </div>
         )}
         {coworking && (
           <div className={styles.item}>
             <img src={macbook} className={styles.item__icon} alt="icon" />
-            <span>Коворкинг</span>
+            <span>{localField('co_working')}</span>
           </div>
         )}
         {gym && (
           <div className={styles.item}>
             <img src={trainers} className={styles.item__icon} alt="icon" />
-            <span>Спортивный зал</span>
+            <span>{localField('gym')}</span>
           </div>
         )}
       </div>
@@ -43,18 +43,18 @@ export const Infrastructure: FC<{
       <div className={styles.wrapper}>
         <div className={styles.item}>
           <img src={beach} className={styles.item__icon} alt="icon" />
-          <strong>Пляж</strong>
-          <span>{beachTime} мин на машине</span>
+          <strong>{localField('beach')}</strong>
+          <span>{beachTime}{' '}{localField('min_on_car')}</span>
         </div>
         <div className={styles.item}>
           <img src={shopping} className={styles.item__icon} alt="icon" />
-          <strong>Торговый центр</strong>
-          <span>{mallTime} мин на машине</span>
+          <strong>{localField('mall')}</strong>
+          <span>{mallTime}{' '}{localField('min_on_car')}</span>
         </div>
         <div className={styles.item}>
           <img src={airport} className={styles.item__icon} alt="icon" />
-          <strong>Аэропорт</strong>
-          <span>{airportTime} мин на машине</span>
+          <strong>{localField('airport')}</strong>
+          <span>{airportTime}{' '}{localField('min_on_car')}</span>
         </div>
       </div>
     </Section>

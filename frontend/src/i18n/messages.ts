@@ -77,7 +77,14 @@ export const messages = {
     bedroom: 'bedroom',
     bedrooms: 'bedrooms',
     bedrooms2: 'bedrooms',
-    villa: 'Villa'
+    villa: 'Villa',
+    kids: 'Kids Club',
+    gym: 'Gym',
+    co_working: 'Co-working space',
+    beach: 'Beach',
+    mall: 'Mall',
+    airport: 'Airport',
+    min_on_car: 'min by car'
   },
   [LOCALES.RUSSIAN]: {
     language: 'Язык',
@@ -155,6 +162,13 @@ export const messages = {
     bedroom: 'спальня',
     bedrooms: 'спальни',
     bedrooms2: 'спален',
-    villa: 'Вилла'
+    villa: 'Вилла',
+    kids: 'Детская комната',
+    gym: 'Спортивный зал',
+    co_working: 'Коворкинг',
+    beach: 'Пляж',
+    mall: 'Торговый центр',
+    airport: 'Аэропорт',
+    min_on_car: 'мин на машине'
   },
 };

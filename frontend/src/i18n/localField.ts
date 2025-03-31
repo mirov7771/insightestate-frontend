@@ -75,6 +75,13 @@ type fields =
   | 'bedrooms'
   | 'bedrooms2'
   | 'villa'
+  | 'kids'
+  | 'gym'
+  | 'co_working'
+  | 'beach'
+  | 'mall'
+  | 'airport'
+  | 'min_on_car'
     ;
 
 export const localField = (field: fields) => {
