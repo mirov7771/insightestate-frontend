@@ -50,7 +50,15 @@ type fields =
   | 'to_beach'
   | 'total_aparts'
   | 'total_floors'
-  | 'not_selected';
+  | 'not_selected'
+  | 'our_rating'
+  | 'overall'
+  | 'security'
+  | 'invest_potential'
+  | 'project_location'
+  | 'comfort'
+  | 'info_title'
+    ;
 
 export const localField = (field: fields) => {
   const locale = localStorage.getItem('language');

@@ -24,57 +24,60 @@ export const Rating: FC<Grade> = ({
   };
 
   const handleSecurity = () => {
-    setInfoTitle('Безопасность вложений');
+    setInfoTitle(localField('security'));
     setInfoText(undefined);
     setChildren(
       <>
-        Мы оцениваем десятки параметров, например:
+          {localField('info_title')}
         <br />
         — опыт застройщика,
         <br />
         — наличие разрешительной документации,
-        <br />— динамика продаж.
+        <br />
+        — динамика продаж.
       </>
     );
     handleOpenInfoModal();
   };
 
   const handleInvest = () => {
-    setInfoTitle('Инвестиционный потенциал');
+    setInfoTitle(localField('invest_potential'));
     setInfoText(undefined);
     setChildren(
       <>
-        Мы оцениваем десятки параметров, например:
+          {localField('info_title')}
         <br />
         — доходность аренды с опорой на исторические данные,
         <br />
         — сроки окупаемости,
-        <br />— прогнозируемый рост стоимости объекта.
+        <br />
+        — прогнозируемый рост стоимости объекта.
       </>
     );
     handleOpenInfoModal();
   };
 
   const handleLocation = () => {
-    setInfoTitle('Расположение объекта');
+    setInfoTitle(localField('project_location'));
     setInfoText(undefined);
     setChildren(
       <>
-        Мы оцениваем десятки параметров, например:
+          {localField('info_title')}
         <br />
         — престиж района,
-        <br />— близость к важным объектам: пляжам, аэропорту, школам, магазинам и торговым центрам.
+        <br />
+        — близость к важным объектам: пляжам, аэропорту, школам, магазинам и торговым центрам.
       </>
     );
     handleOpenInfoModal();
   };
 
   const handleComfort = () => {
-    setInfoTitle('Комфорт жизни');
+    setInfoTitle(localField('comfort'));
     setInfoText(undefined);
     setChildren(
       <>
-        Мы оцениваем десятки параметров, например:
+          {localField('info_title')}
         <br />
         — дизайн,
         <br />
@@ -83,7 +86,8 @@ export const Rating: FC<Grade> = ({
         — планировка,
         <br />
         — возможности для отдыха и работы,
-        <br />— общее развитие инфраструктуры как внутри проекта, так и в районе рядом.
+        <br />
+        — общее развитие инфраструктуры как внутри проекта, так и в районе рядом.
       </>
     );
     handleOpenInfoModal();
@@ -95,12 +99,11 @@ export const Rating: FC<Grade> = ({
     setChildren(undefined);
     handleOpenInfoModal();
   };
-  /*TODO: сделать попапы по клику на рейтинг*/
 
   return (
     <div>
       <h5 className={styles.info_icon}>
-        Наша оценка объекта
+          {localField('our_rating')}
         <div className={styles.icon} onClick={openRatingInfo}>
           <Info />
         </div>
@@ -108,7 +111,7 @@ export const Rating: FC<Grade> = ({
       <div className={styles.rating}>
         {main && (
           <div className={styles.rating__item}>
-            <span className={styles.rating__text}>Наша итоговая оценка</span>
+            <span className={styles.rating__text}>{localField('overall')}</span>
             <span
               className={`${styles.rating__score} ${styles.rating__score_result}`}
               onClick={openRatingInfo}
@@ -119,7 +122,7 @@ export const Rating: FC<Grade> = ({
         )}
         {investmentSecurity && (
           <div className={styles.rating__item}>
-            <span className={styles.rating__text}>Безопасность вложений</span>
+            <span className={styles.rating__text}>{localField('security')}</span>
             <span className={styles.rating__score} onClick={handleSecurity}>
               {investmentSecurity.toPrecision(2)}
             </span>
@@ -127,7 +130,7 @@ export const Rating: FC<Grade> = ({
         )}
         {investmentPotential && (
           <div className={styles.rating__item}>
-            <span className={styles.rating__text}>Инвестиционный потенциал</span>
+            <span className={styles.rating__text}>{localField('invest_potential')}</span>
             <span className={styles.rating__score} onClick={handleInvest}>
               {investmentPotential.toPrecision(2)}
             </span>
@@ -135,7 +138,7 @@ export const Rating: FC<Grade> = ({
         )}
         {projectLocation && (
           <div className={styles.rating__item}>
-            <span className={styles.rating__text}>Расположение проекта</span>
+            <span className={styles.rating__text}>{localField('project_location')}</span>
             <span className={styles.rating__score} onClick={handleLocation}>
               {projectLocation.toPrecision(2)}
             </span>
@@ -143,7 +146,7 @@ export const Rating: FC<Grade> = ({
         )}
         {comfortOfLife && (
           <div className={styles.rating__item}>
-            <span className={styles.rating__text}>Комфорт жизни</span>
+            <span className={styles.rating__text}>{localField('comfort')}</span>
             <span className={styles.rating__score} onClick={handleComfort}>
               {comfortOfLife.toPrecision(2)}
             </span>

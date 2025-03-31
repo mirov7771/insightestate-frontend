@@ -54,6 +54,13 @@ export const messages = {
     total_aparts: 'Total apartments',
     total_floors: 'Floors',
     not_selected: 'No info',
+    our_rating: 'Our property rating',
+    overall: 'Overall Score',
+    security: 'Investment security',
+    invest_potential: 'Investment potential',
+    project_location: 'Location',
+    comfort: 'Quality of life',
+    info_title: 'We assess dozens of parameters for each project, i.e.'
   },
   [LOCALES.RUSSIAN]: {
     language: 'Язык',
@@ -108,5 +115,12 @@ export const messages = {
     total_aparts: 'Всего квартир',
     total_floors: 'Всего этажей',
     not_selected: 'Не указан',
+    our_rating: 'Наша оценка объекта',
+    overall: 'Наша итоговая оценка',
+    security: 'Безопасность вложений',
+    invest_potential: 'Инвестиционный потенциал',
+    project_location: 'Расположение проекта',
+    comfort: 'Комфорт жизни',
+    info_title: 'Мы оцениваем десятки параметров, например:'
   },
 };
