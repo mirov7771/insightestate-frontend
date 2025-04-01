@@ -19,7 +19,10 @@ async function register (
     login: email,
     password: password,
     mobileNumber: phone,
-    location
+    location,
+    whatsUp,
+    tgName,
+    profileImage
   });
   if (response.status === 200) {
     return this.login(email, password);

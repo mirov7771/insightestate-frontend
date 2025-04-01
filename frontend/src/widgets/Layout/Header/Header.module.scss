@@ -84,6 +84,14 @@ $headerHeight: 60px;
   margin-left: auto;
 }
 
+.profile_icon {
+  width: 30px;
+  height: 30px;
+  margin-top: -1vh;
+  margin-left: -2vw;
+  position: absolute;
+}
+
 .mobileMenu {
   display: flex;
   flex-direction: column;

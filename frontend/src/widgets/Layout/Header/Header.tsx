@@ -1,25 +1,30 @@
-import { FC, useState } from 'react';
+import {FC, useEffect, useState} from 'react';
 import styles from './Header.module.scss';
 import { Logo, Menu } from '@/shared/assets/icons';
 import { Link } from 'react-router';
 import { Dropdown } from '@/widgets/Dropdown/Dropdown';
 import { localField } from '@/i18n/localField';
 import { MobileMenu } from '@/widgets/Layout/Header/MobileMenu';
+import {estateCollectionApi} from "@/widgets/EstateCollection/api/estateCollectionApi";
 
 export const Header: FC<{ basicToken: string }> = ({ basicToken }) => {
   const profileUrl = `http://insight-estate.site:8081/profile?basicToken=${basicToken}`;
   const [showMobileMenu, setShowMobileMenu] = useState(false);
-  const offerCollection = `offer-collection/${basicToken?.replace('Basic ', '')}`;
+  const [profileImage, setProfileImage] = useState<string>("http://77.238.232.18:9000/estate-images/profile_img.png")
   const goTo = () => {
-    window.location.href =
-      'https://api.whatsapp.com/send/?phone=66811486462&text&type=phone_number&app_absent=0';
+    window.location.href = profileUrl;
   };
 
   const handleClickMobileMenu = () => {
     setShowMobileMenu((prev) => !prev);
   };
 
-  console.log(`basicToken ${basicToken}, profileUrl ${profileUrl}`);
+  useEffect(() => {
+    estateCollectionApi.getAgentInfo(basicToken).then((r) => {
+      setProfileImage(r.data.profileImage || "http://77.238.232.18:9000/estate-images/profile_img.png")
+    }).catch((e) => console.log(e))
+  }, []);
+
   return (
     <>
       <MobileMenu profileUrl={profileUrl} showMobileMenu={showMobileMenu} />
@@ -43,11 +48,11 @@ export const Header: FC<{ basicToken: string }> = ({ basicToken }) => {
               {localField('selections')}
             </Link>
           </li>
-          <li className={styles.menu__item}>
-            <Link className={styles.menu__link} to={profileUrl}>
-              {localField('profile')}
-            </Link>
-          </li>
+          {/*<li className={styles.menu__item}>*/}
+          {/*  <Link className={styles.menu__link} to={profileUrl}>*/}
+          {/*    {localField('profile')}*/}
+          {/*  </Link>*/}
+          {/*</li>*/}
           {/*  <li className={styles.menu__item}>*/}
           {/*    <Link className={styles.menu__link} to="contact">*/}
           {/*      Контакты*/}
@@ -56,6 +61,14 @@ export const Header: FC<{ basicToken: string }> = ({ basicToken }) => {
         </menu>
         <div className={styles.right}>
           <Dropdown />
+          <Link to={profileUrl}>
+            <img
+                src={profileImage}
+                alt="icon"
+                className={styles.profile_icon}
+                onClick={goTo}
+            />
+          </Link>
           {/*<Button bold onClick={goTo}>Узнать больше</Button>*/}
         </div>
       </header>
