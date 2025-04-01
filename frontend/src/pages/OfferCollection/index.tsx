@@ -13,7 +13,7 @@ import { GradeTable } from '@/entities/GradeTable/GradeTable';
 import { useParams, useSearchParams } from 'react-router';
 import { Button } from '@/shared/ui';
 import { isMobile } from 'react-device-detect';
-import { ButtonEmail } from '@/shared/assets/icons';
+import {BlackWhatsApp, ButtonEmail, ButtonWhatsUp, TelegramBlack} from '@/shared/assets/icons';
 import { InfoModal } from '@/widgets/Modal/InfoModal';
 
 const OfferCollection: FC = () => {
@@ -171,6 +171,19 @@ const OfferCollection: FC = () => {
               ) : (
                 <>
                   <h5>{agentInfo?.fio}</h5>
+                  {agentInfo?.whatsUp || agentInfo?.tgName ?
+                  <div className={styles.messangers}>
+                    {agentInfo?.whatsUp ?
+                    <a href={`https://wa.me/${agentInfo?.whatsUp}`} target="_blank" rel="noreferrer" className={styles.messanger}>
+                      <BlackWhatsApp />
+                    </a> : <></>}
+                    {agentInfo?.tgName ?
+                    <a href={`https://t.me/${agentInfo?.tgName}`} target="_blank" rel="noreferrer" className={styles.messanger}>
+                      <TelegramBlack />
+                    </a> : <></>
+                    }
+                  </div> : <></>
+                  }
                   <p>{agentInfo?.mobileNumber}</p>
                 </>
               )}
