@@ -9,7 +9,10 @@ async function register (
     email,
     password,
     phone,
-    location
+    location,
+    whatsUp,
+    tgName,
+    profileImage
 ) {
   const response = await axios.post(API_URL + "sign-up/end", {
     fio: username,

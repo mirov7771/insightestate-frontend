@@ -84,6 +84,25 @@ const Register = (props) => {
   const [successful, setSuccessful] = useState(false);
   const [message, setMessage] = useState("");
 
+  const [whatsUp, setWhatsUp] = useState("");
+  const [tgName, setTgName] = useState("");
+  const [profileImage, setProfileImage] = useState("");
+
+  const onChangeWhatsUp = (e) => {
+    const whatsUp  = e.target.value;
+    setWhatsUp(whatsUp);
+  };
+
+  const onChangeTgName = (e) => {
+    const tgName  = e.target.value;
+    setTgName(tgName);
+  };
+
+  const onChangeProfileImage = (e) => {
+    const profileImage  = e.target.value;
+    setProfileImage(profileImage);
+  };
+
   const onChangeUsername = (e) => {
     const username = e.target.value;
     setUsername(username);
@@ -133,7 +152,10 @@ const Register = (props) => {
           email,
           password,
           phone,
-          location
+          location,
+          whatsUp,
+          tgName,
+          profileImage
       ).then(
         (response) => {
           setMessage("Поздравляем! Регистрация завершена, в течении нескольких секунд вы будете перенаправлены на сайт");
@@ -215,6 +237,40 @@ const Register = (props) => {
                       placeholder="Локация"
                   />
                 </div>
+
+                <div className="form-group">
+                  <Input
+                      type="text"
+                      className="form-control"
+                      name="whatsUp"
+                      value={whatsUp}
+                      onChange={onChangeWhatsUp}
+                      placeholder="WhatsApp номер"
+                  />
+                </div>
+
+                <div className="form-group">
+                  <Input
+                      type="text"
+                      className="form-control"
+                      name="tgName"
+                      value={tgName}
+                      onChange={onChangeTgName}
+                      placeholder="Имя в телеграмм"
+                  />
+                </div>
+
+                <div className="form-group">
+                  <Input
+                      type="text"
+                      className="form-control"
+                      name="profileImage"
+                      value={profileImage}
+                      onChange={onChangeProfileImage}
+                      placeholder="Фото профиля"
+                  />
+                </div>
+
 
                 <div className="form-group">
                   <Input
