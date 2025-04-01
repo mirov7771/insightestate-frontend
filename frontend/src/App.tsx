@@ -7,13 +7,14 @@ import EstateDetail from '@/pages/EstateDetail';
 import OfferCollection from '@/pages/OfferCollection';
 import { UserCollection } from '@/pages/UserCollection';
 import { AiListing } from '@/pages/AiListing';
+import {Authorization} from "@/pages/Authorization";
 
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<h1>Home Page</h1>} />
+          <Route index element={<Authorization />} />
           <Route
             path="/listing"
             element={

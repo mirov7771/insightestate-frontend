@@ -2,7 +2,6 @@ import { FC } from 'react';
 import styles from './GradeTable.module.scss';
 import { Estate, EstateCollection } from '@/widgets/EstateCollection/api/estateCollectionApi';
 import { Card } from '@/entities/Card/Card';
-import { Button } from '@/widgets/Button/Button';
 
 export const GradeTable: FC<
   EstateCollection & {
