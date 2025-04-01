@@ -115,16 +115,28 @@ export type ManagementCompany = {
   enabled?: boolean;
 };
 
-export const LevelType = new Map<string, string>([
+export const LevelTypeRu = new Map<string, string>([
   ['COMFORT', 'Комфорт'],
   ['LUX', 'Люкс'],
   ['PREMIUM', 'Премиум'],
   ['UNKNOWN', 'Не указан'],
 ]);
 
-export const EstateType = new Map<string, string>([
+export const LevelTypeEn = new Map<string, string>([
+  ['COMFORT', 'Comfort'],
+  ['LUX', 'Lux'],
+  ['PREMIUM', 'Premium'],
+  ['UNKNOWN', 'Unknow'],
+]);
+
+export const EstateTypeRu = new Map<string, string>([
   ['VILLA', 'Вилла'],
   ['APARTMENT', 'Квартира'],
+]);
+
+export const EstateTypeEn = new Map<string, string>([
+  ['VILLA', 'Villa'],
+  ['APARTMENT', 'Apartment'],
 ]);
 
 export const ScheduleByProject = new Map<string, string[]>([
