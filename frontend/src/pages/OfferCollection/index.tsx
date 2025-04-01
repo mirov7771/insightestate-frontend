@@ -163,11 +163,26 @@ const OfferCollection: FC = () => {
           <div className={styles.socials_main}>
             <div className={isMobile ? styles.socials_mobile : styles.socials}>
               {isMobile ? (
+                <>
                 <h5>
                   {agentInfo?.fio}
                   <br />
                   {agentInfo?.mobileNumber}
                 </h5>
+                  {agentInfo?.whatsUp || agentInfo?.tgName ?
+                      <div className={styles.messangers}>
+                        {agentInfo?.whatsUp ?
+                            <a href={`https://wa.me/${agentInfo?.whatsUp}`} target="_blank" rel="noreferrer" className={styles.messanger}>
+                              <BlackWhatsApp />
+                            </a> : <></>}
+                        {agentInfo?.tgName ?
+                            <a href={`https://t.me/${agentInfo?.tgName}`} target="_blank" rel="noreferrer" className={styles.messanger}>
+                              <TelegramBlack />
+                            </a> : <></>
+                        }
+                      </div> : <></>
+                  }
+                </>
               ) : (
                 <>
                   <h5>{agentInfo?.fio}</h5>
