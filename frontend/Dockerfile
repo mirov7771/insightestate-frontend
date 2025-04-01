@@ -10,8 +10,11 @@ RUN yarn run build
 
 # production environment
 
-FROM nginx:1.23.0-alpine
+FROM nginx:alpine
 COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
+COPY ./nginx/ca.crt /etc/nginx/ca.crt
+COPY ./nginx/insightestate.pro.crt /etc/nginx/insightestate.pro.crt
+COPY ./nginx/insightestate.pro.key /etc/nginx/insightestate.pro.key
 COPY --from=builder /usr/src/app/dist /usr/share/nginx/html
 EXPOSE 3001
 CMD ["nginx", "-g", "daemon off;"]
