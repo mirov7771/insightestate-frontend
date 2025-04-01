@@ -30,11 +30,11 @@ export const Rating: FC<Grade> = ({
       <>
           {localField('info_title')}
         <br />
-        — опыт застройщика,
+          {localField('security_p1')}
         <br />
-        — наличие разрешительной документации,
+          {localField('security_p2')}
         <br />
-        — динамика продаж.
+          {localField('security_p3')}
       </>
     );
     handleOpenInfoModal();
@@ -47,11 +47,11 @@ export const Rating: FC<Grade> = ({
       <>
           {localField('info_title')}
         <br />
-        — доходность аренды с опорой на исторические данные,
+          {localField('invest_p1')}
         <br />
-        — сроки окупаемости,
+          {localField('invest_p2')}
         <br />
-        — прогнозируемый рост стоимости объекта.
+          {localField('invest_p3')}
       </>
     );
     handleOpenInfoModal();
@@ -64,9 +64,9 @@ export const Rating: FC<Grade> = ({
       <>
           {localField('info_title')}
         <br />
-        — престиж района,
+          {localField('location_p1')}
         <br />
-        — близость к важным объектам: пляжам, аэропорту, школам, магазинам и торговым центрам.
+          {localField('location_p2')}
       </>
     );
     handleOpenInfoModal();
@@ -79,15 +79,15 @@ export const Rating: FC<Grade> = ({
       <>
           {localField('info_title')}
         <br />
-        — дизайн,
+          {localField('comfort_p1')}
         <br />
-        — материалы,
+          {localField('comfort_p2')}
         <br />
-        — планировка,
+          {localField('comfort_p3')}
         <br />
-        — возможности для отдыха и работы,
+          {localField('comfort_p4')}
         <br />
-        — общее развитие инфраструктуры как внутри проекта, так и в районе рядом.
+          {localField('comfort_p5')}
       </>
     );
     handleOpenInfoModal();

@@ -82,6 +82,19 @@ type fields =
   | 'mall'
   | 'airport'
   | 'min_on_car'
+  | 'security_p1'
+  | 'security_p2'
+  | 'security_p3'
+  | 'invest_p1'
+  | 'invest_p2'
+  | 'invest_p3'
+  | 'location_p1'
+  | 'location_p2'
+  | 'comfort_p1'
+  | 'comfort_p2'
+  | 'comfort_p3'
+  | 'comfort_p4'
+  | 'comfort_p5'
     ;
 
 export const localField = (field: fields) => {

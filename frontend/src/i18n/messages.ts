@@ -84,7 +84,20 @@ export const messages = {
     beach: 'Beach',
     mall: 'Mall',
     airport: 'Airport',
-    min_on_car: 'min by car'
+    min_on_car: 'min by car',
+    security_p1: '— Development company track.',
+    security_p2: '— RecordPresence of regulatory documentation.',
+    security_p3: '— RecordPresence of regulatory documentation.',
+    invest_p1: '— Rental yield based on historical data on occupancy and prices.',
+    invest_p2: '— Payback period.',
+    invest_p3: '— Expected property value appreciation.',
+    location_p1: '— Area exclusivity.',
+    location_p2: '— Proximity to: beaches, airport, international schools, convenience stores, shopping malls.',
+    comfort_p1: '— Design.',
+    comfort_p2: '— Quality of materials.',
+    comfort_p3: '— Units layouts.',
+    comfort_p4: '— Facilities for work and rest.',
+    comfort_p5: '— Overall infrastructure, both for the project itself and also neighborhood facilities.'
   },
   [LOCALES.RUSSIAN]: {
     language: 'Язык',
@@ -169,6 +182,19 @@ export const messages = {
     beach: 'Пляж',
     mall: 'Торговый центр',
     airport: 'Аэропорт',
-    min_on_car: 'мин на машине'
+    min_on_car: 'мин на машине',
+    security_p1: '— опыт застройщика,',
+    security_p2: '— наличие разрешительной документации,',
+    security_p3: '— динамика продаж.',
+    invest_p1: '— доходность аренды с опорой на исторические данные,',
+    invest_p2: '— сроки окупаемости,',
+    invest_p3: '— прогнозируемый рост стоимости объекта.',
+    location_p1: '— престиж района,',
+    location_p2: '— близость к важным объектам: пляжам, аэропорту, школам, магазинам и торговым центрам.',
+    comfort_p1: '— дизайн,',
+    comfort_p2: '— материалы,',
+    comfort_p3: '— планировка,',
+    comfort_p4: '— возможности для отдыха и работы,',
+    comfort_p5: '— общее развитие инфраструктуры как внутри проекта, так и в районе рядом.'
   },
 };
