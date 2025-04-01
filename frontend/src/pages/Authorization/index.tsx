@@ -19,7 +19,7 @@ export const Authorization: FC = () => {
             <Spacer height={20} width={100} />
             <p>Помогаем выбрать самый выгодный и надёжный объект инвестиций на основе анализа по более чем 100 параметрам</p>
             <Spacer height={20} width={100} />
-            <StyledButton color="secondary" variant="contained" size="medium" href={"http://insight-estate.site:443/login-lk"}>
+            <StyledButton color="secondary" variant="contained" size="medium" href={"http://insight-estate.site:8081/login-lk"}>
                 Войти
             </StyledButton>
         </div>
