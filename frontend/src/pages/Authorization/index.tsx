@@ -14,14 +14,38 @@ export const Authorization: FC = () => {
         }
     }, [session]);
     return (
-        <div className={styles.wrap}>
-            <h4>Рациональные инвестиции в недвижимость Пхукета</h4>
-            <Spacer height={20} width={100} />
-            <p>Помогаем выбрать самый выгодный и надёжный объект инвестиций на основе анализа по более чем 100 параметрам</p>
-            <Spacer height={20} width={100} />
-            <StyledButton color="secondary" variant="contained" size="medium" href={"http://insight-estate.site:8081/login-lk"}>
-                Войти
-            </StyledButton>
-        </div>
+        <>
+            <div className={styles.big}>
+                <video
+                    data-src="https://cdn.prod.website-files.com/67bf1616a76ce5a5f0c0fff7%2F67ce9e80a87eb13baf9d2954_1-transcode.mp4"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    data-lazy-visible=""
+                    className={styles.video}
+                    data-ll-status="loaded"
+                    src="https://cdn.prod.website-files.com/67bf1616a76ce5a5f0c0fff7%2F67ce9e80a87eb13baf9d2954_1-transcode.mp4">
+                </video>
+                <div className={styles.wrap}>
+                    <Spacer height={140} width={100}/>
+                    <h4>Рациональные инвестиции в недвижимость Пхукета</h4>
+                    <Spacer height={20} width={100}/>
+                    <p>Помогаем выбрать самый выгодный и надёжный объект инвестиций на основе анализа по более чем 100
+                        параметрам</p>
+                    <Spacer height={40} width={100}/>
+                    <div className={styles.button}>
+                        <StyledButton
+                            fullWidth={false}
+                            color="secondary"
+                            variant="contained"
+                            size="small"
+                            href={"http://insight-estate.site:8081/login-lk"}>
+                            Войти
+                        </StyledButton>
+                    </div>
+                </div>
+            </div>
+        </>
     )
 }
