@@ -37,25 +37,25 @@ export const Potential: FC = () => {
           value="3"
           onChange={handleClick}
           checked={grades?.includes('3')}
-          label="Самые удобные локации"
+          label={localField('invest_f1')}
         />
         <Checkbox
           value="4"
           onChange={handleClick}
           checked={grades?.includes('4')}
-          label="Самые комфортные для жизни"
+          label={localField('invest_f2')}
         />
         <Checkbox
           value="1"
           onChange={handleClick}
           checked={grades?.includes('1')}
-          label="Самые безопасные для инвестиций"
+          label={localField('invest_f3')}
         />
         <Checkbox
           value="2"
           onChange={handleClick}
           checked={grades?.includes('2')}
-          label="Наибольшая доходность"
+          label={localField('invest_f4')}
         />
       </div>
     </Accordion>

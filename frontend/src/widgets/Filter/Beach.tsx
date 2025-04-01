@@ -37,37 +37,37 @@ export const Beach: FC = () => {
           value="1"
           onChange={handleClick}
           checked={beachTravelTimes?.includes('1')}
-          label="Менее 5 мин пешком"
+          label={localField('walk_5')}
         />
         <Checkbox
           value="2"
           onChange={handleClick}
           checked={beachTravelTimes?.includes('2')}
-          label="6-10 мин пешком"
+          label={localField('walk_10')}
         />
         <Checkbox
           value="3"
           onChange={handleClick}
           checked={beachTravelTimes?.includes('3')}
-          label="11-30 мин пешком"
+          label={localField('walk_30')}
         />
         <Checkbox
           value="11"
           onChange={handleClick}
           checked={beachTravelTimes?.includes('11')}
-          label="Менее 5 мин на машине"
+          label={localField('car_5')}
         />
         <Checkbox
           value="12"
           onChange={handleClick}
           checked={beachTravelTimes?.includes('12')}
-          label="6-10 мин на машине"
+          label={localField('car_10')}
         />
         <Checkbox
           value="13"
           onChange={handleClick}
           checked={beachTravelTimes?.includes('13')}
-          label="11-30 мин на машине"
+          label={localField('car_30')}
         />
       </div>
     </Accordion>

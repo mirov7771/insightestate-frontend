@@ -21,13 +21,13 @@ export const PropertyType: FC = () => {
     <Accordion icon={<Home />} title={localField('type_of_place')}>
       <div className={styles.content}>
         <Checkbox
-          label="Вилла"
+          label={localField('villa_type')}
           name="VILLA"
           onChange={handleClick}
           checked={types?.includes('VILLA')}
         />
         <Checkbox
-          label="Квартира"
+          label={localField('apartment_type')}
           name="APARTMENT"
           onChange={handleClick}
           checked={types?.includes('APARTMENT')}

@@ -37,19 +37,19 @@ export const Airport: FC = () => {
           value="1"
           onChange={handleClick}
           checked={airportTravelTimes?.includes('1')}
-          label="до 30 мин на машине"
+          label={localField('min_30_car')}
         />
         <Checkbox
           value="2"
           onChange={handleClick}
           checked={airportTravelTimes?.includes('2')}
-          label="до 60 мин на машине"
+          label={localField('min_60_car')}
         />
         <Checkbox
           value="3"
           onChange={handleClick}
           checked={airportTravelTimes?.includes('3')}
-          label="60+ на машине"
+          label={localField('min_60_plus_car')}
         />
       </div>
     </Accordion>

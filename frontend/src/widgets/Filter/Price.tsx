@@ -20,7 +20,7 @@ export const Price: FC = () => {
           value="1"
           onChange={handleClick}
           checked={price === '1'}
-          label="до $100 000"
+          label={`${localField('to')} $100 000`}
         />
         <RadioButton
           name="price"
@@ -48,7 +48,7 @@ export const Price: FC = () => {
           value="5"
           onChange={handleClick}
           checked={price === '5'}
-          label="от $1 000 000"
+          label={`${localField('from')} $1 000 000`}
         />
       </div>
     </Accordion>

@@ -20,14 +20,14 @@ export const Company: FC = () => {
           value="true"
           onChange={handleClick}
           checked={managementCompanyEnabled === 'true'}
-          label="Да"
+          label={localField('yes')}
         />
         <RadioButton
           name="managementCompanyEnabled"
           value="false"
           onChange={handleClick}
           checked={managementCompanyEnabled === 'false'}
-          label="Нет"
+          label={localField('no')}
         />
       </div>
     </Accordion>
