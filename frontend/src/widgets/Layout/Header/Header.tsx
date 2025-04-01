@@ -10,7 +10,7 @@ import {estateCollectionApi} from "@/widgets/EstateCollection/api/estateCollecti
 export const Header: FC<{ basicToken: string }> = ({ basicToken }) => {
   const profileUrl = `http://insight-estate.site:8081/profile?basicToken=${basicToken}`;
   const [showMobileMenu, setShowMobileMenu] = useState(false);
-  const [profileImage, setProfileImage] = useState<string>("http://77.238.232.18:9000/estate-images/profile_img.png")
+  const [profileImage, setProfileImage] = useState<string>("https://insightestate.pro/estate-images/profile_img.png")
   const goTo = () => {
     window.location.href = profileUrl;
   };
@@ -21,7 +21,7 @@ export const Header: FC<{ basicToken: string }> = ({ basicToken }) => {
 
   useEffect(() => {
     estateCollectionApi.getAgentInfo(basicToken).then((r) => {
-      setProfileImage(r.data.profileImage || "http://77.238.232.18:9000/estate-images/profile_img.png")
+      setProfileImage(r.data.profileImage || "https://insightestate.pro/estate-images/profile_img.png")
     }).catch((e) => console.log(e))
   }, []);
 
