@@ -113,6 +113,12 @@ type fields =
   | 'car_10'
   | 'car_30'
   | 'studio'
+  | 'ai_title'
+  | 'ai_header'
+  | 'ai_body'
+  | 'ai_label'
+  | 'ai_button_1'
+  | 'ai_button_2'
     ;
 
 export const localField = (field: fields) => {

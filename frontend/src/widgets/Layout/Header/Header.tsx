@@ -6,6 +6,7 @@ import { Dropdown } from '@/widgets/Dropdown/Dropdown';
 import { localField } from '@/i18n/localField';
 import { MobileMenu } from '@/widgets/Layout/Header/MobileMenu';
 import {estateCollectionApi} from "@/widgets/EstateCollection/api/estateCollectionApi";
+import {isMobile} from "react-device-detect";
 
 export const Header: FC<{ basicToken: string }> = ({ basicToken }) => {
   const profileUrl = `http://insight-estate.site:8081/profile?basicToken=${basicToken}`;
@@ -60,15 +61,19 @@ export const Header: FC<{ basicToken: string }> = ({ basicToken }) => {
           {/*  </li>*/}
         </menu>
         <div className={styles.right}>
-          <Dropdown />
-          <Link to={profileUrl}>
-            <img
-                src={profileImage}
-                alt="icon"
-                className={styles.profile_icon}
-                onClick={goTo}
-            />
-          </Link>
+          {isMobile ? <></> :
+          <>
+            <Dropdown />
+            <Link to={profileUrl}>
+              <img
+                  src={profileImage}
+                  alt="icon"
+                  className={styles.profile_icon}
+                  onClick={goTo}
+              />
+            </Link>
+          </>
+          }
           {/*<Button bold onClick={goTo}>Узнать больше</Button>*/}
         </div>
       </header>

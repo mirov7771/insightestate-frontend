@@ -12,6 +12,7 @@ import { Text } from '../Text/Text';
 import { BaseField } from '@/widgets/BaseField/BaseField';
 import { useNavigate } from 'react-router';
 import { isMobile } from 'react-device-detect';
+import {localField} from "@/i18n/localField";
 
 export const AiModal: FC<TModalProps> = ({ onClose, open, anchor, onOpen }) => {
   const navigate = useNavigate();
@@ -50,19 +51,16 @@ export const AiModal: FC<TModalProps> = ({ onClose, open, anchor, onOpen }) => {
             <Spacer width="100%" height={8} />
             <Spacer width="100%" height={8} />
             <Text size="xl" align="center" colorTheme={'black200'} isBold>
-              AI подборщик
+              {localField('ai_title')}
             </Text>
             <Spacer width="100%" height={8} />
             {!isNew ? (
               <StyledWrapperText>
                 <Text size="m" align="left" colorTheme={'black200'}>
-                  Мы разработали AI подборщик который поможет вам с рутинным занятием подбора нужных
-                  объектов для ваших клиентов.
+                  {localField('ai_header')}
                   <br />
                   <br />
-                  Вам достаточно скинуть описание чего желает клиент в нашего AI подборщика и через
-                  пару минут вы получите сформированную подборку объектов которую можно сразу
-                  отправлять клиенту.
+                  {localField('ai_body')}
                 </Text>
               </StyledWrapperText>
             ) : (
@@ -72,7 +70,7 @@ export const AiModal: FC<TModalProps> = ({ onClose, open, anchor, onOpen }) => {
                 name="name"
                 rows={7}
                 multiline={true}
-                placeholder="Напишите пожелания вашего клиента: количество спален, бюджет, наличие спортзала, бассейна или УК, время до пляжа и любые другие детали которые помогут сделать точную подборку"
+                placeholder={localField('ai_label')}
               />
             )}
           </StyledWrapperProgress>
@@ -80,11 +78,11 @@ export const AiModal: FC<TModalProps> = ({ onClose, open, anchor, onOpen }) => {
         <Spacer width="100%" height={24} />
         {!isNew ? (
           <StyledButton color="secondary" variant="contained" size="medium" onClick={handleIsNew}>
-            Подобрать на основе описания
+            {localField('ai_button_1')}
           </StyledButton>
         ) : (
           <StyledButton color="secondary" variant="contained" size="medium" onClick={goTo}>
-            Сформировать подборку
+            {localField('ai_button_2')}
           </StyledButton>
         )}
         <Spacer width="100%" height={8} />

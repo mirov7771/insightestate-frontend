@@ -115,7 +115,13 @@ export const messages = {
     car_5: 'Up to 5 min by car',
     car_10: '6-10 min by car',
     car_30: '11-30 min by car',
-    studio: 'Studio'
+    studio: 'Studio',
+    ai_title: 'AI picker',
+    ai_header: 'We have developed an AI picker that will help you with the routine task of selecting the right objects for your clients.',
+    ai_body: 'You just need to drop a description of what the client wants in our AI picker and in a couple of minutes you will receive a generated selection of objects that you can immediately send to the client.',
+    ai_label: 'Write down your client\'s wishes: the number of bedrooms, budget, availability of a gym, pool or management center, time to the beach and any other details that will help make an accurate selection.',
+    ai_button_1: 'Select based on the description',
+    ai_button_2: 'Create a collection'
   },
   [LOCALES.RUSSIAN]: {
     language: 'Язык',
@@ -231,6 +237,12 @@ export const messages = {
     car_5: 'Менее 5 мин на машине',
     car_10: '6-10 мин на машине',
     car_30: '11-30 мин на машине',
-    studio: 'Студия'
+    studio: 'Студия',
+    ai_title: 'AI подборщик',
+    ai_header: 'Мы разработали AI подборщик который поможет вам с рутинным занятием подбора нужных объектов для ваших клиентов.',
+    ai_body: 'Вам достаточно скинуть описание чего желает клиент в нашего AI подборщика и через пару минут вы получите сформированную подборку объектов которую можно сразу отправлять клиенту.',
+    ai_label: 'Напишите пожелания вашего клиента: количество спален, бюджет, наличие спортзала, бассейна или УК, время до пляжа и любые другие детали которые помогут сделать точную подборку',
+    ai_button_1: 'Подобрать на основе описания',
+    ai_button_2: 'Сформировать подборку'
   },
 };
