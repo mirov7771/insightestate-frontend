@@ -261,13 +261,14 @@ const Register = (props) => {
                 </div>
 
                 <div className="form-group">
+                  Фото профиля
                   <Input
-                      type="text"
+                      type="file"
                       className="form-control"
                       name="profileImage"
+                      accept='image/*'
                       value={profileImage}
                       onChange={onChangeProfileImage}
-                      placeholder="Фото профиля"
                   />
                 </div>
 

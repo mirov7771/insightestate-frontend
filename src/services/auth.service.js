@@ -71,13 +71,19 @@ const profileUpdate = (
     username,
     phone,
     location,
-    basicAuth
+    basicAuth,
+    whatsUp,
+    tgName,
+    profileImage
 ) => {
   return axios.put(API_USERS_URL + "me", {
     fio: username,
     mobileNumber: phone,
     location: location,
-    password: password
+    password: password,
+    whatsUp,
+    tgName,
+    profileImage
   }, {headers: { 'Authorization': basicAuth }})
 }
 

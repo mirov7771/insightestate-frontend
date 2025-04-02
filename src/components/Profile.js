@@ -64,6 +64,25 @@ const Profile = (props) => {
   const [message, setMessage] = useState("");
   const [dataLoaded, setDataLoaded] = useState(false);
 
+  const [whatsUp, setWhatsUp] = useState("");
+  const [tgName, setTgName] = useState("");
+  const [profileImage, setProfileImage] = useState("");
+
+  const onChangeWhatsUp = (e) => {
+    const whatsUp  = e.target.value;
+    setWhatsUp(whatsUp);
+  };
+
+  const onChangeTgName = (e) => {
+    const tgName  = e.target.value;
+    setTgName(tgName);
+  };
+
+  const onChangeProfileImage = (e) => {
+    const profileImage  = e.target.value;
+    setProfileImage(profileImage);
+  };
+
   useEffect(() => {
     if (!dataLoaded) {
       const token = atob(basicToken.replace('Basic ', '')).split(':')
@@ -76,6 +95,9 @@ const Profile = (props) => {
         setLocation(response.data.location);
         setPhone(response.data.mobileNumber);
         setDataLoaded(true);
+        setWhatsUp(response.data.whatsUp);
+        setTgName(response.data.tgName);
+        setProfileImage(response.data.profileImage);
       })
     }
   })
@@ -114,7 +136,10 @@ const Profile = (props) => {
           username,
           phone,
           location,
-          basicToken
+          basicToken,
+          whatsUp,
+          tgName,
+          profileImage
       ).then(
         (response) => {
           setMessage("Данные обновлены! В течении нескольких секунд вы будете перенаправлены на сайт");
@@ -181,6 +206,40 @@ const Profile = (props) => {
                       onChange={onChangePhone}
                       validations={[validPhone]}
                       placeholder="Номер телефона"
+                  />
+                </div>
+
+                <div className="form-group">
+                  <Input
+                      type="text"
+                      className="form-control"
+                      name="whatsUp"
+                      value={whatsUp}
+                      onChange={onChangeWhatsUp}
+                      placeholder="WhatsApp номер"
+                  />
+                </div>
+
+                <div className="form-group">
+                  <Input
+                      type="text"
+                      className="form-control"
+                      name="tgName"
+                      value={tgName}
+                      onChange={onChangeTgName}
+                      placeholder="Имя в телеграмм"
+                  />
+                </div>
+
+                <div className="form-group">
+                  Фото профиля
+                  <Input
+                      type="file"
+                      className="form-control"
+                      name="profileImage"
+                      accept='image/*'
+                      value={profileImage}
+                      onChange={onChangeProfileImage}
                   />
                 </div>
 
