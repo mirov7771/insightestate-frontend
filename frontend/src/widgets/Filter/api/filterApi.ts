@@ -32,6 +32,10 @@ export type GetEstateParams = {
   types?: string[];
 };
 
+export type GetEstateAi = {
+  request: string;
+};
+
 type ResponseGetEstate = {
   hasMore: boolean;
   items: Array<Estate>;
@@ -59,6 +63,16 @@ export const filterApi = {
       return await api.get<ResponseGetEstate>('v1/estate', {
         params: { ...params },
       });
+    } catch (error) {
+      throw error;
+    }
+  },
+  getEstateAi: async (
+      params?: GetEstateAi
+  ): Promise<AxiosResponse<ResponseGetEstate>> => {
+    try {
+      return await api.post<ResponseGetEstate>('v1/estate/ai', params
+      );
     } catch (error) {
       throw error;
     }
