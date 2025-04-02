@@ -87,13 +87,25 @@ const profileUpdate = (
   }, {headers: { 'Authorization': basicAuth }})
 }
 
+async function uploadProfileImage (
+    file
+) {
+  const formData = new FormData()
+  formData.append('file', file)
+  const response = await axios.post(
+      API_URL + "load/image", formData, {headers: {'Content-Type': 'multipart/form-data'}}
+  )
+  return response.data['imageUrl']
+}
+
 const AuthService = {
   register,
   login,
   signUp,
   signUpCheck,
   profile,
-  profileUpdate
+  profileUpdate,
+  uploadProfileImage
 }
 
 export default AuthService;

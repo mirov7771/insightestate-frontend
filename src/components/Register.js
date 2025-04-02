@@ -98,9 +98,11 @@ const Register = (props) => {
     setTgName(tgName);
   };
 
-  const onChangeProfileImage = (e) => {
-    const profileImage  = e.target.value;
-    setProfileImage(profileImage);
+  const onChangeProfileImage = async (e) => {
+    const profileImage  = e.target.files;
+    const imageUrl = await AuthService.uploadProfileImage(profileImage[0])
+    console.log(imageUrl)
+    setProfileImage(imageUrl);
   };
 
   const onChangeUsername = (e) => {
@@ -267,7 +269,6 @@ const Register = (props) => {
                       className="form-control"
                       name="profileImage"
                       accept='image/*'
-                      value={profileImage}
                       onChange={onChangeProfileImage}
                   />
                 </div>
