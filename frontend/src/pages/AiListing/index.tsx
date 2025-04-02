@@ -17,7 +17,7 @@ export const AiListing: FC = () => {
       request: (request || '').replaceAll(' ', '+')
     }).then((r) => {
       setEstates(r.data.items);
-    }).catch(e => console.log(e)).finally(() => setLoading(true));
+    }).catch(e => console.log(e)).finally(() => setLoading(false));
   }, []);
 
   return (
