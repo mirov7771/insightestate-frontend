@@ -123,7 +123,7 @@ type fields =
 
 export const localField = (field: fields) => {
   const locale = localStorage.getItem('language');
-  let ln = LOCALES.ENGLISH;
+  let ln = LOCALES.RUSSIAN;
 
   if (locale) {
     ln = locale === 'en' ? LOCALES.ENGLISH : LOCALES.RUSSIAN;
