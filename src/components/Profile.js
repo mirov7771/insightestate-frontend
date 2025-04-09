@@ -8,7 +8,7 @@ import {useSearchParams} from "react-router-dom";
 import {REDIRECT_URL} from "../constants/constants";
 
 const validPhone = (value) => {
-  if (value.length < 5 || value.length > 16) {
+  if (value.length < 3) {
     return (
         <div className="invalid-feedback d-block">
           Номер телефона не валидный
