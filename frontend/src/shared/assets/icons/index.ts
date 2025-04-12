@@ -34,6 +34,7 @@ import Info from './Info.svg?react';
 import City from './City.svg?react';
 import ArrowDown from './ArrowDown.svg?react';
 import Menu from './Menu.svg?react';
+import Globe from './Globe.svg?react';
 
 export {
   Bed,
@@ -72,4 +73,5 @@ export {
   City,
   ArrowDown,
   Menu,
+  Globe
 };

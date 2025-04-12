@@ -64,7 +64,9 @@ export const Header: FC<{ basicToken: string }> = ({ basicToken }) => {
           {isMobile ? <></> :
           <>
             <Dropdown />
-            <Link to={profileUrl}>
+            <Link
+                to={profileUrl}
+            >
               <img
                   src={profileImage}
                   alt="icon"

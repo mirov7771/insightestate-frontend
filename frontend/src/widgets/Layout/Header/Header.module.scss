@@ -87,10 +87,12 @@ $headerHeight: 60px;
 .profile_icon {
   width: 30px;
   height: 30px;
-  margin-top: -1vh;
+  margin-top: -0.5vh;
   margin-left: -2vw;
   position: absolute;
   border-radius: 50%;
+  border-width: 1px;
+  border-color: #0e0e0e;
 }
 
 .mobileMenu {
