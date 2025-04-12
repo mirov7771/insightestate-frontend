@@ -82,7 +82,6 @@ export const Card: FC<
             {buildEndDate !== '-' && (
               <span className={styles.card__details__item}>{buildEndDate}</span>
             )}
-            <span className={styles.card__details__item}>{level}</span>
             <span className={styles.card__details__item}>
               <Beach /> {beachTravelTime} {localField('min')}
             </span>
@@ -105,7 +104,6 @@ export const Card: FC<
             {buildEndDate !== '-' && (
               <span className={styles.card__details__item}>{buildEndDate}</span>
             )}
-            <span className={styles.card__details__item}>{level}</span>
             <span className={styles.card__details__item}>
               <Beach /> {beachTravelTime} {localField('min')}
             </span>

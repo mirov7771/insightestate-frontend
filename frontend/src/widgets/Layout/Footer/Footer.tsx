@@ -17,7 +17,7 @@ export const Footer: FC = () => {
           <li className={styles.menu__item}>
             <Link
               className={styles.menu__link}
-              to="https://www.insightestate.com/about"
+              to="https://www.insightestate.com/#about-us"
               target="_blank"
             >
               {localField('about_us')}

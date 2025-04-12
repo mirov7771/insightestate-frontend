@@ -119,6 +119,10 @@ type fields =
   | 'ai_label'
   | 'ai_button_1'
   | 'ai_button_2'
+  | 'collection_title'
+  | 'offer_button'
+  | 'remove_button'
+  | 'object_count'
     ;
 
 export const localField = (field: fields) => {

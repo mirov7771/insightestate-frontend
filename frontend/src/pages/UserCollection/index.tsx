@@ -8,6 +8,7 @@ import { DEFAULT_IMG } from '@/entities/Card/Card';
 import { Button } from '@/shared/ui/Button';
 import { Spacer } from '@/widgets/Spacer/Spacer';
 import { useNavigate } from 'react-router';
+import {localField} from "@/i18n/localField";
 
 export const UserCollection: FC = () => {
   const [collection, setCollection] = useState<EstateCollection[]>([]);
@@ -24,7 +25,7 @@ export const UserCollection: FC = () => {
 
   return (
     <div className={styles.wrap}>
-      <h1 className={styles.header}>Подборки</h1>
+      <h1 className={styles.header}>{localField('collection_title')}</h1>
       <div className={styles.collection}>
         {collection.map((item) => (
           <ItemCollection {...item} token={token!!} />
@@ -61,13 +62,13 @@ const ItemCollection: FC<EstateCollection & { token: string }> = ({ name, estate
         <p>{name}</p>
         <div className={styles.card__details}>
           <span className={styles.card__details__item}>
-            Количество объектов: {estates?.length || 0}
+            {localField('object_count')}: {estates?.length || 0}
           </span>
         </div>
         <Spacer width={100} height={8} />
         <div className={styles.buttons}>
-          <Button onClick={goToCollection}>Оффер</Button>
-          <Button onClick={deleteCollection}>Удалить</Button>
+          <Button onClick={goToCollection}>{localField('offer_button')}</Button>
+          <Button onClick={deleteCollection}>{localField('remove_button')}</Button>
         </div>
       </div>
     </div>
