@@ -169,6 +169,10 @@ export const ScheduleByProject = new Map<string, string[]>([
   ['TH-BKK-PT-00090', ['5%', '15%', '80%']],
 ]);
 
+export type AuthRs = {
+  accessToken: string
+}
+
 export const detailApi = {
   getDetail: async (id: string | undefined): Promise<AxiosResponse<EstateDetail>> => {
     try {
@@ -177,4 +181,44 @@ export const detailApi = {
       throw error;
     }
   },
+  login: async (username: string, password: string): Promise<string> => {
+    try {
+      const basicAuth = 'Basic ' + btoa(username + ':' + password);
+      const rs = await api.post<AuthRs>('auth/sign-in', {}, {
+        headers: { 'Authorization': basicAuth }
+      });
+      if (rs.data.accessToken) {
+        localStorage.setItem('basicToken', basicAuth)
+      }
+      return rs.data.accessToken
+    } catch (error) {
+      throw error;
+    }
+  },
+  signUp: async (email: string): Promise<string | null | undefined> => {
+    try {
+      const rs = await api.post<void>('auth/sign-up', {
+        login: email
+      });
+      if (rs.status === 200) {
+        localStorage.setItem('email', email)
+      }
+      return email
+    } catch (error) {
+      return null
+    }
+  },
+  signUpCheck: async (email: string, code: string): Promise<string | null | undefined> => {
+    try {
+      const rs = await api.post<void>('auth/sign-up/confirm-code/check', {
+        login: email, confirmCode: code
+      });
+      if (rs.status === 200) {
+        localStorage.setItem('email', email)
+      }
+      return email
+    } catch (error) {
+      return null
+    }
+  }
 };

@@ -125,7 +125,16 @@ export const messages = {
     collection_title: 'Compilations',
     offer_button: 'Offer',
     remove_button: 'Remove',
-    object_count: 'Number of objects'
+    object_count: 'Number of objects',
+    log_in: 'Login',
+    sign_up: 'Registration',
+    password: 'Password',
+    politics_1: 'By clicking "Login" or "Register" you agree to',
+    politics_2: 'data processing policy',
+    receive_code: 'Receive Code',
+    footer_info_text: 'Don\'t see code in the email? Check your spam folder - the code may have ended up there',
+    confirm_button: 'Confirm',
+    code: 'Code'
   },
   [LOCALES.RUSSIAN]: {
     language: 'Язык',
@@ -251,6 +260,15 @@ export const messages = {
     collection_title: 'Подборки',
     offer_button: 'Оффер',
     remove_button: 'Удалить',
-    object_count: 'Количество объектов'
+    object_count: 'Количество объектов',
+    log_in: 'Войти',
+    sign_up: 'Регистрация',
+    password: 'Пароль',
+    politics_1: 'Нажимая "Войти" или "Регистрация" вы соглашаетесь с',
+    politics_2: 'политикой обработки данных',
+    receive_code: 'Получить код',
+    footer_info_text: 'Не видите письмо? Проверьте папку «Спам» — код мог попасть туда',
+    confirm_button: 'Подтвердить',
+    code: 'Код'
   },
 };

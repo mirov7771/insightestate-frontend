@@ -123,6 +123,15 @@ type fields =
   | 'offer_button'
   | 'remove_button'
   | 'object_count'
+  | 'log_in'
+  | 'sign_up'
+  | 'password'
+  | 'politics_1'
+  | 'politics_2'
+  | 'receive_code'
+  | 'footer_info_text'
+  | 'confirm_button'
+  | 'code'
     ;
 
 export const localField = (field: fields) => {

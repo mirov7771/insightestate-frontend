@@ -40,7 +40,7 @@ export const Authorization: FC = () => {
                             color="secondary"
                             variant="contained"
                             size="small"
-                            href={"http://insight-estate.site:8081/login-lk"}>
+                            href={"/login"}>
                             Войти
                         </StyledButton>
                     </div>

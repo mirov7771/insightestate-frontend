@@ -1,0 +1,37 @@
+.card {
+  background-color: #f6f6f2;
+  padding: 20px 25px 30px;
+  margin: 100px auto 25px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  -moz-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.cardContainer {
+  max-width: 350px !important;
+  padding: 50px 50px;
+  align-items: center;
+}
+
+.profileImgCard {
+  width: 50%;
+  margin: 0 auto 20px;
+  display: block;
+}
+
+.politics {
+  font-weight: 200;
+  font-size: 12px;
+  margin: auto;
+  width: 50%;
+  text-align: center;
+}
+
+.centerRegistration {
+  margin: auto;
+  width: 50%;
+  padding-left: 15%;
+}
