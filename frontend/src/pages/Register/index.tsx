@@ -1,5 +1,5 @@
 import React, {ChangeEvent, FC, useEffect, useState} from "react";
-import styles from "@/pages/SignUpEnd/SignUpEnd.module.scss";
+import styles from "@/pages/SignUp/SignUp.module.scss";
 import {LogoIcon} from "@/shared/assets/icons";
 import {Spacer} from "@/widgets/Spacer/Spacer";
 import {BaseField} from "@/widgets/BaseField/BaseField";
