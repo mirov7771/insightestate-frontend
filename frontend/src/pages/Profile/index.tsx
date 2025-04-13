@@ -7,8 +7,9 @@ import {Button} from "@/shared/ui";
 import {useNavigate} from "react-router";
 import {localField} from "@/i18n/localField";
 import {detailApi} from "@/widgets/Detail/api/detailApi";
+import {estateCollectionApi} from "@/widgets/EstateCollection/api/estateCollectionApi";
 
-export const Register: FC = () => {
+export const Profile: FC = () => {
     const navigate = useNavigate();
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState(localStorage.getItem("email") || "");
@@ -20,6 +21,7 @@ export const Register: FC = () => {
     const [tgName, setTgName] = useState("");
     const [profileImage, setProfileImage] = useState("");
     const [loading, setLoading] = useState(false);
+    const [token, setToken] = useState(localStorage.getItem("basicToken") )
 
     const onChangeUsername = (e: ChangeEvent<HTMLInputElement>) => {
         const username = e.target.value;
@@ -58,7 +60,7 @@ export const Register: FC = () => {
 
     const handleLogin = async () => {
         setLoading(true)
-        const rs = await detailApi.register(
+        const rs = await detailApi.profileUpdate(
             username, email, password, phone, location, whatsUp, tgName, profileImage
         )
         if (rs) navigate('/listing')
@@ -74,6 +76,19 @@ export const Register: FC = () => {
 
     useEffect(() => {
         setEmail(localStorage.getItem("email") || "")
+        setToken(localStorage.getItem("basicToken"))
+        estateCollectionApi.getAgentInfo(token!!).then((r) => {
+            if (r.data.login) setEmail(r.data.login)
+            if (r.data.tgName) setTgName(r.data.tgName)
+            if (r.data.profileImage) setProfileImage(r.data.profileImage)
+            if (r.data.whatsUp) setWhatsUp(r.data.whatsUp)
+            if (r.data.location) setLocation(r.data.location)
+            if (r.data.mobileNumber) setPhone(r.data.mobileNumber)
+            if (r.data.fio) setUsername(r.data.fio)
+        }).catch((e) => {
+            console.log(e)
+            navigate("/listing")
+        })
     }, []);
 
     return (
@@ -167,12 +182,12 @@ export const Register: FC = () => {
                     size={"l"}
                     loading={loading}
                 >
-                    {localField('registration')}
+                    {localField('save')}
                 </Button>
                 <Spacer height={20} width={100}/>
                 <div className={styles.centerRegistration}>
-                    <a href={"/login"} className="button">
-                        {localField('log_in')}
+                    <a href={"/listing"} className="button">
+                        {localField('come_back')}
                     </a>
                 </div>
             </div>

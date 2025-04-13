@@ -134,7 +134,16 @@ export const messages = {
     receive_code: 'Receive Code',
     footer_info_text: 'Don\'t see code in the email? Check your spam folder - the code may have ended up there',
     confirm_button: 'Confirm',
-    code: 'Code'
+    code: 'Code',
+    photo: 'Your photo',
+    tg: 'Telegram nickname',
+    wa: 'WhatsApp number',
+    location: 'Location',
+    phone_number: 'Phone number',
+    surname_name: 'Surname and name',
+    registration: 'Registration',
+    save: 'Save',
+    come_back: 'Back'
   },
   [LOCALES.RUSSIAN]: {
     language: 'Язык',
@@ -269,6 +278,15 @@ export const messages = {
     receive_code: 'Получить код',
     footer_info_text: 'Не видите письмо? Проверьте папку «Спам» — код мог попасть туда',
     confirm_button: 'Подтвердить',
-    code: 'Код'
+    code: 'Код',
+    photo: 'Фото профиля',
+    tg: 'Имя в телеграмм',
+    wa: 'WhatsApp номер',
+    location: 'Локация',
+    phone_number: 'Номер телефона',
+    surname_name: 'Фамилия и Имя',
+    registration: 'Зарегистрироваться',
+    save: 'Сохранить',
+    come_back: 'Вернуться'
   },
 };

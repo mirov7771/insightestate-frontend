@@ -11,6 +11,8 @@ import {Authorization} from "@/pages/Authorization";
 import {Login} from "@/pages/Login";
 import {SignUp} from "@/pages/SignUp";
 import {SignUpEnd} from "@/pages/SignUpEnd";
+import {Register} from "@/pages/Register";
+import {Profile} from "@/pages/Profile";
 
 const App = () => {
   return (
@@ -19,6 +21,8 @@ const App = () => {
         <Route path="/login" element={<Login />}/>
         <Route path="/sign-up" element={<SignUp />}/>
         <Route path="/sign-up-end" element={<SignUpEnd />}/>
+        <Route path="/register" element={<Register />}/>
+        <Route path="/profile" element={<Profile />}/>
         <Route path="/" element={<Layout />}>
           <Route index element={<Authorization />} />
           <Route

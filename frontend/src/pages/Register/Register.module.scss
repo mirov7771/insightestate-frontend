@@ -1,7 +1,7 @@
 .card {
   background-color: #f6f6f2;
   padding: 20px 25px 30px;
-  margin: 100px auto 25px;
+  margin: 5px auto 25px;
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
   border-radius: 2px;
@@ -34,5 +34,15 @@
 .centerRegistration {
   margin: auto;
   width: 50%;
-  padding-left: 15%;
+  padding-left: 20%;
+}
+
+.profileIcon {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border-width: 1px;
+  border-color: #0e0e0e;
+  margin-left: 90px;
+  margin-top: 10px;
 }

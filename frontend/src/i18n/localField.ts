@@ -132,6 +132,15 @@ type fields =
   | 'footer_info_text'
   | 'confirm_button'
   | 'code'
+  | 'photo'
+  | 'tg'
+  | 'wa'
+  | 'location'
+  | 'phone_number'
+  | 'surname_name'
+  | 'registration'
+  | 'save'
+  | 'come_back'
     ;
 
 export const localField = (field: fields) => {

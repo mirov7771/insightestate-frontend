@@ -10,7 +10,7 @@ export const Authorization: FC = () => {
 
     useEffect(() => {
         if (session && session.length > 2) {
-            navigate(`listing?basicToken=${session}`)
+            navigate(`listing`)
         }
     }, [session]);
     return (

@@ -1,7 +1,7 @@
 import {FC, useEffect, useState} from 'react';
 import styles from './Header.module.scss';
 import { Logo, Menu } from '@/shared/assets/icons';
-import { Link } from 'react-router';
+import {Link, useNavigate} from 'react-router';
 import { Dropdown } from '@/widgets/Dropdown/Dropdown';
 import { localField } from '@/i18n/localField';
 import { MobileMenu } from '@/widgets/Layout/Header/MobileMenu';
@@ -9,11 +9,11 @@ import {estateCollectionApi} from "@/widgets/EstateCollection/api/estateCollecti
 import {isMobile} from "react-device-detect";
 
 export const Header: FC<{ basicToken: string }> = ({ basicToken }) => {
-  const profileUrl = `http://insight-estate.site:8081/profile?basicToken=${basicToken}`;
+  const navigate = useNavigate();
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [profileImage, setProfileImage] = useState<string>("https://insightestate.pro/estate-images/profile_img.png")
   const goTo = () => {
-    window.location.href = profileUrl;
+    navigate("/profile")
   };
 
   const handleClickMobileMenu = () => {
@@ -28,7 +28,7 @@ export const Header: FC<{ basicToken: string }> = ({ basicToken }) => {
 
   return (
     <>
-      <MobileMenu profileUrl={profileUrl} showMobileMenu={showMobileMenu} />
+      <MobileMenu profileUrl="/profile" showMobileMenu={showMobileMenu} />
       <header className={styles.header}>
         <span className={styles.menu__icon} onClick={handleClickMobileMenu}>
           <Menu />
@@ -65,7 +65,7 @@ export const Header: FC<{ basicToken: string }> = ({ basicToken }) => {
           <>
             <Dropdown />
             <Link
-                to={profileUrl}
+                to="/profile"
             >
               <img
                   src={profileImage}

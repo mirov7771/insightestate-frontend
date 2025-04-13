@@ -26,6 +26,7 @@ export const Login: FC = () => {
         setLoading(true)
         const rs = await detailApi.login(username, password)
         if (rs) navigate('/listing')
+        setPassword("")
         setLoading(false)
     }
 
