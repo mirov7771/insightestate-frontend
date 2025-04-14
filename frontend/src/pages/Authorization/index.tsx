@@ -3,6 +3,7 @@ import styles from "@/pages/Authorization/Authorization.module.scss";
 import {Spacer} from "@/widgets/Spacer/Spacer";
 import {StyledButton} from "@/widgets/Modal/styled";
 import {useNavigate} from "react-router";
+import {localField} from "@/i18n/localField";
 
 export const Authorization: FC = () => {
     const navigate = useNavigate();
@@ -29,10 +30,9 @@ export const Authorization: FC = () => {
                 </video>
                 <div className={styles.wrap}>
                     <Spacer height={140} width={100}/>
-                    <h4>Рациональные инвестиции в недвижимость Пхукета</h4>
+                    <h4>{localField('main_title')}</h4>
                     <Spacer height={20} width={100}/>
-                    <p>Помогаем выбрать самый выгодный и надёжный объект инвестиций на основе анализа по более чем 100
-                        параметрам</p>
+                    <p>{localField('main_text')}</p>
                     <Spacer height={40} width={100}/>
                     <div className={styles.button}>
                         <StyledButton
@@ -41,7 +41,7 @@ export const Authorization: FC = () => {
                             variant="contained"
                             size="small"
                             href={"/login"}>
-                            Войти
+                            {localField('log_in')}
                         </StyledButton>
                     </div>
                 </div>

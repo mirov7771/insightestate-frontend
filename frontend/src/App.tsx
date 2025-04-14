@@ -13,8 +13,18 @@ import {SignUp} from "@/pages/SignUp";
 import {SignUpEnd} from "@/pages/SignUpEnd";
 import {Register} from "@/pages/Register";
 import {Profile} from "@/pages/Profile";
+import getUserLocale from "get-user-locale";
+import {useEffect} from "react";
 
 const App = () => {
+  const userLocale = getUserLocale();
+  useEffect(() => {
+    console.log(userLocale)
+    if (!localStorage.getItem('language')) {
+      localStorage.setItem('language', userLocale.toLowerCase().indexOf('ru') > -1 ? 'ru' : 'en')
+    }
+  }, []);
+
   return (
     <BrowserRouter>
       <Routes>

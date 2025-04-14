@@ -2,15 +2,22 @@ import {FC, useEffect, useState} from 'react';
 import styles from './Dropdown.module.scss';
 import { localField } from '@/i18n/localField';
 import {Globe} from '@/shared/assets/icons';
+import getUserLocale from 'get-user-locale';
 
 export const Dropdown: FC = () => {
   const [dropdownState, setDropdownState] = useState({ open: false });
   const handleDropdownClick = () => setDropdownState({ open: !dropdownState.open });
   const handleClickOutside = () => setDropdownState({ open: false });
   const [locale, setLocale] = useState<string>(localStorage.getItem('language') || 'ru')
+  const userLocale = getUserLocale();
 
   useEffect(() => {
-    setLocale(localStorage.getItem('language') || 'ru')
+    console.log(userLocale)
+    if (!localStorage.getItem('language')) {
+      setLocale(userLocale.toLowerCase().indexOf('ru') > -1 ? 'ru' : 'en')
+    } else {
+      setLocale(localStorage.getItem('language') || 'ru')
+    }
   }, []);
 
   const handleRusLanguage = () => {

@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import React, {FC, useState} from 'react';
 import styles from './Filter.module.scss';
 import { PropertyType } from './PropertyType';
 import { CompletionDate } from './CompletionDate';
@@ -12,6 +12,9 @@ import { Company } from '@/widgets/Filter/Company';
 import { Region } from '@/widgets/Filter/Region';
 import { City } from '@/widgets/Filter/City';
 import { localField } from '@/i18n/localField';
+import {Spacer} from "@/widgets/Spacer/Spacer";
+import {Button} from "@/shared/ui";
+import {AiModal} from "@/widgets/Modal/AiModal";
 
 export const Filter: FC = () => {
   const { setFilters } = useFilters();
@@ -37,6 +40,38 @@ export const Filter: FC = () => {
       <Airport />
       <Company />
       <Region />
+      <AiFilter/>
     </>
   );
 };
+
+const AiFilter: FC = () => {
+    const [aiModal, setAiModal] = useState(false);
+    const handleOpenAiModal = () => {
+        setAiModal(true);
+    };
+    const handleCloseAiModal = () => {
+        setAiModal(false);
+    };
+    return (
+        <>
+            <div className={styles.info}>
+                <p>{localField('ai_text')}</p>
+                <Spacer height={20} width={100}/>
+                <Button
+                    onClick={handleOpenAiModal}
+                    wide
+                    size={"m"}
+                >
+                    {localField('ai_button')}
+                </Button>
+            </div>
+            <AiModal
+                open={aiModal}
+                onClose={handleCloseAiModal}
+                onOpen={handleOpenAiModal}
+                anchor="bottom"
+            />
+        </>
+    )
+}

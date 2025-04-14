@@ -143,7 +143,11 @@ export const messages = {
     surname_name: 'Surname and name',
     registration: 'Registration',
     save: 'Save',
-    come_back: 'Back'
+    come_back: 'Back',
+    ai_button: 'AI picker',
+    ai_text: 'We have developed an AI selector that will help you with the routine task of selecting the right objects for your clients',
+    main_title: 'Smart Investments in Phuket Real Estate',
+    main_text: 'We help you choose the most profitable and reliable investment object based on an analysis of more than 100 parameters'
   },
   [LOCALES.RUSSIAN]: {
     language: 'Язык',
@@ -287,6 +291,10 @@ export const messages = {
     surname_name: 'Фамилия и Имя',
     registration: 'Зарегистрироваться',
     save: 'Сохранить',
-    come_back: 'Вернуться'
+    come_back: 'Вернуться',
+    ai_button: 'AI подборщик',
+    ai_text: 'Мы разработали AI подборщик который поможет вам с рутинным занятием подбора нужных объектов для ваших клиентов',
+    main_title: 'Рациональные инвестиции в недвижимость Пхукета',
+    main_text: 'Помогаем выбрать самый выгодный и надёжный объект инвестиций на основе анализа по более чем 100 параметрам'
   },
 };
