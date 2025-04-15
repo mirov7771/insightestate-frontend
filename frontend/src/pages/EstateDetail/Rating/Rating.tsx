@@ -28,13 +28,13 @@ export const Rating: FC<Grade> = ({
     setInfoText(undefined);
     setChildren(
       <>
-          {localField('info_title')}
+        {localField('info_title')}
         <br />
-          {localField('security_p1')}
+        {localField('security_p1')}
         <br />
-          {localField('security_p2')}
+        {localField('security_p2')}
         <br />
-          {localField('security_p3')}
+        {localField('security_p3')}
       </>
     );
     handleOpenInfoModal();
@@ -45,13 +45,13 @@ export const Rating: FC<Grade> = ({
     setInfoText(undefined);
     setChildren(
       <>
-          {localField('info_title')}
+        {localField('info_title')}
         <br />
-          {localField('invest_p1')}
+        {localField('invest_p1')}
         <br />
-          {localField('invest_p2')}
+        {localField('invest_p2')}
         <br />
-          {localField('invest_p3')}
+        {localField('invest_p3')}
       </>
     );
     handleOpenInfoModal();
@@ -62,11 +62,11 @@ export const Rating: FC<Grade> = ({
     setInfoText(undefined);
     setChildren(
       <>
-          {localField('info_title')}
+        {localField('info_title')}
         <br />
-          {localField('location_p1')}
+        {localField('location_p1')}
         <br />
-          {localField('location_p2')}
+        {localField('location_p2')}
       </>
     );
     handleOpenInfoModal();
@@ -77,17 +77,17 @@ export const Rating: FC<Grade> = ({
     setInfoText(undefined);
     setChildren(
       <>
-          {localField('info_title')}
+        {localField('info_title')}
         <br />
-          {localField('comfort_p1')}
+        {localField('comfort_p1')}
         <br />
-          {localField('comfort_p2')}
+        {localField('comfort_p2')}
         <br />
-          {localField('comfort_p3')}
+        {localField('comfort_p3')}
         <br />
-          {localField('comfort_p4')}
+        {localField('comfort_p4')}
         <br />
-          {localField('comfort_p5')}
+        {localField('comfort_p5')}
       </>
     );
     handleOpenInfoModal();
@@ -103,7 +103,7 @@ export const Rating: FC<Grade> = ({
   return (
     <div>
       <h5 className={styles.info_icon}>
-          {localField('our_rating')}
+        {localField('our_rating')}
         <div className={styles.icon} onClick={openRatingInfo}>
           <Info />
         </div>

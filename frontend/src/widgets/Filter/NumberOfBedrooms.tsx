@@ -23,10 +23,10 @@ export const NumberOfBedrooms: FC = () => {
     <Accordion icon={<Bed />} title={localField('number_of_bedrooms')}>
       <div className={styles.content}>
         <Checkbox
-            onChange={handleClick}
-            checked={rooms?.includes('0')}
-            value="0"
-            label={localField('studio')}
+          onChange={handleClick}
+          checked={rooms?.includes('0')}
+          value="0"
+          label={localField('studio')}
         />
         <Checkbox
           onChange={handleClick}

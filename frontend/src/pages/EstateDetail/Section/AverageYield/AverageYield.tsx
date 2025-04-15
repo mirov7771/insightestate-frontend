@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { Section } from '../Section';
 import styles from './AverageYield.module.scss';
 import { Profitability } from '@/widgets/Detail/api/detailApi';
-import {localField} from "@/i18n/localField";
+import { localField } from '@/i18n/localField';
 
 export const AverageYield: FC<Profitability> = ({ roi, irr, capRateFirstYear }) => {
   return (

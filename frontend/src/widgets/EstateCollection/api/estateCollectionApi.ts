@@ -46,9 +46,9 @@ export type AgentInfo = {
   location?: string;
   login?: string;
   mobileNumber?: string;
-  whatsUp?: string;
-  tgName?: string;
   profileImage?: string;
+  tgName?: string;
+  whatsUp?: string;
 };
 
 export type HelpWithClientRq = {

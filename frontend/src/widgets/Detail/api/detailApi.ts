@@ -170,12 +170,12 @@ export const ScheduleByProject = new Map<string, string[]>([
 ]);
 
 type AuthRs = {
-  accessToken: string
-}
+  accessToken: string;
+};
 
 type LoadFileRs = {
-  imageUrl: string
-}
+  imageUrl: string;
+};
 
 export const detailApi = {
   getDetail: async (id: string | undefined): Promise<AxiosResponse<EstateDetail>> => {
@@ -188,52 +188,60 @@ export const detailApi = {
   login: async (username: string, password: string): Promise<string | undefined | null> => {
     try {
       const basicAuth = 'Basic ' + btoa(username + ':' + password);
-      const rs = await api.post<AuthRs>('auth/sign-in', {}, {
-        headers: { 'Authorization': basicAuth }
-      });
+      const rs = await api.post<AuthRs>(
+        'auth/sign-in',
+        {},
+        {
+          headers: { Authorization: basicAuth },
+        }
+      );
+
       if (rs.data.accessToken) {
-        localStorage.setItem('basicToken', basicAuth)
+        localStorage.setItem('basicToken', basicAuth);
       }
-      return rs.data.accessToken
+      return rs.data.accessToken;
     } catch (error) {
-      return null
+      return null;
     }
   },
   signUp: async (email: string): Promise<string | null | undefined> => {
     try {
       const rs = await api.post<void>('auth/sign-up', {
-        login: email
+        login: email,
       });
+
       if (rs.status === 200) {
-        localStorage.setItem('email', email)
+        localStorage.setItem('email', email);
       }
-      return email
+      return email;
     } catch (error) {
-      return null
+      return null;
     }
   },
   signUpCheck: async (email: string, code: string): Promise<string | null | undefined> => {
     try {
       const rs = await api.post<void>('auth/sign-up/confirm-code/check', {
-        login: email, confirmCode: code
+        login: email,
+        confirmCode: code,
       });
+
       if (rs.status === 200) {
-        localStorage.setItem('email', email)
+        localStorage.setItem('email', email);
       }
-      return email
+      return email;
     } catch (error) {
-      return null
+      return null;
     }
   },
   register: async (
-      username: string,
-      email: string,
-      password: string,
-      phone: string,
-      location: string,
-      whatsUp: string,
-      tgName: string,
-      profileImage: string
+    username: string,
+    email: string,
+    password: string,
+    phone: string,
+    location: string,
+    whatsUp: string,
+    tgName: string,
+    profileImage: string
   ): Promise<string | null | undefined> => {
     try {
       const rs = await api.post<void>('auth/sign-up/end', {
@@ -244,58 +252,70 @@ export const detailApi = {
         location,
         whatsUp,
         tgName,
-        profileImage
+        profileImage,
       });
+
       if (rs.status === 200) {
         const basicAuth = 'Basic ' + btoa(email + ':' + password);
-        localStorage.setItem('basicToken', basicAuth)
-        localStorage.setItem('email', email)
+
+        localStorage.setItem('basicToken', basicAuth);
+        localStorage.setItem('email', email);
       }
-      return email
+      return email;
     } catch (error) {
-      return null
+      return null;
     }
   },
   uploadProfileImage: async (file: File): Promise<string | undefined | null> => {
     try {
-      const formData = new FormData()
-      formData.append('file', file)
-      const rs = await api.post<LoadFileRs>('auth/load/image', formData, {headers: {'Content-Type': 'multipart/form-data'}});
-      return rs.data.imageUrl
+      const formData = new FormData();
+
+      formData.append('file', file);
+      const rs = await api.post<LoadFileRs>('auth/load/image', formData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      });
+
+      return rs.data.imageUrl;
     } catch (error) {
-      return null
+      return null;
     }
   },
   profileUpdate: async (
-      username: string,
-      email: string,
-      password: string,
-      phone: string,
-      location: string,
-      whatsUp: string,
-      tgName: string,
-      profileImage: string,
+    username: string,
+    email: string,
+    password: string,
+    phone: string,
+    location: string,
+    whatsUp: string,
+    tgName: string,
+    profileImage: string
   ): Promise<string | null | undefined> => {
     try {
-      const token = localStorage.getItem('basicToken')
-      const rs = await api.put<void>('users/me', {
-        fio: username,
-        login: email,
-        password: password,
-        mobileNumber: phone,
-        location,
-        whatsUp,
-        tgName,
-        profileImage
-      }, {headers: { 'Authorization': token }});
+      const token = localStorage.getItem('basicToken');
+      const rs = await api.put<void>(
+        'users/me',
+        {
+          fio: username,
+          login: email,
+          password: password,
+          mobileNumber: phone,
+          location,
+          whatsUp,
+          tgName,
+          profileImage,
+        },
+        { headers: { Authorization: token } }
+      );
+
       if (rs.status === 200) {
         const basicAuth = 'Basic ' + btoa(email + ':' + password);
-        localStorage.setItem('basicToken', basicAuth)
-        localStorage.setItem('email', email)
+
+        localStorage.setItem('basicToken', basicAuth);
+        localStorage.setItem('email', email);
       }
-      return email
+      return email;
     } catch (error) {
-      return null
+      return null;
     }
-  }
+  },
 };

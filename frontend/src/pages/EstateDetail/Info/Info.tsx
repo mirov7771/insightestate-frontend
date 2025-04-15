@@ -1,4 +1,4 @@
-import {FC, useState} from 'react';
+import { FC, useState } from 'react';
 import styles from './Info.module.scss';
 import {
   Airport,
@@ -16,7 +16,8 @@ import {
   EstateTypeEn,
   EstateTypeRu,
   InfrastructureDto,
-  LevelTypeEn, LevelTypeRu,
+  LevelTypeEn,
+  LevelTypeRu,
   ProjectUnitCount,
 } from '@/widgets/Detail/api/detailApi';
 import { localField } from '@/i18n/localField';
@@ -42,20 +43,26 @@ export const Info: FC<{
   parkingSize,
   companyEnabled,
 }) => {
-  const [locale, setLocale] = useState<string>(localStorage.getItem('language') || 'ru')
+  const [locale, setLocale] = useState<string>(localStorage.getItem('language') || 'ru');
+
   return (
     <div className={styles.info}>
       <div className={styles.info__item}>
         <span className={styles.text}>
           <Diamond /> {localField('class')}
         </span>
-        <span className={styles.text}>{(locale === 'en' ? LevelTypeEn.get(level) : LevelTypeRu.get(level)) || localField('not_selected')}</span>
+        <span className={styles.text}>
+          {(locale === 'en' ? LevelTypeEn.get(level) : LevelTypeRu.get(level)) ||
+            localField('not_selected')}
+        </span>
       </div>
       <div className={styles.info__item}>
         <span className={styles.text}>
           <Home /> {localField('type_of_place')}
         </span>
-        <span className={styles.text}>{(locale === 'en' ? EstateTypeEn.get(type) : EstateTypeRu.get(type)) || 'Villa'}</span>
+        <span className={styles.text}>
+          {(locale === 'en' ? EstateTypeEn.get(type) : EstateTypeRu.get(type)) || 'Villa'}
+        </span>
       </div>
       {buildEndDate ? (
         <div className={styles.info__item}>

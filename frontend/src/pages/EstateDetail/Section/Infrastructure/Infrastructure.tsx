@@ -7,7 +7,7 @@ import trainers from '@/shared/assets/icons/Trainers.svg';
 import beach from '@/shared/assets/icons/Beach.svg';
 import shopping from '@/shared/assets/icons/ShoppingCart.svg';
 import airport from '@/shared/assets/icons/Airport.svg';
-import {localField} from "@/i18n/localField";
+import { localField } from '@/i18n/localField';
 
 export const Infrastructure: FC<{
   childRoom: boolean;
@@ -44,17 +44,23 @@ export const Infrastructure: FC<{
         <div className={styles.item}>
           <img src={beach} className={styles.item__icon} alt="icon" />
           <strong>{localField('beach')}</strong>
-          <span>{beachTime}{' '}{localField('min_on_car')}</span>
+          <span>
+            {beachTime} {localField('min_on_car')}
+          </span>
         </div>
         <div className={styles.item}>
           <img src={shopping} className={styles.item__icon} alt="icon" />
           <strong>{localField('mall')}</strong>
-          <span>{mallTime}{' '}{localField('min_on_car')}</span>
+          <span>
+            {mallTime} {localField('min_on_car')}
+          </span>
         </div>
         <div className={styles.item}>
           <img src={airport} className={styles.item__icon} alt="icon" />
           <strong>{localField('airport')}</strong>
-          <span>{airportTime}{' '}{localField('min_on_car')}</span>
+          <span>
+            {airportTime} {localField('min_on_car')}
+          </span>
         </div>
       </div>
     </Section>

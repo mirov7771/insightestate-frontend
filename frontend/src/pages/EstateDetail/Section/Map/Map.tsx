@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Section } from '../Section';
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
-import {localField} from "@/i18n/localField";
+import { localField } from '@/i18n/localField';
 
 const containerStyle = {
   width: '100%',

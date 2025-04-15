@@ -8,7 +8,7 @@ import { DEFAULT_IMG } from '@/entities/Card/Card';
 import { Button } from '@/shared/ui/Button';
 import { Spacer } from '@/widgets/Spacer/Spacer';
 import { useNavigate } from 'react-router';
-import {localField} from "@/i18n/localField";
+import { localField } from '@/i18n/localField';
 
 export const UserCollection: FC = () => {
   const [collection, setCollection] = useState<EstateCollection[]>([]);

@@ -144,8 +144,7 @@ type fields =
   | 'ai_button'
   | 'ai_text'
   | 'main_title'
-  | 'main_text'
-    ;
+  | 'main_text';
 
 export const localField = (field: fields) => {
   const locale = localStorage.getItem('language');

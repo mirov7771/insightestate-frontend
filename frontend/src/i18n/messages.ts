@@ -92,12 +92,14 @@ export const messages = {
     invest_p2: '— Payback period.',
     invest_p3: '— Expected property value appreciation.',
     location_p1: '— Area exclusivity.',
-    location_p2: '— Proximity to: beaches, airport, international schools, convenience stores, shopping malls.',
+    location_p2:
+      '— Proximity to: beaches, airport, international schools, convenience stores, shopping malls.',
     comfort_p1: '— Design.',
     comfort_p2: '— Quality of materials.',
     comfort_p3: '— Units layouts.',
     comfort_p4: '— Facilities for work and rest.',
-    comfort_p5: '— Overall infrastructure, both for the project itself and also neighborhood facilities.',
+    comfort_p5:
+      '— Overall infrastructure, both for the project itself and also neighborhood facilities.',
     villa_type: 'Villa',
     apartment_type: 'Apartment',
     from: 'From',
@@ -117,9 +119,12 @@ export const messages = {
     car_30: '11-30 min by car',
     studio: 'Studio',
     ai_title: 'AI picker',
-    ai_header: 'We have developed an AI picker that will help you with the routine task of selecting the right objects for your clients.',
-    ai_body: 'You just need to drop a description of what the client wants in our AI picker and in a couple of minutes you will receive a generated selection of objects that you can immediately send to the client.',
-    ai_label: 'Write down your client\'s wishes: the number of bedrooms, budget, availability of a gym, pool or management center, time to the beach and any other details that will help make an accurate selection.',
+    ai_header:
+      'We have developed an AI picker that will help you with the routine task of selecting the right objects for your clients.',
+    ai_body:
+      'You just need to drop a description of what the client wants in our AI picker and in a couple of minutes you will receive a generated selection of objects that you can immediately send to the client.',
+    ai_label:
+      'Write down your client\'s wishes: the number of bedrooms, budget, availability of a gym, pool or management center, time to the beach and any other details that will help make an accurate selection.',
     ai_button_1: 'Select based on the description',
     ai_button_2: 'Create a collection',
     collection_title: 'Compilations',
@@ -132,7 +137,8 @@ export const messages = {
     politics_1: 'By clicking "Login" or "Register" you agree to',
     politics_2: 'data processing policy',
     receive_code: 'Receive Code',
-    footer_info_text: 'Don\'t see code in the email? Check your spam folder - the code may have ended up there',
+    footer_info_text:
+      'Don\'t see code in the email? Check your spam folder - the code may have ended up there',
     confirm_button: 'Confirm',
     code: 'Code',
     photo: 'Your photo',
@@ -145,9 +151,11 @@ export const messages = {
     save: 'Save',
     come_back: 'Back',
     ai_button: 'AI picker',
-    ai_text: 'We have developed an AI selector that will help you with the routine task of selecting the right objects for your clients',
+    ai_text:
+      'We have developed an AI selector that will help you with the routine task of selecting the right objects for your clients',
     main_title: 'Smart Investments in Phuket Real Estate',
-    main_text: 'We help you choose the most profitable and reliable investment object based on an analysis of more than 100 parameters'
+    main_text:
+      'We help you choose the most profitable and reliable investment object based on an analysis of more than 100 parameters',
   },
   [LOCALES.RUSSIAN]: {
     language: 'Язык',
@@ -240,7 +248,8 @@ export const messages = {
     invest_p2: '— сроки окупаемости,',
     invest_p3: '— прогнозируемый рост стоимости объекта.',
     location_p1: '— престиж района,',
-    location_p2: '— близость к важным объектам: пляжам, аэропорту, школам, магазинам и торговым центрам.',
+    location_p2:
+      '— близость к важным объектам: пляжам, аэропорту, школам, магазинам и торговым центрам.',
     comfort_p1: '— дизайн,',
     comfort_p2: '— материалы,',
     comfort_p3: '— планировка,',
@@ -265,9 +274,12 @@ export const messages = {
     car_30: '11-30 мин на машине',
     studio: 'Студия',
     ai_title: 'AI подборщик',
-    ai_header: 'Мы разработали AI подборщик который поможет вам с рутинным занятием подбора нужных объектов для ваших клиентов.',
-    ai_body: 'Вам достаточно скинуть описание чего желает клиент в нашего AI подборщика и через пару минут вы получите сформированную подборку объектов которую можно сразу отправлять клиенту.',
-    ai_label: 'Напишите пожелания вашего клиента: количество спален, бюджет, наличие спортзала, бассейна или УК, время до пляжа и любые другие детали которые помогут сделать точную подборку',
+    ai_header:
+      'Мы разработали AI подборщик который поможет вам с рутинным занятием подбора нужных объектов для ваших клиентов.',
+    ai_body:
+      'Вам достаточно скинуть описание чего желает клиент в нашего AI подборщика и через пару минут вы получите сформированную подборку объектов которую можно сразу отправлять клиенту.',
+    ai_label:
+      'Напишите пожелания вашего клиента: количество спален, бюджет, наличие спортзала, бассейна или УК, время до пляжа и любые другие детали которые помогут сделать точную подборку',
     ai_button_1: 'Подобрать на основе описания',
     ai_button_2: 'Сформировать подборку',
     collection_title: 'Подборки',
@@ -293,8 +305,10 @@ export const messages = {
     save: 'Сохранить',
     come_back: 'Вернуться',
     ai_button: 'AI подборщик',
-    ai_text: 'Мы разработали AI подборщик который поможет вам с рутинным занятием подбора нужных объектов для ваших клиентов',
+    ai_text:
+      'Мы разработали AI подборщик который поможет вам с рутинным занятием подбора нужных объектов для ваших клиентов',
     main_title: 'Рациональные инвестиции в недвижимость Пхукета',
-    main_text: 'Помогаем выбрать самый выгодный и надёжный объект инвестиций на основе анализа по более чем 100 параметрам'
+    main_text:
+      'Помогаем выбрать самый выгодный и надёжный объект инвестиций на основе анализа по более чем 100 параметрам',
   },
 };

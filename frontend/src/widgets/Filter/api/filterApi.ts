@@ -67,12 +67,9 @@ export const filterApi = {
       throw error;
     }
   },
-  getEstateAi: async (
-      params?: GetEstateAi
-  ): Promise<AxiosResponse<ResponseGetEstate>> => {
+  getEstateAi: async (params?: GetEstateAi): Promise<AxiosResponse<ResponseGetEstate>> => {
     try {
-      return await api.post<ResponseGetEstate>('v1/estate/ai', params
-      );
+      return await api.post<ResponseGetEstate>('v1/estate/ai', params);
     } catch (error) {
       throw error;
     }

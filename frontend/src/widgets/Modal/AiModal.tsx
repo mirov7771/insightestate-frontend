@@ -12,7 +12,7 @@ import { Text } from '../Text/Text';
 import { BaseField } from '@/widgets/BaseField/BaseField';
 import { useNavigate } from 'react-router';
 import { isMobile } from 'react-device-detect';
-import {localField} from "@/i18n/localField";
+import { localField } from '@/i18n/localField';
 
 export const AiModal: FC<TModalProps> = ({ onClose, open, anchor, onOpen }) => {
   const navigate = useNavigate();
