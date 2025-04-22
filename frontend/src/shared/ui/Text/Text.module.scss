@@ -1,0 +1,141 @@
+.text {
+  display: block;
+  color: inherit;
+}
+
+// Мобильные стили (по умолчанию)
+.heading1 {
+  font-family: 'Wix Madefor Display', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 40px;
+}
+
+.heading2 {
+  font-family: 'Wix Madefor Display', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 32px;
+}
+
+.heading3 {
+  font-family: 'Wix Madefor Text', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 26px;
+}
+
+.heading4 {
+  font-family: 'Wix Madefor Text', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 22px;
+}
+
+.heading5 {
+  font-family: 'Wix Madefor Text', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 18px;
+}
+
+.subheading {
+  font-family: 'Wix Madefor Text', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 26px;
+}
+
+.body1 {
+  font-family: 'Wix Madefor Text', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+}
+
+.body2 {
+  font-family: 'Wix Madefor Text', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+}
+
+.caption1 {
+  font-family: 'Wix Madefor Text', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+}
+
+.caption2 {
+  font-family: 'Wix Madefor Text', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+}
+
+// Выравнивание текста
+.left {
+  text-align: left;
+}
+
+.center {
+  text-align: center;
+}
+
+.right {
+  text-align: right;
+}
+
+// 🖥 Десктопные стили
+@media (min-width: 768px) {
+  .heading1 {
+    font-size: 64px;
+    line-height: 80px;
+  }
+
+  .heading2 {
+    font-size: 40px;
+    line-height: 52px;
+  }
+
+  .heading3 {
+    font-size: 32px;
+    line-height: 42px;
+  }
+
+  .heading4 {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .heading5 {
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  .subheading {
+    font-size: 28px;
+    line-height: 36px;
+  }
+
+  .body1 {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .body2 {
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  .caption1 {
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  .caption2 {
+    font-size: 12px;
+    line-height: 16px;
+  }
+}

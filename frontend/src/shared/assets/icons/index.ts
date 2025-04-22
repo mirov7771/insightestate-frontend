@@ -36,6 +36,7 @@ import ArrowDown from './ArrowDown.svg?react';
 import Menu from './Menu.svg?react';
 import Globe from './Globe.svg?react';
 import LogoIcon from './LogoIcon.svg?react';
+import Heart from './Heart.svg?react';
 
 export {
   Bed,
@@ -76,4 +77,5 @@ export {
   Menu,
   Globe,
   LogoIcon,
+  Heart,
 };
