@@ -15,6 +15,8 @@ import { Register } from '@/pages/Register';
 import { Profile } from '@/pages/Profile';
 import getUserLocale from 'get-user-locale';
 import { useEffect } from 'react';
+import OfferCollectionV2 from '@/pages/OfferCollectionV2';
+import { StyledEngineProvider } from '@mui/material';
 
 const App = () => {
   const userLocale = getUserLocale();
@@ -27,41 +29,46 @@ const App = () => {
   }, []);
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/sign-up" element={<SignUp />} />
-        <Route path="/sign-up-end" element={<SignUpEnd />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Authorization />} />
-          <Route
-            path="/listing"
-            element={
-              <FiltersProvider>
-                <Listing />
-              </FiltersProvider>
-            }
-          />
-          <Route path="/property">
-            <Route path=":id" element={<EstateDetail />} />
+    <StyledEngineProvider injectFirst>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/sign-up" element={<SignUp />} />
+          <Route path="/sign-up-end" element={<SignUpEnd />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Authorization />} />
+            <Route
+              path="/listing"
+              element={
+                <FiltersProvider>
+                  <Listing />
+                </FiltersProvider>
+              }
+            />
+            <Route path="/property">
+              <Route path=":id" element={<EstateDetail />} />
+            </Route>
+            <Route path="/offer-collection">
+              <Route path=":id" element={<OfferCollection />} />
+            </Route>
+            <Route path="/offer-collection-v2">
+              <Route path=":id" element={<OfferCollectionV2 />} />
+            </Route>
+            <Route path="/user-collection" element={<UserCollection />} />
+            <Route
+              path="/ai-listing"
+              element={
+                <FiltersProvider>
+                  <AiListing />
+                </FiltersProvider>
+              }
+            />
           </Route>
-          <Route path="/offer-collection">
-            <Route path=":id" element={<OfferCollection />} />
-          </Route>
-          <Route path="/user-collection" element={<UserCollection />} />
-          <Route
-            path="/ai-listing"
-            element={
-              <FiltersProvider>
-                <AiListing />
-              </FiltersProvider>
-            }
-          />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+        </Routes>
+      </BrowserRouter>
+    </StyledEngineProvider>
   );
 };
 
