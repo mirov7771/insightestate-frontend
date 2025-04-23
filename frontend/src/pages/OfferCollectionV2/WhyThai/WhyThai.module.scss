@@ -1,0 +1,58 @@
+.root {
+  position: relative;
+  background: #ccd8d7;
+  color: #202020;
+  margin: 0 -16px;
+}
+
+.content {
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  padding: 32px 16px 0;
+  text-transform: uppercase;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0 16px 0;
+
+  li {
+    display: flex;
+    align-items: center;
+
+    .icon {
+      margin-right: 12px;
+      font-size: 20px;
+      width: 24px;
+      height: 24px;
+      color: #202020;
+
+      & > svg {
+        width: 24px;
+        height: 24px;
+        color: #202020;
+      }
+    }
+  }
+}
+
+.imageWrapper {
+  aspect-ratio: 1 / 1;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+
+  .image {
+    object-fit: cover;
+    width: 100%;
+  }
+}
