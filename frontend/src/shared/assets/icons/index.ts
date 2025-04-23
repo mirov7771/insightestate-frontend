@@ -37,6 +37,7 @@ import Menu from './Menu.svg?react';
 import Globe from './Globe.svg?react';
 import LogoIcon from './LogoIcon.svg?react';
 import Heart from './Heart.svg?react';
+import TablerIconX from './TablerIconX.svg?react';
 import OfferCollectionCalendarTime from './offer-collection/tabler-icon-calendar-time.svg?react';
 import OfferCollectionCurrencyDollar from './offer-collection/tabler-icon-currency-dollar.svg?react';
 import OfferCollectionHeartRateMonitor from './offer-collection/tabler-icon-heart-rate-monitor.svg?react';
@@ -44,6 +45,10 @@ import OfferCollectionHomeDollar from './offer-collection/tabler-icon-home-dolla
 import OfferCollectionMoodDollar from './offer-collection/tabler-icon-mood-dollar.svg?react';
 import OfferCollectionTrendingUp from './offer-collection/tabler-icon-trending-up.svg?react';
 import OfferCollectionUsersGroup from './offer-collection/tabler-icon-users-group.svg?react';
+import OfferCollectionBrandTelegram from './offer-collection/tabler-icon-brand-telegram.svg?react';
+import OfferCollectionMail from './offer-collection/tabler-icon-mail.svg?react';
+import OfferCollectionPhoneCall from './offer-collection/tabler-icon-phone-call.svg?react';
+import OfferCollectionWhatsUp from './offer-collection/whats-app.svg?react';
 
 export {
   Bed,
@@ -85,6 +90,7 @@ export {
   Globe,
   LogoIcon,
   Heart,
+  TablerIconX,
   /* OfferCollection */
   OfferCollectionCalendarTime,
   OfferCollectionCurrencyDollar,
@@ -93,4 +99,8 @@ export {
   OfferCollectionMoodDollar,
   OfferCollectionTrendingUp,
   OfferCollectionUsersGroup,
+  OfferCollectionBrandTelegram,
+  OfferCollectionMail,
+  OfferCollectionPhoneCall,
+  OfferCollectionWhatsUp,
 };
