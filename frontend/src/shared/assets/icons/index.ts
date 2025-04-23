@@ -37,6 +37,13 @@ import Menu from './Menu.svg?react';
 import Globe from './Globe.svg?react';
 import LogoIcon from './LogoIcon.svg?react';
 import Heart from './Heart.svg?react';
+import OfferCollectionCalendarTime from './offer-collection/tabler-icon-calendar-time.svg?react';
+import OfferCollectionCurrencyDollar from './offer-collection/tabler-icon-currency-dollar.svg?react';
+import OfferCollectionHeartRateMonitor from './offer-collection/tabler-icon-heart-rate-monitor.svg?react';
+import OfferCollectionHomeDollar from './offer-collection/tabler-icon-home-dollar.svg?react';
+import OfferCollectionMoodDollar from './offer-collection/tabler-icon-mood-dollar.svg?react';
+import OfferCollectionTrendingUp from './offer-collection/tabler-icon-trending-up.svg?react';
+import OfferCollectionUsersGroup from './offer-collection/tabler-icon-users-group.svg?react';
 
 export {
   Bed,
@@ -78,4 +85,12 @@ export {
   Globe,
   LogoIcon,
   Heart,
+  /* OfferCollection */
+  OfferCollectionCalendarTime,
+  OfferCollectionCurrencyDollar,
+  OfferCollectionHeartRateMonitor,
+  OfferCollectionHomeDollar,
+  OfferCollectionMoodDollar,
+  OfferCollectionTrendingUp,
+  OfferCollectionUsersGroup,
 };
