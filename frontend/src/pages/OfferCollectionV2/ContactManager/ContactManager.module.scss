@@ -1,0 +1,56 @@
+.wrapper {
+  width: calc(100% + 32px);
+  margin: 0 -16px;
+  padding: 8px 16px;
+  position: sticky;
+  bottom: 0;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.content {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.manager {
+  color: rgba(32, 32, 32, 0.64);
+}
+
+.avatar {
+  border-radius: 50%;
+}
+
+.button {
+  height: 56px;
+  border-radius: 200px;
+}
+
+.bottomSheetList {
+  margin: 0;
+  padding: 0;
+  color: #202020;
+
+  li {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    gap: 16px;
+  }
+
+  li > svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.hr {
+  background-color: rgba(32, 32, 32, 0.12);
+  background-color: #2020201f;
+  height: 1px;
+  margin: 16px 0;
+  border: none;
+}
