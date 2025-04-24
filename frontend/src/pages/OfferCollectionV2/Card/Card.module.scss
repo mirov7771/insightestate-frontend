@@ -1,0 +1,103 @@
+.wrapper {
+  background-color: #e9e9ea;
+  padding: 16px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.hr {
+  width: 100%;
+  height: 1px;
+  border: none;
+  background-color: var(--ui-color-black-12-opacity);
+  margin: 0;
+}
+
+.badges {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.header {
+  margin-bottom: 4px;
+}
+
+.icon {
+  display: flex;
+  width: 12px;
+  height: 12px;
+
+  & > svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  &__primary {
+    color: var(--ui-color-primary-2);
+    width: 13px;
+    height: 13px;
+
+    & > svg {
+      width: 13px;
+      height: 13px;
+    }
+  }
+}
+
+.price {
+  color: var(--ui-color-black-24-opacity);
+}
+
+.info {
+  &__wrapper {
+    display: flex;
+    gap: 8px;
+    flex-wrap: nowrap;
+  }
+
+  &__card {
+    border: 1px solid var(--ui-color-black-24-opacity);
+    border-radius: 8px;
+    padding: 8px 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1 1 0;
+  }
+
+  &__description {
+    color: var(--ui-color-black-64-opacity);
+  }
+}
+
+.table {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.progress {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.like {
+  display: flex;
+  gap: 8px;
+  border-radius: 200px;
+
+  &__icon {
+    width: 20px;
+    height: 20px;
+  }
+}

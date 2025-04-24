@@ -54,6 +54,39 @@
   --radius--regular: 32px;
   --radius--big: 40px;
   --radius--round: 100vw;
+
+  // new UI KIt Colors
+  // Primary
+  --ui-color-primary-1: #28304F;
+  --ui-color-primary-2: #04B0BE;
+  --ui-color-primary-2-light: #4EECF8;
+  --ui-color-primary-2-light-24-opacity: rgba(78, 236, 248, 0.24);
+  // Black
+  --ui-color-black: #202020;
+  --ui-color-black-64-opacity: rgba(32, 32, 32, 0.64);
+  --ui-color-black-24-opacity: rgba(32, 32, 32, 0.24);
+  --ui-color-black-12-opacity: rgba(32, 32, 32, 0.12);
+  --ui-color-black-4-opacity: rgba(32, 32, 32, 0.08);
+  // White
+  --ui-color-white: #FFFFFF;
+  --ui-color-white-64-opacity: rgba(255, 255, 255, 0.64);
+  --ui-color-white-16-opacity: rgba(255, 255, 255, 0.16);
+  --ui-color-white-12-opacity: rgba(255, 255, 255, 0.12);
+  --ui-color-white-4-opacity: rgba(255, 255, 255, 0.04);
+  // Difference color
+  --ui-color-yellow: #FEE689;
+  --ui-color-yellow-24-opacity: rgba(255, 230, 137, 0.24);
+  --ui-color-yellow-8-opacity: rgba(255, 230, 137, 0.08);
+
+  --ui-color-red: #FE8989;
+  --ui-color-red-24-opacity: rgba(254, 137, 137, 0.24);
+  --ui-color-red-8-opacity: rgba(254, 137, 137, 0.08);
+
+  --ui-color-green: #89FEC3;
+  --ui-color-green-24-opacity: rgba(137, 254, 195, 0.24);
+  --ui-color-green-8-opacity: rgba(137, 254, 195, 0.08);
+
+
 }
 
 * {

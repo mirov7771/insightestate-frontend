@@ -49,6 +49,8 @@ import OfferCollectionBrandTelegram from './offer-collection/tabler-icon-brand-t
 import OfferCollectionMail from './offer-collection/tabler-icon-mail.svg?react';
 import OfferCollectionPhoneCall from './offer-collection/tabler-icon-phone-call.svg?react';
 import OfferCollectionWhatsUp from './offer-collection/whats-app.svg?react';
+import OfferCollectionMapPinFilled from './offer-collection/tabler-icon-map-pin-filled.svg?react';
+import OfferCollectionHeart from './offer-collection/tabler-icon-heart.svg?react';
 
 export {
   Bed,
@@ -103,4 +105,6 @@ export {
   OfferCollectionMail,
   OfferCollectionPhoneCall,
   OfferCollectionWhatsUp,
+  OfferCollectionMapPinFilled,
+  OfferCollectionHeart,
 };
