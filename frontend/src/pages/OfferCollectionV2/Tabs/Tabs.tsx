@@ -3,6 +3,7 @@ import { IconButton, Tab, Tabs as TabsUI } from '@mui/material';
 import { Text } from '@/shared/ui';
 import { Heart } from '@/shared/assets/icons';
 import styles from './Tabs.module.scss';
+import { Card } from '../Card/Card';
 
 interface TabPanelProps {
   index: number;
@@ -67,7 +68,11 @@ export const Tabs: FC = () => {
         </IconButton>
       </div>
       <CustomTabPanel value={value} index={0}>
-        content 1
+        <div className={styles.content}>
+          <Card />
+          <Card />
+          <Card />
+        </div>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
         content 2
