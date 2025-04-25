@@ -25,6 +25,7 @@ const App = () => {
     console.log(userLocale);
     if (!localStorage.getItem('language')) {
       localStorage.setItem('language', userLocale.toLowerCase().indexOf('ru') > -1 ? 'ru' : 'en');
+      window.location.reload()
     }
   }, []);
 
