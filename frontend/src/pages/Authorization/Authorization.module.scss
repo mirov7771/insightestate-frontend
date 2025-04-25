@@ -1,11 +1,37 @@
 .wrap {
-  margin: 0 auto;
+  margin-left: 15vw;
+  text-align: left;
+  z-index: 99;
+  position: relative;
+  color: whitesmoke;
   width: 50%;
-  //padding: 0 12px;
+  margin-top: -10vh;
+}
+
+.wrap_mobile {
   text-align: center;
   z-index: 99;
   position: relative;
   color: whitesmoke;
+  width: 70%;
+  margin: auto;
+}
+
+.text {
+  font-family: Wix Madefor Display,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 3rem;
+  line-height: 125%;
+  text-transform: uppercase;
+  letter-spacing: 0;
+}
+
+.text2 {
+  font-family: Wix Madefor Display,Arial,sans-serif;
+  font-weight: 100;
+  font-size: 1rem;
+  line-height: 125%;
+  letter-spacing: 0;
 }
 
 .video {
@@ -14,6 +40,8 @@
   position: absolute;
   inset: 0;
   object-fit: cover;
+  background: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url("https://insightestate.pro/estate-images/login.jpg");
+  background-size: cover;
 }
 
 .big {
@@ -23,5 +51,24 @@
 
 .button {
   width: 50%;
-  margin: auto;
+}
+
+.text_mobile {
+  font-family: Wix Madefor Display,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 2rem;
+  line-height: 125%;
+  text-transform: uppercase;
+  letter-spacing: 0;
+}
+
+.text2_mobile {
+  font-family: Wix Madefor Display,Arial,sans-serif;
+  font-weight: 100;
+  font-size: 1rem;
+  line-height: 125%;
+  letter-spacing: 0;
+}
+
+.button_mobile {
 }

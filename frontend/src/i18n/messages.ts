@@ -153,7 +153,7 @@ export const messages = {
     ai_button: 'AI picker',
     ai_text:
       'We have developed an AI selector that will help you with the routine task of selecting the right objects for your clients',
-    main_title: 'Smart Investments in Phuket Real Estate',
+    main_title: 'Well-informed investment decisions in Phuket Real Estate',
     main_text:
       'We help you choose the most profitable and reliable investment object based on an analysis of more than 100 parameters',
   },
