@@ -11,13 +11,14 @@ import {
   OfferCollectionTrendingUp,
   OfferCollectionUsersGroup,
 } from '@/shared/assets/icons';
+import {localField} from "@/i18n/localField";
 
 export const WhyThai: FC = () => {
   return (
     <section className={styles.root}>
       <div className={styles.content}>
         <Text variant="heading2" as="h2" className={styles.title}>
-          Почему инвесторы выбирают Пхукет
+          {localField('why')}
         </Text>
 
         <ul className={styles.list}>
@@ -25,43 +26,43 @@ export const WhyThai: FC = () => {
             <span className={styles.icon}>
               <OfferCollectionCurrencyDollar />
             </span>
-            <Text variant="body1">Стабильный курс валюты</Text>
+            <Text variant="body1">{localField('why_1')}</Text>
           </li>
           <li>
             <span className={styles.icon}>
               <OfferCollectionTrendingUp />
             </span>
-            <Text variant="body1">Растущий ВВП</Text>
+            <Text variant="body1">{localField('why_2')}</Text>
           </li>
           <li>
             <span className={styles.icon}>
               <OfferCollectionMoodDollar />
             </span>
-            <Text variant="body1">Низкая инфляция</Text>
+            <Text variant="body1">{localField('why_3')}</Text>
           </li>
           <li>
             <span className={styles.icon}>
               <OfferCollectionUsersGroup />
             </span>
-            <Text variant="body1">Растущий турпоток</Text>
+            <Text variant="body1">{localField('why_4')}</Text>
           </li>
           <li>
             <span className={styles.icon}>
               <OfferCollectionHeartRateMonitor />
             </span>
-            <Text variant="body1">Медицина мирового уровня</Text>
+            <Text variant="body1">{localField('why_5')}</Text>
           </li>
           <li>
             <span className={styles.icon}>
               <OfferCollectionHomeDollar />
             </span>
-            <Text variant="body1">Простота покупки недвижимости</Text>
+            <Text variant="body1">{localField('why_6')}</Text>
           </li>
           <li>
             <span className={styles.icon}>
               <OfferCollectionCalendarTime />
             </span>
-            <Text variant="body1">Долгосрочные визовые решения</Text>
+            <Text variant="body1">{localField('why_7')}</Text>
           </li>
         </ul>
 

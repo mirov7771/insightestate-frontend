@@ -144,7 +144,26 @@ type fields =
   | 'ai_button'
   | 'ai_text'
   | 'main_title'
-  | 'main_text';
+  | 'main_text'
+  | 'projects_for_you'
+  | 'list'
+  | 'comparison'
+  | 'p_from'
+  | 'sqm'
+  | 'why'
+  | 'why_1'
+  | 'why_2'
+  | 'why_3'
+  | 'why_4'
+  | 'why_5'
+  | 'why_6'
+  | 'why_7'
+  | 'your_manager'
+  | 'connect'
+  | 'phone_call'
+  | 'email'
+  | 'go_wa'
+  | 'go_tg';
 
 export const localField = (field: fields) => {
   const locale = localStorage.getItem('language');

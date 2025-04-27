@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import { BadgeRating, Button } from '@/shared/ui';
 import {
   VectorRating,
@@ -10,17 +10,41 @@ import { Text } from '@/shared/ui';
 import styles from './Card.module.scss';
 import { Progress } from '@/pages/OfferCollectionV2/Card/Progress/Progress';
 import { Slider } from '@/pages/OfferCollectionV2/Card/Slider/Slider';
+import {Estate} from "@/widgets/EstateCollection/api/estateCollectionApi";
+import {formatNumber} from "@/shared/utils";
+import {DEFAULT_IMG} from "@/entities/Card/Card";
+import {localField} from "@/i18n/localField";
+import {Map} from "@/pages/EstateDetail/Section/Map/Map";
 
-export const Card: FC = () => {
+export const Card: FC<Estate> = (estate) => {
   const [like, setLike] = useState(false);
+  const [square, setSquare] = useState(100)
   const handleClickLikeButton = () => {
     setLike(!like);
   };
 
+  useEffect(() => {
+    setSquare(
+        estate.roomLayouts?.villaFive?.square?.min || estate.roomLayouts?.villaFive?.square?.max || estate.roomLayouts?.villaFive?.square?.avg ||
+        estate.roomLayouts?.villaFour?.square?.min || estate.roomLayouts?.villaFour?.square?.max || estate.roomLayouts?.villaFour?.square?.avg ||
+        estate.roomLayouts?.villaThree?.square?.min || estate.roomLayouts?.villaThree?.square?.max || estate.roomLayouts?.villaThree?.square?.avg ||
+        estate.roomLayouts?.villaTwo?.square?.min || estate.roomLayouts?.villaTwo?.square?.max || estate.roomLayouts?.villaTwo?.square?.avg ||
+        estate.roomLayouts?.five?.square?.min || estate.roomLayouts?.five?.square?.max || estate.roomLayouts?.five?.square?.avg ||
+        estate.roomLayouts?.four?.square?.min || estate.roomLayouts?.four?.square?.max || estate.roomLayouts?.four?.square?.avg ||
+        estate.roomLayouts?.three?.square?.min || estate.roomLayouts?.three?.square?.max || estate.roomLayouts?.three?.square?.avg ||
+        estate.roomLayouts?.two?.square?.min || estate.roomLayouts?.two?.square?.max || estate.roomLayouts?.two?.square?.avg ||
+        estate.roomLayouts?.studio?.square?.min || estate.roomLayouts?.studio?.square?.max || estate.roomLayouts?.studio?.square?.avg ||
+        estate.roomLayouts?.one?.square?.min || estate.roomLayouts?.one?.square?.max || estate.roomLayouts?.one?.square?.avg ||
+        110
+    )
+  }, []);
+
   return (
     <section>
       <div className={styles.slider}>
-        <Slider />
+        <Slider images={
+          estate.exteriorImages || estate.facilityImages || estate.interiorImages || [DEFAULT_IMG]
+        }/>
       </div>
       <div className={styles.wrapper}>
         {/*  Main Info */}
@@ -34,7 +58,7 @@ export const Card: FC = () => {
                 </span>
               }
               size="sm"
-              text="9.2"
+              text={estate.grade?.main + '' || '9'}
               background="primary"
             />
             <BadgeRating
@@ -44,87 +68,97 @@ export const Card: FC = () => {
                 </span>
               }
               size="sm"
-              text="Thalang"
+              text={estate.location?.beach || ''}
               background="white"
             />
           </div>
           {/*Name and Price*/}
           <Text className={styles.header} variant="heading2">
-            Laguna Beach Residences Bayside
+            {estate.name}
           </Text>
           <Text variant="heading3">
-            от $661,006 <span className={styles.price}>• $5,850 м2</span>
+            {localField('p_from')}{' '}${formatNumber(estate.price?.min)} <span className={styles.price}>• ${formatNumber(estate.price?.max)}</span>
           </Text>
         </section>
         {/* Info Mini Cards */}
         <section className={styles.info__wrapper}>
+          {/*Пока убираем спальни*/}
+          {/*<div className={styles.info__card}>*/}
+          {/*  <Text align="center" variant="heading4">*/}
+          {/*    2 спальни*/}
+          {/*  </Text>*/}
+          {/*  <Text className={styles.info__description} align="center" variant="caption1">*/}
+          {/*    Планировка*/}
+          {/*  </Text>*/}
+          {/*</div>*/}
           <div className={styles.info__card}>
             <Text align="center" variant="heading4">
-              2 спальни
+              {square}
+              {/*{square}{' '}m<sup>2</sup>*/}
             </Text>
             <Text className={styles.info__description} align="center" variant="caption1">
-              Планировка
+              {localField('size_sqm')}
             </Text>
           </div>
-          <div className={styles.info__card}>
-            <Text align="center" variant="heading4">
-              113 m<sup>2</sup>
-            </Text>
-            <Text className={styles.info__description} align="center" variant="caption1">
-              Площадь
-            </Text>
-          </div>
-          <div className={styles.info__card}>
-            <Text align="center" variant="heading4">
-              6
-            </Text>
-            <Text className={styles.info__description} align="center" variant="caption1">
-              Всего этажей
-            </Text>
-          </div>
+          {estate.floors ?
+              <div className={styles.info__card}>
+                <Text align="center" variant="heading4">
+                  {estate.floors}
+                </Text>
+                <Text className={styles.info__description} align="center" variant="caption1">
+                  {localField('total_floors')}
+                </Text>
+              </div> : <></>
+          }
         </section>
         <hr className={styles.hr} />
         {/*Table 1*/}
         <section className={styles.table}>
           <div className={styles.table__item}>
-            <Text variant="body1">Дата сдачи</Text>
-            <Text variant="heading4">Q4 2028</Text>
+            <Text variant="body1">{localField('completion_date')}</Text>
+            <Text variant="heading4">{estate.buildEndDate}</Text>
           </div>
           <div className={styles.table__item}>
-            <Text variant="body1">ROI за 10 лет</Text>
-            <Text variant="heading4">136%</Text>
+            <Text variant="body1">{localField('roi')}</Text>
+            <Text variant="heading4">{estate.profitability?.roi || 200}%</Text>
           </div>
           <div className={styles.table__item}>
-            <Text variant="body1">IRR</Text>
-            <Text variant="heading4">13,1%</Text>
+            <Text variant="body1">{localField('irr')}</Text>
+            <Text variant="heading4">{estate.profitability?.irr || 13}%</Text>
           </div>
         </section>
         <hr className={styles.hr} />
         {/*Table 2*/}
         <section className={styles.table}>
           <div className={styles.table__item}>
-            <Text variant="body1">Пляж</Text>
-            <Text variant="heading4">1 мин</Text>
+            <Text variant="body1">{localField('beach')}</Text>
+            <Text variant="heading4">1{' '}{localField('min')}</Text>
           </div>
           <div className={styles.table__item}>
-            <Text variant="body1">Торговый центр</Text>
-            <Text variant="heading4">26 мин</Text>
+            <Text variant="body1">{localField('mall')}</Text>
+            <Text variant="heading4">26{' '}{localField('min')}</Text>
           </div>
           <div className={styles.table__item}>
-            <Text variant="body1">Аэропорт</Text>
-            <Text variant="heading4">37 мин</Text>
+            <Text variant="body1">{localField('airport')}</Text>
+            <Text variant="heading4">{
+                estate.infrastructure?.airportTime?.car ||
+                estate.infrastructure?.airportTime?.walk ||
+                30
+            }{' '}{localField('min')}</Text>
           </div>
         </section>
         <hr className={styles.hr} />
         {/*Map*/}
-        <section>
-          <Text variant="heading2">Map</Text>
-        </section>
+        {estate.location?.mapUrl ?
+            <section>
+              <Map url={estate.location?.mapUrl} />
+            </section> : <></>
+        }
         <hr className={styles.hr} />
         <section className={styles.progress}>
           <Progress
-            value={8.4}
-            label="Безопасность вложений"
+            value={estate.grade?.investmentSecurity || 9}
+            label={localField('security')}
             icon={
               <span className={styles.icon}>
                 <VectorRating />
@@ -134,8 +168,8 @@ export const Card: FC = () => {
             max={10}
           />
           <Progress
-            value={9.0}
-            label="Расположение"
+            value={estate.grade?.projectLocation || 9}
+            label={localField('project_location')}
             icon={
               <span className={styles.icon}>
                 <VectorRating />
@@ -145,8 +179,8 @@ export const Card: FC = () => {
             max={10}
           />
           <Progress
-            value={9.5}
-            label="Инвестиционый потенциал"
+            value={estate.grade?.investmentPotential || 9}
+            label={localField('invest_potential')}
             icon={
               <span className={styles.icon}>
                 <VectorRating />
@@ -156,8 +190,8 @@ export const Card: FC = () => {
             max={10}
           />
           <Progress
-            value={9.4}
-            label="Комфорт жизни"
+            value={estate.grade?.comfortOfLife || 9}
+            label={localField('comfort')}
             icon={
               <span className={styles.icon}>
                 <VectorRating />
@@ -166,16 +200,17 @@ export const Card: FC = () => {
             min={0}
             max={10}
           />
-          <Button
-            onClick={handleClickLikeButton}
-            className={styles.like}
-            variant="cta"
-            size="l"
-            wide
-          >
-            <span className={styles.like__icon}>{like ? <Heart /> : <OfferCollectionHeart />}</span>
-            <Text variant="heading4">Мне нравится</Text>
-          </Button>
+          {/*Пока убираем лайки*/}
+          {/*<Button*/}
+          {/*  onClick={handleClickLikeButton}*/}
+          {/*  className={styles.like}*/}
+          {/*  variant="cta"*/}
+          {/*  size="l"*/}
+          {/*  wide*/}
+          {/*>*/}
+          {/*  <span className={styles.like__icon}>{like ? <Heart /> : <OfferCollectionHeart />}</span>*/}
+          {/*  <Text variant="heading4">Мне нравится</Text>*/}
+          {/*</Button>*/}
         </section>
       </div>
     </section>

@@ -3,9 +3,9 @@ import { AxiosResponse } from 'axios';
 import {
   EstateDetail,
   Grade,
-  InfrastructureDto,
+  InfrastructureDto, Location,
   Price,
-  Profitability,
+  Profitability, RoomLayouts,
 } from '@/widgets/Detail/api/detailApi';
 
 type ResponseGetEstateCollection = {
@@ -35,6 +35,9 @@ export type Estate = {
   interiorImages?: string[];
   price?: Price;
   profitability?: Profitability;
+  location?: Location
+  roomLayouts?: RoomLayouts;
+  floors?: number
 };
 
 export type CreateCollectionRs = {
@@ -160,6 +163,17 @@ export const estateCollectionApi = {
           Authorization: `Basic ${token.replace('Basic ', '')}`,
         },
       });
+    } catch (error) {
+      throw error;
+    }
+  },
+  getEstateCollectionById: async (
+      id: string
+  ): Promise<AxiosResponse<EstateCollection>> => {
+    try {
+      return await api.get<EstateCollection>(
+          `/v1/estate-collections/${id}`
+      );
     } catch (error) {
       throw error;
     }

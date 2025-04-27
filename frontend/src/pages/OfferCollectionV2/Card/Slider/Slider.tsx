@@ -23,20 +23,20 @@ const CustomSlide = (props: { description: string; img: string }) => {
   return (
     <div className={styles.slide}>
       <img src={img} alt="" />
-      <div className={styles.description}>
-        <Text variant="body1">{description}</Text>
-      </div>
+      {/*Пока убираем комменты к фото  */}
+      {/*<div className={styles.description}>*/}
+      {/*  <Text variant="body1">{description}</Text>*/}
+      {/*</div>*/}
     </div>
   );
 };
 
-export const Slider: FC = () => {
+export const Slider: FC<{images: string[]}> = ({
+    images
+}) => {
   return (
     <SlickSlider {...settings} className={styles.customSlider}>
-      <CustomSlide img={Img1} description="Удобный заезд на парковку" />
-      <CustomSlide img={Img2} description="Laguna Beach Residences Bayside" />
-      <CustomSlide img={Img1} description="Удобный заезд на парковку" />
-      <CustomSlide img={Img2} description="Laguna Beach Residences Bayside" />
+        {images.map((image) => (<CustomSlide img={image} description="Удобный заезд на парковку" />))}
     </SlickSlider>
   );
 };
