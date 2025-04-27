@@ -20,99 +20,98 @@ export const Authorization: FC = () => {
   return (
     <>
       <div className={styles.big}>
-        {isMobile ?
-            <>
-              <div className={styles.video}>
+        {isMobile ? (
+          <>
+            <div className={styles.video}></div>
+            <div className={styles.wrap_mobile}>
+              <Spacer height={140} width={100} />
+              <p className={styles.text_mobile}>{localField('main_title')}</p>
+              <Spacer height={20} width={100} />
+              <p className={styles.text2_mobile}>{localField('main_text')}</p>
+              <Spacer height={40} width={100} />
+              <div className={styles.button_mobile}>
+                <StyledButton
+                  fullWidth={false}
+                  color="info"
+                  variant="contained"
+                  size="small"
+                  href={'/login'}
+                  style={{
+                    backgroundColor: '#04b0be',
+                    borderRadius: '100vw',
+                    fontFamily: 'Wix Madefor Display,Arial,sans-serif',
+                  }}
+                >
+                  {localField('log_in')}
+                </StyledButton>
               </div>
-              <div className={styles.wrap_mobile}>
-                <Spacer height={140} width={100} />
-                <p className={styles.text_mobile}>{localField('main_title')}</p>
-                <Spacer height={20} width={100} />
-                <p className={styles.text2_mobile}>{localField('main_text')}</p>
-                <Spacer height={40} width={100} />
-                <div className={styles.button_mobile}>
-                  <StyledButton
-                      fullWidth={false}
-                      color="info"
-                      variant="contained"
-                      size="small"
-                      href={'/login'}
-                      style={{
-                        backgroundColor: '#04b0be',
-                        borderRadius: '100vw',
-                        fontFamily: 'Wix Madefor Display,Arial,sans-serif'
-                      }}
-                  >
-                    {localField('log_in')}
-                  </StyledButton>
-                </div>
-                <Spacer height={20} width={100} />
-                <div className={styles.button_mobile}>
-                  <StyledButton
-                      fullWidth={false}
-                      color="info"
-                      variant="contained"
-                      size="small"
-                      href={'/sign-up'}
-                      style={{
-                        backgroundColor: 'transparent',
-                        borderRadius: '100vw',
-                        border: '1px solid #04b0be',
-                        fontFamily: 'Wix Madefor Display,Arial,sans-serif'
-                      }}
-                  >
-                    {localField('registration')}
-                  </StyledButton>
-                </div>
+              <Spacer height={20} width={100} />
+              <div className={styles.button_mobile}>
+                <StyledButton
+                  fullWidth={false}
+                  color="info"
+                  variant="contained"
+                  size="small"
+                  href={'/sign-up'}
+                  style={{
+                    backgroundColor: 'transparent',
+                    borderRadius: '100vw',
+                    border: '1px solid #04b0be',
+                    fontFamily: 'Wix Madefor Display,Arial,sans-serif',
+                  }}
+                >
+                  {localField('registration')}
+                </StyledButton>
               </div>
-            </> :
-            <>
-              <div className={styles.video}>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className={styles.video}></div>
+            <div className={styles.wrap}>
+              <Spacer height={140} width={100} />
+              <p className={styles.text}>{localField('main_title')}</p>
+              <Spacer height={20} width={100} />
+              <p className={styles.text2}>{localField('main_text')}</p>
+              <Spacer height={40} width={100} />
+              <div className={styles.button}>
+                <StyledButton
+                  fullWidth={false}
+                  color="info"
+                  variant="contained"
+                  size="small"
+                  href={'/login'}
+                  style={{
+                    backgroundColor: '#04b0be',
+                    borderRadius: '100vw',
+                    border: '1px solid #04b0be',
+                    fontFamily: 'Wix Madefor Display,Arial,sans-serif',
+                  }}
+                >
+                  {localField('log_in')}
+                </StyledButton>
               </div>
-              <div className={styles.wrap}>
-                <Spacer height={140} width={100} />
-                <p className={styles.text}>{localField('main_title')}</p>
-                <Spacer height={20} width={100} />
-                <p className={styles.text2}>{localField('main_text')}</p>
-                <Spacer height={40} width={100} />
-                <div className={styles.button}>
-                  <StyledButton
-                      fullWidth={false}
-                      color="info"
-                      variant="contained"
-                      size="small"
-                      href={'/login'}
-                      style={{
-                        backgroundColor: '#04b0be',
-                        borderRadius: '100vw',
-                        border: '1px solid #04b0be',
-                        fontFamily: 'Wix Madefor Display,Arial,sans-serif'
-                      }}
-                  >
-                    {localField('log_in')}
-                  </StyledButton>
-                </div>
-                <Spacer height={20} width={100} />
-                <div className={styles.button}>
-                  <StyledButton
-                      fullWidth={false}
-                      color="info"
-                      variant="contained"
-                      size="small"
-                      href={'/sign-up'}
-                      style={{
-                        backgroundColor: 'transparent',
-                        borderRadius: '100vw',
-                        border: '1px solid #04b0be',
-                        fontFamily: 'Wix Madefor Display,Arial,sans-serif'
-                      }}
-                  >
-                    {localField('registration')}
-                  </StyledButton>
-                </div>
+              <Spacer height={20} width={100} />
+              <div className={styles.button}>
+                <StyledButton
+                  fullWidth={false}
+                  color="info"
+                  variant="contained"
+                  size="small"
+                  href={'/sign-up'}
+                  style={{
+                    backgroundColor: 'transparent',
+                    borderRadius: '100vw',
+                    border: '1px solid #04b0be',
+                    fontFamily: 'Wix Madefor Display,Arial,sans-serif',
+                  }}
+                >
+                  {localField('registration')}
+                </StyledButton>
               </div>
-            </>
-        }
+            </div>
+          </>
+        )}
       </div>
     </>
   );

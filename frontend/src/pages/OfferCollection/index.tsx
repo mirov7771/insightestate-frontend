@@ -82,7 +82,7 @@ const OfferCollection: FC = () => {
 
     el.value = window.location.href;
     if (isMobile) {
-      el.value = el.value.replace('offer-collection/', 'offer-collection-v2/')
+      el.value = el.value.replace('offer-collection/', 'offer-collection-v2/');
     }
     document.body.appendChild(el);
     el.select();

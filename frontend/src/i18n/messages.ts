@@ -179,7 +179,8 @@ export const messages = {
     add: 'Add',
     create_new: 'Create new',
     project_add: 'Project add',
-    project_add_info: 'The object has been successfully added to the collection. Go to the "My collections" section to view all the objects and make an offer.'
+    project_add_info:
+      'The object has been successfully added to the collection. Go to the "My collections" section to view all the objects and make an offer.',
   },
   [LOCALES.RUSSIAN]: {
     language: 'Язык',
@@ -357,6 +358,7 @@ export const messages = {
     add: 'Добавить',
     create_new: 'Создать новую',
     project_add: 'Объект добавлен',
-    project_add_info: 'Объект успешно добавлен в подборку, перейдите в раздел «Мои подборки» чтобы посмотреть все объекты и сформировать оффер'
+    project_add_info:
+      'Объект успешно добавлен в подборку, перейдите в раздел «Мои подборки» чтобы посмотреть все объекты и сформировать оффер',
   },
 };

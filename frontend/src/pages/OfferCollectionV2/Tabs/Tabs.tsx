@@ -1,11 +1,14 @@
-import {FC, ReactNode, useEffect, useState} from 'react';
+import { FC, ReactNode, useEffect, useState } from 'react';
 import { IconButton, Tab, Tabs as TabsUI } from '@mui/material';
 import { Text } from '@/shared/ui';
 import { Heart } from '@/shared/assets/icons';
 import styles from './Tabs.module.scss';
 import { Card } from '../Card/Card';
-import {EstateCollection, estateCollectionApi} from "@/widgets/EstateCollection/api/estateCollectionApi";
-import {localField} from "@/i18n/localField";
+import {
+  EstateCollection,
+  estateCollectionApi,
+} from '@/widgets/EstateCollection/api/estateCollectionApi';
+import { localField } from '@/i18n/localField';
 
 interface TabPanelProps {
   index: number;
@@ -29,18 +32,16 @@ const CustomTabPanel = (props: TabPanelProps) => {
   );
 };
 
-export const Tabs: FC<{id: string}> = ({
-    id
-}) => {
-  const [estateCollection, setEstateCollection] = useState<EstateCollection>()
+export const Tabs: FC<{ id: string }> = ({ id }) => {
+  const [estateCollection, setEstateCollection] = useState<EstateCollection>();
   const [value, setValue] = useState(0);
 
-    useEffect(() => {
-        estateCollectionApi
-            .getEstateCollectionById(id)
-            .then(r => setEstateCollection(r.data))
-            .catch(e => console.log(e))
-    }, []);
+  useEffect(() => {
+    estateCollectionApi
+      .getEstateCollectionById(id)
+      .then((r) => setEstateCollection(r.data))
+      .catch((e) => console.log(e));
+  }, []);
 
   return (
     <>
@@ -58,7 +59,7 @@ export const Tabs: FC<{id: string}> = ({
             classes={{ root: styles.tabRoot }}
             label={
               <Text variant="heading5" align="center">
-                  {localField('list')}
+                {localField('list')}
               </Text>
             }
           />
@@ -67,7 +68,7 @@ export const Tabs: FC<{id: string}> = ({
             classes={{ root: styles.tabRoot }}
             label={
               <Text variant="heading5" align="center">
-                  {localField('comparison')}
+                {localField('comparison')}
               </Text>
             }
           />
@@ -82,7 +83,7 @@ export const Tabs: FC<{id: string}> = ({
       </div>
       <CustomTabPanel value={value} index={0}>
         <div className={styles.content}>
-            {estateCollection?.estates.map((estate) => (<Card {...estate}/>))}
+          {estateCollection?.estates.map((estate) => <Card {...estate} />)}
         </div>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
