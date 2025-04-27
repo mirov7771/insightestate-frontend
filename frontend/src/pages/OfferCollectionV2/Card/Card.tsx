@@ -15,12 +15,27 @@ import {formatNumber} from "@/shared/utils";
 import {DEFAULT_IMG} from "@/entities/Card/Card";
 import {localField} from "@/i18n/localField";
 import {Map} from "@/pages/EstateDetail/Section/Map/Map";
+import {InfoModal} from "@/widgets/Modal/InfoModal";
 
 export const Card: FC<Estate> = (estate) => {
   const [like, setLike] = useState(false);
   const [square, setSquare] = useState(100)
   const handleClickLikeButton = () => {
     setLike(!like);
+  };
+  const [infoModal, setInfoModal] = useState(false);
+  const [infoTitle, setInfoTitle] = useState('');
+  const [infoText, setInfoText] = useState('');
+  const handleOpenInfoModal = () => {
+    setInfoModal(true);
+  };
+  const handleCloseInfoModal = () => {
+    setInfoModal(false);
+  };
+  const openRatingInfo = () => {
+    setInfoTitle(localField('object_info_title'));
+    setInfoText(localField('object_info_message'));
+    handleOpenInfoModal();
   };
 
   useEffect(() => {
@@ -50,7 +65,7 @@ export const Card: FC<Estate> = (estate) => {
         {/*  Main Info */}
         <section>
           {/*Rating*/}
-          <div className={styles.badges}>
+          <div className={styles.badges} onClick={openRatingInfo}>
             <BadgeRating
               icon={
                 <span className={styles.icon}>
@@ -212,6 +227,15 @@ export const Card: FC<Estate> = (estate) => {
           {/*  <Text variant="heading4">Мне нравится</Text>*/}
           {/*</Button>*/}
         </section>
+        <InfoModal
+            open={infoModal}
+            onClose={handleCloseInfoModal}
+            onOpen={handleOpenInfoModal}
+            anchor="bottom"
+            title={infoTitle}
+            text={infoText}
+            bottom={30}
+        />
       </div>
     </section>
   );

@@ -16,6 +16,7 @@ import {
 import Select from 'react-dropdown-select';
 import { InfoModal } from '@/widgets/Modal/InfoModal';
 import { isMobile } from 'react-device-detect';
+import {localField} from "@/i18n/localField";
 
 export const UserCollectionModal: FC<TModalProps & { id: string; token: string }> = ({
   onClose,
@@ -81,10 +82,8 @@ export const UserCollectionModal: FC<TModalProps & { id: string; token: string }
     estateCollectionApi
       .addToCollection(token!!, id, estateId)
       .then((r) => {
-        setInfoTitle('Объект добавлен');
-        setInfoText(
-          'Объект успешно добавлен в подборку, перейдите в раздел «Мои подборки» чтобы посмотреть все объекты и сформировать оффер'
-        );
+        setInfoTitle(localField('project_add'));
+        setInfoText(localField('project_add_info'));
         handleOpenInfoModal();
       })
       .catch((e) => console.log(e));
@@ -111,7 +110,7 @@ export const UserCollectionModal: FC<TModalProps & { id: string; token: string }
             <Spacer width="100%" height={8} />
             <Spacer width="100%" height={8} />
             <Text size="xl" align="center" colorTheme={'black200'} isBold>
-              Добавить в подборку
+              {localField('add_to_collection')}
             </Text>
             <Spacer width="100%" height={8} />
             {isNew ? (
@@ -120,7 +119,7 @@ export const UserCollectionModal: FC<TModalProps & { id: string; token: string }
                   onChange={onChangeName}
                   value={name}
                   name="name"
-                  label="Название подборки"
+                  label={localField('collection_name')}
                 />
               </>
             ) : (
@@ -140,14 +139,14 @@ export const UserCollectionModal: FC<TModalProps & { id: string; token: string }
         </StyledUpperWrapperProgress>
         <Spacer width="100%" height={24} />
         <StyledButton color="secondary" variant="contained" size="medium" onClick={addToCollection}>
-          Добавить
+          {localField('add')}
         </StyledButton>
         <Spacer width="100%" height={8} />
         {isNew ? (
           <></>
         ) : (
           <StyledButton color="secondary" variant="contained" size="medium" onClick={handleIsNew}>
-            Создать новую
+            {localField('create_new')}
           </StyledButton>
         )}
       </StyledSwipeableDrawer>

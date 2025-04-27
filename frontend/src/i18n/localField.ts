@@ -163,7 +163,12 @@ type fields =
   | 'phone_call'
   | 'email'
   | 'go_wa'
-  | 'go_tg';
+  | 'go_tg'
+  | 'collection_name'
+  | 'add'
+    | 'create_new'
+    | 'project_add'
+    | 'project_add_info';
 
 export const localField = (field: fields) => {
   const locale = localStorage.getItem('language');

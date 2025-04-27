@@ -174,7 +174,12 @@ export const messages = {
     phone_call: 'Make a phone call',
     email: 'Send an email',
     go_wa: 'Write to WhatsApp',
-    go_tg: 'Write to Telegram'
+    go_tg: 'Write to Telegram',
+    collection_name: 'Collection name',
+    add: 'Add',
+    create_new: 'Create new',
+    project_add: 'Project add',
+    project_add_info: 'The object has been successfully added to the collection. Go to the "My collections" section to view all the objects and make an offer.'
   },
   [LOCALES.RUSSIAN]: {
     language: 'Язык',
@@ -347,6 +352,11 @@ export const messages = {
     phone_call: 'Позвонить по телефону',
     email: 'Написать на почту',
     go_wa: 'Написать в WhatsApp',
-    go_tg: 'Написать в Telegram'
+    go_tg: 'Написать в Telegram',
+    collection_name: 'Название подборки',
+    add: 'Добавить',
+    create_new: 'Создать новую',
+    project_add: 'Объект добавлен',
+    project_add_info: 'Объект успешно добавлен в подборку, перейдите в раздел «Мои подборки» чтобы посмотреть все объекты и сформировать оффер'
   },
 };

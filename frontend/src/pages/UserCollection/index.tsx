@@ -9,6 +9,7 @@ import { Button } from '@/shared/ui/Button';
 import { Spacer } from '@/widgets/Spacer/Spacer';
 import { useNavigate } from 'react-router';
 import { localField } from '@/i18n/localField';
+import {isMobile} from "react-device-detect";
 
 export const UserCollection: FC = () => {
   const [collection, setCollection] = useState<EstateCollection[]>([]);
@@ -52,7 +53,9 @@ const ItemCollection: FC<EstateCollection & { token: string }> = ({ name, estate
   };
 
   const goToCollection = () => {
-    navigate(`/offer-collection/${id}?token=${token.replace('Basic ', '')}`);
+    isMobile ?
+        navigate(`/offer-collection-v2/${id}?token=${token.replace('Basic ', '')}`) :
+        navigate(`/offer-collection/${id}?token=${token.replace('Basic ', '')}`);;
   };
 
   return (
