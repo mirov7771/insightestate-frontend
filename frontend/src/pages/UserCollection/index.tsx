@@ -55,7 +55,7 @@ const ItemCollection: FC<EstateCollection & { token: string }> = ({ name, estate
   const goToCollection = () => {
     isMobile ?
         navigate(`/offer-collection-v2/${id}?token=${token.replace('Basic ', '')}`) :
-        navigate(`/offer-collection/${id}?token=${token.replace('Basic ', '')}`);;
+        navigate(`/offer-collection/${id}?token=${token.replace('Basic ', '')}`);
   };
 
   return (
