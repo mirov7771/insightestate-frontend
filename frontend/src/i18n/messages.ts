@@ -191,6 +191,8 @@ export const messages = {
     offer_info_text_1: '1. Make sure that the required objects are in the offer',
     offer_info_text_2: '2. Edit the list if necessary',
     offer_info_text_3: '3. Click "Copy link" and send it to the client in a convenient way',
+    link_copied: 'Link copied',
+    link_copied_text: 'You can share this link with clients'
   },
   [LOCALES.RUSSIAN]: {
     language: 'Язык',
@@ -382,5 +384,7 @@ export const messages = {
     offer_info_text_1: '1. Убедитесь, что в оффере нужные объекты',
     offer_info_text_2: '2. При необходимости отредактируйте список',
     offer_info_text_3: '3. Нажмите «Скопировать ссылку» и отправьте клиенту удобным способом',
+    link_copied: 'Ссылка скопирована',
+    link_copied_text: 'Вы можете делится данной ссылкой с клиентами'
   },
 };

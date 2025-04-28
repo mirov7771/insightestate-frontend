@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BottomSheet, Button, Text } from '@/shared/ui';
 import styles from './ContactManager.module.scss';
 import {
@@ -11,12 +11,14 @@ import { AgentInfo, estateCollectionApi } from '@/widgets/EstateCollection/api/e
 import { useSearchParams } from 'react-router';
 import { localField } from '@/i18n/localField';
 import {Spacer} from "@/widgets/Spacer/Spacer";
+import {InfoModal} from "@/widgets/Modal/InfoModal";
 
 export const ContactManager = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [agentInfo, setAgentInfo] = useState<AgentInfo>();
   const [open, setOpen] = useState(false);
   const [openInfo, setOpenInfo] = useState(false);
+  const [infoModal, setInfoModal] = useState(false);
   const clickable =
       localStorage.getItem('basicToken') !== null &&
       localStorage.getItem('basicToken') !== undefined &&
@@ -33,11 +35,29 @@ export const ContactManager = () => {
       .catch((e) => console.log(e));
   }, []);
 
+  function copyTask() {
+    const el = document.createElement('input');
+
+    el.value = window.location.href;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+    handleOpenInfoModal();
+  }
+
+  const handleOpenInfoModal = () => {
+    setInfoModal(true);
+  };
+  const handleCloseInfoModal = () => {
+    setInfoModal(false);
+  };
+
   return (
     <>
       {clickable ?
           <div className={styles.wrapper}>
-            <Button size="l" onClick={() => setOpen(true)} className={styles.button2}>
+            <Button size="l" onClick={copyTask} className={styles.button2}>
               <Text variant="heading4">{localField('copy_link')}</Text>
             </Button>
             <Button size="l" onClick={() => setOpenInfo(true)} className={styles.button3}>
@@ -136,6 +156,15 @@ export const ContactManager = () => {
           </ul>
         </div>
       </BottomSheet>
+      <InfoModal
+          open={infoModal}
+          onClose={handleCloseInfoModal}
+          onOpen={handleOpenInfoModal}
+          anchor="bottom"
+          title={localField('link_copied')}
+          text={localField('link_copied_text')}
+          bottom={30}
+      />
     </>
   );
 };

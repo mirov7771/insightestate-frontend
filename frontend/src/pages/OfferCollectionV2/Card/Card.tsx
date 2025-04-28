@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, {FC, use, useEffect, useState} from 'react';
 import { BadgeRating, Button } from '@/shared/ui';
 import {
   VectorRating,
@@ -10,19 +10,22 @@ import { Text } from '@/shared/ui';
 import styles from './Card.module.scss';
 import { Progress } from '@/pages/OfferCollectionV2/Card/Progress/Progress';
 import { Slider } from '@/pages/OfferCollectionV2/Card/Slider/Slider';
-import { Estate } from '@/widgets/EstateCollection/api/estateCollectionApi';
+import {Estate, estateCollectionApi} from '@/widgets/EstateCollection/api/estateCollectionApi';
 import { formatNumber } from '@/shared/utils';
 import { DEFAULT_IMG } from '@/entities/Card/Card';
 import { localField } from '@/i18n/localField';
 import { Map } from '@/pages/EstateDetail/Section/Map/Map';
 import { InfoModal } from '@/widgets/Modal/InfoModal';
+import {useParams} from "react-router";
 
-export const Card: FC<Estate> = (estate) => {
+export const Card: FC<Estate & {collectionId: string}> = (estate) => {
   const [like, setLike] = useState(false);
   const [square, setSquare] = useState(100);
+  const [token, setToken] = useState<string | undefined | null>(localStorage.getItem('basicToken'))
   const handleClickLikeButton = () => {
     setLike(!like);
   };
+  const [isDelete, setIsDelete] = useState<boolean>(false)
   const [infoModal, setInfoModal] = useState(false);
   const [infoTitle, setInfoTitle] = useState('');
   const [infoText, setInfoText] = useState('');
@@ -31,12 +34,18 @@ export const Card: FC<Estate> = (estate) => {
   };
   const handleCloseInfoModal = () => {
     setInfoModal(false);
+    if (isDelete) window.location.reload()
   };
   const openRatingInfo = () => {
     setInfoTitle(localField('object_info_title'));
     setInfoText(localField('object_info_message'));
+    setIsDelete(false)
     handleOpenInfoModal();
   };
+  const clickable =
+      localStorage.getItem('basicToken') !== null &&
+      localStorage.getItem('basicToken') !== undefined &&
+      localStorage.getItem('basicToken') !== '';
 
   useEffect(() => {
     setSquare(
@@ -72,7 +81,20 @@ export const Card: FC<Estate> = (estate) => {
         estate.roomLayouts?.one?.square?.avg ||
         110
     );
+    setToken(localStorage.getItem('basicToken'))
   }, []);
+
+  const deleteFromCollection = () => {
+    estateCollectionApi
+        .deleteFromCollection(token!!, estate.collectionId!!, estate.id)
+        .then(() => {
+          setInfoTitle(localField('object_delete_title'));
+          setInfoText(localField('object_delete_message'));
+          handleOpenInfoModal();
+        })
+        .catch((e) => console.log(e));
+    setIsDelete(true)
+  };
 
   return (
     <section>
@@ -254,6 +276,18 @@ export const Card: FC<Estate> = (estate) => {
           {/*  <span className={styles.like__icon}>{like ? <Heart /> : <OfferCollectionHeart />}</span>*/}
           {/*  <Text variant="heading4">Мне нравится</Text>*/}
           {/*</Button>*/}
+          {
+            clickable ?
+                <Button
+                    style={{
+                      margin: 'auto',
+                      width: '80%'
+                    }}
+                    onClick={deleteFromCollection}
+                >Удалить
+                </Button> :
+                <></>
+          }
         </section>
         <InfoModal
           open={infoModal}
