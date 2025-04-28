@@ -166,9 +166,15 @@ type fields =
   | 'go_tg'
   | 'collection_name'
   | 'add'
-    | 'create_new'
-    | 'project_add'
-    | 'project_add_info';
+  | 'create_new'
+  | 'project_add'
+  | 'project_add_info'
+  | 'overallRating'
+  | 'locationRating'
+  | 'priceFrom'
+  | 'priceTo'
+  | 'pricePerSquareMeter'
+  | 'timeToShoppingMall';
 
 export const localField = (field: fields) => {
   const locale = localStorage.getItem('language');

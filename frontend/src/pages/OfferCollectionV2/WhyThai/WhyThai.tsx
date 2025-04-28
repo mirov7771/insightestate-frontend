@@ -11,7 +11,7 @@ import {
   OfferCollectionTrendingUp,
   OfferCollectionUsersGroup,
 } from '@/shared/assets/icons';
-import {localField} from "@/i18n/localField";
+import { localField } from '@/i18n/localField';
 
 export const WhyThai: FC = () => {
   return (

@@ -3,9 +3,11 @@ import { AxiosResponse } from 'axios';
 import {
   EstateDetail,
   Grade,
-  InfrastructureDto, Location,
+  InfrastructureDto,
+  Location,
   Price,
-  Profitability, RoomLayouts,
+  Profitability,
+  RoomLayouts,
 } from '@/widgets/Detail/api/detailApi';
 
 type ResponseGetEstateCollection = {
@@ -30,14 +32,14 @@ export type Estate = {
   projectId: string;
   exteriorImages?: string[];
   facilityImages?: string[];
+  floors?: number;
   grade?: Grade;
   infrastructure?: InfrastructureDto;
   interiorImages?: string[];
+  location?: Location;
   price?: Price;
   profitability?: Profitability;
-  location?: Location
   roomLayouts?: RoomLayouts;
-  floors?: number
 };
 
 export type CreateCollectionRs = {
@@ -167,13 +169,9 @@ export const estateCollectionApi = {
       throw error;
     }
   },
-  getEstateCollectionById: async (
-      id: string
-  ): Promise<AxiosResponse<EstateCollection>> => {
+  getEstateCollectionById: async (id: string): Promise<AxiosResponse<EstateCollection>> => {
     try {
-      return await api.get<EstateCollection>(
-          `/v1/estate-collections/${id}`
-      );
+      return await api.get<EstateCollection>(`/v1/estate-collections/${id}`);
     } catch (error) {
       throw error;
     }

@@ -31,12 +31,12 @@ const CustomSlide = (props: { description: string; img: string }) => {
   );
 };
 
-export const Slider: FC<{images: string[]}> = ({
-    images
-}) => {
+export const Slider: FC<{ images: string[] }> = ({ images }) => {
   return (
     <SlickSlider {...settings} className={styles.customSlider}>
-        {images.map((image) => (<CustomSlide img={image} description="Удобный заезд на парковку" />))}
+      {images.map((image) => (
+        <CustomSlide img={image} description="Удобный заезд на парковку" />
+      ))}
     </SlickSlider>
   );
 };

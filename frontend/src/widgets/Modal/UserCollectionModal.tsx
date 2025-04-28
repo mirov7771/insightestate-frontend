@@ -16,7 +16,7 @@ import {
 import Select from 'react-dropdown-select';
 import { InfoModal } from '@/widgets/Modal/InfoModal';
 import { isMobile } from 'react-device-detect';
-import {localField} from "@/i18n/localField";
+import { localField } from '@/i18n/localField';
 
 export const UserCollectionModal: FC<TModalProps & { id: string; token: string }> = ({
   onClose,

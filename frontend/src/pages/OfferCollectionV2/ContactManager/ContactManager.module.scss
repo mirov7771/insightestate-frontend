@@ -34,13 +34,18 @@
 .bottomSheetList {
   margin: 0;
   padding: 0;
-  color: #202020;
+  color: var(--ui-color-black);
 
   li {
     display: flex;
     align-items: center;
     height: 40px;
     gap: 16px;
+
+    a {
+      color: var(--ui-color-black);
+      text-decoration: none;
+    }
   }
 
   li > svg {

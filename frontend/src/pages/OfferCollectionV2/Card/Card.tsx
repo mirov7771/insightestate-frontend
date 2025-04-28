@@ -1,4 +1,4 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { BadgeRating, Button } from '@/shared/ui';
 import {
   VectorRating,
@@ -10,16 +10,16 @@ import { Text } from '@/shared/ui';
 import styles from './Card.module.scss';
 import { Progress } from '@/pages/OfferCollectionV2/Card/Progress/Progress';
 import { Slider } from '@/pages/OfferCollectionV2/Card/Slider/Slider';
-import {Estate} from "@/widgets/EstateCollection/api/estateCollectionApi";
-import {formatNumber} from "@/shared/utils";
-import {DEFAULT_IMG} from "@/entities/Card/Card";
-import {localField} from "@/i18n/localField";
-import {Map} from "@/pages/EstateDetail/Section/Map/Map";
-import {InfoModal} from "@/widgets/Modal/InfoModal";
+import { Estate } from '@/widgets/EstateCollection/api/estateCollectionApi';
+import { formatNumber } from '@/shared/utils';
+import { DEFAULT_IMG } from '@/entities/Card/Card';
+import { localField } from '@/i18n/localField';
+import { Map } from '@/pages/EstateDetail/Section/Map/Map';
+import { InfoModal } from '@/widgets/Modal/InfoModal';
 
 export const Card: FC<Estate> = (estate) => {
   const [like, setLike] = useState(false);
-  const [square, setSquare] = useState(100)
+  const [square, setSquare] = useState(100);
   const handleClickLikeButton = () => {
     setLike(!like);
   };
@@ -40,26 +40,48 @@ export const Card: FC<Estate> = (estate) => {
 
   useEffect(() => {
     setSquare(
-        estate.roomLayouts?.villaFive?.square?.min || estate.roomLayouts?.villaFive?.square?.max || estate.roomLayouts?.villaFive?.square?.avg ||
-        estate.roomLayouts?.villaFour?.square?.min || estate.roomLayouts?.villaFour?.square?.max || estate.roomLayouts?.villaFour?.square?.avg ||
-        estate.roomLayouts?.villaThree?.square?.min || estate.roomLayouts?.villaThree?.square?.max || estate.roomLayouts?.villaThree?.square?.avg ||
-        estate.roomLayouts?.villaTwo?.square?.min || estate.roomLayouts?.villaTwo?.square?.max || estate.roomLayouts?.villaTwo?.square?.avg ||
-        estate.roomLayouts?.five?.square?.min || estate.roomLayouts?.five?.square?.max || estate.roomLayouts?.five?.square?.avg ||
-        estate.roomLayouts?.four?.square?.min || estate.roomLayouts?.four?.square?.max || estate.roomLayouts?.four?.square?.avg ||
-        estate.roomLayouts?.three?.square?.min || estate.roomLayouts?.three?.square?.max || estate.roomLayouts?.three?.square?.avg ||
-        estate.roomLayouts?.two?.square?.min || estate.roomLayouts?.two?.square?.max || estate.roomLayouts?.two?.square?.avg ||
-        estate.roomLayouts?.studio?.square?.min || estate.roomLayouts?.studio?.square?.max || estate.roomLayouts?.studio?.square?.avg ||
-        estate.roomLayouts?.one?.square?.min || estate.roomLayouts?.one?.square?.max || estate.roomLayouts?.one?.square?.avg ||
+      estate.roomLayouts?.villaFive?.square?.min ||
+        estate.roomLayouts?.villaFive?.square?.max ||
+        estate.roomLayouts?.villaFive?.square?.avg ||
+        estate.roomLayouts?.villaFour?.square?.min ||
+        estate.roomLayouts?.villaFour?.square?.max ||
+        estate.roomLayouts?.villaFour?.square?.avg ||
+        estate.roomLayouts?.villaThree?.square?.min ||
+        estate.roomLayouts?.villaThree?.square?.max ||
+        estate.roomLayouts?.villaThree?.square?.avg ||
+        estate.roomLayouts?.villaTwo?.square?.min ||
+        estate.roomLayouts?.villaTwo?.square?.max ||
+        estate.roomLayouts?.villaTwo?.square?.avg ||
+        estate.roomLayouts?.five?.square?.min ||
+        estate.roomLayouts?.five?.square?.max ||
+        estate.roomLayouts?.five?.square?.avg ||
+        estate.roomLayouts?.four?.square?.min ||
+        estate.roomLayouts?.four?.square?.max ||
+        estate.roomLayouts?.four?.square?.avg ||
+        estate.roomLayouts?.three?.square?.min ||
+        estate.roomLayouts?.three?.square?.max ||
+        estate.roomLayouts?.three?.square?.avg ||
+        estate.roomLayouts?.two?.square?.min ||
+        estate.roomLayouts?.two?.square?.max ||
+        estate.roomLayouts?.two?.square?.avg ||
+        estate.roomLayouts?.studio?.square?.min ||
+        estate.roomLayouts?.studio?.square?.max ||
+        estate.roomLayouts?.studio?.square?.avg ||
+        estate.roomLayouts?.one?.square?.min ||
+        estate.roomLayouts?.one?.square?.max ||
+        estate.roomLayouts?.one?.square?.avg ||
         110
-    )
+    );
   }, []);
 
   return (
     <section>
       <div className={styles.slider}>
-        <Slider images={
-          estate.exteriorImages || estate.facilityImages || estate.interiorImages || [DEFAULT_IMG]
-        }/>
+        <Slider
+          images={
+            estate.exteriorImages || estate.facilityImages || estate.interiorImages || [DEFAULT_IMG]
+          }
+        />
       </div>
       <div className={styles.wrapper}>
         {/*  Main Info */}
@@ -73,7 +95,7 @@ export const Card: FC<Estate> = (estate) => {
                 </span>
               }
               size="sm"
-              text={estate.grade?.main + '' || '9'}
+              text={estate.grade?.main ? `${estate.grade?.main}` : '9'}
               background="primary"
             />
             <BadgeRating
@@ -92,7 +114,8 @@ export const Card: FC<Estate> = (estate) => {
             {estate.name}
           </Text>
           <Text variant="heading3">
-            {localField('p_from')}{' '}${formatNumber(estate.price?.min)} <span className={styles.price}>• ${formatNumber(estate.price?.max)}</span>
+            {localField('p_from')} ${formatNumber(estate.price?.min)}{' '}
+            <span className={styles.price}>• ${formatNumber(estate.price?.max)}</span>
           </Text>
         </section>
         {/* Info Mini Cards */}
@@ -115,16 +138,18 @@ export const Card: FC<Estate> = (estate) => {
               {localField('size_sqm')}
             </Text>
           </div>
-          {estate.floors ?
-              <div className={styles.info__card}>
-                <Text align="center" variant="heading4">
-                  {estate.floors}
-                </Text>
-                <Text className={styles.info__description} align="center" variant="caption1">
-                  {localField('total_floors')}
-                </Text>
-              </div> : <></>
-          }
+          {estate.floors ? (
+            <div className={styles.info__card}>
+              <Text align="center" variant="heading4">
+                {estate.floors}
+              </Text>
+              <Text className={styles.info__description} align="center" variant="caption1">
+                {localField('total_floors')}
+              </Text>
+            </div>
+          ) : (
+            <></>
+          )}
         </section>
         <hr className={styles.hr} />
         {/*Table 1*/}
@@ -147,28 +172,31 @@ export const Card: FC<Estate> = (estate) => {
         <section className={styles.table}>
           <div className={styles.table__item}>
             <Text variant="body1">{localField('beach')}</Text>
-            <Text variant="heading4">1{' '}{localField('min')}</Text>
+            <Text variant="heading4">1 {localField('min')}</Text>
           </div>
           <div className={styles.table__item}>
             <Text variant="body1">{localField('mall')}</Text>
-            <Text variant="heading4">26{' '}{localField('min')}</Text>
+            <Text variant="heading4">26 {localField('min')}</Text>
           </div>
           <div className={styles.table__item}>
             <Text variant="body1">{localField('airport')}</Text>
-            <Text variant="heading4">{
-                estate.infrastructure?.airportTime?.car ||
+            <Text variant="heading4">
+              {estate.infrastructure?.airportTime?.car ||
                 estate.infrastructure?.airportTime?.walk ||
-                30
-            }{' '}{localField('min')}</Text>
+                30}{' '}
+              {localField('min')}
+            </Text>
           </div>
         </section>
-        <hr className={styles.hr} />
         {/*Map*/}
-        {estate.location?.mapUrl ?
+        {!!estate.location?.mapUrl && (
+          <>
+            <hr className={styles.hr} />
             <section>
               <Map url={estate.location?.mapUrl} />
-            </section> : <></>
-        }
+            </section>
+          </>
+        )}
         <hr className={styles.hr} />
         <section className={styles.progress}>
           <Progress
@@ -228,13 +256,13 @@ export const Card: FC<Estate> = (estate) => {
           {/*</Button>*/}
         </section>
         <InfoModal
-            open={infoModal}
-            onClose={handleCloseInfoModal}
-            onOpen={handleOpenInfoModal}
-            anchor="bottom"
-            title={infoTitle}
-            text={infoText}
-            bottom={30}
+          open={infoModal}
+          onClose={handleCloseInfoModal}
+          onOpen={handleOpenInfoModal}
+          anchor="bottom"
+          title={infoTitle}
+          text={infoText}
+          bottom={30}
         />
       </div>
     </section>
