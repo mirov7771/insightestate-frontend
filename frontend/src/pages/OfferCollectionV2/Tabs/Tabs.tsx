@@ -9,6 +9,7 @@ import {
   estateCollectionApi,
 } from '@/widgets/EstateCollection/api/estateCollectionApi';
 import { localField } from '@/i18n/localField';
+import { TableComparison } from '@/pages/OfferCollectionV2/TableComparison/TableComparison';
 
 interface TabPanelProps {
   index: number;
@@ -87,7 +88,9 @@ export const Tabs: FC<{ id: string }> = ({ id }) => {
         </div>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        content 2
+        {!!estateCollection?.estates?.length && (
+          <TableComparison estate={estateCollection?.estates} />
+        )}
       </CustomTabPanel>
     </>
   );

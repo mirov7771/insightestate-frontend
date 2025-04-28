@@ -95,7 +95,7 @@ export const Card: FC<Estate> = (estate) => {
                 </span>
               }
               size="sm"
-              text={estate.grade?.main + '' || '9'}
+              text={estate.grade?.main ? `${estate.grade?.main}` : '9'}
               background="primary"
             />
             <BadgeRating
@@ -188,12 +188,14 @@ export const Card: FC<Estate> = (estate) => {
             </Text>
           </div>
         </section>
-        <hr className={styles.hr} />
         {/*Map*/}
-        {estate.location?.mapUrl && (
-          <section>
-            <Map url={estate.location?.mapUrl} />
-          </section>
+        {!!estate.location?.mapUrl && (
+          <>
+            <hr className={styles.hr} />
+            <section>
+              <Map url={estate.location?.mapUrl} />
+            </section>
+          </>
         )}
         <hr className={styles.hr} />
         <section className={styles.progress}>

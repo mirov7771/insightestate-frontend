@@ -123,8 +123,7 @@ export const messages = {
       'We have developed an AI picker that will help you with the routine task of selecting the right objects for your clients.',
     ai_body:
       'You just need to drop a description of what the client wants in our AI picker and in a couple of minutes you will receive a generated selection of objects that you can immediately send to the client.',
-    ai_label:
-      'Write down your client\'s wishes: the number of bedrooms, budget, availability of a gym, pool or management center, time to the beach and any other details that will help make an accurate selection.',
+    ai_label: `Write down your client's wishes: the number of bedrooms, budget, availability of a gym, pool or management center, time to the beach and any other details that will help make an accurate selection.`,
     ai_button_1: 'Select based on the description',
     ai_button_2: 'Create a collection',
     collection_title: 'Compilations',
@@ -137,8 +136,7 @@ export const messages = {
     politics_1: 'By clicking "Login" or "Register" you agree to',
     politics_2: 'data processing policy',
     receive_code: 'Receive Code',
-    footer_info_text:
-      'Don\'t see code in the email? Check your spam folder - the code may have ended up there',
+    footer_info_text: `Don't see code in the email? Check your spam folder - the code may have ended up there`,
     confirm_button: 'Confirm',
     code: 'Code',
     photo: 'Your photo',
@@ -181,6 +179,12 @@ export const messages = {
     project_add: 'Project add',
     project_add_info:
       'The object has been successfully added to the collection. Go to the "My collections" section to view all the objects and make an offer.',
+    overallRating: 'Overall rating',
+    locationRating: 'Location rating',
+    priceFrom: 'Price from',
+    priceTo: 'Price to',
+    pricePerSquareMeter: 'Price per square meter',
+    timeToShoppingMall: 'Time to shopping mall',
   },
   [LOCALES.RUSSIAN]: {
     language: 'Язык',
@@ -360,5 +364,11 @@ export const messages = {
     project_add: 'Объект добавлен',
     project_add_info:
       'Объект успешно добавлен в подборку, перейдите в раздел «Мои подборки» чтобы посмотреть все объекты и сформировать оффер',
+    overallRating: 'Общая оценка',
+    locationRating: 'Расположение объекта',
+    priceFrom: 'Цена, от',
+    priceTo: 'Цена, до',
+    pricePerSquareMeter: 'Цена за кв. м',
+    timeToShoppingMall: 'Время до торгового центра',
   },
 };

@@ -1,0 +1,94 @@
+@use '~@/sass/index' as *;
+
+.table {
+  overflow-x: auto;
+  margin: 24px -16px;
+  padding: 0 16px;
+
+  &__row {
+    position: relative;
+    display: flex;
+  }
+
+  &__cell {
+    flex: 1 1 0;
+    min-width: 176px;
+    padding: 28px 0 8px;
+    border-top: 1px solid var(--ui-color-black-12-opacity);
+
+    &_card {
+      padding: 0 16px 0 0;
+      border-top: none;
+      margin-bottom: 16px;
+
+      @media (min-width: $media-md) {
+        &:last-child {
+          padding: 0;
+        }
+      }
+    }
+  }
+
+  &__cell_name {
+    position: sticky;
+    left: 0;
+    width: 0;
+    white-space: nowrap;
+    color: var(--ui-color-black-64-opacity);
+    margin-top: 8px;
+  }
+
+  .card {
+    display: grid;
+    grid-template-rows: max-content;
+    height: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+
+    &__wrapper {
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+      height: 100%;
+
+      &:before {
+        content: '';
+        display: block;
+        padding-bottom: 75%;
+      }
+    }
+
+    &__img {
+      width: 100%;
+      border-radius: 16px;
+      position: absolute;
+      height: 100%;
+      object-fit: cover;
+      top: 0;
+      left: 0;
+    }
+
+    &__name {
+      margin-top: 4px;
+      margin-bottom: 12px;
+    }
+
+    &__badge {
+      font-size: 14px;
+      line-height: 18px;
+      font-family:
+        Wix Madefor Display,
+        Arial,
+        sans-serif;
+      margin-top: auto;
+      border: 1px solid var(--ui-color-black-24-opacity);
+      justify-self: flex-start;
+
+      svg {
+        width: 20px;
+        color: var(--ui-color-primary-2);
+      }
+    }
+  }
+}
