@@ -174,7 +174,13 @@ type fields =
   | 'priceFrom'
   | 'priceTo'
   | 'pricePerSquareMeter'
-  | 'timeToShoppingMall';
+  | 'timeToShoppingMall'
+  | 'copy_link'
+  | 'offer_info_title'
+  | 'offer_info_text'
+  | 'offer_info_text_1'
+  | 'offer_info_text_2'
+  | 'offer_info_text_3';
 
 export const localField = (field: fields) => {
   const locale = localStorage.getItem('language');

@@ -5,7 +5,6 @@ import { Tabs } from './Tabs/Tabs';
 import { WhyThai } from './WhyThai/WhyThai';
 import { ContactManager } from './ContactManager/ContactManager';
 import { useParams } from 'react-router';
-import { Estate } from '@/widgets/EstateCollection/api/estateCollectionApi';
 import { localField } from '@/i18n/localField';
 
 const OfferCollectionV2: FC = () => {
