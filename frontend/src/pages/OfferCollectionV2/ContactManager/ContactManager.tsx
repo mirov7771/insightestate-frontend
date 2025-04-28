@@ -10,8 +10,8 @@ import {
 import { AgentInfo, estateCollectionApi } from '@/widgets/EstateCollection/api/estateCollectionApi';
 import { useSearchParams } from 'react-router';
 import { localField } from '@/i18n/localField';
-import {Spacer} from "@/widgets/Spacer/Spacer";
-import {InfoModal} from "@/widgets/Modal/InfoModal";
+import { Spacer } from '@/widgets/Spacer/Spacer';
+import { InfoModal } from '@/widgets/Modal/InfoModal';
 
 export const ContactManager = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -20,9 +20,9 @@ export const ContactManager = () => {
   const [openInfo, setOpenInfo] = useState(false);
   const [infoModal, setInfoModal] = useState(false);
   const clickable =
-      localStorage.getItem('basicToken') !== null &&
-      localStorage.getItem('basicToken') !== undefined &&
-      localStorage.getItem('basicToken') !== '';
+    localStorage.getItem('basicToken') !== null &&
+    localStorage.getItem('basicToken') !== undefined &&
+    localStorage.getItem('basicToken') !== '';
 
   useEffect(() => {
     const token = searchParams.get('token');
@@ -55,31 +55,31 @@ export const ContactManager = () => {
 
   return (
     <>
-      {clickable ?
-          <div className={styles.wrapper}>
-            <Button size="l" onClick={copyTask} className={styles.button2}>
-              <Text variant="heading4">{localField('copy_link')}</Text>
-            </Button>
-            <Button size="l" onClick={() => setOpenInfo(true)} className={styles.button3}>
-              <Text variant="heading4">?</Text>
-            </Button>
-          </div>
-      :
-          <div className={styles.wrapper}>
-            <div className={styles.content}>
-              <img src={agentInfo?.profileImage} alt="avatar" className={styles.avatar} />
-              <div>
-                <Text variant="heading4">{agentInfo?.fio}</Text>
-                <Text variant="caption1" className={styles.manager}>
-                  {localField('your_manager')}
-                </Text>
-              </div>
+      {clickable ? (
+        <div className={styles.wrapper}>
+          <Button size="l" onClick={copyTask} className={styles.button2}>
+            <Text variant="heading4">{localField('copy_link')}</Text>
+          </Button>
+          <Button size="l" onClick={() => setOpenInfo(true)} className={styles.button3}>
+            <Text variant="heading4">?</Text>
+          </Button>
+        </div>
+      ) : (
+        <div className={styles.wrapper}>
+          <div className={styles.content}>
+            <img src={agentInfo?.profileImage} alt="avatar" className={styles.avatar} />
+            <div>
+              <Text variant="heading4">{agentInfo?.fio}</Text>
+              <Text variant="caption1" className={styles.manager}>
+                {localField('your_manager')}
+              </Text>
             </div>
-            <Button size="l" onClick={() => setOpen(true)} className={styles.button}>
-              <Text variant="heading4">{localField('connect')}</Text>
-            </Button>
           </div>
-      }
+          <Button size="l" onClick={() => setOpen(true)} className={styles.button}>
+            <Text variant="heading4">{localField('connect')}</Text>
+          </Button>
+        </div>
+      )}
 
       <BottomSheet isOpen={open} onClose={() => setOpen(false)}>
         <div>
@@ -157,13 +157,13 @@ export const ContactManager = () => {
         </div>
       </BottomSheet>
       <InfoModal
-          open={infoModal}
-          onClose={handleCloseInfoModal}
-          onOpen={handleOpenInfoModal}
-          anchor="bottom"
-          title={localField('link_copied')}
-          text={localField('link_copied_text')}
-          bottom={30}
+        open={infoModal}
+        onClose={handleCloseInfoModal}
+        onOpen={handleOpenInfoModal}
+        anchor="bottom"
+        title={localField('link_copied')}
+        text={localField('link_copied_text')}
+        bottom={30}
       />
     </>
   );
