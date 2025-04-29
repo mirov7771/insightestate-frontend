@@ -5,16 +5,30 @@
   margin: 24px -16px;
   padding: 0 16px;
 
+  @media (min-width: $media-md) {
+    padding: 0;
+    margin: 48px 0;
+  }
+
   &__row {
     position: relative;
     display: flex;
+    border-top: 1px solid var(--ui-color-black-12-opacity);
+  }
+
+  &__row_card {
+    border-top: none;
   }
 
   &__cell {
     flex: 1 1 0;
     min-width: 176px;
     padding: 28px 0 8px;
-    border-top: 1px solid var(--ui-color-black-12-opacity);
+
+    @media (min-width: $media-md) {
+      max-width: 200px;
+      padding: 36px 0 16px;
+    }
 
     &_card {
       padding: 0 16px 0 0;
@@ -22,6 +36,9 @@
       margin-bottom: 16px;
 
       @media (min-width: $media-md) {
+        padding: 0 24px 0 0;
+        margin-bottom: 32px;
+
         &:last-child {
           padding: 0;
         }
@@ -36,6 +53,10 @@
     white-space: nowrap;
     color: var(--ui-color-black-64-opacity);
     margin-top: 8px;
+
+    @media (min-width: $media-md) {
+      margin-top: 16px;
+    }
   }
 
   .card {
@@ -56,6 +77,10 @@
         content: '';
         display: block;
         padding-bottom: 75%;
+
+        @media (min-width: $media-md) {
+          display: none;
+        }
       }
     }
 
@@ -67,6 +92,12 @@
       object-fit: cover;
       top: 0;
       left: 0;
+
+      @media (min-width: $media-md) {
+        position: relative;
+        display: block;
+        height: 152px;
+      }
     }
 
     &__name {

@@ -34,7 +34,7 @@ const CustomTabPanel = (props: TabPanelProps) => {
 
 export const Tabs: FC<{ id: string }> = ({ id }) => {
   const [estateCollection, setEstateCollection] = useState<EstateCollection>();
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState(1);
 
   useEffect(() => {
     estateCollectionApi
