@@ -1,3 +1,5 @@
+@use '~@/sass/index' as *;
+
 .wrapper {
   width: calc(100% + 32px);
   margin: 0 -16px;
@@ -8,6 +10,24 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (min-width: $media-md) {
+    width: 480px;
+    box-shadow: 0 4px 24px 0 var(--ui-color-black-12-opacity);
+    border-radius: 48px;
+    margin: 0 auto;
+    bottom: 32px;
+    padding: 16px;
+    z-index: 10000;
+  }
+
+  &__open {
+    @media (min-width: $media-md) {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      box-shadow: none;
+    }
+  }
 }
 
 .content {
@@ -56,6 +76,18 @@
     align-items: center;
     height: 40px;
     gap: 16px;
+    transition: background-color 0.3s ease-in-out;
+
+    @media (min-width: $media-md) {
+      padding: 12px 8px;
+      border-radius: 8px;
+    }
+
+    &:hover {
+      @media (min-width: $media-md) {
+        background-color: var(--ui-color-black-12-opacity);
+      }
+    }
 
     a {
       color: var(--ui-color-black);
@@ -75,4 +107,37 @@
   height: 1px;
   margin: 16px 0;
   border: none;
+
+  &__hiddenMobile {
+    display: none;
+    @media (min-width: $media-md) {
+      display: block;
+    }
+  }
+
+  &__hiddenDesktop {
+    display: block;
+
+    @media (min-width: $media-md) {
+      display: none;
+    }
+  }
+}
+
+
+.hidden {
+  &__desktop {
+    display: block;
+
+    @media (min-width: $media-md) {
+      display: none;
+    }
+  }
+
+  &__mobile {
+    display: none;
+    @media (min-width: $media-md) {
+      display: block;
+    }
+  }
 }

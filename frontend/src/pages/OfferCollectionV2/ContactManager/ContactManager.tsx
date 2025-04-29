@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { BottomSheet, Button, Text } from '@/shared/ui';
 import styles from './ContactManager.module.scss';
 import {
@@ -14,6 +14,7 @@ import { Spacer } from '@/widgets/Spacer/Spacer';
 import { InfoModal } from '@/widgets/Modal/InfoModal';
 
 export const ContactManager = () => {
+  const refManager = useRef<HTMLDivElement>(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const [agentInfo, setAgentInfo] = useState<AgentInfo>();
   const [open, setOpen] = useState(false);
@@ -56,7 +57,10 @@ export const ContactManager = () => {
   return (
     <>
       {clickable ? (
-        <div className={styles.wrapper}>
+        <div
+          className={`${styles.wrapper} ${open || openInfo ? styles.wrapper__open : ''}`}
+          ref={refManager}
+        >
           <Button size="l" onClick={copyTask} className={styles.button2}>
             <Text variant="heading4">{localField('copy_link')}</Text>
           </Button>
@@ -66,7 +70,10 @@ export const ContactManager = () => {
           </Button>
         </div>
       ) : (
-        <div className={styles.wrapper}>
+        <div
+          className={`${styles.wrapper} ${open || openInfo ? styles.wrapper__open : ''}`}
+          ref={refManager}
+        >
           <div className={styles.content}>
             <img src={agentInfo?.profileImage} alt="avatar" className={styles.avatar} />
             <div>
@@ -76,15 +83,20 @@ export const ContactManager = () => {
               </Text>
             </div>
           </div>
-          <Button size="l" onClick={() => setOpen(true)} className={styles.button}>
-            <Text variant="heading4">{localField('connect')}</Text>
+          <Button
+            size="l"
+            onClick={() => setOpen((prevState) => !prevState)}
+            variant={open || openInfo ? 'cta' : 'primary'}
+            className={styles.button}
+          >
+            <Text variant="heading4">{localField(open || openInfo ? 'close' : 'connect')}</Text>
           </Button>
         </div>
       )}
 
-      <BottomSheet isOpen={open} onClose={() => setOpen(false)}>
+      <BottomSheet isOpen={open} triggerRef={refManager} onClose={() => setOpen(false)}>
         <div>
-          <div className={styles.content}>
+          <div className={`${styles.content} ${styles.hidden__desktop}`}>
             <img src={agentInfo?.profileImage} alt="avatar" className={styles.avatar} />
             <div>
               <Text variant="heading4">{agentInfo?.fio}</Text>
@@ -93,9 +105,9 @@ export const ContactManager = () => {
               </Text>
             </div>
           </div>
-          <hr className={styles.hr} />
+          <hr className={`${styles.hr} ${styles.hidden__desktop}`} />
           <ul className={styles.bottomSheetList}>
-            {!!agentInfo?.mobileNumber && (
+            {!agentInfo?.mobileNumber && (
               <li>
                 <OfferCollectionPhoneCall />
                 <a href={`tel:${agentInfo?.mobileNumber}`} target="_blank" rel="noreferrer">
@@ -113,7 +125,7 @@ export const ContactManager = () => {
               <li>
                 <OfferCollectionWhatsUp />
                 <a
-                  href={`https://wa.me/${agentInfo?.whatsUp.replaceAll('+', '').replaceAll('-', '').replaceAll(' ', '')}`}
+                  href={`https://wa.me/${agentInfo.whatsUp?.replaceAll('+', '').replaceAll('-', '').replaceAll(' ', '')}`}
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -130,6 +142,7 @@ export const ContactManager = () => {
               </li>
             )}
           </ul>
+          <hr className={`${styles.hr} ${styles.hidden__mobile}`} />
         </div>
       </BottomSheet>
 
