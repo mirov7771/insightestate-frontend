@@ -1,7 +1,6 @@
 import { FC, ReactNode, useEffect, useState } from 'react';
-import { IconButton, Tab, Tabs as TabsUI } from '@mui/material';
+import { Tab, Tabs as TabsUI } from '@mui/material';
 import { Text } from '@/shared/ui';
-import { Heart } from '@/shared/assets/icons';
 import styles from './Tabs.module.scss';
 import { Card } from '../Card/Card';
 import {

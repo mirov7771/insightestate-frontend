@@ -3,8 +3,6 @@ import { BadgeRating, Button } from '@/shared/ui';
 import {
   VectorRating,
   OfferCollectionMapPinFilled,
-  Heart,
-  OfferCollectionHeart,
 } from '@/shared/assets/icons';
 import { Text } from '@/shared/ui';
 import styles from './Card.module.scss';
@@ -16,7 +14,6 @@ import { DEFAULT_IMG } from '@/entities/Card/Card';
 import { localField } from '@/i18n/localField';
 import { Map } from '@/pages/EstateDetail/Section/Map/Map';
 import { InfoModal } from '@/widgets/Modal/InfoModal';
-import { useParams } from 'react-router';
 
 export const Card: FC<Estate & { collectionId: string }> = (estate) => {
   const [like, setLike] = useState(false);

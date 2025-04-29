@@ -60,6 +60,7 @@ export const ContactManager = () => {
           <Button size="l" onClick={copyTask} className={styles.button2}>
             <Text variant="heading4">{localField('copy_link')}</Text>
           </Button>
+          <Spacer height={100} width={8}/>
           <Button size="l" onClick={() => setOpenInfo(true)} className={styles.button3}>
             <Text variant="heading4">?</Text>
           </Button>
@@ -144,15 +145,19 @@ export const ContactManager = () => {
             <li>
               <Text variant="body1">{localField('offer_info_text')}</Text>
             </li>
+            <Spacer height={25} width={100}/>
             <li>
               <Text variant="body1">{localField('offer_info_text_1')}</Text>
             </li>
+            <Spacer height={10} width={100}/>
             <li>
               <Text variant="body1">{localField('offer_info_text_2')}</Text>
             </li>
+            <Spacer height={10} width={100}/>
             <li>
               <Text variant="body1">{localField('offer_info_text_3')}</Text>
             </li>
+            <Spacer height={10} width={100}/>
           </ul>
         </div>
       </BottomSheet>
