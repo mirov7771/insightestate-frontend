@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
-import { BadgeRating, Button } from '@/shared/ui';
+import { BadgeRating, Button, GMap } from '@/shared/ui';
 import { VectorRating, OfferCollectionMapPinFilled } from '@/shared/assets/icons';
 import { Text } from '@/shared/ui';
 import styles from './Card.module.scss';
@@ -9,7 +9,6 @@ import { Estate, estateCollectionApi } from '@/widgets/EstateCollection/api/esta
 import { formatNumber } from '@/shared/utils';
 import { DEFAULT_IMG } from '@/entities/Card/Card';
 import { localField } from '@/i18n/localField';
-import { Map } from '@/pages/EstateDetail/Section/Map/Map';
 import { InfoModal } from '@/widgets/Modal/InfoModal';
 
 export const Card: FC<Estate & { collectionId: string }> = (estate) => {
@@ -91,8 +90,13 @@ export const Card: FC<Estate & { collectionId: string }> = (estate) => {
   };
 
   return (
-    <section>
+    <section className={styles.item}>
       <div className={styles.slider}>
+        {!!estate.location?.mapUrl && (
+          <div className={styles.slider__map}>
+            <GMap url={estate.location?.mapUrl} zoom={16} />
+          </div>
+        )}
         <Slider
           images={
             estate.exteriorImages || estate.facilityImages || estate.interiorImages || [DEFAULT_IMG]
@@ -166,122 +170,129 @@ export const Card: FC<Estate & { collectionId: string }> = (estate) => {
           )}
         </section>
         <hr className={styles.hr} />
-        {/*Table 1*/}
-        <section className={styles.table}>
-          <div className={styles.table__item}>
-            <Text variant="body1">{localField('completion_date')}</Text>
-            <Text variant="heading4">{estate.buildEndDate}</Text>
-          </div>
-          <div className={styles.table__item}>
-            <Text variant="body1">{localField('roi')}</Text>
-            <Text variant="heading4">{estate.profitability?.roi || 200}%</Text>
-          </div>
-          <div className={styles.table__item}>
-            <Text variant="body1">{localField('irr')}</Text>
-            <Text variant="heading4">{estate.profitability?.irr || 13}%</Text>
-          </div>
-        </section>
-        <hr className={styles.hr} />
-        {/*Table 2*/}
-        <section className={styles.table}>
-          <div className={styles.table__item}>
-            <Text variant="body1">{localField('beach')}</Text>
-            <Text variant="heading4">1 {localField('min')}</Text>
-          </div>
-          <div className={styles.table__item}>
-            <Text variant="body1">{localField('mall')}</Text>
-            <Text variant="heading4">26 {localField('min')}</Text>
-          </div>
-          <div className={styles.table__item}>
-            <Text variant="body1">{localField('airport')}</Text>
-            <Text variant="heading4">
-              {estate.infrastructure?.airportTime?.car ||
-                estate.infrastructure?.airportTime?.walk ||
-                30}{' '}
-              {localField('min')}
-            </Text>
-          </div>
-        </section>
-        {/*Map*/}
-        {!!estate.location?.mapUrl && (
-          <>
-            <hr className={styles.hr} />
-            <section>
-              <Map url={estate.location?.mapUrl} />
+        <div className={styles.main}>
+          <section className={styles.tables}>
+            {/*Table 1*/}
+            <section className={styles.table}>
+              <div className={styles.table__item}>
+                <Text variant="body1">{localField('completion_date')}</Text>
+                <Text variant="heading4">{estate.buildEndDate}</Text>
+              </div>
+              <div className={styles.table__item}>
+                <Text variant="body1">{localField('roi')}</Text>
+                <Text variant="heading4">{estate.profitability?.roi || 200}%</Text>
+              </div>
+              <div className={styles.table__item}>
+                <Text variant="body1">{localField('irr')}</Text>
+                <Text variant="heading4">{estate.profitability?.irr || 13}%</Text>
+              </div>
             </section>
-          </>
-        )}
-        <hr className={styles.hr} />
-        <section className={styles.progress}>
-          <Progress
-            value={estate.grade?.investmentSecurity || 9}
-            label={localField('security')}
-            icon={
-              <span className={styles.icon}>
-                <VectorRating />
-              </span>
-            }
-            min={0}
-            max={10}
-          />
-          <Progress
-            value={estate.grade?.projectLocation || 9}
-            label={localField('project_location')}
-            icon={
-              <span className={styles.icon}>
-                <VectorRating />
-              </span>
-            }
-            min={0}
-            max={10}
-          />
-          <Progress
-            value={estate.grade?.investmentPotential || 9}
-            label={localField('invest_potential')}
-            icon={
-              <span className={styles.icon}>
-                <VectorRating />
-              </span>
-            }
-            min={0}
-            max={10}
-          />
-          <Progress
-            value={estate.grade?.comfortOfLife || 9}
-            label={localField('comfort')}
-            icon={
-              <span className={styles.icon}>
-                <VectorRating />
-              </span>
-            }
-            min={0}
-            max={10}
-          />
-          {/*Пока убираем лайки*/}
-          {/*<Button*/}
-          {/*  onClick={handleClickLikeButton}*/}
-          {/*  className={styles.like}*/}
-          {/*  variant="cta"*/}
-          {/*  size="l"*/}
-          {/*  wide*/}
-          {/*>*/}
-          {/*  <span className={styles.like__icon}>{like ? <Heart /> : <OfferCollectionHeart />}</span>*/}
-          {/*  <Text variant="heading4">Мне нравится</Text>*/}
-          {/*</Button>*/}
-          {clickable ? (
-            <Button
-              style={{
-                margin: 'auto',
-                width: '80%',
-              }}
-              onClick={deleteFromCollection}
-            >
-              Удалить
-            </Button>
-          ) : (
-            <></>
+            <hr className={styles.hr} />
+            {/*Table 2*/}
+            <section className={styles.table}>
+              <div className={styles.table__item}>
+                <Text variant="body1">{localField('beach')}</Text>
+                <Text variant="heading4">1 {localField('min')}</Text>
+              </div>
+              <div className={styles.table__item}>
+                <Text variant="body1">{localField('mall')}</Text>
+                <Text variant="heading4">26 {localField('min')}</Text>
+              </div>
+              <div className={styles.table__item}>
+                <Text variant="body1">{localField('airport')}</Text>
+                <Text variant="heading4">
+                  {estate.infrastructure?.airportTime?.car ||
+                    estate.infrastructure?.airportTime?.walk ||
+                    30}{' '}
+                  {localField('min')}
+                </Text>
+              </div>
+            </section>
+          </section>
+          {/*Map*/}
+          {!!estate.location?.mapUrl && (
+            <section className={styles.map}>
+              <hr className={styles.hr} />
+              <section>
+                <GMap
+                  url={estate.location.mapUrl}
+                  mapContainerStyle={{ width: '100%', height: '400px', marginTop: 16 }}
+                />
+              </section>
+            </section>
           )}
-        </section>
+          <hr className={styles.hr} />
+          <section className={styles.progress}>
+            <Progress
+              value={estate.grade?.investmentSecurity || 9}
+              label={localField('security')}
+              icon={
+                <span className={styles.icon}>
+                  <VectorRating />
+                </span>
+              }
+              min={0}
+              max={10}
+            />
+            <Progress
+              value={estate.grade?.projectLocation || 9}
+              label={localField('project_location')}
+              icon={
+                <span className={styles.icon}>
+                  <VectorRating />
+                </span>
+              }
+              min={0}
+              max={10}
+            />
+            <Progress
+              value={estate.grade?.investmentPotential || 9}
+              label={localField('invest_potential')}
+              icon={
+                <span className={styles.icon}>
+                  <VectorRating />
+                </span>
+              }
+              min={0}
+              max={10}
+            />
+            <Progress
+              value={estate.grade?.comfortOfLife || 9}
+              label={localField('comfort')}
+              icon={
+                <span className={styles.icon}>
+                  <VectorRating />
+                </span>
+              }
+              min={0}
+              max={10}
+            />
+            {/*Пока убираем лайки*/}
+            {/*<Button*/}
+            {/*  onClick={handleClickLikeButton}*/}
+            {/*  className={styles.like}*/}
+            {/*  variant="cta"*/}
+            {/*  size="l"*/}
+            {/*  wide*/}
+            {/*>*/}
+            {/*  <span className={styles.like__icon}>{like ? <Heart /> : <OfferCollectionHeart />}</span>*/}
+            {/*  <Text variant="heading4">Мне нравится</Text>*/}
+            {/*</Button>*/}
+            {clickable ? (
+              <Button
+                style={{
+                  margin: 'auto',
+                  width: '80%',
+                }}
+                onClick={deleteFromCollection}
+              >
+                Удалить
+              </Button>
+            ) : (
+              <></>
+            )}
+          </section>
+        </div>
         <InfoModal
           open={infoModal}
           onClose={handleCloseInfoModal}

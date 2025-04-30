@@ -30,6 +30,8 @@
   }
 
   &__question {
+    gap: 8px;
+
     @media (min-width: $media-md) {
       gap: 8px;
     }
@@ -129,7 +131,6 @@
     }
   }
 }
-
 
 .hidden {
   &__desktop {

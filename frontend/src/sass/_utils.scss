@@ -1,0 +1,17 @@
+@mixin hidden($media) {
+  @if $media =='desktop' {
+    display: block;
+
+    @media (min-width: 768px) {
+      display: none;
+    }
+  }
+
+  @if $media == 'mobile' {
+    display: none;
+
+    @media (min-width: 768px) {
+      display: block;
+    }
+  }
+}
