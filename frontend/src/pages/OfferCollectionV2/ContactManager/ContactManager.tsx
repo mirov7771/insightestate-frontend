@@ -95,7 +95,7 @@ export const ContactManager = () => {
       )}
 
       <BottomSheet isOpen={open} triggerRef={refManager} onClose={() => setOpen(false)}>
-        <div className={`${styles.content} ${styles.hidden__desktop}`}>
+        <div className={`${styles.content} ${styles.content__hidden}`}>
           <img src={agentInfo?.profileImage} alt="avatar" className={styles.avatar} />
           <div>
             <Text variant="heading4">{agentInfo?.fio}</Text>

@@ -13,7 +13,10 @@
   &__row {
     position: relative;
     display: flex;
-    border-top: 1px solid var(--ui-color-black-12-opacity);
+
+    @media (min-width: $media-md) {
+      border-top: 1px solid var(--ui-color-black-12-opacity);
+    }
   }
 
   &__row_card {
@@ -24,10 +27,12 @@
     flex: 1 1 0;
     min-width: 176px;
     padding: 28px 0 8px;
+    border-top: 1px solid var(--ui-color-black-12-opacity);
 
     @media (min-width: $media-md) {
       max-width: 200px;
       padding: 36px 0 16px;
+      border-top: none
     }
 
     &_card {

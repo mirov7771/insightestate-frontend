@@ -10,6 +10,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  transition: border-radius 0.3s ease-in-out;
 
   @media (min-width: $media-md) {
     width: 480px;
@@ -42,6 +43,12 @@
   display: flex;
   gap: 16px;
   align-items: center;
+
+  &__hidden {
+    @media (min-width: $media-md) {
+      display: none;
+    }
+  }
 }
 
 .manager {
