@@ -1,9 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
 import { BadgeRating, Button } from '@/shared/ui';
-import {
-  VectorRating,
-  OfferCollectionMapPinFilled,
-} from '@/shared/assets/icons';
+import { VectorRating, OfferCollectionMapPinFilled } from '@/shared/assets/icons';
 import { Text } from '@/shared/ui';
 import styles from './Card.module.scss';
 import { Progress } from '@/pages/OfferCollectionV2/Card/Progress/Progress';
@@ -157,7 +154,7 @@ export const Card: FC<Estate & { collectionId: string }> = (estate) => {
               {localField('size_sqm')}
             </Text>
           </div>
-          {estate.floors ? (
+          {!!estate.floors && (
             <div className={styles.info__card}>
               <Text align="center" variant="heading4">
                 {estate.floors}
@@ -166,8 +163,6 @@ export const Card: FC<Estate & { collectionId: string }> = (estate) => {
                 {localField('total_floors')}
               </Text>
             </div>
-          ) : (
-            <></>
           )}
         </section>
         <hr className={styles.hr} />

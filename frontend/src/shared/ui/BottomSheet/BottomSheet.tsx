@@ -29,7 +29,7 @@ export const BottomSheet = ({ isOpen, onClose, children, triggerRef }: Props) =>
       });
     }
 
-    document.body.style.overflow = isOpen && window.innerWidth < 768 ? 'hidden' : 'auto';
+    document.body.style.overflow = isOpen ? 'hidden' : 'auto';
   }, [isOpen, triggerRef]);
 
   return (
