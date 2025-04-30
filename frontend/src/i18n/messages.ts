@@ -194,6 +194,7 @@ export const messages = {
     offer_info_text_3: '3. Click "Copy link" and send it to the client in a convenient way',
     link_copied: 'Link copied',
     link_copied_text: 'You can share this link with clients',
+    close: 'Close',
   },
   [LOCALES.RUSSIAN]: {
     language: 'Язык',
@@ -388,5 +389,6 @@ export const messages = {
     offer_info_text_3: '3. Нажмите «Скопировать ссылку» и отправьте клиенту удобным способом',
     link_copied: 'Ссылка скопирована',
     link_copied_text: 'Вы можете делится данной ссылкой с клиентами',
+    close: 'Закрыть',
   },
 };

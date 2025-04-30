@@ -17,54 +17,56 @@ export const WhyThai: FC = () => {
   return (
     <section className={styles.root}>
       <div className={styles.content}>
-        <Text variant="heading2" as="h2" className={styles.title}>
-          {localField('why')}
-        </Text>
+        <div className={styles.content__text}>
+          <Text variant="heading2" as="h2" className={styles.title}>
+            {localField('why')}
+          </Text>
 
-        <ul className={styles.list}>
-          <li>
-            <span className={styles.icon}>
-              <OfferCollectionCurrencyDollar />
-            </span>
-            <Text variant="body1">{localField('why_1')}</Text>
-          </li>
-          <li>
-            <span className={styles.icon}>
-              <OfferCollectionTrendingUp />
-            </span>
-            <Text variant="body1">{localField('why_2')}</Text>
-          </li>
-          <li>
-            <span className={styles.icon}>
-              <OfferCollectionMoodDollar />
-            </span>
-            <Text variant="body1">{localField('why_3')}</Text>
-          </li>
-          <li>
-            <span className={styles.icon}>
-              <OfferCollectionUsersGroup />
-            </span>
-            <Text variant="body1">{localField('why_4')}</Text>
-          </li>
-          <li>
-            <span className={styles.icon}>
-              <OfferCollectionHeartRateMonitor />
-            </span>
-            <Text variant="body1">{localField('why_5')}</Text>
-          </li>
-          <li>
-            <span className={styles.icon}>
-              <OfferCollectionHomeDollar />
-            </span>
-            <Text variant="body1">{localField('why_6')}</Text>
-          </li>
-          <li>
-            <span className={styles.icon}>
-              <OfferCollectionCalendarTime />
-            </span>
-            <Text variant="body1">{localField('why_7')}</Text>
-          </li>
-        </ul>
+          <ul className={styles.list}>
+            <li>
+              <span className={styles.icon}>
+                <OfferCollectionCurrencyDollar />
+              </span>
+              <Text variant="body1">{localField('why_1')}</Text>
+            </li>
+            <li>
+              <span className={styles.icon}>
+                <OfferCollectionTrendingUp />
+              </span>
+              <Text variant="body1">{localField('why_2')}</Text>
+            </li>
+            <li>
+              <span className={styles.icon}>
+                <OfferCollectionMoodDollar />
+              </span>
+              <Text variant="body1">{localField('why_3')}</Text>
+            </li>
+            <li>
+              <span className={styles.icon}>
+                <OfferCollectionUsersGroup />
+              </span>
+              <Text variant="body1">{localField('why_4')}</Text>
+            </li>
+            <li>
+              <span className={styles.icon}>
+                <OfferCollectionHeartRateMonitor />
+              </span>
+              <Text variant="body1">{localField('why_5')}</Text>
+            </li>
+            <li>
+              <span className={styles.icon}>
+                <OfferCollectionHomeDollar />
+              </span>
+              <Text variant="body1">{localField('why_6')}</Text>
+            </li>
+            <li>
+              <span className={styles.icon}>
+                <OfferCollectionCalendarTime />
+              </span>
+              <Text variant="body1">{localField('why_7')}</Text>
+            </li>
+          </ul>
+        </div>
 
         <div className={styles.imageWrapper}>
           <img src={House} alt="resort" className={styles.image} />

@@ -101,7 +101,7 @@ export const TableComparison: FC<TableComparisonProps> = ({ estate }) => {
 
   return (
     <div className={styles.table}>
-      <div className={styles.table__row}>
+      <div className={`${styles.table__row} ${styles.table__row_card}`}>
         {estate.map((estate) => (
           <div className={`${styles.table__cell} ${styles.table__cell_card}`}>
             <div className={styles.card}>

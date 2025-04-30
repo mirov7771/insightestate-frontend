@@ -182,7 +182,8 @@ type fields =
   | 'offer_info_text_2'
   | 'offer_info_text_3'
   | 'link_copied'
-  | 'link_copied_text';
+  | 'link_copied_text'
+  | 'close';
 
 export const localField = (field: fields) => {
   const locale = localStorage.getItem('language');

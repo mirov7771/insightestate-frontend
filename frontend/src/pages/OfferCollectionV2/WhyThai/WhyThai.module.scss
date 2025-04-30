@@ -1,20 +1,42 @@
+@use '~@/sass/index' as *;
+
 .root {
   position: relative;
   background: #ccd8d7;
-  color: #202020;
+  color: var(--ui-color-black);
   margin: 0 -16px;
+
+  @media (min-width: $media-md) {
+    background: linear-gradient(180deg,rgba(201, 213, 212, 0.9) 0%, rgba(178, 193, 194, 01) 100%);
+    margin: 0 -56px;
+  }
+
 }
 
 .content {
   margin: 0 auto;
+
+  @media (min-width: $media-md) {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  &__text {
+    @media (min-width: $media-md) {
+      flex: 1 1 0;
+      padding-bottom: 56px;
+    }
+  }
 }
 
 .title {
-  font-size: 28px;
-  font-weight: 700;
   margin-bottom: 24px;
   padding: 32px 16px 0;
   text-transform: uppercase;
+
+  @media (min-width: $media-md) {
+    padding: 56px 32px 0;
+  }
 }
 
 .list {
@@ -24,6 +46,10 @@
   flex-direction: column;
   gap: 20px;
   padding: 0 16px 0;
+
+  @media (min-width: $media-md) {
+    padding: 0 32px 0;
+  }
 
   li {
     display: flex;
@@ -51,8 +77,16 @@
   width: 100%;
   overflow: hidden;
 
+  @media (min-width: $media-md) {
+    flex: 1 1 0;
+  }
+
   .image {
     object-fit: cover;
     width: 100%;
+
+    @media (min-width: $media-md) {
+      height: 100%;
+    }
   }
 }

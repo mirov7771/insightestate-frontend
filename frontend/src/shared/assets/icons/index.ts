@@ -51,6 +51,8 @@ import OfferCollectionPhoneCall from './offer-collection/tabler-icon-phone-call.
 import OfferCollectionWhatsUp from './offer-collection/whats-app.svg?react';
 import OfferCollectionMapPinFilled from './offer-collection/tabler-icon-map-pin-filled.svg?react';
 import OfferCollectionHeart from './offer-collection/tabler-icon-heart.svg?react';
+import OfferCollectionArrowRight from './offer-collection/tabler-icon-chevron-right.svg?react';
+import OfferCollectionArrowLeft from './offer-collection/tabler-icon-chevron-left.svg?react';
 
 export {
   Bed,
@@ -107,4 +109,6 @@ export {
   OfferCollectionWhatsUp,
   OfferCollectionMapPinFilled,
   OfferCollectionHeart,
+  OfferCollectionArrowRight,
+  OfferCollectionArrowLeft,
 };

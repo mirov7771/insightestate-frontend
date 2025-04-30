@@ -1,7 +1,16 @@
+@use '~@/sass/index' as *;
+
 .wrap {
   margin: 0 auto;
-  //max-width: 1736px; Позже вернуть как только десктоп появится
-  max-width: 768px;
+  max-width: 1736px;
   padding: 0 16px;
   width: 100%;
+
+  @media (min-width: $media-md) {
+    padding: 0 40px;
+  }
+
+  @media (min-width: $media-lg) {
+    padding: 0 56px;
+  }
 }

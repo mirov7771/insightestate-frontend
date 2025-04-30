@@ -1,15 +1,32 @@
+@use '~@/sass/index' as *;
+
 .list {
   background: rgba(32, 32, 32, 0.12);
   display: inline-flex;
   padding: 2px;
   border-radius: 200px;
   width: 100%;
+
+  @media (min-width: $media-md) {
+    width: max-content;
+    margin: 0 auto;
+    align-self: center;
+    display: flex;
+  }
 }
 
 .tabsWrapper {
   display: flex;
   gap: 8px;
   margin-top: 18px;
+
+  @media (min-width: $media-md) {
+    justify-content: space-between;
+  }
+
+  @media (min-width: $media-lg) {
+
+  }
 }
 
 .tabsRoot {
@@ -31,6 +48,10 @@
   min-height: 28px;
   flex: 1 1 0;
   max-width: 100%;
+
+  @media (min-width: $media-md) {
+    min-width: 162px;
+  }
 
   &:global(.Mui-selected) {
     background-color: #fff;
