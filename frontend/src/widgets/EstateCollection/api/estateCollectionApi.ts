@@ -65,6 +65,18 @@ export type HelpWithClientRq = {
   phone: string;
 };
 
+export type TariffRs = {
+  main: Tariff[],
+  extra: Tariff[]
+}
+
+export type Tariff = {
+  id: string,
+  title: string,
+  description: string[],
+  price: number
+}
+
 export const estateCollectionApi = {
   getEstateCollection: async (
     token: string
@@ -176,4 +188,57 @@ export const estateCollectionApi = {
       throw error;
     }
   },
+  getTariffs: async (): Promise<TariffRs> => {
+    return {
+      "main": [
+        {
+          "id": "f1628768-72c2-40e4-9e6d-7c4ab7b1909b",
+          "title": "Бесплатная версия",
+          "description": [
+            "— 3 бесплатных генераций предложений клиенту",
+            "— 2 бесплатные подборки",
+            "— 2 бесплатных запроса в AI подборщик",
+            "— ограниченную аналитику по объекту: только оценки"
+          ],
+          "price": 0
+        },
+        {
+          "id": "8acf9e68-c4d0-43b1-9c22-b7f712f101a4",
+          "title": "PRO",
+          "description": [
+            "— 30 генераций предложений клиенту",
+            "— 7 подборок",
+            "— 4 бесплатных запроса в AI подборщик",
+            "— вся аналитика по объекту: оценки, расчет экономики",
+            "— возможность вступить в клуб",
+            "— 2 инвайта в клуб каждый месяц"
+          ],
+          "price": 39
+        },
+        {
+          "id": "b749d197-846e-49d4-aedc-abf7b3784b11",
+          "title": "PREMIUM",
+          "description": [
+            "— Без ограничений генераций предложений клиенту",
+            "— Без ограничений по подборокам",
+            "— 8 бесплатных запросов в AI подборщик",
+            "— вся аналитика по объекту: оценки, расчет экономики",
+            "— возможность вступить в клуб",
+            "— 5 инвайтов в клуб каждый месяц"
+          ],
+          "price": 59
+        }
+      ],
+      "extra": [
+        {
+          "id": "4aee86e7-0b36-45a7-b19e-ad0086a81e6a",
+          "title": "AI пакет к любому тарифу",
+          "description": [
+            "— Не ограниченное количество запросов в AI подборщик"
+          ],
+          "price": 29
+        }
+      ]
+    }
+  }
 };

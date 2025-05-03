@@ -17,6 +17,7 @@ import getUserLocale from 'get-user-locale';
 import { useEffect } from 'react';
 import OfferCollectionV2 from '@/pages/OfferCollectionV2';
 import { StyledEngineProvider } from '@mui/material';
+import {Tariffs} from "@/pages/Tariffs";
 
 const App = () => {
   const userLocale = getUserLocale();
@@ -57,6 +58,7 @@ const App = () => {
             <Route path="/offer-collection-v2">
               <Route path=":id" element={<OfferCollectionV2 />} />
             </Route>
+            <Route path="/tariffs" element={<Tariffs />} />
             <Route path="/user-collection" element={<UserCollection />} />
             <Route
               path="/ai-listing"
