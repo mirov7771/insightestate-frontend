@@ -94,6 +94,15 @@ export type SubscriptionInfo = {
   payAmount?: number
 }
 
+export type StripeRq = {
+  amount: number,
+  currency: string
+}
+
+export type StripeRs = {
+  clientSecret: string
+}
+
 export const estateCollectionApi = {
   getEstateCollection: async (
     token: string
@@ -230,6 +239,16 @@ export const estateCollectionApi = {
       return await api.post<void>('/v1/subscription', {
         userId: localStorage.getItem('userId'),
         tariffId: tariffId
+      })
+    } catch (error) {
+      throw error;
+    }
+  },
+  stripeSession: async (price: number): Promise<AxiosResponse<StripeRs>> => {
+    try {
+      return await api.post<StripeRs>('/v1/stripe/session', {
+        amount: price,
+        currency: 'usd'
       })
     } catch (error) {
       throw error;

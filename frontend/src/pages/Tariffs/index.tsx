@@ -1,10 +1,21 @@
-import React, {ChangeEvent, FC, useEffect, useState} from "react";
+import React, {ChangeEvent, FC, FormEventHandler, useEffect, useState} from "react";
 import styles from './Tariffs.module.scss';
 import {estateCollectionApi, TariffRs} from "@/widgets/EstateCollection/api/estateCollectionApi";
 import {Spacer} from "@/widgets/Spacer/Spacer";
 import {Button} from "@/shared/ui";
 import {FormControlLabel, FormGroup, Switch} from "@mui/material";
 import {useNavigate} from "react-router";
+import {Elements, PaymentElement, useElements, useStripe} from "@stripe/react-stripe-js";
+import {loadStripe} from "@stripe/stripe-js";
+import {TModalProps} from "@/widgets/Modal/types";
+import {
+    StyledSwipeableDrawer,
+    StyledUpperWrapperProgress,
+    StyledWrapperProgress
+} from "@/widgets/Modal/styled";
+import {isMobile} from "react-device-detect";
+
+const stripePromise = loadStripe('pk_test_51RHea2C7cCHxCxhsM3f9CEMPPLSwH2R5QxhH5S8xOYqu21jSZ9wXTOu1H4QaHvgXpyJCBBwJJUp8W3M8LVuXVR8A00ezo4qaAi');
 
 export const Tariffs: FC = () => {
     const [tariffs, setTariffs] = useState<TariffRs>()
@@ -97,6 +108,13 @@ const Tariff: FC<{
     id, title, description, price, extraId, userSubscriptionId
 }) => {
     const navigate = useNavigate();
+    const [infoModal, setInfoModal] = useState(false);
+    const handleOpenInfoModal = () => {
+        setInfoModal(true);
+    };
+    const handleCloseInfoModal = () => {
+        setInfoModal(false);
+    };
     const handleTariff = () => {
         if (price === 0) {
             estateCollectionApi.saveUserSubscription(id).then(async () => {
@@ -107,6 +125,7 @@ const Tariff: FC<{
                 navigate('/listing')
             }).catch((e) => console.log(e))
         }
+        handleOpenInfoModal()
     }
 
     const getSubscription = (): string => {
@@ -150,6 +169,112 @@ const Tariff: FC<{
                 </Button>
                 <Spacer height={20} width={100}/>
             </div>
+            <PayModal
+                open={infoModal}
+                onClose={handleCloseInfoModal}
+                onOpen={handleOpenInfoModal}
+                anchor="bottom"
+                price={price}
+                bottom={10}
+            />
         </div>
     )
 }
+
+const CheckoutForm: FC<{price: number}> = ({price}) => {
+    const stripe = useStripe();
+    const elements = useElements();
+
+    const [errorMessage, setErrorMessage] = useState<string>();
+
+    const handleSubmit = async (event: ChangeEvent<HTMLFormElement>) => {
+        event.preventDefault();
+
+        if (elements == null) {
+            return;
+        }
+
+        // Trigger form validation and wallet collection
+        const {error: submitError} = await elements.submit();
+        if (submitError) {
+            // Show error to your customer
+            setErrorMessage(submitError.message);
+            return;
+        }
+
+        // Create the PaymentIntent and obtain clientSecret from your server endpoint
+        const res = await estateCollectionApi.stripeSession(price);
+
+        const {error} = await stripe!!.confirmPayment({
+            //`Elements` instance that was used to create the Payment Element
+            elements,
+            clientSecret: res.data.clientSecret,
+            confirmParams: {
+                return_url: 'https://insightestate.pro/listing',
+            },
+        });
+
+        if (error) {
+            // This point will only be reached if there is an immediate error when
+            // confirming the payment. Show error to your customer (for example, payment
+            // details incomplete)
+            setErrorMessage(error.message);
+        } else {
+            // Your customer will be redirected to your `return_url`. For some payment
+            // methods like iDEAL, your customer will be redirected to an intermediate
+            // site first to authorize the payment, then redirected to the `return_url`.
+        }
+    };
+    return (
+        <form onSubmit={handleSubmit}>
+            <PaymentElement />
+            <Spacer height={20} width={100}/>
+            <Button
+                type="submit"
+                size='l'
+                wide
+                disabled={!stripe || !elements}
+            >
+                Оплатить
+            </Button>
+            {errorMessage && <div>{errorMessage}</div>}
+        </form>
+    );
+};
+
+export const PayModal: FC<
+    TModalProps & {
+    bottom: number;
+    price: number;
+}
+> = ({ onClose, open, anchor, onOpen, bottom, price }) => {
+    return (
+        <>
+            <StyledSwipeableDrawer
+                onOpen={onOpen}
+                open={open}
+                onClose={onClose}
+                anchor={anchor}
+                disableSwipeToOpen
+                bottom={bottom}
+                isMobile={isMobile}
+            >
+                <StyledUpperWrapperProgress>
+                    <StyledWrapperProgress>
+                        <Elements stripe={stripePromise} options={{
+                            mode: 'payment',
+                            amount: price > 0 ? price : 1,
+                            currency: 'usd',
+                            appearance: {
+                                theme: "flat",
+                                labels: "floating"
+                            }
+                        }}>
+                            <CheckoutForm price={price}/>
+                        </Elements>
+                    </StyledWrapperProgress>
+                </StyledUpperWrapperProgress>
+            </StyledSwipeableDrawer>
+        </>
+    );
+};
