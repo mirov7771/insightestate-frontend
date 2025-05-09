@@ -54,6 +54,7 @@ export type AgentInfo = {
   profileImage?: string;
   tgName?: string;
   whatsUp?: string;
+  id: string;
 };
 
 export type HelpWithClientRq = {
@@ -75,6 +76,22 @@ export type Tariff = {
   title: string,
   description: string[],
   price: number
+}
+
+export type UserSubscription = {
+  subscription?: Subscription,
+  tariffs?: TariffRs
+}
+
+export type Subscription = {
+  main?: SubscriptionInfo,
+  extra?: SubscriptionInfo,
+}
+
+export type SubscriptionInfo = {
+  id?: string,
+  payDate?: string,
+  payAmount?: number
 }
 
 export const estateCollectionApi = {
@@ -188,57 +205,34 @@ export const estateCollectionApi = {
       throw error;
     }
   },
-  getTariffs: async (): Promise<TariffRs> => {
-    return {
-      "main": [
-        {
-          "id": "f1628768-72c2-40e4-9e6d-7c4ab7b1909b",
-          "title": "Бесплатная версия",
-          "description": [
-            "— 3 бесплатных генераций предложений клиенту",
-            "— 2 бесплатные подборки",
-            "— 2 бесплатных запроса в AI подборщик",
-            "— ограниченную аналитику по объекту: только оценки"
-          ],
-          "price": 0
+  getTariffs: async (): Promise<AxiosResponse<TariffRs>> => {
+    try {
+      return await api.get<TariffRs>('/v1/tariff');
+    } catch (error) {
+      throw error;
+    }
+  },
+  getUserSubscription: async (token: string): Promise<AxiosResponse<UserSubscription>> => {
+    try {
+      const userInfo = await api.get<AgentInfo>(`/users/me`, {
+        headers: {
+          Authorization: `Basic ${token.replace('Basic ', '')}`,
         },
-        {
-          "id": "8acf9e68-c4d0-43b1-9c22-b7f712f101a4",
-          "title": "PRO",
-          "description": [
-            "— 30 генераций предложений клиенту",
-            "— 7 подборок",
-            "— 4 бесплатных запроса в AI подборщик",
-            "— вся аналитика по объекту: оценки, расчет экономики",
-            "— возможность вступить в клуб",
-            "— 2 инвайта в клуб каждый месяц"
-          ],
-          "price": 39
-        },
-        {
-          "id": "b749d197-846e-49d4-aedc-abf7b3784b11",
-          "title": "PREMIUM",
-          "description": [
-            "— Без ограничений генераций предложений клиенту",
-            "— Без ограничений по подборокам",
-            "— 8 бесплатных запросов в AI подборщик",
-            "— вся аналитика по объекту: оценки, расчет экономики",
-            "— возможность вступить в клуб",
-            "— 5 инвайтов в клуб каждый месяц"
-          ],
-          "price": 59
-        }
-      ],
-      "extra": [
-        {
-          "id": "4aee86e7-0b36-45a7-b19e-ad0086a81e6a",
-          "title": "AI пакет к любому тарифу",
-          "description": [
-            "— Не ограниченное количество запросов в AI подборщик"
-          ],
-          "price": 29
-        }
-      ]
+      });
+      localStorage.setItem('userId', userInfo.data.id)
+      return await api.get<UserSubscription>(`/v1/subscription?userId=${userInfo.data.id}`)
+    } catch (error) {
+      throw error;
+    }
+  },
+  saveUserSubscription: async (tariffId: string): Promise<AxiosResponse<void>> => {
+    try {
+      return await api.post<void>('/v1/subscription', {
+        userId: localStorage.getItem('userId'),
+        tariffId: tariffId
+      })
+    } catch (error) {
+      throw error;
     }
   }
 };
