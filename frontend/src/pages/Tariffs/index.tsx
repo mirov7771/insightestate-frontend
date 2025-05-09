@@ -4,7 +4,7 @@ import {estateCollectionApi, TariffRs} from "@/widgets/EstateCollection/api/esta
 import {Spacer} from "@/widgets/Spacer/Spacer";
 import {Button} from "@/shared/ui";
 import {FormControlLabel, FormGroup, Switch} from "@mui/material";
-import {useNavigate} from "react-router";
+import {useNavigate, useSearchParams} from "react-router";
 import {Elements, PaymentElement, useElements, useStripe} from "@stripe/react-stripe-js";
 import {loadStripe} from "@stripe/stripe-js";
 import {TModalProps} from "@/widgets/Modal/types";
@@ -22,10 +22,21 @@ export const Tariffs: FC = () => {
     const [extra, setExtra] = useState(true)
     const [extraPrice, setExtraPrice] = useState(0)
     const [extraId, setExtraId] = useState<string>()
+    const [searchParams, setSearchParams] = useSearchParams();
+    const navigate = useNavigate();
     useEffect(() => {
-        estateCollectionApi.getTariffs()
-            .then((r) => setTariffs(r.data))
-            .catch((e) => console.log(e))
+        const tariffId = searchParams.get('tariffId')
+        if (tariffId) {
+            estateCollectionApi.saveUserSubscription(tariffId)
+                .then(() => {
+                    localStorage.setItem('subscriptionId', tariffId)
+                    navigate('/listing')
+                }).catch((e) => console.log(e))
+        } else {
+            estateCollectionApi.getTariffs()
+                .then((r) => setTariffs(r.data))
+                .catch((e) => console.log(e))
+        }
     }, []);
 
     const handleChangeChecked = (e: ChangeEvent<HTMLInputElement>, checked: boolean) => {
@@ -174,14 +185,18 @@ const Tariff: FC<{
                 onClose={handleCloseInfoModal}
                 onOpen={handleOpenInfoModal}
                 anchor="bottom"
-                price={price}
+                price={price * 100}
                 bottom={10}
+                id={id}
             />
         </div>
     )
 }
 
-const CheckoutForm: FC<{price: number}> = ({price}) => {
+const CheckoutForm: FC<{
+    id: string,
+    price: number
+}> = ({price, id}) => {
     const stripe = useStripe();
     const elements = useElements();
 
@@ -210,7 +225,7 @@ const CheckoutForm: FC<{price: number}> = ({price}) => {
             elements,
             clientSecret: res.data.clientSecret,
             confirmParams: {
-                return_url: 'https://insightestate.pro/listing',
+                return_url: `https://insightestate.pro/tariffs?tariffId=${id}`,
             },
         });
 
@@ -246,8 +261,9 @@ export const PayModal: FC<
     TModalProps & {
     bottom: number;
     price: number;
+    id: string;
 }
-> = ({ onClose, open, anchor, onOpen, bottom, price }) => {
+> = ({ onClose, open, anchor, onOpen, bottom, price, id }) => {
     return (
         <>
             <StyledSwipeableDrawer
@@ -265,12 +281,16 @@ export const PayModal: FC<
                             mode: 'payment',
                             amount: price > 0 ? price : 1,
                             currency: 'usd',
+                            setup_future_usage: 'off_session',
                             appearance: {
                                 theme: "flat",
                                 labels: "floating"
                             }
                         }}>
-                            <CheckoutForm price={price}/>
+                            <CheckoutForm
+                                id={id}
+                                price={price}
+                            />
                         </Elements>
                     </StyledWrapperProgress>
                 </StyledUpperWrapperProgress>
