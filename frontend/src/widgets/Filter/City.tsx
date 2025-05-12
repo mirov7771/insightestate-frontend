@@ -29,6 +29,13 @@ export const City: FC = () => {
           checked={city === 'Bangkok'}
           label="Bangkok"
         />
+        <RadioButton
+            name="city"
+            value="Pattaya"
+            onChange={handleClick}
+            checked={city === 'Pattaya'}
+            label="Pattaya"
+        />
       </div>
     </Accordion>
   );
