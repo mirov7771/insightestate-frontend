@@ -248,7 +248,8 @@ export const estateCollectionApi = {
     try {
       return await api.post<StripeRs>('/v1/stripe/session', {
         amount: price,
-        currency: 'usd'
+        currency: 'usd',
+        userId: localStorage.getItem('userId'),
       })
     } catch (error) {
       throw error;
