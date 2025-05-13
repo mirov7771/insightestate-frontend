@@ -7,6 +7,22 @@ import { localField } from '@/i18n/localField';
 import { isMobile } from 'react-device-detect';
 import { estateCollectionApi } from '@/widgets/EstateCollection/api/estateCollectionApi';
 
+export const getNavigate = async () => {
+  const subscription = await estateCollectionApi.getUserSubscription(
+    localStorage.getItem('basicToken')!!
+  );
+  const payAmount = subscription?.data?.subscription?.main?.payAmount ?? 0;
+  const subscriptionId = subscription?.data?.subscription?.main?.id;
+
+  if (subscriptionId) {
+    localStorage.setItem('subscriptionId', subscriptionId);
+  }
+  if (payAmount > 0) {
+    return '/listing';
+  }
+  return '/tariffs';
+};
+
 export const Authorization: FC = () => {
   const navigate = useNavigate();
   const [session, setSession] = useState<string | undefined | null>(
@@ -15,23 +31,14 @@ export const Authorization: FC = () => {
 
   useEffect(() => {
     if (session && session.length > 2) {
-      getNavigate().then((r) => navigate(r));
+      getNavigate()
+        .then((r) => navigate(r))
+        .catch((e) => {
+          console.log(e);
+          navigate('/listing');
+        });
     }
   }, [session]);
-
-  const getNavigate = async () => {
-    const subscription = await estateCollectionApi.getUserSubscription(session!!);
-    const payAmount = subscription?.data?.subscription?.main?.payAmount ?? 0;
-    const subscriptionId = subscription?.data?.subscription?.main?.id;
-
-    if (subscriptionId) {
-      localStorage.setItem('subscriptionId', subscriptionId);
-    }
-    if (payAmount > 0) {
-      return '/listing';
-    }
-    return '/tariffs';
-  };
 
   return (
     <>

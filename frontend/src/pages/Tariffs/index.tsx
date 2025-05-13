@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FC, FormEventHandler, useEffect, useState } from 'react';
+import React, { ChangeEvent, FC, useEffect, useState } from 'react';
 import styles from './Tariffs.module.scss';
 import { estateCollectionApi, TariffRs } from '@/widgets/EstateCollection/api/estateCollectionApi';
 import { Spacer } from '@/widgets/Spacer/Spacer';
@@ -29,8 +29,15 @@ export const Tariffs: FC = () => {
 
   useEffect(() => {
     const tariffId = searchParams.get('tariffId');
+    const extraTariffId = searchParams.get('extraTariffId');
 
     if (tariffId) {
+      if (extraTariffId) {
+        estateCollectionApi
+          .saveUserSubscription(extraTariffId)
+          .then(() => {})
+          .catch((e) => console.log(e));
+      }
       estateCollectionApi
         .saveUserSubscription(tariffId)
         .then(() => {
@@ -199,6 +206,7 @@ const Tariff: FC<{
         price={price * 100}
         bottom={10}
         id={id}
+        extraId={extraId}
       />
     </div>
   );
@@ -207,7 +215,8 @@ const Tariff: FC<{
 const CheckoutForm: FC<{
   id: string;
   price: number;
-}> = ({ price, id }) => {
+  extraId?: string;
+}> = ({ price, id, extraId }) => {
   const stripe = useStripe();
   const elements = useElements();
 
@@ -237,7 +246,9 @@ const CheckoutForm: FC<{
       elements,
       clientSecret: res.data.clientSecret,
       confirmParams: {
-        return_url: `https://insightestate.pro/tariffs?tariffId=${id}`,
+        return_url: extraId
+          ? `https://insightestate.pro/tariffs?tariffId=${id}&extraTariffId=${extraId}`
+          : `https://insightestate.pro/tariffs?tariffId=${id}`,
       },
     });
 
@@ -269,9 +280,9 @@ export const PayModal: FC<
   TModalProps & {
     bottom: number;
     id: string;
-    price: number;
+    extraId?: string;
   }
-> = ({ onClose, open, anchor, onOpen, bottom, price, id }) => {
+> = ({ onClose, open, anchor, onOpen, bottom, price, id, extraId }) => {
   return (
     <>
       <StyledSwipeableDrawer
@@ -298,7 +309,7 @@ export const PayModal: FC<
                 },
               }}
             >
-              <CheckoutForm id={id} price={price} />
+              <CheckoutForm id={id} price={price} extraId={extraId} />
             </Elements>
           </StyledWrapperProgress>
         </StyledUpperWrapperProgress>

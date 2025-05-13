@@ -6,6 +6,7 @@ import { Link, useNavigate } from 'react-router';
 import { localField } from '@/i18n/localField';
 import { detailApi } from '@/widgets/Detail/api/detailApi';
 import { isAxiosError } from 'axios';
+import { getNavigate } from '@/pages/Authorization';
 
 export const Login: FC = () => {
   const navigate = useNavigate();
@@ -31,7 +32,12 @@ export const Login: FC = () => {
         const rs = await detailApi.login(username, password);
 
         if (rs) {
-          navigate('/listing');
+          getNavigate()
+            .then((r) => navigate(r))
+            .catch((e) => {
+              console.log(e);
+              navigate('/listing');
+            });
           setPassword('');
         }
       } catch (e) {

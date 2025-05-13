@@ -5,6 +5,7 @@ import { Button, Input, Text } from '@/shared/ui';
 import { Link, useNavigate } from 'react-router';
 import { localField } from '@/i18n/localField';
 import { detailApi } from '@/widgets/Detail/api/detailApi';
+import { getNavigate } from '@/pages/Authorization';
 
 export const Register: FC = () => {
   const navigate = useNavigate();
@@ -73,7 +74,14 @@ export const Register: FC = () => {
       profileImage
     );
 
-    if (rs) navigate('/listing');
+    if (rs) {
+      getNavigate()
+        .then((r) => navigate(r))
+        .catch((e) => {
+          console.log(e);
+          navigate('/listing');
+        });
+    }
     setLoading(false);
   };
 
