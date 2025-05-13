@@ -7,6 +7,7 @@ import { Button } from '@/shared/ui';
 import { useNavigate } from 'react-router';
 import { localField } from '@/i18n/localField';
 import { detailApi } from '@/widgets/Detail/api/detailApi';
+import {getNavigate} from "@/pages/Authorization";
 
 export const Login: FC = () => {
   const navigate = useNavigate();
@@ -28,7 +29,12 @@ export const Login: FC = () => {
     setLoading(true);
     const rs = await detailApi.login(username, password);
 
-    if (rs) navigate('/listing');
+    if (rs) {
+      getNavigate().then((r) => navigate(r)).catch((e) => {
+        console.log(e)
+        navigate('/listing')
+      });
+    }
     setPassword('');
     setLoading(false);
   };
