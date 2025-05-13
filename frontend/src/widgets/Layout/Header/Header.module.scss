@@ -110,6 +110,7 @@ $headerHeight: 60px;
   background-color: var(--light);
   transition: top 0.25s ease-out;
   z-index: 20;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 
   @media (min-width: $media-md) {
     display: none;

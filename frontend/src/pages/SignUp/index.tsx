@@ -1,56 +1,99 @@
-import React, { ChangeEvent, FC, useState } from 'react';
-import styles from '@/pages/SignUp/SignUp.module.scss';
+import React, { ChangeEvent, FC, FormEventHandler, useState } from 'react';
+import styles from './SignUp.module.scss';
 import { LogoIcon } from '@/shared/assets/icons';
-import { Spacer } from '@/widgets/Spacer/Spacer';
-import { BaseField } from '@/widgets/BaseField/BaseField';
-import { Button } from '@/shared/ui';
-import { useNavigate } from 'react-router';
+import { Button, Input, Text } from '@/shared/ui';
+import { Link, useNavigate } from 'react-router';
 import { localField } from '@/i18n/localField';
 import { detailApi } from '@/widgets/Detail/api/detailApi';
+import { isAxiosError } from 'axios';
 
+// Регистрация
 export const SignUp: FC = () => {
   const navigate = useNavigate();
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
   const onChangeUsername = (e: ChangeEvent<HTMLInputElement>) => {
-    const username = e.target.value;
-
-    setUsername(username);
+    setEmail(e.target.value.trim());
+    setError('');
   };
 
-  const handleLogin = async () => {
-    setLoading(true);
-    const rs = await detailApi.signUp(username);
+  const handleLogin: FormEventHandler<HTMLButtonElement | HTMLFormElement> = async (e) => {
+    e.preventDefault();
+    if (email) {
+      setLoading(true);
+      try {
+        const rs = await detailApi.signUp(email);
 
-    if (rs) navigate('/sign-up-end');
-    setLoading(false);
+        if (rs) navigate('/sign-up-end');
+      } catch (e) {
+        if (isAxiosError(e)) {
+          const {
+            status: { description },
+          } = e.response?.data as { status: { code: string; description: string } };
+
+          setError(description);
+        }
+      } finally {
+        setLoading(false);
+      }
+    }
   };
 
   return (
-    <>
-      <div className={`${styles.card} ${styles.cardContainer}`}>
-        <div className={styles.profileImgCard}>
-          <LogoIcon />
-        </div>
-        <Spacer height={8} width={100} />
-        <BaseField onChange={onChangeUsername} value={username} name="username" label="Email" />
-        <Spacer height={20} width={100} />
-        <Button onClick={handleLogin} wide size={'l'} loading={loading}>
-          {localField('receive_code')}
-        </Button>
-        <Spacer height={20} width={100} />
-        <div className={styles.centerRegistration}>
-          <a href={'/login'} className="button">
-            {localField('log_in')}
-          </a>
-        </div>
+    <div className={styles.wrapper}>
+      <div className={styles.logo}>
+        <LogoIcon />
       </div>
-      <FooterInfo />
-    </>
-  );
-};
+      <Text variant="heading2" align="center" className={styles.header}>
+        Регистрация
+      </Text>
+      <Text variant="body1" as="p" align="center" className={styles.description}>
+        Cоздавайте уникальные подборки для ваших клиентов с использованием нашей уникальной системы
+        оценки объектов
+      </Text>
+      <form className={styles.form} onSubmit={handleLogin}>
+        <Input
+          onChange={onChangeUsername}
+          value={email}
+          name="username"
+          placeholder="Ваша электронная почта"
+          error={error}
+        />
 
-export const FooterInfo = () => {
-  return <div className={styles.politics}>{localField('footer_info_text')}</div>;
+        <Button
+          onSubmit={handleLogin}
+          wide
+          size="l"
+          loading={loading}
+          type="submit"
+          disabled={!email}
+        >
+          <Text variant="heading4" align="center" as="span">
+            {localField('receive_code')}
+          </Text>
+        </Button>
+      </form>
+
+      <Text variant="body2" as="p" className={styles.description} align="center">
+        Нажимая на кнопку «Получить код» вы соглашаетесь с{' '}
+        <a
+          href="https://www.insightestate.com/privacy"
+          target="_blank"
+          className="button"
+          rel="noreferrer"
+        >
+          {localField('politics_2')}
+        </a>
+      </Text>
+      <Text variant="caption2" as="p" className={styles.description} align="center">
+        {localField('footer_info_text')}
+      </Text>
+
+      <Text variant="body1" as="p" className={styles.signUp} align="center">
+        Уже есть аккаунт? <Link to="/login">{localField('log_in')}</Link>
+      </Text>
+    </div>
+  );
 };

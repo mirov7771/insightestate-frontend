@@ -47,6 +47,7 @@ export type CreateCollectionRs = {
 };
 
 export type AgentInfo = {
+  id: string;
   fio?: string;
   location?: string;
   login?: string;
@@ -54,7 +55,6 @@ export type AgentInfo = {
   profileImage?: string;
   tgName?: string;
   whatsUp?: string;
-  id: string;
 };
 
 export type HelpWithClientRq = {
@@ -67,41 +67,41 @@ export type HelpWithClientRq = {
 };
 
 export type TariffRs = {
-  main: Tariff[],
-  extra: Tariff[]
-}
+  extra: Tariff[];
+  main: Tariff[];
+};
 
 export type Tariff = {
-  id: string,
-  title: string,
-  description: string[],
-  price: number
-}
+  description: string[];
+  id: string;
+  price: number;
+  title: string;
+};
 
 export type UserSubscription = {
-  subscription?: Subscription,
-  tariffs?: TariffRs
-}
+  subscription?: Subscription;
+  tariffs?: TariffRs;
+};
 
 export type Subscription = {
-  main?: SubscriptionInfo,
-  extra?: SubscriptionInfo,
-}
+  extra?: SubscriptionInfo;
+  main?: SubscriptionInfo;
+};
 
 export type SubscriptionInfo = {
-  id?: string,
-  payDate?: string,
-  payAmount?: number
-}
+  id?: string;
+  payAmount?: number;
+  payDate?: string;
+};
 
 export type StripeRq = {
-  amount: number,
-  currency: string
-}
+  amount: number;
+  currency: string;
+};
 
 export type StripeRs = {
-  clientSecret: string
-}
+  clientSecret: string;
+};
 
 export const estateCollectionApi = {
   getEstateCollection: async (
@@ -228,8 +228,9 @@ export const estateCollectionApi = {
           Authorization: `Basic ${token.replace('Basic ', '')}`,
         },
       });
-      localStorage.setItem('userId', userInfo.data.id)
-      return await api.get<UserSubscription>(`/v1/subscription?userId=${userInfo.data.id}`)
+
+      localStorage.setItem('userId', userInfo.data.id);
+      return await api.get<UserSubscription>(`/v1/subscription?userId=${userInfo.data.id}`);
     } catch (error) {
       throw error;
     }
@@ -238,8 +239,8 @@ export const estateCollectionApi = {
     try {
       return await api.post<void>('/v1/subscription', {
         userId: localStorage.getItem('userId'),
-        tariffId: tariffId
-      })
+        tariffId: tariffId,
+      });
     } catch (error) {
       throw error;
     }
@@ -250,9 +251,9 @@ export const estateCollectionApi = {
         amount: price,
         currency: 'usd',
         userId: localStorage.getItem('userId'),
-      })
+      });
     } catch (error) {
       throw error;
     }
-  }
+  },
 };

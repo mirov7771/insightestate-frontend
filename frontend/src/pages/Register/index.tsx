@@ -1,13 +1,11 @@
-import React, { ChangeEvent, FC, useEffect, useState } from 'react';
+import React, { ChangeEvent, FC, FormEventHandler, useEffect, useState } from 'react';
 import styles from '@/pages/Register/Register.module.scss';
 import { LogoIcon } from '@/shared/assets/icons';
-import { Spacer } from '@/widgets/Spacer/Spacer';
-import { BaseField } from '@/widgets/BaseField/BaseField';
-import { Button } from '@/shared/ui';
-import { useNavigate } from 'react-router';
+import { Button, Input, Text } from '@/shared/ui';
+import { Link, useNavigate } from 'react-router';
 import { localField } from '@/i18n/localField';
 import { detailApi } from '@/widgets/Detail/api/detailApi';
-import {getNavigate} from "@/pages/Authorization";
+import { getNavigate } from '@/pages/Authorization';
 
 export const Register: FC = () => {
   const navigate = useNavigate();
@@ -29,9 +27,7 @@ export const Register: FC = () => {
   };
 
   const onChangeEmail = (e: ChangeEvent<HTMLInputElement>) => {
-    const email = e.target.value;
-
-    setEmail(email);
+    setEmail(e.target.value.trim());
   };
 
   const onChangeLocation = (e: ChangeEvent<HTMLInputElement>) => {
@@ -64,7 +60,8 @@ export const Register: FC = () => {
     setTgName(tgName);
   };
 
-  const handleLogin = async () => {
+  const handleLogin: FormEventHandler<HTMLButtonElement | HTMLFormElement> = async (e) => {
+    e.preventDefault();
     setLoading(true);
     const rs = await detailApi.register(
       username,
@@ -78,10 +75,12 @@ export const Register: FC = () => {
     );
 
     if (rs) {
-      getNavigate().then((r) => navigate(r)).catch((e) => {
-        console.log(e)
-        navigate('/listing')
-      });
+      getNavigate()
+        .then((r) => navigate(r))
+        .catch((e) => {
+          console.log(e);
+          navigate('/listing');
+        });
     }
     setLoading(false);
   };
@@ -100,85 +99,103 @@ export const Register: FC = () => {
 
   return (
     <>
-      <div className={`${styles.card} ${styles.cardContainer}`}>
-        <div className={styles.profileImgCard}>
+      <div className={styles.wrapper}>
+        <div className={styles.logo}>
           <LogoIcon />
         </div>
-        <Spacer height={8} width={100} />
-        <BaseField
-          onChange={onChangeUsername}
-          value={username}
-          name="username"
-          label={localField('surname_name')}
-        />
-        <Spacer height={8} width={100} />
-        <BaseField name="email" value={email} onChange={onChangeEmail} label="Email" />
-        <Spacer height={8} width={100} />
-        <BaseField
-          name="phone"
-          value={phone}
-          onChange={onChangePhone}
-          label={localField('phone_number')}
-        />
-        <Spacer height={8} width={100} />
-        <BaseField
-          name="location"
-          value={location}
-          onChange={onChangeLocation}
-          label={localField('location')}
-        />
-        <Spacer height={8} width={100} />
-        <BaseField
-          name="whatsUp"
-          value={whatsUp}
-          onChange={onChangeWhatsUp}
-          label={localField('wa')}
-        />
-        <Spacer height={8} width={100} />
-        <BaseField
-          name="tgName"
-          value={tgName}
-          onChange={onChangeTgName}
-          label={localField('tg')}
-        />
-        <Spacer height={8} width={100} />
-        <Button onClick={() => document.getElementById('profileImage')!!.click()} size="s" wide>
-          {localField('photo')}
-        </Button>
-        <input
-          id="profileImage"
-          style={{
-            display: 'none',
-          }}
-          accept="image/*"
-          type="file"
-          name="profileImage"
-          onChange={onChangeProfileImage}
-        />
-        {profileImage ? (
-          <img src={profileImage} alt="profileImage" className={styles.profileIcon} />
-        ) : (
-          <></>
-        )}
-        <Spacer height={8} width={100} />
-        <BaseField
-          type="password"
-          name="password"
-          value={password}
-          onChange={onChangePassword}
-          label={localField('password')}
-        />
+        <Text variant="heading2" align="center" className={styles.header}>
+          Приветствуем вас
+        </Text>
+        <Text variant="body1" as="p" align="center" className={styles.description}>
+          Пожалуйста, заполните ваши данные. Ваши ФИО и номер телефона будут видны клиентам в оффере
+        </Text>
+        <form className={styles.form} onSubmit={handleLogin}>
+          <Input
+            onChange={onChangeUsername}
+            value={username}
+            name="username"
+            placeholder={localField('surname_name')}
+          />
+          <Input name="email" value={email} onChange={onChangeEmail} placeholder="Email" />
+          <Input
+            name="phone"
+            value={phone}
+            onChange={onChangePhone}
+            placeholder={localField('phone_number')}
+          />
+          <Input
+            name="location"
+            value={location}
+            onChange={onChangeLocation}
+            placeholder={localField('location')}
+          />
+          <Input
+            name="whatsUp"
+            value={whatsUp}
+            onChange={onChangeWhatsUp}
+            placeholder={localField('wa')}
+          />
+          <Input
+            name="tgName"
+            value={tgName}
+            onChange={onChangeTgName}
+            placeholder={localField('tg')}
+          />
+          <Button
+            onClick={() => document.getElementById('profileImage')!!.click()}
+            size="s"
+            wide
+            type="button"
+          >
+            <Text variant="heading5" align="center" as="span">
+              {localField('photo')}
+            </Text>
+          </Button>
+          <input
+            id="profileImage"
+            style={{
+              display: 'none',
+            }}
+            accept="image/*"
+            type="file"
+            name="profileImage"
+            onChange={onChangeProfileImage}
+          />
+          {profileImage ? (
+            <img src={profileImage} alt="profileImage" className={styles.profileIcon} />
+          ) : (
+            <></>
+          )}
+          <Input
+            type="password"
+            name="password"
+            value={password}
+            onChange={onChangePassword}
+            placeholder={localField('password')}
+          />
 
-        <Spacer height={20} width={100} />
-        <Button onClick={handleLogin} wide size={'l'} loading={loading}>
-          {localField('registration')}
-        </Button>
-        <Spacer height={20} width={100} />
-        <div className={styles.centerRegistration}>
-          <a href={'/login'} className="button">
-            {localField('log_in')}
+          <Button onClick={handleLogin} wide size={'l'} loading={loading} type="submit">
+            <Text variant="heading4" align="center" as="span">
+              {localField('registration')}
+            </Text>
+          </Button>
+        </form>
+
+        <Text variant="body2" as="p" className={styles.signUp} align="center">
+          {localField('politics_1')}{' '}
+          <a
+            href="https://www.insightestate.com/privacy"
+            target="_blank"
+            className="button"
+            rel="noreferrer"
+          >
+            {localField('politics_2')}
           </a>
-        </div>
+        </Text>
+
+        <Text variant="body1" as="p" className={styles.signUp} align="center">
+          Уже есть аккаунт? <Link to="/login">{localField('log_in')}</Link>
+        </Text>
       </div>
     </>
   );

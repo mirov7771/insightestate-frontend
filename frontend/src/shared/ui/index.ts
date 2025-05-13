@@ -7,3 +7,4 @@ export { RadioButton } from './RadioButton';
 export { Button } from './Button';
 export { Text } from './Text';
 export { GMap } from './GMap';
+export { Input } from './Input';
