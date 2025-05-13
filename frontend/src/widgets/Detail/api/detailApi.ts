@@ -201,7 +201,7 @@ export const detailApi = {
       }
       return rs.data.accessToken;
     } catch (error) {
-      return null;
+      throw error;
     }
   },
   signUp: async (email: string): Promise<string | null | undefined> => {
@@ -215,7 +215,7 @@ export const detailApi = {
       }
       return email;
     } catch (error) {
-      return null;
+      throw error;
     }
   },
   signUpCheck: async (email: string, code: string): Promise<string | null | undefined> => {

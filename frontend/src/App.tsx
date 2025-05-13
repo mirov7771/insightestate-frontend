@@ -18,6 +18,7 @@ import { useEffect } from 'react';
 import OfferCollectionV2 from '@/pages/OfferCollectionV2';
 import { StyledEngineProvider } from '@mui/material';
 import { Tariffs } from '@/pages/Tariffs';
+import { RegistrationLayout } from '@/widgets/RegistrationLayout/RegistrationLayout';
 
 const App = () => {
   const userLocale = getUserLocale();
@@ -34,10 +35,12 @@ const App = () => {
     <StyledEngineProvider injectFirst>
       <BrowserRouter>
         <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/sign-up" element={<SignUp />} />
-          <Route path="/sign-up-end" element={<SignUpEnd />} />
-          <Route path="/register" element={<Register />} />
+          <Route element={<RegistrationLayout />}>
+            <Route path="/login" element={<Login />} />
+            <Route path="/sign-up" element={<SignUp />} />
+            <Route path="/sign-up-end" element={<SignUpEnd />} />
+            <Route path="/register" element={<Register />} />
+          </Route>
           <Route path="/profile" element={<Profile />} />
           <Route path="/" element={<Layout />}>
             <Route index element={<Authorization />} />

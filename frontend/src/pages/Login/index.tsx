@@ -1,82 +1,113 @@
-import React, { ChangeEvent, FC, useState } from 'react';
+import React, { ChangeEvent, FC, FormEventHandler, useState } from 'react';
 import styles from '@/pages/Login/Login.module.scss';
 import { LogoIcon } from '@/shared/assets/icons';
-import { Spacer } from '@/widgets/Spacer/Spacer';
-import { BaseField } from '@/widgets/BaseField/BaseField';
-import { Button } from '@/shared/ui';
-import { useNavigate } from 'react-router';
+import { Button, Input, Text } from '@/shared/ui';
+import { Link, useNavigate } from 'react-router';
 import { localField } from '@/i18n/localField';
 import { detailApi } from '@/widgets/Detail/api/detailApi';
+import { isAxiosError } from 'axios';
 
 export const Login: FC = () => {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
   const onChangeUsername = (e: ChangeEvent<HTMLInputElement>) => {
-    const username = e.target.value;
-
-    setUsername(username);
+    setUsername(e.target.value.trim());
+    setError('');
   };
   const onChangePassword = (e: ChangeEvent<HTMLInputElement>) => {
-    const password = e.target.value;
-
-    setPassword(password);
+    setPassword(e.target.value.trim());
+    setError('');
   };
 
-  const handleLogin = async () => {
-    setLoading(true);
-    const rs = await detailApi.login(username, password);
+  const handleLogin: FormEventHandler<HTMLButtonElement | HTMLFormElement> = async (e) => {
+    e.preventDefault();
 
-    if (rs) navigate('/listing');
-    setPassword('');
+    if (username && password) {
+      setLoading(true);
+      try {
+        const rs = await detailApi.login(username, password);
+
+        if (rs) {
+          navigate('/listing');
+          setPassword('');
+        }
+      } catch (e) {
+        if (isAxiosError(e)) {
+          const {
+            status: { description },
+          } = e.response?.data as { status: { code: string; description: string } };
+
+          setError(description);
+        }
+      } finally {
+        setLoading(false);
+      }
+    }
+
     setLoading(false);
   };
 
   return (
-    <>
-      <div className={`${styles.card} ${styles.cardContainer}`}>
-        <div className={styles.profileImgCard}>
-          <LogoIcon />
-        </div>
-        <Spacer height={8} width={100} />
-        <BaseField onChange={onChangeUsername} value={username} name="username" label="Email" />
-        <Spacer height={8} width={100} />
-        <BaseField
+    <div className={styles.wrapper}>
+      <div className={styles.logo}>
+        <LogoIcon />
+      </div>
+      <Text variant="heading2" align="center" className={styles.header}>
+        С возвращением
+      </Text>
+      <form className={styles.form} onSubmit={handleLogin}>
+        <Input
+          placeholder="Ваша электронная почта"
+          onChange={onChangeUsername}
+          value={username}
+          name="username"
+        />
+        <Input
+          placeholder={localField('password')}
           onChange={onChangePassword}
           value={password}
           type="password"
           name="password"
-          label={localField('password')}
         />
-        <Spacer height={20} width={100} />
-        <Button onClick={handleLogin} wide size={'l'} loading={loading}>
-          {localField('log_in')}
+        <Button
+          onClick={handleLogin}
+          wide
+          size={'l'}
+          loading={loading}
+          disabled={!username || !password}
+        >
+          <Text variant="heading4" align="center" as="span">
+            {localField('log_in')}
+          </Text>
         </Button>
-        <Spacer height={20} width={100} />
-        <div className={styles.centerRegistration}>
-          <a href={'/sign-up'} className="button">
-            {localField('sign_up')}
-          </a>
-        </div>
-      </div>
-      <Politics />
-    </>
-  );
-};
+        {error && (
+          <Text variant="caption1" className={styles.error}>
+            {error}
+          </Text>
+        )}
+      </form>
 
-export const Politics = () => {
-  return (
-    <div className={styles.politics}>
-      {localField('politics_1')}{' '}
-      <a
-        href="https://www.insightestate.com/privacy"
-        target="_blank"
-        className="button"
-        rel="noreferrer"
-      >
-        {localField('politics_2')}
-      </a>
+      <Text variant="body2" as="p" className={styles.signUp} align="center">
+        {localField('politics_1')}{' '}
+        <a
+          href="https://www.insightestate.com/privacy"
+          target="_blank"
+          className="button"
+          rel="noreferrer"
+        >
+          {localField('politics_2')}
+        </a>
+      </Text>
+
+      <Text variant="body1" as="p" className={styles.signUp} align="center">
+        Нет аккаунта?{' '}
+        <Link to="/sign-up" className="button">
+          {localField('sign_up')}
+        </Link>
+      </Text>
     </div>
   );
 };
