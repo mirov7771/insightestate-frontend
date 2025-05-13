@@ -280,6 +280,7 @@ export const PayModal: FC<
   TModalProps & {
     bottom: number;
     id: string;
+    price: number;
     extraId?: string;
   }
 > = ({ onClose, open, anchor, onOpen, bottom, price, id, extraId }) => {
