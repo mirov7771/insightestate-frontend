@@ -5,7 +5,7 @@ import { StyledButton } from '@/widgets/Modal/styled';
 import { useNavigate } from 'react-router';
 import { localField } from '@/i18n/localField';
 import { isMobile } from 'react-device-detect';
-import {estateCollectionApi} from "@/widgets/EstateCollection/api/estateCollectionApi";
+import { estateCollectionApi } from '@/widgets/EstateCollection/api/estateCollectionApi';
 
 export const Authorization: FC = () => {
   const navigate = useNavigate();
@@ -15,22 +15,23 @@ export const Authorization: FC = () => {
 
   useEffect(() => {
     if (session && session.length > 2) {
-      getNavigate().then((r) => navigate(r))
+      getNavigate().then((r) => navigate(r));
     }
   }, [session]);
 
   const getNavigate = async () => {
-    const subscription = await estateCollectionApi.getUserSubscription(session!!)
-    const payAmount = subscription?.data?.subscription?.main?.payAmount ?? 0
-    const subscriptionId = subscription?.data?.subscription?.main?.id
+    const subscription = await estateCollectionApi.getUserSubscription(session!!);
+    const payAmount = subscription?.data?.subscription?.main?.payAmount ?? 0;
+    const subscriptionId = subscription?.data?.subscription?.main?.id;
+
     if (subscriptionId) {
-      localStorage.setItem('subscriptionId', subscriptionId)
+      localStorage.setItem('subscriptionId', subscriptionId);
     }
     if (payAmount > 0) {
-      return '/listing'
+      return '/listing';
     }
-    return '/tariffs'
-  }
+    return '/tariffs';
+  };
 
   return (
     <>

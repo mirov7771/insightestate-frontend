@@ -17,7 +17,7 @@ import getUserLocale from 'get-user-locale';
 import { useEffect } from 'react';
 import OfferCollectionV2 from '@/pages/OfferCollectionV2';
 import { StyledEngineProvider } from '@mui/material';
-import {Tariffs} from "@/pages/Tariffs";
+import { Tariffs } from '@/pages/Tariffs';
 
 const App = () => {
   const userLocale = getUserLocale();

@@ -30,11 +30,11 @@ export const City: FC = () => {
           label="Bangkok"
         />
         <RadioButton
-            name="city"
-            value="Pattaya"
-            onChange={handleClick}
-            checked={city === 'Pattaya'}
-            label="Pattaya"
+          name="city"
+          value="Pattaya"
+          onChange={handleClick}
+          checked={city === 'Pattaya'}
+          label="Pattaya"
         />
       </div>
     </Accordion>
