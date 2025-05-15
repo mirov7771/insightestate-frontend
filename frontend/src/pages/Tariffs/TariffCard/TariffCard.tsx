@@ -105,7 +105,7 @@ export const TariffCard: FC<TariffCardProps> = ({
         price={price * 100}
         bottom={10}
         id={id}
-        extraId={extraId}
+        extraId={title === 'Pro' ? undefined : extraId}
       />
     </>
   );
