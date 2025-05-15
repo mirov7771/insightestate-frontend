@@ -185,7 +185,15 @@ type fields =
   | 'link_copied'
   | 'link_copied_text'
   | 'close'
-  | 'proceed';
+  | 'proceed'
+  | 'tariff_title'
+  | 'tariff_description'
+    | 'tariff_ai'
+    | 'tariff_popular'
+    | 'tariff_my'
+    | 'tariff_free_continue'
+    | 'tariff_free'
+    | 'tariff_month';
 
 export const localField = (field: fields) => {
   const locale = localStorage.getItem('language');

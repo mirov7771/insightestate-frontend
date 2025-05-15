@@ -5,7 +5,7 @@ import {
 } from '@/shared/assets/icons';
 import { Text } from '@/shared/ui';
 
-export const DESCRIPTIONS = {
+export const DESCRIPTIONS_RU = {
   Pro: [
     {
       icon: <OfferCollectionHomeStar />,
@@ -48,6 +48,53 @@ export const DESCRIPTIONS = {
     {
       icon: <OfferCollectionSpark />,
       text: <Text variant="body1">3 запроса в AI-подборщике</Text>,
+    },
+  ],
+};
+
+export const DESCRIPTIONS_ENG = {
+  Pro: [
+    {
+      icon: <OfferCollectionHomeStar />,
+      text: (
+          <Text variant="body1">
+            <b>Unlimited selections</b>
+          </Text>
+      ),
+    },
+    {
+      icon: <OfferCollectionGraphMonitor />,
+      text: <Text variant="body1">All analytics on the object: estimates, calculation of the economy</Text>,
+    },
+    {
+      icon: <OfferCollectionSpark />,
+      text: (
+          <Text variant="body1">
+            <b>Unlimited requests</b> in the AI picker
+          </Text>
+      ),
+    },
+  ],
+  Standart: [
+    { icon: <OfferCollectionHomeStar />, text: <Text variant="body1">7 collections</Text> },
+    {
+      icon: <OfferCollectionGraphMonitor />,
+      text: <Text variant="body1">All analytics on the object: estimates, calculation of the economy</Text>,
+    },
+    {
+      icon: <OfferCollectionSpark />,
+      text: <Text variant="body1">7 queries in the AI picker</Text>,
+    },
+  ],
+  Starter: [
+    { icon: <OfferCollectionHomeStar />, text: <Text variant="body1">3 selections</Text> },
+    {
+      icon: <OfferCollectionGraphMonitor />,
+      text: <Text variant="body1">Limited analytics on the object: estimates only</Text>,
+    },
+    {
+      icon: <OfferCollectionSpark />,
+      text: <Text variant="body1">3 requests in the AI picker</Text>,
     },
   ],
 };

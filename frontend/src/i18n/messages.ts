@@ -197,6 +197,14 @@ export const messages = {
     link_copied_text: 'You can share this link with clients',
     close: 'Close',
     proceed: 'Proceed',
+    tariff_title: 'Select a tariff',
+    tariff_description: 'Paid tariffs can be cancelled at any time',
+    tariff_ai: 'Unlimited requests in the AI picker for $29',
+    tariff_popular: 'Popular choice',
+    tariff_my: 'My tariff',
+    tariff_free_continue: 'Continue for free',
+    tariff_free: 'Free',
+    tariff_month: 'per month'
   },
   [LOCALES.RUSSIAN]: {
     language: 'Язык',
@@ -394,5 +402,13 @@ export const messages = {
     link_copied_text: 'Вы можете делится данной ссылкой с клиентами',
     close: 'Закрыть',
     proceed: 'Продолжить',
+    tariff_title: 'Выберите тариф',
+    tariff_description: 'Платные тарифы можно отменить в любое время',
+    tariff_ai: 'Неограниченные запросы в AI‑подборщике за $29',
+    tariff_popular: 'Популярный выбор',
+    tariff_my: 'Мой тариф',
+    tariff_free_continue: 'Продолжить бесплатно',
+    tariff_free: 'Бесплатно',
+    tariff_month: 'в месяц'
   },
 };
