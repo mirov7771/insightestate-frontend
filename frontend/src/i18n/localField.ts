@@ -125,6 +125,7 @@ type fields =
   | 'object_count'
   | 'log_in'
   | 'sign_up'
+  | 'sign_up_2'
   | 'password'
   | 'politics_1'
   | 'politics_2'
@@ -183,7 +184,8 @@ type fields =
   | 'offer_info_text_3'
   | 'link_copied'
   | 'link_copied_text'
-  | 'close';
+  | 'close'
+  | 'proceed';
 
 export const localField = (field: fields) => {
   const locale = localStorage.getItem('language');

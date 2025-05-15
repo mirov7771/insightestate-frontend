@@ -78,13 +78,7 @@ export const Login: FC = () => {
           type="password"
           name="password"
         />
-        <Button
-          onClick={handleLogin}
-          wide
-          size={'l'}
-          loading={loading}
-          disabled={!username || !password}
-        >
+        <Button onClick={handleLogin} wide size="l" loading={loading}>
           <Text variant="heading4" align="center" as="span">
             {localField('log_in')}
           </Text>
@@ -96,22 +90,10 @@ export const Login: FC = () => {
         )}
       </form>
 
-      <Text variant="body2" as="p" className={styles.signUp} align="center">
-        {localField('politics_1')}{' '}
-        <a
-          href="https://www.insightestate.com/privacy"
-          target="_blank"
-          className="button"
-          rel="noreferrer"
-        >
-          {localField('politics_2')}
-        </a>
-      </Text>
-
       <Text variant="body1" as="p" className={styles.signUp} align="center">
         Нет аккаунта?{' '}
         <Link to="/sign-up" className="button">
-          {localField('sign_up')}
+          {localField('sign_up_2')}
         </Link>
       </Text>
     </div>
