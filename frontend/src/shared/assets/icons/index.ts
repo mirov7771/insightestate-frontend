@@ -53,6 +53,9 @@ import OfferCollectionMapPinFilled from './offer-collection/tabler-icon-map-pin-
 import OfferCollectionHeart from './offer-collection/tabler-icon-heart.svg?react';
 import OfferCollectionArrowRight from './offer-collection/tabler-icon-chevron-right.svg?react';
 import OfferCollectionArrowLeft from './offer-collection/tabler-icon-chevron-left.svg?react';
+import OfferCollectionGraphMonitor from './offer-collection/graph-monitor.svg?react';
+import OfferCollectionSpark from './offer-collection/spark.svg?react';
+import OfferCollectionHomeStar from './offer-collection/tabler-icon-home-star.svg?react';
 
 export {
   Bed,
@@ -111,4 +114,7 @@ export {
   OfferCollectionHeart,
   OfferCollectionArrowRight,
   OfferCollectionArrowLeft,
+  OfferCollectionGraphMonitor,
+  OfferCollectionSpark,
+  OfferCollectionHomeStar,
 };

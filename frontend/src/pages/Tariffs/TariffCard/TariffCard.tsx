@@ -1,0 +1,106 @@
+import React, { FC, ReactElement, useState } from 'react';
+import styles from './TariffCard.module.scss';
+import { useNavigate } from 'react-router';
+import { estateCollectionApi } from '@/widgets/EstateCollection/api/estateCollectionApi';
+import { PayModal } from '../PayModal/PayModal';
+import { Button, Text } from '@/shared/ui';
+import { DESCRIPTIONS } from './constants';
+
+type TariffCardProps = {
+  description: string[];
+  id: string;
+  price: number;
+  title: string; // Pro | Standart | Starter
+  extraId?: string;
+  switcher?: ReactElement;
+  userSubscriptionId?: string | null | undefined;
+};
+
+export const TariffCard: FC<TariffCardProps> = ({
+  id,
+  title,
+  description,
+  price,
+  extraId,
+  userSubscriptionId,
+  switcher,
+}) => {
+  const navigate = useNavigate();
+  const [infoModal, setInfoModal] = useState(false);
+  const handleOpenInfoModal = () => {
+    setInfoModal(true);
+  };
+  const handleCloseInfoModal = () => {
+    setInfoModal(false);
+  };
+
+  const handleTariff = () => {
+    if (price === 0) {
+      estateCollectionApi
+        .saveUserSubscription(id)
+        .then(async () => {
+          if (extraId) {
+            await estateCollectionApi.saveUserSubscription(extraId);
+          }
+          localStorage.setItem('subscriptionId', id);
+          navigate('/listing');
+        })
+        .catch((e) => console.log(e));
+    }
+    handleOpenInfoModal();
+  };
+
+  const getSubscription = (): string => {
+    if (userSubscriptionId) {
+      if (userSubscriptionId === id) {
+        return price > 0 ? `Мой тариф` : 'Продолжить бесплатно';
+      }
+    }
+    return price > 0 ? `${price}$ в месяц` : 'Бесплатно';
+  };
+
+  return (
+    <>
+      <div className={styles.card}>
+        <div className={styles.card__title}>
+          <Text variant="heading3" as="span">
+            {title}
+          </Text>
+          {title === 'Pro' && (
+            <Text variant="heading4" as="span" className={styles.card__badge}>
+              Популярный выбор
+            </Text>
+          )}
+        </div>
+        <ul className={styles.card__list}>
+          {DESCRIPTIONS[title as keyof typeof DESCRIPTIONS].map(({ icon, text }) => (
+            <li className={styles.item}>
+              <span className={styles.icon}>{icon}</span>
+              {text}
+            </li>
+          ))}
+        </ul>
+        {switcher}
+        <Button
+          className={styles.card__button}
+          onClick={handleTariff}
+          wide
+          variant={userSubscriptionId === id ? 'base' : 'primary'}
+          size="l"
+        >
+          <Text variant="heading4">{getSubscription()}</Text>
+        </Button>
+      </div>
+      <PayModal
+        open={infoModal}
+        onClose={handleCloseInfoModal}
+        onOpen={handleOpenInfoModal}
+        anchor="bottom"
+        price={price * 100}
+        bottom={10}
+        id={id}
+        extraId={extraId}
+      />
+    </>
+  );
+};

@@ -1,21 +1,30 @@
-.infoCard {
-  background-color: #fafbff;
-  border: .0625rem solid #17181c29;
-  border-radius: 1.25rem;
-  width: 25rem;
-  height: 25rem;
-  padding: 1.56rem 1rem 1.56rem 1.56rem;
-  margin-top: 30px;
-  position: relative;
+@use '~@/sass/index' as *;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 24px;
+  text-align: center;
+  padding: 0 16px;
+
+  @media (min-width: $media-lg) {
+    flex-direction: row;
+    gap: 16px;
+    justify-content: center;
+    max-width: 1328px;
+    margin: 32px auto 0;
+  }
+
 }
 
-.infoCard2 {
-  background-color: #fafbff;
-  border: .0625rem solid #17181c29;
-  border-radius: 1.25rem;
-  width: 90%;
-  height: 9rem;
-  padding: 2rem 2rem 2rem 2rem;
-  margin-top: 30px;
-  position: relative;
+.description {
+  margin-top: 8px;
+  color: var(--ui-color-black-64-opacity);
+}
+
+.switcher {
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }

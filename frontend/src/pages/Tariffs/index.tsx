@@ -2,22 +2,11 @@ import React, { ChangeEvent, FC, useEffect, useState } from 'react';
 import styles from './Tariffs.module.scss';
 import { estateCollectionApi, TariffRs } from '@/widgets/EstateCollection/api/estateCollectionApi';
 import { Spacer } from '@/widgets/Spacer/Spacer';
-import { Button } from '@/shared/ui';
-import { FormControlLabel, FormGroup, Switch } from '@mui/material';
+import { Button, Switcher, Text } from '@/shared/ui';
+import { FormControlLabel, FormGroup, Switch as SwitcherUI } from '@mui/material';
 import { useNavigate, useSearchParams } from 'react-router';
-import { Elements, PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js';
-import { loadStripe } from '@stripe/stripe-js';
-import { TModalProps } from '@/widgets/Modal/types';
-import {
-  StyledSwipeableDrawer,
-  StyledUpperWrapperProgress,
-  StyledWrapperProgress,
-} from '@/widgets/Modal/styled';
-import { isMobile } from 'react-device-detect';
-
-const stripePromise = loadStripe(
-  'pk_test_51RHea2C7cCHxCxhsM3f9CEMPPLSwH2R5QxhH5S8xOYqu21jSZ9wXTOu1H4QaHvgXpyJCBBwJJUp8W3M8LVuXVR8A00ezo4qaAi'
-);
+import { PayModal } from './PayModal/PayModal';
+import { TariffCard } from '@/pages/Tariffs/TariffCard/TariffCard';
 
 export const Tariffs: FC = () => {
   const [tariffs, setTariffs] = useState<TariffRs>();
@@ -53,8 +42,8 @@ export const Tariffs: FC = () => {
     }
   }, []);
 
-  const handleChangeChecked = (e: ChangeEvent<HTMLInputElement>, checked: boolean) => {
-    setExtra(checked);
+  const handleChangeChecked = (e: ChangeEvent<HTMLInputElement>) => {
+    setExtra(e.target.checked);
   };
 
   useEffect(() => {
@@ -72,53 +61,39 @@ export const Tariffs: FC = () => {
 
   return (
     <>
-      <div
-        style={{
-          width: '30%',
-          margin: 'auto',
-          alignItems: 'center',
-          justifyContent: 'center',
-          textAlign: 'center',
-        }}
-      >
-        <h2>Улучшите тариф</h2>
-        <Spacer height={25} width={100} />
-        {tariffs?.extra[0] ? (
-          <div
-            style={{
-              display: 'inline-flex',
-            }}
-          >
-            <FormGroup>
-              <FormControlLabel
-                control={<Switch checked={extra} onChange={handleChangeChecked} />}
-                label="Неограниченные запросы в AI-подборщик"
-              />
-            </FormGroup>
-          </div>
-        ) : (
-          <></>
-        )}
+      <div>
+        <Text variant="heading2" as="h2" align="center">
+          Выберите тариф
+        </Text>
+        <Text variant="body1" as="h2" align="center" className={styles.description}>
+          Платные тарифы можно отменить в любое время
+        </Text>
       </div>
-      <div
-        style={{
-          display: 'inline-flex',
-          gap: '50px',
-          alignItems: 'center',
-          justifyContent: 'center',
-          paddingLeft: '50px',
-        }}
-      >
-        {tariffs?.main.map((tariff) => (
-          <Tariff
-            title={tariff.title}
-            description={tariff.description}
-            price={extra && tariff.price > 0 ? tariff.price + extraPrice : tariff.price}
-            id={tariff.id}
-            extraId={extraId}
-            userSubscriptionId={localStorage.getItem('subscriptionId')}
-          />
-        ))}
+      <div className={styles.wrapper}>
+        {tariffs?.main
+          .sort((a, b) => b.price - a.price)
+          .map((tariff) => (
+            <TariffCard
+              title={tariff.title}
+              description={tariff.description}
+              price={extra && tariff.price > 0 ? tariff.price + extraPrice : tariff.price}
+              id={tariff.id}
+              extraId={extraId}
+              userSubscriptionId={localStorage.getItem('subscriptionId')}
+              switcher={
+                tariff.title === 'Standart' ? (
+                  <div className={styles.switcher}>
+                    <div>
+                      <Switcher checked={extra} onChange={handleChangeChecked} id="" value={''} />
+                    </div>
+                    <Text variant="heading4">Неограниченные запросы в AI‑подборщике за $29</Text>
+                  </div>
+                ) : (
+                  <></>
+                )
+              }
+            />
+          ))}
       </div>
     </>
   );
@@ -209,112 +184,5 @@ const Tariff: FC<{
         extraId={extraId}
       />
     </div>
-  );
-};
-
-const CheckoutForm: FC<{
-  id: string;
-  price: number;
-  extraId?: string;
-}> = ({ price, id, extraId }) => {
-  const stripe = useStripe();
-  const elements = useElements();
-
-  const [errorMessage, setErrorMessage] = useState<string>();
-
-  const handleSubmit = async (event: ChangeEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    if (elements == null) {
-      return;
-    }
-
-    // Trigger form validation and wallet collection
-    const { error: submitError } = await elements.submit();
-
-    if (submitError) {
-      // Show error to your customer
-      setErrorMessage(submitError.message);
-      return;
-    }
-
-    // Create the PaymentIntent and obtain clientSecret from your server endpoint
-    const res = await estateCollectionApi.stripeSession(price);
-
-    const { error } = await stripe!!.confirmPayment({
-      //`Elements` instance that was used to create the Payment Element
-      elements,
-      clientSecret: res.data.clientSecret,
-      confirmParams: {
-        return_url: extraId
-          ? `https://insightestate.pro/tariffs?tariffId=${id}&extraTariffId=${extraId}`
-          : `https://insightestate.pro/tariffs?tariffId=${id}`,
-      },
-    });
-
-    if (error) {
-      // This point will only be reached if there is an immediate error when
-      // confirming the payment. Show error to your customer (for example, payment
-      // details incomplete)
-      setErrorMessage(error.message);
-    } else {
-      // Your customer will be redirected to your `return_url`. For some payment
-      // methods like iDEAL, your customer will be redirected to an intermediate
-      // site first to authorize the payment, then redirected to the `return_url`.
-    }
-  };
-
-  return (
-    <form onSubmit={handleSubmit}>
-      <PaymentElement />
-      <Spacer height={20} width={100} />
-      <Button type="submit" size="l" wide disabled={!stripe || !elements}>
-        Оплатить
-      </Button>
-      {errorMessage && <div>{errorMessage}</div>}
-    </form>
-  );
-};
-
-export const PayModal: FC<
-  TModalProps & {
-    bottom: number;
-    id: string;
-    price: number;
-    extraId?: string;
-  }
-> = ({ onClose, open, anchor, onOpen, bottom, price, id, extraId }) => {
-  return (
-    <>
-      <StyledSwipeableDrawer
-        onOpen={onOpen}
-        open={open}
-        onClose={onClose}
-        anchor={anchor}
-        disableSwipeToOpen
-        bottom={bottom}
-        isMobile={isMobile}
-      >
-        <StyledUpperWrapperProgress>
-          <StyledWrapperProgress>
-            <Elements
-              stripe={stripePromise}
-              options={{
-                mode: 'payment',
-                amount: price > 0 ? price : 1,
-                currency: 'usd',
-                setup_future_usage: 'off_session',
-                appearance: {
-                  theme: 'flat',
-                  labels: 'floating',
-                },
-              }}
-            >
-              <CheckoutForm id={id} price={price} extraId={extraId} />
-            </Elements>
-          </StyledWrapperProgress>
-        </StyledUpperWrapperProgress>
-      </StyledSwipeableDrawer>
-    </>
   );
 };
