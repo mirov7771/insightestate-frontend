@@ -1,0 +1,53 @@
+.card {
+  padding: 32px;
+  border: 1px solid var(--ui-color-black-24-opacity);
+  border-radius: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  flex: 1 1 0;
+
+  &__title {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  &__badge {
+    background-color: var(--ui-color-yellow);
+    color: var(--ui-color-black);
+    border-radius: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 12px;
+    height: 32px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    .item {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+    .icon {
+      width: 24px;
+      height: 24px;
+      & > svg {
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+
+  &__button {
+    margin-top: auto;
+  }
+}

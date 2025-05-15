@@ -91,6 +91,31 @@
     }
   }
 
+  &__variant-base {
+    background-color: var(--ui-color-white);
+    border-radius: 200px;
+    border: 1px solid var(--ui-color-black-24-opacity);
+    color: var(--ui-color-black);
+
+    &:hover {
+      background-color: var(--ui-color-black-12-opacity);
+      cursor: pointer;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:active {
+      background-color: var(--ui-color-black-24-opacity);
+    }
+
+    .button_loading:disabled & {
+      background-color: var(--border-light);
+      color: var(--border-dark);
+    }
+  }
+
   &__size-l {
     font-size: 15px;
     line-height: 20px;

@@ -5,7 +5,7 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   bold?: boolean;
   loading?: boolean;
   size?: 'l' | 'm' | 's';
-  variant?: 'primary' | 'secondary' | 'cta';
+  variant?: 'primary' | 'secondary' | 'cta' | 'base';
   wide?: boolean;
 };
 
