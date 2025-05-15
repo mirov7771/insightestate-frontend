@@ -11,7 +11,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import { CheckoutForm } from '../CheckoutForm/CheckoutForm';
 
 const stripePromise = loadStripe(
-  'pk_test_51RHea2C7cCHxCxhsM3f9CEMPPLSwH2R5QxhH5S8xOYqu21jSZ9wXTOu1H4QaHvgXpyJCBBwJJUp8W3M8LVuXVR8A00ezo4qaAi'
+  'pk_live_51RHeZsCOsdKuuoFoklp479NrFUqz550aF7BqJgCK6xwOje2hjt4rZN2qSCkzHyF1pPnKg2WUo7G9Mx9YMSoQZcTn0046kh5S0c'
 );
 
 export const PayModal: FC<
