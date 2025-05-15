@@ -62,22 +62,15 @@ export const SignUp: FC = () => {
           error={error}
         />
 
-        <Button
-          onSubmit={handleLogin}
-          wide
-          size="l"
-          loading={loading}
-          type="submit"
-          disabled={!email}
-        >
+        <Button onSubmit={handleLogin} wide size="l" loading={loading} type="submit">
           <Text variant="heading4" align="center" as="span">
-            {localField('receive_code')}
+            {localField('proceed')}
           </Text>
         </Button>
       </form>
 
       <Text variant="body2" as="p" className={styles.description} align="center">
-        Нажимая на кнопку «Получить код» вы соглашаетесь с{' '}
+        Нажимая на кнопку «Продолжить» вы соглашаетесь с{' '}
         <a
           href="https://www.insightestate.com/privacy"
           target="_blank"
@@ -86,9 +79,6 @@ export const SignUp: FC = () => {
         >
           {localField('politics_2')}
         </a>
-      </Text>
-      <Text variant="caption2" as="p" className={styles.description} align="center">
-        {localField('footer_info_text')}
       </Text>
 
       <Text variant="body1" as="p" className={styles.signUp} align="center">

@@ -94,7 +94,7 @@
   &__size-l {
     font-size: 15px;
     line-height: 20px;
-    padding: 14px 24px;
+    padding: 16px 24px;
   }
 
   &__size-m {
@@ -121,7 +121,7 @@
 .loader {
   width: 30px;
   aspect-ratio: 2;
-  --_g: no-repeat radial-gradient(circle closest-side, var(--color-neutral-white) 90%, #0000);
+  --_g: no-repeat radial-gradient(circle closest-side, var(--ui-color-primary-2) 90%, #0000);
   background:
           var(--_g) 0 50%,
           var(--_g) 50% 50%,

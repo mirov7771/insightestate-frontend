@@ -7,12 +7,13 @@
   &__left {
     width: 50%;
     flex: 1 1 0;
-    padding: 0 16px;
+    padding: 24px 16px 0;
     display: flex;
 
     @media (min-width: $media-lg) {
       align-items: center;
       justify-content: center;
+      padding: 0;
     }
   }
 

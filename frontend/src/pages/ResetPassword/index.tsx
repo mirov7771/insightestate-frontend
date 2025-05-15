@@ -1,12 +1,12 @@
-import React, { ChangeEvent, FC, FormEventHandler, useEffect, useState } from 'react';
-import styles from './SignUpEnd.module.scss';
+import { ChangeEvent, FC, FormEventHandler, useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router';
+import { detailApi } from '@/widgets/Detail/api/detailApi';
+import styles from '@/pages/SignUpEnd/SignUpEnd.module.scss';
 import { LogoIcon } from '@/shared/assets/icons';
 import { Button, Input, Text } from '@/shared/ui';
-import { Link, useNavigate } from 'react-router';
 import { localField } from '@/i18n/localField';
-import { detailApi } from '@/widgets/Detail/api/detailApi';
 
-export const SignUpEnd: FC = () => {
+export const ResetPassword: FC = () => {
   const navigate = useNavigate();
   const [code, setCode] = useState('');
   const [email, setEmail] = useState<string>('');
@@ -42,7 +42,7 @@ export const SignUpEnd: FC = () => {
         <LogoIcon />
       </div>
       <Text variant="heading2" align="center" className={styles.header}>
-        Регистрация
+        С возвращением
       </Text>
       <Text variant="body1" as="p" align="center" className={styles.description}>
         Мы отправили временный код на <b>{email}</b>. Если письмо не пришло, проверьте папку «Спам»
