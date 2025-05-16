@@ -1,8 +1,9 @@
-import { ButtonHTMLAttributes, FC, PropsWithChildren } from 'react';
+import { ButtonHTMLAttributes, FC, PropsWithChildren, ReactNode } from 'react';
 import styles from './Button.module.scss';
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   bold?: boolean;
+  icon?: ReactNode;
   loading?: boolean;
   size?: 'l' | 'm' | 's';
   variant?: 'primary' | 'secondary' | 'cta' | 'base';
@@ -17,6 +18,7 @@ export const Button: FC<PropsWithChildren<ButtonProps>> = ({
   className,
   loading,
   bold = false,
+  icon,
   ...props
 }) => {
   const buttonClassNames = [
@@ -26,14 +28,22 @@ export const Button: FC<PropsWithChildren<ButtonProps>> = ({
     loading ? styles.button_loading : '',
     wide ? styles[`button__wide`] : '',
     bold ? styles.button__bold : '',
+    icon ? styles.button__icon : '',
     className,
   ]
     .filter(Boolean)
     .join(' ');
 
+  const renderChildren = () => {
+    if (icon) {
+      return icon;
+    }
+    return loading ? <div className={styles.loader}></div> : children;
+  };
+
   return (
     <button {...props} disabled={props.disabled || loading} className={buttonClassNames}>
-      {loading ? <div className={styles.loader}></div> : children}
+      {renderChildren()}
     </button>
   );
 };

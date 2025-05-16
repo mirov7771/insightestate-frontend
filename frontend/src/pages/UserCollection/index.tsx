@@ -5,11 +5,9 @@ import {
 } from '@/widgets/EstateCollection/api/estateCollectionApi';
 import styles from './UserCollection.module.scss';
 import { DEFAULT_IMG } from '@/entities/Card/Card';
-import { Button } from '@/shared/ui/Button';
-import { Spacer } from '@/widgets/Spacer/Spacer';
 import { useNavigate } from 'react-router';
 import { localField } from '@/i18n/localField';
-import { isMobile } from 'react-device-detect';
+import { CardView } from './CardView/CardView';
 
 export const UserCollection: FC = () => {
   const [collection, setCollection] = useState<EstateCollection[]>([]);
@@ -24,11 +22,20 @@ export const UserCollection: FC = () => {
       .catch((e) => console.log(e));
   }, []);
 
+  const coll = [
+    ...collection,
+    ...collection,
+    ...collection,
+    ...collection,
+    ...collection,
+    ...collection,
+  ];
+
   return (
     <div className={styles.wrap}>
       <h1 className={styles.header}>{localField('collection_title')}</h1>
       <div className={styles.collection}>
-        {collection.map((item) => (
+        {coll.map((item) => (
           <ItemCollection {...item} token={token!!} />
         ))}
       </div>
@@ -38,6 +45,13 @@ export const UserCollection: FC = () => {
 
 const ItemCollection: FC<EstateCollection & { token: string }> = ({ name, estates, id, token }) => {
   const navigate = useNavigate();
+  const allImages = estates
+    .map(
+      (estate) =>
+        estate.exteriorImages?.[0] || estate.facilityImages?.[0] || estate.interiorImages?.[0]
+    )
+    .filter(Boolean) as string[];
+  const renderImages = !!allImages.length ? allImages : [DEFAULT_IMG];
   const img =
     estates?.[0]?.exteriorImages?.[0] ||
     estates?.[0]?.facilityImages?.[0] ||
@@ -57,6 +71,16 @@ const ItemCollection: FC<EstateCollection & { token: string }> = ({ name, estate
   };
 
   return (
+    <CardView
+      images={renderImages}
+      estates={estates}
+      name={name}
+      goToCollection={goToCollection}
+      deleteCollection={deleteCollection}
+    />
+  );
+
+  /*return (
     <div className={styles.card}>
       <div className={styles.card__title}>
         <img className={styles.colImage} src={img} alt="" />
@@ -73,5 +97,5 @@ const ItemCollection: FC<EstateCollection & { token: string }> = ({ name, estate
         </div>
       </div>
     </div>
-  );
+  );*/
 };

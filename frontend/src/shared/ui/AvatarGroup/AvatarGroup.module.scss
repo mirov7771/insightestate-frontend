@@ -1,0 +1,23 @@
+.avatarGroup {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+}
+
+.avatar {
+  border-radius: 8px;
+  object-fit: cover;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+  border: 2px solid var(--white);
+}
+
+.avatar.remaining {
+  background-color: var(--ui-color-black-12-opacity);
+  backdrop-filter: blur(40px);
+  color: var(--ui-color-black-64-opacity);
+}

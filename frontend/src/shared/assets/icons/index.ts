@@ -56,6 +56,10 @@ import OfferCollectionArrowLeft from './offer-collection/tabler-icon-chevron-lef
 import OfferCollectionGraphMonitor from './offer-collection/graph-monitor.svg?react';
 import OfferCollectionSpark from './offer-collection/spark.svg?react';
 import OfferCollectionHomeStar from './offer-collection/tabler-icon-home-star.svg?react';
+import OfferCollectionDots from './offer-collection/tabler-icon-dots.svg?react';
+import OfferCollectionCopy from './offer-collection/tabler-icon-copy.svg?react';
+import OfferCollectionEdit from './offer-collection/tabler-icon-edit.svg?react';
+import OfferCollectionTrash from './offer-collection/tabler-icon-trash.svg?react';
 
 export {
   Bed,
@@ -117,4 +121,8 @@ export {
   OfferCollectionGraphMonitor,
   OfferCollectionSpark,
   OfferCollectionHomeStar,
+  OfferCollectionDots,
+  OfferCollectionCopy,
+  OfferCollectionEdit,
+  OfferCollectionTrash,
 };
