@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, ReactNode, useEffect, useState } from 'react';
 import {
   EstateCollection,
   estateCollectionApi,
@@ -8,6 +8,8 @@ import { DEFAULT_IMG } from '@/entities/Card/Card';
 import { useNavigate } from 'react-router';
 import { localField } from '@/i18n/localField';
 import { CardView } from './CardView/CardView';
+import { BlockView } from '@/pages/UserCollection/BlockView/BlockView';
+import { Tabs } from '@/entities/Tabs/Tabs';
 
 export const UserCollection: FC = () => {
   const [collection, setCollection] = useState<EstateCollection[]>([]);
@@ -22,20 +24,11 @@ export const UserCollection: FC = () => {
       .catch((e) => console.log(e));
   }, []);
 
-  const coll = [
-    ...collection,
-    ...collection,
-    ...collection,
-    ...collection,
-    ...collection,
-    ...collection,
-  ];
-
   return (
     <div className={styles.wrap}>
       <h1 className={styles.header}>{localField('collection_title')}</h1>
       <div className={styles.collection}>
-        {coll.map((item) => (
+        {collection.map((item) => (
           <ItemCollection {...item} token={token!!} />
         ))}
       </div>
@@ -43,7 +36,30 @@ export const UserCollection: FC = () => {
   );
 };
 
+interface TabPanelProps {
+  index: number;
+  value: number;
+  children?: ReactNode;
+}
+
+const CustomTabPanel = (props: TabPanelProps) => {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && children}
+    </div>
+  );
+};
+
 const ItemCollection: FC<EstateCollection & { token: string }> = ({ name, estates, id, token }) => {
+  const [value, setValue] = useState(0);
   const navigate = useNavigate();
   const allImages = estates
     .map(
@@ -52,11 +68,6 @@ const ItemCollection: FC<EstateCollection & { token: string }> = ({ name, estate
     )
     .filter(Boolean) as string[];
   const renderImages = !!allImages.length ? allImages : [DEFAULT_IMG];
-  const img =
-    estates?.[0]?.exteriorImages?.[0] ||
-    estates?.[0]?.facilityImages?.[0] ||
-    estates?.[0]?.interiorImages?.[0] ||
-    DEFAULT_IMG;
   const deleteCollection = () => {
     estateCollectionApi
       .deleteCollection(token, id)
@@ -71,13 +82,28 @@ const ItemCollection: FC<EstateCollection & { token: string }> = ({ name, estate
   };
 
   return (
-    <CardView
-      images={renderImages}
-      estates={estates}
-      name={name}
-      goToCollection={goToCollection}
-      deleteCollection={deleteCollection}
-    />
+    <>
+      <div className={styles.tabs}>
+        <Tabs content={['Блоки', 'Карточки']} setValue={setValue} value={value} />
+      </div>
+      <CustomTabPanel value={value} index={0}>
+        <BlockView
+          estates={estates}
+          name={name}
+          goToCollection={goToCollection}
+          deleteCollection={deleteCollection}
+        />
+      </CustomTabPanel>
+      <CustomTabPanel value={value} index={1}>
+        <CardView
+          images={renderImages}
+          estates={estates}
+          name={name}
+          goToCollection={goToCollection}
+          deleteCollection={deleteCollection}
+        />
+      </CustomTabPanel>
+    </>
   );
 
   /*return (
