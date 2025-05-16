@@ -1,6 +1,5 @@
 import { FC, ReactNode, useEffect, useState } from 'react';
-import { Tab, Tabs as TabsUI } from '@mui/material';
-import { Text } from '@/shared/ui';
+import { Tabs as TabsUI } from '@/entities/Tabs/Tabs';
 import styles from './Tabs.module.scss';
 import { Card } from '../Card/Card';
 import {
@@ -47,32 +46,10 @@ export const Tabs: FC<{ id: string }> = ({ id }) => {
     <>
       <div className={styles.tabsWrapper}>
         <TabsUI
+          content={[localField('list').toUpperCase(), localField('comparison').toUpperCase()]}
           value={value}
-          onChange={(_, val) => {
-            setValue(val);
-          }}
-          classes={{ list: styles.list, indicator: styles.tabsIndicator, root: styles.tabsRoot }}
-          centered
-        >
-          <Tab
-            disableRipple
-            classes={{ root: styles.tabRoot }}
-            label={
-              <Text variant="heading5" align="center">
-                {localField('list')}
-              </Text>
-            }
-          />
-          <Tab
-            disableRipple
-            classes={{ root: styles.tabRoot }}
-            label={
-              <Text variant="heading5" align="center">
-                {localField('comparison')}
-              </Text>
-            }
-          />
-        </TabsUI>
+          setValue={setValue}
+        />
         {/*Пока убираем лайки  */}
         {/*<IconButton size="small" classes={{ root: styles.iconButtonRoot }} disableRipple>*/}
         {/*  <div className={styles.iconHeart}>*/}

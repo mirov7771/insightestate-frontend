@@ -1,0 +1,47 @@
+@use '~@/sass/index' as *;
+
+.list {
+  background: rgba(32, 32, 32, 0.12);
+  display: inline-flex;
+  padding: 2px;
+  border-radius: 200px;
+  width: 100%;
+
+  @media (min-width: $media-md) {
+    width: max-content;
+    margin: 0 auto;
+    align-self: center;
+    display: flex;
+  }
+}
+
+.tabsRoot {
+  min-height: 32px;
+  flex: 1 1 0;
+}
+
+.tabsIndicator {
+  display: none;
+  background-color: transparent;
+}
+
+.tabRoot {
+  background-color: transparent;
+  border-radius: 200px;
+  transition: background-color 0.3s ease-in-out;
+  color: #202020;
+  padding: 5px;
+  min-height: 28px;
+  flex: 1 1 0;
+  max-width: 100%;
+  text-transform: unset;
+
+  @media (min-width: $media-md) {
+    min-width: 162px;
+  }
+
+  &:global(.Mui-selected) {
+    background-color: #fff;
+    color: #202020;
+  }
+}

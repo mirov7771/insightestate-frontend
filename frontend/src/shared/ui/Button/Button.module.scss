@@ -141,6 +141,23 @@
   &__bold {
     font-weight: 600;
   }
+  
+  &__icon {
+    width: 48px;
+    height: 48px;
+    background-color: var(--ui-color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      background-color: var(--ui-color-black-12-opacity);
+    }
+
+    &:active {
+      background-color: var(--ui-color-black-24-opacity);
+    }
+  }
 }
 
 .loader {

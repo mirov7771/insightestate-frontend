@@ -20,7 +20,8 @@ type TextProps = {
   align?: TextAlign;
   as?: keyof JSX.IntrinsicElements;
   className?: string;
-  variant?: TextVariant; // <-- новый проп
+  onClick?: () => void;
+  variant?: TextVariant;
 };
 
 export const Text: FC<TextProps> = ({
@@ -29,9 +30,13 @@ export const Text: FC<TextProps> = ({
   align = 'left',
   className = '',
   as: Component = 'span', // по умолчанию "span"
+  onClick,
 }) => {
   return (
-    <Component className={`${styles.text} ${styles[variant]} ${styles[align]} ${className}`}>
+    <Component
+      className={`${styles.text} ${styles[variant]} ${styles[align]} ${className}`}
+      onClick={onClick}
+    >
       {children}
     </Component>
   );

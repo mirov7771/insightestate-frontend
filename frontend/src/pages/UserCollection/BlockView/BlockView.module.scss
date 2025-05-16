@@ -1,0 +1,102 @@
+@use '~@/sass/index' as *;
+
+.wrapper {
+  padding: 32px;
+  border: 1px solid var(--ui-color-black-24-opacity);
+  border-radius: 40px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.description {
+  color: var(--ui-color-black-64-opacity);
+  margin-top: 4px;
+}
+
+.buttons {
+  display: flex;
+  margin-top: 24px;
+  row-gap: 8px;
+  column-gap: 16px;
+  flex-wrap: wrap;
+}
+
+.actions {
+  display: flex;
+  gap: 16px;
+  margin-left: auto;
+  color: var(--ui-color-black);
+
+  &__button {
+    padding: 0;
+    width: 48px;
+    height: 48px;
+
+    & svg {
+      width: 28px;
+      height: 28px;
+      color: var(--ui-color-black);
+    }
+  }
+}
+
+.slide {
+  position: relative;
+  margin-top: 24px;
+}
+
+.estates {
+  display: flex;
+  gap: 16px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  position: relative;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.shadow {
+  height: 100%;
+  width: 100px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: linear-gradient(270deg, #ffffff 40.2%, rgba(255, 255, 255, 0) 100%);
+
+  @media (min-width: $media-md) {
+    width: 128px;
+  }
+}
+
+.estate {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  flex-shrink: 0;
+
+  &:last-child {
+    margin-right: 100px;
+
+    @media (min-width: $media-md) {
+      margin-right: 128px;
+    }
+  }
+
+  &__img {
+    border-radius: 16px;
+    object-fit: cover;
+    width: 100%;
+    height: 152px;
+  }
+
+  &__text {
+    margin-top: 8px;
+  }
+}
