@@ -20,10 +20,17 @@
   grid-column-gap: 32px;
   grid-row-gap: 32px;
   grid-template-rows: auto auto;
-  grid-template-columns: repeat(auto-fill, minmax(308px, 308px));
-  grid-template-columns: 1fr;
   grid-auto-columns: 1fr;
   max-width: 1328px;
+  margin-top: 32px;
+
+  &__card {
+    grid-template-columns: repeat(auto-fill, minmax(308px, 308px));
+  }
+
+  &__block {
+    grid-template-columns: 1fr;
+  }
 }
 
 .card {
@@ -79,5 +86,9 @@
 .buttons {
   display: flex;
   gap: 10px;
+}
+
+.tabpanel {
+  overflow: hidden;
 }
 
