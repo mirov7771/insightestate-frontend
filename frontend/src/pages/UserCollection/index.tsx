@@ -12,8 +12,13 @@ import { BlockView } from '@/pages/UserCollection/BlockView/BlockView';
 import { Tabs } from '@/entities/Tabs/Tabs';
 
 export const UserCollection: FC = () => {
+  const [value, setValue] = useState(0);
   const [collection, setCollection] = useState<EstateCollection[]>([]);
   const token = localStorage.getItem('basicToken');
+  const classesCollection = {
+    0: styles.collection__block,
+    1: styles.collection__card,
+  };
 
   useEffect(() => {
     estateCollectionApi
@@ -27,9 +32,12 @@ export const UserCollection: FC = () => {
   return (
     <div className={styles.wrap}>
       <h1 className={styles.header}>{localField('collection_title')}</h1>
-      <div className={styles.collection}>
+      <div className={styles.tabs}>
+        <Tabs content={['Блоки', 'Карточки']} setValue={setValue} value={value} />
+      </div>
+      <div className={`${styles.collection} ${classesCollection[value as 1 | 0]}`}>
         {collection.map((item) => (
-          <ItemCollection {...item} token={token!!} />
+          <ItemCollection {...item} value={value} token={token!!} />
         ))}
       </div>
     </div>
@@ -47,6 +55,7 @@ const CustomTabPanel = (props: TabPanelProps) => {
 
   return (
     <div
+      className={styles.tabpanel}
       role="tabpanel"
       hidden={value !== index}
       id={`simple-tabpanel-${index}`}
@@ -58,8 +67,13 @@ const CustomTabPanel = (props: TabPanelProps) => {
   );
 };
 
-const ItemCollection: FC<EstateCollection & { token: string }> = ({ name, estates, id, token }) => {
-  const [value, setValue] = useState(0);
+const ItemCollection: FC<EstateCollection & { token: string; value: number }> = ({
+  name,
+  estates,
+  id,
+  token,
+  value,
+}) => {
   const navigate = useNavigate();
   const allImages = estates
     .map(
@@ -83,9 +97,6 @@ const ItemCollection: FC<EstateCollection & { token: string }> = ({ name, estate
 
   return (
     <>
-      <div className={styles.tabs}>
-        <Tabs content={['Блоки', 'Карточки']} setValue={setValue} value={value} />
-      </div>
       <CustomTabPanel value={value} index={0}>
         <BlockView
           estates={estates}
@@ -105,23 +116,4 @@ const ItemCollection: FC<EstateCollection & { token: string }> = ({ name, estate
       </CustomTabPanel>
     </>
   );
-
-  /*return (
-    <div className={styles.card}>
-      <div className={styles.card__title}>
-        <img className={styles.colImage} src={img} alt="" />
-        <p>{name}</p>
-        <div className={styles.card__details}>
-          <span className={styles.card__details__item}>
-            {localField('object_count')}: {estates?.length || 0}
-          </span>
-        </div>
-        <Spacer width={100} height={8} />
-        <div className={styles.buttons}>
-          <Button onClick={goToCollection}>{localField('offer_button')}</Button>
-          <Button onClick={deleteCollection}>{localField('remove_button')}</Button>
-        </div>
-      </div>
-    </div>
-  );*/
 };
