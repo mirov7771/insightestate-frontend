@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useEffect, useState, MouseEvent } from 'react';
 import styles from './Dropdown.module.scss';
 import { useIntl } from 'react-intl';
 import { Globe } from '@/shared/assets/icons';
@@ -10,9 +10,9 @@ import Menu from '@mui/material/Menu';
 export const Dropdown: FC = () => {
   const { formatMessage } = useIntl();
 
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
