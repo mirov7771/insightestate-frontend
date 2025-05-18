@@ -116,7 +116,7 @@ export const Card: FC<Estate & { collectionId: string }> = (estate) => {
                 </span>
               }
               size="sm"
-              text={estate.grade?.main ? `${estate.grade?.main}` : '9'}
+              text={estate.grade?.main ? `${estate.grade?.main.toPrecision(2)}` : '9'}
               background="primary"
             />
             <BadgeRating
@@ -289,7 +289,7 @@ export const Card: FC<Estate & { collectionId: string }> = (estate) => {
                 }}
                 onClick={deleteFromCollection}
               >
-                Удалить
+                <Text variant="body1">{formatMessage({ id: 'remove_button' })}</Text>
               </Button>
             ) : (
               <></>

@@ -4,6 +4,7 @@ import styles from './BlockView.module.scss';
 import { OfferCollectionEdit, OfferCollectionTrash } from '@/shared/assets/icons';
 import { Estate } from '@/widgets/EstateCollection/api/estateCollectionApi';
 import { DEFAULT_IMG } from '@/entities/Card/Card';
+import { FormattedMessage } from 'react-intl';
 
 type BlockViewProps = {
   copyLink: () => void;
@@ -50,7 +51,7 @@ export const BlockView: FC<BlockViewProps> = ({
           </div>
         </div>
         <Text className={styles.description} variant="heading4">
-          {estates.length} объектов
+          <FormattedMessage id={'userCollection.objects'} values={{ count: estates.length }} />
         </Text>
         <div className={styles.slide}>
           <div className={styles.estates}>
@@ -76,10 +77,14 @@ export const BlockView: FC<BlockViewProps> = ({
         {!!estates.length && (
           <div className={styles.buttons}>
             <Button onClick={goToCollection}>
-              <Text variant="heading4">Посмотреть</Text>
+              <Text variant="heading4">
+                <FormattedMessage id="userCollection.view" />
+              </Text>
             </Button>
             <Button variant="base" onClick={copyLink}>
-              <Text variant="heading4">Скопировать ссылку</Text>
+              <Text variant="heading4">
+                <FormattedMessage id="userCollection.copyLink" />
+              </Text>
             </Button>
           </div>
         )}

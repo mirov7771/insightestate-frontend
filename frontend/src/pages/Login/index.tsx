@@ -3,12 +3,10 @@ import styles from '@/pages/Login/Login.module.scss';
 import { LogoIcon } from '@/shared/assets/icons';
 import { Button, Input, Text } from '@/shared/ui';
 import { Link, useNavigate } from 'react-router';
-import { useIntl } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { detailApi } from '@/widgets/Detail/api/detailApi';
 import { isAxiosError } from 'axios';
 import { getNavigate } from '@/pages/Authorization';
-import { FormattedMessage } from 'react-intl';
-import messages from '@/pages/Login/messages';
 
 export const Login: FC = () => {
   const { formatMessage } = useIntl();
@@ -65,11 +63,11 @@ export const Login: FC = () => {
         <LogoIcon />
       </div>
       <Text variant="heading2" align="center" className={styles.header}>
-        С возвращением
+        {formatMessage({ id: 'login.welcomeBack' })}
       </Text>
       <form className={styles.form} onSubmit={handleLogin}>
         <Input
-          placeholder="Ваша электронная почта"
+          placeholder={formatMessage({ id: 'login.emailPlaceholder' })}
           onChange={onChangeUsername}
           value={username}
           name="username"
@@ -94,10 +92,16 @@ export const Login: FC = () => {
       </form>
 
       <Text variant="body1" as="p" className={styles.signUp} align="center">
-        Нет аккаунта?{' '}
-        <Link to="/sign-up" className="button">
-          {formatMessage({ id: 'sign_up_2' })}
-        </Link>
+        <FormattedMessage
+          id="login.haveAccount"
+          values={{
+            a: (chunk) => (
+              <Link to="/sign-up" className="button">
+                {chunk}
+              </Link>
+            ),
+          }}
+        />
       </Text>
     </div>
   );

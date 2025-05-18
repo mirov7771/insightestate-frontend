@@ -1,6 +1,7 @@
 import { Dispatch, FC, SetStateAction } from 'react';
 import { Button, Modal, Text } from '@/shared/ui';
 import styles from './ModalDeleteEstate.module.scss';
+import { FormattedMessage } from 'react-intl';
 
 type ModalDeleteEstateProps = {
   onDeleteEstate: () => void;
@@ -27,20 +28,24 @@ export const ModalDeleteEstate: FC<ModalDeleteEstateProps> = ({
       dialogProps={{ open, maxWidth: 'sm', fullWidth: true, onClose: () => handleCancel() }}
       withCloseIcon
     >
-      <Text variant="heading3">Изменение названия</Text>
+      <Text variant="heading3">
+        <FormattedMessage id="userCollection.deleteCollection" />
+      </Text>
       <Text className={styles.description} variant="body1">
-        Вы уверены, что хотите удалить всю подборку? <br />
-        Ссылка на сформированный оффер будет недействительна
+        <FormattedMessage
+          id="userCollection.deleteCollectionDescription"
+          values={{ br: () => <br /> }}
+        />
       </Text>
       <div className={styles.buttons}>
         <Button wide variant="base" onClick={handleCancel}>
           <Text variant="heading4" align="center">
-            Отмена
+            <FormattedMessage id="userCollection.cancel" />
           </Text>
         </Button>
         <Button wide onClick={handleDeleteEstate}>
           <Text variant="heading4" align="center">
-            Да, удалить
+            <FormattedMessage id="userCollection.yesDelete" />
           </Text>
         </Button>
       </div>

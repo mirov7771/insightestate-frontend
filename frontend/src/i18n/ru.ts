@@ -202,4 +202,32 @@ export default {
   tariff_free_continue: 'Продолжить бесплатно',
   tariff_free: 'Бесплатно',
   tariff_month: 'в месяц',
+  'login.welcomeBack': 'С возвращением',
+  'login.haveAccount': `Нет аккаунта? <a>Зарегистрироваться</a>`,
+  'login.emailPlaceholder': 'Ваша электронная почта',
+  'login.uniqEstates':
+    'Создавайте уникальные подборки для ваших клиентов с использованием нашей уникальной системы оценки объектов',
+  'login.agreeText': `Нажимая на кнопку «Продолжить» вы соглашаетесь с <a>Политикой обработки персональных данных</a>`,
+  'login.continue': 'Продолжить',
+  'login.signIn': `Уже есть аккаунт? <a>Log in</a>`,
+  'login.signUpText': `Мы отправили временный код на {email}. Если письмо не пришло, проверьте папку «Спам»`,
+  'login.notYou': 'Не вы?',
+
+  'pagination.next': 'Вперед >',
+  'pagination.back': '< Назад',
+
+  'userCollection.objects': `{count, plural, one {# объект} few {# объекта} many {# объектов} other {# объекта}}`,
+  'userCollection.view': 'Посмотреть',
+  'userCollection.copyLink': 'Скопировать ссылку',
+  'userCollection.rename': 'Изменение названия',
+  'userCollection.cancel': 'Отмена',
+  'userCollection.save': 'Сохранить',
+  'userCollection.deleteCollection': 'Удаление подборки',
+  'userCollection.yesDelete': 'Да, удалить',
+  'userCollection.deleteCollectionDescription':
+    'Вы уверены, что хотите удалить всю подборку? <br></br>Ссылка на сформированный оффер будет недействительна',
+  'userCollection.copiedLink': 'Ссылка на подборку скопирована',
+  'userCollection.blocks': 'Блоки',
+  'userCollection.cards': 'Карточки',
+  'userCollection.changeName': 'Изменить название',
 };
