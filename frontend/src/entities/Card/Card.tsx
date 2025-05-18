@@ -2,7 +2,7 @@ import React, { FC, useState } from 'react';
 import styles from './Card.module.scss';
 import { Beach, VectorRating } from '@/shared/assets/icons';
 import { Estate } from '@/widgets/Filter/api/filterApi';
-import { Button } from '@/shared/ui';
+import { Button, Text } from '@/shared/ui';
 import { estateCollectionApi } from '@/widgets/EstateCollection/api/estateCollectionApi';
 import { InfoModal } from '@/widgets/Modal/InfoModal';
 import { useIntl } from 'react-intl';
@@ -128,7 +128,13 @@ export const Card: FC<
           maximumFractionDigits: 0,
         }).format(priceMin)}
       </p>
-      {collectionId ? <Button onClick={deleteFromCollection}>Удалить</Button> : <></>}
+      {collectionId ? (
+        <Button onClick={deleteFromCollection}>
+          <Text variant="body1">{formatMessage({ id: 'remove_button' })}</Text>
+        </Button>
+      ) : (
+        <></>
+      )}
       {/*<p>
         Доходность до <strong>136%</strong> за 10 лет
       </p>*/}

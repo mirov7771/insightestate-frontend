@@ -3,6 +3,7 @@ import styles from './CardView.module.scss';
 import { AvatarGroup, Text } from '@/shared/ui';
 import { Estate } from '@/widgets/EstateCollection/api/estateCollectionApi';
 import { ActionButton } from '@/pages/UserCollection/CardView/ActionButton';
+import { FormattedMessage } from 'react-intl';
 
 type CardViewProps = {
   copyLink: () => void;
@@ -41,7 +42,7 @@ export const CardView: FC<CardViewProps> = ({
         {name}
       </Text>
       <Text className={styles.description} variant="heading4" as="span">
-        {estates.length} объекта
+        <FormattedMessage id={'userCollection.objects'} values={{ count: estates.length }} />
       </Text>
     </div>
   );

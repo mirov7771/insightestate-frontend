@@ -3,7 +3,7 @@ import styles from './SignUp.module.scss';
 import { LogoIcon } from '@/shared/assets/icons';
 import { Button, Input, Text } from '@/shared/ui';
 import { Link, useNavigate } from 'react-router';
-import { useIntl } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { detailApi } from '@/widgets/Detail/api/detailApi';
 import { isAxiosError } from 'axios';
 
@@ -48,42 +48,50 @@ export const SignUp: FC = () => {
         <LogoIcon />
       </div>
       <Text variant="heading2" align="center" className={styles.header}>
-        Регистрация
+        {formatMessage({ id: 'sign_up' })}
       </Text>
       <Text variant="body1" as="p" align="center" className={styles.description}>
-        Cоздавайте уникальные подборки для ваших клиентов с использованием нашей уникальной системы
-        оценки объектов
+        {formatMessage({ id: 'login.uniqEstates' })}
       </Text>
       <form className={styles.form} onSubmit={handleLogin}>
         <Input
           onChange={onChangeUsername}
           value={email}
           name="username"
-          placeholder="Ваша электронная почта"
+          placeholder={formatMessage({ id: 'login.emailPlaceholder' })}
           error={error}
         />
 
         <Button onSubmit={handleLogin} wide size="l" loading={loading} type="submit">
           <Text variant="heading4" align="center" as="span">
-            {formatMessage({ id: 'proceed' })}
+            {formatMessage({ id: 'login.continue' })}
           </Text>
         </Button>
       </form>
 
       <Text variant="body2" as="p" className={styles.description} align="center">
-        Нажимая на кнопку «Продолжить» вы соглашаетесь с{' '}
-        <a
-          href="https://www.insightestate.com/privacy"
-          target="_blank"
-          className="button"
-          rel="noreferrer"
-        >
-          {formatMessage({ id: 'politics_2' })}
-        </a>
+        <FormattedMessage
+          id="login.agreeText"
+          values={{
+            a: (chunk) => (
+              <a
+                href="https://www.insightestate.com/privacy"
+                target="_blank"
+                className="button"
+                rel="noreferrer"
+              >
+                {chunk}
+              </a>
+            ),
+          }}
+        />
       </Text>
 
       <Text variant="body1" as="p" className={styles.signUp} align="center">
-        Уже есть аккаунт? <Link to="/login">{formatMessage({ id: 'log_in' })}</Link>
+        <FormattedMessage
+          id="login.signIn"
+          values={{ a: (chunk) => <Link to="/login">{chunk}</Link> }}
+        />
       </Text>
     </div>
   );

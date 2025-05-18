@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import styles from './Pagination.module.scss';
+import { useIntl } from 'react-intl';
 
 type PaginationProps = {
   goToNextPage: () => void;
@@ -14,12 +15,14 @@ export const Pagination: FC<PaginationProps> = ({
   goToPreviousPage,
   goToNextPage,
 }) => {
+  const { formatMessage } = useIntl();
+
   return (
     <div className={styles.pagination}>
       <div className={styles.pagination__buttons}>
         {pageNumber !== 0 && (
           <button className={styles.pagination__button} onClick={goToPreviousPage}>
-            {'< Назад'}
+            {formatMessage({ id: 'pagination.back' })}
           </button>
         )}
         {pageNumber !== totalPages && (
@@ -28,7 +31,7 @@ export const Pagination: FC<PaginationProps> = ({
             onClick={goToNextPage}
             disabled={pageNumber === totalPages}
           >
-            {'Вперед >'}
+            {formatMessage({ id: 'pagination.next' })}
           </button>
         )}
       </div>

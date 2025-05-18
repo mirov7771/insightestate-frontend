@@ -3,7 +3,7 @@ import styles from './SignUpEnd.module.scss';
 import { LogoIcon } from '@/shared/assets/icons';
 import { Button, Input, Text } from '@/shared/ui';
 import { Link, useNavigate } from 'react-router';
-import { useIntl } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { detailApi } from '@/widgets/Detail/api/detailApi';
 
 export const SignUpEnd: FC = () => {
@@ -43,12 +43,12 @@ export const SignUpEnd: FC = () => {
         <LogoIcon />
       </div>
       <Text variant="heading2" align="center" className={styles.header}>
-        Регистрация
+        {formatMessage({ id: 'sign_up' })}
       </Text>
       <Text variant="body1" as="p" align="center" className={styles.description}>
-        Мы отправили временный код на <b>{email}</b>. Если письмо не пришло, проверьте папку «Спам»
+        <FormattedMessage id="login.signUpText" values={{ email }} />
         <br />
-        <Link to="/sign-up">Не вы?</Link>
+        <Link to="/sign-up">{formatMessage({ id: 'login.notYou' })}</Link>
       </Text>
       <form className={styles.form} onSubmit={handleLogin}>
         <Input
@@ -67,10 +67,10 @@ export const SignUpEnd: FC = () => {
         {formatMessage({ id: 'footer_info_text' })}
       </Text>
       <Text variant="body1" as="p" className={styles.signUp} align="center">
-        Уже есть аккаунт?{' '}
-        <Link to={'/login'} className="button">
-          {formatMessage({ id: 'log_in' })}
-        </Link>
+        <FormattedMessage
+          id="login.signIn"
+          values={{ a: (chunk) => <Link to="/login">{chunk}</Link> }}
+        />
       </Text>
     </div>
   );

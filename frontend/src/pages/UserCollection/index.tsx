@@ -46,9 +46,10 @@ const ItemCollection: FC<Required<EstateCollection> & { token: string; value: nu
   token,
   value,
 }) => {
+  const { formatMessage } = useIntl();
   const { notify } = useNotifications();
   const [, copyToClipboard] = useCopyToClipboard();
-  const collectionLink = `${window.location.host}/offer-collection-v2/${id}?token=${token.replace('Basic ', '')}`;
+  const collectionLink = `/offer-collection-v2/${id}?token=${token.replace('Basic ', '')}`;
   const navigate = useNavigate();
   const allImages = estates
     .map(
@@ -71,8 +72,8 @@ const ItemCollection: FC<Required<EstateCollection> & { token: string; value: nu
   };
 
   const handleCopyLink = () => {
-    copyToClipboard(collectionLink);
-    notify({ message: 'Ссылка на подборку скопирована', duration: 200000 });
+    copyToClipboard(`${window.location.host}${collectionLink}`);
+    notify({ message: formatMessage({ id: 'userCollection.copiedLink' }), duration: 3000 });
   };
 
   return (
@@ -140,7 +141,14 @@ export const UserCollection: FC = () => {
       {status === 'SUCCESS' && !!collection.length && (
         <>
           <div className={styles.tabs}>
-            <Tabs content={['Блоки', 'Карточки']} setValue={setValue} value={value} />
+            <Tabs
+              content={[
+                formatMessage({ id: 'userCollection.blocks' }),
+                formatMessage({ id: 'userCollection.cards' }),
+              ]}
+              setValue={setValue}
+              value={value}
+            />
           </div>
           <div className={`${styles.collection} ${classesCollection[value as 1 | 0]}`}>
             {collection.map((item) => (

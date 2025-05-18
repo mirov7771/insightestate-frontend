@@ -202,4 +202,32 @@ export default {
   tariff_free_continue: 'Continue for free',
   tariff_free: 'Free',
   tariff_month: 'per month',
+  'login.welcomeBack': 'Welcome back',
+  'login.haveAccount': `Don't have an account? <a>Sign up</a>`,
+  'login.emailPlaceholder': 'Your email address',
+  'login.uniqEstates':
+    'Create unique collections for your clients using our proprietary property evaluation system',
+  'login.agreeText': `By clicking «Continue», you agree to our <a>Personal Data Processing Policy</a>.`,
+  'login.continue': 'Continue',
+  'login.signIn': `Already have an account? <a>Log in</a>`,
+  'login.signUpText': `We've sent a temporary code to {email}. If you haven't received the email, please check your Spam folder`,
+  'login.notYou': 'Not you?',
+
+  'pagination.next': 'Next >',
+  'pagination.back': '< Back',
+
+  'userCollection.objects': '{count, plural, one {# object} other {# objects}}',
+  'userCollection.view': 'View',
+  'userCollection.copyLink': 'Copy link',
+  'userCollection.rename': 'Rename',
+  'userCollection.cancel': 'Cancel',
+  'userCollection.save': 'Save',
+  'userCollection.deleteCollection': 'Delete collection',
+  'userCollection.yesDelete': 'Yes, delete',
+  'userCollection.deleteCollectionDescription':
+    'Are you sure you want to delete the entire collection? <br></br>The link to the generated offer will become invalid.',
+  'userCollection.copiedLink': 'Collection link copied',
+  'userCollection.blocks': 'Block',
+  'userCollection.cards': 'Cards',
+  'userCollection.changeName': 'Rename',
 };
