@@ -3,10 +3,11 @@ import styles from './AiListing.module.scss';
 import { Card } from '@/entities/Card/Card';
 import { Estate, filterApi } from '@/widgets/Filter/api/filterApi';
 import { useSearchParams } from 'react-router';
-import { localField } from '@/i18n/localField';
 import { Watch } from 'react-loader-spinner';
+import { useIntl } from 'react-intl';
 
 export const AiListing: FC = () => {
+  const { formatMessage } = useIntl();
   const [searchParams, setSearchParams] = useSearchParams();
   const [estates, setEstates] = useState<Estate[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -27,7 +28,7 @@ export const AiListing: FC = () => {
 
   return (
     <div className={styles.wrap}>
-      <h1 className={styles.header}>{localField('selection')}</h1>
+      <h1 className={styles.header}>{formatMessage({ id: 'selection' })}</h1>
       <div>
         <main className={styles.main}>
           {estates.length === 0 ? (
@@ -42,7 +43,7 @@ export const AiListing: FC = () => {
                 />
               </div>
             ) : (
-              <h5>{localField('not_found')}</h5>
+              <h5>{formatMessage({ id: 'not_found' })}</h5>
             )
           ) : (
             <>

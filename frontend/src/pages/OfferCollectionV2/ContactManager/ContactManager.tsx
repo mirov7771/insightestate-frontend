@@ -9,11 +9,12 @@ import {
 } from '@/shared/assets/icons';
 import { AgentInfo, estateCollectionApi } from '@/widgets/EstateCollection/api/estateCollectionApi';
 import { useSearchParams } from 'react-router';
-import { localField } from '@/i18n/localField';
+import { useIntl } from 'react-intl';
 import { Spacer } from '@/widgets/Spacer/Spacer';
 import { InfoModal } from '@/widgets/Modal/InfoModal';
 
 export const ContactManager = () => {
+  const { formatMessage } = useIntl();
   const refManager = useRef<HTMLDivElement>(null);
   const refQuestion = useRef<HTMLDivElement>(null);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -63,7 +64,7 @@ export const ContactManager = () => {
           ref={refQuestion}
         >
           <Button size="l" onClick={copyTask} className={styles.button2}>
-            <Text variant="heading4">{localField('copy_link')}</Text>
+            <Text variant="heading4">{formatMessage({ id: 'copy_link' })}</Text>
           </Button>
           <Button size="l" onClick={() => setOpenInfo(true)} className={styles.button3}>
             <Text variant="heading4">?</Text>
@@ -79,7 +80,7 @@ export const ContactManager = () => {
             <div>
               <Text variant="heading4">{agentInfo?.fio}</Text>
               <Text variant="caption1" className={styles.manager}>
-                {localField('your_manager')}
+                {formatMessage({ id: 'your_manager' })}
               </Text>
             </div>
           </div>
@@ -89,7 +90,9 @@ export const ContactManager = () => {
             variant={open || openInfo ? 'cta' : 'primary'}
             className={styles.button}
           >
-            <Text variant="heading4">{localField(open || openInfo ? 'close' : 'connect')}</Text>
+            <Text variant="heading4">
+              {formatMessage({ id: open || openInfo ? 'close' : 'connect' })}
+            </Text>
           </Button>
         </div>
       )}
@@ -100,7 +103,7 @@ export const ContactManager = () => {
           <div>
             <Text variant="heading4">{agentInfo?.fio}</Text>
             <Text variant="caption1" className={styles.manager}>
-              {localField('your_manager')}
+              {formatMessage({ id: 'your_manager' })}
             </Text>
           </div>
         </div>
@@ -110,14 +113,14 @@ export const ContactManager = () => {
             <li className={styles.bottomSheetList__item}>
               <OfferCollectionPhoneCall />
               <a href={`tel:${agentInfo?.mobileNumber}`} target="_blank" rel="noreferrer">
-                <Text variant="body1">{localField('phone_call')}</Text>
+                <Text variant="body1">{formatMessage({ id: 'phone_call' })}</Text>
               </a>
             </li>
           )}
           <li className={styles.bottomSheetList__item}>
             <OfferCollectionMail />
             <a href={`mailto:${agentInfo?.login}`} target="_blank" rel="noreferrer">
-              <Text variant="body1">{localField('email')}</Text>
+              <Text variant="body1">{formatMessage({ id: 'email' })}</Text>
             </a>
           </li>
           {!!agentInfo?.whatsUp && (
@@ -128,7 +131,7 @@ export const ContactManager = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <Text variant="body1">{localField('go_wa')}</Text>
+                <Text variant="body1">{formatMessage({ id: 'go_wa' })}</Text>
               </a>
             </li>
           )}
@@ -136,7 +139,7 @@ export const ContactManager = () => {
             <li className={styles.bottomSheetList__item}>
               <OfferCollectionBrandTelegram />
               <a href={`https://t.me/${agentInfo?.tgName}`} target="_blank" rel="noreferrer">
-                <Text variant="body1">{localField('go_tg')}</Text>
+                <Text variant="body1">{formatMessage({ id: 'go_tg' })}</Text>
               </a>
             </li>
           )}
@@ -147,17 +150,17 @@ export const ContactManager = () => {
       <BottomSheet isOpen={openInfo} onClose={() => setOpenInfo(false)} triggerRef={refQuestion}>
         <div className={styles.content}>
           <Spacer height={25} width={100} />
-          <Text variant="heading4">{localField('offer_info_title')}</Text>
+          <Text variant="heading4">{formatMessage({ id: 'offer_info_title' })}</Text>
         </div>
         <Spacer height={25} width={100} />
         <ul className={styles.bottomSheetList}>
-          <Text variant="body1">{localField('offer_info_text')}</Text>
+          <Text variant="body1">{formatMessage({ id: 'offer_info_text' })}</Text>
           <Spacer height={25} width={100} />
-          <Text variant="body1">{localField('offer_info_text_1')}</Text>
+          <Text variant="body1">{formatMessage({ id: 'offer_info_text_1' })}</Text>
           <Spacer height={10} width={100} />
-          <Text variant="body1">{localField('offer_info_text_2')}</Text>
+          <Text variant="body1">{formatMessage({ id: 'offer_info_text_2' })}</Text>
           <Spacer height={10} width={100} />
-          <Text variant="body1">{localField('offer_info_text_3')}</Text>
+          <Text variant="body1">{formatMessage({ id: 'offer_info_text_3' })}</Text>
           <Spacer height={32} width={100} />
         </ul>
       </BottomSheet>
@@ -166,8 +169,8 @@ export const ContactManager = () => {
         onClose={handleCloseInfoModal}
         onOpen={handleOpenInfoModal}
         anchor="bottom"
-        title={localField('link_copied')}
-        text={localField('link_copied_text')}
+        title={formatMessage({ id: 'link_copied' })}
+        text={formatMessage({ id: 'link_copied_text' })}
         bottom={30}
       />
     </>

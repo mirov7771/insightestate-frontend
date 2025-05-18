@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import './App.scss';
 import { Routes, Route, BrowserRouter } from 'react-router';
 import { FiltersProvider } from '@/widgets/Filter/model/useFilters';
@@ -15,19 +16,19 @@ import { Register } from '@/pages/Register';
 import { Profile } from '@/pages/Profile';
 import { ResetPassword } from '@/pages/ResetPassword';
 import getUserLocale from 'get-user-locale';
-import { useEffect } from 'react';
 import OfferCollectionV2 from '@/pages/OfferCollectionV2';
 import { StyledEngineProvider } from '@mui/material';
 import { Tariffs } from '@/pages/Tariffs';
 import { RegistrationLayout } from '@/widgets/RegistrationLayout/RegistrationLayout';
 import { NotificationsProvider } from '@/shared/ui';
+import { I18nProvider } from '@/i18n/I18nProvider';
 
 const App = () => {
   const userLocale = getUserLocale();
+  const localStorageUserLocale = localStorage.getItem('language') as 'ru' | 'en';
 
   useEffect(() => {
-    console.log(userLocale);
-    if (!localStorage.getItem('language')) {
+    if (!localStorageUserLocale) {
       localStorage.setItem('language', userLocale.toLowerCase().indexOf('ru') > -1 ? 'ru' : 'en');
       window.location.reload();
     }
@@ -36,48 +37,50 @@ const App = () => {
   return (
     <StyledEngineProvider injectFirst>
       <NotificationsProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route element={<RegistrationLayout />}>
-              <Route path="/login" element={<Login />} />
-              <Route path="/sign-up" element={<SignUp />} />
-              <Route path="/sign-up-end" element={<SignUpEnd />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/reset-password" element={<ResetPassword />} />
-            </Route>
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/" element={<Layout />}>
-              <Route index element={<Authorization />} />
-              <Route
-                path="/listing"
-                element={
-                  <FiltersProvider>
-                    <Listing />
-                  </FiltersProvider>
-                }
-              />
-              <Route path="/property">
-                <Route path=":id" element={<EstateDetail />} />
+        <I18nProvider locale={localStorageUserLocale || 'en'}>
+          <BrowserRouter>
+            <Routes>
+              <Route element={<RegistrationLayout />}>
+                <Route path="/login" element={<Login />} />
+                <Route path="/sign-up" element={<SignUp />} />
+                <Route path="/sign-up-end" element={<SignUpEnd />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/reset-password" element={<ResetPassword />} />
               </Route>
-              <Route path="/offer-collection">
-                <Route path=":id" element={<OfferCollection />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/" element={<Layout />}>
+                <Route index element={<Authorization />} />
+                <Route
+                  path="/listing"
+                  element={
+                    <FiltersProvider>
+                      <Listing />
+                    </FiltersProvider>
+                  }
+                />
+                <Route path="/property">
+                  <Route path=":id" element={<EstateDetail />} />
+                </Route>
+                <Route path="/offer-collection">
+                  <Route path=":id" element={<OfferCollection />} />
+                </Route>
+                <Route path="/offer-collection-v2">
+                  <Route path=":id" element={<OfferCollectionV2 />} />
+                </Route>
+                <Route path="/tariffs" element={<Tariffs />} />
+                <Route path="/user-collection" element={<UserCollection />} />
+                <Route
+                  path="/ai-listing"
+                  element={
+                    <FiltersProvider>
+                      <AiListing />
+                    </FiltersProvider>
+                  }
+                />
               </Route>
-              <Route path="/offer-collection-v2">
-                <Route path=":id" element={<OfferCollectionV2 />} />
-              </Route>
-              <Route path="/tariffs" element={<Tariffs />} />
-              <Route path="/user-collection" element={<UserCollection />} />
-              <Route
-                path="/ai-listing"
-                element={
-                  <FiltersProvider>
-                    <AiListing />
-                  </FiltersProvider>
-                }
-              />
-            </Route>
-          </Routes>
-        </BrowserRouter>
+            </Routes>
+          </BrowserRouter>
+        </I18nProvider>
       </NotificationsProvider>
     </StyledEngineProvider>
   );

@@ -3,7 +3,7 @@ import payment from './payment.svg';
 import styles from './PaymentSchedule.module.scss';
 import { FC, useEffect, useState } from 'react';
 import { ScheduleByProject } from '@/widgets/Detail/api/detailApi';
-import { localField } from '@/i18n/localField';
+import { useIntl } from 'react-intl';
 
 const createClass = (items: string[]) => {
   const classes: Record<number, string> = {
@@ -22,6 +22,7 @@ const createClass = (items: string[]) => {
 export const PaymentSchedule: FC<{
   projectId: string;
 }> = ({ projectId }) => {
+  const { formatMessage } = useIntl();
   //TODO переделать этот костыль, брать данные с бэка когда они там появятся
   const [type, setType] = useState<number>(0);
   const [items, setItems] = useState<string[]>();
@@ -129,7 +130,7 @@ export const PaymentSchedule: FC<{
   }, [projectId]);
   return (
     <>
-      <Section title={localField('payment_schedule')}>
+      <Section title={formatMessage({ id: 'payment_schedule' })}>
         {type === 1 ? (
           <div>
             <div className={`${styles.item__header} ${styles.item} ${styles.item__one}`}>
@@ -157,10 +158,10 @@ export const PaymentSchedule: FC<{
         ) : type === 3 ? (
           <div>
             <div className={`${styles.item__header} ${styles.item} ${styles.item__four}`}>
-              <span>1 {localField('payment')}</span>
-              <span>2 {localField('payment')}</span>
-              <span>3 {localField('payment')}</span>
-              <span>4 {localField('payment')}</span>
+              <span>1 {formatMessage({ id: 'payment' })}</span>
+              <span>2 {formatMessage({ id: 'payment' })}</span>
+              <span>3 {formatMessage({ id: 'payment' })}</span>
+              <span>4 {formatMessage({ id: 'payment' })}</span>
             </div>
             <div className={`${styles.item} ${styles.item__four}`}>
               <span>25%</span>
@@ -172,11 +173,11 @@ export const PaymentSchedule: FC<{
         ) : type === 4 ? (
           <div>
             <div className={`${styles.item__header} ${styles.item} ${styles.item__five}`}>
-              <span>1 {localField('payment')}</span>
-              <span>2 {localField('payment')}</span>
-              <span>3 {localField('payment')}</span>
-              <span>4 {localField('payment')}</span>
-              <span>5 {localField('payment')}</span>
+              <span>1 {formatMessage({ id: 'payment' })}</span>
+              <span>2 {formatMessage({ id: 'payment' })}</span>
+              <span>3 {formatMessage({ id: 'payment' })}</span>
+              <span>4 {formatMessage({ id: 'payment' })}</span>
+              <span>5 {formatMessage({ id: 'payment' })}</span>
             </div>
             <div className={`${styles.item} ${styles.item__five}`}>
               <span>20%</span>
@@ -189,12 +190,12 @@ export const PaymentSchedule: FC<{
         ) : type === 5 ? (
           <div>
             <div className={`${styles.item__header} ${styles.item} ${styles.item__six}`}>
-              <span>1 {localField('payment')}</span>
-              <span>2 {localField('payment')}</span>
-              <span>3 {localField('payment')}</span>
-              <span>4 {localField('payment')}</span>
-              <span>5 {localField('payment')}</span>
-              <span>6 {localField('payment')}</span>
+              <span>1 {formatMessage({ id: 'payment' })}</span>
+              <span>2 {formatMessage({ id: 'payment' })}</span>
+              <span>3 {formatMessage({ id: 'payment' })}</span>
+              <span>4 {formatMessage({ id: 'payment' })}</span>
+              <span>5 {formatMessage({ id: 'payment' })}</span>
+              <span>6 {formatMessage({ id: 'payment' })}</span>
             </div>
             <div className={`${styles.item} ${styles.item__six}`}>
               <span>20%</span>
@@ -208,13 +209,13 @@ export const PaymentSchedule: FC<{
         ) : type === 6 ? (
           <div>
             <div className={`${styles.item__header} ${styles.item} ${styles.item__seven}`}>
-              <span>1 {localField('payment')}</span>
-              <span>2 {localField('payment')}</span>
-              <span>3 {localField('payment')}</span>
-              <span>4 {localField('payment')}</span>
-              <span>5 {localField('payment')}</span>
-              <span>6 {localField('payment')}</span>
-              <span>7 {localField('payment')}</span>
+              <span>1 {formatMessage({ id: 'payment' })}</span>
+              <span>2 {formatMessage({ id: 'payment' })}</span>
+              <span>3 {formatMessage({ id: 'payment' })}</span>
+              <span>4 {formatMessage({ id: 'payment' })}</span>
+              <span>5 {formatMessage({ id: 'payment' })}</span>
+              <span>6 {formatMessage({ id: 'payment' })}</span>
+              <span>7 {formatMessage({ id: 'payment' })}</span>
             </div>
             <div className={`${styles.item} ${styles.item__seven}`}>
               <span>35%</span>
@@ -229,12 +230,12 @@ export const PaymentSchedule: FC<{
         ) : type === 7 ? (
           <div>
             <div className={`${styles.item__header} ${styles.item} ${styles.item__six}`}>
-              <span>1 {localField('payment')}</span>
-              <span>2 {localField('payment')}</span>
-              <span>3 {localField('payment')}</span>
-              <span>4 {localField('payment')}</span>
-              <span>5 {localField('payment')}</span>
-              <span>6 {localField('payment')}</span>
+              <span>1 {formatMessage({ id: 'payment' })}</span>
+              <span>2 {formatMessage({ id: 'payment' })}</span>
+              <span>3 {formatMessage({ id: 'payment' })}</span>
+              <span>4 {formatMessage({ id: 'payment' })}</span>
+              <span>5 {formatMessage({ id: 'payment' })}</span>
+              <span>6 {formatMessage({ id: 'payment' })}</span>
             </div>
             <div className={`${styles.item} ${styles.item__six}`}>
               <span>30%</span>
@@ -248,11 +249,11 @@ export const PaymentSchedule: FC<{
         ) : type === 8 ? (
           <div>
             <div className={`${styles.item__header} ${styles.item} ${styles.item__five}`}>
-              <span>1 {localField('payment')}</span>
-              <span>2 {localField('payment')}</span>
-              <span>3 {localField('payment')}</span>
-              <span>4 {localField('payment')}</span>
-              <span>5 {localField('payment')}</span>
+              <span>1 {formatMessage({ id: 'payment' })}</span>
+              <span>2 {formatMessage({ id: 'payment' })}</span>
+              <span>3 {formatMessage({ id: 'payment' })}</span>
+              <span>4 {formatMessage({ id: 'payment' })}</span>
+              <span>5 {formatMessage({ id: 'payment' })}</span>
             </div>
             <div className={`${styles.item} ${styles.item__five}`}>
               <span>35%</span>
@@ -265,11 +266,11 @@ export const PaymentSchedule: FC<{
         ) : type === 9 ? (
           <div>
             <div className={`${styles.item__header} ${styles.item} ${styles.item__five}`}>
-              <span>1 {localField('payment')}</span>
-              <span>2 {localField('payment')}</span>
-              <span>3 {localField('payment')}</span>
-              <span>4 {localField('payment')}</span>
-              <span>5 {localField('payment')}</span>
+              <span>1 {formatMessage({ id: 'payment' })}</span>
+              <span>2 {formatMessage({ id: 'payment' })}</span>
+              <span>3 {formatMessage({ id: 'payment' })}</span>
+              <span>4 {formatMessage({ id: 'payment' })}</span>
+              <span>5 {formatMessage({ id: 'payment' })}</span>
             </div>
             <div className={`${styles.item} ${styles.item__five}`}>
               <span>35%</span>
@@ -282,10 +283,10 @@ export const PaymentSchedule: FC<{
         ) : type === 10 ? (
           <div>
             <div className={`${styles.item__header} ${styles.item} ${styles.item__four}`}>
-              <span>1 {localField('payment')}</span>
-              <span>2 {localField('payment')}</span>
-              <span>3 {localField('payment')}</span>
-              <span>4 {localField('payment')}</span>
+              <span>1 {formatMessage({ id: 'payment' })}</span>
+              <span>2 {formatMessage({ id: 'payment' })}</span>
+              <span>3 {formatMessage({ id: 'payment' })}</span>
+              <span>4 {formatMessage({ id: 'payment' })}</span>
             </div>
             <div className={`${styles.item} ${styles.item__four}`}>
               <span>20%</span>
@@ -297,12 +298,12 @@ export const PaymentSchedule: FC<{
         ) : type === 11 ? (
           <div>
             <div className={`${styles.item__header} ${styles.item} ${styles.item__six}`}>
-              <span>1 {localField('payment')}</span>
-              <span>2 {localField('payment')}</span>
-              <span>3 {localField('payment')}</span>
-              <span>4 {localField('payment')}</span>
-              <span>5 {localField('payment')}</span>
-              <span>6 {localField('payment')}</span>
+              <span>1 {formatMessage({ id: 'payment' })}</span>
+              <span>2 {formatMessage({ id: 'payment' })}</span>
+              <span>3 {formatMessage({ id: 'payment' })}</span>
+              <span>4 {formatMessage({ id: 'payment' })}</span>
+              <span>5 {formatMessage({ id: 'payment' })}</span>
+              <span>6 {formatMessage({ id: 'payment' })}</span>
             </div>
             <div className={`${styles.item} ${styles.item__six}`}>
               <span>35%</span>
@@ -316,12 +317,12 @@ export const PaymentSchedule: FC<{
         ) : type === 12 ? (
           <div>
             <div className={`${styles.item__header} ${styles.item} ${styles.item__six}`}>
-              <span>1 {localField('payment')}</span>
-              <span>2 {localField('payment')}</span>
-              <span>3 {localField('payment')}</span>
-              <span>4 {localField('payment')}</span>
-              <span>5 {localField('payment')}</span>
-              <span>6 {localField('payment')}</span>
+              <span>1 {formatMessage({ id: 'payment' })}</span>
+              <span>2 {formatMessage({ id: 'payment' })}</span>
+              <span>3 {formatMessage({ id: 'payment' })}</span>
+              <span>4 {formatMessage({ id: 'payment' })}</span>
+              <span>5 {formatMessage({ id: 'payment' })}</span>
+              <span>6 {formatMessage({ id: 'payment' })}</span>
             </div>
             <div className={`${styles.item} ${styles.item__six}`}>
               <span>30%</span>
@@ -335,8 +336,8 @@ export const PaymentSchedule: FC<{
         ) : type === 13 ? (
           <div>
             <div className={`${styles.item__header} ${styles.item} ${styles.item__two}`}>
-              <span>1 {localField('payment')}</span>
-              <span>2 {localField('payment')}</span>
+              <span>1 {formatMessage({ id: 'payment' })}</span>
+              <span>2 {formatMessage({ id: 'payment' })}</span>
             </div>
             <div className={`${styles.item} ${styles.item__two}`}>
               <span>30%</span>
@@ -346,9 +347,9 @@ export const PaymentSchedule: FC<{
         ) : type === 14 ? (
           <div>
             <div className={`${styles.item__header} ${styles.item} ${styles.item__three}`}>
-              <span>1 {localField('payment')}</span>
-              <span>2 {localField('payment')}</span>
-              <span>3 {localField('payment')}</span>
+              <span>1 {formatMessage({ id: 'payment' })}</span>
+              <span>2 {formatMessage({ id: 'payment' })}</span>
+              <span>3 {formatMessage({ id: 'payment' })}</span>
             </div>
             <div className={`${styles.item} ${styles.item__three}`}>
               <span>30%</span>
@@ -359,11 +360,11 @@ export const PaymentSchedule: FC<{
         ) : type === 15 ? (
           <div>
             <div className={`${styles.item__header} ${styles.item} ${styles.item__five}`}>
-              <span>1 {localField('payment')}</span>
-              <span>2 {localField('payment')}</span>
-              <span>3 {localField('payment')}</span>
-              <span>4 {localField('payment')}</span>
-              <span>5 {localField('payment')}</span>
+              <span>1 {formatMessage({ id: 'payment' })}</span>
+              <span>2 {formatMessage({ id: 'payment' })}</span>
+              <span>3 {formatMessage({ id: 'payment' })}</span>
+              <span>4 {formatMessage({ id: 'payment' })}</span>
+              <span>5 {formatMessage({ id: 'payment' })}</span>
             </div>
             <div className={`${styles.item} ${styles.item__five}`}>
               <span>35%</span>
@@ -376,12 +377,12 @@ export const PaymentSchedule: FC<{
         ) : type === 16 ? (
           <div>
             <div className={`${styles.item__header} ${styles.item} ${styles.item__six}`}>
-              <span>1 {localField('payment')}</span>
-              <span>2 {localField('payment')}</span>
-              <span>3 {localField('payment')}</span>
-              <span>4 {localField('payment')}</span>
-              <span>5 {localField('payment')}</span>
-              <span>6 {localField('payment')}</span>
+              <span>1 {formatMessage({ id: 'payment' })}</span>
+              <span>2 {formatMessage({ id: 'payment' })}</span>
+              <span>3 {formatMessage({ id: 'payment' })}</span>
+              <span>4 {formatMessage({ id: 'payment' })}</span>
+              <span>5 {formatMessage({ id: 'payment' })}</span>
+              <span>6 {formatMessage({ id: 'payment' })}</span>
             </div>
             <div className={`${styles.item} ${styles.item__six}`}>
               <span>35%</span>
@@ -399,7 +400,7 @@ export const PaymentSchedule: FC<{
                 <div className={`${styles.item__header} ${styles.item} ${createClass(items)}`}>
                   {items?.map((item, index) => (
                     <span>
-                      {index + 1} {localField('payment')}
+                      {index + 1} {formatMessage({ id: 'payment' })}
                     </span>
                   ))}
                 </div>

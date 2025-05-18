@@ -3,12 +3,15 @@ import styles from '@/pages/Login/Login.module.scss';
 import { LogoIcon } from '@/shared/assets/icons';
 import { Button, Input, Text } from '@/shared/ui';
 import { Link, useNavigate } from 'react-router';
-import { localField } from '@/i18n/localField';
+import { useIntl } from 'react-intl';
 import { detailApi } from '@/widgets/Detail/api/detailApi';
 import { isAxiosError } from 'axios';
 import { getNavigate } from '@/pages/Authorization';
+import { FormattedMessage } from 'react-intl';
+import messages from '@/pages/Login/messages';
 
 export const Login: FC = () => {
+  const { formatMessage } = useIntl();
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -72,7 +75,7 @@ export const Login: FC = () => {
           name="username"
         />
         <Input
-          placeholder={localField('password')}
+          placeholder={formatMessage({ id: 'password' })}
           onChange={onChangePassword}
           value={password}
           type="password"
@@ -80,7 +83,7 @@ export const Login: FC = () => {
         />
         <Button onClick={handleLogin} wide size="l" loading={loading}>
           <Text variant="heading4" align="center" as="span">
-            {localField('log_in')}
+            {formatMessage({ id: 'log_in' })}
           </Text>
         </Button>
         {error && (
@@ -93,7 +96,7 @@ export const Login: FC = () => {
       <Text variant="body1" as="p" className={styles.signUp} align="center">
         Нет аккаунта?{' '}
         <Link to="/sign-up" className="button">
-          {localField('sign_up_2')}
+          {formatMessage({ id: 'sign_up_2' })}
         </Link>
       </Text>
     </div>

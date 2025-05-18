@@ -5,7 +5,7 @@ import './Gallery.scss';
 import { Button } from '@/shared/ui';
 import { Cross } from '@/shared/assets/icons';
 import { useWindowResize } from '@/shared/utils/useWindowResize';
-import { localField } from '@/i18n/localField';
+import { useIntl } from 'react-intl';
 
 type GalleryProps = {
   images: string[];
@@ -38,6 +38,7 @@ const renderImg =
   };
 
 export const Gallery: FC<GalleryProps> = ({ images }) => {
+  const { formatMessage } = useIntl();
   const { width } = useWindowResize();
   const [isFullscreen, setIsFullscreen] = useState(false);
   const renderImages: ReactImageGalleryItem[] = images.map((img) => ({
@@ -58,7 +59,7 @@ export const Gallery: FC<GalleryProps> = ({ images }) => {
             </span>
           ) : (
             <Button variant="cta" className="button" onClick={onClick}>
-              {localField('more_photos')}
+              {formatMessage({ id: 'more_photos' })}
             </Button>
           )
         }

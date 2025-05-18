@@ -3,9 +3,10 @@ import { Beach as BeachIcon } from '@/shared/assets/icons';
 import styles from './Filter.module.scss';
 import { Accordion, Checkbox } from '@/shared/ui';
 import { useFilters } from '@/widgets/Filter/model/useFilters';
-import { localField } from '@/i18n/localField';
+import { useIntl } from 'react-intl';
 
 export const Beach: FC = () => {
+  const { formatMessage } = useIntl();
   const { setFilters, beachTravelTimes } = useFilters();
   const [filter, setFilter] = useState<string[]>(beachTravelTimes || []);
 
@@ -31,43 +32,43 @@ export const Beach: FC = () => {
   }, [filter]);
 
   return (
-    <Accordion icon={<BeachIcon />} title={localField('beach_time')}>
+    <Accordion icon={<BeachIcon />} title={formatMessage({ id: 'beach_time' })}>
       <div className={styles.content}>
         <Checkbox
           value="1"
           onChange={handleClick}
           checked={beachTravelTimes?.includes('1')}
-          label={localField('walk_5')}
+          label={formatMessage({ id: 'walk_5' })}
         />
         <Checkbox
           value="2"
           onChange={handleClick}
           checked={beachTravelTimes?.includes('2')}
-          label={localField('walk_10')}
+          label={formatMessage({ id: 'walk_10' })}
         />
         <Checkbox
           value="3"
           onChange={handleClick}
           checked={beachTravelTimes?.includes('3')}
-          label={localField('walk_30')}
+          label={formatMessage({ id: 'walk_30' })}
         />
         <Checkbox
           value="11"
           onChange={handleClick}
           checked={beachTravelTimes?.includes('11')}
-          label={localField('car_5')}
+          label={formatMessage({ id: 'car_5' })}
         />
         <Checkbox
           value="12"
           onChange={handleClick}
           checked={beachTravelTimes?.includes('12')}
-          label={localField('car_10')}
+          label={formatMessage({ id: 'car_10' })}
         />
         <Checkbox
           value="13"
           onChange={handleClick}
           checked={beachTravelTimes?.includes('13')}
-          label={localField('car_30')}
+          label={formatMessage({ id: 'car_30' })}
         />
       </div>
     </Accordion>

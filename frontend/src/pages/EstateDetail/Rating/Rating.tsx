@@ -3,7 +3,7 @@ import styles from './Rating.module.scss';
 import { Info, VectorRating } from '@/shared/assets/icons';
 import { Grade } from '@/widgets/Detail/api/detailApi';
 import { InfoModal } from '@/widgets/Modal/InfoModal';
-import { localField } from '@/i18n/localField';
+import { useIntl } from 'react-intl';
 
 export const Rating: FC<Grade> = ({
   investmentPotential,
@@ -12,6 +12,7 @@ export const Rating: FC<Grade> = ({
   projectLocation,
   comfortOfLife,
 }) => {
+  const { formatMessage } = useIntl();
   const [infoModal, setInfoModal] = useState(false);
   const [infoTitle, setInfoTitle] = useState('');
   const [infoText, setInfoText] = useState<string>();
@@ -24,78 +25,78 @@ export const Rating: FC<Grade> = ({
   };
 
   const handleSecurity = () => {
-    setInfoTitle(localField('security'));
+    setInfoTitle(formatMessage({ id: 'security' }));
     setInfoText(undefined);
     setChildren(
       <>
-        {localField('info_title')}
+        {formatMessage({ id: 'info_title' })}
         <br />
-        {localField('security_p1')}
+        {formatMessage({ id: 'security_p1' })}
         <br />
-        {localField('security_p2')}
+        {formatMessage({ id: 'security_p2' })}
         <br />
-        {localField('security_p3')}
+        {formatMessage({ id: 'security_p3' })}
       </>
     );
     handleOpenInfoModal();
   };
 
   const handleInvest = () => {
-    setInfoTitle(localField('invest_potential'));
+    setInfoTitle(formatMessage({ id: 'invest_potential' }));
     setInfoText(undefined);
     setChildren(
       <>
-        {localField('info_title')}
+        {formatMessage({ id: 'info_title' })}
         <br />
-        {localField('invest_p1')}
+        {formatMessage({ id: 'invest_p1' })}
         <br />
-        {localField('invest_p2')}
+        {formatMessage({ id: 'invest_p2' })}
         <br />
-        {localField('invest_p3')}
+        {formatMessage({ id: 'invest_p3' })}
       </>
     );
     handleOpenInfoModal();
   };
 
   const handleLocation = () => {
-    setInfoTitle(localField('project_location'));
+    setInfoTitle(formatMessage({ id: 'project_location' }));
     setInfoText(undefined);
     setChildren(
       <>
-        {localField('info_title')}
+        {formatMessage({ id: 'info_title' })}
         <br />
-        {localField('location_p1')}
+        {formatMessage({ id: 'location_p1' })}
         <br />
-        {localField('location_p2')}
+        {formatMessage({ id: 'location_p2' })}
       </>
     );
     handleOpenInfoModal();
   };
 
   const handleComfort = () => {
-    setInfoTitle(localField('comfort'));
+    setInfoTitle(formatMessage({ id: 'comfort' }));
     setInfoText(undefined);
     setChildren(
       <>
-        {localField('info_title')}
+        {formatMessage({ id: 'info_title' })}
         <br />
-        {localField('comfort_p1')}
+        {formatMessage({ id: 'comfort_p1' })}
         <br />
-        {localField('comfort_p2')}
+        {formatMessage({ id: 'comfort_p2' })}
         <br />
-        {localField('comfort_p3')}
+        {formatMessage({ id: 'comfort_p3' })}
         <br />
-        {localField('comfort_p4')}
+        {formatMessage({ id: 'comfort_p4' })}
         <br />
-        {localField('comfort_p5')}
+        {formatMessage({ id: 'comfort_p5' })}
       </>
     );
     handleOpenInfoModal();
   };
 
   const openRatingInfo = () => {
-    setInfoTitle(localField('object_info_title'));
-    setInfoText(localField('object_info_message'));
+    setInfoTitle(formatMessage({ id: 'object_info_title' }));
+    setInfoText(formatMessage({ id: 'object_info_message' }));
     setChildren(undefined);
     handleOpenInfoModal();
   };
@@ -103,7 +104,7 @@ export const Rating: FC<Grade> = ({
   return (
     <div>
       <h5 className={styles.info_icon}>
-        {localField('our_rating')}
+        {formatMessage({ id: 'our_rating' })}
         <div className={styles.icon} onClick={openRatingInfo}>
           <Info />
         </div>
@@ -111,7 +112,7 @@ export const Rating: FC<Grade> = ({
       <div className={styles.rating}>
         {main && (
           <div className={styles.rating__item}>
-            <span className={styles.rating__text}>{localField('overall')}</span>
+            <span className={styles.rating__text}>{formatMessage({ id: 'overall' })}</span>
             <span
               className={`${styles.rating__score} ${styles.rating__score_result}`}
               onClick={openRatingInfo}
@@ -122,7 +123,7 @@ export const Rating: FC<Grade> = ({
         )}
         {investmentSecurity && (
           <div className={styles.rating__item}>
-            <span className={styles.rating__text}>{localField('security')}</span>
+            <span className={styles.rating__text}>{formatMessage({ id: 'security' })}</span>
             <span className={styles.rating__score} onClick={handleSecurity}>
               {investmentSecurity.toPrecision(2)}
             </span>
@@ -130,7 +131,7 @@ export const Rating: FC<Grade> = ({
         )}
         {investmentPotential && (
           <div className={styles.rating__item}>
-            <span className={styles.rating__text}>{localField('invest_potential')}</span>
+            <span className={styles.rating__text}>{formatMessage({ id: 'invest_potential' })}</span>
             <span className={styles.rating__score} onClick={handleInvest}>
               {investmentPotential.toPrecision(2)}
             </span>
@@ -138,7 +139,7 @@ export const Rating: FC<Grade> = ({
         )}
         {projectLocation && (
           <div className={styles.rating__item}>
-            <span className={styles.rating__text}>{localField('project_location')}</span>
+            <span className={styles.rating__text}>{formatMessage({ id: 'project_location' })}</span>
             <span className={styles.rating__score} onClick={handleLocation}>
               {projectLocation.toPrecision(2)}
             </span>
@@ -146,7 +147,7 @@ export const Rating: FC<Grade> = ({
         )}
         {comfortOfLife && (
           <div className={styles.rating__item}>
-            <span className={styles.rating__text}>{localField('comfort')}</span>
+            <span className={styles.rating__text}>{formatMessage({ id: 'comfort' })}</span>
             <span className={styles.rating__score} onClick={handleComfort}>
               {comfortOfLife.toPrecision(2)}
             </span>

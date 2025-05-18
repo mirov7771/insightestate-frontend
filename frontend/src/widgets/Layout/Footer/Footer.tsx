@@ -2,16 +2,18 @@ import { FC } from 'react';
 import styles from './Footer.module.scss';
 import { Link } from 'react-router';
 import { BlackWhatsApp, InstagramBlack, TelegramBlack, YoutubeBlack } from '@/shared/assets/icons';
-import { localField } from '@/i18n/localField';
+import { useIntl } from 'react-intl';
 
 export const Footer: FC = () => {
+  const { formatMessage } = useIntl();
+
   return (
     <div className={styles.wrapper}>
       <footer className={styles.footer}>
         <menu className={styles.menu}>
           <li className={styles.menu__item}>
             <Link className={styles.menu__link} to="listing">
-              {localField('properties')}
+              {formatMessage({ id: 'properties' })}
             </Link>
           </li>
           <li className={styles.menu__item}>
@@ -20,7 +22,7 @@ export const Footer: FC = () => {
               to="https://www.insightestate.com/#about-us"
               target="_blank"
             >
-              {localField('about_us')}
+              {formatMessage({ id: 'about_us' })}
             </Link>
           </li>
           <li className={styles.menu__item}>
@@ -29,13 +31,13 @@ export const Footer: FC = () => {
               to="https://www.insightestate.com/contact"
               target="_blank"
             >
-              {localField('contacts')}
+              {formatMessage({ id: 'contacts' })}
             </Link>
           </li>
         </menu>
         <div className={styles.right}>
           <div className={styles.info}>
-            <span className={styles.label}>{localField('subscribe')}</span>
+            <span className={styles.label}>{formatMessage({ id: 'subscribe' })}</span>
             <ul className={styles.info__links}>
               <li className={styles.info__item}>
                 <a href="https://wa.me/66816315759" target="_blank" rel="noreferrer">
@@ -69,28 +71,28 @@ export const Footer: FC = () => {
           </div>
           <div className={styles.right__wrapper}>
             <div className={styles.info}>
-              <span className={styles.label}>{localField('ask_question')}</span>
+              <span className={styles.label}>{formatMessage({ id: 'ask_question' })}</span>
               <a className={styles.info__link} href="mailto:info@insightestate.com">
                 info@insightestate.com
               </a>
             </div>
             <div className={styles.info}>
-              <span className={styles.label}>{localField('juridical_info')}</span>
+              <span className={styles.label}>{formatMessage({ id: 'juridical_info' })}</span>
               <Link
                 className={styles.info__link}
                 to="https://www.insightestate.com/privacy"
                 target="_blank"
               >
-                {localField('politics')}
+                {formatMessage({ id: 'politics' })}
               </Link>
             </div>
           </div>
         </div>
       </footer>
       <div className={styles.disclaimer}>
-        <p>{localField('footer_info')}</p>
+        <p>{formatMessage({ id: 'footer_info' })}</p>
         <br />
-        <p>© 2025 Insight Estate. {localField('rights_reserved')}</p>
+        <p>© 2025 Insight Estate. {formatMessage({ id: 'rights_reserved' })}</p>
       </div>
     </div>
   );

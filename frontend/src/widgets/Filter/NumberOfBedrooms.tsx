@@ -3,9 +3,10 @@ import { Bed } from '@/shared/assets/icons';
 import styles from './Filter.module.scss';
 import { Accordion, Checkbox } from '@/shared/ui';
 import { useFilters } from '@/widgets/Filter/model/useFilters';
-import { localField } from '@/i18n/localField';
+import { useIntl } from 'react-intl';
 
 export const NumberOfBedrooms: FC = () => {
+  const { formatMessage } = useIntl();
   const { setFilters, rooms } = useFilters();
 
   const handleClick = (e: ChangeEvent<HTMLInputElement>) => {
@@ -20,37 +21,37 @@ export const NumberOfBedrooms: FC = () => {
   };
 
   return (
-    <Accordion icon={<Bed />} title={localField('number_of_bedrooms')}>
+    <Accordion icon={<Bed />} title={formatMessage({ id: 'number_of_bedrooms' })}>
       <div className={styles.content}>
         <Checkbox
           onChange={handleClick}
           checked={rooms?.includes('0')}
           value="0"
-          label={localField('studio')}
+          label={formatMessage({ id: 'studio' })}
         />
         <Checkbox
           onChange={handleClick}
           checked={rooms?.includes('1')}
           value="1"
-          label={`1 ${localField('bedroom')}`}
+          label={`1 ${formatMessage({ id: 'bedroom' })}`}
         />
         <Checkbox
           onChange={handleClick}
           checked={rooms?.includes('2')}
           value="2"
-          label={`2 ${localField('bedrooms')}`}
+          label={`2 ${formatMessage({ id: 'bedrooms' })}`}
         />
         <Checkbox
           onChange={handleClick}
           checked={rooms?.includes('3')}
           value="3"
-          label={`3 ${localField('bedrooms')}`}
+          label={`3 ${formatMessage({ id: 'bedrooms' })}`}
         />
         <Checkbox
           onChange={handleClick}
           checked={rooms?.includes('4')}
           value="4"
-          label={`4+ ${localField('bedrooms')}`}
+          label={`4+ ${formatMessage({ id: 'bedrooms' })}`}
         />
       </div>
     </Accordion>

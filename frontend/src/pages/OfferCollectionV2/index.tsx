@@ -5,15 +5,16 @@ import { Tabs } from './Tabs/Tabs';
 import { WhyThai } from './WhyThai/WhyThai';
 import { ContactManager } from './ContactManager/ContactManager';
 import { useParams } from 'react-router';
-import { localField } from '@/i18n/localField';
+import { useIntl } from 'react-intl';
 
 const OfferCollectionV2: FC = () => {
+  const { formatMessage } = useIntl();
   const { id } = useParams<{ id: string }>();
 
   return (
     <div className={styles.wrap}>
       <Text variant="heading1" as="h1" align="center">
-        {localField('projects_for_you')}
+        {formatMessage({ id: 'projects_for_you' })}
       </Text>
       <Tabs id={id!!} />
       <WhyThai />

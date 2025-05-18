@@ -3,9 +3,10 @@ import { Calendar } from '@/shared/assets/icons';
 import styles from './Filter.module.scss';
 import { Accordion, Checkbox } from '@/shared/ui';
 import { useFilters } from '@/widgets/Filter/model/useFilters';
-import { localField } from '@/i18n/localField';
+import { useIntl } from 'react-intl';
 
 export const CompletionDate: FC = () => {
+  const { formatMessage } = useIntl();
   const { setFilters, buildEndYears } = useFilters();
 
   const handleClick = (e: ChangeEvent<HTMLInputElement>) => {
@@ -20,7 +21,7 @@ export const CompletionDate: FC = () => {
   };
 
   return (
-    <Accordion icon={<Calendar />} title={localField('completion_date')}>
+    <Accordion icon={<Calendar />} title={formatMessage({ id: 'completion_date' })}>
       <div className={styles.content}>
         <Checkbox
           label="2025"

@@ -6,9 +6,10 @@ import { Button, Switcher, Text } from '@/shared/ui';
 import { useNavigate, useSearchParams } from 'react-router';
 import { PayModal } from './PayModal/PayModal';
 import { TariffCard } from '@/pages/Tariffs/TariffCard/TariffCard';
-import {localField} from "@/i18n/localField";
+import { useIntl } from 'react-intl';
 
 export const Tariffs: FC = () => {
+  const { formatMessage } = useIntl();
   const [tariffs, setTariffs] = useState<TariffRs>();
   const [extra, setExtra] = useState(true);
   const [extraPrice, setExtraPrice] = useState(0);
@@ -63,10 +64,10 @@ export const Tariffs: FC = () => {
     <>
       <div>
         <Text variant="heading2" as="h2" align="center">
-            {localField('tariff_title')}
+          {formatMessage({ id: 'tariff_title' })}
         </Text>
         <Text variant="body1" as="h2" align="center" className={styles.description}>
-            {localField('tariff_description')}
+          {formatMessage({ id: 'tariff_description' })}
         </Text>
       </div>
       <div className={styles.wrapper}>
@@ -76,7 +77,11 @@ export const Tariffs: FC = () => {
             <TariffCard
               title={tariff.title}
               description={tariff.description}
-              price={extra && tariff.price > 0 && tariff.title !== 'Pro' ? tariff.price + extraPrice : tariff.price}
+              price={
+                extra && tariff.price > 0 && tariff.title !== 'Pro'
+                  ? tariff.price + extraPrice
+                  : tariff.price
+              }
               id={tariff.id}
               extraId={extraId}
               userSubscriptionId={localStorage.getItem('subscriptionId')}
@@ -86,7 +91,7 @@ export const Tariffs: FC = () => {
                     <div>
                       <Switcher checked={extra} onChange={handleChangeChecked} id="" value={''} />
                     </div>
-                    <Text variant="heading4">{localField('tariff_ai')}</Text>
+                    <Text variant="heading4">{formatMessage({ id: 'tariff_ai' })}</Text>
                   </div>
                 ) : (
                   <></>

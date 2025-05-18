@@ -3,9 +3,10 @@ import { Airport as AirportIcon } from '@/shared/assets/icons';
 import styles from './Filter.module.scss';
 import { Accordion, Checkbox } from '@/shared/ui';
 import { useFilters } from '@/widgets/Filter/model/useFilters';
-import { localField } from '@/i18n/localField';
+import { useIntl } from 'react-intl';
 
 export const Airport: FC = () => {
+  const { formatMessage } = useIntl();
   const { setFilters, airportTravelTimes } = useFilters();
   const [filter, setFilter] = useState<string[]>(airportTravelTimes || []);
 
@@ -31,25 +32,25 @@ export const Airport: FC = () => {
   }, [filter]);
 
   return (
-    <Accordion icon={<AirportIcon />} title={localField('airport_time')}>
+    <Accordion icon={<AirportIcon />} title={formatMessage({ id: 'airport_time' })}>
       <div className={styles.content}>
         <Checkbox
           value="1"
           onChange={handleClick}
           checked={airportTravelTimes?.includes('1')}
-          label={localField('min_30_car')}
+          label={formatMessage({ id: 'min_30_car' })}
         />
         <Checkbox
           value="2"
           onChange={handleClick}
           checked={airportTravelTimes?.includes('2')}
-          label={localField('min_60_car')}
+          label={formatMessage({ id: 'min_60_car' })}
         />
         <Checkbox
           value="3"
           onChange={handleClick}
           checked={airportTravelTimes?.includes('3')}
-          label={localField('min_60_plus_car')}
+          label={formatMessage({ id: 'min_60_plus_car' })}
         />
       </div>
     </Accordion>

@@ -3,10 +3,11 @@ import styles from './SignUpEnd.module.scss';
 import { LogoIcon } from '@/shared/assets/icons';
 import { Button, Input, Text } from '@/shared/ui';
 import { Link, useNavigate } from 'react-router';
-import { localField } from '@/i18n/localField';
+import { useIntl } from 'react-intl';
 import { detailApi } from '@/widgets/Detail/api/detailApi';
 
 export const SignUpEnd: FC = () => {
+  const { formatMessage } = useIntl();
   const navigate = useNavigate();
   const [code, setCode] = useState('');
   const [email, setEmail] = useState<string>('');
@@ -50,20 +51,25 @@ export const SignUpEnd: FC = () => {
         <Link to="/sign-up">Не вы?</Link>
       </Text>
       <form className={styles.form} onSubmit={handleLogin}>
-        <Input onChange={onChangeCode} value={code} name="code" placeholder={localField('code')} />
+        <Input
+          onChange={onChangeCode}
+          value={code}
+          name="code"
+          placeholder={formatMessage({ id: 'code' })}
+        />
         <Button onClick={handleLogin} wide size={'l'} loading={loading}>
           <Text variant="heading4" align="center" as="span">
-            {localField('confirm_button')}
+            {formatMessage({ id: 'confirm_button' })}
           </Text>
         </Button>
       </form>
       <Text variant="caption2" as="p" className={styles.description} align="center">
-        {localField('footer_info_text')}
+        {formatMessage({ id: 'footer_info_text' })}
       </Text>
       <Text variant="body1" as="p" className={styles.signUp} align="center">
         Уже есть аккаунт?{' '}
         <Link to={'/login'} className="button">
-          {localField('log_in')}
+          {formatMessage({ id: 'log_in' })}
         </Link>
       </Text>
     </div>

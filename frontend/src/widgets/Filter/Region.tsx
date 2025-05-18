@@ -3,9 +3,10 @@ import { LocationImg2 } from '@/shared/assets/icons';
 import styles from './Filter.module.scss';
 import { Accordion, RadioButton } from '@/shared/ui';
 import { useFilters } from '@/widgets/Filter/model/useFilters';
-import { localField } from '@/i18n/localField';
+import { useIntl } from 'react-intl';
 
 export const Region: FC = () => {
+  const { formatMessage } = useIntl();
   const { setFilters, beachName } = useFilters();
 
   const handleClick = (e: ChangeEvent<HTMLInputElement>) => {
@@ -13,7 +14,7 @@ export const Region: FC = () => {
   };
 
   return (
-    <Accordion icon={<LocationImg2 />} title={localField('region')}>
+    <Accordion icon={<LocationImg2 />} title={formatMessage({ id: 'region' })}>
       <div className={styles.content}>
         <RadioButton
           name="beachName"

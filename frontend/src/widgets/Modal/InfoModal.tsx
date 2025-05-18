@@ -10,7 +10,7 @@ import {
 import { Spacer } from '../Spacer/Spacer';
 import { Text } from '../Text/Text';
 import { isMobile } from 'react-device-detect';
-import { localField } from '@/i18n/localField';
+import { useIntl } from 'react-intl';
 
 export const InfoModal: FC<
   TModalProps & {
@@ -20,6 +20,8 @@ export const InfoModal: FC<
     text?: string;
   }
 > = ({ onClose, open, anchor, onOpen, title, text, bottom, children }) => {
+  const { formatMessage } = useIntl();
+
   return (
     <>
       <StyledSwipeableDrawer
@@ -49,7 +51,7 @@ export const InfoModal: FC<
         </StyledUpperWrapperProgress>
         <Spacer width="100%" height={24} />
         <StyledButton color="secondary" variant="contained" size="medium" onClick={onClose}>
-          {localField('ok')}
+          {formatMessage({ id: 'ok' })}
         </StyledButton>
       </StyledSwipeableDrawer>
     </>

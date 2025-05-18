@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import styles from './Header.module.scss';
 import { Link } from 'react-router';
-import { localField } from '@/i18n/localField';
+import { useIntl } from 'react-intl';
 
 type MobileMenuProps = {
   profileUrl: string;
@@ -9,21 +9,23 @@ type MobileMenuProps = {
 };
 
 export const MobileMenu: FC<MobileMenuProps> = ({ showMobileMenu, profileUrl }) => {
+  const { formatMessage } = useIntl();
+
   return (
     <menu className={`${styles.mobileMenu} ${showMobileMenu ? styles.mobileMenu__show : ''}`}>
       <li className={styles.menu__item}>
         <Link className={styles.menu__link} to="listing">
-          {localField('properties')}
+          {formatMessage({ id: 'properties' })}
         </Link>
       </li>
       <li className={styles.menu__item}>
         <Link className={styles.menu__link} to="user-collection">
-          {localField('selections')}
+          {formatMessage({ id: 'selections' })}
         </Link>
       </li>
       <li className={styles.menu__item}>
         <Link className={styles.menu__link} to={profileUrl}>
-          {localField('profile')}
+          {formatMessage({ id: 'profile' })}
         </Link>
       </li>
       {/*  <li className={styles.menu__item}>*/}

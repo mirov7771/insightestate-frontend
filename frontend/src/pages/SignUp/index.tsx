@@ -3,12 +3,13 @@ import styles from './SignUp.module.scss';
 import { LogoIcon } from '@/shared/assets/icons';
 import { Button, Input, Text } from '@/shared/ui';
 import { Link, useNavigate } from 'react-router';
-import { localField } from '@/i18n/localField';
+import { useIntl } from 'react-intl';
 import { detailApi } from '@/widgets/Detail/api/detailApi';
 import { isAxiosError } from 'axios';
 
 // Регистрация
 export const SignUp: FC = () => {
+  const { formatMessage } = useIntl();
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
@@ -64,7 +65,7 @@ export const SignUp: FC = () => {
 
         <Button onSubmit={handleLogin} wide size="l" loading={loading} type="submit">
           <Text variant="heading4" align="center" as="span">
-            {localField('proceed')}
+            {formatMessage({ id: 'proceed' })}
           </Text>
         </Button>
       </form>
@@ -77,12 +78,12 @@ export const SignUp: FC = () => {
           className="button"
           rel="noreferrer"
         >
-          {localField('politics_2')}
+          {formatMessage({ id: 'politics_2' })}
         </a>
       </Text>
 
       <Text variant="body1" as="p" className={styles.signUp} align="center">
-        Уже есть аккаунт? <Link to="/login">{localField('log_in')}</Link>
+        Уже есть аккаунт? <Link to="/login">{formatMessage({ id: 'log_in' })}</Link>
       </Text>
     </div>
   );

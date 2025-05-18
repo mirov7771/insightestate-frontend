@@ -3,11 +3,12 @@ import styles from '@/pages/Register/Register.module.scss';
 import { LogoIcon } from '@/shared/assets/icons';
 import { Button, Input, Text } from '@/shared/ui';
 import { Link, useNavigate } from 'react-router';
-import { localField } from '@/i18n/localField';
+import { useIntl } from 'react-intl';
 import { detailApi } from '@/widgets/Detail/api/detailApi';
 import { getNavigate } from '@/pages/Authorization';
 
 export const Register: FC = () => {
+  const { formatMessage } = useIntl();
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState(localStorage.getItem('email') || '');
@@ -114,32 +115,32 @@ export const Register: FC = () => {
             onChange={onChangeUsername}
             value={username}
             name="username"
-            placeholder={localField('surname_name')}
+            placeholder={formatMessage({ id: 'surname_name' })}
           />
           <Input name="email" value={email} onChange={onChangeEmail} placeholder="Email" />
           <Input
             name="phone"
             value={phone}
             onChange={onChangePhone}
-            placeholder={localField('phone_number')}
+            placeholder={formatMessage({ id: 'phone_number' })}
           />
           <Input
             name="location"
             value={location}
             onChange={onChangeLocation}
-            placeholder={localField('location')}
+            placeholder={formatMessage({ id: 'location' })}
           />
           <Input
             name="whatsUp"
             value={whatsUp}
             onChange={onChangeWhatsUp}
-            placeholder={localField('wa')}
+            placeholder={formatMessage({ id: 'wa' })}
           />
           <Input
             name="tgName"
             value={tgName}
             onChange={onChangeTgName}
-            placeholder={localField('tg')}
+            placeholder={formatMessage({ id: 'tg' })}
           />
           <Button
             onClick={() => document.getElementById('profileImage')!!.click()}
@@ -148,7 +149,7 @@ export const Register: FC = () => {
             type="button"
           >
             <Text variant="heading5" align="center" as="span">
-              {localField('photo')}
+              {formatMessage({ id: 'photo' })}
             </Text>
           </Button>
           <input
@@ -171,30 +172,30 @@ export const Register: FC = () => {
             name="password"
             value={password}
             onChange={onChangePassword}
-            placeholder={localField('password')}
+            placeholder={formatMessage({ id: 'password' })}
           />
 
           <Button onClick={handleLogin} wide size={'l'} loading={loading} type="submit">
             <Text variant="heading4" align="center" as="span">
-              {localField('registration')}
+              {formatMessage({ id: 'registration' })}
             </Text>
           </Button>
         </form>
 
         <Text variant="body2" as="p" className={styles.signUp} align="center">
-          {localField('politics_1')}{' '}
+          {formatMessage({ id: 'politics_1' })}{' '}
           <a
             href="https://www.insightestate.com/privacy"
             target="_blank"
             className="button"
             rel="noreferrer"
           >
-            {localField('politics_2')}
+            {formatMessage({ id: 'politics_2' })}
           </a>
         </Text>
 
         <Text variant="body1" as="p" className={styles.signUp} align="center">
-          Уже есть аккаунт? <Link to="/login">{localField('log_in')}</Link>
+          Уже есть аккаунт? <Link to="/login">{formatMessage({ id: 'log_in' })}</Link>
         </Text>
       </div>
     </>

@@ -3,9 +3,10 @@ import { Home } from '@/shared/assets/icons';
 import styles from './Filter.module.scss';
 import { useFilters } from '@/widgets/Filter/model/useFilters';
 import { Accordion, Checkbox } from '@/shared/ui';
-import { localField } from '@/i18n/localField';
+import { useIntl } from 'react-intl';
 
 export const PropertyType: FC = () => {
+  const { formatMessage } = useIntl();
   const { setFilters, types } = useFilters();
 
   const handleClick = (e: ChangeEvent<HTMLInputElement>) => {
@@ -18,16 +19,16 @@ export const PropertyType: FC = () => {
   };
 
   return (
-    <Accordion icon={<Home />} title={localField('type_of_place')}>
+    <Accordion icon={<Home />} title={formatMessage({ id: 'type_of_place' })}>
       <div className={styles.content}>
         <Checkbox
-          label={localField('villa_type')}
+          label={formatMessage({ id: 'villa_type' })}
           name="VILLA"
           onChange={handleClick}
           checked={types?.includes('VILLA')}
         />
         <Checkbox
-          label={localField('apartment_type')}
+          label={formatMessage({ id: 'apartment_type' })}
           name="APARTMENT"
           onChange={handleClick}
           checked={types?.includes('APARTMENT')}

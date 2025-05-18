@@ -3,7 +3,7 @@ import { Section } from '../Section';
 import styles from './ApartmentLayouts.module.scss';
 import { RoomLayouts } from '@/widgets/Detail/api/detailApi';
 import { formatNumber } from '@/shared/utils';
-import { localField } from '@/i18n/localField';
+import { useIntl } from 'react-intl';
 
 export const ApartmentLayouts: FC<RoomLayouts & { estateId?: string }> = ({
   studio,
@@ -17,13 +17,15 @@ export const ApartmentLayouts: FC<RoomLayouts & { estateId?: string }> = ({
   villaFour,
   villaFive,
 }) => {
+  const { formatMessage } = useIntl();
+
   return (
     <>
-      <Section title={localField('layouts')}>
+      <Section title={formatMessage({ id: 'layouts' })}>
         <div className={`${styles.item__header} ${styles.item}`}>
-          <span>{localField('plan')}</span>
-          <span>{localField('size_sqm')}</span>
-          <span>{localField('price_range')}</span>
+          <span>{formatMessage({ id: 'plan' })}</span>
+          <span>{formatMessage({ id: 'size_sqm' })}</span>
+          <span>{formatMessage({ id: 'price_range' })}</span>
         </div>
         {studio ? (
           <div className={styles.item}>
@@ -42,7 +44,7 @@ export const ApartmentLayouts: FC<RoomLayouts & { estateId?: string }> = ({
         )}
         {one ? (
           <div className={styles.item}>
-            <span>1 {localField('bedroom')}</span>
+            <span>1 {formatMessage({ id: 'bedroom' })}</span>
             <span>
               {one?.square?.min || one?.square?.max} - {one?.square?.max || one?.square?.min}
             </span>
@@ -56,7 +58,7 @@ export const ApartmentLayouts: FC<RoomLayouts & { estateId?: string }> = ({
         )}
         {two ? (
           <div className={styles.item}>
-            <span>2 {localField('bedrooms')}</span>
+            <span>2 {formatMessage({ id: 'bedrooms' })}</span>
             <span>
               {two?.square?.min || two?.square?.max} - {two?.square?.max || two?.square?.min}
             </span>
@@ -70,7 +72,7 @@ export const ApartmentLayouts: FC<RoomLayouts & { estateId?: string }> = ({
         )}
         {three ? (
           <div className={styles.item}>
-            <span>3 {localField('bedrooms')}</span>
+            <span>3 {formatMessage({ id: 'bedrooms' })}</span>
             <span>
               {three?.square?.min || three?.square?.max} -{' '}
               {three?.square?.max || three?.square?.min}
@@ -85,7 +87,7 @@ export const ApartmentLayouts: FC<RoomLayouts & { estateId?: string }> = ({
         )}
         {four ? (
           <div className={styles.item}>
-            <span>4 {localField('bedrooms')}</span>
+            <span>4 {formatMessage({ id: 'bedrooms' })}</span>
             <span>
               {four?.square?.min || four?.square?.max} - {four?.square?.max || four?.square?.min}
             </span>
@@ -99,7 +101,7 @@ export const ApartmentLayouts: FC<RoomLayouts & { estateId?: string }> = ({
         )}
         {five ? (
           <div className={styles.item}>
-            <span>5 {localField('bedrooms2')}</span>
+            <span>5 {formatMessage({ id: 'bedrooms2' })}</span>
             <span>
               {five?.square?.min || five?.square?.max} - {five?.square?.max || five?.square?.min}
             </span>
@@ -114,7 +116,7 @@ export const ApartmentLayouts: FC<RoomLayouts & { estateId?: string }> = ({
         {villaTwo ? (
           <div className={styles.item}>
             <span>
-              {localField('villa')} 2 {localField('bedrooms')}
+              {formatMessage({ id: 'villa' })} 2 {formatMessage({ id: 'bedrooms' })}
             </span>
             <span>
               {villaTwo?.square?.min || villaTwo?.square?.max} -{' '}
@@ -131,7 +133,7 @@ export const ApartmentLayouts: FC<RoomLayouts & { estateId?: string }> = ({
         {villaThree ? (
           <div className={styles.item}>
             <span>
-              {localField('villa')} 3 {localField('bedrooms')}
+              {formatMessage({ id: 'villa' })} 3 {formatMessage({ id: 'bedrooms' })}
             </span>
             <span>
               {villaThree?.square?.min || villaThree?.square?.max} -{' '}
@@ -148,7 +150,7 @@ export const ApartmentLayouts: FC<RoomLayouts & { estateId?: string }> = ({
         {villaFour ? (
           <div className={styles.item}>
             <span>
-              {localField('villa')} 4 {localField('bedrooms')}
+              {formatMessage({ id: 'villa' })} 4 {formatMessage({ id: 'bedrooms' })}
             </span>
             <span>
               {villaFour?.square?.min || villaFour?.square?.max} -{' '}
@@ -165,7 +167,7 @@ export const ApartmentLayouts: FC<RoomLayouts & { estateId?: string }> = ({
         {villaFive ? (
           <div className={styles.item}>
             <span>
-              {localField('villa')} 5 {localField('bedrooms2')}
+              {formatMessage({ id: 'villa' })} 5 {formatMessage({ id: 'bedrooms2' })}
             </span>
             <span>
               {villaFive?.square?.min || villaFive?.square?.max} -{' '}
