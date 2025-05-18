@@ -22,7 +22,7 @@ import { Rating } from '@/pages/EstateDetail/Rating/Rating';
 import { Info } from '@/pages/EstateDetail/Info/Info';
 import { LocationImg } from '@/shared/assets/icons';
 import { Section } from '@/pages/EstateDetail/Section/Section';
-import { Button } from '@/shared/ui';
+import { Button, Text } from '@/shared/ui';
 import { BaseUserModal } from '@/widgets/Modal/BaseUserModal';
 import { UserCollectionModal } from '@/widgets/Modal/UserCollectionModal';
 import { AiModal } from '@/widgets/Modal/AiModal';
@@ -118,19 +118,19 @@ const EstateDetail: FC = () => {
               disabled={token === null || token === undefined || token === ''}
               onClick={handleOpenUserCollectionModal}
             >
-              {formatMessage({ id: 'add_to_collection' })}
+              <Text variant="heading4">{formatMessage({ id: 'add_to_collection' })}</Text>
             </Button>
             <Button
               disabled={token === null || token === undefined || token === ''}
               onClick={handleOpenBaseUserModal}
             >
-              {formatMessage({ id: 'help_with_client' })}
+              <Text variant="heading4">{formatMessage({ id: 'help_with_client' })}</Text>
             </Button>
             <Button
               disabled={token === null || token === undefined || token === ''}
               onClick={handleOpenAiModal}
             >
-              {formatMessage({ id: 'ai_collection' })}
+              <Text variant="heading4">{formatMessage({ id: 'ai_collection' })}</Text>
             </Button>
           </div>
         }

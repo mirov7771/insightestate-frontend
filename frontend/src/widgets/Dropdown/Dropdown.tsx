@@ -3,12 +3,21 @@ import styles from './Dropdown.module.scss';
 import { useIntl } from 'react-intl';
 import { Globe } from '@/shared/assets/icons';
 import getUserLocale from 'get-user-locale';
+import MenuItem from '@mui/material/MenuItem';
+import { Text } from '@/shared/ui';
+import Menu from '@mui/material/Menu';
 
 export const Dropdown: FC = () => {
   const { formatMessage } = useIntl();
-  const [dropdownState, setDropdownState] = useState({ open: false });
-  const handleDropdownClick = () => setDropdownState({ open: !dropdownState.open });
-  const handleClickOutside = () => setDropdownState({ open: false });
+
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
   const [locale, setLocale] = useState<string>(localStorage.getItem('language') || 'ru');
   const userLocale = getUserLocale();
 
@@ -23,13 +32,11 @@ export const Dropdown: FC = () => {
 
   const handleRusLanguage = () => {
     localStorage.setItem('language', 'ru');
-    handleClickOutside();
     window.location.reload();
   };
 
   const handleEngLanguage = () => {
     localStorage.setItem('language', 'en');
-    handleClickOutside();
     window.location.reload();
   };
 
@@ -39,21 +46,39 @@ export const Dropdown: FC = () => {
         type="button"
         className={styles.button}
         style={{ width: locale === 'en' ? 120 : 90 }}
-        onClick={handleDropdownClick}
+        onClick={handleClick}
       >
         <div className={styles.icon}>
           <Globe />
         </div>
         {formatMessage({ id: 'language' })}
       </button>
-      {dropdownState.open && (
-        <div className={styles.dropdown}>
-          <ul>
-            <li onClick={handleRusLanguage}>Rus</li>
-            <li onClick={handleEngLanguage}>Eng</li>
-          </ul>
-        </div>
-      )}
+      <Menu
+        classes={{ list: styles.list }}
+        id="basic-menu"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+      >
+        <MenuItem
+          classes={{ root: styles.listItem }}
+          onClick={() => {
+            handleClose();
+            handleRusLanguage();
+          }}
+        >
+          <Text variant="heading5">Rus</Text>
+        </MenuItem>
+        <MenuItem
+          classes={{ root: styles.listItem }}
+          onClick={() => {
+            handleClose();
+            handleEngLanguage();
+          }}
+        >
+          <Text variant="heading5">Eng</Text>
+        </MenuItem>
+      </Menu>
     </div>
   );
 };
