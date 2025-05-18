@@ -60,6 +60,8 @@ import OfferCollectionDots from './offer-collection/tabler-icon-dots.svg?react';
 import OfferCollectionCopy from './offer-collection/tabler-icon-copy.svg?react';
 import OfferCollectionEdit from './offer-collection/tabler-icon-edit.svg?react';
 import OfferCollectionTrash from './offer-collection/tabler-icon-trash.svg?react';
+import OfferCollectionX from './offer-collection/tabler-icon-x.svg?react';
+import OfferCollectionCircleCheckFilled from './offer-collection/tabler-icon-circle-check-filled.svg?react';
 
 export {
   Bed,
@@ -125,4 +127,6 @@ export {
   OfferCollectionCopy,
   OfferCollectionEdit,
   OfferCollectionTrash,
+  OfferCollectionX,
+  OfferCollectionCircleCheckFilled,
 };

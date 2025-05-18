@@ -130,9 +130,11 @@ export const Card: FC<Estate & { collectionId: string }> = (estate) => {
             />
           </div>
           {/*Name and Price*/}
-          <Text className={styles.header} variant="heading2">
-            {estate.name}
-          </Text>
+          <div className={styles.header__wrapper}>
+            <Text className={styles.header} variant="heading2">
+              {estate.name}
+            </Text>
+          </div>
           <Text variant="heading3">
             {localField('p_from')} ${formatNumber(estate.price?.min)}{' '}
             <span className={styles.price}>• ${formatNumber(estate.price?.max)}</span>

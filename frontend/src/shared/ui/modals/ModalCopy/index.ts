@@ -1,0 +1,1 @@
+export { ModalCopy } from './ModalCopy';

@@ -1,0 +1,42 @@
+@use '~@/sass/index' as *;
+
+.root {
+  padding: 16px 10px;
+  border-radius: 8px;
+
+  @media (min-width: $media-md) {
+    padding: 16px;
+  }
+
+  :global {
+    .MuiSnackbarContent-root {
+      padding: 16px 10px;
+      border-radius: 8px;
+      background-color: var(--ui-color-black);
+
+      @media (min-width: $media-md) {
+        padding: 16px;
+      }
+    }
+
+    .MuiSnackbarContent-message {
+      padding: 0;
+    }
+  }
+}
+
+.message {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  & > svg {
+    width: 20px;
+    height: 20px;
+
+    @media (min-width: $media-md) {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}

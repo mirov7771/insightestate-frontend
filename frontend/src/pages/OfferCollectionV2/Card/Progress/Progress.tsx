@@ -18,7 +18,9 @@ export const Progress = ({ icon, label, value, min = 0, max = 10, className }: P
     <div className={[styles.root, className].filter(Boolean).join(' ')}>
       <div className={styles.topRow}>
         <div className={styles.label}>
-          <Text variant="body1">{label}</Text>
+          <Text variant="body1" className={styles.label__value}>
+            {label}
+          </Text>
           {icon && <span className={styles.icon}>{icon}</span>}
         </div>
         <div className={styles.value}>

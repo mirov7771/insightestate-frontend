@@ -15,6 +15,10 @@
   align-items: center;
   gap: 6px;
   font-size: 14px;
+
+  &__value {
+    white-space: nowrap;
+  }
 }
 
 .icon {

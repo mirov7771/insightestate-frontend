@@ -10,7 +10,7 @@
 
   @media (min-width: $media-xl) {
     display: grid;
-    grid-template-columns: 2fr 3fr;
+    grid-template-columns: minmax(350px, 2fr) minmax(500px, 3fr);
     gap: 12px;
     max-height: 500px;
   }
@@ -52,9 +52,18 @@
 
 .header {
   margin-bottom: 4px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 100%;
 
   @media (min-width: $media-md) {
     margin-bottom: 8px;
+  }
+
+  &__wrapper {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
   }
 }
 

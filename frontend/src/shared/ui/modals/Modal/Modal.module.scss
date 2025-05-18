@@ -1,0 +1,31 @@
+@use '~@/sass/index' as *;
+
+.paper {
+  border-radius: 24px;
+  padding: 24px;
+}
+
+.close {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  color: var(--ui-color-black);
+  position: absolute;
+  right: 24px;
+  top: 24px;
+
+  & > svg {
+    width: 20px;
+    height: 20px;
+    color: var(--ui-color-black);
+
+    @media (min-width: $media-md) {
+      width: 28px;
+      height: 28px;
+    }
+  }
+  @media (min-width: $media-md) {
+    width: 48px;
+    height: 48px;
+  }
+}

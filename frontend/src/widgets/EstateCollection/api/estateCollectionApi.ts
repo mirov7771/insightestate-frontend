@@ -19,9 +19,9 @@ type ResponseGetEstateCollection = {
 };
 
 export type EstateCollection = {
-  estates: Array<Estate>;
   id: string;
   name: string;
+  estates?: Array<Estate>;
 };
 
 export type Estate = {
