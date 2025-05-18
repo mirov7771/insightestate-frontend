@@ -5,14 +5,15 @@ import { Card } from '@/entities/Card/Card';
 import { Pagination } from '@/shared/ui';
 import { useFilters } from '@/widgets/Filter/model/useFilters';
 import { Watch } from 'react-loader-spinner';
-import { localField } from '@/i18n/localField';
+import { useIntl } from 'react-intl';
 
 const Listing: FC = () => {
+  const { formatMessage } = useIntl();
   const { setFilters, pageNumber, estates, totalPages, hasMore, loading } = useFilters();
 
   return (
     <div className={styles.wrap}>
-      <h1 className={styles.header}>{localField('projects')}</h1>
+      <h1 className={styles.header}>{formatMessage({ id: 'projects' })}</h1>
       <div className={styles.layout}>
         <aside>
           <Filter />
@@ -28,7 +29,7 @@ const Listing: FC = () => {
                 wrapperClass=""
               />
             ) : (
-              <h5>{localField('not_found')}</h5>
+              <h5>{formatMessage({ id: 'not_found' })}</h5>
             )
           ) : (
             <>

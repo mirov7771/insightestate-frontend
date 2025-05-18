@@ -8,10 +8,11 @@ import { Slider } from '@/pages/OfferCollectionV2/Card/Slider/Slider';
 import { Estate, estateCollectionApi } from '@/widgets/EstateCollection/api/estateCollectionApi';
 import { formatNumber } from '@/shared/utils';
 import { DEFAULT_IMG } from '@/entities/Card/Card';
-import { localField } from '@/i18n/localField';
+import { useIntl } from 'react-intl';
 import { InfoModal } from '@/widgets/Modal/InfoModal';
 
 export const Card: FC<Estate & { collectionId: string }> = (estate) => {
+  const { formatMessage } = useIntl();
   const [like, setLike] = useState(false);
   const [square, setSquare] = useState(100);
   const [token, setToken] = useState<string | undefined | null>(localStorage.getItem('basicToken'));
@@ -30,8 +31,8 @@ export const Card: FC<Estate & { collectionId: string }> = (estate) => {
     if (isDelete) window.location.reload();
   };
   const openRatingInfo = () => {
-    setInfoTitle(localField('object_info_title'));
-    setInfoText(localField('object_info_message'));
+    setInfoTitle(formatMessage({ id: 'object_info_title' }));
+    setInfoText(formatMessage({ id: 'object_info_message' }));
     setIsDelete(false);
     handleOpenInfoModal();
   };
@@ -81,8 +82,8 @@ export const Card: FC<Estate & { collectionId: string }> = (estate) => {
     estateCollectionApi
       .deleteFromCollection(token!!, estate.collectionId!!, estate.id)
       .then(() => {
-        setInfoTitle(localField('object_delete_title'));
-        setInfoText(localField('object_delete_message'));
+        setInfoTitle(formatMessage({ id: 'object_delete_title' }));
+        setInfoText(formatMessage({ id: 'object_delete_message' }));
         handleOpenInfoModal();
       })
       .catch((e) => console.log(e));
@@ -136,7 +137,7 @@ export const Card: FC<Estate & { collectionId: string }> = (estate) => {
             </Text>
           </div>
           <Text variant="heading3">
-            {localField('p_from')} ${formatNumber(estate.price?.min)}{' '}
+            {formatMessage({ id: 'p_from' })} ${formatNumber(estate.price?.min)}{' '}
             <span className={styles.price}>• ${formatNumber(estate.price?.max)}</span>
           </Text>
         </section>
@@ -157,7 +158,7 @@ export const Card: FC<Estate & { collectionId: string }> = (estate) => {
               {/*{square}{' '}m<sup>2</sup>*/}
             </Text>
             <Text className={styles.info__description} align="center" variant="caption1">
-              {localField('size_sqm')}
+              {formatMessage({ id: 'size_sqm' })}
             </Text>
           </div>
           {!!estate.floors && (
@@ -166,7 +167,7 @@ export const Card: FC<Estate & { collectionId: string }> = (estate) => {
                 {estate.floors}
               </Text>
               <Text className={styles.info__description} align="center" variant="caption1">
-                {localField('total_floors')}
+                {formatMessage({ id: 'total_floors' })}
               </Text>
             </div>
           )}
@@ -177,15 +178,15 @@ export const Card: FC<Estate & { collectionId: string }> = (estate) => {
             {/*Table 1*/}
             <section className={styles.table}>
               <div className={styles.table__item}>
-                <Text variant="body1">{localField('completion_date')}</Text>
+                <Text variant="body1">{formatMessage({ id: 'completion_date' })}</Text>
                 <Text variant="heading4">{estate.buildEndDate}</Text>
               </div>
               <div className={styles.table__item}>
-                <Text variant="body1">{localField('roi')}</Text>
+                <Text variant="body1">{formatMessage({ id: 'roi' })}</Text>
                 <Text variant="heading4">{estate.profitability?.roi || 200}%</Text>
               </div>
               <div className={styles.table__item}>
-                <Text variant="body1">{localField('irr')}</Text>
+                <Text variant="body1">{formatMessage({ id: 'irr' })}</Text>
                 <Text variant="heading4">{estate.profitability?.irr || 13}%</Text>
               </div>
             </section>
@@ -193,20 +194,20 @@ export const Card: FC<Estate & { collectionId: string }> = (estate) => {
             {/*Table 2*/}
             <section className={styles.table}>
               <div className={styles.table__item}>
-                <Text variant="body1">{localField('beach')}</Text>
-                <Text variant="heading4">1 {localField('min')}</Text>
+                <Text variant="body1">{formatMessage({ id: 'beach' })}</Text>
+                <Text variant="heading4">1 {formatMessage({ id: 'min' })}</Text>
               </div>
               <div className={styles.table__item}>
-                <Text variant="body1">{localField('mall')}</Text>
-                <Text variant="heading4">26 {localField('min')}</Text>
+                <Text variant="body1">{formatMessage({ id: 'mall' })}</Text>
+                <Text variant="heading4">26 {formatMessage({ id: 'min' })}</Text>
               </div>
               <div className={styles.table__item}>
-                <Text variant="body1">{localField('airport')}</Text>
+                <Text variant="body1">{formatMessage({ id: 'airport' })}</Text>
                 <Text variant="heading4">
                   {estate.infrastructure?.airportTime?.car ||
                     estate.infrastructure?.airportTime?.walk ||
                     30}{' '}
-                  {localField('min')}
+                  {formatMessage({ id: 'min' })}
                 </Text>
               </div>
             </section>
@@ -227,7 +228,7 @@ export const Card: FC<Estate & { collectionId: string }> = (estate) => {
           <section className={styles.progress}>
             <Progress
               value={estate.grade?.investmentSecurity || 9}
-              label={localField('security')}
+              label={formatMessage({ id: 'security' })}
               icon={
                 <span className={styles.icon}>
                   <VectorRating />
@@ -238,7 +239,7 @@ export const Card: FC<Estate & { collectionId: string }> = (estate) => {
             />
             <Progress
               value={estate.grade?.projectLocation || 9}
-              label={localField('project_location')}
+              label={formatMessage({ id: 'project_location' })}
               icon={
                 <span className={styles.icon}>
                   <VectorRating />
@@ -249,7 +250,7 @@ export const Card: FC<Estate & { collectionId: string }> = (estate) => {
             />
             <Progress
               value={estate.grade?.investmentPotential || 9}
-              label={localField('invest_potential')}
+              label={formatMessage({ id: 'invest_potential' })}
               icon={
                 <span className={styles.icon}>
                   <VectorRating />
@@ -260,7 +261,7 @@ export const Card: FC<Estate & { collectionId: string }> = (estate) => {
             />
             <Progress
               value={estate.grade?.comfortOfLife || 9}
-              label={localField('comfort')}
+              label={formatMessage({ id: 'comfort' })}
               icon={
                 <span className={styles.icon}>
                   <VectorRating />

@@ -7,7 +7,7 @@ import trainers from '@/shared/assets/icons/Trainers.svg';
 import beach from '@/shared/assets/icons/Beach.svg';
 import shopping from '@/shared/assets/icons/ShoppingCart.svg';
 import airport from '@/shared/assets/icons/Airport.svg';
-import { localField } from '@/i18n/localField';
+import { useIntl } from 'react-intl';
 
 export const Infrastructure: FC<{
   childRoom: boolean;
@@ -17,25 +17,27 @@ export const Infrastructure: FC<{
   beachTime?: number;
   mallTime?: number;
 }> = ({ beachTime, airportTime, mallTime, gym, childRoom, coworking }) => {
+  const { formatMessage } = useIntl();
+
   return (
-    <Section title={localField('infrastructure')}>
+    <Section title={formatMessage({ id: 'infrastructure' })}>
       <div className={styles.wrapper}>
         {childRoom && (
           <div className={styles.item}>
             <img src={baby} className={styles.item__icon} alt="icon" />
-            <span>{localField('kids')}</span>
+            <span>{formatMessage({ id: 'kids' })}</span>
           </div>
         )}
         {coworking && (
           <div className={styles.item}>
             <img src={macbook} className={styles.item__icon} alt="icon" />
-            <span>{localField('co_working')}</span>
+            <span>{formatMessage({ id: 'co_working' })}</span>
           </div>
         )}
         {gym && (
           <div className={styles.item}>
             <img src={trainers} className={styles.item__icon} alt="icon" />
-            <span>{localField('gym')}</span>
+            <span>{formatMessage({ id: 'gym' })}</span>
           </div>
         )}
       </div>
@@ -43,23 +45,23 @@ export const Infrastructure: FC<{
       <div className={styles.wrapper}>
         <div className={styles.item}>
           <img src={beach} className={styles.item__icon} alt="icon" />
-          <strong>{localField('beach')}</strong>
+          <strong>{formatMessage({ id: 'beach' })}</strong>
           <span>
-            {beachTime} {localField('min_on_car')}
+            {beachTime} {formatMessage({ id: 'min_on_car' })}
           </span>
         </div>
         <div className={styles.item}>
           <img src={shopping} className={styles.item__icon} alt="icon" />
-          <strong>{localField('mall')}</strong>
+          <strong>{formatMessage({ id: 'mall' })}</strong>
           <span>
-            {mallTime} {localField('min_on_car')}
+            {mallTime} {formatMessage({ id: 'min_on_car' })}
           </span>
         </div>
         <div className={styles.item}>
           <img src={airport} className={styles.item__icon} alt="icon" />
-          <strong>{localField('airport')}</strong>
+          <strong>{formatMessage({ id: 'airport' })}</strong>
           <span>
-            {airportTime} {localField('min_on_car')}
+            {airportTime} {formatMessage({ id: 'min_on_car' })}
           </span>
         </div>
       </div>

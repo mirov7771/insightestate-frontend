@@ -11,12 +11,13 @@ import { Beach } from '@/widgets/Filter/Beach';
 import { Company } from '@/widgets/Filter/Company';
 import { Region } from '@/widgets/Filter/Region';
 import { City } from '@/widgets/Filter/City';
-import { localField } from '@/i18n/localField';
+import { useIntl } from 'react-intl';
 import { Spacer } from '@/widgets/Spacer/Spacer';
 import { Button } from '@/shared/ui';
 import { AiModal } from '@/widgets/Modal/AiModal';
 
 export const Filter: FC = () => {
+  const { formatMessage } = useIntl();
   const { setFilters } = useFilters();
   const resetFilters = () => {
     setFilters(DEFAULT_FILTERS);
@@ -25,9 +26,9 @@ export const Filter: FC = () => {
   return (
     <>
       <div className={styles.header}>
-        <h5>{localField('filter_params')}</h5>
+        <h5>{formatMessage({ id: 'filter_params' })}</h5>
         <span className={styles.reset} onClick={resetFilters}>
-          {localField('filter_clear')}
+          {formatMessage({ id: 'filter_clear' })}
         </span>
       </div>
       <City />
@@ -46,6 +47,7 @@ export const Filter: FC = () => {
 };
 
 const AiFilter: FC = () => {
+  const { formatMessage } = useIntl();
   const [aiModal, setAiModal] = useState(false);
   const handleOpenAiModal = () => {
     setAiModal(true);
@@ -57,10 +59,10 @@ const AiFilter: FC = () => {
   return (
     <>
       <div className={styles.info}>
-        <p>{localField('ai_text')}</p>
+        <p>{formatMessage({ id: 'ai_text' })}</p>
         <Spacer height={20} width={100} />
         <Button onClick={handleOpenAiModal} wide size={'m'}>
-          {localField('ai_button')}
+          {formatMessage({ id: 'ai_button' })}
         </Button>
       </div>
       <AiModal

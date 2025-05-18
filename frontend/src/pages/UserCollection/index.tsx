@@ -8,7 +8,7 @@ import styles from './UserCollection.module.scss';
 import { Watch } from 'react-loader-spinner';
 import { DEFAULT_IMG } from '@/entities/Card/Card';
 import { useNavigate } from 'react-router';
-import { localField } from '@/i18n/localField';
+import { useIntl } from 'react-intl';
 import { CardView } from './CardView/CardView';
 import { BlockView } from '@/pages/UserCollection/BlockView/BlockView';
 import { Tabs } from '@/entities/Tabs/Tabs';
@@ -101,6 +101,7 @@ const ItemCollection: FC<Required<EstateCollection> & { token: string; value: nu
 };
 
 export const UserCollection: FC = () => {
+  const { formatMessage } = useIntl();
   const [value, setValue] = useState(0);
   const [collection, setCollection] = useState<EstateCollection[]>([]);
   const [status, setStatus] = useState<TStatus>('IDLE');
@@ -126,7 +127,7 @@ export const UserCollection: FC = () => {
 
   return (
     <div className={styles.wrap}>
-      <h1 className={styles.header}>{localField('collection_title')}</h1>
+      <h1 className={styles.header}>{formatMessage({ id: 'collection_title' })}</h1>
       {status === 'LOADING' && (
         <Watch
           height="180"

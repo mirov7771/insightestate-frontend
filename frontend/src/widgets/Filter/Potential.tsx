@@ -3,9 +3,10 @@ import { Vector } from '@/shared/assets/icons';
 import styles from './Filter.module.scss';
 import { Accordion, Checkbox } from '@/shared/ui';
 import { useFilters } from '@/widgets/Filter/model/useFilters';
-import { localField } from '@/i18n/localField';
+import { useIntl } from 'react-intl';
 
 export const Potential: FC = () => {
+  const { formatMessage } = useIntl();
   const { setFilters, grades } = useFilters();
   const [filter, setFilter] = useState<string[]>(grades || []);
 
@@ -31,31 +32,31 @@ export const Potential: FC = () => {
   }, [filter]);
 
   return (
-    <Accordion icon={<Vector />} title={localField('potential')}>
+    <Accordion icon={<Vector />} title={formatMessage({ id: 'potential' })}>
       <div className={styles.content}>
         <Checkbox
           value="3"
           onChange={handleClick}
           checked={grades?.includes('3')}
-          label={localField('invest_f1')}
+          label={formatMessage({ id: 'invest_f1' })}
         />
         <Checkbox
           value="4"
           onChange={handleClick}
           checked={grades?.includes('4')}
-          label={localField('invest_f2')}
+          label={formatMessage({ id: 'invest_f2' })}
         />
         <Checkbox
           value="1"
           onChange={handleClick}
           checked={grades?.includes('1')}
-          label={localField('invest_f3')}
+          label={formatMessage({ id: 'invest_f3' })}
         />
         <Checkbox
           value="2"
           onChange={handleClick}
           checked={grades?.includes('2')}
-          label={localField('invest_f4')}
+          label={formatMessage({ id: 'invest_f4' })}
         />
       </div>
     </Accordion>

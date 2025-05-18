@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Section } from '../Section';
-import { localField } from '@/i18n/localField';
+import { useIntl } from 'react-intl';
 import { GMap } from '@/shared/ui';
 
 const containerStyle = {
@@ -13,12 +13,13 @@ type MapProps = {
 };
 
 export const Map: FC<MapProps> = ({ url }) => {
+  const { formatMessage } = useIntl();
   const renderMap = () => {
     return <GMap mapContainerStyle={containerStyle} url={url} />;
   };
 
   return renderMap() ? (
-    <Section title={localField('map')}>
+    <Section title={formatMessage({ id: 'map' })}>
       <GMap mapContainerStyle={containerStyle} url={url} />
     </Section>
   ) : null;

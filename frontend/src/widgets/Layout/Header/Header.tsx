@@ -3,12 +3,13 @@ import styles from './Header.module.scss';
 import { Logo, Menu } from '@/shared/assets/icons';
 import { Link, useNavigate } from 'react-router';
 import { Dropdown } from '@/widgets/Dropdown/Dropdown';
-import { localField } from '@/i18n/localField';
+import { useIntl } from 'react-intl';
 import { MobileMenu } from '@/widgets/Layout/Header/MobileMenu';
 import { estateCollectionApi } from '@/widgets/EstateCollection/api/estateCollectionApi';
 import { isMobile } from 'react-device-detect';
 
 export const Header: FC<{ basicToken: string }> = ({ basicToken }) => {
+  const { formatMessage } = useIntl();
   const navigate = useNavigate();
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [profileImage, setProfileImage] = useState<string>(
@@ -48,17 +49,17 @@ export const Header: FC<{ basicToken: string }> = ({ basicToken }) => {
         <menu className={styles.menu}>
           <li className={styles.menu__item}>
             <Link className={styles.menu__link} to="listing">
-              {localField('properties')}
+              {formatMessage({ id: 'properties' })}
             </Link>
           </li>
           <li className={styles.menu__item}>
             <Link className={styles.menu__link} to="user-collection">
-              {localField('selections')}
+              {formatMessage({ id: 'selections' })}
             </Link>
           </li>
           {/*<li className={styles.menu__item}>*/}
           {/*  <Link className={styles.menu__link} to={profileUrl}>*/}
-          {/*    {localField('profile')}*/}
+          {/*    {formatMessage({ id: 'profile' })}*/}
           {/*  </Link>*/}
           {/*</li>*/}
           {/*  <li className={styles.menu__item}>*/}

@@ -5,11 +5,12 @@ import { Spacer } from '@/widgets/Spacer/Spacer';
 import { BaseField } from '@/widgets/BaseField/BaseField';
 import { Button } from '@/shared/ui';
 import { useNavigate } from 'react-router';
-import { localField } from '@/i18n/localField';
+import { useIntl } from 'react-intl';
 import { detailApi } from '@/widgets/Detail/api/detailApi';
 import { estateCollectionApi } from '@/widgets/EstateCollection/api/estateCollectionApi';
 
 export const Profile: FC = () => {
+  const { formatMessage } = useIntl();
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState(localStorage.getItem('email') || '');
@@ -121,7 +122,7 @@ export const Profile: FC = () => {
           onChange={onChangeUsername}
           value={username}
           name="username"
-          label={localField('surname_name')}
+          label={formatMessage({ id: 'surname_name' })}
         />
         <Spacer height={8} width={100} />
         <BaseField name="email" value={email} onChange={onChangeEmail} label="Email" />
@@ -130,32 +131,32 @@ export const Profile: FC = () => {
           name="phone"
           value={phone}
           onChange={onChangePhone}
-          label={localField('phone_number')}
+          label={formatMessage({ id: 'phone_number' })}
         />
         <Spacer height={8} width={100} />
         <BaseField
           name="location"
           value={location}
           onChange={onChangeLocation}
-          label={localField('location')}
+          label={formatMessage({ id: 'location' })}
         />
         <Spacer height={8} width={100} />
         <BaseField
           name="whatsUp"
           value={whatsUp}
           onChange={onChangeWhatsUp}
-          label={localField('wa')}
+          label={formatMessage({ id: 'wa' })}
         />
         <Spacer height={8} width={100} />
         <BaseField
           name="tgName"
           value={tgName}
           onChange={onChangeTgName}
-          label={localField('tg')}
+          label={formatMessage({ id: 'tg' })}
         />
         <Spacer height={8} width={100} />
         <Button onClick={() => document.getElementById('profileImage')!!.click()} size="s" wide>
-          {localField('photo')}
+          {formatMessage({ id: 'photo' })}
         </Button>
         <input
           id="profileImage"
@@ -178,17 +179,17 @@ export const Profile: FC = () => {
           name="password"
           value={password}
           onChange={onChangePassword}
-          label={localField('password')}
+          label={formatMessage({ id: 'password' })}
         />
 
         <Spacer height={20} width={100} />
         <Button onClick={handleLogin} wide size={'l'} loading={loading}>
-          {localField('save')}
+          {formatMessage({ id: 'save' })}
         </Button>
         <Spacer height={20} width={100} />
         <div className={styles.centerRegistration}>
           <a href={'/listing'} className="button">
-            {localField('come_back')}
+            {formatMessage({ id: 'come_back' })}
           </a>
         </div>
       </div>

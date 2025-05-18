@@ -26,9 +26,10 @@ import { Button } from '@/shared/ui';
 import { BaseUserModal } from '@/widgets/Modal/BaseUserModal';
 import { UserCollectionModal } from '@/widgets/Modal/UserCollectionModal';
 import { AiModal } from '@/widgets/Modal/AiModal';
-import { localField } from '@/i18n/localField';
+import { useIntl } from 'react-intl';
 
 const EstateDetail: FC = () => {
+  const { formatMessage } = useIntl();
   const { id } = useParams<{ id: string }>();
   const token = localStorage.getItem('basicToken');
   const [name, setName] = useState<string>('');
@@ -117,19 +118,19 @@ const EstateDetail: FC = () => {
               disabled={token === null || token === undefined || token === ''}
               onClick={handleOpenUserCollectionModal}
             >
-              {localField('add_to_collection')}
+              {formatMessage({ id: 'add_to_collection' })}
             </Button>
             <Button
               disabled={token === null || token === undefined || token === ''}
               onClick={handleOpenBaseUserModal}
             >
-              {localField('help_with_client')}
+              {formatMessage({ id: 'help_with_client' })}
             </Button>
             <Button
               disabled={token === null || token === undefined || token === ''}
               onClick={handleOpenAiModal}
             >
-              {localField('ai_collection')}
+              {formatMessage({ id: 'ai_collection' })}
             </Button>
           </div>
         }
@@ -142,7 +143,7 @@ const EstateDetail: FC = () => {
       <div className={styles.layout}>
         <main className={styles.main}>
           {description ? (
-            <Section title={localField('description')}>
+            <Section title={formatMessage({ id: 'description' })}>
               <span className={styles.description}>{description}</span>
             </Section>
           ) : (

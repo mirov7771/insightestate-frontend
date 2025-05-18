@@ -5,7 +5,7 @@ import { Estate } from '@/widgets/Filter/api/filterApi';
 import { Button } from '@/shared/ui';
 import { estateCollectionApi } from '@/widgets/EstateCollection/api/estateCollectionApi';
 import { InfoModal } from '@/widgets/Modal/InfoModal';
-import { localField } from '@/i18n/localField';
+import { useIntl } from 'react-intl';
 
 export const DEFAULT_IMG =
   'https://cdn.prod.website-files.com/672b5797ac1486cdfc5122ac/67aa547c02740c42abf52609_675f0debfa47fa6400a3c65a_Exterior_03.jpeg';
@@ -33,6 +33,7 @@ export const Card: FC<
   collectionId,
   token,
 }) => {
+  const { formatMessage } = useIntl();
   const img = exteriorImages?.[0] || facilityImages?.[0] || interiorImages?.[0] || DEFAULT_IMG;
   const [infoModal, setInfoModal] = useState(false);
   const [infoTitle, setInfoTitle] = useState('');
@@ -49,8 +50,8 @@ export const Card: FC<
       estateCollectionApi
         .deleteFromCollection(token!!, collectionId, id!!)
         .then(() => {
-          setInfoTitle(localField('object_delete_title'));
-          setInfoText(localField('object_delete_message'));
+          setInfoTitle(formatMessage({ id: 'object_delete_title' }));
+          setInfoText(formatMessage({ id: 'object_delete_message' }));
           handleOpenInfoModal();
         })
         .catch((e) => console.log(e));
@@ -58,8 +59,8 @@ export const Card: FC<
   };
 
   const openRatingInfo = () => {
-    setInfoTitle(localField('object_info_title'));
-    setInfoText(localField('object_info_message'));
+    setInfoTitle(formatMessage({ id: 'object_info_title' }));
+    setInfoText(formatMessage({ id: 'object_info_message' }));
     handleOpenInfoModal();
   };
 
@@ -83,7 +84,7 @@ export const Card: FC<
               <span className={styles.card__details__item}>{buildEndDate}</span>
             )}
             <span className={styles.card__details__item}>
-              <Beach /> {beachTravelTime} {localField('min')}
+              <Beach /> {beachTravelTime} {formatMessage({ id: 'min' })}
             </span>
           </div>
         </div>
@@ -105,7 +106,7 @@ export const Card: FC<
               <span className={styles.card__details__item}>{buildEndDate}</span>
             )}
             <span className={styles.card__details__item}>
-              <Beach /> {beachTravelTime} {localField('min')}
+              <Beach /> {beachTravelTime} {formatMessage({ id: 'min' })}
             </span>
           </div>
         </div>
@@ -120,7 +121,7 @@ export const Card: FC<
         </a>
       )}
       <p>
-        <strong>{localField('price_from')}</strong>{' '}
+        <strong>{formatMessage({ id: 'price_from' })}</strong>{' '}
         {Intl.NumberFormat('en-US', {
           style: 'currency',
           currency: 'USD',

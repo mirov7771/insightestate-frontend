@@ -11,15 +11,17 @@ import {
   OfferCollectionTrendingUp,
   OfferCollectionUsersGroup,
 } from '@/shared/assets/icons';
-import { localField } from '@/i18n/localField';
+import { useIntl } from 'react-intl';
 
 export const WhyThai: FC = () => {
+  const { formatMessage } = useIntl();
+
   return (
     <section className={styles.root}>
       <div className={styles.content}>
         <div className={styles.content__text}>
           <Text variant="heading2" as="h2" className={styles.title}>
-            {localField('why')}
+            {formatMessage({ id: 'why' })}
           </Text>
 
           <ul className={styles.list}>
@@ -27,43 +29,43 @@ export const WhyThai: FC = () => {
               <span className={styles.icon}>
                 <OfferCollectionCurrencyDollar />
               </span>
-              <Text variant="body1">{localField('why_1')}</Text>
+              <Text variant="body1">{formatMessage({ id: 'why_1' })}</Text>
             </li>
             <li>
               <span className={styles.icon}>
                 <OfferCollectionTrendingUp />
               </span>
-              <Text variant="body1">{localField('why_2')}</Text>
+              <Text variant="body1">{formatMessage({ id: 'why_2' })}</Text>
             </li>
             <li>
               <span className={styles.icon}>
                 <OfferCollectionMoodDollar />
               </span>
-              <Text variant="body1">{localField('why_3')}</Text>
+              <Text variant="body1">{formatMessage({ id: 'why_3' })}</Text>
             </li>
             <li>
               <span className={styles.icon}>
                 <OfferCollectionUsersGroup />
               </span>
-              <Text variant="body1">{localField('why_4')}</Text>
+              <Text variant="body1">{formatMessage({ id: 'why_4' })}</Text>
             </li>
             <li>
               <span className={styles.icon}>
                 <OfferCollectionHeartRateMonitor />
               </span>
-              <Text variant="body1">{localField('why_5')}</Text>
+              <Text variant="body1">{formatMessage({ id: 'why_5' })}</Text>
             </li>
             <li>
               <span className={styles.icon}>
                 <OfferCollectionHomeDollar />
               </span>
-              <Text variant="body1">{localField('why_6')}</Text>
+              <Text variant="body1">{formatMessage({ id: 'why_6' })}</Text>
             </li>
             <li>
               <span className={styles.icon}>
                 <OfferCollectionCalendarTime />
               </span>
-              <Text variant="body1">{localField('why_7')}</Text>
+              <Text variant="body1">{formatMessage({ id: 'why_7' })}</Text>
             </li>
           </ul>
         </div>

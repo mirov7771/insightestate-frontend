@@ -1,11 +1,11 @@
-import React, {FC, ReactElement, useEffect, useState} from 'react';
+import React, { FC, ReactElement, useEffect, useState } from 'react';
 import styles from './TariffCard.module.scss';
 import { useNavigate } from 'react-router';
 import { estateCollectionApi } from '@/widgets/EstateCollection/api/estateCollectionApi';
 import { PayModal } from '../PayModal/PayModal';
 import { Button, Text } from '@/shared/ui';
-import {DESCRIPTIONS_ENG, DESCRIPTIONS_RU} from './constants';
-import {localField} from "@/i18n/localField";
+import { DESCRIPTIONS_ENG, DESCRIPTIONS_RU } from './constants';
+import { useIntl } from 'react-intl';
 
 type TariffCardProps = {
   description: string[];
@@ -26,9 +26,10 @@ export const TariffCard: FC<TariffCardProps> = ({
   userSubscriptionId,
   switcher,
 }) => {
+  const { formatMessage } = useIntl();
   const navigate = useNavigate();
   const [infoModal, setInfoModal] = useState(false);
-  const [desc, setDesc] = useState(DESCRIPTIONS_RU)
+  const [desc, setDesc] = useState(DESCRIPTIONS_RU);
   const handleOpenInfoModal = () => {
     setInfoModal(true);
   };
@@ -55,14 +56,18 @@ export const TariffCard: FC<TariffCardProps> = ({
   const getSubscription = (): string => {
     if (userSubscriptionId) {
       if (userSubscriptionId === id) {
-        return price > 0 ? localField('tariff_my') : localField('tariff_free_continue');
+        return price > 0
+          ? formatMessage({ id: 'tariff_my' })
+          : formatMessage({ id: 'tariff_free_continue' });
       }
     }
-    return price > 0 ? `${price}$ ${localField('tariff_month')}` : localField('tariff_free');
+    return price > 0
+      ? `${price}$ ${formatMessage({ id: 'tariff_month' })}`
+      : formatMessage({ id: 'tariff_free' });
   };
 
   useEffect(() => {
-    setDesc(localStorage.getItem('language') === 'ru' ? DESCRIPTIONS_RU : DESCRIPTIONS_ENG)
+    setDesc(localStorage.getItem('language') === 'ru' ? DESCRIPTIONS_RU : DESCRIPTIONS_ENG);
   }, []);
 
   return (
@@ -74,7 +79,7 @@ export const TariffCard: FC<TariffCardProps> = ({
           </Text>
           {title === 'Pro' && (
             <Text variant="heading4" as="span" className={styles.card__badge}>
-              {localField('tariff_popular')}
+              {formatMessage({ id: 'tariff_popular' })}
             </Text>
           )}
         </div>

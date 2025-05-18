@@ -3,9 +3,10 @@ import { City as CityImg } from '@/shared/assets/icons';
 import styles from './Filter.module.scss';
 import { Accordion, RadioButton } from '@/shared/ui';
 import { useFilters } from '@/widgets/Filter/model/useFilters';
-import { localField } from '@/i18n/localField';
+import { useIntl } from 'react-intl';
 
 export const City: FC = () => {
+  const { formatMessage } = useIntl();
   const { setFilters, city } = useFilters();
 
   const handleClick = (e: ChangeEvent<HTMLInputElement>) => {
@@ -13,7 +14,7 @@ export const City: FC = () => {
   };
 
   return (
-    <Accordion icon={<CityImg />} title={localField('city')}>
+    <Accordion icon={<CityImg />} title={formatMessage({ id: 'city' })}>
       <div className={styles.content}>
         <RadioButton
           name="city"

@@ -20,7 +20,7 @@ import {
   LevelTypeRu,
   ProjectUnitCount,
 } from '@/widgets/Detail/api/detailApi';
-import { localField } from '@/i18n/localField';
+import { useIntl } from 'react-intl';
 
 export const Info: FC<{
   companyEnabled: boolean;
@@ -43,22 +43,23 @@ export const Info: FC<{
   parkingSize,
   companyEnabled,
 }) => {
+  const { formatMessage } = useIntl();
   const [locale, setLocale] = useState<string>(localStorage.getItem('language') || 'ru');
 
   return (
     <div className={styles.info}>
       <div className={styles.info__item}>
         <span className={styles.text}>
-          <Diamond /> {localField('class')}
+          <Diamond /> {formatMessage({ id: 'class' })}
         </span>
         <span className={styles.text}>
           {(locale === 'en' ? LevelTypeEn.get(level) : LevelTypeRu.get(level)) ||
-            localField('not_selected')}
+            formatMessage({ id: 'not_selected' })}
         </span>
       </div>
       <div className={styles.info__item}>
         <span className={styles.text}>
-          <Home /> {localField('type_of_place')}
+          <Home /> {formatMessage({ id: 'type_of_place' })}
         </span>
         <span className={styles.text}>
           {(locale === 'en' ? EstateTypeEn.get(type) : EstateTypeRu.get(type)) || 'Villa'}
@@ -67,7 +68,7 @@ export const Info: FC<{
       {buildEndDate ? (
         <div className={styles.info__item}>
           <span className={styles.text}>
-            <Calendar /> {localField('completion_date')}
+            <Calendar /> {formatMessage({ id: 'completion_date' })}
           </span>
           <span className={styles.text}>{buildEndDate}</span>
         </div>
@@ -77,7 +78,7 @@ export const Info: FC<{
       {floors ? (
         <div className={styles.info__item}>
           <span className={styles.text}>
-            <CityBuilding /> {localField('total_floors')}
+            <CityBuilding /> {formatMessage({ id: 'total_floors' })}
           </span>
           <span className={styles.text}>{floors}</span>
         </div>
@@ -87,7 +88,7 @@ export const Info: FC<{
       {project?.total ? (
         <div className={styles.info__item}>
           <span className={styles.text}>
-            <Conference /> {localField('total_aparts')}
+            <Conference /> {formatMessage({ id: 'total_aparts' })}
           </span>
           <span className={styles.text}>{project?.total}</span>
         </div>
@@ -97,10 +98,10 @@ export const Info: FC<{
       {infrastructure?.beachTime?.car ? (
         <div className={styles.info__item}>
           <span className={styles.text}>
-            <Beach /> {localField('to_beach')}
+            <Beach /> {formatMessage({ id: 'to_beach' })}
           </span>
           <span className={styles.text}>
-            {infrastructure?.beachTime?.car} {localField('min')}
+            {infrastructure?.beachTime?.car} {formatMessage({ id: 'min' })}
           </span>
         </div>
       ) : (
@@ -109,10 +110,10 @@ export const Info: FC<{
       {infrastructure?.airportTime?.car ? (
         <div className={styles.info__item}>
           <span className={styles.text}>
-            <Airport /> {localField('to_airport')}
+            <Airport /> {formatMessage({ id: 'to_airport' })}
           </span>
           <span className={styles.text}>
-            {infrastructure?.airportTime?.car} {localField('min')}
+            {infrastructure?.airportTime?.car} {formatMessage({ id: 'min' })}
           </span>
         </div>
       ) : (
@@ -121,7 +122,7 @@ export const Info: FC<{
       {parkingSize ? (
         <div className={styles.info__item}>
           <span className={styles.text}>
-            <Car /> {localField('parking')}
+            <Car /> {formatMessage({ id: 'parking' })}
           </span>
           <span className={styles.text}>{parkingSize}</span>
         </div>
@@ -131,7 +132,7 @@ export const Info: FC<{
       {developer ? (
         <div className={styles.info__item}>
           <span className={styles.text}>
-            <Constructing /> {localField('developer')}
+            <Constructing /> {formatMessage({ id: 'developer' })}
           </span>
           <span className={styles.text}>{developer}</span>
         </div>
@@ -140,9 +141,11 @@ export const Info: FC<{
       )}
       <div className={styles.info__item}>
         <span className={styles.text}>
-          <Money /> {localField('uk')}
+          <Money /> {formatMessage({ id: 'uk' })}
         </span>
-        <span className={styles.text}>{companyEnabled ? localField('yes') : localField('no')}</span>
+        <span className={styles.text}>
+          {companyEnabled ? formatMessage({ id: 'yes' }) : formatMessage({ id: 'no' })}
+        </span>
       </div>
     </div>
   );

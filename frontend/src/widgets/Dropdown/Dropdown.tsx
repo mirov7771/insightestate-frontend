@@ -1,10 +1,11 @@
 import { FC, useEffect, useState } from 'react';
 import styles from './Dropdown.module.scss';
-import { localField } from '@/i18n/localField';
+import { useIntl } from 'react-intl';
 import { Globe } from '@/shared/assets/icons';
 import getUserLocale from 'get-user-locale';
 
 export const Dropdown: FC = () => {
+  const { formatMessage } = useIntl();
   const [dropdownState, setDropdownState] = useState({ open: false });
   const handleDropdownClick = () => setDropdownState({ open: !dropdownState.open });
   const handleClickOutside = () => setDropdownState({ open: false });
@@ -43,7 +44,7 @@ export const Dropdown: FC = () => {
         <div className={styles.icon}>
           <Globe />
         </div>
-        {localField('language')}
+        {formatMessage({ id: 'language' })}
       </button>
       {dropdownState.open && (
         <div className={styles.dropdown}>

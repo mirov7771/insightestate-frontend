@@ -12,9 +12,10 @@ import { Text } from '../Text/Text';
 import { BaseField } from '@/widgets/BaseField/BaseField';
 import { useNavigate } from 'react-router';
 import { isMobile } from 'react-device-detect';
-import { localField } from '@/i18n/localField';
+import { useIntl } from 'react-intl';
 
 export const AiModal: FC<TModalProps> = ({ onClose, open, anchor, onOpen }) => {
+  const { formatMessage } = useIntl();
   const navigate = useNavigate();
   const [isNew, setIsNew] = useState<boolean>(false);
   const [name, setName] = useState<string>('');
@@ -51,16 +52,16 @@ export const AiModal: FC<TModalProps> = ({ onClose, open, anchor, onOpen }) => {
             <Spacer width="100%" height={8} />
             <Spacer width="100%" height={8} />
             <Text size="xl" align="center" colorTheme={'black200'} isBold>
-              {localField('ai_title')}
+              {formatMessage({ id: 'ai_title' })}
             </Text>
             <Spacer width="100%" height={8} />
             {!isNew ? (
               <StyledWrapperText>
                 <Text size="m" align="left" colorTheme={'black200'}>
-                  {localField('ai_header')}
+                  {formatMessage({ id: 'ai_header' })}
                   <br />
                   <br />
-                  {localField('ai_body')}
+                  {formatMessage({ id: 'ai_body' })}
                 </Text>
               </StyledWrapperText>
             ) : (
@@ -70,7 +71,7 @@ export const AiModal: FC<TModalProps> = ({ onClose, open, anchor, onOpen }) => {
                 name="name"
                 rows={7}
                 multiline={true}
-                placeholder={localField('ai_label')}
+                placeholder={formatMessage({ id: 'ai_label' })}
               />
             )}
           </StyledWrapperProgress>
@@ -78,11 +79,11 @@ export const AiModal: FC<TModalProps> = ({ onClose, open, anchor, onOpen }) => {
         <Spacer width="100%" height={24} />
         {!isNew ? (
           <StyledButton color="secondary" variant="contained" size="medium" onClick={handleIsNew}>
-            {localField('ai_button_1')}
+            {formatMessage({ id: 'ai_button_1' })}
           </StyledButton>
         ) : (
           <StyledButton color="secondary" variant="contained" size="medium" onClick={goTo}>
-            {localField('ai_button_2')}
+            {formatMessage({ id: 'ai_button_2' })}
           </StyledButton>
         )}
         <Spacer width="100%" height={8} />

@@ -1,10 +1,10 @@
-import { FC } from 'react';
+import { FC, useMemo } from 'react';
 import styles from './TableComparison.module.scss';
 import { BadgeRating, Text } from '@/shared/ui';
 import { OfferCollectionMapPinFilled } from '@/shared/assets/icons';
 import { Estate } from '@/widgets/EstateCollection/api/estateCollectionApi';
 import { DEFAULT_IMG } from '@/entities/Card/Card';
-import { localField } from '@/i18n/localField';
+import { useIntl } from 'react-intl';
 import { extractNestedValuesOrFallback, formatNumber } from '@/shared/utils';
 
 type TKeys =
@@ -26,31 +26,34 @@ type TKeys =
   | 'totalFloors'
   | 'priceTo';
 
-const fields: Record<TKeys, string> = {
-  overallRating: localField('overallRating'),
-  investmentSafety: localField('security'),
-  locationRating: localField('locationRating'),
-  investmentPotential: localField('invest_potential'),
-  qualityOfLife: localField('comfort'),
-  priceFrom: localField('priceFrom'),
-  priceTo: localField('priceTo'),
-  pricePerSquareMeter: localField('pricePerSquareMeter'),
-  deliveryDate: localField('completion_date'),
-  roiOver10Years: localField('roi'),
-  irrOver10Years: localField('irr'),
-  beachTime: localField('beach_time'),
-  timeToShoppingMall: localField('timeToShoppingMall'),
-  airportTime: localField('airport_time'),
-  plan: localField('plan'),
-  sizeSqm: localField('size_sqm'),
-  totalFloors: localField('total_floors'),
-};
-
 type TableComparisonProps = {
   estate: Array<Estate>;
 };
 
 export const TableComparison: FC<TableComparisonProps> = ({ estate }) => {
+  const { formatMessage } = useIntl();
+  const fields: Record<TKeys, string> = useMemo(
+    () => ({
+      overallRating: formatMessage({ id: 'overallRating' }),
+      investmentSafety: formatMessage({ id: 'security' }),
+      locationRating: formatMessage({ id: 'locationRating' }),
+      investmentPotential: formatMessage({ id: 'invest_potential' }),
+      qualityOfLife: formatMessage({ id: 'comfort' }),
+      priceFrom: formatMessage({ id: 'priceFrom' }),
+      priceTo: formatMessage({ id: 'priceTo' }),
+      pricePerSquareMeter: formatMessage({ id: 'pricePerSquareMeter' }),
+      deliveryDate: formatMessage({ id: 'completion_date' }),
+      roiOver10Years: formatMessage({ id: 'roi' }),
+      irrOver10Years: formatMessage({ id: 'irr' }),
+      beachTime: formatMessage({ id: 'beach_time' }),
+      timeToShoppingMall: formatMessage({ id: 'timeToShoppingMall' }),
+      airportTime: formatMessage({ id: 'airport_time' }),
+      plan: formatMessage({ id: 'plan' }),
+      sizeSqm: formatMessage({ id: 'size_sqm' }),
+      totalFloors: formatMessage({ id: 'total_floors' }),
+    }),
+    [formatMessage]
+  );
   const result: Record<TKeys, string[] | undefined> = {
     overallRating: extractNestedValuesOrFallback(estate, 'grade.main', '9.0')?.map((rating) =>
       Number(rating).toFixed(1).replace('.', ',')
@@ -84,15 +87,15 @@ export const TableComparison: FC<TableComparisonProps> = ({ estate }) => {
       (text) => `${text}%`
     ),
     beachTime: extractNestedValuesOrFallback(estate, 'infrastructure.beachTime.walk', '1')?.map(
-      (text) => `${text} ${localField('min')}`
+      (text) => `${text} ${formatMessage({ id: 'min' })}`
     ),
     timeToShoppingMall: extractNestedValuesOrFallback(
       estate,
       'infrastructure.mallTime.walk',
       '1'
-    )?.map((text) => `${text} ${localField('min')}`),
+    )?.map((text) => `${text} ${formatMessage({ id: 'min' })}`),
     airportTime: extractNestedValuesOrFallback(estate, 'infrastructure.airportTime.walk', '1')?.map(
-      (text) => `${text} ${localField('min')}`
+      (text) => `${text} ${formatMessage({ id: 'min' })}`
     ),
     plan: undefined,
     sizeSqm: undefined,

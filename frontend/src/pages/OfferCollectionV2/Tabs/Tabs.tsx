@@ -6,7 +6,7 @@ import {
   EstateCollection,
   estateCollectionApi,
 } from '@/widgets/EstateCollection/api/estateCollectionApi';
-import { localField } from '@/i18n/localField';
+import { useIntl } from 'react-intl';
 import { TableComparison } from '@/pages/OfferCollectionV2/TableComparison/TableComparison';
 
 interface TabPanelProps {
@@ -32,6 +32,7 @@ const CustomTabPanel = (props: TabPanelProps) => {
 };
 
 export const Tabs: FC<{ id: string }> = ({ id }) => {
+  const { formatMessage } = useIntl();
   const [estateCollection, setEstateCollection] = useState<EstateCollection>();
   const [value, setValue] = useState(0);
 
@@ -46,7 +47,10 @@ export const Tabs: FC<{ id: string }> = ({ id }) => {
     <>
       <div className={styles.tabsWrapper}>
         <TabsUI
-          content={[localField('list').toUpperCase(), localField('comparison').toUpperCase()]}
+          content={[
+            formatMessage({ id: 'list' }).toUpperCase(),
+            formatMessage({ id: 'comparison' }).toUpperCase(),
+          ]}
           value={value}
           setValue={setValue}
         />

@@ -1,10 +1,10 @@
 import React, { FC, useEffect, useState } from 'react';
+import { isMobile } from 'react-device-detect';
+import { useIntl } from 'react-intl';
 import styles from '@/pages/Authorization/Authorization.module.scss';
 import { Spacer } from '@/widgets/Spacer/Spacer';
 import { StyledButton } from '@/widgets/Modal/styled';
 import { useNavigate } from 'react-router';
-import { localField } from '@/i18n/localField';
-import { isMobile } from 'react-device-detect';
 import { estateCollectionApi } from '@/widgets/EstateCollection/api/estateCollectionApi';
 
 export const getNavigate = async () => {
@@ -24,6 +24,7 @@ export const getNavigate = async () => {
 };
 
 export const Authorization: FC = () => {
+  const { formatMessage } = useIntl();
   const navigate = useNavigate();
   const [session, setSession] = useState<string | undefined | null>(
     localStorage.getItem('basicToken')
@@ -48,9 +49,9 @@ export const Authorization: FC = () => {
             <div className={styles.video}></div>
             <div className={styles.wrap_mobile}>
               <Spacer height={140} width={100} />
-              <p className={styles.text_mobile}>{localField('main_title')}</p>
+              <p className={styles.text_mobile}>{formatMessage({ id: 'main_title' })}</p>
               <Spacer height={20} width={100} />
-              <p className={styles.text2_mobile}>{localField('main_text')}</p>
+              <p className={styles.text2_mobile}>{formatMessage({ id: 'main_text' })}</p>
               <Spacer height={40} width={100} />
               <div className={styles.button_mobile}>
                 <StyledButton
@@ -58,14 +59,14 @@ export const Authorization: FC = () => {
                   color="info"
                   variant="contained"
                   size="small"
-                  href={'/login'}
+                  onClick={() => navigate('/login')}
                   style={{
                     backgroundColor: '#04b0be',
                     borderRadius: '100vw',
                     fontFamily: 'Wix Madefor Display,Arial,sans-serif',
                   }}
                 >
-                  {localField('log_in')}
+                  {formatMessage({ id: 'log_in' })}
                 </StyledButton>
               </div>
               <Spacer height={20} width={100} />
@@ -75,7 +76,7 @@ export const Authorization: FC = () => {
                   color="info"
                   variant="contained"
                   size="small"
-                  href={'/sign-up'}
+                  onClick={() => navigate('/sign-up')}
                   style={{
                     backgroundColor: 'transparent',
                     borderRadius: '100vw',
@@ -83,7 +84,7 @@ export const Authorization: FC = () => {
                     fontFamily: 'Wix Madefor Display,Arial,sans-serif',
                   }}
                 >
-                  {localField('registration')}
+                  {formatMessage({ id: 'registration' })}
                 </StyledButton>
               </div>
             </div>
@@ -93,9 +94,9 @@ export const Authorization: FC = () => {
             <div className={styles.video}></div>
             <div className={styles.wrap}>
               <Spacer height={140} width={100} />
-              <p className={styles.text}>{localField('main_title')}</p>
+              <p className={styles.text}>{formatMessage({ id: 'main_title' })}</p>
               <Spacer height={20} width={100} />
-              <p className={styles.text2}>{localField('main_text')}</p>
+              <p className={styles.text2}>{formatMessage({ id: 'main_text' })}</p>
               <Spacer height={40} width={100} />
               <div className={styles.button}>
                 <StyledButton
@@ -103,7 +104,7 @@ export const Authorization: FC = () => {
                   color="info"
                   variant="contained"
                   size="small"
-                  href={'/login'}
+                  onClick={() => navigate('/login')}
                   style={{
                     backgroundColor: '#04b0be',
                     borderRadius: '100vw',
@@ -111,7 +112,7 @@ export const Authorization: FC = () => {
                     fontFamily: 'Wix Madefor Display,Arial,sans-serif',
                   }}
                 >
-                  {localField('log_in')}
+                  {formatMessage({ id: 'log_in' })}
                 </StyledButton>
               </div>
               <Spacer height={20} width={100} />
@@ -121,7 +122,7 @@ export const Authorization: FC = () => {
                   color="info"
                   variant="contained"
                   size="small"
-                  href={'/sign-up'}
+                  onClick={() => navigate('/sign-up')}
                   style={{
                     backgroundColor: 'transparent',
                     borderRadius: '100vw',
@@ -129,7 +130,7 @@ export const Authorization: FC = () => {
                     fontFamily: 'Wix Madefor Display,Arial,sans-serif',
                   }}
                 >
-                  {localField('registration')}
+                  {formatMessage({ id: 'registration' })}
                 </StyledButton>
               </div>
             </div>

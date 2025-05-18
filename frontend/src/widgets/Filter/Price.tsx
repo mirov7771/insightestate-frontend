@@ -3,9 +3,10 @@ import { Coins } from '@/shared/assets/icons';
 import styles from './Filter.module.scss';
 import { Accordion, RadioButton } from '@/shared/ui';
 import { useFilters } from '@/widgets/Filter/model/useFilters';
-import { localField } from '@/i18n/localField';
+import { useIntl } from 'react-intl';
 
 export const Price: FC = () => {
+  const { formatMessage } = useIntl();
   const { setFilters, price } = useFilters();
 
   const handleClick = (e: ChangeEvent<HTMLInputElement>) => {
@@ -13,14 +14,14 @@ export const Price: FC = () => {
   };
 
   return (
-    <Accordion icon={<Coins />} title={localField('price')}>
+    <Accordion icon={<Coins />} title={formatMessage({ id: 'price' })}>
       <div className={styles.content}>
         <RadioButton
           name="price"
           value="1"
           onChange={handleClick}
           checked={price === '1'}
-          label={`${localField('to')} $100 000`}
+          label={`${formatMessage({ id: 'to' })} $100 000`}
         />
         <RadioButton
           name="price"
@@ -48,7 +49,7 @@ export const Price: FC = () => {
           value="5"
           onChange={handleClick}
           checked={price === '5'}
-          label={`${localField('from')} $1 000 000`}
+          label={`${formatMessage({ id: 'from' })} $1 000 000`}
         />
       </div>
     </Accordion>
