@@ -63,20 +63,14 @@ export const GradeTable: FC<
         )}
         {isMobile ? (
           <tbody className={styles.tbody_mobile}>
-            {estates.map((estate) => (
-              <GradeRow {...estate} />
-            ))}
+            {estates?.map((estate) => <GradeRow {...estate} />)}
           </tbody>
         ) : (
-          <tbody>
-            {estates.map((estate) => (
-              <GradeRow {...estate} />
-            ))}
-          </tbody>
+          <tbody>{estates?.map((estate) => <GradeRow {...estate} />)}</tbody>
         )}
       </table>
       <main className={isMobile ? styles.main_mobile : styles.main}>
-        {estates.map((estate) => (
+        {estates?.map((estate) => (
           <>
             <Card
               key={estate.id}

@@ -9,6 +9,10 @@
 .name {
   margin-top: 16px;
   cursor: pointer;
+
+  &__disabled {
+    cursor: default;
+  }
 }
 
 .description {

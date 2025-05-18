@@ -50,16 +50,10 @@ export const AnalyzeTable: FC<EstateCollection & { isMobile: boolean }> = ({
         )}
         {isMobile ? (
           <tbody className={styles.tbody_mobile}>
-            {estates.map((estate) => (
-              <AnalyzeRow {...estate} />
-            ))}
+            {estates?.map((estate) => <AnalyzeRow {...estate} />)}
           </tbody>
         ) : (
-          <tbody>
-            {estates.map((estate) => (
-              <AnalyzeRow {...estate} />
-            ))}
-          </tbody>
+          <tbody>{estates?.map((estate) => <AnalyzeRow {...estate} />)}</tbody>
         )}
       </table>
     </div>

@@ -5,6 +5,7 @@ import { Estate } from '@/widgets/EstateCollection/api/estateCollectionApi';
 import { ActionButton } from '@/pages/UserCollection/CardView/ActionButton';
 
 type CardViewProps = {
+  copyLink: () => void;
   deleteCollection: () => void;
   estates: Estate[];
   goToCollection: () => void;
@@ -18,14 +19,25 @@ export const CardView: FC<CardViewProps> = ({
   estates,
   goToCollection,
   deleteCollection,
+  copyLink,
 }) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.images}>
         <AvatarGroup images={images} avatarSize={48} overlap={24} maxDisplay={4} />
-        <ActionButton deleteCollection={deleteCollection} />
+        <ActionButton
+          deleteCollection={deleteCollection}
+          estateName={name}
+          estates={estates}
+          copyLink={copyLink}
+        />
       </div>
-      <Text className={styles.name} variant="heading4" as="span" onClick={goToCollection}>
+      <Text
+        className={`${styles.name} ${!estates.length ? styles.name__disabled : ''}`}
+        variant="heading4"
+        as="span"
+        onClick={!!estates.length ? goToCollection : undefined}
+      >
         {name}
       </Text>
       <Text className={styles.description} variant="heading4" as="span">

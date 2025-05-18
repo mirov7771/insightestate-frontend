@@ -1,0 +1,1 @@
+export { ModalDeleteEstate } from './ModalDeleteEstate';

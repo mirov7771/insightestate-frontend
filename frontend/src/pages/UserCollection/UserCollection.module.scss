@@ -92,3 +92,13 @@
   overflow: hidden;
 }
 
+.loader {
+  margin: 32px auto;
+  display: flex;
+  justify-content: center;
+}
+
+.empty {
+  color: var(--ui-color-black-64-opacity);
+}
+

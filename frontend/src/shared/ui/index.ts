@@ -10,3 +10,5 @@ export { GMap } from './GMap';
 export { Input } from './Input';
 export { Switcher } from './Switcher';
 export { AvatarGroup } from './AvatarGroup';
+export { Modal, ModalCopy, ModalChangeEstateName, ModalDeleteEstate } from './modals';
+export { NotificationsProvider, useNotifications } from './NotificationCenter';

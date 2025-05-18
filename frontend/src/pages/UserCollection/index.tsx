@@ -1,48 +1,20 @@
 import { FC, ReactNode, useEffect, useState } from 'react';
+import { useCopyToClipboard } from '@uidotdev/usehooks';
 import {
   EstateCollection,
   estateCollectionApi,
 } from '@/widgets/EstateCollection/api/estateCollectionApi';
 import styles from './UserCollection.module.scss';
+import { Watch } from 'react-loader-spinner';
 import { DEFAULT_IMG } from '@/entities/Card/Card';
 import { useNavigate } from 'react-router';
 import { localField } from '@/i18n/localField';
 import { CardView } from './CardView/CardView';
 import { BlockView } from '@/pages/UserCollection/BlockView/BlockView';
 import { Tabs } from '@/entities/Tabs/Tabs';
+import { Text, useNotifications } from '@/shared/ui';
 
-export const UserCollection: FC = () => {
-  const [value, setValue] = useState(0);
-  const [collection, setCollection] = useState<EstateCollection[]>([]);
-  const token = localStorage.getItem('basicToken');
-  const classesCollection = {
-    0: styles.collection__block,
-    1: styles.collection__card,
-  };
-
-  useEffect(() => {
-    estateCollectionApi
-      .getEstateCollection(token!!)
-      .then((r) => {
-        setCollection(r.data.items);
-      })
-      .catch((e) => console.log(e));
-  }, []);
-
-  return (
-    <div className={styles.wrap}>
-      <h1 className={styles.header}>{localField('collection_title')}</h1>
-      <div className={styles.tabs}>
-        <Tabs content={['Блоки', 'Карточки']} setValue={setValue} value={value} />
-      </div>
-      <div className={`${styles.collection} ${classesCollection[value as 1 | 0]}`}>
-        {collection.map((item) => (
-          <ItemCollection {...item} value={value} token={token!!} />
-        ))}
-      </div>
-    </div>
-  );
-};
+type TStatus = 'IDLE' | 'SUCCESS' | 'ERROR' | 'LOADING';
 
 interface TabPanelProps {
   index: number;
@@ -67,18 +39,21 @@ const CustomTabPanel = (props: TabPanelProps) => {
   );
 };
 
-const ItemCollection: FC<EstateCollection & { token: string; value: number }> = ({
+const ItemCollection: FC<Required<EstateCollection> & { token: string; value: number }> = ({
   name,
   estates,
   id,
   token,
   value,
 }) => {
+  const { notify } = useNotifications();
+  const [, copyToClipboard] = useCopyToClipboard();
+  const collectionLink = `${window.location.host}/offer-collection-v2/${id}?token=${token.replace('Basic ', '')}`;
   const navigate = useNavigate();
   const allImages = estates
     .map(
       (estate) =>
-        estate.exteriorImages?.[0] || estate.facilityImages?.[0] || estate.interiorImages?.[0]
+        estate?.exteriorImages?.[0] || estate?.facilityImages?.[0] || estate?.interiorImages?.[0]
     )
     .filter(Boolean) as string[];
   const renderImages = !!allImages.length ? allImages : [DEFAULT_IMG];
@@ -92,7 +67,12 @@ const ItemCollection: FC<EstateCollection & { token: string; value: number }> = 
   };
 
   const goToCollection = () => {
-    navigate(`/offer-collection-v2/${id}?token=${token.replace('Basic ', '')}`);
+    navigate(collectionLink);
+  };
+
+  const handleCopyLink = () => {
+    copyToClipboard(collectionLink);
+    notify({ message: 'Ссылка на подборку скопирована', duration: 200000 });
   };
 
   return (
@@ -103,6 +83,7 @@ const ItemCollection: FC<EstateCollection & { token: string; value: number }> = 
           name={name}
           goToCollection={goToCollection}
           deleteCollection={deleteCollection}
+          copyLink={handleCopyLink}
         />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
@@ -112,8 +93,71 @@ const ItemCollection: FC<EstateCollection & { token: string; value: number }> = 
           name={name}
           goToCollection={goToCollection}
           deleteCollection={deleteCollection}
+          copyLink={handleCopyLink}
         />
       </CustomTabPanel>
     </>
+  );
+};
+
+export const UserCollection: FC = () => {
+  const [value, setValue] = useState(0);
+  const [collection, setCollection] = useState<EstateCollection[]>([]);
+  const [status, setStatus] = useState<TStatus>('IDLE');
+  const token = localStorage.getItem('basicToken');
+  const classesCollection = {
+    0: styles.collection__block,
+    1: styles.collection__card,
+  };
+
+  useEffect(() => {
+    setStatus('LOADING');
+    estateCollectionApi
+      .getEstateCollection(token!!)
+      .then((r) => {
+        setCollection(r.data.items);
+        setStatus('SUCCESS');
+      })
+      .catch((e) => {
+        setStatus('ERROR');
+        console.log(e);
+      });
+  }, []);
+
+  return (
+    <div className={styles.wrap}>
+      <h1 className={styles.header}>{localField('collection_title')}</h1>
+      {status === 'LOADING' && (
+        <Watch
+          height="180"
+          width="180"
+          color="gray"
+          ariaLabel="watch-loading"
+          wrapperClass={styles.loader}
+        />
+      )}
+      {status === 'SUCCESS' && !!collection.length && (
+        <>
+          <div className={styles.tabs}>
+            <Tabs content={['Блоки', 'Карточки']} setValue={setValue} value={value} />
+          </div>
+          <div className={`${styles.collection} ${classesCollection[value as 1 | 0]}`}>
+            {collection.map((item) => (
+              <ItemCollection
+                {...item}
+                estates={item.estates || []}
+                value={value}
+                token={token!!}
+              />
+            ))}
+          </div>
+        </>
+      )}
+      {status === 'SUCCESS' && !collection.length && (
+        <Text variant="heading3" className={styles.empty}>
+          У вас еще нет подборок
+        </Text>
+      )}
+    </div>
   );
 };

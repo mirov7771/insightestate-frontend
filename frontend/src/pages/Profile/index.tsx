@@ -112,8 +112,8 @@ export const Profile: FC = () => {
 
   return (
     <>
-      <div className={`${styles.card} ${styles.cardContainer}`}>
-        <div className={styles.profileImgCard}>
+      <div className={`${styles.wrapper}`}>
+        <div className={styles.logo}>
           <LogoIcon />
         </div>
         <Spacer height={8} width={100} />
