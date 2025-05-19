@@ -204,7 +204,7 @@ export default {
   tariff_month: 'в месяц',
   'login.welcomeBack': 'С возвращением',
   'login.haveAccount': `Нет аккаунта? <a>Зарегистрироваться</a>`,
-  'login.emailPlaceholder': 'Ваша электронная почта',
+  'login.emailPlaceholder': 'Электронная почта',
   'login.uniqEstates':
     'Создавайте уникальные подборки для ваших клиентов с использованием нашей уникальной системы оценки объектов',
   'login.agreeText': `Нажимая на кнопку «Продолжить» вы соглашаетесь с <a>Политикой обработки персональных данных</a>`,
@@ -212,6 +212,7 @@ export default {
   'login.signIn': `Уже есть аккаунт? <a>Log in</a>`,
   'login.signUpText': `Мы отправили временный код на {email}. Если письмо не пришло, проверьте папку «Спам»`,
   'login.notYou': 'Не вы?',
+  'login.forgotPassword': '<a>Забыли пароль?</a>',
 
   'pagination.next': 'Вперед >',
   'pagination.back': '< Назад',

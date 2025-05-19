@@ -85,3 +85,10 @@ export type AnalyzeStepProps = {
   style: string;
   title: string;
 };
+
+export const FETCHING_STATUS = {
+  IDLE: 'IDLE',
+  LOADING: 'LOADING',
+  SUCCESS: 'SUCCESS',
+  ERROR: 'ERROR',
+};
