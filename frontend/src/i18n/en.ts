@@ -213,6 +213,15 @@ export default {
   'login.signUpText': `We've sent a temporary code to {email}. If you haven't received the email, please check your Spam folder`,
   'login.notYou': 'Not you?',
   'login.forgotPassword': '<a>Forgot password?</a>',
+  'login.welcome': 'Welcome',
+  'login.details':
+    'Please fill in your details. Your full name and phone number will be visible to clients in the offer.',
+
+  'reset.password': 'Password reset',
+  'reset.enterEmail': `Enter your email address and we'll send you a code to reset your password.`,
+  'reset.newPassword': 'New Password',
+  'reset.newPasswordDescription': `We’ve reset your password. Please enter a new one.`,
+  'reset.confirmPassword': 'Confirm Password',
 
   'pagination.next': 'Next >',
   'pagination.back': '< Back',

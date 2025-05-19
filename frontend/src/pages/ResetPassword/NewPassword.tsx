@@ -33,7 +33,7 @@ export const NewPassword: FC = () => {
         setStatus('LOADING');
         await resetPasswordApi.resetConfirm({ newPassword: password, login, confirmCode: code });
         setStatus('SUCCESS');
-        navigate('/login');
+        navigate('/listing');
       }
     } catch (e) {
       setStatus('ERROR');
@@ -43,22 +43,22 @@ export const NewPassword: FC = () => {
 
   return (
     <LayoutForm
-      header="Новый пароль"
-      headerHint="Мы сбросили ваш пароль, введите новый"
+      header={formatMessage({ id: 'reset.newPassword' })}
+      headerHint={formatMessage({ id: 'reset.newPasswordDescription' })}
       form={
         <>
           <Input
             name="password"
             value={password}
             onChange={handleChangeInput}
-            placeholder="Новый пароль"
+            placeholder={formatMessage({ id: 'reset.newPassword' })}
             type="password"
           />
           <Input
             name="repeatPassword"
             value={repeatPassword}
             onChange={handleChangeInput}
-            placeholder="Повторите пароль"
+            placeholder={formatMessage({ id: 'reset.confirmPassword' })}
             type="password"
           />
           <Button

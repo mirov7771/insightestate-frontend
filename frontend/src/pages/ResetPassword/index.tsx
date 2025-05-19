@@ -42,8 +42,8 @@ export const ResetPassword: FC = () => {
 
   return (
     <LayoutForm
-      header={'Сброс пароля'}
-      headerHint={`Введите вашу электронную почту, мы вышлем на неё код для сброса пароля`}
+      header={formatMessage({ id: 'reset.password' })}
+      headerHint={formatMessage({ id: 'reset.enterEmail' })}
       form={
         <>
           <Input

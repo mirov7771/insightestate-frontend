@@ -24,7 +24,7 @@ export const ResetPasswordCode: FC = () => {
 
   return (
     <LayoutForm
-      header="Сброс пароля"
+      header={formatMessage({ id: 'reset.password' })}
       headerHint={
         <>
           <FormattedMessage id="login.signUpText" values={{ email: location.state?.login }} />
