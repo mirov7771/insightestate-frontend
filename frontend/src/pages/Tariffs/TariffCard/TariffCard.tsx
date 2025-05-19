@@ -49,8 +49,9 @@ export const TariffCard: FC<TariffCardProps> = ({
           navigate('/listing');
         })
         .catch((e) => console.log(e));
+    } else {
+      handleOpenInfoModal();
     }
-    handleOpenInfoModal();
   };
 
   const getSubscription = (): string => {
