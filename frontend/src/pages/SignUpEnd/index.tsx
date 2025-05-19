@@ -1,10 +1,10 @@
-import React, { ChangeEvent, FC, FormEventHandler, useEffect, useState } from 'react';
+import { ChangeEvent, FC, FormEventHandler, useEffect, useState } from 'react';
 import styles from './SignUpEnd.module.scss';
-import { LogoIcon } from '@/shared/assets/icons';
 import { Button, Input, Text } from '@/shared/ui';
 import { Link, useNavigate } from 'react-router';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { detailApi } from '@/widgets/Detail/api/detailApi';
+import { LayoutForm } from '@/widgets/RegistrationLayout/LayoutForm/LayoutForm';
 
 export const SignUpEnd: FC = () => {
   const { formatMessage } = useIntl();
@@ -39,39 +39,47 @@ export const SignUpEnd: FC = () => {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.logo}>
-        <LogoIcon />
-      </div>
-      <Text variant="heading2" align="center" className={styles.header}>
-        {formatMessage({ id: 'sign_up' })}
-      </Text>
-      <Text variant="body1" as="p" align="center" className={styles.description}>
-        <FormattedMessage id="login.signUpText" values={{ email }} />
-        <br />
-        <Link to="/sign-up">{formatMessage({ id: 'login.notYou' })}</Link>
-      </Text>
-      <form className={styles.form} onSubmit={handleLogin}>
-        <Input
-          onChange={onChangeCode}
-          value={code}
-          name="code"
-          placeholder={formatMessage({ id: 'code' })}
-        />
-        <Button onClick={handleLogin} wide size={'l'} loading={loading}>
-          <Text variant="heading4" align="center" as="span">
-            {formatMessage({ id: 'confirm_button' })}
-          </Text>
-        </Button>
-      </form>
-      <Text variant="caption2" as="p" className={styles.description} align="center">
-        {formatMessage({ id: 'footer_info_text' })}
-      </Text>
-      <Text variant="body1" as="p" className={styles.signUp} align="center">
-        <FormattedMessage
-          id="login.signIn"
-          values={{ a: (chunk) => <Link to="/login">{chunk}</Link> }}
-        />
-      </Text>
+      <LayoutForm
+        header={formatMessage({ id: 'sign_up' })}
+        headerHint={
+          <>
+            <Text variant="body1" as="p" align="center" className={styles.description}>
+              <FormattedMessage id="login.signUpText" values={{ email }} />
+              <br />
+              <Link to="/sign-up">{formatMessage({ id: 'login.notYou' })}</Link>
+            </Text>
+          </>
+        }
+        form={
+          <>
+            <Input
+              onChange={onChangeCode}
+              value={code}
+              name="code"
+              placeholder={formatMessage({ id: 'code' })}
+            />
+            <Button onClick={handleLogin} wide size={'l'} loading={loading}>
+              <Text variant="heading4" align="center" as="span">
+                {formatMessage({ id: 'confirm_button' })}
+              </Text>
+            </Button>
+          </>
+        }
+        onSubmit={handleLogin}
+        bottomText={
+          <>
+            <Text variant="caption2" as="p" className={styles.description} align="center">
+              {formatMessage({ id: 'footer_info_text' })}
+            </Text>
+            <Text variant="body1" as="p" className={styles.signUp} align="center">
+              <FormattedMessage
+                id="login.signIn"
+                values={{ a: (chunk) => <Link to="/login">{chunk}</Link> }}
+              />
+            </Text>
+          </>
+        }
+      />
     </div>
   );
 };

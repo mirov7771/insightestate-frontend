@@ -1,12 +1,12 @@
-import React, { ChangeEvent, FC, FormEventHandler, useState } from 'react';
+import { ChangeEvent, FC, FormEventHandler, useState } from 'react';
 import styles from '@/pages/Login/Login.module.scss';
-import { LogoIcon } from '@/shared/assets/icons';
 import { Button, Input, Text } from '@/shared/ui';
 import { Link, useNavigate } from 'react-router';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { detailApi } from '@/widgets/Detail/api/detailApi';
 import { isAxiosError } from 'axios';
 import { getNavigate } from '@/pages/Authorization';
+import { LayoutForm } from '@/widgets/RegistrationLayout/LayoutForm/LayoutForm';
 
 export const Login: FC = () => {
   const { formatMessage } = useIntl();
@@ -58,51 +58,65 @@ export const Login: FC = () => {
   };
 
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.logo}>
-        <LogoIcon />
-      </div>
-      <Text variant="heading2" align="center" className={styles.header}>
-        {formatMessage({ id: 'login.welcomeBack' })}
-      </Text>
-      <form className={styles.form} onSubmit={handleLogin}>
-        <Input
-          placeholder={formatMessage({ id: 'login.emailPlaceholder' })}
-          onChange={onChangeUsername}
-          value={username}
-          name="username"
-        />
-        <Input
-          placeholder={formatMessage({ id: 'password' })}
-          onChange={onChangePassword}
-          value={password}
-          type="password"
-          name="password"
-        />
-        <Button onClick={handleLogin} wide size="l" loading={loading}>
-          <Text variant="heading4" align="center" as="span">
-            {formatMessage({ id: 'log_in' })}
+    <LayoutForm
+      header={formatMessage({ id: 'login.welcomeBack' })}
+      onSubmit={handleLogin}
+      form={
+        <>
+          <Input
+            placeholder={formatMessage({ id: 'login.emailPlaceholder' })}
+            onChange={onChangeUsername}
+            value={username}
+            name="username"
+          />
+          <Input
+            placeholder={formatMessage({ id: 'password' })}
+            onChange={onChangePassword}
+            value={password}
+            type="password"
+            name="password"
+          />
+          <Button onClick={handleLogin} wide size="l" loading={loading}>
+            <Text variant="heading4" align="center" as="span">
+              {formatMessage({ id: 'log_in' })}
+            </Text>
+          </Button>
+          {error && (
+            <Text variant="caption1" className={styles.error}>
+              {error}
+            </Text>
+          )}
+        </>
+      }
+      bottomText={
+        <>
+          <Text variant="body1" as="p" className={styles.signUp} align="center">
+            <FormattedMessage
+              id="login.forgotPassword"
+              values={{
+                a: (chunk) => (
+                  <Link to="/reset-password" className="button">
+                    {chunk}
+                  </Link>
+                ),
+              }}
+            />
           </Text>
-        </Button>
-        {error && (
-          <Text variant="caption1" className={styles.error}>
-            {error}
-          </Text>
-        )}
-      </form>
 
-      <Text variant="body1" as="p" className={styles.signUp} align="center">
-        <FormattedMessage
-          id="login.haveAccount"
-          values={{
-            a: (chunk) => (
-              <Link to="/sign-up" className="button">
-                {chunk}
-              </Link>
-            ),
-          }}
-        />
-      </Text>
-    </div>
+          <Text variant="body1" as="p" className={styles.signUp} align="center">
+            <FormattedMessage
+              id="login.haveAccount"
+              values={{
+                a: (chunk) => (
+                  <Link to="/sign-up" className="button">
+                    {chunk}
+                  </Link>
+                ),
+              }}
+            />
+          </Text>
+        </>
+      }
+    />
   );
 };

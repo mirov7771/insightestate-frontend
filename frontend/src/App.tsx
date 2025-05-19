@@ -22,6 +22,8 @@ import { Tariffs } from '@/pages/Tariffs';
 import { RegistrationLayout } from '@/widgets/RegistrationLayout/RegistrationLayout';
 import { NotificationsProvider } from '@/shared/ui';
 import { I18nProvider } from '@/i18n/I18nProvider';
+import { ResetPasswordCode } from '@/pages/ResetPassword/ResetPasswordCode';
+import { NewPassword } from '@/pages/ResetPassword/NewPassword';
 
 const App = () => {
   const userLocale = getUserLocale();
@@ -46,6 +48,8 @@ const App = () => {
                 <Route path="/sign-up-end" element={<SignUpEnd />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/reset-password" element={<ResetPassword />} />
+                <Route path="/reset-password/code" element={<ResetPasswordCode />} />
+                <Route path="/reset-password/new" element={<NewPassword />} />
               </Route>
               <Route path="/profile" element={<Profile />} />
               <Route path="/" element={<Layout />}>

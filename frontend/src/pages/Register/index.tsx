@@ -1,11 +1,11 @@
-import React, { ChangeEvent, FC, FormEventHandler, useEffect, useState } from 'react';
-import styles from '@/pages/Register/Register.module.scss';
-import { LogoIcon } from '@/shared/assets/icons';
+import { ChangeEvent, FC, FormEventHandler, useEffect, useState } from 'react';
+import styles from './Register.module.scss';
 import { Button, Input, Text } from '@/shared/ui';
 import { Link, useNavigate } from 'react-router';
-import { useIntl } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { detailApi } from '@/widgets/Detail/api/detailApi';
 import { getNavigate } from '@/pages/Authorization';
+import { LayoutForm } from '@/widgets/RegistrationLayout/LayoutForm/LayoutForm';
 
 export const Register: FC = () => {
   const { formatMessage } = useIntl();
@@ -99,18 +99,15 @@ export const Register: FC = () => {
   }, []);
 
   return (
-    <>
-      <div className={styles.wrapper}>
-        <div className={styles.logo}>
-          <LogoIcon />
-        </div>
-        <Text variant="heading2" align="center" className={styles.header}>
-          Приветствуем вас
-        </Text>
+    <LayoutForm
+      header={formatMessage({ id: 'login.welcome' })}
+      headerHint={
         <Text variant="body1" as="p" align="center" className={styles.description}>
-          Пожалуйста, заполните ваши данные. Ваши ФИО и номер телефона будут видны клиентам в оффере
+          {formatMessage({ id: 'login.details' })}
         </Text>
-        <form className={styles.form} onSubmit={handleLogin}>
+      }
+      form={
+        <>
           <Input
             onChange={onChangeUsername}
             value={username}
@@ -180,24 +177,31 @@ export const Register: FC = () => {
               {formatMessage({ id: 'registration' })}
             </Text>
           </Button>
-        </form>
+        </>
+      }
+      onSubmit={handleLogin}
+      bottomText={
+        <>
+          <Text variant="body2" as="p" className={styles.signUp} align="center">
+            {formatMessage({ id: 'politics_1' })}{' '}
+            <a
+              href="https://www.insightestate.com/privacy"
+              target="_blank"
+              className="button"
+              rel="noreferrer"
+            >
+              {formatMessage({ id: 'politics_2' })}
+            </a>
+          </Text>
 
-        <Text variant="body2" as="p" className={styles.signUp} align="center">
-          {formatMessage({ id: 'politics_1' })}{' '}
-          <a
-            href="https://www.insightestate.com/privacy"
-            target="_blank"
-            className="button"
-            rel="noreferrer"
-          >
-            {formatMessage({ id: 'politics_2' })}
-          </a>
-        </Text>
-
-        <Text variant="body1" as="p" className={styles.signUp} align="center">
-          Уже есть аккаунт? <Link to="/login">{formatMessage({ id: 'log_in' })}</Link>
-        </Text>
-      </div>
-    </>
+          <Text variant="body1" as="p" className={styles.signUp} align="center">
+            <FormattedMessage
+              id="login.signIn"
+              values={{ a: (chunk) => <Link to="/login">{chunk}</Link> }}
+            />
+          </Text>
+        </>
+      }
+    />
   );
 };

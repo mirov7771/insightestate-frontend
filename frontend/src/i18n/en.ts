@@ -204,7 +204,7 @@ export default {
   tariff_month: 'per month',
   'login.welcomeBack': 'Welcome back',
   'login.haveAccount': `Don't have an account? <a>Sign up</a>`,
-  'login.emailPlaceholder': 'Your email address',
+  'login.emailPlaceholder': 'Email',
   'login.uniqEstates':
     'Create unique collections for your clients using our proprietary property evaluation system',
   'login.agreeText': `By clicking «Continue», you agree to our <a>Personal Data Processing Policy</a>.`,
@@ -212,6 +212,16 @@ export default {
   'login.signIn': `Already have an account? <a>Log in</a>`,
   'login.signUpText': `We've sent a temporary code to {email}. If you haven't received the email, please check your Spam folder`,
   'login.notYou': 'Not you?',
+  'login.forgotPassword': '<a>Forgot password?</a>',
+  'login.welcome': 'Welcome',
+  'login.details':
+    'Please fill in your details. Your full name and phone number will be visible to clients in the offer.',
+
+  'reset.password': 'Password reset',
+  'reset.enterEmail': `Enter your email address and we'll send you a code to reset your password.`,
+  'reset.newPassword': 'New Password',
+  'reset.newPasswordDescription': `We’ve reset your password. Please enter a new one.`,
+  'reset.confirmPassword': 'Confirm Password',
 
   'pagination.next': 'Next >',
   'pagination.back': '< Back',

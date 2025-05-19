@@ -204,14 +204,24 @@ export default {
   tariff_month: 'в месяц',
   'login.welcomeBack': 'С возвращением',
   'login.haveAccount': `Нет аккаунта? <a>Зарегистрироваться</a>`,
-  'login.emailPlaceholder': 'Ваша электронная почта',
+  'login.emailPlaceholder': 'Электронная почта',
   'login.uniqEstates':
     'Создавайте уникальные подборки для ваших клиентов с использованием нашей уникальной системы оценки объектов',
   'login.agreeText': `Нажимая на кнопку «Продолжить» вы соглашаетесь с <a>Политикой обработки персональных данных</a>`,
   'login.continue': 'Продолжить',
-  'login.signIn': `Уже есть аккаунт? <a>Log in</a>`,
+  'login.signIn': `Уже есть аккаунт? <a>Войти</a>`,
   'login.signUpText': `Мы отправили временный код на {email}. Если письмо не пришло, проверьте папку «Спам»`,
   'login.notYou': 'Не вы?',
+  'login.forgotPassword': '<a>Забыли пароль?</a>',
+  'login.welcome': 'Приветствуем вас',
+  'login.details':
+    'Пожалуйста, заполните ваши данные. Ваши ФИО и номер телефона будут видны клиентам в оффере',
+
+  'reset.password': 'Сброс пароля',
+  'reset.enterEmail': 'Введите вашу электронную почту, мы вышлем на неё код для сброса пароля',
+  'reset.newPassword': 'Новый пароль',
+  'reset.newPasswordDescription': 'Мы сбросили ваш пароль, введите новый',
+  'reset.confirmPassword': 'Повторите пароль',
 
   'pagination.next': 'Вперед >',
   'pagination.back': '< Назад',
