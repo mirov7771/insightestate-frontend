@@ -1,6 +1,5 @@
-import React, { ChangeEvent, FC, FormEventHandler, useEffect, useState } from 'react';
-import styles from '@/pages/Register/Register.module.scss';
-import { LogoIcon } from '@/shared/assets/icons';
+import { ChangeEvent, FC, FormEventHandler, useEffect, useState } from 'react';
+import styles from './Register.module.scss';
 import { Button, Input, Text } from '@/shared/ui';
 import { Link, useNavigate } from 'react-router';
 import { FormattedMessage, useIntl } from 'react-intl';
