@@ -17,6 +17,7 @@ type ActionButtonProps = {
   deleteCollection: () => void;
   estateName: string;
   estates: Estate[];
+  id: string;
 };
 
 export const ActionButton: FC<ActionButtonProps> = ({
@@ -24,6 +25,7 @@ export const ActionButton: FC<ActionButtonProps> = ({
   estateName,
   estates,
   copyLink,
+  id
 }) => {
   const { formatMessage } = useIntl();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -88,6 +90,7 @@ export const ActionButton: FC<ActionButtonProps> = ({
         estateName={estateName}
         open={openChangeNameModal}
         setOpen={setOpenChangeNameModal}
+        id={id}
       />
       <ModalDeleteEstate
         setOpen={setOpenDeleteModal}

@@ -240,5 +240,6 @@ export default {
   'userCollection.blocks': 'Block',
   'userCollection.cards': 'Cards',
   'userCollection.changeName': 'Rename',
-  'login.codeLetter': 'Code from mail'
+  'login.codeLetter': 'Code from mail',
+  'login.wrongLoginOrPassword': 'User login or password not correct'
 };

@@ -45,14 +45,11 @@ export const UserCollectionModal: FC<TModalProps & { id: string; token: string }
     estateCollectionApi
       .getEstateCollection(token!!)
       .then((r) => {
-        setIsNew(r.data.items.length === 0);
+        setIsNew(r.data.items.length == 0);
         setCollections(r.data.items);
+        console.log(r.data.items.length, isNew, collections)
       })
       .catch((e) => console.log(e));
-  }, []);
-
-  useEffect(() => {
-    setIsNew(false);
   }, [open]);
 
   const onChangeName = (e: ChangeEvent<HTMLInputElement>) => {

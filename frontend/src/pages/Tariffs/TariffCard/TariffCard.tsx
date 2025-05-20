@@ -38,9 +38,9 @@ export const TariffCard: FC<TariffCardProps> = ({
   };
 
   const handleTariff = () => {
-    if (id === userSubscriptionId)
-      return
-    if (price === 0) {
+    if (id === userSubscriptionId) {
+      navigate('/listing');
+    } else if (price === 0) {
       estateCollectionApi
         .saveUserSubscription(id)
         .then(async () => {
@@ -109,9 +109,9 @@ export const TariffCard: FC<TariffCardProps> = ({
         open={infoModal}
         onClose={handleCloseInfoModal}
         onOpen={handleOpenInfoModal}
-        anchor="bottom"
+        anchor="top"
         price={price * 100}
-        bottom={10}
+        bottom={0}
         id={id}
         extraId={title === 'Pro' ? undefined : extraId}
       />

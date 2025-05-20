@@ -240,5 +240,6 @@ export default {
   'userCollection.blocks': 'Блоки',
   'userCollection.cards': 'Карточки',
   'userCollection.changeName': 'Изменить название',
-  'login.codeLetter': 'Код из письма'
+  'login.codeLetter': 'Код из письма',
+  'login.wrongLoginOrPassword': 'Неверный логин или пароль'
 };

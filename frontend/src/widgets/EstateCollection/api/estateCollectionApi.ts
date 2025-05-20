@@ -256,4 +256,13 @@ export const estateCollectionApi = {
       throw error;
     }
   },
+  updateCollection: async (id: string, name: string): Promise<AxiosResponse<void>> => {
+    try {
+      return await api.put<void>(`/v1/estate-collections/${id}`, {
+        name: name
+      });
+    } catch (error) {
+      throw error;
+    }
+  },
 };

@@ -195,11 +195,15 @@ export const Card: FC<Estate & { collectionId: string }> = (estate) => {
             <section className={styles.table}>
               <div className={styles.table__item}>
                 <Text variant="body1">{formatMessage({ id: 'beach' })}</Text>
-                <Text variant="heading4">1 {formatMessage({ id: 'min' })}</Text>
+                <Text variant="heading4">{estate?.infrastructure?.beachTime?.car ||
+                    estate?.infrastructure?.beachTime?.walk ||
+                    5}{' '}{formatMessage({ id: 'min' })}</Text>
               </div>
               <div className={styles.table__item}>
                 <Text variant="body1">{formatMessage({ id: 'mall' })}</Text>
-                <Text variant="heading4">26 {formatMessage({ id: 'min' })}</Text>
+                <Text variant="heading4">{estate?.infrastructure?.mallTime?.car ||
+                    estate?.infrastructure?.mallTime?.walk ||
+                    30}{' '}{formatMessage({ id: 'min' })}</Text>
               </div>
               <div className={styles.table__item}>
                 <Text variant="body1">{formatMessage({ id: 'airport' })}</Text>

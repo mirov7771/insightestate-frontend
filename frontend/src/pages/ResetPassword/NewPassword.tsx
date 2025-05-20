@@ -5,6 +5,8 @@ import { LayoutForm } from '@/widgets/RegistrationLayout/LayoutForm/LayoutForm';
 import { Button, Input, Text } from '@/shared/ui';
 import { resetPasswordApi } from '@/shared/api/resetPassword/resetPasswordApi';
 import { FETCHING_STATUS } from '@/shared/constants/constants';
+import {detailApi} from "@/widgets/Detail/api/detailApi";
+import {getNavigate} from "@/pages/Authorization";
 
 export const NewPassword: FC = () => {
   const { formatMessage } = useIntl();
@@ -32,8 +34,10 @@ export const NewPassword: FC = () => {
       if (code && login && password === repeatPassword) {
         setStatus('LOADING');
         await resetPasswordApi.resetConfirm({ newPassword: password, login, confirmCode: code });
+        await detailApi.login(login, password)
         setStatus('SUCCESS');
-        navigate('/listing');
+        const route = await getNavigate()
+        navigate(route)
       }
     } catch (e) {
       setStatus('ERROR');

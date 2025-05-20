@@ -85,6 +85,7 @@ const ItemCollection: FC<Required<EstateCollection> & { token: string; value: nu
           goToCollection={goToCollection}
           deleteCollection={deleteCollection}
           copyLink={handleCopyLink}
+          id={id}
         />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
@@ -95,6 +96,7 @@ const ItemCollection: FC<Required<EstateCollection> & { token: string; value: nu
           goToCollection={goToCollection}
           deleteCollection={deleteCollection}
           copyLink={handleCopyLink}
+          id={id}
         />
       </CustomTabPanel>
     </>

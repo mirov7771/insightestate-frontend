@@ -30,7 +30,7 @@ export const InfoModal: FC<
         onClose={onClose}
         anchor={anchor}
         disableSwipeToOpen
-        bottom={bottom}
+        bottom={bottom + 7}
         isMobile={isMobile}
       >
         <StyledUpperWrapperProgress>

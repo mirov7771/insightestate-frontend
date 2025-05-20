@@ -12,6 +12,7 @@ type CardViewProps = {
   goToCollection: () => void;
   images: string[];
   name: string;
+  id: string;
 };
 
 export const CardView: FC<CardViewProps> = ({
@@ -21,6 +22,7 @@ export const CardView: FC<CardViewProps> = ({
   goToCollection,
   deleteCollection,
   copyLink,
+  id
 }) => {
   return (
     <div className={styles.wrapper}>
@@ -31,6 +33,7 @@ export const CardView: FC<CardViewProps> = ({
           estateName={name}
           estates={estates}
           copyLink={copyLink}
+          id={id}
         />
       </div>
       <Text

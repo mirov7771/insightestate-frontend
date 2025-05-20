@@ -12,6 +12,7 @@ type BlockViewProps = {
   estates: Estate[];
   goToCollection: () => void;
   name: string;
+  id: string;
 };
 
 export const BlockView: FC<BlockViewProps> = ({
@@ -20,6 +21,7 @@ export const BlockView: FC<BlockViewProps> = ({
   goToCollection,
   deleteCollection,
   copyLink,
+  id
 }) => {
   const [openChangeNameModal, setOpenChangeNameModal] = useState(false);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
@@ -93,6 +95,7 @@ export const BlockView: FC<BlockViewProps> = ({
         estateName={name}
         open={openChangeNameModal}
         setOpen={setOpenChangeNameModal}
+        id={id}
       />
       <ModalDeleteEstate
         setOpen={setOpenDeleteModal}
