@@ -12,6 +12,7 @@ import { useSearchParams } from 'react-router';
 import { useIntl } from 'react-intl';
 import { Spacer } from '@/widgets/Spacer/Spacer';
 import { InfoModal } from '@/widgets/Modal/InfoModal';
+import {detailApi} from "@/widgets/Detail/api/detailApi";
 
 export const ContactManager = () => {
   const { formatMessage } = useIntl();
@@ -38,10 +39,14 @@ export const ContactManager = () => {
       .catch((e) => console.log(e));
   }, []);
 
-  function copyTask() {
+  async function copyTask() {
     const el = document.createElement('input');
 
     el.value = window.location.href;
+
+    const { data } = await detailApi.shortUrl(el.value)
+
+    el.value = data.url
     document.body.appendChild(el);
     el.select();
     document.execCommand('copy');

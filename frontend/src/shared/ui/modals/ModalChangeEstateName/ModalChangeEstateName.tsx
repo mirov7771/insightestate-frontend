@@ -30,6 +30,8 @@ export const ModalChangeEstateName: FC<ModalChangeEstateNameProps> = ({
   const handleChange = () => {
     estateCollectionApi.updateCollection(id, name).then(() => console.log("success update"))
         .catch((e) => console.log("error update", e))
+    setOpen(false);
+    window.location.reload()
   }
 
   return (

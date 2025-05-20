@@ -178,6 +178,10 @@ type LoadFileRs = {
   imageUrl: string;
 };
 
+export type ShortDto = {
+  url: string
+}
+
 export const detailApi = {
   getDetail: async (id: string | undefined): Promise<AxiosResponse<EstateDetail>> => {
     try {
@@ -317,6 +321,15 @@ export const detailApi = {
       return email;
     } catch (error) {
       return null;
+    }
+  },
+  shortUrl: async (url: string): Promise<AxiosResponse<ShortDto>> => {
+    try {
+      return await api.post<ShortDto>(`v1/estate-collections/short`, {
+        url: url
+      });
+    } catch (error) {
+      throw error;
     }
   },
 };

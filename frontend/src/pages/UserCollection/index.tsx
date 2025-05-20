@@ -13,6 +13,7 @@ import { CardView } from './CardView/CardView';
 import { BlockView } from '@/pages/UserCollection/BlockView/BlockView';
 import { Tabs } from '@/entities/Tabs/Tabs';
 import { Text, useNotifications } from '@/shared/ui';
+import {detailApi} from "@/widgets/Detail/api/detailApi";
 
 type TStatus = 'IDLE' | 'SUCCESS' | 'ERROR' | 'LOADING';
 
@@ -71,8 +72,11 @@ const ItemCollection: FC<Required<EstateCollection> & { token: string; value: nu
     navigate(collectionLink);
   };
 
-  const handleCopyLink = () => {
-    copyToClipboard(`${window.location.host}${collectionLink}`);
+  const handleCopyLink = async () => {
+    let url = `${window.location.host}${collectionLink}`
+    if (!url.startsWith("http")) url = `https://${window.location.host}${collectionLink}`
+    const { data } = await detailApi.shortUrl(url)
+    copyToClipboard(data.url);
     notify({ message: formatMessage({ id: 'userCollection.copiedLink' }), duration: 3000 });
   };
 
