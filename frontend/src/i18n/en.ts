@@ -145,7 +145,7 @@ export default {
   surname_name: 'Surname and name',
   registration: 'Registration',
   save: 'Save',
-  come_back: 'Back',
+  come_back: 'Back to main',
   ai_button: 'AI picker',
   ai_text:
     'We have developed an AI selector that will help you with the routine task of selecting the right objects for your clients',
@@ -240,4 +240,5 @@ export default {
   'userCollection.blocks': 'Block',
   'userCollection.cards': 'Cards',
   'userCollection.changeName': 'Rename',
+  'login.codeLetter': 'Code from mail'
 };

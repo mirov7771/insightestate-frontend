@@ -1,5 +1,6 @@
 import React, { ChangeEvent, FC, useEffect, useState } from 'react';
-import styles from '@/pages/Register/Register.module.scss';
+// import styles from '@/pages/Register/Register.module.scss';
+import styles from '@/pages/Profile/Profile.module.scss';
 import { LogoIcon } from '@/shared/assets/icons';
 import { Spacer } from '@/widgets/Spacer/Spacer';
 import { BaseField } from '@/widgets/BaseField/BaseField';
@@ -158,10 +159,11 @@ export const Profile: FC = () => {
         <Button onClick={() => document.getElementById('profileImage')!!.click()} size="s" wide>
           {formatMessage({ id: 'photo' })}
         </Button>
+        <Spacer height={10} width={100} />
         <input
           id="profileImage"
           style={{
-            display: 'none',
+            display: 'none'
           }}
           accept="image/*"
           type="file"
@@ -192,6 +194,7 @@ export const Profile: FC = () => {
             {formatMessage({ id: 'come_back' })}
           </a>
         </div>
+        <Spacer height={20} width={100} />
       </div>
     </>
   );

@@ -34,7 +34,7 @@ export const ResetPasswordCode: FC = () => {
       }
       form={
         <>
-          <Input value={code} onChange={handleChangeCode} placeholder="Код из письма" />
+          <Input value={code} onChange={handleChangeCode} placeholder={formatMessage({ id: 'login.codeLetter' })} />
           <Button wide size={'l'} type="submit" onSubmit={handleSubmit}>
             <Text variant="heading4" align="center" as="span">
               {formatMessage({ id: 'login.continue' })}

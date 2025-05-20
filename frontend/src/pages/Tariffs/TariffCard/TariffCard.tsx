@@ -38,6 +38,8 @@ export const TariffCard: FC<TariffCardProps> = ({
   };
 
   const handleTariff = () => {
+    if (id === userSubscriptionId)
+      return
     if (price === 0) {
       estateCollectionApi
         .saveUserSubscription(id)

@@ -1,3 +1,73 @@
+@use '~@/sass/index' as *;
+
+.wrapper {
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+.logo {
+  text-align: center;
+
+  & > svg {
+    width: 75px;
+
+    @media (min-width: $media-lg) {
+      width: 117px;
+    }
+  }
+}
+
+.header {
+  text-transform: uppercase;
+  margin-top: 24px;
+
+  @media (min-width: $media-lg) {
+    margin-top: 32px;
+  }
+}
+
+.description {
+  color: var(--ui-color-black-64-opacity);
+  margin-top: 8px;
+
+  & > a {
+    color: var(--ui-color-primary-2);
+    text-decoration: none;
+    font-weight: 600;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 24px;
+  margin-bottom: 24px;
+
+  @media (min-width: $media-lg) {
+    margin-top: 32px;
+  }
+}
+
+.signUp {
+  color: var(--ui-color-black-64-opacity);
+  margin-top: 32px;
+
+  & > a {
+    color: var(--ui-color-primary-2);
+    text-decoration: none;
+    font-weight: 600;
+  }
+}
+
+//.profileIcon {
+//  width: 120px;
+//  height: 120px;
+//  border-radius: 50%;
+//  margin: 0 auto;
+//}
+
 .card {
   background-color: #f6f6f2;
   padding: 20px 25px 30px;
@@ -32,9 +102,8 @@
 }
 
 .centerRegistration {
-  margin: auto;
   width: 50%;
-  padding-left: 15%;
+  margin-left: 11rem;
 }
 
 .profileIcon {
@@ -43,6 +112,6 @@
   border-radius: 50%;
   border-width: 1px;
   border-color: #0e0e0e;
-  margin-left: 90px;
+  margin-left: 10rem;
   margin-top: 10px;
 }
