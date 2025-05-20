@@ -53,6 +53,7 @@ const EstateDetail: FC = () => {
   const [userCollectionModal, setUserCollectionModal] = useState(false);
   const [map, setMap] = useState('');
   const [projectId, setProjectId] = useState<string>('');
+  const [paymentPlan, setPaymentPlan] = useState<string[]>();
   const [companyEnabled, setCompanyEnabled] = useState<boolean>(false);
 
   const handleOpenBaseUserModal = () => {
@@ -105,6 +106,7 @@ const EstateDetail: FC = () => {
       setMap(r.data.location.mapUrl || '');
       setProjectId(r.data.projectId);
       setCompanyEnabled(r.data.managementCompany?.enabled || false);
+      setPaymentPlan(r.data.paymentPlanList)
     });
   }, []);
 
@@ -150,7 +152,11 @@ const EstateDetail: FC = () => {
             <></>
           )}
           <ApartmentLayouts {...roomLayouts} estateId={id} />
-          <PaymentSchedule projectId={projectId} />
+          <PaymentSchedule
+              projectId={projectId}
+              paymentPlanList={paymentPlan}
+              listSize={paymentPlan?.length || 0}
+          />
           <AverageYield {...profitability} />
           <Infrastructure
             beachTime={infrastructure?.beachTime?.car}

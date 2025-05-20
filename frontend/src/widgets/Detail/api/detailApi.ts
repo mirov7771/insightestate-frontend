@@ -29,6 +29,7 @@ export type EstateDetail = {
   status?: string;
   type?: string;
   unitCount?: ProjectUnitCount;
+  paymentPlanList?: string[]
 };
 
 export type Developer = {
