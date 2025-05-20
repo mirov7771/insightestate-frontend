@@ -1,10 +1,8 @@
 import React, { ChangeEvent, FC, useEffect, useState } from 'react';
 import styles from './Tariffs.module.scss';
 import { estateCollectionApi, TariffRs } from '@/widgets/EstateCollection/api/estateCollectionApi';
-import { Spacer } from '@/widgets/Spacer/Spacer';
-import { Button, Switcher, Text } from '@/shared/ui';
+import { Switcher, Text } from '@/shared/ui';
 import { useNavigate, useSearchParams } from 'react-router';
-import { PayModal } from './PayModal/PayModal';
 import { TariffCard } from '@/pages/Tariffs/TariffCard/TariffCard';
 import { useIntl } from 'react-intl';
 

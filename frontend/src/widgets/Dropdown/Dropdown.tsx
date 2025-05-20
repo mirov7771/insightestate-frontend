@@ -4,11 +4,13 @@ import { useIntl } from 'react-intl';
 import { Globe } from '@/shared/assets/icons';
 import getUserLocale from 'get-user-locale';
 import MenuItem from '@mui/material/MenuItem';
-import { Text } from '@/shared/ui';
+import {Button, Text} from '@/shared/ui';
 import Menu from '@mui/material/Menu';
+import {useNavigate} from "react-router";
 
 export const Dropdown: FC = () => {
   const { formatMessage } = useIntl();
+  const navigate = useNavigate();
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -40,8 +42,21 @@ export const Dropdown: FC = () => {
     window.location.reload();
   };
 
+  const goToTariffs = () => {
+    navigate('/tariffs');
+  };
+
+  const goToExit = () => {
+    localStorage.clear();
+    navigate('/');
+    window.location.reload()
+  };
+
   return (
     <div className={styles.container}>
+      <Button size={'s'} onClick={goToTariffs}>
+        {formatMessage({ id: 'change.tariff' })}
+      </Button>
       <button
         type="button"
         className={styles.button}
@@ -79,6 +94,19 @@ export const Dropdown: FC = () => {
           <Text variant="heading5">Eng</Text>
         </MenuItem>
       </Menu>
+      <Button
+          type={'submit'}
+          size={'s'}
+          onClick={goToExit}
+          style={{
+            backgroundColor: 'transparent',
+            borderRadius: '100vw',
+            border: '1px solid #04b0be',
+            color: 'black'
+          }}
+      >
+        {formatMessage({ id: 'login.exit' })}
+      </Button>
     </div>
   );
 };

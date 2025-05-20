@@ -241,5 +241,7 @@ export default {
   'userCollection.cards': 'Карточки',
   'userCollection.changeName': 'Изменить название',
   'login.codeLetter': 'Код из письма',
-  'login.wrongLoginOrPassword': 'Неверный логин или пароль'
+  'login.wrongLoginOrPassword': 'Неверный логин или пароль',
+  'change.tariff': 'Улучшить тариф',
+  'login.exit': 'Выйти'
 };
