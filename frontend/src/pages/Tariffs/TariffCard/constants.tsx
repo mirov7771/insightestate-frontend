@@ -6,6 +6,17 @@ import {
 import { Text } from '@/shared/ui';
 
 export const DESCRIPTIONS_RU = {
+  Starter: [
+    { icon: <OfferCollectionHomeStar />, text: <Text variant="body1">3 подборки</Text> },
+    {
+      icon: <OfferCollectionGraphMonitor />,
+      text: <Text variant="body1">Ограниченная аналитика по объекту: только оценки</Text>,
+    },
+    {
+      icon: <OfferCollectionSpark />,
+      text: <Text variant="body1">3 запроса в AI-подборщике</Text>,
+    },
+  ],
   Pro: [
     {
       icon: <OfferCollectionHomeStar />,
@@ -38,21 +49,21 @@ export const DESCRIPTIONS_RU = {
       icon: <OfferCollectionSpark />,
       text: <Text variant="body1">7 запросов в AI-подборщике</Text>,
     },
-  ],
-  Starter: [
-    { icon: <OfferCollectionHomeStar />, text: <Text variant="body1">3 подборки</Text> },
-    {
-      icon: <OfferCollectionGraphMonitor />,
-      text: <Text variant="body1">Ограниченная аналитика по объекту: только оценки</Text>,
-    },
-    {
-      icon: <OfferCollectionSpark />,
-      text: <Text variant="body1">3 запроса в AI-подборщике</Text>,
-    },
-  ],
+  ]
 };
 
 export const DESCRIPTIONS_ENG = {
+  Starter: [
+    { icon: <OfferCollectionHomeStar />, text: <Text variant="body1">3 selections</Text> },
+    {
+      icon: <OfferCollectionGraphMonitor />,
+      text: <Text variant="body1">Limited analytics on the object: estimates only</Text>,
+    },
+    {
+      icon: <OfferCollectionSpark />,
+      text: <Text variant="body1">3 requests in the AI picker</Text>,
+    },
+  ],
   Pro: [
     {
       icon: <OfferCollectionHomeStar />,
@@ -84,17 +95,6 @@ export const DESCRIPTIONS_ENG = {
     {
       icon: <OfferCollectionSpark />,
       text: <Text variant="body1">7 queries in the AI picker</Text>,
-    },
-  ],
-  Starter: [
-    { icon: <OfferCollectionHomeStar />, text: <Text variant="body1">3 selections</Text> },
-    {
-      icon: <OfferCollectionGraphMonitor />,
-      text: <Text variant="body1">Limited analytics on the object: estimates only</Text>,
-    },
-    {
-      icon: <OfferCollectionSpark />,
-      text: <Text variant="body1">3 requests in the AI picker</Text>,
     },
   ],
 };

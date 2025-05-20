@@ -9,7 +9,7 @@ import { useIntl } from 'react-intl';
 export const Tariffs: FC = () => {
   const { formatMessage } = useIntl();
   const [tariffs, setTariffs] = useState<TariffRs>();
-  const [extra, setExtra] = useState(true);
+  const [extra, setExtra] = useState(false);
   const [extraPrice, setExtraPrice] = useState(0);
   const [extraId, setExtraId] = useState<string>();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -70,7 +70,6 @@ export const Tariffs: FC = () => {
       </div>
       <div className={styles.wrapper}>
         {tariffs?.main
-          .sort((a, b) => b.price - a.price)
           .map((tariff) => (
             <TariffCard
               title={tariff.title}
@@ -81,7 +80,7 @@ export const Tariffs: FC = () => {
                   : tariff.price
               }
               id={tariff.id}
-              extraId={extraId}
+              extraId={extra && tariff.price > 0 && tariff.title === 'Standart' ? extraId : undefined}
               userSubscriptionId={localStorage.getItem('subscriptionId')}
               switcher={
                 tariff.title === 'Standart' ? (
