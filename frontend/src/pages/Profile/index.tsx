@@ -68,7 +68,7 @@ export const Profile: FC = () => {
 
   const handleGoBack: MouseEventHandler<HTMLButtonElement> = (e) => {
     e.preventDefault();
-    navigate(-1);
+    navigate(-2)
   };
 
   const handleProfileUpdate = async (updatedData: typeof data) => {
@@ -109,7 +109,7 @@ export const Profile: FC = () => {
           password: '',
           phone: r.data.mobileNumber || '',
           profileImage: r.data.profileImage || '',
-          email: localStorage.getItem('email') || '',
+          email: r.data.login || localStorage.getItem('email') || '',
           username: r.data.fio || '',
         });
         setStatus('SUCCESS');
