@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, useEffect, useMemo, useRef, useState } from 'react';
+import { ChangeEvent, FC, MouseEventHandler, useEffect, useMemo, useRef, useState } from 'react';
 import MuiAvatar from '@mui/material/Avatar';
 import styles from './Profile.module.scss';
 import { OfferCollectionArrowLeft } from '@/shared/assets/icons';
@@ -10,12 +10,14 @@ import { estateCollectionApi } from '@/widgets/EstateCollection/api/estateCollec
 import { Info } from './Info/Info';
 import { FETCHING_STATUS } from '@/shared/constants/constants';
 import { ProfileSkeleton } from '@/pages/Profile/ProfileSkeleton/ProfileSkeleton';
+import { usersApi } from '@/shared/api/users';
+import { TData } from './types';
 
 export const Profile: FC = () => {
   const { formatMessage } = useIntl();
   const navigate = useNavigate();
   const [token, setToken] = useState(localStorage.getItem('basicToken'));
-  const [data, setData] = useState({
+  const [data, setData] = useState<TData>({
     username: '',
     email: '',
     password: '',
@@ -50,7 +52,13 @@ export const Profile: FC = () => {
       const profileImage = e.target.files;
       const imageUrl = await detailApi.uploadProfileImage(profileImage!![0]);
 
-      setData((prev) => ({ ...prev, profileImage: imageUrl || '' }));
+      await detailApi.profileUpdate({ ...data, profileImage: imageUrl || '' });
+
+      setData((prev) => ({
+        ...prev,
+        password: prev.password || '',
+        profileImage: imageUrl || '',
+      }));
       setUpdateStatus('SUCCESS');
     } catch (e) {
       console.log({ e });
@@ -58,7 +66,8 @@ export const Profile: FC = () => {
     }
   };
 
-  const handleGoBack = () => {
+  const handleGoBack: MouseEventHandler<HTMLButtonElement> = (e) => {
+    e.preventDefault();
     navigate(-1);
   };
 
@@ -69,6 +78,20 @@ export const Profile: FC = () => {
       setUpdateStatus('SUCCESS');
     } catch (e) {
       setUpdateStatus('ERROR');
+      console.log({ e });
+    }
+  };
+
+  const deleteUser = async () => {
+    try {
+      if (token) {
+        setUpdateStatus('LOADING');
+        await usersApi.deleteUser(token);
+        setUpdateStatus('SUCCESS');
+        localStorage.removeItem('basicToken');
+        navigate('/');
+      }
+    } catch (e) {
       console.log({ e });
     }
   };
@@ -226,7 +249,12 @@ export const Profile: FC = () => {
                     {formatMessage({ id: 'profile.accountDeletionNotice' })}
                   </Text>
                 </div>
-                <Button variant="base" className={styles.button}>
+                <Button
+                  variant="base"
+                  className={styles.button}
+                  onClick={deleteUser}
+                  disabled={updateStatus === 'LOADING'}
+                >
                   <Text variant="heading5">{formatMessage({ id: 'common.delete' })}</Text>
                 </Button>
               </div>

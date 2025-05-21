@@ -9,17 +9,7 @@ import {
 import { Button, Input, Text } from '@/shared/ui';
 import styles from './Info.module.scss';
 import { useIntl } from 'react-intl';
-
-type TData = {
-  email: string;
-  location: string;
-  password: string;
-  phone: string;
-  profileImage: string;
-  tgName: string;
-  username: string;
-  whatsUp: string;
-};
+import { TData } from '../types';
 
 type InfoProps = {
   data: TData;
