@@ -76,7 +76,8 @@ const ItemCollection: FC<Required<EstateCollection> & { token: string; value: nu
     let url = `${window.location.host}${collectionLink}`
     if (!url.startsWith("http")) url = `https://${window.location.host}${collectionLink}`
     const { data } = await detailApi.shortUrl(url)
-    copyToClipboard(data.url);
+    // copyToClipboard(data.url);
+    await navigator.clipboard.writeText( data.url )
     notify({ message: formatMessage({ id: 'userCollection.copiedLink' }), duration: 3000 });
   };
 
