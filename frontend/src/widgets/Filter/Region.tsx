@@ -1,7 +1,7 @@
 import { ChangeEvent, FC } from 'react';
 import { LocationImg2 } from '@/shared/assets/icons';
 import styles from './Filter.module.scss';
-import {Accordion, Checkbox} from '@/shared/ui';
+import { Accordion, Checkbox } from '@/shared/ui';
 import { useFilters } from '@/widgets/Filter/model/useFilters';
 import { useIntl } from 'react-intl';
 
@@ -10,11 +10,12 @@ export const Region: FC = () => {
   const { setFilters, beachName } = useFilters();
 
   const handleClick = (e: ChangeEvent<HTMLInputElement>) => {
-    setFilters((filtersState) => (
-        { ...filtersState, beachName: filtersState.beachName?.includes(e.target.value)
-              ? filtersState.beachName?.filter((val) => val !== e.target.value)
-              : [...(filtersState.beachName || []), e.target.value] }
-    ));
+    setFilters((filtersState) => ({
+      ...filtersState,
+      beachName: filtersState.beachName?.includes(e.target.value)
+        ? filtersState.beachName?.filter((val) => val !== e.target.value)
+        : [...(filtersState.beachName || []), e.target.value],
+    }));
   };
 
   return (

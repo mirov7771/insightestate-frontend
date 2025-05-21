@@ -19,6 +19,7 @@ export type EstateDetail = {
   level?: string;
   managementCompany?: ManagementCompany;
   options?: Options;
+  paymentPlanList?: string[];
   price?: Price;
   product?: string;
   profitability?: Profitability;
@@ -29,7 +30,6 @@ export type EstateDetail = {
   status?: string;
   type?: string;
   unitCount?: ProjectUnitCount;
-  paymentPlanList?: string[]
 };
 
 export type Developer = {
@@ -179,8 +179,8 @@ type LoadFileRs = {
 };
 
 export type ShortDto = {
-  url: string
-}
+  url: string;
+};
 
 export const detailApi = {
   getDetail: async (id: string | undefined): Promise<AxiosResponse<EstateDetail>> => {
@@ -285,16 +285,25 @@ export const detailApi = {
       return null;
     }
   },
-  profileUpdate: async (
-    username: string,
-    email: string,
-    password: string,
-    phone: string,
-    location: string,
-    whatsUp: string,
-    tgName: string,
-    profileImage: string
-  ): Promise<string | null | undefined> => {
+  profileUpdate: async ({
+    username,
+    email,
+    password,
+    location,
+    whatsUp,
+    tgName,
+    profileImage,
+    phone,
+  }: {
+    email: string;
+    location: string;
+    password: string;
+    phone: string;
+    profileImage: string;
+    tgName: string;
+    username: string;
+    whatsUp: string;
+  }): Promise<string | null | undefined> => {
     try {
       const token = localStorage.getItem('basicToken');
       const rs = await api.put<void>(
@@ -320,13 +329,13 @@ export const detailApi = {
       }
       return email;
     } catch (error) {
-      return null;
+      throw error;
     }
   },
   shortUrl: async (url: string): Promise<AxiosResponse<ShortDto>> => {
     try {
       return await api.post<ShortDto>(`v1/estate-collections/short`, {
-        url: url
+        url: url,
       });
     } catch (error) {
       throw error;

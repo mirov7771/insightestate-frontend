@@ -2,21 +2,23 @@ import React, { ChangeEvent, Dispatch, FC, SetStateAction, useState } from 'reac
 import { Button, Input, Modal, Text } from '@/shared/ui';
 import styles from './ModalChangeEstateName.module.scss';
 import { FormattedMessage, useIntl } from 'react-intl';
-import {estateCollectionApi} from "@/widgets/EstateCollection/api/estateCollectionApi";
+import { estateCollectionApi } from '@/widgets/EstateCollection/api/estateCollectionApi';
+import { FETCHING_STATUS } from '@/shared/constants/constants';
 
 type ModalChangeEstateNameProps = {
   estateName: string;
+  id: string;
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
-  id: string;
 };
 
 export const ModalChangeEstateName: FC<ModalChangeEstateNameProps> = ({
   open,
   estateName,
   setOpen,
-  id
+  id,
 }) => {
+  const [status, setStatus] = useState<keyof typeof FETCHING_STATUS>('IDLE');
   const { formatMessage } = useIntl();
   const [name, setName] = useState(estateName);
   const handleChangeEstateName = (e: ChangeEvent<HTMLInputElement>) => {
@@ -28,11 +30,20 @@ export const ModalChangeEstateName: FC<ModalChangeEstateNameProps> = ({
   };
 
   const handleChange = () => {
-    estateCollectionApi.updateCollection(id, name).then(() => console.log("success update"))
-        .catch((e) => console.log("error update", e))
-    setOpen(false);
-    window.location.reload()
-  }
+    setStatus('LOADING');
+    estateCollectionApi
+      .updateCollection(id, name)
+      .then(() => {
+        console.log('success update');
+        setStatus('SUCCESS');
+        handleCancel();
+        window.location.reload();
+      })
+      .catch((e) => {
+        console.log('error update', e);
+        setStatus('ERROR');
+      });
+  };
 
   return (
     <Modal
@@ -49,12 +60,12 @@ export const ModalChangeEstateName: FC<ModalChangeEstateNameProps> = ({
         onChange={handleChangeEstateName}
       />
       <div className={styles.buttons}>
-        <Button wide variant="base" onClick={handleCancel}>
+        <Button wide variant="base" onClick={handleCancel} disabled={status === 'LOADING'}>
           <Text variant="heading4" align="center">
             <FormattedMessage id="userCollection.cancel" />
           </Text>
         </Button>
-        <Button wide>
+        <Button wide loading={status === 'LOADING'}>
           <Text variant="heading4" align="center" onClick={handleChange}>
             <FormattedMessage id="userCollection.save" />
           </Text>

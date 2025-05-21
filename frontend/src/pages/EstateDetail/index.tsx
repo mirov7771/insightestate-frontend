@@ -106,7 +106,7 @@ const EstateDetail: FC = () => {
       setMap(r.data.location.mapUrl || '');
       setProjectId(r.data.projectId);
       setCompanyEnabled(r.data.managementCompany?.enabled || false);
-      setPaymentPlan(r.data.paymentPlanList)
+      setPaymentPlan(r.data.paymentPlanList);
     });
   }, []);
 
@@ -152,10 +152,7 @@ const EstateDetail: FC = () => {
             <></>
           )}
           <ApartmentLayouts {...roomLayouts} estateId={id} />
-          <PaymentSchedule
-              paymentPlanList={paymentPlan}
-              listSize={paymentPlan?.length || 0}
-          />
+          <PaymentSchedule paymentPlanList={paymentPlan} listSize={paymentPlan?.length || 0} />
           <AverageYield {...profitability} />
           <Infrastructure
             beachTime={infrastructure?.beachTime?.car}

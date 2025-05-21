@@ -24,14 +24,14 @@ export type GetEstateParams = {
   city?: string[];
   grades?: string[];
   managementCompanyEnabled?: string;
+  maxPrice?: number;
+  minPrice?: number;
   pageNumber?: number;
   pageSize?: number;
   parking?: boolean;
   price?: string;
   rooms?: string[];
   types?: string[];
-  minPrice?: number;
-  maxPrice?: number;
 };
 
 export type GetEstateAi = {

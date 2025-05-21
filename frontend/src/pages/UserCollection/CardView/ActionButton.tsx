@@ -25,7 +25,7 @@ export const ActionButton: FC<ActionButtonProps> = ({
   estateName,
   estates,
   copyLink,
-  id
+  id,
 }) => {
   const { formatMessage } = useIntl();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);

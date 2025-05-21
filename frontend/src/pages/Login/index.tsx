@@ -46,7 +46,8 @@ export const Login: FC = () => {
           const {
             status: { description },
           } = e.response?.data as { status: { code: string; description: string } };
-          console.log("Error,", description)
+
+          console.log('Error,', description);
           setError(formatMessage({ id: 'login.wrongLoginOrPassword' }));
         }
       } finally {
@@ -85,7 +86,9 @@ export const Login: FC = () => {
             <Text variant="caption1" className={styles.error}>
               {error}
             </Text>
-          ) : <></>}
+          ) : (
+            <></>
+          )}
         </>
       }
       bottomText={

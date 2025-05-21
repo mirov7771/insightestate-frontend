@@ -69,33 +69,32 @@ export const Tariffs: FC = () => {
         </Text>
       </div>
       <div className={styles.wrapper}>
-        {tariffs?.main
-          .map((tariff) => (
-            <TariffCard
-              title={tariff.title}
-              description={tariff.description}
-              price={
-                extra && tariff.price > 0 && tariff.title !== 'Pro'
-                  ? tariff.price + extraPrice
-                  : tariff.price
-              }
-              id={tariff.id}
-              extraId={extra && tariff.price > 0 && tariff.title === 'Standart' ? extraId : undefined}
-              userSubscriptionId={localStorage.getItem('subscriptionId')}
-              switcher={
-                tariff.title === 'Standart' ? (
-                  <div className={styles.switcher}>
-                    <div>
-                      <Switcher checked={extra} onChange={handleChangeChecked} id="" value={''} />
-                    </div>
-                    <Text variant="heading4">{formatMessage({ id: 'tariff_ai' })}</Text>
+        {tariffs?.main.map((tariff) => (
+          <TariffCard
+            title={tariff.title}
+            description={tariff.description}
+            price={
+              extra && tariff.price > 0 && tariff.title !== 'Pro'
+                ? tariff.price + extraPrice
+                : tariff.price
+            }
+            id={tariff.id}
+            extraId={extra && tariff.price > 0 && tariff.title === 'Standart' ? extraId : undefined}
+            userSubscriptionId={localStorage.getItem('subscriptionId')}
+            switcher={
+              tariff.title === 'Standart' ? (
+                <div className={styles.switcher}>
+                  <div>
+                    <Switcher checked={extra} onChange={handleChangeChecked} id="" value={''} />
                   </div>
-                ) : (
-                  <></>
-                )
-              }
-            />
-          ))}
+                  <Text variant="heading4">{formatMessage({ id: 'tariff_ai' })}</Text>
+                </div>
+              ) : (
+                <></>
+              )
+            }
+          />
+        ))}
       </div>
     </>
   );

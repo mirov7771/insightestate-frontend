@@ -195,15 +195,21 @@ export const Card: FC<Estate & { collectionId: string }> = (estate) => {
             <section className={styles.table}>
               <div className={styles.table__item}>
                 <Text variant="body1">{formatMessage({ id: 'beach' })}</Text>
-                <Text variant="heading4">{estate?.infrastructure?.beachTime?.car ||
+                <Text variant="heading4">
+                  {estate?.infrastructure?.beachTime?.car ||
                     estate?.infrastructure?.beachTime?.walk ||
-                    5}{' '}{formatMessage({ id: 'min' })}</Text>
+                    5}{' '}
+                  {formatMessage({ id: 'min' })}
+                </Text>
               </div>
               <div className={styles.table__item}>
                 <Text variant="body1">{formatMessage({ id: 'mall' })}</Text>
-                <Text variant="heading4">{estate?.infrastructure?.mallTime?.car ||
+                <Text variant="heading4">
+                  {estate?.infrastructure?.mallTime?.car ||
                     estate?.infrastructure?.mallTime?.walk ||
-                    30}{' '}{formatMessage({ id: 'min' })}</Text>
+                    30}{' '}
+                  {formatMessage({ id: 'min' })}
+                </Text>
               </div>
               <div className={styles.table__item}>
                 <Text variant="body1">{formatMessage({ id: 'airport' })}</Text>

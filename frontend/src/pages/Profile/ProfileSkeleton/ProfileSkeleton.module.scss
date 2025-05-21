@@ -1,0 +1,44 @@
+.avatar {
+  width: 120px;
+  height: 120px;
+  margin-bottom: 16px;
+}
+
+.name {
+  width: 100%;
+  max-width: 500px;
+  height: 52px;
+}
+
+.description {
+  width: 100%;
+  max-width: 400px;
+}
+
+.info {
+  margin-top: 48px;
+
+  &__header {
+    width: 100%;
+    max-width: 200px;
+    height: 52px;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__name {
+    width: 100%;
+    max-width: 220px;
+    height: 32px;
+  }
+
+  &__value {
+    width: 100%;
+    max-width: 120px;
+    height: 20px;
+  }
+}

@@ -1,5 +1,4 @@
 import { FC, ReactNode, useEffect, useState } from 'react';
-import { useCopyToClipboard } from '@uidotdev/usehooks';
 import {
   EstateCollection,
   estateCollectionApi,
@@ -13,8 +12,10 @@ import { CardView } from './CardView/CardView';
 import { BlockView } from '@/pages/UserCollection/BlockView/BlockView';
 import { Tabs } from '@/entities/Tabs/Tabs';
 import { Text, useNotifications } from '@/shared/ui';
-import {detailApi} from "@/widgets/Detail/api/detailApi";
-import {isMobile} from "react-device-detect";
+import { FETCHING_STATUS } from '@/shared/constants/constants';
+import { copyToClipboard } from '@/shared/utils';
+import { detailApi } from '@/widgets/Detail/api/detailApi';
+import { isMobile } from 'react-device-detect';
 
 type TStatus = 'IDLE' | 'SUCCESS' | 'ERROR' | 'LOADING';
 
@@ -50,9 +51,9 @@ const ItemCollection: FC<Required<EstateCollection> & { token: string; value: nu
 }) => {
   const { formatMessage } = useIntl();
   const { notify } = useNotifications();
-  const [, copyToClipboard] = useCopyToClipboard();
   const collectionLink = `/offer-collection-v2/${id}?token=${token.replace('Basic ', '')}`;
   const navigate = useNavigate();
+  const [status, setStatus] = useState<keyof typeof FETCHING_STATUS>('IDLE');
   const allImages = estates
     .map(
       (estate) =>
@@ -61,12 +62,17 @@ const ItemCollection: FC<Required<EstateCollection> & { token: string; value: nu
     .filter(Boolean) as string[];
   const renderImages = !!allImages.length ? allImages : [DEFAULT_IMG];
   const deleteCollection = () => {
+    setStatus('LOADING');
     estateCollectionApi
       .deleteCollection(token, id)
       .then((r) => {
+        setStatus('SUCCESS');
         window.location.reload();
       })
-      .catch((e) => console.log(e));
+      .catch((e) => {
+        console.log(e);
+        setStatus('ERROR');
+      });
   };
 
   const goToCollection = () => {
@@ -77,12 +83,13 @@ const ItemCollection: FC<Required<EstateCollection> & { token: string; value: nu
     const el = document.createElement('input');
 
     el.value = window.location.href;
-    let url = `${window.location.host}${collectionLink}`
-    if (!url.startsWith("http")) url = `https://${window.location.host}${collectionLink}`
+    let url = `${window.location.host}${collectionLink}`;
 
-    const { data } = await detailApi.shortUrl(url)
+    if (!url.startsWith('http')) url = `https://${window.location.host}${collectionLink}`;
 
-    el.value = data.url
+    const { data } = await detailApi.shortUrl(url);
+
+    el.value = data.url;
     document.body.appendChild(el);
     if (isMobile) {
       el.setSelectionRange(0, el.value.length);
@@ -93,11 +100,22 @@ const ItemCollection: FC<Required<EstateCollection> & { token: string; value: nu
     document.body.removeChild(el);
   }
 
-  const handleCopyLink = async () => {
+  /*const handleCopyLink = async () => {
 
     // copyToClipboard(data.url);
     await copyTask()
     notify({ message: formatMessage({ id: 'userCollection.copiedLink' }), duration: 3000 });
+    }*/
+  const handleCopyLink = async () => {
+    try {
+      const result = await copyToClipboard(`${window.location.host}${collectionLink}`);
+
+      if (result) {
+        notify({ message: formatMessage({ id: 'userCollection.copiedLink' }), duration: 3000 });
+      }
+    } catch (e) {
+      console.log({ e });
+    }
   };
 
   return (
@@ -190,7 +208,7 @@ export const UserCollection: FC = () => {
       )}
       {status === 'SUCCESS' && !collection.length && (
         <Text variant="heading3" className={styles.empty}>
-          У вас еще нет подборок
+          {formatMessage({ id: 'userCollection.empty' })}
         </Text>
       )}
     </div>

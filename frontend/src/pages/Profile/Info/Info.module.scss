@@ -1,0 +1,30 @@
+.layout {
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--ui-color-black-12-opacity);
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  &__value {
+    color: var(--ui-color-black-64-opacity);
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+  }
+}

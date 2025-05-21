@@ -49,7 +49,7 @@ export const DESCRIPTIONS_RU = {
       icon: <OfferCollectionSpark />,
       text: <Text variant="body1">7 запросов в AI-подборщике</Text>,
     },
-  ]
+  ],
 };
 
 export const DESCRIPTIONS_ENG = {
@@ -68,21 +68,25 @@ export const DESCRIPTIONS_ENG = {
     {
       icon: <OfferCollectionHomeStar />,
       text: (
-          <Text variant="body1">
-            <b>Unlimited selections</b>
-          </Text>
+        <Text variant="body1">
+          <b>Unlimited selections</b>
+        </Text>
       ),
     },
     {
       icon: <OfferCollectionGraphMonitor />,
-      text: <Text variant="body1">All analytics on the object: estimates, calculation of the economy</Text>,
+      text: (
+        <Text variant="body1">
+          All analytics on the object: estimates, calculation of the economy
+        </Text>
+      ),
     },
     {
       icon: <OfferCollectionSpark />,
       text: (
-          <Text variant="body1">
-            <b>Unlimited requests</b> in the AI picker
-          </Text>
+        <Text variant="body1">
+          <b>Unlimited requests</b> in the AI picker
+        </Text>
       ),
     },
   ],
@@ -90,7 +94,11 @@ export const DESCRIPTIONS_ENG = {
     { icon: <OfferCollectionHomeStar />, text: <Text variant="body1">7 collections</Text> },
     {
       icon: <OfferCollectionGraphMonitor />,
-      text: <Text variant="body1">All analytics on the object: estimates, calculation of the economy</Text>,
+      text: (
+        <Text variant="body1">
+          All analytics on the object: estimates, calculation of the economy
+        </Text>
+      ),
     },
     {
       icon: <OfferCollectionSpark />,

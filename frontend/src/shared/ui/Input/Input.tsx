@@ -12,7 +12,11 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ label, error, className = '', ...props }, ref) => {
     return (
       <div className={`${styles.wrapper} ${error ? styles.input__error : ''} ${className}`.trim()}>
-        {label && <label className={styles.label}>{label}</label>}
+        {label && (
+          <Text variant="heading4" as="label" className={styles.label}>
+            {label}
+          </Text>
+        )}
         <input
           ref={ref}
           className={`${styles.input} ${error ? styles.input__error : ''}`}
