@@ -1,5 +1,4 @@
 import { FC, ReactNode, useEffect, useState } from 'react';
-import { useCopyToClipboard } from '@uidotdev/usehooks';
 import {
   EstateCollection,
   estateCollectionApi,
@@ -13,6 +12,8 @@ import { CardView } from './CardView/CardView';
 import { BlockView } from '@/pages/UserCollection/BlockView/BlockView';
 import { Tabs } from '@/entities/Tabs/Tabs';
 import { Text, useNotifications } from '@/shared/ui';
+import { FETCHING_STATUS } from '@/shared/constants/constants';
+import { copyToClipboard } from '@/shared/utils';
 
 type TStatus = 'IDLE' | 'SUCCESS' | 'ERROR' | 'LOADING';
 
@@ -48,9 +49,9 @@ const ItemCollection: FC<Required<EstateCollection> & { token: string; value: nu
 }) => {
   const { formatMessage } = useIntl();
   const { notify } = useNotifications();
-  const [, copyToClipboard] = useCopyToClipboard();
   const collectionLink = `/offer-collection-v2/${id}?token=${token.replace('Basic ', '')}`;
   const navigate = useNavigate();
+  const [status, setStatus] = useState<keyof typeof FETCHING_STATUS>('IDLE');
   const allImages = estates
     .map(
       (estate) =>
@@ -59,21 +60,33 @@ const ItemCollection: FC<Required<EstateCollection> & { token: string; value: nu
     .filter(Boolean) as string[];
   const renderImages = !!allImages.length ? allImages : [DEFAULT_IMG];
   const deleteCollection = () => {
+    setStatus('LOADING');
     estateCollectionApi
       .deleteCollection(token, id)
       .then((r) => {
+        setStatus('SUCCESS');
         window.location.reload();
       })
-      .catch((e) => console.log(e));
+      .catch((e) => {
+        console.log(e);
+        setStatus('ERROR');
+      });
   };
 
   const goToCollection = () => {
     navigate(collectionLink);
   };
 
-  const handleCopyLink = () => {
-    copyToClipboard(`${window.location.host}${collectionLink}`);
-    notify({ message: formatMessage({ id: 'userCollection.copiedLink' }), duration: 3000 });
+  const handleCopyLink = async () => {
+    try {
+      const result = await copyToClipboard(`${window.location.host}${collectionLink}`);
+
+      if (result) {
+        notify({ message: formatMessage({ id: 'userCollection.copiedLink' }), duration: 3000 });
+      }
+    } catch (e) {
+      console.log({ e });
+    }
   };
 
   return (
@@ -166,7 +179,7 @@ export const UserCollection: FC = () => {
       )}
       {status === 'SUCCESS' && !collection.length && (
         <Text variant="heading3" className={styles.empty}>
-          У вас еще нет подборок
+          {formatMessage({ id: 'userCollection.empty' })}
         </Text>
       )}
     </div>

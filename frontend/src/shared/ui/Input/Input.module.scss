@@ -44,7 +44,10 @@
     }
   }
 
-  .label {}
+  .label {
+    color: var(--ui-color-black);
+    margin-bottom: 8px;
+  }
 
   .errorText {
     color: var(--ui-color-red);

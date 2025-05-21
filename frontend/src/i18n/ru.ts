@@ -216,6 +216,9 @@ export default {
   'login.welcome': 'Приветствуем вас',
   'login.details':
     'Пожалуйста, заполните ваши данные. Ваши ФИО и номер телефона будут видны клиентам в оффере',
+  'login.codeLetter': 'Код из письма',
+  'login.wrongLoginOrPassword': 'Неверный логин или пароль',
+  'login.exit': 'Выйти',
 
   'reset.password': 'Сброс пароля',
   'reset.enterEmail': 'Введите вашу электронную почту, мы вышлем на неё код для сброса пароля',
@@ -240,8 +243,26 @@ export default {
   'userCollection.blocks': 'Блоки',
   'userCollection.cards': 'Карточки',
   'userCollection.changeName': 'Изменить название',
-  'login.codeLetter': 'Код из письма',
-  'login.wrongLoginOrPassword': 'Неверный логин или пароль',
+  'userCollection.empty': 'У вас еще нет подборок',
+
+  'profile.personalInformation': 'Личные данные',
+  'profile.fullName': 'Имя и фамилия',
+  'profile.phoneNumber': 'Номер телефона',
+  'profile.location': 'Локация',
+  'profile.email': 'Электронная почта',
+  'profile.password': 'Пароль',
+  'profile.messengers': 'Мессенджеры',
+  'profile.account': 'Аккаунт',
+  'profile.deleteAccount': 'Удаление аккаунта',
+  'profile.accountDeletionNotice': 'Ваш аккаунт будет удалён навсегда',
+
+  'common.delete': 'Удалить',
+  'common.edit': 'Изменить',
+  'common.add': 'Добавить',
+  'common.save': 'Сохранить',
+  'common.cancel': 'Отмена',
+  'common.back': 'Назад',
+  'common.notAdded': 'Не добавлен',
+
   'change.tariff': 'Улучшить тариф',
-  'login.exit': 'Выйти'
 };

@@ -216,6 +216,9 @@ export default {
   'login.welcome': 'Welcome',
   'login.details':
     'Please fill in your details. Your full name and phone number will be visible to clients in the offer.',
+  'login.exit': 'Exit',
+  'login.codeLetter': 'Code from mail',
+  'login.wrongLoginOrPassword': 'User login or password not correct',
 
   'reset.password': 'Password reset',
   'reset.enterEmail': `Enter your email address and we'll send you a code to reset your password.`,
@@ -240,8 +243,26 @@ export default {
   'userCollection.blocks': 'Block',
   'userCollection.cards': 'Cards',
   'userCollection.changeName': 'Rename',
-  'login.codeLetter': 'Code from mail',
-  'login.wrongLoginOrPassword': 'User login or password not correct',
+  'userCollection.empty': 'You don’t have any collections yet',
+
+  'profile.personalInformation': 'Personal information',
+  'profile.fullName': 'Full name',
+  'profile.phoneNumber': 'Phone number',
+  'profile.location': 'Location',
+  'profile.email': 'Email address',
+  'profile.password': 'Password',
+  'profile.messengers': 'Messengers',
+  'profile.account': 'Account',
+  'profile.deleteAccount': 'Delete account',
+  'profile.accountDeletionNotice': 'Your account will be permanently deleted',
+
+  'common.delete': 'Delete',
+  'common.edit': 'Edit',
+  'common.add': 'Add',
+  'common.save': 'Save',
+  'common.cancel': 'Cancel',
+  'common.back': 'Back',
+  'common.notAdded': 'Not added',
+
   'change.tariff': 'Change tariff',
-  'login.exit': 'Exit'
 };

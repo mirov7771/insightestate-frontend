@@ -1,201 +1,239 @@
-import React, { ChangeEvent, FC, useEffect, useState } from 'react';
-// import styles from '@/pages/Register/Register.module.scss';
-import styles from '@/pages/Profile/Profile.module.scss';
-import { LogoIcon } from '@/shared/assets/icons';
-import { Spacer } from '@/widgets/Spacer/Spacer';
-import { BaseField } from '@/widgets/BaseField/BaseField';
-import { Button } from '@/shared/ui';
+import { ChangeEvent, FC, useEffect, useMemo, useRef, useState } from 'react';
+import MuiAvatar from '@mui/material/Avatar';
+import styles from './Profile.module.scss';
+import { OfferCollectionArrowLeft } from '@/shared/assets/icons';
+import { Button, Text } from '@/shared/ui';
 import { useNavigate } from 'react-router';
 import { useIntl } from 'react-intl';
 import { detailApi } from '@/widgets/Detail/api/detailApi';
 import { estateCollectionApi } from '@/widgets/EstateCollection/api/estateCollectionApi';
+import { Info } from './Info/Info';
+import { FETCHING_STATUS } from '@/shared/constants/constants';
+import { ProfileSkeleton } from '@/pages/Profile/ProfileSkeleton/ProfileSkeleton';
 
 export const Profile: FC = () => {
   const { formatMessage } = useIntl();
   const navigate = useNavigate();
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState(localStorage.getItem('email') || '');
-  const [password, setPassword] = useState('');
-  const [phone, setPhone] = useState('');
-  const [location, setLocation] = useState('');
-
-  const [whatsUp, setWhatsUp] = useState('');
-  const [tgName, setTgName] = useState('');
-  const [profileImage, setProfileImage] = useState('');
-  const [loading, setLoading] = useState(false);
   const [token, setToken] = useState(localStorage.getItem('basicToken'));
-
-  const onChangeUsername = (e: ChangeEvent<HTMLInputElement>) => {
-    const username = e.target.value;
-
-    setUsername(username);
+  const [data, setData] = useState({
+    username: '',
+    email: '',
+    password: '',
+    phone: '',
+    location: '',
+    whatsUp: '',
+    tgName: '',
+    profileImage: '',
+  });
+  const [status, setStatus] = useState<keyof typeof FETCHING_STATUS>('IDLE');
+  const [updateStatus, setUpdateStatus] = useState<keyof typeof FETCHING_STATUS>('IDLE');
+  const refAvatar = useRef<HTMLInputElement>(null);
+  const handleClickAvatar = () => {
+    if (refAvatar.current) {
+      refAvatar.current.click();
+    }
   };
+  const infoDescription = useMemo(() => {
+    const { phone, email, location } = data;
+    const result = [];
 
-  const onChangeEmail = (e: ChangeEvent<HTMLInputElement>) => {
-    const email = e.target.value;
+    if (phone) result.push(phone);
+    if (email) result.push(email);
+    if (location) result.push(location);
 
-    setEmail(email);
-  };
-
-  const onChangeLocation = (e: ChangeEvent<HTMLInputElement>) => {
-    const location = e.target.value;
-
-    setLocation(location);
-  };
-
-  const onChangePhone = (e: ChangeEvent<HTMLInputElement>) => {
-    const phone = e.target.value;
-
-    setPhone(phone);
-  };
-
-  const onChangePassword = (e: ChangeEvent<HTMLInputElement>) => {
-    const password = e.target.value;
-
-    setPassword(password);
-  };
-
-  const onChangeWhatsUp = (e: ChangeEvent<HTMLInputElement>) => {
-    const whatsUp = e.target.value;
-
-    setWhatsUp(whatsUp);
-  };
-
-  const onChangeTgName = (e: ChangeEvent<HTMLInputElement>) => {
-    const tgName = e.target.value;
-
-    setTgName(tgName);
-  };
-
-  const handleLogin = async () => {
-    setLoading(true);
-    const rs = await detailApi.profileUpdate(
-      username,
-      email,
-      password,
-      phone,
-      location,
-      whatsUp,
-      tgName,
-      profileImage
-    );
-
-    if (rs) navigate('/listing');
-    setLoading(false);
-  };
+    return result.join(' / ');
+  }, [data]);
 
   const onChangeProfileImage = async (e: ChangeEvent<HTMLInputElement>) => {
-    debugger;
-    const profileImage = e.target.files;
-    const imageUrl = await detailApi.uploadProfileImage(profileImage!![0]);
+    try {
+      setUpdateStatus('LOADING');
+      const profileImage = e.target.files;
+      const imageUrl = await detailApi.uploadProfileImage(profileImage!![0]);
 
-    setProfileImage(imageUrl!!);
+      setData((prev) => ({ ...prev, profileImage: imageUrl || '' }));
+      setUpdateStatus('SUCCESS');
+    } catch (e) {
+      console.log({ e });
+      setUpdateStatus('ERROR');
+    }
+  };
+
+  const handleGoBack = () => {
+    navigate(-1);
+  };
+
+  const handleProfileUpdate = async (updatedData: typeof data) => {
+    try {
+      setUpdateStatus('LOADING');
+      await detailApi.profileUpdate(updatedData);
+      setUpdateStatus('SUCCESS');
+    } catch (e) {
+      setUpdateStatus('ERROR');
+      console.log({ e });
+    }
   };
 
   useEffect(() => {
-    setEmail(localStorage.getItem('email') || '');
+    setStatus('LOADING');
     setToken(localStorage.getItem('basicToken'));
     estateCollectionApi
       .getAgentInfo(token!!)
       .then((r) => {
-        if (r.data.login) setEmail(r.data.login);
-        if (r.data.tgName) setTgName(r.data.tgName);
-        if (r.data.profileImage) setProfileImage(r.data.profileImage);
-        if (r.data.whatsUp) setWhatsUp(r.data.whatsUp);
-        if (r.data.location) setLocation(r.data.location);
-        if (r.data.mobileNumber) setPhone(r.data.mobileNumber);
-        if (r.data.fio) setUsername(r.data.fio);
+        setData({
+          location: r.data.location || '',
+          tgName: r.data.tgName || '',
+          whatsUp: r.data.whatsUp || '',
+          password: '',
+          phone: r.data.mobileNumber || '',
+          profileImage: r.data.profileImage || '',
+          email: localStorage.getItem('email') || '',
+          username: r.data.fio || '',
+        });
+        setStatus('SUCCESS');
       })
       .catch((e) => {
         console.log(e);
+        setStatus('ERROR');
         navigate('/listing');
       });
   }, []);
 
   return (
-    <>
-      <div className={`${styles.wrapper}`}>
-        <div className={styles.logo}>
-          <LogoIcon />
-        </div>
-        <Spacer height={8} width={100} />
-        <BaseField
-          onChange={onChangeUsername}
-          value={username}
-          name="username"
-          label={formatMessage({ id: 'surname_name' })}
-        />
-        <Spacer height={8} width={100} />
-        <BaseField name="email" value={email} onChange={onChangeEmail} label="Email" />
-        <Spacer height={8} width={100} />
-        <BaseField
-          name="phone"
-          value={phone}
-          onChange={onChangePhone}
-          label={formatMessage({ id: 'phone_number' })}
-        />
-        <Spacer height={8} width={100} />
-        <BaseField
-          name="location"
-          value={location}
-          onChange={onChangeLocation}
-          label={formatMessage({ id: 'location' })}
-        />
-        <Spacer height={8} width={100} />
-        <BaseField
-          name="whatsUp"
-          value={whatsUp}
-          onChange={onChangeWhatsUp}
-          label={formatMessage({ id: 'wa' })}
-        />
-        <Spacer height={8} width={100} />
-        <BaseField
-          name="tgName"
-          value={tgName}
-          onChange={onChangeTgName}
-          label={formatMessage({ id: 'tg' })}
-        />
-        <Spacer height={8} width={100} />
-        <Button onClick={() => document.getElementById('profileImage')!!.click()} size="s" wide>
-          {formatMessage({ id: 'photo' })}
-        </Button>
-        <Spacer height={10} width={100} />
-        <input
-          id="profileImage"
-          style={{
-            display: 'none'
-          }}
-          accept="image/*"
-          type="file"
-          name="profileImage"
-          onChange={onChangeProfileImage}
-        />
-        {profileImage ? (
-          <img src={profileImage} alt="profileImage" className={styles.profileIcon} />
-        ) : (
-          <></>
-        )}
-        <Spacer height={8} width={100} />
-        <BaseField
-          type="password"
-          name="password"
-          value={password}
-          onChange={onChangePassword}
-          label={formatMessage({ id: 'password' })}
-        />
-
-        <Spacer height={20} width={100} />
-        <Button onClick={handleLogin} wide size={'l'} loading={loading}>
-          {formatMessage({ id: 'save' })}
-        </Button>
-        <Spacer height={20} width={100} />
-        <div className={styles.centerRegistration}>
-          <a href={'/listing'} className="button">
-            {formatMessage({ id: 'come_back' })}
-          </a>
-        </div>
-        <Spacer height={20} width={100} />
-      </div>
-    </>
+    <div className={styles.layout}>
+      {status === 'LOADING' ? (
+        <ProfileSkeleton />
+      ) : (
+        <>
+          <Button className={styles.back} variant="base" size="s" onClick={handleGoBack}>
+            <OfferCollectionArrowLeft />
+            <Text variant="heading5">{formatMessage({ id: 'common.back' })}</Text>
+          </Button>
+          <div>
+            <MuiAvatar
+              className={styles.avatar}
+              onClick={handleClickAvatar}
+              src={data.profileImage}
+            >
+              <Text variant="heading3" align="center">
+                {data.username[0]}
+              </Text>
+            </MuiAvatar>
+            <input
+              type="file"
+              accept="image/*"
+              style={{
+                display: 'none',
+              }}
+              ref={refAvatar}
+              onChange={onChangeProfileImage}
+            />
+          </div>
+          <Text variant="heading2" as="h2">
+            {data.username}
+          </Text>
+          <Text variant="body1" className={styles.layout__description}>
+            {infoDescription}
+          </Text>
+          <div className={styles.main}>
+            <Text className={styles.main__header} variant="heading3">
+              {formatMessage({ id: 'profile.personalInformation' })}
+            </Text>
+            <div className={styles.info}>
+              <Info
+                name={formatMessage({ id: 'profile.fullName' })}
+                value={data.username}
+                dataKey="username"
+                setData={setData}
+                handleProfileUpdate={handleProfileUpdate}
+                isLoading={updateStatus === 'LOADING'}
+                data={data}
+              />
+              <Info
+                inputType="tel"
+                name={formatMessage({ id: 'profile.phoneNumber' })}
+                value={data.phone}
+                dataKey="phone"
+                setData={setData}
+                handleProfileUpdate={handleProfileUpdate}
+                isLoading={updateStatus === 'LOADING'}
+                data={data}
+              />
+              <Info
+                name={formatMessage({ id: 'profile.location' })}
+                value={data.location}
+                dataKey="location"
+                setData={setData}
+                handleProfileUpdate={handleProfileUpdate}
+                isLoading={updateStatus === 'LOADING'}
+                data={data}
+              />
+              <Info
+                inputType="email"
+                name={formatMessage({ id: 'profile.email' })}
+                value={data.email}
+                dataKey="email"
+                setData={setData}
+                handleProfileUpdate={handleProfileUpdate}
+                isLoading={updateStatus === 'LOADING'}
+                data={data}
+              />
+              <Info
+                inputType="password"
+                name={formatMessage({ id: 'profile.password' })}
+                value={data.password}
+                dataKey="password"
+                setData={setData}
+                handleProfileUpdate={handleProfileUpdate}
+                isLoading={updateStatus === 'LOADING'}
+                data={data}
+              />
+            </div>
+          </div>
+          <div className={styles.main}>
+            <Text className={styles.main__header} variant="heading3">
+              {formatMessage({ id: 'profile.messengers' })}
+            </Text>
+            <div className={styles.info}>
+              <Info
+                name="Telegram"
+                value={data.tgName}
+                dataKey="tgName"
+                setData={setData}
+                handleProfileUpdate={handleProfileUpdate}
+                isLoading={updateStatus === 'LOADING'}
+                data={data}
+              />
+              <Info
+                name="WhatsApp"
+                value={data.whatsUp}
+                dataKey="whatsUp"
+                setData={setData}
+                handleProfileUpdate={handleProfileUpdate}
+                isLoading={updateStatus === 'LOADING'}
+                data={data}
+              />
+            </div>
+          </div>
+          <div className={styles.main}>
+            <Text className={styles.main__header} variant="heading3">
+              {formatMessage({ id: 'profile.account' })}
+            </Text>
+            <div className={styles.info}>
+              <div className={styles.wrapper}>
+                <div className={styles.content}>
+                  <Text variant="heading4">{formatMessage({ id: 'profile.deleteAccount' })}</Text>
+                  <Text className={styles.content__value} variant="body1">
+                    {formatMessage({ id: 'profile.accountDeletionNotice' })}
+                  </Text>
+                </div>
+                <Button variant="base" className={styles.button}>
+                  <Text variant="heading5">{formatMessage({ id: 'common.delete' })}</Text>
+                </Button>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
+    </div>
   );
 };

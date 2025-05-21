@@ -52,7 +52,7 @@ import OfferCollectionWhatsUp from './offer-collection/whats-app.svg?react';
 import OfferCollectionMapPinFilled from './offer-collection/tabler-icon-map-pin-filled.svg?react';
 import OfferCollectionHeart from './offer-collection/tabler-icon-heart.svg?react';
 import OfferCollectionArrowRight from './offer-collection/tabler-icon-chevron-right.svg?react';
-import OfferCollectionArrowLeft from './offer-collection/tabler-icon-chevron-left.svg?react';
+import OfferCollectionChevronLeft from './offer-collection/tabler-icon-chevron-left.svg?react';
 import OfferCollectionGraphMonitor from './offer-collection/graph-monitor.svg?react';
 import OfferCollectionSpark from './offer-collection/spark.svg?react';
 import OfferCollectionHomeStar from './offer-collection/tabler-icon-home-star.svg?react';
@@ -62,6 +62,7 @@ import OfferCollectionEdit from './offer-collection/tabler-icon-edit.svg?react';
 import OfferCollectionTrash from './offer-collection/tabler-icon-trash.svg?react';
 import OfferCollectionX from './offer-collection/tabler-icon-x.svg?react';
 import OfferCollectionCircleCheckFilled from './offer-collection/tabler-icon-circle-check-filled.svg?react';
+import OfferCollectionArrowLeft from './offer-collection/tabler-icon-arrow-left.svg?react';
 
 export {
   Bed,
@@ -119,7 +120,7 @@ export {
   OfferCollectionMapPinFilled,
   OfferCollectionHeart,
   OfferCollectionArrowRight,
-  OfferCollectionArrowLeft,
+  OfferCollectionChevronLeft,
   OfferCollectionGraphMonitor,
   OfferCollectionSpark,
   OfferCollectionHomeStar,
@@ -129,4 +130,5 @@ export {
   OfferCollectionTrash,
   OfferCollectionX,
   OfferCollectionCircleCheckFilled,
+  OfferCollectionArrowLeft,
 };

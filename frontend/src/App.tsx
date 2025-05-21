@@ -51,8 +51,8 @@ const App = () => {
                 <Route path="/reset-password/code" element={<ResetPasswordCode />} />
                 <Route path="/reset-password/new" element={<NewPassword />} />
               </Route>
-              <Route path="/profile" element={<Profile />} />
               <Route path="/" element={<Layout />}>
+                <Route path="/profile" element={<Profile />} />
                 <Route index element={<Authorization />} />
                 <Route
                   path="/listing"
