@@ -12,6 +12,8 @@ import { useSearchParams } from 'react-router';
 import { useIntl } from 'react-intl';
 import { Spacer } from '@/widgets/Spacer/Spacer';
 import {detailApi} from "@/widgets/Detail/api/detailApi";
+import {useCopyToClipboard} from "@uidotdev/usehooks";
+import {isMobile} from "react-device-detect";
 
 export const ContactManager = () => {
   const { formatMessage } = useIntl();
@@ -22,6 +24,7 @@ export const ContactManager = () => {
   const [agentInfo, setAgentInfo] = useState<AgentInfo>();
   const [open, setOpen] = useState(false);
   const [openInfo, setOpenInfo] = useState(false);
+  const [, copyToClipboard] = useCopyToClipboard();
   const clickable =
     localStorage.getItem('basicToken') !== null &&
     localStorage.getItem('basicToken') !== undefined &&
@@ -38,12 +41,31 @@ export const ContactManager = () => {
       .catch((e) => console.log(e));
   }, []);
 
+  async function copyTask() {
+    const el = document.createElement('input');
+
+    el.value = window.location.href;
+
+    const { data } = await detailApi.shortUrl(el.value)
+
+    el.value = data.url
+    document.body.appendChild(el);
+    if (isMobile) {
+      el.setSelectionRange(0, el.value.length);
+    } else {
+      el.select();
+    }
+    document.execCommand('copy');
+    document.body.removeChild(el);
+  }
+
   const handleCopyLink = async () => {
-    let url = window.location.href;
-    if (!url.startsWith("http")) url = `https://${url}`
-    const { data } = await detailApi.shortUrl(url)
+    // let url = window.location.href;
+    // if (!url.startsWith("http")) url = `https://${url}`
+    // const { data } = await detailApi.shortUrl(url)
+    copyTask()
     // copyToClipboard(data.url);
-    await navigator.clipboard.writeText( data.url )
+    // await navigator.clipboard.writeText( data.url )
     notify({ message: formatMessage({ id: 'userCollection.copiedLink' }), duration: 3000 });
   };
 
