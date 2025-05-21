@@ -47,7 +47,7 @@ export const UserCollectionModal: FC<TModalProps & { id: string; token: string }
       .then((r) => {
         setIsNew(r.data.items.length == 0);
         setCollections(r.data.items);
-        console.log(r.data.items.length, isNew, collections)
+        console.log(r.data.items.length, isNew, collections);
       })
       .catch((e) => console.log(e));
   }, [open]);

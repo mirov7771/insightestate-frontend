@@ -4,9 +4,9 @@ import { useIntl } from 'react-intl';
 import { Globe } from '@/shared/assets/icons';
 import getUserLocale from 'get-user-locale';
 import MenuItem from '@mui/material/MenuItem';
-import {Button, Text} from '@/shared/ui';
+import { Button, Text } from '@/shared/ui';
 import Menu from '@mui/material/Menu';
-import {useNavigate} from "react-router";
+import { useNavigate } from 'react-router';
 
 export const Dropdown: FC = () => {
   const { formatMessage } = useIntl();
@@ -49,7 +49,7 @@ export const Dropdown: FC = () => {
   const goToExit = () => {
     localStorage.clear();
     navigate('/');
-    window.location.reload()
+    window.location.reload();
   };
 
   return (
@@ -95,15 +95,15 @@ export const Dropdown: FC = () => {
         </MenuItem>
       </Menu>
       <Button
-          type={'submit'}
-          size={'s'}
-          onClick={goToExit}
-          style={{
-            backgroundColor: 'transparent',
-            borderRadius: '100vw',
-            border: '1px solid #04b0be',
-            color: 'black'
-          }}
+        type={'submit'}
+        size={'s'}
+        onClick={goToExit}
+        style={{
+          backgroundColor: 'transparent',
+          borderRadius: '100vw',
+          border: '1px solid #04b0be',
+          color: 'black',
+        }}
       >
         {formatMessage({ id: 'login.exit' })}
       </Button>

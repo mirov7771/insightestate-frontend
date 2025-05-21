@@ -179,8 +179,8 @@ type LoadFileRs = {
 };
 
 export type ShortDto = {
-  url: string
-}
+  url: string;
+};
 
 export const detailApi = {
   getDetail: async (id: string | undefined): Promise<AxiosResponse<EstateDetail>> => {
@@ -335,7 +335,7 @@ export const detailApi = {
   shortUrl: async (url: string): Promise<AxiosResponse<ShortDto>> => {
     try {
       return await api.post<ShortDto>(`v1/estate-collections/short`, {
-        url: url
+        url: url,
       });
     } catch (error) {
       throw error;

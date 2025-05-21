@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import {BottomSheet, Button, Text, useNotifications} from '@/shared/ui';
+import { BottomSheet, Button, Text, useNotifications } from '@/shared/ui';
 import styles from './ContactManager.module.scss';
 import {
   OfferCollectionBrandTelegram,
@@ -11,9 +11,9 @@ import { AgentInfo, estateCollectionApi } from '@/widgets/EstateCollection/api/e
 import { useSearchParams } from 'react-router';
 import { useIntl } from 'react-intl';
 import { Spacer } from '@/widgets/Spacer/Spacer';
-import {detailApi} from "@/widgets/Detail/api/detailApi";
-import {useCopyToClipboard} from "@uidotdev/usehooks";
-import {isMobile} from "react-device-detect";
+import { detailApi } from '@/widgets/Detail/api/detailApi';
+import { useCopyToClipboard } from '@uidotdev/usehooks';
+import { isMobile } from 'react-device-detect';
 
 export const ContactManager = () => {
   const { formatMessage } = useIntl();
@@ -46,9 +46,9 @@ export const ContactManager = () => {
 
     el.value = window.location.href;
 
-    const { data } = await detailApi.shortUrl(el.value)
+    const { data } = await detailApi.shortUrl(el.value);
 
-    el.value = data.url
+    el.value = data.url;
     document.body.appendChild(el);
     if (isMobile) {
       el.setSelectionRange(0, el.value.length);
@@ -63,7 +63,7 @@ export const ContactManager = () => {
     // let url = window.location.href;
     // if (!url.startsWith("http")) url = `https://${url}`
     // const { data } = await detailApi.shortUrl(url)
-    copyTask()
+    copyTask();
     // copyToClipboard(data.url);
     // await navigator.clipboard.writeText( data.url )
     notify({ message: formatMessage({ id: 'userCollection.copiedLink' }), duration: 3000 });

@@ -83,12 +83,13 @@ const ItemCollection: FC<Required<EstateCollection> & { token: string; value: nu
     const el = document.createElement('input');
 
     el.value = window.location.href;
-    let url = `${window.location.host}${collectionLink}`
-    if (!url.startsWith("http")) url = `https://${window.location.host}${collectionLink}`
+    let url = `${window.location.host}${collectionLink}`;
 
-    const { data } = await detailApi.shortUrl(url)
+    if (!url.startsWith('http')) url = `https://${window.location.host}${collectionLink}`;
 
-    el.value = data.url
+    const { data } = await detailApi.shortUrl(url);
+
+    el.value = data.url;
     document.body.appendChild(el);
     if (isMobile) {
       el.setSelectionRange(0, el.value.length);
