@@ -153,7 +153,6 @@ const EstateDetail: FC = () => {
           )}
           <ApartmentLayouts {...roomLayouts} estateId={id} />
           <PaymentSchedule
-              projectId={projectId}
               paymentPlanList={paymentPlan}
               listSize={paymentPlan?.length || 0}
           />

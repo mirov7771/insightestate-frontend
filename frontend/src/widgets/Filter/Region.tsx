@@ -1,7 +1,7 @@
 import { ChangeEvent, FC } from 'react';
 import { LocationImg2 } from '@/shared/assets/icons';
 import styles from './Filter.module.scss';
-import { Accordion, RadioButton } from '@/shared/ui';
+import {Accordion, Checkbox} from '@/shared/ui';
 import { useFilters } from '@/widgets/Filter/model/useFilters';
 import { useIntl } from 'react-intl';
 
@@ -10,87 +10,91 @@ export const Region: FC = () => {
   const { setFilters, beachName } = useFilters();
 
   const handleClick = (e: ChangeEvent<HTMLInputElement>) => {
-    setFilters((filtersState) => ({ ...filtersState, beachName: e.target.value }));
+    setFilters((filtersState) => (
+        { ...filtersState, beachName: filtersState.beachName?.includes(e.target.value)
+              ? filtersState.beachName?.filter((val) => val !== e.target.value)
+              : [...(filtersState.beachName || []), e.target.value] }
+    ));
   };
 
   return (
     <Accordion icon={<LocationImg2 />} title={formatMessage({ id: 'region' })}>
       <div className={styles.content}>
-        <RadioButton
+        <Checkbox
           name="beachName"
           value="Kata"
           onChange={handleClick}
-          checked={beachName === 'Kata'}
+          checked={beachName?.includes('Kata')}
           label="Kata"
         />
-        <RadioButton
+        <Checkbox
           name="beachName"
           value="Mai Khao"
           onChange={handleClick}
-          checked={beachName === 'Mai Khao'}
+          checked={beachName?.includes('Mai Khao')}
           label="Mai Khao"
         />
-        <RadioButton
+        <Checkbox
           name="beachName"
           value="Layan"
           onChange={handleClick}
-          checked={beachName === 'Layan'}
+          checked={beachName?.includes('Layan')}
           label="Layan"
         />
-        <RadioButton
+        <Checkbox
           name="beachName"
           value="Bang Tao"
           onChange={handleClick}
-          checked={beachName === 'Bang Tao'}
+          checked={beachName?.includes('Bang Tao')}
           label="Bang Tao"
         />
-        <RadioButton
+        <Checkbox
           name="beachName"
           value="Rawai"
           onChange={handleClick}
-          checked={beachName === 'Rawai'}
+          checked={beachName?.includes('Rawai')}
           label="Rawai"
         />
-        <RadioButton
+        <Checkbox
           name="beachName"
           value="Kamala"
           onChange={handleClick}
-          checked={beachName === 'Kamala'}
+          checked={beachName?.includes('Kamala')}
           label="Kamala"
         />
-        <RadioButton
+        <Checkbox
           name="beachName"
           value="Naithon"
           onChange={handleClick}
-          checked={beachName === 'Naithon'}
+          checked={beachName?.includes('Naithon')}
           label="Naithon"
         />
-        <RadioButton
+        <Checkbox
           name="beachName"
           value="Karon"
           onChange={handleClick}
-          checked={beachName === 'Karon'}
+          checked={beachName?.includes('Karon')}
           label="Karon"
         />
-        <RadioButton
+        <Checkbox
           name="beachName"
           value="Surin"
           onChange={handleClick}
-          checked={beachName === 'Surin'}
+          checked={beachName?.includes('Surin')}
           label="Surin"
         />
-        <RadioButton
+        <Checkbox
           name="beachName"
           value="Nai Yang"
           onChange={handleClick}
-          checked={beachName === 'Nai Yang'}
+          checked={beachName?.includes('Nai Yang')}
           label="Nai Yang"
         />
-        <RadioButton
+        <Checkbox
           name="beachName"
           value="Ao Yon"
           onChange={handleClick}
-          checked={beachName === 'Ao Yon'}
+          checked={beachName?.includes('Ao Yon')}
           label="Ao Yon"
         />
       </div>

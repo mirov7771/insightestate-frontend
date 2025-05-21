@@ -4,26 +4,14 @@ import styles from './PaymentSchedule.module.scss';
 import { FC, useEffect, useState } from 'react';
 import { ScheduleByProject } from '@/widgets/Detail/api/detailApi';
 import { useIntl } from 'react-intl';
+import {isMobile} from "react-device-detect";
+import {Spacer} from "@/widgets/Spacer/Spacer";
 
-const createClass = (items: string[]) => {
-  const classes: Record<number, string> = {
-    1: styles.item__one,
-    2: styles.item__two,
-    3: styles.item__three,
-    4: styles.item__four,
-    5: styles.item__five,
-    6: styles.item__six,
-    7: styles.item__seven,
-  };
-
-  return classes[items.length] || styles.item__one;
-};
 
 export const PaymentSchedule: FC<{
-  projectId: string;
   paymentPlanList?: string[];
   listSize: number;
-}> = ({ projectId, paymentPlanList, listSize }) => {
+}> = ({ paymentPlanList, listSize }) => {
   const { formatMessage } = useIntl();
   const getStylesBySize = (): string => {
     switch (listSize) {
@@ -47,12 +35,25 @@ export const PaymentSchedule: FC<{
     <>
       {paymentPlanList ?
           <Section title={formatMessage({ id: 'payment_schedule' })}>
-            <div className={`${styles.item__header} ${styles.item} ${getStylesBySize()}`}>
-              {paymentPlanList.map((payment, i) => <span>{i+1}{' '}{formatMessage({ id: 'payment' })}</span>)}
-            </div>
-            <div className={`${styles.item__header} ${styles.item} ${getStylesBySize()}`}>
-              {paymentPlanList.map((payment) => <span>{payment}</span>)}
-            </div>
+            {isMobile ?
+                <>
+                  <div className={`${styles.item__header} ${styles.item_mobile}`}>
+                    {paymentPlanList.map((payment, i) => <span>{i+1}{' '}{formatMessage({ id: 'payment' })}{' '}</span>)}
+                  </div>
+                  <div className={`${styles.item__header} ${styles.item_mobile}`}>
+                    {paymentPlanList.map((payment) => <span>{' '}{payment}</span>)}
+                  </div>
+                </>
+                :
+                <>
+                  <div className={`${styles.item__header} ${styles.item} ${getStylesBySize()}`}>
+                    {paymentPlanList.map((payment, i) => <span>{i+1}{' '}{formatMessage({ id: 'payment' })}</span>)}
+                  </div>
+                  <div className={`${styles.item__header} ${styles.item} ${getStylesBySize()}`}>
+                    {paymentPlanList.map((payment) => <span>{payment}</span>)}
+                  </div>
+                </>
+            }
           </Section> :
           <></>
       }

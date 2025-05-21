@@ -18,10 +18,10 @@ export type Estate = {
 
 export type GetEstateParams = {
   airportTravelTimes?: string[];
-  beachName?: string;
+  beachName?: string[];
   beachTravelTimes?: string[];
   buildEndYears?: number[];
-  city?: string;
+  city?: string[];
   grades?: string[];
   managementCompanyEnabled?: string;
   pageNumber?: number;
@@ -30,6 +30,8 @@ export type GetEstateParams = {
   price?: string;
   rooms?: string[];
   types?: string[];
+  minPrice?: number;
+  maxPrice?: number;
 };
 
 export type GetEstateAi = {

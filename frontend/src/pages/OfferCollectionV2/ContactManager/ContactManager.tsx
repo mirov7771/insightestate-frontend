@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { BottomSheet, Button, Text } from '@/shared/ui';
+import {BottomSheet, Button, Text, useNotifications} from '@/shared/ui';
 import styles from './ContactManager.module.scss';
 import {
   OfferCollectionBrandTelegram,
@@ -11,17 +11,20 @@ import { AgentInfo, estateCollectionApi } from '@/widgets/EstateCollection/api/e
 import { useSearchParams } from 'react-router';
 import { useIntl } from 'react-intl';
 import { Spacer } from '@/widgets/Spacer/Spacer';
-import { InfoModal } from '@/widgets/Modal/InfoModal';
+import {detailApi} from "@/widgets/Detail/api/detailApi";
+import {useCopyToClipboard} from "@uidotdev/usehooks";
+import {isMobile} from "react-device-detect";
 
 export const ContactManager = () => {
   const { formatMessage } = useIntl();
+  const { notify } = useNotifications();
   const refManager = useRef<HTMLDivElement>(null);
   const refQuestion = useRef<HTMLDivElement>(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const [agentInfo, setAgentInfo] = useState<AgentInfo>();
   const [open, setOpen] = useState(false);
   const [openInfo, setOpenInfo] = useState(false);
-  const [infoModal, setInfoModal] = useState(false);
+  const [, copyToClipboard] = useCopyToClipboard();
   const clickable =
     localStorage.getItem('basicToken') !== null &&
     localStorage.getItem('basicToken') !== undefined &&
@@ -38,22 +41,32 @@ export const ContactManager = () => {
       .catch((e) => console.log(e));
   }, []);
 
-  function copyTask() {
+  async function copyTask() {
     const el = document.createElement('input');
 
     el.value = window.location.href;
+
+    const { data } = await detailApi.shortUrl(el.value)
+
+    el.value = data.url
     document.body.appendChild(el);
-    el.select();
+    if (isMobile) {
+      el.setSelectionRange(0, el.value.length);
+    } else {
+      el.select();
+    }
     document.execCommand('copy');
     document.body.removeChild(el);
-    handleOpenInfoModal();
   }
 
-  const handleOpenInfoModal = () => {
-    setInfoModal(true);
-  };
-  const handleCloseInfoModal = () => {
-    setInfoModal(false);
+  const handleCopyLink = async () => {
+    // let url = window.location.href;
+    // if (!url.startsWith("http")) url = `https://${url}`
+    // const { data } = await detailApi.shortUrl(url)
+    copyTask()
+    // copyToClipboard(data.url);
+    // await navigator.clipboard.writeText( data.url )
+    notify({ message: formatMessage({ id: 'userCollection.copiedLink' }), duration: 3000 });
   };
 
   return (
@@ -63,7 +76,7 @@ export const ContactManager = () => {
           className={`${styles.wrapper} ${styles.wrapper__question} ${open || openInfo ? styles.wrapper__open : ''}`}
           ref={refQuestion}
         >
-          <Button size="l" onClick={copyTask} className={styles.button2}>
+          <Button size="l" onClick={handleCopyLink} className={styles.button2}>
             <Text variant="heading4">{formatMessage({ id: 'copy_link' })}</Text>
           </Button>
           <Button size="l" onClick={() => setOpenInfo(true)} className={styles.button3}>
@@ -164,15 +177,6 @@ export const ContactManager = () => {
           <Spacer height={32} width={100} />
         </ul>
       </BottomSheet>
-      <InfoModal
-        open={infoModal}
-        onClose={handleCloseInfoModal}
-        onOpen={handleOpenInfoModal}
-        anchor="bottom"
-        title={formatMessage({ id: 'link_copied' })}
-        text={formatMessage({ id: 'link_copied_text' })}
-        bottom={30}
-      />
     </>
   );
 };

@@ -265,4 +265,6 @@ export default {
   'common.notAdded': 'Не добавлен',
 
   'change.tariff': 'Улучшить тариф',
+  'beach.walk': 'Пешком',
+  'beach.car': 'На машине',
 };

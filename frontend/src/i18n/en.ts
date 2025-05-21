@@ -265,4 +265,6 @@ export default {
   'common.notAdded': 'Not added',
 
   'change.tariff': 'Change tariff',
+  'beach.walk': 'Walk',
+  'beach.car': 'By car',
 };

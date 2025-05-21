@@ -52,7 +52,35 @@
   }
 
   &__header {
-    font-size: var(--text--text-big);
+    font-size: var(--text--text-body);
     font-weight: 500;
+
+    @media (min-width: $media-md) {
+      font-size: var(--text--text-big);
+    }
+  }
+}
+
+.item_mobile {
+  display: inline-grid;
+  gap: 1rem;
+  margin-bottom: 12px;
+  padding-left: 10px;
+
+  @media (min-width: $media-md) {
+    margin-bottom: 24px;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &__header {
+    font-size: var(--text--text-body);
+    font-weight: 500;
+
+    @media (min-width: $media-md) {
+      font-size: var(--text--text-big);
+    }
   }
 }

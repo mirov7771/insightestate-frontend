@@ -14,6 +14,8 @@ import { Tabs } from '@/entities/Tabs/Tabs';
 import { Text, useNotifications } from '@/shared/ui';
 import { FETCHING_STATUS } from '@/shared/constants/constants';
 import { copyToClipboard } from '@/shared/utils';
+import { detailApi } from '@/widgets/Detail/api/detailApi';
+import { isMobile } from 'react-device-detect';
 
 type TStatus = 'IDLE' | 'SUCCESS' | 'ERROR' | 'LOADING';
 
@@ -77,6 +79,32 @@ const ItemCollection: FC<Required<EstateCollection> & { token: string; value: nu
     navigate(collectionLink);
   };
 
+  async function copyTask() {
+    const el = document.createElement('input');
+
+    el.value = window.location.href;
+    let url = `${window.location.host}${collectionLink}`
+    if (!url.startsWith("http")) url = `https://${window.location.host}${collectionLink}`
+
+    const { data } = await detailApi.shortUrl(url)
+
+    el.value = data.url
+    document.body.appendChild(el);
+    if (isMobile) {
+      el.setSelectionRange(0, el.value.length);
+    } else {
+      el.select();
+    }
+    document.execCommand('copy');
+    document.body.removeChild(el);
+  }
+
+  /*const handleCopyLink = async () => {
+
+    // copyToClipboard(data.url);
+    await copyTask()
+    notify({ message: formatMessage({ id: 'userCollection.copiedLink' }), duration: 3000 });
+    }*/
   const handleCopyLink = async () => {
     try {
       const result = await copyToClipboard(`${window.location.host}${collectionLink}`);
