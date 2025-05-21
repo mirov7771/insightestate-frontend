@@ -243,5 +243,7 @@ export default {
   'login.codeLetter': 'Code from mail',
   'login.wrongLoginOrPassword': 'User login or password not correct',
   'change.tariff': 'Change tariff',
-  'login.exit': 'Exit'
+  'login.exit': 'Exit',
+  'beach.walk': 'Walk',
+  'beach.car': 'By car'
 };

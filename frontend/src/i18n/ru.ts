@@ -243,5 +243,7 @@ export default {
   'login.codeLetter': 'Код из письма',
   'login.wrongLoginOrPassword': 'Неверный логин или пароль',
   'change.tariff': 'Улучшить тариф',
-  'login.exit': 'Выйти'
+  'login.exit': 'Выйти',
+  'beach.walk': 'Пешком',
+  'beach.car': 'На машине'
 };
