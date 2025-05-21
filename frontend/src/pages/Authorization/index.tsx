@@ -20,7 +20,8 @@ export const getNavigate = async () => {
   if (payAmount > 0) {
     return '/listing';
   }
-  return '/tariffs';
+  return '/listing';
+  // return '/tariffs';
 };
 
 export const Authorization: FC = () => {
