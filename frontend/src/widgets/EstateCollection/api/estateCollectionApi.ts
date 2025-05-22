@@ -22,6 +22,7 @@ export type EstateCollection = {
   id: string;
   name: string;
   estates?: Array<Estate>;
+  agentInfo?: AgentInfo;
 };
 
 export type Estate = {

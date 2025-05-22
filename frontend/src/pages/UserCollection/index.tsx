@@ -42,19 +42,20 @@ const CustomTabPanel = (props: TabPanelProps) => {
   );
 };
 
-const ItemCollection: FC<Required<EstateCollection> & { token: string; value: number }> = ({
+const ItemCollection: FC<EstateCollection & { token: string; value: number }> = ({
   name,
   estates,
   id,
   token,
   value,
+  agentInfo
 }) => {
   const { formatMessage } = useIntl();
   const { notify } = useNotifications();
   const collectionLink = `/offer-collection-v2/${id}?token=${token.replace('Basic ', '')}`;
   const navigate = useNavigate();
   const [status, setStatus] = useState<keyof typeof FETCHING_STATUS>('IDLE');
-  const allImages = estates
+  const allImages = estates!!
     .map(
       (estate) =>
         estate?.exteriorImages?.[0] || estate?.facilityImages?.[0] || estate?.interiorImages?.[0]
@@ -122,7 +123,7 @@ const ItemCollection: FC<Required<EstateCollection> & { token: string; value: nu
     <>
       <CustomTabPanel value={value} index={0}>
         <BlockView
-          estates={estates}
+          estates={estates!!}
           name={name}
           goToCollection={goToCollection}
           deleteCollection={deleteCollection}
@@ -133,7 +134,7 @@ const ItemCollection: FC<Required<EstateCollection> & { token: string; value: nu
       <CustomTabPanel value={value} index={1}>
         <CardView
           images={renderImages}
-          estates={estates}
+          estates={estates!!}
           name={name}
           goToCollection={goToCollection}
           deleteCollection={deleteCollection}

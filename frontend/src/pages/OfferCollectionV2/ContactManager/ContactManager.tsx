@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import {FC, useEffect, useRef, useState} from 'react';
 import { BottomSheet, Button, Text, useNotifications } from '@/shared/ui';
 import styles from './ContactManager.module.scss';
 import {
@@ -15,12 +15,13 @@ import { detailApi } from '@/widgets/Detail/api/detailApi';
 import { useCopyToClipboard } from '@uidotdev/usehooks';
 import { isMobile } from 'react-device-detect';
 
-export const ContactManager = () => {
+export const ContactManager: FC<{id: string}> = ({
+  id
+}) => {
   const { formatMessage } = useIntl();
   const { notify } = useNotifications();
   const refManager = useRef<HTMLDivElement>(null);
   const refQuestion = useRef<HTMLDivElement>(null);
-  const [searchParams, setSearchParams] = useSearchParams();
   const [agentInfo, setAgentInfo] = useState<AgentInfo>();
   const [open, setOpen] = useState(false);
   const [openInfo, setOpenInfo] = useState(false);
@@ -31,14 +32,10 @@ export const ContactManager = () => {
     localStorage.getItem('basicToken') !== '';
 
   useEffect(() => {
-    const token = searchParams.get('token');
-
-    estateCollectionApi
-      .getAgentInfo(token!!)
-      .then((r) => {
-        setAgentInfo(r.data);
-      })
-      .catch((e) => console.log(e));
+    estateCollectionApi.getEstateCollectionById(id).then((r) => {
+      setAgentInfo(r.data.agentInfo);
+    })
+        .catch((e) => console.log(e));
   }, []);
 
   async function copyTask() {

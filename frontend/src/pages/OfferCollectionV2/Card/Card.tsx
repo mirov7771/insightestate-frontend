@@ -11,7 +11,7 @@ import { DEFAULT_IMG } from '@/entities/Card/Card';
 import { useIntl } from 'react-intl';
 import { InfoModal } from '@/widgets/Modal/InfoModal';
 
-export const Card: FC<Estate & { collectionId: string, collection: string }> = (estate) => {
+export const Card: FC<Estate & { collectionId: string, collection: string; agentInfo?: AgentInfo }> = (estate) => {
   const { formatMessage } = useIntl();
   const [like, setLike] = useState(false);
   const [square, setSquare] = useState(100);
@@ -40,8 +40,6 @@ export const Card: FC<Estate & { collectionId: string, collection: string }> = (
     localStorage.getItem('basicToken') !== null &&
     localStorage.getItem('basicToken') !== undefined &&
     localStorage.getItem('basicToken') !== '';
-
-  const [agentInfo, setAgentInfo] = useState<AgentInfo>()
 
   useEffect(() => {
     setSquare(
@@ -80,13 +78,6 @@ export const Card: FC<Estate & { collectionId: string, collection: string }> = (
     setToken(localStorage.getItem('basicToken'));
   }, []);
 
-  useEffect(() => {
-    if (token) {
-      estateCollectionApi.getAgentInfo(token).then((r) => setAgentInfo(r.data))
-          .catch((e) => console.log("Error getting agent info", e))
-    }
-  }, [token]);
-
   const deleteFromCollection = () => {
     estateCollectionApi
       .deleteFromCollection(token!!, estate.collectionId!!, estate.id)
@@ -105,7 +96,7 @@ export const Card: FC<Estate & { collectionId: string, collection: string }> = (
           {
             collection: estate.collection,
             collectionId: estate.collectionId!!,
-            email: agentInfo?.login!!,
+            email: estate.agentInfo?.login ?? 'arturmirov777@gmail.com',
             title: estate.name,
             url: window.location.href,
             estateId: estate.id
