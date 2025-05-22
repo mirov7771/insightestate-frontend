@@ -267,4 +267,6 @@ export default {
   'change.tariff': 'Улучшить тариф',
   'beach.walk': 'Пешком',
   'beach.car': 'На машине',
+
+  'like': 'Мне нравится'
 };

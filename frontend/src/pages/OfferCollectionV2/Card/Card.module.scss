@@ -12,7 +12,7 @@
     display: grid;
     grid-template-columns: minmax(350px, 2fr) minmax(500px, 3fr);
     gap: 12px;
-    max-height: 500px;
+    max-height: 580px;
   }
 }
 
@@ -168,6 +168,8 @@
   display: flex;
   gap: 8px;
   border-radius: 200px;
+  margin: auto;
+  width: 80%;
 
   &__icon {
     width: 20px;

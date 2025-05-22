@@ -65,7 +65,7 @@ export const Tabs: FC<{ id: string }> = ({ id }) => {
       <CustomTabPanel value={value} index={0}>
         {estateCollection?.estates ? (
           <div className={styles.content}>
-            {estateCollection?.estates.map((estate) => <Card {...estate} collectionId={id} />)}
+            {estateCollection?.estates.map((estate) => <Card {...estate} collectionId={id} collection={estateCollection.name}/>)}
           </div>
         ) : (
           <div className={styles.content} />

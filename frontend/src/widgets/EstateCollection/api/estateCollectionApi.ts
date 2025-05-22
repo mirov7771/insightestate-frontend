@@ -40,6 +40,10 @@ export type Estate = {
   price?: Price;
   profitability?: Profitability;
   roomLayouts?: RoomLayouts;
+  likes?: number;
+  paymentPlanList?: string[];
+  shortDescriptionEn?: string;
+  shortDescriptionRu?: string;
 };
 
 export type CreateCollectionRs = {
@@ -102,6 +106,15 @@ export type StripeRq = {
 export type StripeRs = {
   clientSecret: string;
 };
+
+export type LikeDto = {
+  estateId: string,
+  collectionId: string,
+  title: string,
+  email: string,
+  collection: string,
+  url: string,
+}
 
 export const estateCollectionApi = {
   getEstateCollection: async (
@@ -265,4 +278,11 @@ export const estateCollectionApi = {
       throw error;
     }
   },
+  saveLike: async (rq: LikeDto): Promise<AxiosResponse<void>> => {
+    try {
+      return await api.post<void>('/v1/estate-collections/like', rq);
+    } catch (error) {
+      throw error;
+    }
+  }
 };

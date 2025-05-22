@@ -267,4 +267,6 @@ export default {
   'change.tariff': 'Change tariff',
   'beach.walk': 'Walk',
   'beach.car': 'By car',
+
+  'like': 'Like'
 };
