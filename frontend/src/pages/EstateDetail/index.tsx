@@ -122,12 +122,12 @@ const EstateDetail: FC = () => {
             >
               <Text variant="heading4">{formatMessage({ id: 'add_to_collection' })}</Text>
             </Button>
-            <Button
-              disabled={token === null || token === undefined || token === ''}
-              onClick={handleOpenBaseUserModal}
-            >
-              <Text variant="heading4">{formatMessage({ id: 'help_with_client' })}</Text>
-            </Button>
+            {/*<Button*/}
+            {/*  disabled={token === null || token === undefined || token === ''}*/}
+            {/*  onClick={handleOpenBaseUserModal}*/}
+            {/*>*/}
+            {/*  <Text variant="heading4">{formatMessage({ id: 'help_with_client' })}</Text>*/}
+            {/*</Button>*/}
             <Button
               disabled={token === null || token === undefined || token === ''}
               onClick={handleOpenAiModal}
