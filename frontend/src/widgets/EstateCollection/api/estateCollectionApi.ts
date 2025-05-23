@@ -1,7 +1,6 @@
 import { api } from '@/shared/api';
 import { AxiosResponse } from 'axios';
 import {
-  EstateDetail,
   Grade,
   InfrastructureDto,
   Location,
