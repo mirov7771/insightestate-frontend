@@ -8,12 +8,11 @@ import {
   OfferCollectionWhatsUp,
 } from '@/shared/assets/icons';
 import { AgentInfo, estateCollectionApi } from '@/widgets/EstateCollection/api/estateCollectionApi';
-import { useSearchParams } from 'react-router';
 import { useIntl } from 'react-intl';
 import { Spacer } from '@/widgets/Spacer/Spacer';
 import { detailApi } from '@/widgets/Detail/api/detailApi';
-import { useCopyToClipboard } from '@uidotdev/usehooks';
 import { isMobile } from 'react-device-detect';
+import {copyToClipboard} from "@/shared/utils";
 
 export const ContactManager: FC<{id: string}> = ({
   id
@@ -25,7 +24,6 @@ export const ContactManager: FC<{id: string}> = ({
   const [agentInfo, setAgentInfo] = useState<AgentInfo>();
   const [open, setOpen] = useState(false);
   const [openInfo, setOpenInfo] = useState(false);
-  const [, copyToClipboard] = useCopyToClipboard();
   const clickable =
     localStorage.getItem('basicToken') !== null &&
     localStorage.getItem('basicToken') !== undefined &&
@@ -57,13 +55,15 @@ export const ContactManager: FC<{id: string}> = ({
   }
 
   const handleCopyLink = async () => {
-    // let url = window.location.href;
-    // if (!url.startsWith("http")) url = `https://${url}`
-    // const { data } = await detailApi.shortUrl(url)
-    copyTask();
-    // copyToClipboard(data.url);
-    // await navigator.clipboard.writeText( data.url )
-    notify({ message: formatMessage({ id: 'userCollection.copiedLink' }), duration: 3000 });
+    try {
+      const result = await copyToClipboard(window.location.href);
+
+      if (result) {
+        notify({ message: formatMessage({ id: 'userCollection.copiedLink' }), duration: 3000 });
+      }
+    } catch (e) {
+      console.log({ e });
+    }
   };
 
   return (
