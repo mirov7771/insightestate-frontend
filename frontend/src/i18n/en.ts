@@ -20,7 +20,7 @@ export default {
   juridical_info: 'Legal information',
   politics: 'Data processing policy',
   footer_info:
-      'This information is provided for informational purposes only and does not constitute a public offer. All investments carry the risk of capital loss. Past performance does not guarantee future results. The property rating and qualification system is based on publicly available data and expert assessments. The final rating is generated using a proprietary internal algorithm. Terms, rates, and data are subject to change without prior notice.',
+    'This information is provided for informational purposes only and does not constitute a public offer. All investments carry the risk of capital loss. Past performance does not guarantee future results. The property rating and qualification system is based on publicly available data and expert assessments. The final rating is generated using a proprietary internal algorithm. Terms, rates, and data are subject to change without prior notice.',
   rights_reserved: 'All rights reserved.',
   not_found: 'No properties found matching your criteria.',
   projects: 'Projects',
@@ -30,10 +30,10 @@ export default {
   min: 'min',
   object_delete_title: 'Property removed',
   object_delete_message:
-      'The property has been removed from your selection, but you can add it back by clicking “Add to selection”',
+    'The property has been removed from your selection, but you can add it back by clicking “Add to selection”',
   object_info_title: 'What does our property score mean?',
   object_info_message:
-      'We evaluate every property using over 100 metrics – from price per square meter to ceiling height and the presence of a kids’ club within walking distance. Each property gets an overall score and separate ratings in four key areas: investment security, investment potential, location, and quality of life.',
+    'We evaluate every property using over 100 metrics – from price per square meter to ceiling height and the presence of a kids’ club within walking distance. Each property gets an overall score and separate ratings in four key areas: investment security, investment potential, location, and quality of life.',
   ok: 'Ok',
   selection: 'Selection',
   add_to_collection: 'Add to selection',
@@ -89,8 +89,7 @@ export default {
   invest_p2: '— payback period,',
   invest_p3: '— projected property capital gain.',
   location_p1: '— prestige of the area',
-  location_p2:
-      '— proximity to key places: beaches, airport, schools, shops, and shopping malls',
+  location_p2: '— proximity to key places: beaches, airport, schools, shops, and shopping malls',
   comfort_p1: '— design,',
   comfort_p2: '— materials,',
   comfort_p3: '— layout,',
@@ -116,11 +115,11 @@ export default {
   studio: 'Studio',
   ai_title: 'AI-selection assistant',
   ai_header:
-      'We’ve developed an AI assistant that helps you quickly find the right properties for your clients – no more manual searching.',
+    'We’ve developed an AI assistant that helps you quickly find the right properties for your clients – no more manual searching.',
   ai_body:
-      'Just describe what your client is looking for, and in a couple of minutes you’ll get a ready-to-use selection you can share right away.',
+    'Just describe what your client is looking for, and in a couple of minutes you’ll get a ready-to-use selection you can share right away.',
   ai_label:
-      'Describe your client’s preferences: number of bedrooms, budget, gym, pool, property management, time to the beach or any other details that will help create a personal selection',
+    'Describe your client’s preferences: number of bedrooms, budget, gym, pool, property management, time to the beach or any other details that will help create a personal selection',
   ai_button_1: 'Generate based on description',
   ai_button_2: 'Generate selection',
   collection_title: 'Selections',
@@ -148,10 +147,10 @@ export default {
   come_back: 'Go back',
   ai_button: 'AI-selection assistant',
   ai_text:
-      'Мы разработали AI подборщик который поможет вам с рутинным занятием подбора нужных объектов для ваших клиентов',
+    'Мы разработали AI подборщик который поможет вам с рутинным занятием подбора нужных объектов для ваших клиентов',
   main_title: 'Well-informed investment decisions in Phuket Real Estate',
   main_text:
-      'Помогаем выбрать самый выгодный и надёжный объект инвестиций на основе анализа по более чем 100 параметрам',
+    'Помогаем выбрать самый выгодный и надёжный объект инвестиций на основе анализа по более чем 100 параметрам',
   projects_for_you: 'Projects for you',
   list: 'List',
   comparison: 'Comparison',
@@ -176,7 +175,7 @@ export default {
   create_new: 'Create new',
   project_add: 'Property added',
   project_add_info:
-      'Объект успешно добавлен в подборку, перейдите в раздел «Мои подборки» чтобы посмотреть все объекты и сформировать оффер',
+    'Объект успешно добавлен в подборку, перейдите в раздел «Мои подборки» чтобы посмотреть все объекты и сформировать оффер',
   overallRating: 'Overall rating',
   locationRating: 'Location',
   priceFrom: 'Price, from',
@@ -186,7 +185,7 @@ export default {
   copy_link: 'Copy link',
   offer_info_title: 'How to use the offer',
   offer_info_text:
-      'Offer is a simple and clear way to show your selection to a client and discuss it. The client can mark the properties they like',
+    'Offer is a simple and clear way to show your selection to a client and discuss it. The client can mark the properties they like',
   offer_info_text_1: '1. Make sure the offer includes the right properties',
   offer_info_text_2: '2. Edit the list if necessary',
   offer_info_text_3: '3. Click “Copy link” and send it to the client in any convenient way',
@@ -206,7 +205,7 @@ export default {
   'login.haveAccount': `Don’t have an account?<a>Sign up</a>`,
   'login.emailPlaceholder': 'Email',
   'login.uniqEstates':
-      'Create personalized property selections for your clients using our unique property evaluation system',
+    'Create personalized property selections for your clients using our unique property evaluation system',
   'login.agreeText': `By clicking "Continue", you agree to our <a>Privacy Policy</a>`,
   'login.continue': 'Continue',
   'login.signIn': `Already have an account? <a>Sign in</a>`,
@@ -215,7 +214,7 @@ export default {
   'login.forgotPassword': '<a>Forgot password?</a>',
   'login.welcome': 'Welcome',
   'login.details':
-      'Please fill in your details. Your name and phone number will be visible to clients in the offer.',
+    'Please fill in your details. Your name and phone number will be visible to clients in the offer.',
 
   'reset.password': 'Reset password',
   'reset.enterEmail': 'Enter your email and we’ll send you a code to reset your password',
@@ -235,7 +234,7 @@ export default {
   'userCollection.deleteCollection': 'Delete collection',
   'userCollection.yesDelete': 'Yes, delete',
   'userCollection.deleteCollectionDescription':
-      'Are you sure you want to delete this selection? <br></br>The offer link will be deactivated',
+    'Are you sure you want to delete this selection? <br></br>The offer link will be deactivated',
   'userCollection.copiedLink': 'Collection link copied',
   'userCollection.blocks': 'Blocks',
   'userCollection.cards': 'Cards',
@@ -268,5 +267,21 @@ export default {
   'beach.walk': 'Walk',
   'beach.car': 'By car',
 
-  'like': 'Like'
+  'offerCollection.studio': 'Studio',
+  'offerCollection.one': '1 bedroom',
+  'offerCollection.two': '2 bedrooms',
+  'offerCollection.three': '3 bedrooms',
+  'offerCollection.four': '4 bedrooms',
+  'offerCollection.five': '5 bedroom',
+  'offerCollection.villaTwo': 'Villa 2 bedrooms',
+  'offerCollection.villaThree': 'Villa 3 bedrooms',
+  'offerCollection.villaFour': 'Villa 4 bedrooms',
+  'offerCollection.villaFive': 'Villa 5 bedrooms',
+
+  'offerCollection.paymentSchedule': 'Payment schedule',
+  'offerCollection.gym': 'Gym',
+  'offerCollection.childRoom': 'Kids room',
+  'offerCollection.coworking': 'Coworking',
+
+  like: 'Like',
 };

@@ -1,4 +1,4 @@
-import { FC, ReactNode, useEffect, useState } from 'react';
+import { FC, Fragment, ReactNode, useEffect, useState } from 'react';
 import { Tabs as TabsUI } from '@/entities/Tabs/Tabs';
 import styles from './Tabs.module.scss';
 import { Card } from '../Card/Card';
@@ -8,6 +8,8 @@ import {
 } from '@/widgets/EstateCollection/api/estateCollectionApi';
 import { useIntl } from 'react-intl';
 import { TableComparison } from '@/pages/OfferCollectionV2/TableComparison/TableComparison';
+import { CardLayout } from '@/pages/OfferCollectionV2/CardLayout/CardLayout';
+import { useWindowResize } from '@/shared/utils/useWindowResize';
 
 interface TabPanelProps {
   index: number;
@@ -32,6 +34,7 @@ const CustomTabPanel = (props: TabPanelProps) => {
 };
 
 export const Tabs: FC<{ id: string }> = ({ id }) => {
+  const { width } = useWindowResize();
   const { formatMessage } = useIntl();
   const [estateCollection, setEstateCollection] = useState<EstateCollection>();
   const [value, setValue] = useState(0);
@@ -65,12 +68,27 @@ export const Tabs: FC<{ id: string }> = ({ id }) => {
       <CustomTabPanel value={value} index={0}>
         {estateCollection?.estates ? (
           <div className={styles.content}>
-            {estateCollection?.estates.map((estate) => <Card
-                {...estate}
-                collectionId={id}
-                collection={estateCollection.name}
-                agentInfo={estateCollection.agentInfo}
-            />)}
+            {estateCollection?.estates.map((estate) => (
+              <Fragment key={estate.id}>
+                {width >= 1200 ? (
+                  <CardLayout
+                    estate={{
+                      ...estate,
+                      collectionId: id,
+                      collection: estateCollection.name,
+                      agentInfo: estateCollection.agentInfo,
+                    }}
+                  />
+                ) : (
+                  <Card
+                    {...estate}
+                    collectionId={id}
+                    collection={estateCollection.name}
+                    agentInfo={estateCollection.agentInfo}
+                  />
+                )}
+              </Fragment>
+            ))}
           </div>
         ) : (
           <div className={styles.content} />

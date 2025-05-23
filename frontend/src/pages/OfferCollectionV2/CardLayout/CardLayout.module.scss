@@ -1,0 +1,182 @@
+@use '~@/sass/index' as *;
+
+.grid {
+  display: grid;
+  grid-template-areas:
+    'slider description description'
+    'slider description description'
+    'flats flats flats'
+    'paymentPlan info progress'
+    'paymentPlan info progress';
+  padding: 24px;
+  background-color: var(--ui-color-black-4-opacity);
+  border-radius: 48px;
+  grid-template-columns: max-content;
+  width: 100%;
+  max-width: 1328px;
+  margin: 0 auto;
+}
+
+.slider {
+  grid-area: slider;
+  margin: 0 -16px 8px;
+
+  @media (min-width: $media-md) {
+    margin: 0;
+    min-width: 418px;
+    position: relative;
+    width: 100%;
+    max-width: 410px;
+    height: 280px;
+  }
+
+  &__map {
+    display: none;
+
+    @media (min-width: $media-md) {
+      display: block;
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 116px;
+      height: 116px;
+      border-radius: 16px;
+      border: 6px solid var(--ui-color-white);
+      overflow: hidden;
+      z-index: 1000;
+    }
+  }
+}
+
+.description {
+  grid-area: description;
+  padding-left: 32px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+
+  .badges {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    width: max-content;
+
+    @media (min-width: $media-md) {
+    }
+  }
+
+  .header {
+    margin-bottom: 4px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 100%;
+
+    @media (min-width: $media-md) {
+      margin-bottom: 8px;
+    }
+
+    &__wrapper {
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+  }
+
+  .text {
+    color: var(--ui-color-black-64-opacity);
+  }
+}
+
+.flats {
+  grid-area: flats;
+  margin-bottom: 24px;
+}
+
+.paymentPlan {
+  grid-area: paymentPlan;
+  display: flex;
+  flex-direction: column;
+}
+
+.options {
+  margin-top: 16px;
+  flex: 1;
+}
+
+.info {
+  grid-area: info;
+  margin-left: 16px;
+
+  .hr {
+    width: 100%;
+    height: 1px;
+    border: none;
+    background-color: var(--ui-color-black-12-opacity);
+    margin: 0;
+
+    @include hidden('desktop');
+  }
+
+  .tables {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @media (min-width: $media-md) {
+      border: 1px solid var(--ui-color-black-24-opacity);
+      border-radius: 24px;
+      padding: 24px;
+      flex: 1 1 0;
+      justify-content: space-between;
+      height: 100%;
+
+      .hr {
+        display: block;
+      }
+    }
+  }
+
+  .table {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+
+    &__item {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}
+
+.progress {
+  grid-area: progress;
+  margin-left: 16px;
+
+  @media (min-width: $media-md) {
+    flex: 1 1 0;
+    justify-content: space-evenly;
+  }
+
+  .like {
+    display: flex;
+    gap: 8px;
+    border-radius: 200px;
+    margin: auto;
+    width: 80%;
+
+    &__icon {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
+.delete {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 10;
+}

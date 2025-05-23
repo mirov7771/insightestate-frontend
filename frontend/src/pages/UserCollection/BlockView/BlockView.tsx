@@ -5,9 +5,11 @@ import { OfferCollectionEdit, OfferCollectionTrash } from '@/shared/assets/icons
 import { Estate } from '@/widgets/EstateCollection/api/estateCollectionApi';
 import { DEFAULT_IMG } from '@/entities/Card/Card';
 import { FormattedMessage } from 'react-intl';
+import { FETCHING_STATUS } from '@/shared/constants/constants';
 
 type BlockViewProps = {
   copyLink: () => void;
+  copyLinkStatus: keyof typeof FETCHING_STATUS;
   deleteCollection: () => void;
   estates: Estate[];
   goToCollection: () => void;
@@ -22,6 +24,7 @@ export const BlockView: FC<BlockViewProps> = ({
   deleteCollection,
   copyLink,
   id,
+  copyLinkStatus,
 }) => {
   const [openChangeNameModal, setOpenChangeNameModal] = useState(false);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
@@ -83,7 +86,7 @@ export const BlockView: FC<BlockViewProps> = ({
                 <FormattedMessage id="userCollection.view" />
               </Text>
             </Button>
-            <Button variant="base" onClick={copyLink}>
+            <Button variant="base" onClick={copyLink} loading={copyLinkStatus === 'LOADING'}>
               <Text variant="heading4">
                 <FormattedMessage id="userCollection.copyLink" />
               </Text>

@@ -1,23 +1,23 @@
-import {ChangeEvent, FC, useEffect, useState} from 'react';
+import { ChangeEvent, FC, useEffect, useState } from 'react';
 import { Coins } from '@/shared/assets/icons';
 import styles from './Filter.module.scss';
 import { Accordion, Input } from '@/shared/ui';
 import { useFilters } from '@/widgets/Filter/model/useFilters';
 import { useIntl } from 'react-intl';
 import { CustomSlider } from '@/widgets/Filter/CustomSlider';
-import {formatNumber} from "@/shared/utils";
+import { formatNumber } from '@/shared/utils';
 
 export const Price: FC = () => {
   const { formatMessage } = useIntl();
   const { setFilters, minPrice, maxPrice } = useFilters();
-  const [ values, setValues ] = useState<number[]>([0,1000000])
+  const [values, setValues] = useState<number[]>([0, 1000000]);
 
-    useEffect(() => {
-        if (minPrice == 0 && maxPrice == 1000000) setValues([0,1000000])
-    }, [minPrice, maxPrice]);
+  useEffect(() => {
+    if (minPrice == 0 && maxPrice == 1000000) setValues([0, 1000000]);
+  }, [minPrice, maxPrice]);
 
   const handleClick = (event: Event, value: number | number[], activeThumb: number) => {
-    setValues(value as number[])
+    setValues(value as number[]);
     setFilters((filtersState) => ({
       ...filtersState,
       minPrice: (value as number[])[0],
@@ -30,16 +30,19 @@ export const Price: FC = () => {
   };
 
   const handleMaxPrice = (e: ChangeEvent<HTMLInputElement>) => {
-    const value = (e.target.value || 0) as number
+    const value = (e.target.value || 0) as number;
+
     if (value > 0)
-        setFilters((filtersState) => ({ ...filtersState, maxPrice: (e.target.value || 0) as number }));
+      setFilters((filtersState) => ({
+        ...filtersState,
+        maxPrice: (e.target.value || 0) as number,
+      }));
   };
 
   const labelValue = (value: number) => {
-      if (value === 0)
-          return '0 $'
-      return `${formatNumber(value)} $`
-  }
+    if (value === 0) return '0 $';
+    return `${formatNumber(value)} $`;
+  };
 
   return (
     <Accordion icon={<Coins />} title={formatMessage({ id: 'price' })}>

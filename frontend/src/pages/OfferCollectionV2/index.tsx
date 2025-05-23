@@ -18,7 +18,7 @@ const OfferCollectionV2: FC = () => {
       </Text>
       <Tabs id={id!!} />
       <WhyThai />
-      <ContactManager id={id!!}/>
+      <ContactManager id={id!!} />
     </div>
   );
 };

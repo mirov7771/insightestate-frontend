@@ -23,7 +23,7 @@ export const DEFAULT_FILTERS = {
   managementCompanyEnabled: undefined,
   city: undefined,
   minPrice: 0,
-  maxPrice: 1000000
+  maxPrice: 1000000,
 };
 
 type FiltersContextValues = GetEstateParams & {

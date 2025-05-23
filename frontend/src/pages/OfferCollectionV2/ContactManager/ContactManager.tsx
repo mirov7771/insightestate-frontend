@@ -1,4 +1,4 @@
-import {FC, useEffect, useRef, useState} from 'react';
+import { FC, useEffect, useRef, useState } from 'react';
 import { BottomSheet, Button, Text, useNotifications } from '@/shared/ui';
 import styles from './ContactManager.module.scss';
 import {
@@ -12,11 +12,9 @@ import { useIntl } from 'react-intl';
 import { Spacer } from '@/widgets/Spacer/Spacer';
 import { detailApi } from '@/widgets/Detail/api/detailApi';
 import { isMobile } from 'react-device-detect';
-import {copyToClipboard} from "@/shared/utils";
+import { copyToClipboard } from '@/shared/utils';
 
-export const ContactManager: FC<{id: string}> = ({
-  id
-}) => {
+export const ContactManager: FC<{ id: string }> = ({ id }) => {
   const { formatMessage } = useIntl();
   const { notify } = useNotifications();
   const refManager = useRef<HTMLDivElement>(null);
@@ -30,35 +28,25 @@ export const ContactManager: FC<{id: string}> = ({
     localStorage.getItem('basicToken') !== '';
 
   useEffect(() => {
-    estateCollectionApi.getEstateCollectionById(id).then((r) => {
-      setAgentInfo(r.data.agentInfo);
-    })
-        .catch((e) => console.log(e));
+    estateCollectionApi
+      .getEstateCollectionById(id)
+      .then((r) => {
+        setAgentInfo(r.data.agentInfo);
+      })
+      .catch((e) => console.log(e));
   }, []);
-
-  async function copyTask() {
-    const el = document.createElement('input');
-
-    el.value = window.location.href;
-
-    const { data } = await detailApi.shortUrl(el.value);
-
-    el.value = data.url;
-    document.body.appendChild(el);
-    if (isMobile) {
-      el.setSelectionRange(0, el.value.length);
-    } else {
-      el.select();
-    }
-    document.execCommand('copy');
-    document.body.removeChild(el);
-  }
 
   const handleCopyLink = async () => {
     try {
-      const result = await copyToClipboard(window.location.href);
+      const fullUrl = window.location.href;
+      const url = fullUrl.startsWith('http://')
+        ? fullUrl.replaceAll('http://', 'https://')
+        : fullUrl;
+      const { data: shortUrl } = await detailApi.shortUrl(url);
+      const result = await copyToClipboard(shortUrl.url);
 
       if (result) {
+        console.log('RUN!');
         notify({ message: formatMessage({ id: 'userCollection.copiedLink' }), duration: 3000 });
       }
     } catch (e) {

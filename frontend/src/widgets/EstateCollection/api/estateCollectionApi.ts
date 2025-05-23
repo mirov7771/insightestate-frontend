@@ -1,7 +1,6 @@
 import { api } from '@/shared/api';
 import { AxiosResponse } from 'axios';
 import {
-  EstateDetail,
   Grade,
   InfrastructureDto,
   Location,
@@ -21,8 +20,17 @@ type ResponseGetEstateCollection = {
 export type EstateCollection = {
   id: string;
   name: string;
-  estates?: Array<Estate>;
   agentInfo?: AgentInfo;
+  estates?: Array<Estate>;
+};
+
+export type EstateOptions = {
+  childRoom: boolean;
+  coworking: boolean;
+  entertainment: boolean;
+  gym: boolean;
+  petFriendly: boolean;
+  shop: boolean;
 };
 
 export type Estate = {
@@ -30,6 +38,7 @@ export type Estate = {
   id: string;
   level: 'COMFORT' | 'LUX' | 'PREMIUM' | 'UNKNOWN';
   name: string;
+  options: EstateOptions;
   projectId: string;
   exteriorImages?: string[];
   facilityImages?: string[];
@@ -37,12 +46,12 @@ export type Estate = {
   grade?: Grade;
   infrastructure?: InfrastructureDto;
   interiorImages?: string[];
+  likes?: number;
   location?: Location;
+  paymentPlanList?: string[];
   price?: Price;
   profitability?: Profitability;
   roomLayouts?: RoomLayouts;
-  likes?: number;
-  paymentPlanList?: string[];
   shortDescriptionEn?: string;
   shortDescriptionRu?: string;
 };
@@ -109,13 +118,13 @@ export type StripeRs = {
 };
 
 export type LikeDto = {
-  estateId: string,
-  collectionId: string,
-  title: string,
-  email: string,
-  collection: string,
-  url: string,
-}
+  collection: string;
+  collectionId: string;
+  email: string;
+  estateId: string;
+  title: string;
+  url: string;
+};
 
 export const estateCollectionApi = {
   getEstateCollection: async (
@@ -285,5 +294,5 @@ export const estateCollectionApi = {
     } catch (error) {
       throw error;
     }
-  }
+  },
 };

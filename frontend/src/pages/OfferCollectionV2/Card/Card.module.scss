@@ -150,6 +150,8 @@
 }
 
 .map {
+  border-radius: 24px;
+  overflow: hidden;
   @include hidden('desktop');
 }
 
@@ -213,4 +215,8 @@
     flex-direction: row;
     gap: 24px;
   }
+}
+
+.text {
+  white-space: normal;
 }
