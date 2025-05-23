@@ -55,6 +55,7 @@ const ItemCollection: FC<EstateCollection & { token: string; value: number }> = 
   const collectionLink = `/offer-collection-v2/${id}?token=${token.replace('Basic ', '')}`;
   const navigate = useNavigate();
   const [status, setStatus] = useState<keyof typeof FETCHING_STATUS>('IDLE');
+  const [copyLinkStatus, setCopyLinkStatus] = useState<keyof typeof FETCHING_STATUS>('IDLE');
   const allImages = estates!!
     .map(
       (estate) =>
@@ -80,41 +81,22 @@ const ItemCollection: FC<EstateCollection & { token: string; value: number }> = 
     navigate(collectionLink);
   };
 
-  async function copyTask() {
-    const el = document.createElement('input');
-
-    el.value = window.location.href;
-    let url = `${window.location.host}${collectionLink}`;
-
-    if (!url.startsWith('http')) url = `https://${window.location.host}${collectionLink}`;
-
-    const { data } = await detailApi.shortUrl(url);
-
-    el.value = data.url;
-    document.body.appendChild(el);
-    if (isMobile) {
-      el.setSelectionRange(0, el.value.length);
-    } else {
-      el.select();
-    }
-    document.execCommand('copy');
-    document.body.removeChild(el);
-  }
-
-  /*const handleCopyLink = async () => {
-
-    // copyToClipboard(data.url);
-    await copyTask()
-    notify({ message: formatMessage({ id: 'userCollection.copiedLink' }), duration: 3000 });
-    }*/
   const handleCopyLink = async () => {
     try {
-      const result = await copyToClipboard(`${window.location.host}${collectionLink}`);
+      setCopyLinkStatus('LOADING');
+      const fullUrl = `${window.location.origin}${collectionLink}`;
+      const url = fullUrl.startsWith('http://')
+        ? fullUrl.replaceAll('http://', 'https://')
+        : fullUrl;
+      const { data: shortUrl } = await detailApi.shortUrl(url);
+      const result = await copyToClipboard(shortUrl.url);
 
       if (result) {
+        setCopyLinkStatus('SUCCESS');
         notify({ message: formatMessage({ id: 'userCollection.copiedLink' }), duration: 3000 });
       }
     } catch (e) {
+      setCopyLinkStatus('ERROR');
       console.log({ e });
     }
   };
@@ -129,6 +111,7 @@ const ItemCollection: FC<EstateCollection & { token: string; value: number }> = 
           deleteCollection={deleteCollection}
           copyLink={handleCopyLink}
           id={id}
+          copyLinkStatus={copyLinkStatus}
         />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
