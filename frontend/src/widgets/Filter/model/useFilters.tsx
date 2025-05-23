@@ -22,6 +22,8 @@ export const DEFAULT_FILTERS = {
   beachName: undefined,
   managementCompanyEnabled: undefined,
   city: undefined,
+  minPrice: 0,
+  maxPrice: 1000000
 };
 
 type FiltersContextValues = GetEstateParams & {

@@ -52,7 +52,7 @@ const ItemCollection: FC<EstateCollection & { token: string; value: number }> = 
 }) => {
   const { formatMessage } = useIntl();
   const { notify } = useNotifications();
-  const collectionLink = `/offer-collection-v2/${id}?token=${token.replace('Basic ', '')}`;
+  const collectionLink = `/offer-collection-v2/${id}`;
   const navigate = useNavigate();
   const [status, setStatus] = useState<keyof typeof FETCHING_STATUS>('IDLE');
   const [copyLinkStatus, setCopyLinkStatus] = useState<keyof typeof FETCHING_STATUS>('IDLE');
