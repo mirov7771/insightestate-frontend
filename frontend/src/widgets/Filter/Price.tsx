@@ -1,4 +1,4 @@
-import {ChangeEvent, FC, useState} from 'react';
+import {ChangeEvent, FC, useEffect, useState} from 'react';
 import { Coins } from '@/shared/assets/icons';
 import styles from './Filter.module.scss';
 import { Accordion, Input } from '@/shared/ui';
@@ -10,12 +10,18 @@ import {formatNumber} from "@/shared/utils";
 export const Price: FC = () => {
   const { formatMessage } = useIntl();
   const { setFilters, minPrice, maxPrice } = useFilters();
+  const [ values, setValues ] = useState<number[]>([0,1000000])
+
+    useEffect(() => {
+        if (minPrice == 0 && maxPrice == 1000000) setValues([0,1000000])
+    }, [minPrice, maxPrice]);
 
   const handleClick = (event: Event, value: number | number[], activeThumb: number) => {
+    setValues(value as number[])
     setFilters((filtersState) => ({
       ...filtersState,
-      minPrice: activeThumb,
-      maxPrice: value as number,
+      minPrice: (value as number[])[0],
+      maxPrice: (value as number[])[1],
     }));
   };
 
@@ -49,7 +55,7 @@ export const Price: FC = () => {
           getAriaValueText={labelValue}
           valueLabelFormat={labelValue}
           valueLabelDisplay={'on'}
-          value={maxPrice}
+          value={values}
           onChange={handleClick}
         />
         <div
