@@ -6,7 +6,7 @@ import { Button, Text } from '@/shared/ui';
 import { estateCollectionApi } from '@/widgets/EstateCollection/api/estateCollectionApi';
 import { InfoModal } from '@/widgets/Modal/InfoModal';
 import { useIntl } from 'react-intl';
-import {UserCollectionModal} from "@/widgets/Modal/UserCollectionModal";
+import { UserCollectionModal } from '@/widgets/Modal/UserCollectionModal';
 
 export const DEFAULT_IMG =
   'https://cdn.prod.website-files.com/672b5797ac1486cdfc5122ac/67aa547c02740c42abf52609_675f0debfa47fa6400a3c65a_Exterior_03.jpeg';
@@ -66,12 +66,12 @@ export const Card: FC<
     handleOpenInfoModal();
   };
 
-    const handleOpenUserCollectionModal = () => {
-        setUserCollectionModal(true);
-    };
-    const handleCloseUserCollectionModal = () => {
-        setUserCollectionModal(false);
-    };
+  const handleOpenUserCollectionModal = () => {
+    setUserCollectionModal(true);
+  };
+  const handleCloseUserCollectionModal = () => {
+    setUserCollectionModal(false);
+  };
 
   return (
     <div className={styles.card}>
@@ -120,15 +120,15 @@ export const Card: FC<
           </div>
         </div>
       )}
-          {clickable ? (
-            <a href={`/property/${id}`} className={styles.card__title}>
-              {name}
-            </a>
-          ) : (
-            <a href={`/property/${id}`} target="_blank" className={styles.card__title} rel="noreferrer">
-              {name}
-            </a>
-          )}
+      {clickable ? (
+        <a href={`/property/${id}`} className={styles.card__title}>
+          {name}
+        </a>
+      ) : (
+        <a href={`/property/${id}`} target="_blank" className={styles.card__title} rel="noreferrer">
+          {name}
+        </a>
+      )}
       <p>
         <strong>{formatMessage({ id: 'price_from' })}</strong>{' '}
         {Intl.NumberFormat('en-US', {
@@ -144,19 +144,22 @@ export const Card: FC<
       ) : (
         <></>
       )}
-      {token === null || token === undefined || token === '' ? <></> :
+      {token === null || token === undefined || token === '' ? (
+        <></>
+      ) : (
         <Button
-            onClick={handleOpenUserCollectionModal}
-            wide={false}
-            size={'s'}
-            style={{
-                height: '30px',
-                fontSize: '14px',
-                marginTop: '.5rem'
-            }}
-        >{formatMessage({ id: 'add_to_collection' })}
+          onClick={handleOpenUserCollectionModal}
+          wide={false}
+          size={'s'}
+          style={{
+            height: '30px',
+            fontSize: '14px',
+            marginTop: '.5rem',
+          }}
+        >
+          {formatMessage({ id: 'add_to_collection' })}
         </Button>
-      }
+      )}
       {/*<p>
         Доходность до <strong>136%</strong> за 10 лет
       </p>*/}
@@ -171,12 +174,12 @@ export const Card: FC<
         bottom={30}
       />
       <UserCollectionModal
-          open={userCollectionModal}
-          onClose={handleCloseUserCollectionModal}
-          onOpen={handleOpenUserCollectionModal}
-          anchor="bottom"
-          id={id!!}
-          token={token!!}
+        open={userCollectionModal}
+        onClose={handleCloseUserCollectionModal}
+        onOpen={handleOpenUserCollectionModal}
+        anchor="bottom"
+        id={id!!}
+        token={token!!}
       />
     </div>
   );

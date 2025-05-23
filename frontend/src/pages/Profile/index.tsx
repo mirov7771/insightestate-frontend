@@ -68,7 +68,7 @@ export const Profile: FC = () => {
 
   const handleGoBack: MouseEventHandler<HTMLButtonElement> = (e) => {
     e.preventDefault();
-    navigate(-2)
+    navigate(-2);
   };
 
   const handleProfileUpdate = async (updatedData: typeof data) => {

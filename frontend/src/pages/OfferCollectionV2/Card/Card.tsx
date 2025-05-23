@@ -1,17 +1,28 @@
 import React, { FC, useEffect, useState } from 'react';
 import { BadgeRating, Button, GMap } from '@/shared/ui';
-import {VectorRating, OfferCollectionMapPinFilled, Heart, OfferCollectionHeart} from '@/shared/assets/icons';
+import {
+  VectorRating,
+  OfferCollectionMapPinFilled,
+  Heart,
+  OfferCollectionHeart,
+} from '@/shared/assets/icons';
 import { Text } from '@/shared/ui';
 import styles from './Card.module.scss';
 import { Progress } from '@/pages/OfferCollectionV2/Card/Progress/Progress';
 import { Slider } from '@/pages/OfferCollectionV2/Card/Slider/Slider';
-import {AgentInfo, Estate, estateCollectionApi} from '@/widgets/EstateCollection/api/estateCollectionApi';
+import {
+  AgentInfo,
+  Estate,
+  estateCollectionApi,
+} from '@/widgets/EstateCollection/api/estateCollectionApi';
 import { formatNumber } from '@/shared/utils';
 import { DEFAULT_IMG } from '@/entities/Card/Card';
 import { useIntl } from 'react-intl';
 import { InfoModal } from '@/widgets/Modal/InfoModal';
 
-export const Card: FC<Estate & { collectionId: string, collection: string; agentInfo?: AgentInfo }> = (estate) => {
+export const Card: FC<
+  Estate & { collection: string; collectionId: string; agentInfo?: AgentInfo }
+> = (estate) => {
   const { formatMessage } = useIntl();
   const [like, setLike] = useState(false);
   const [square, setSquare] = useState(100);
@@ -92,18 +103,19 @@ export const Card: FC<Estate & { collectionId: string, collection: string; agent
 
   useEffect(() => {
     if (like) {
-      estateCollectionApi.saveLike(
-          {
-            collection: estate.collection,
-            collectionId: estate.collectionId!!,
-            email: estate.agentInfo?.login ?? 'arturmirov777@gmail.com',
-            title: estate.name,
-            url: window.location.href,
-            estateId: estate.id
-          }
-      ).then(() => console.log("success like")).catch((e) => console.log("error like"))
+      estateCollectionApi
+        .saveLike({
+          collection: estate.collection,
+          collectionId: estate.collectionId!!,
+          email: estate.agentInfo?.login ?? 'arturmirov777@gmail.com',
+          title: estate.name,
+          url: window.location.href,
+          estateId: estate.id,
+        })
+        .then(() => console.log('success like'))
+        .catch((e) => console.log('error like'));
     }
-  }, [like])
+  }, [like]);
 
   return (
     <section className={styles.item}>
@@ -144,8 +156,8 @@ export const Card: FC<Estate & { collectionId: string, collection: string; agent
               text={estate.location?.beach || ''}
               background="white"
             />
-            {estate.likes ?
-            <BadgeRating
+            {estate.likes ? (
+              <BadgeRating
                 icon={
                   <span className={`${styles.icon} ${styles.icon__primary}`}>
                     <Heart />
@@ -154,8 +166,10 @@ export const Card: FC<Estate & { collectionId: string, collection: string; agent
                 size="sm"
                 text={`${estate.likes || '0'}`}
                 background="white"
-            /> : <></>
-            }
+              />
+            ) : (
+              <></>
+            )}
           </div>
           {/*Name and Price*/}
           <div className={styles.header__wrapper}>
@@ -307,18 +321,21 @@ export const Card: FC<Estate & { collectionId: string, collection: string; agent
               min={0}
               max={10}
             />
-            {
-              clickable ? <></> :
-                  <Button
-                      onClick={handleClickLikeButton}
-                      className={styles.like}
-                      variant="cta"
-                      size="s"
-                  >
-                    <span className={styles.like__icon}>{like ? <Heart /> : <OfferCollectionHeart />}</span>
-                    <Text variant="heading4">{formatMessage({ id: 'like' })}</Text>
-                  </Button>
-            }
+            {clickable ? (
+              <></>
+            ) : (
+              <Button
+                onClick={handleClickLikeButton}
+                className={styles.like}
+                variant="cta"
+                size="s"
+              >
+                <span className={styles.like__icon}>
+                  {like ? <Heart /> : <OfferCollectionHeart />}
+                </span>
+                <Text variant="heading4">{formatMessage({ id: 'like' })}</Text>
+              </Button>
+            )}
             {clickable ? (
               <Button
                 style={{

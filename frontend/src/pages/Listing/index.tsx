@@ -35,9 +35,10 @@ const Listing: FC = () => {
             <>
               {estates.map((estate) => (
                 <Card
-                    key={estate.id} {...estate}
-                    clickable={true}
-                    token={localStorage.getItem('basicToken')}
+                  key={estate.id}
+                  {...estate}
+                  clickable={true}
+                  token={localStorage.getItem('basicToken')}
                 />
               ))}
             </>

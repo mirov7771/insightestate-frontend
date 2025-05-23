@@ -268,5 +268,5 @@ export default {
   'beach.walk': 'Пешком',
   'beach.car': 'На машине',
 
-  'like': 'Мне нравится'
+  like: 'Мне нравится',
 };

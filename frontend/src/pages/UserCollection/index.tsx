@@ -48,7 +48,7 @@ const ItemCollection: FC<EstateCollection & { token: string; value: number }> = 
   id,
   token,
   value,
-  agentInfo
+  agentInfo,
 }) => {
   const { formatMessage } = useIntl();
   const { notify } = useNotifications();

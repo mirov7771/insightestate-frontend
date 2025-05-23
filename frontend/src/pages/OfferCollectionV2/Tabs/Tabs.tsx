@@ -65,12 +65,14 @@ export const Tabs: FC<{ id: string }> = ({ id }) => {
       <CustomTabPanel value={value} index={0}>
         {estateCollection?.estates ? (
           <div className={styles.content}>
-            {estateCollection?.estates.map((estate) => <Card
+            {estateCollection?.estates.map((estate) => (
+              <Card
                 {...estate}
                 collectionId={id}
                 collection={estateCollection.name}
                 agentInfo={estateCollection.agentInfo}
-            />)}
+              />
+            ))}
           </div>
         ) : (
           <div className={styles.content} />
