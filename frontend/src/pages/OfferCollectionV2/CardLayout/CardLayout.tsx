@@ -1,0 +1,290 @@
+import React, { FC, useEffect, useState } from 'react';
+import styles from './CardLayout.module.scss';
+import { BadgeRating, Button, GMap, Text } from '@/shared/ui';
+import { DEFAULT_IMG } from '@/entities/Card/Card';
+import {
+  AgentInfo,
+  Estate,
+  estateCollectionApi,
+} from '@/widgets/EstateCollection/api/estateCollectionApi';
+import {
+  Heart,
+  OfferCollectionHeart,
+  OfferCollectionMapPinFilled,
+  VectorRating,
+} from '@/shared/assets/icons';
+import { useIntl } from 'react-intl';
+import { Flats } from '../CommonComponents/Flats/Flats';
+import { PaymentStepper } from '../CommonComponents/PaymentStepper/PaymentStepper';
+import { EstateOptionsInfo } from '../CommonComponents/EstateOptionsInfo/EstateOptionsInfo';
+import { Progresses } from '../CommonComponents/Progress/Progresses';
+import { Slider } from '../CommonComponents/Slider/Slider';
+import { TablesInfo } from '@/pages/OfferCollectionV2/CommonComponents/TablesInfo/TablesInfo';
+import { InfoModal } from '@/widgets/Modal/InfoModal';
+
+type CardLayoutProps = {
+  estate: Estate & { collection: string; collectionId: string; agentInfo?: AgentInfo };
+};
+
+export const CardLayout: FC<CardLayoutProps> = ({ estate }) => {
+  const { formatMessage } = useIntl();
+  const [like, setLike] = useState(false);
+  const [square, setSquare] = useState(100);
+  const [token, setToken] = useState<string | undefined | null>(localStorage.getItem('basicToken'));
+  const handleClickLikeButton = () => {
+    setLike(!like);
+  };
+  const [isDelete, setIsDelete] = useState<boolean>(false);
+  const [infoModal, setInfoModal] = useState(false);
+  const [infoTitle, setInfoTitle] = useState('');
+  const [infoText, setInfoText] = useState('');
+  const handleOpenInfoModal = () => {
+    setInfoModal(true);
+  };
+  const handleCloseInfoModal = () => {
+    setInfoModal(false);
+    if (isDelete) window.location.reload();
+  };
+  const openRatingInfo = () => {
+    setInfoTitle(formatMessage({ id: 'object_info_title' }));
+    setInfoText(formatMessage({ id: 'object_info_message' }));
+    setIsDelete(false);
+    handleOpenInfoModal();
+  };
+  const clickable =
+    localStorage.getItem('basicToken') !== null &&
+    localStorage.getItem('basicToken') !== undefined &&
+    localStorage.getItem('basicToken') !== '';
+
+  useEffect(() => {
+    setSquare(
+      estate.roomLayouts?.villaFive?.square?.min ||
+        estate.roomLayouts?.villaFive?.square?.max ||
+        estate.roomLayouts?.villaFive?.square?.avg ||
+        estate.roomLayouts?.villaFour?.square?.min ||
+        estate.roomLayouts?.villaFour?.square?.max ||
+        estate.roomLayouts?.villaFour?.square?.avg ||
+        estate.roomLayouts?.villaThree?.square?.min ||
+        estate.roomLayouts?.villaThree?.square?.max ||
+        estate.roomLayouts?.villaThree?.square?.avg ||
+        estate.roomLayouts?.villaTwo?.square?.min ||
+        estate.roomLayouts?.villaTwo?.square?.max ||
+        estate.roomLayouts?.villaTwo?.square?.avg ||
+        estate.roomLayouts?.five?.square?.min ||
+        estate.roomLayouts?.five?.square?.max ||
+        estate.roomLayouts?.five?.square?.avg ||
+        estate.roomLayouts?.four?.square?.min ||
+        estate.roomLayouts?.four?.square?.max ||
+        estate.roomLayouts?.four?.square?.avg ||
+        estate.roomLayouts?.three?.square?.min ||
+        estate.roomLayouts?.three?.square?.max ||
+        estate.roomLayouts?.three?.square?.avg ||
+        estate.roomLayouts?.two?.square?.min ||
+        estate.roomLayouts?.two?.square?.max ||
+        estate.roomLayouts?.two?.square?.avg ||
+        estate.roomLayouts?.studio?.square?.min ||
+        estate.roomLayouts?.studio?.square?.max ||
+        estate.roomLayouts?.studio?.square?.avg ||
+        estate.roomLayouts?.one?.square?.min ||
+        estate.roomLayouts?.one?.square?.max ||
+        estate.roomLayouts?.one?.square?.avg ||
+        110
+    );
+    setToken(localStorage.getItem('basicToken'));
+  }, []);
+
+  const deleteFromCollection = () => {
+    estateCollectionApi
+      .deleteFromCollection(token!!, estate.collectionId!!, estate.id)
+      .then(() => {
+        setInfoTitle(formatMessage({ id: 'object_delete_title' }));
+        setInfoText(formatMessage({ id: 'object_delete_message' }));
+        handleOpenInfoModal();
+      })
+      .catch((e) => console.log(e));
+    setIsDelete(true);
+  };
+
+  useEffect(() => {
+    if (like) {
+      estateCollectionApi
+        .saveLike({
+          collection: estate.collection,
+          collectionId: estate.collectionId!!,
+          email: estate.agentInfo?.login ?? 'arturmirov777@gmail.com',
+          title: estate.name,
+          url: window.location.href,
+          estateId: estate.id,
+        })
+        .then(() => console.log('success like'))
+        .catch((e) => console.log('error like'));
+    }
+  }, [like]);
+
+  return (
+    <section className={styles.grid}>
+      <div className={styles.slider}>
+        {!!estate.location?.mapUrl && (
+          <div className={styles.slider__map}>
+            <GMap url={estate.location?.mapUrl} zoom={16} />
+          </div>
+        )}
+        <Slider
+          images={
+            estate.exteriorImages || estate.facilityImages || estate.interiorImages || [DEFAULT_IMG]
+          }
+        />
+      </div>
+      <div className={styles.description}>
+        <div className={styles.badges} onClick={openRatingInfo}>
+          <BadgeRating
+            icon={<VectorRating />}
+            size="sm"
+            text={estate.grade?.main ? `${estate.grade?.main.toPrecision(2)}` : '9'}
+            background="primary"
+          />
+          <BadgeRating
+            icon={<OfferCollectionMapPinFilled />}
+            size="sm"
+            text={estate.location?.beach || ''}
+            background="white"
+          />
+        </div>
+        <div className={styles.header__wrapper}>
+          <Text className={styles.header} variant="heading2">
+            {estate.name}
+          </Text>
+        </div>
+        <Text as="p" variant="body2" className={styles.text}>
+          Элитные резиденции у пляжа Банг Тао – просторные кондоминиумы и пентхаусы с бассейнами на
+          крышах, соединенные живописными каналами и мостиками Уникальные светлые интерьеры с
+          бирюзовыми акцентами, террасами, плавными фасадами и дизайном, вдохновленным каньонами и
+          тропиками Доступ к премиальной инфраструктуре Laguna Phuket – рестораны, спа, гольф-клуб,
+          круглосуточЭлитные резиденции у пляжа Банг Тао – просторные кондоминиумы и пентхаусы с
+          бассейнами на крышах, соединенные живописными каналами и мостикамиPhuket – рестораны, спа,
+          гольф-клуб... Читать полностью
+        </Text>
+        <div className={styles.delete}>
+          {clickable ? (
+            <Button onClick={deleteFromCollection} size="l">
+              <Text variant="body1">{formatMessage({ id: 'remove_button' })}</Text>
+            </Button>
+          ) : (
+            <></>
+          )}
+        </div>
+      </div>
+      <div className={styles.flats}>
+        <Flats {...estate.roomLayouts} />
+      </div>
+
+      <div className={styles.paymentPlan}>
+        {!!estate.paymentPlanList && <PaymentStepper steps={estate.paymentPlanList} />}
+        <div className={styles.options}>
+          <EstateOptionsInfo {...estate.options} />
+        </div>
+      </div>
+      <div className={styles.info}>
+        <TablesInfo
+          tables={[
+            {
+              items: [
+                {
+                  name: formatMessage({ id: 'completion_date' }),
+                  description: estate.buildEndDate,
+                },
+                {
+                  name: formatMessage({ id: 'roi' }),
+                  description: `${estate.profitability?.roi || 200}%`,
+                },
+                {
+                  name: formatMessage({ id: 'irr' }),
+                  description: `${estate.profitability?.irr || 13}%`,
+                },
+              ],
+            },
+            {
+              items: [
+                {
+                  name: formatMessage({ id: 'beach' }),
+                  description: `${
+                    estate?.infrastructure?.beachTime?.car ||
+                    estate?.infrastructure?.beachTime?.walk ||
+                    5
+                  } ${formatMessage({ id: 'min' })}`,
+                },
+                {
+                  name: formatMessage({ id: 'mall' }),
+                  description: `${
+                    estate?.infrastructure?.mallTime?.car ||
+                    estate?.infrastructure?.mallTime?.walk ||
+                    30
+                  } ${formatMessage({ id: 'min' })}`,
+                },
+                {
+                  name: formatMessage({ id: 'airport' }),
+                  description: `${
+                    estate.infrastructure?.airportTime?.car ||
+                    estate.infrastructure?.airportTime?.walk ||
+                    30
+                  } ${formatMessage({ id: 'min' })}`,
+                },
+              ],
+            },
+          ]}
+        />
+      </div>
+      <div className={styles.progress}>
+        <Progresses
+          items={[
+            {
+              value: estate.grade?.investmentSecurity || 9,
+              label: formatMessage({ id: 'security' }),
+              icon: <VectorRating />,
+              min: 0,
+              max: 10,
+            },
+            {
+              value: estate.grade?.projectLocation || 9,
+              label: formatMessage({ id: 'project_location' }),
+              icon: <VectorRating />,
+              min: 0,
+              max: 10,
+            },
+            {
+              value: estate.grade?.investmentPotential || 9,
+              label: formatMessage({ id: 'invest_potential' }),
+              icon: <VectorRating />,
+              min: 0,
+              max: 10,
+            },
+            {
+              value: estate.grade?.comfortOfLife || 9,
+              label: formatMessage({ id: 'comfort' }),
+              icon: <VectorRating />,
+              min: 0,
+              max: 10,
+            },
+          ]}
+        />
+        {/*{clickable ? (
+          <></>
+        ) : (
+          <Button onClick={handleClickLikeButton} className={styles.like} variant="cta" size="s">
+            <span className={styles.like__icon}>{like ? <Heart /> : <OfferCollectionHeart />}</span>
+            <Text variant="heading4">{formatMessage({ id: 'like' })}</Text>
+          </Button>
+        )}*/}
+      </div>
+      <InfoModal
+        open={infoModal}
+        onClose={handleCloseInfoModal}
+        onOpen={handleOpenInfoModal}
+        anchor="bottom"
+        title={infoTitle}
+        text={infoText}
+        bottom={30}
+      />
+    </section>
+  );
+};

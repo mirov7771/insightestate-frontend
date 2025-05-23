@@ -267,5 +267,21 @@ export default {
   'beach.walk': 'Walk',
   'beach.car': 'By car',
 
+  'offerCollection.studio': 'Studio',
+  'offerCollection.one': '1 bedroom',
+  'offerCollection.two': '2 bedrooms',
+  'offerCollection.three': '3 bedrooms',
+  'offerCollection.four': '4 bedrooms',
+  'offerCollection.five': '5 bedroom',
+  'offerCollection.villaTwo': 'Villa 2 bedrooms',
+  'offerCollection.villaThree': 'Villa 3 bedrooms',
+  'offerCollection.villaFour': 'Villa 4 bedrooms',
+  'offerCollection.villaFive': 'Villa 5 bedrooms',
+
+  'offerCollection.paymentSchedule': 'Payment schedule',
+  'offerCollection.gym': 'Gym',
+  'offerCollection.childRoom': 'Kids room',
+  'offerCollection.coworking': 'Coworking',
+
   like: 'Like',
 };

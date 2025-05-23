@@ -52,6 +52,11 @@
   align-items: center;
   justify-content: center;
   font-size: 1em; // наследуется от размера текста
+
+  & > svg {
+    width: 16px;
+    height: 16px;
+  }
 }
 
 // Текст

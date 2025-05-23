@@ -268,5 +268,21 @@ export default {
   'beach.walk': 'Пешком',
   'beach.car': 'На машине',
 
+  'offerCollection.studio': 'Студия',
+  'offerCollection.one': '1 спальня',
+  'offerCollection.two': '2 спальни',
+  'offerCollection.three': '3 спальни',
+  'offerCollection.four': '4 спальни',
+  'offerCollection.five': '5 спален',
+  'offerCollection.villaTwo': 'Вилла 2 спальни',
+  'offerCollection.villaThree': 'Вилла 3 спальни',
+  'offerCollection.villaFour': 'Вилла 4 спальни',
+  'offerCollection.villaFive': 'Вилла 5 спален',
+
+  'offerCollection.paymentSchedule': 'График платежей',
+  'offerCollection.gym': 'Спортивный зал',
+  'offerCollection.childRoom': 'Детская комната',
+  'offerCollection.coworking': 'Коворкинг',
+
   like: 'Мне нравится',
 };

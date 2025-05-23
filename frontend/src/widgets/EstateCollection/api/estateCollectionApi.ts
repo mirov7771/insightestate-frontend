@@ -24,11 +24,21 @@ export type EstateCollection = {
   estates?: Array<Estate>;
 };
 
+export type EstateOptions = {
+  childRoom: boolean;
+  coworking: boolean;
+  entertainment: boolean;
+  gym: boolean;
+  petFriendly: boolean;
+  shop: boolean;
+};
+
 export type Estate = {
   buildEndDate: string;
   id: string;
   level: 'COMFORT' | 'LUX' | 'PREMIUM' | 'UNKNOWN';
   name: string;
+  options: EstateOptions;
   projectId: string;
   exteriorImages?: string[];
   facilityImages?: string[];

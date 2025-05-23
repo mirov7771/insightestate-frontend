@@ -8,8 +8,6 @@ import {
 } from '@/shared/assets/icons';
 import { Text } from '@/shared/ui';
 import styles from './Card.module.scss';
-import { Progress } from '@/pages/OfferCollectionV2/Card/Progress/Progress';
-import { Slider } from '@/pages/OfferCollectionV2/Card/Slider/Slider';
 import {
   AgentInfo,
   Estate,
@@ -19,6 +17,12 @@ import { formatNumber } from '@/shared/utils';
 import { DEFAULT_IMG } from '@/entities/Card/Card';
 import { useIntl } from 'react-intl';
 import { InfoModal } from '@/widgets/Modal/InfoModal';
+import { Slider } from '../CommonComponents/Slider/Slider';
+import { Progresses } from '../CommonComponents/Progress/Progresses';
+import { Flats } from '@/pages/OfferCollectionV2/CommonComponents/Flats/Flats';
+import { TablesInfo } from '@/pages/OfferCollectionV2/CommonComponents/TablesInfo/TablesInfo';
+import { PaymentStepper } from '@/pages/OfferCollectionV2/CommonComponents/PaymentStepper/PaymentStepper';
+import { EstateOptionsInfo } from '@/pages/OfferCollectionV2/CommonComponents/EstateOptionsInfo/EstateOptionsInfo';
 
 export const Card: FC<
   Estate & { collection: string; collectionId: string; agentInfo?: AgentInfo }
@@ -176,180 +180,149 @@ export const Card: FC<
             <Text className={styles.header} variant="heading2">
               {estate.name}
             </Text>
-          </div>
-          <Text variant="heading3">
-            {formatMessage({ id: 'p_from' })} ${formatNumber(estate.price?.min)}{' '}
-            <span className={styles.price}>• ${formatNumber(estate.price?.max)}</span>
-          </Text>
-        </section>
-        {/* Info Mini Cards */}
-        <section className={styles.info__wrapper}>
-          {/*Пока убираем спальни*/}
-          {/*<div className={styles.info__card}>*/}
-          {/*  <Text align="center" variant="heading4">*/}
-          {/*    2 спальни*/}
-          {/*  </Text>*/}
-          {/*  <Text className={styles.info__description} align="center" variant="caption1">*/}
-          {/*    Планировка*/}
-          {/*  </Text>*/}
-          {/*</div>*/}
-          <div className={styles.info__card}>
-            <Text align="center" variant="heading4">
-              {square}
-              {/*{square}{' '}m<sup>2</sup>*/}
-            </Text>
-            <Text className={styles.info__description} align="center" variant="caption1">
-              {formatMessage({ id: 'size_sqm' })}
+            <Text as="p" variant="body2" className={styles.text}>
+              Элитные резиденции у пляжа Банг Тао – просторные кондоминиумы и пентхаусы с бассейнами
+              на крышах, соединенные живописными каналами и мостиками Уникальные светлые интерьеры с
+              бирюзовыми акцентами, террасами, плавными фасадами и дизайном, вдохновленным каньонами
+              и тропиками Доступ к премиальной инфраструктуре Laguna Phuket – рестораны, спа,
+              гольф-клуб, круглосуточЭлитные резиденции у пляжа Банг Тао – просторные кондоминиумы и
+              пентхаусы с бассейнами на крышах, соединенные живописными каналами и мостикамиPhuket –
+              рестораны, спа, гольф-клуб... Читать полностью
             </Text>
           </div>
-          {!!estate.floors && (
-            <div className={styles.info__card}>
-              <Text align="center" variant="heading4">
-                {estate.floors}
-              </Text>
-              <Text className={styles.info__description} align="center" variant="caption1">
-                {formatMessage({ id: 'total_floors' })}
-              </Text>
-            </div>
-          )}
         </section>
-        <hr className={styles.hr} />
+        <Flats {...estate.roomLayouts} />
+        {!!estate.paymentPlanList && <PaymentStepper steps={estate.paymentPlanList} />}
+        <EstateOptionsInfo {...estate.options} />
         <div className={styles.main}>
-          <section className={styles.tables}>
-            {/*Table 1*/}
-            <section className={styles.table}>
-              <div className={styles.table__item}>
-                <Text variant="body1">{formatMessage({ id: 'completion_date' })}</Text>
-                <Text variant="heading4">{estate.buildEndDate}</Text>
-              </div>
-              <div className={styles.table__item}>
-                <Text variant="body1">{formatMessage({ id: 'roi' })}</Text>
-                <Text variant="heading4">{estate.profitability?.roi || 200}%</Text>
-              </div>
-              <div className={styles.table__item}>
-                <Text variant="body1">{formatMessage({ id: 'irr' })}</Text>
-                <Text variant="heading4">{estate.profitability?.irr || 13}%</Text>
-              </div>
-            </section>
-            <hr className={styles.hr} />
-            {/*Table 2*/}
-            <section className={styles.table}>
-              <div className={styles.table__item}>
-                <Text variant="body1">{formatMessage({ id: 'beach' })}</Text>
-                <Text variant="heading4">
-                  {estate?.infrastructure?.beachTime?.car ||
-                    estate?.infrastructure?.beachTime?.walk ||
-                    5}{' '}
-                  {formatMessage({ id: 'min' })}
-                </Text>
-              </div>
-              <div className={styles.table__item}>
-                <Text variant="body1">{formatMessage({ id: 'mall' })}</Text>
-                <Text variant="heading4">
-                  {estate?.infrastructure?.mallTime?.car ||
-                    estate?.infrastructure?.mallTime?.walk ||
-                    30}{' '}
-                  {formatMessage({ id: 'min' })}
-                </Text>
-              </div>
-              <div className={styles.table__item}>
-                <Text variant="body1">{formatMessage({ id: 'airport' })}</Text>
-                <Text variant="heading4">
-                  {estate.infrastructure?.airportTime?.car ||
-                    estate.infrastructure?.airportTime?.walk ||
-                    30}{' '}
-                  {formatMessage({ id: 'min' })}
-                </Text>
-              </div>
-            </section>
-          </section>
+          <TablesInfo
+            tables={[
+              {
+                items: [
+                  {
+                    name: formatMessage({ id: 'completion_date' }),
+                    description: estate.buildEndDate,
+                  },
+                  {
+                    name: formatMessage({ id: 'roi' }),
+                    description: `${estate.profitability?.roi || 200}%`,
+                  },
+                  {
+                    name: formatMessage({ id: 'irr' }),
+                    description: `${estate.profitability?.irr || 13}%`,
+                  },
+                ],
+              },
+              {
+                items: [
+                  {
+                    name: formatMessage({ id: 'beach' }),
+                    description: `${
+                      estate?.infrastructure?.beachTime?.car ||
+                      estate?.infrastructure?.beachTime?.walk ||
+                      5
+                    } ${formatMessage({ id: 'min' })}`,
+                  },
+                  {
+                    name: formatMessage({ id: 'mall' }),
+                    description: `${
+                      estate?.infrastructure?.mallTime?.car ||
+                      estate?.infrastructure?.mallTime?.walk ||
+                      30
+                    } ${formatMessage({ id: 'min' })}`,
+                  },
+                  {
+                    name: formatMessage({ id: 'airport' }),
+                    description: `${
+                      estate.infrastructure?.airportTime?.car ||
+                      estate.infrastructure?.airportTime?.walk ||
+                      30
+                    } ${formatMessage({ id: 'min' })}`,
+                  },
+                ],
+              },
+            ]}
+          />
           {/*Map*/}
           {!!estate.location?.mapUrl && (
             <section className={styles.map}>
-              <hr className={styles.hr} />
-              <section>
-                <GMap
-                  url={estate.location.mapUrl}
-                  mapContainerStyle={{ width: '100%', height: '400px', marginTop: 16 }}
-                />
-              </section>
+              <GMap
+                url={estate.location.mapUrl}
+                mapContainerStyle={{ width: '100%', height: '320px' }}
+              />
             </section>
           )}
-          <hr className={styles.hr} />
-          <section className={styles.progress}>
-            <Progress
-              value={estate.grade?.investmentSecurity || 9}
-              label={formatMessage({ id: 'security' })}
-              icon={
-                <span className={styles.icon}>
-                  <VectorRating />
-                </span>
-              }
-              min={0}
-              max={10}
-            />
-            <Progress
-              value={estate.grade?.projectLocation || 9}
-              label={formatMessage({ id: 'project_location' })}
-              icon={
-                <span className={styles.icon}>
-                  <VectorRating />
-                </span>
-              }
-              min={0}
-              max={10}
-            />
-            <Progress
-              value={estate.grade?.investmentPotential || 9}
-              label={formatMessage({ id: 'invest_potential' })}
-              icon={
-                <span className={styles.icon}>
-                  <VectorRating />
-                </span>
-              }
-              min={0}
-              max={10}
-            />
-            <Progress
-              value={estate.grade?.comfortOfLife || 9}
-              label={formatMessage({ id: 'comfort' })}
-              icon={
-                <span className={styles.icon}>
-                  <VectorRating />
-                </span>
-              }
-              min={0}
-              max={10}
-            />
-            {clickable ? (
-              <></>
-            ) : (
-              <Button
-                onClick={handleClickLikeButton}
-                className={styles.like}
-                variant="cta"
-                size="s"
-              >
-                <span className={styles.like__icon}>
-                  {like ? <Heart /> : <OfferCollectionHeart />}
-                </span>
-                <Text variant="heading4">{formatMessage({ id: 'like' })}</Text>
-              </Button>
-            )}
-            {clickable ? (
-              <Button
-                style={{
-                  margin: 'auto',
-                  width: '80%',
-                }}
-                onClick={deleteFromCollection}
-              >
-                <Text variant="body1">{formatMessage({ id: 'remove_button' })}</Text>
-              </Button>
-            ) : (
-              <></>
-            )}
-          </section>
+          <Progresses
+            items={[
+              {
+                value: estate.grade?.investmentSecurity || 9,
+                label: formatMessage({ id: 'security' }),
+                icon: (
+                  <span className={styles.icon}>
+                    <VectorRating />
+                  </span>
+                ),
+                min: 0,
+                max: 10,
+              },
+              {
+                value: estate.grade?.projectLocation || 9,
+                label: formatMessage({ id: 'project_location' }),
+                icon: (
+                  <span className={styles.icon}>
+                    <VectorRating />
+                  </span>
+                ),
+                min: 0,
+                max: 10,
+              },
+              {
+                value: estate.grade?.investmentPotential || 9,
+                label: formatMessage({ id: 'invest_potential' }),
+                icon: (
+                  <span className={styles.icon}>
+                    <VectorRating />
+                  </span>
+                ),
+                min: 0,
+                max: 10,
+              },
+              {
+                value: estate.grade?.comfortOfLife || 9,
+                label: formatMessage({ id: 'comfort' }),
+                icon: (
+                  <span className={styles.icon}>
+                    <VectorRating />
+                  </span>
+                ),
+                min: 0,
+                max: 10,
+              },
+            ]}
+          />
+          {clickable ? (
+            <></>
+          ) : (
+            <Button onClick={handleClickLikeButton} className={styles.like} variant="cta" size="s">
+              <span className={styles.like__icon}>
+                {like ? <Heart /> : <OfferCollectionHeart />}
+              </span>
+              <Text variant="heading4">{formatMessage({ id: 'like' })}</Text>
+            </Button>
+          )}
+          {clickable ? (
+            <Button
+              style={{
+                margin: 'auto',
+                width: '80%',
+              }}
+              onClick={deleteFromCollection}
+            >
+              <Text variant="body1">{formatMessage({ id: 'remove_button' })}</Text>
+            </Button>
+          ) : (
+            <></>
+          )}
         </div>
         <InfoModal
           open={infoModal}
