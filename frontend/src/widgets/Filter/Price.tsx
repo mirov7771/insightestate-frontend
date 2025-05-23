@@ -10,10 +10,8 @@ import {formatNumber} from "@/shared/utils";
 export const Price: FC = () => {
   const { formatMessage } = useIntl();
   const { setFilters, minPrice, maxPrice } = useFilters();
-  const [ max, setMax ] = useState<number>(0)
 
   const handleClick = (event: Event, value: number | number[], activeThumb: number) => {
-    setMax(value as number)
     setFilters((filtersState) => ({
       ...filtersState,
       minPrice: activeThumb,
@@ -27,7 +25,6 @@ export const Price: FC = () => {
 
   const handleMaxPrice = (e: ChangeEvent<HTMLInputElement>) => {
     const value = (e.target.value || 0) as number
-    setMax(value)
     if (value > 0)
         setFilters((filtersState) => ({ ...filtersState, maxPrice: (e.target.value || 0) as number }));
   };
@@ -52,7 +49,7 @@ export const Price: FC = () => {
           getAriaValueText={labelValue}
           valueLabelFormat={labelValue}
           valueLabelDisplay={'on'}
-          value={max}
+          value={maxPrice}
           onChange={handleClick}
         />
         <div
