@@ -15,7 +15,6 @@ import { Text, useNotifications } from '@/shared/ui';
 import { FETCHING_STATUS } from '@/shared/constants/constants';
 import { copyToClipboard } from '@/shared/utils';
 import { detailApi } from '@/widgets/Detail/api/detailApi';
-import { isMobile } from 'react-device-detect';
 
 type TStatus = 'IDLE' | 'SUCCESS' | 'ERROR' | 'LOADING';
 
@@ -85,11 +84,7 @@ const ItemCollection: FC<EstateCollection & { token: string; value: number }> = 
     try {
       setCopyLinkStatus('LOADING');
       const fullUrl = `${window.location.origin}${collectionLink}`;
-      const url = fullUrl.startsWith('http://')
-        ? fullUrl.replaceAll('http://', 'https://')
-        : fullUrl;
-      const { data: shortUrl } = await detailApi.shortUrl(url);
-      const result = await copyToClipboard(shortUrl.url);
+      const result = await copyToClipboard(fullUrl);
 
       if (result) {
         setCopyLinkStatus('SUCCESS');

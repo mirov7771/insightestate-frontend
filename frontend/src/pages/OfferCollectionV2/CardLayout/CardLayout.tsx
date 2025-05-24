@@ -8,10 +8,9 @@ import {
   estateCollectionApi,
 } from '@/widgets/EstateCollection/api/estateCollectionApi';
 import {
-  Heart,
-  OfferCollectionHeart,
-  OfferCollectionMapPinFilled,
-  VectorRating,
+    Heart, OfferCollectionHeart,
+    OfferCollectionMapPinFilled,
+    VectorRating,
 } from '@/shared/assets/icons';
 import { useIntl } from 'react-intl';
 import { Flats } from '../CommonComponents/Flats/Flats';
@@ -149,6 +148,16 @@ export const CardLayout: FC<CardLayoutProps> = ({ estate }) => {
             text={estate.location?.beach || ''}
             background="white"
           />
+            {estate.likes ? (
+                <BadgeRating
+                    icon={<Heart />}
+                    size="sm"
+                    text={`${estate.likes || '0'}`}
+                    background="white"
+                />
+            ) : (
+                <></>
+            )}
         </div>
         <div className={styles.header__wrapper}>
           <Text className={styles.header} variant="heading2">
@@ -156,13 +165,7 @@ export const CardLayout: FC<CardLayoutProps> = ({ estate }) => {
           </Text>
         </div>
         <Text as="p" variant="body2" className={styles.text}>
-          Элитные резиденции у пляжа Банг Тао – просторные кондоминиумы и пентхаусы с бассейнами на
-          крышах, соединенные живописными каналами и мостиками Уникальные светлые интерьеры с
-          бирюзовыми акцентами, террасами, плавными фасадами и дизайном, вдохновленным каньонами и
-          тропиками Доступ к премиальной инфраструктуре Laguna Phuket – рестораны, спа, гольф-клуб,
-          круглосуточЭлитные резиденции у пляжа Банг Тао – просторные кондоминиумы и пентхаусы с
-          бассейнами на крышах, соединенные живописными каналами и мостикамиPhuket – рестораны, спа,
-          гольф-клуб... Читать полностью
+          {localStorage.getItem('language') === 'en' ? estate.shortDescriptionEn : estate.shortDescriptionRu}
         </Text>
         <div className={styles.delete}>
           {clickable ? (
@@ -172,6 +175,23 @@ export const CardLayout: FC<CardLayoutProps> = ({ estate }) => {
           ) : (
             <></>
           )}
+            {clickable ? (
+                <></>
+            ) : (
+                <Button
+                    onClick={handleClickLikeButton}
+                    className={styles.like}
+                    variant="cta"
+                    style={{
+                        width: '210px'
+                    }}
+                >
+                      <span className={styles.like__icon}>
+                        {like ? <Heart /> : <OfferCollectionHeart />}
+                      </span>
+                    <Text variant="heading4">{formatMessage({ id: 'like' })}</Text>
+                </Button>
+            )}
         </div>
       </div>
       <div className={styles.flats}>
@@ -194,12 +214,20 @@ export const CardLayout: FC<CardLayoutProps> = ({ estate }) => {
                   description: estate.buildEndDate,
                 },
                 {
-                  name: formatMessage({ id: 'roi' }),
-                  description: `${estate.profitability?.roi || 200}%`,
+                    name: formatMessage({ id: 'roiSummary' }),
+                    description: `${estate.profitability?.roiSummary || 200}%`,
+                },
+                {
+                    name: formatMessage({ id: 'roi' }),
+                    description: `${estate.profitability?.roi || 200}%`,
                 },
                 {
                   name: formatMessage({ id: 'irr' }),
                   description: `${estate.profitability?.irr || 13}%`,
+                },
+                {
+                    name: formatMessage({ id: 'capRateFirstYear' }),
+                    description: `${estate.profitability?.capRateFirstYear || 5}%`,
                 },
               ],
             },
@@ -267,14 +295,6 @@ export const CardLayout: FC<CardLayoutProps> = ({ estate }) => {
             },
           ]}
         />
-        {/*{clickable ? (
-          <></>
-        ) : (
-          <Button onClick={handleClickLikeButton} className={styles.like} variant="cta" size="s">
-            <span className={styles.like__icon}>{like ? <Heart /> : <OfferCollectionHeart />}</span>
-            <Text variant="heading4">{formatMessage({ id: 'like' })}</Text>
-          </Button>
-        )}*/}
       </div>
       <InfoModal
         open={infoModal}

@@ -159,19 +159,6 @@
     flex: 1 1 0;
     justify-content: space-evenly;
   }
-
-  .like {
-    display: flex;
-    gap: 8px;
-    border-radius: 200px;
-    margin: auto;
-    width: 80%;
-
-    &__icon {
-      width: 20px;
-      height: 20px;
-    }
-  }
 }
 
 .delete {
@@ -179,4 +166,39 @@
   right: 0;
   top: 0;
   z-index: 10;
+}
+
+.icon_like {
+  display: flex;
+  width: 12px;
+  height: 12px;
+
+  & > svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  &__primary {
+    color: var(--ui-color-primary-2);
+    width: 13px;
+    height: 13px;
+
+    & > svg {
+      width: 13px;
+      height: 13px;
+    }
+  }
+}
+
+.like {
+  display: flex;
+  gap: 8px;
+  border-radius: 200px;
+  margin: auto;
+  width: 80%;
+
+  &__icon {
+    width: 20px;
+    height: 20px;
+  }
 }

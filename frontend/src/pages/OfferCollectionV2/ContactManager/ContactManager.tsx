@@ -38,12 +38,7 @@ export const ContactManager: FC<{ id: string }> = ({ id }) => {
 
   const handleCopyLink = async () => {
     try {
-      const fullUrl = window.location.href;
-      const url = fullUrl.startsWith('http://')
-        ? fullUrl.replaceAll('http://', 'https://')
-        : fullUrl;
-      const { data: shortUrl } = await detailApi.shortUrl(url);
-      const result = await copyToClipboard(shortUrl.url);
+      const result = await copyToClipboard(window.location.href);
 
       if (result) {
         console.log('RUN!');

@@ -64,6 +64,8 @@ export default {
   map: 'Расположение',
   infrastructure: 'Инфраструктура и Особенности',
   yield: 'Средняя доходность',
+  roiSummary: 'Среднегодовой ROI',
+  capRateFirstYear: 'Чистый арендный доход',
   roi: 'ROI за 10 лет',
   irr: 'IRR за 10 лет',
   net: 'Чистый арендный доход',

@@ -13,7 +13,6 @@ import {
   Estate,
   estateCollectionApi,
 } from '@/widgets/EstateCollection/api/estateCollectionApi';
-import { formatNumber } from '@/shared/utils';
 import { DEFAULT_IMG } from '@/entities/Card/Card';
 import { useIntl } from 'react-intl';
 import { InfoModal } from '@/widgets/Modal/InfoModal';
@@ -181,13 +180,7 @@ export const Card: FC<
               {estate.name}
             </Text>
             <Text as="p" variant="body2" className={styles.text}>
-              Элитные резиденции у пляжа Банг Тао – просторные кондоминиумы и пентхаусы с бассейнами
-              на крышах, соединенные живописными каналами и мостиками Уникальные светлые интерьеры с
-              бирюзовыми акцентами, террасами, плавными фасадами и дизайном, вдохновленным каньонами
-              и тропиками Доступ к премиальной инфраструктуре Laguna Phuket – рестораны, спа,
-              гольф-клуб, круглосуточЭлитные резиденции у пляжа Банг Тао – просторные кондоминиумы и
-              пентхаусы с бассейнами на крышах, соединенные живописными каналами и мостикамиPhuket –
-              рестораны, спа, гольф-клуб... Читать полностью
+              {localStorage.getItem('language') === 'en' ? estate.shortDescriptionEn : estate.shortDescriptionRu}
             </Text>
           </div>
         </section>
@@ -205,11 +198,19 @@ export const Card: FC<
                   },
                   {
                     name: formatMessage({ id: 'roi' }),
+                    description: `${estate.profitability?.roiSummary || 200}%`,
+                  },
+                  {
+                    name: formatMessage({ id: 'roi' }),
                     description: `${estate.profitability?.roi || 200}%`,
                   },
                   {
                     name: formatMessage({ id: 'irr' }),
                     description: `${estate.profitability?.irr || 13}%`,
+                  },
+                  {
+                    name: formatMessage({ id: 'capRateFirstYear' }),
+                    description: `${estate.profitability?.capRateFirstYear || 5}%`,
                   },
                 ],
               },
