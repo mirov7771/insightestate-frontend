@@ -197,7 +197,7 @@ export const Card: FC<
                     description: estate.buildEndDate,
                   },
                   {
-                    name: formatMessage({ id: 'roi' }),
+                    name: formatMessage({ id: 'roiSummary' }),
                     description: `${estate.profitability?.roiSummary || 200}%`,
                   },
                   {
