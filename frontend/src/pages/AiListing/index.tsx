@@ -5,6 +5,7 @@ import { Estate, filterApi } from '@/widgets/Filter/api/filterApi';
 import { useSearchParams } from 'react-router';
 import { Watch } from 'react-loader-spinner';
 import { useIntl } from 'react-intl';
+import {isMobile} from "react-device-detect";
 
 export const AiListing: FC = () => {
   const { formatMessage } = useIntl();
@@ -30,7 +31,7 @@ export const AiListing: FC = () => {
     <div className={styles.wrap}>
       <h1 className={styles.header}>{formatMessage({ id: 'selection' })}</h1>
       <div>
-        <main className={styles.main}>
+        <main className={isMobile ? styles.main_mobile : styles.main }>
           {estates.length === 0 ? (
             loading ? (
               <div className={styles.watch}>
