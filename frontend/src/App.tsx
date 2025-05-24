@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import './App.scss';
-import { Routes, Route, BrowserRouter } from 'react-router';
+import { Routes, Route, BrowserRouter, useLocation } from 'react-router';
 import { FiltersProvider } from '@/widgets/Filter/model/useFilters';
 import Layout from '@/widgets/Layout/Layout';
 import Listing from '@/pages/Listing';
@@ -25,6 +25,18 @@ import { I18nProvider } from '@/i18n/I18nProvider';
 import { ResetPasswordCode } from '@/pages/ResetPassword/ResetPasswordCode';
 import { NewPassword } from '@/pages/ResetPassword/NewPassword';
 
+const ScrollToTop = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    const element = document.documentElement || document.body;
+
+    element.scrollTop = 0;
+  }, [location]);
+
+  return null;
+};
+
 const App = () => {
   const userLocale = getUserLocale();
   const localStorageUserLocale = localStorage.getItem('language') as 'ru' | 'en';
@@ -41,6 +53,7 @@ const App = () => {
       <NotificationsProvider>
         <I18nProvider locale={localStorageUserLocale || 'en'}>
           <BrowserRouter>
+            <ScrollToTop />
             <Routes>
               <Route element={<RegistrationLayout />}>
                 <Route path="/login" element={<Login />} />

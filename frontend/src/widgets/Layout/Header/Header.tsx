@@ -36,7 +36,11 @@ export const Header: FC<{ basicToken: string }> = ({ basicToken }) => {
 
   return (
     <>
-      <MobileMenu profileUrl="/profile" showMobileMenu={showMobileMenu} />
+      <MobileMenu
+        profileUrl="/profile"
+        showMobileMenu={showMobileMenu}
+        setShowMobileMenu={setShowMobileMenu}
+      />
       <header className={styles.header}>
         <span className={styles.menu__icon} onClick={handleClickMobileMenu}>
           <Menu />
