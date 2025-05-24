@@ -10,10 +10,10 @@ import { formatNumber } from '@/shared/utils';
 export const Price: FC = () => {
   const { formatMessage } = useIntl();
   const { setFilters, minPrice, maxPrice } = useFilters();
-  const [values, setValues] = useState<number[]>([0, 1000000]);
+  const [values, setValues] = useState<number[]>([0, 4000000]);
 
   useEffect(() => {
-    if (minPrice == 0 && maxPrice == 1000000) setValues([0, 1000000]);
+    if (minPrice == 0 && maxPrice == 4000000) setValues([0, 4000000]);
   }, [minPrice, maxPrice]);
 
   const handleClick = (event: Event, value: number | number[], activeThumb: number) => {
@@ -49,7 +49,7 @@ export const Price: FC = () => {
       <div className={styles.content}>
         <CustomSlider
           min={0}
-          max={1000000}
+          max={4000000}
           step={10000}
           style={{
             width: '95%',
