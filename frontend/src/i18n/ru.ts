@@ -67,7 +67,7 @@ export default {
   roiSummary: 'Среднегодовой ROI',
   capRateFirstYear: 'Чистый арендный доход',
   roi: 'ROI за 10 лет',
-  irr: 'IRR за 10 лет',
+  irr: 'IRR',
   net: 'Чистый арендный доход',
   layouts: 'Доступные планировки',
   plan: 'Планировка',

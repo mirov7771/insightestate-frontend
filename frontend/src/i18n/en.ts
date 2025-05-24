@@ -67,7 +67,7 @@ export default {
   roi: 'Average Annual ROI',
   roiSummary: '10-year ROI',
   capRateFirstYear: 'Cap rate',
-  irr: '10-year IRR',
+  irr: 'IRR',
   net: 'Net rental income',
   layouts: 'Available layouts',
   plan: 'Layout',
