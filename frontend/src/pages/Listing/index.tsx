@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import styles from './Listing.module.scss';
 import { Filter } from '@/widgets/Filter/Filter';
 import { Card } from '@/entities/Card/Card';
@@ -6,10 +6,30 @@ import { Pagination } from '@/shared/ui';
 import { useFilters } from '@/widgets/Filter/model/useFilters';
 import { Watch } from 'react-loader-spinner';
 import { useIntl } from 'react-intl';
+import {InfoModal} from "@/widgets/Modal/InfoModal";
 
 const Listing: FC = () => {
   const { formatMessage } = useIntl();
   const { setFilters, pageNumber, estates, totalPages, hasMore, loading } = useFilters();
+
+  const [infoModal, setInfoModal] = useState(false);
+  const [infoTitle, setInfoTitle] = useState('');
+  const infoText = formatMessage({ id: 'listing.info' })
+
+  const handleOpenInfoModal = () => {
+      setInfoModal(true);
+  };
+  const handleCloseInfoModal = () => {
+      setInfoModal(false);
+  };
+
+    useEffect(() => {
+        const onboarding = localStorage.getItem('onboarding')
+        if (!onboarding) {
+            localStorage.setItem('onboarding', 'showed')
+            handleOpenInfoModal()
+        }
+    }, []);
 
   return (
     <div className={styles.wrap}>
@@ -67,6 +87,15 @@ const Listing: FC = () => {
           </div>
         )}
       </div>
+        <InfoModal
+            open={infoModal}
+            onClose={handleCloseInfoModal}
+            onOpen={handleOpenInfoModal}
+            anchor="bottom"
+            title={infoTitle}
+            text={infoText}
+            bottom={30}
+        />
     </div>
   );
 };
