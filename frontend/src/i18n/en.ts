@@ -285,6 +285,10 @@ export default {
   'offerCollection.childRoom': 'Kids room',
   'offerCollection.coworking': 'Coworking',
 
+  'meta.offerCollection.title': 'Properties for You',
+  'meta.offerCollection.description':
+    'We’ve curated a selection of properties based on your request',
+
   like: 'Like',
 
   'listing.info': 'On this page, you can select projects based on your client\'s request. We have identified the key parameters by which you can filter projects and add those of interest to collections.'

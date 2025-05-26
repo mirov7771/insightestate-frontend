@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { HelmetProvider } from 'react-helmet-async';
 import './App.scss';
 import { Routes, Route, BrowserRouter, useLocation } from 'react-router';
 import { FiltersProvider } from '@/widgets/Filter/model/useFilters';
@@ -49,57 +50,59 @@ const App = () => {
   }, []);
 
   return (
-    <StyledEngineProvider injectFirst>
-      <NotificationsProvider>
-        <I18nProvider locale={localStorageUserLocale || 'en'}>
-          <BrowserRouter>
-            <ScrollToTop />
-            <Routes>
-              <Route element={<RegistrationLayout />}>
-                <Route path="/login" element={<Login />} />
-                <Route path="/sign-up" element={<SignUp />} />
-                <Route path="/sign-up-end" element={<SignUpEnd />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="/reset-password" element={<ResetPassword />} />
-                <Route path="/reset-password/code" element={<ResetPasswordCode />} />
-                <Route path="/reset-password/new" element={<NewPassword />} />
-              </Route>
-              <Route path="/" element={<Layout />}>
-                <Route path="/profile" element={<Profile />} />
-                <Route index element={<Authorization />} />
-                <Route
-                  path="/listing"
-                  element={
-                    <FiltersProvider>
-                      <Listing />
-                    </FiltersProvider>
-                  }
-                />
-                <Route path="/property">
-                  <Route path=":id" element={<EstateDetail />} />
+    <HelmetProvider>
+      <StyledEngineProvider injectFirst>
+        <NotificationsProvider>
+          <I18nProvider locale={localStorageUserLocale || 'en'}>
+            <BrowserRouter>
+              <ScrollToTop />
+              <Routes>
+                <Route element={<RegistrationLayout />}>
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/sign-up" element={<SignUp />} />
+                  <Route path="/sign-up-end" element={<SignUpEnd />} />
+                  <Route path="/register" element={<Register />} />
+                  <Route path="/reset-password" element={<ResetPassword />} />
+                  <Route path="/reset-password/code" element={<ResetPasswordCode />} />
+                  <Route path="/reset-password/new" element={<NewPassword />} />
                 </Route>
-                <Route path="/offer-collection">
-                  <Route path=":id" element={<OfferCollection />} />
+                <Route path="/" element={<Layout />}>
+                  <Route path="/profile" element={<Profile />} />
+                  <Route index element={<Authorization />} />
+                  <Route
+                    path="/listing"
+                    element={
+                      <FiltersProvider>
+                        <Listing />
+                      </FiltersProvider>
+                    }
+                  />
+                  <Route path="/property">
+                    <Route path=":id" element={<EstateDetail />} />
+                  </Route>
+                  <Route path="/offer-collection">
+                    <Route path=":id" element={<OfferCollection />} />
+                  </Route>
+                  <Route path="/offer-collection-v2">
+                    <Route path=":id" element={<OfferCollectionV2 />} />
+                  </Route>
+                  <Route path="/tariffs" element={<Tariffs />} />
+                  <Route path="/user-collection" element={<UserCollection />} />
+                  <Route
+                    path="/ai-listing"
+                    element={
+                      <FiltersProvider>
+                        <AiListing />
+                      </FiltersProvider>
+                    }
+                  />
                 </Route>
-                <Route path="/offer-collection-v2">
-                  <Route path=":id" element={<OfferCollectionV2 />} />
-                </Route>
-                <Route path="/tariffs" element={<Tariffs />} />
-                <Route path="/user-collection" element={<UserCollection />} />
-                <Route
-                  path="/ai-listing"
-                  element={
-                    <FiltersProvider>
-                      <AiListing />
-                    </FiltersProvider>
-                  }
-                />
-              </Route>
-            </Routes>
-          </BrowserRouter>
-        </I18nProvider>
-      </NotificationsProvider>
-    </StyledEngineProvider>
+              </Routes>
+            </BrowserRouter>
+          </I18nProvider>
+        </NotificationsProvider>
+      </StyledEngineProvider>
+    </HelmetProvider>
   );
 };
 
