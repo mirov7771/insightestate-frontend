@@ -286,5 +286,8 @@ export default {
   'offerCollection.childRoom': 'Детская комната',
   'offerCollection.coworking': 'Коворкинг',
 
+  'meta.offerCollection.title': 'Объекты для вас',
+  'meta.offerCollection.description': 'Мы подготовили подборку объектов на основе вашего запроса',
+
   like: 'Мне нравится',
 };
