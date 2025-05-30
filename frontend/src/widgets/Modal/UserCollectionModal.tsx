@@ -42,14 +42,16 @@ export const UserCollectionModal: FC<TModalProps & { id: string; token: string }
   };
 
   useEffect(() => {
-    estateCollectionApi
-      .getEstateCollection(token!!)
-      .then((r) => {
-        setIsNew(r.data.items.length == 0);
-        setCollections(r.data.items);
-        console.log(r.data.items.length, isNew, collections);
-      })
-      .catch((e) => console.log(e));
+    if (open) {
+      estateCollectionApi
+        .getEstateCollection(token!!)
+        .then((r) => {
+          setIsNew(r.data.items.length == 0);
+          setCollections(r.data.items);
+          console.log(r.data.items.length, isNew, collections);
+        })
+        .catch((e) => console.log(e));
+    }
   }, [open]);
 
   const onChangeName = (e: ChangeEvent<HTMLInputElement>) => {
@@ -90,7 +92,7 @@ export const UserCollectionModal: FC<TModalProps & { id: string; token: string }
   const select = (values: EstateCollection[]) => {
     console.log(values);
     setCollectionId(values[0].id);
-    setName(values[0].name)
+    setName(values[0].name);
   };
 
   return (
@@ -137,20 +139,30 @@ export const UserCollectionModal: FC<TModalProps & { id: string; token: string }
           </StyledWrapperProgress>
         </StyledUpperWrapperProgress>
         <Spacer width="100%" height={24} />
-        <StyledButton style={{
-          backgroundColor: "#04b0be",
-          borderRadius: "200px"
-        }} variant="contained" size="medium" onClick={addToCollection}>
+        <StyledButton
+          style={{
+            backgroundColor: '#04b0be',
+            borderRadius: '200px',
+          }}
+          variant="contained"
+          size="medium"
+          onClick={addToCollection}
+        >
           {formatMessage({ id: 'add' })}
         </StyledButton>
         <Spacer width="100%" height={8} />
         {isNew ? (
           <></>
         ) : (
-          <StyledButton style={{
-            backgroundColor: "#04b0be",
-            borderRadius: "200px"
-          }} variant="contained" size="medium" onClick={handleIsNew}>
+          <StyledButton
+            style={{
+              backgroundColor: '#04b0be',
+              borderRadius: '200px',
+            }}
+            variant="contained"
+            size="medium"
+            onClick={handleIsNew}
+          >
             {formatMessage({ id: 'create_new' })}
           </StyledButton>
         )}

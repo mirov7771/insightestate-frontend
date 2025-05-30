@@ -32,7 +32,7 @@ export const Potential: FC = () => {
   }, [filter]);
 
   return (
-    <Accordion icon={<Vector />} title={formatMessage({ id: 'potential' })}>
+    <Accordion icon={<Vector />} title={formatMessage({ id: 'potential' })} activeFilters={grades}>
       <div className={styles.content}>
         <Checkbox
           value="3"

@@ -48,3 +48,14 @@
     background: white;
   }
 }
+
+.filters {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--ui-color-yellow);
+  margin-left: 12px;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+}

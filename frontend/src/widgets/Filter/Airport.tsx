@@ -32,7 +32,11 @@ export const Airport: FC = () => {
   }, [filter]);
 
   return (
-    <Accordion icon={<AirportIcon />} title={formatMessage({ id: 'airport_time' })}>
+    <Accordion
+      icon={<AirportIcon />}
+      title={formatMessage({ id: 'airport_time' })}
+      activeFilters={airportTravelTimes}
+    >
       <div className={styles.content}>
         <Checkbox
           value="1"

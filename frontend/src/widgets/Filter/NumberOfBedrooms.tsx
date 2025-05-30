@@ -21,7 +21,11 @@ export const NumberOfBedrooms: FC = () => {
   };
 
   return (
-    <Accordion icon={<Bed />} title={formatMessage({ id: 'number_of_bedrooms' })}>
+    <Accordion
+      icon={<Bed />}
+      title={formatMessage({ id: 'number_of_bedrooms' })}
+      activeFilters={rooms}
+    >
       <div className={styles.content}>
         <Checkbox
           onChange={handleClick}
