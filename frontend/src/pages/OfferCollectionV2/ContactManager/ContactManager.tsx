@@ -10,8 +10,6 @@ import {
 import { AgentInfo, estateCollectionApi } from '@/widgets/EstateCollection/api/estateCollectionApi';
 import { useIntl } from 'react-intl';
 import { Spacer } from '@/widgets/Spacer/Spacer';
-import { detailApi } from '@/widgets/Detail/api/detailApi';
-import { isMobile } from 'react-device-detect';
 import { copyToClipboard } from '@/shared/utils';
 
 export const ContactManager: FC<{ id: string, client?: string | null }> = ({ id, client }) => {
@@ -69,7 +67,7 @@ export const ContactManager: FC<{ id: string, client?: string | null }> = ({ id,
           ref={refManager}
         >
           <div className={styles.content}>
-            <img src={agentInfo?.profileImage} alt="avatar" className={styles.avatar} />
+            <img src={agentInfo?.profileImage || 'https://insightestate.pro/estate-images/profile_img.png'} alt="avatar" className={styles.avatar} />
             <div>
               <Text variant="heading4">{agentInfo?.fio}</Text>
               <Text variant="caption1" className={styles.manager}>
