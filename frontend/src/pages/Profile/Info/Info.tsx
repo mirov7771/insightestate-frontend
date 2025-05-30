@@ -6,7 +6,7 @@ import {
   SetStateAction,
   useState,
 } from 'react';
-import { Button, Input, Text } from '@/shared/ui';
+import { Button, Input, PhoneInput, Text } from '@/shared/ui';
 import styles from './Info.module.scss';
 import { useIntl } from 'react-intl';
 import { TData } from '../types';
@@ -73,12 +73,16 @@ export const Info: FC<InfoProps> = ({
       )}
       {editMode && (
         <form onSubmit={onSubmit} className={styles.form}>
-          <Input
-            type={inputType}
-            label={name}
-            onChange={(e) => setVal(e.target.value)}
-            value={val}
-          />
+          {dataKey === 'phone' || dataKey === 'whatsUp' ? (
+            <PhoneInput value={val} onChange={(e) => setVal(e)} />
+          ) : (
+            <Input
+              type={inputType}
+              label={name}
+              onChange={(e) => setVal(e.target.value)}
+              value={val}
+            />
+          )}
           <div className={styles.form__buttons}>
             <Button type="submit" onSubmit={onSubmit} size="s" loading={isLoading}>
               <Text variant="heading5">{formatMessage({ id: 'common.save' })}</Text>
