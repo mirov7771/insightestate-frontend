@@ -51,7 +51,8 @@ const ItemCollection: FC<EstateCollection & { token: string; value: number }> = 
 }) => {
   const { formatMessage } = useIntl();
   const { notify } = useNotifications();
-  const collectionLink = `/offer-collection-v2/${id}`;
+  const collectionLink = `/cl/${id}`;
+  const collectionLinkClient = `/cl/${id}?client=true`;
   const navigate = useNavigate();
   const [status, setStatus] = useState<keyof typeof FETCHING_STATUS>('IDLE');
   const [copyLinkStatus, setCopyLinkStatus] = useState<keyof typeof FETCHING_STATUS>('IDLE');
@@ -80,6 +81,10 @@ const ItemCollection: FC<EstateCollection & { token: string; value: number }> = 
     navigate(collectionLink);
   };
 
+  const goToCollectionClient = () => {
+    navigate(collectionLinkClient);
+  };
+
   const handleCopyLink = async () => {
     try {
       setCopyLinkStatus('LOADING');
@@ -103,6 +108,7 @@ const ItemCollection: FC<EstateCollection & { token: string; value: number }> = 
           estates={estates!!}
           name={name}
           goToCollection={goToCollection}
+          goToCollectionClient={goToCollectionClient}
           deleteCollection={deleteCollection}
           copyLink={handleCopyLink}
           id={id}

@@ -14,7 +14,7 @@ import { detailApi } from '@/widgets/Detail/api/detailApi';
 import { isMobile } from 'react-device-detect';
 import { copyToClipboard } from '@/shared/utils';
 
-export const ContactManager: FC<{ id: string }> = ({ id }) => {
+export const ContactManager: FC<{ id: string, client?: string | null }> = ({ id, client }) => {
   const { formatMessage } = useIntl();
   const { notify } = useNotifications();
   const refManager = useRef<HTMLDivElement>(null);
@@ -51,7 +51,7 @@ export const ContactManager: FC<{ id: string }> = ({ id }) => {
 
   return (
     <>
-      {clickable ? (
+      {clickable && !client ? (
         <div
           className={`${styles.wrapper} ${styles.wrapper__question} ${open || openInfo ? styles.wrapper__open : ''}`}
           ref={refQuestion}

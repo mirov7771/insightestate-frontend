@@ -136,14 +136,20 @@ export const UserCollectionModal: FC<TModalProps & { id: string; token: string }
           </StyledWrapperProgress>
         </StyledUpperWrapperProgress>
         <Spacer width="100%" height={24} />
-        <StyledButton color="secondary" variant="contained" size="medium" onClick={addToCollection}>
+        <StyledButton style={{
+          backgroundColor: "#04b0be",
+          borderRadius: "200px"
+        }} variant="contained" size="medium" onClick={addToCollection}>
           {formatMessage({ id: 'add' })}
         </StyledButton>
         <Spacer width="100%" height={8} />
         {isNew ? (
           <></>
         ) : (
-          <StyledButton color="secondary" variant="contained" size="medium" onClick={handleIsNew}>
+          <StyledButton style={{
+            backgroundColor: "#04b0be",
+            borderRadius: "200px"
+          }} variant="contained" size="medium" onClick={handleIsNew}>
             {formatMessage({ id: 'create_new' })}
           </StyledButton>
         )}

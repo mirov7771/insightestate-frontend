@@ -20,6 +20,7 @@ import { Progresses } from '../CommonComponents/Progress/Progresses';
 import { Slider } from '../CommonComponents/Slider/Slider';
 import { TablesInfo } from '@/pages/OfferCollectionV2/CommonComponents/TablesInfo/TablesInfo';
 import { InfoModal } from '@/widgets/Modal/InfoModal';
+import {useSearchParams} from "react-router";
 
 type CardLayoutProps = {
   estate: Estate & { collection: string; collectionId: string; agentInfo?: AgentInfo };
@@ -54,6 +55,7 @@ export const CardLayout: FC<CardLayoutProps> = ({ estate }) => {
     localStorage.getItem('basicToken') !== null &&
     localStorage.getItem('basicToken') !== undefined &&
     localStorage.getItem('basicToken') !== '';
+  const [searchParams, setSearchParams] = useSearchParams()
 
   useEffect(() => {
     setSquare(
@@ -168,19 +170,20 @@ export const CardLayout: FC<CardLayoutProps> = ({ estate }) => {
           {localStorage.getItem('language') === 'en' ? estate.shortDescriptionEn : estate.shortDescriptionRu}
         </Text>
         <div className={styles.delete}>
-          {clickable ? (
+          {clickable && !searchParams.get("client") ? (
             <Button onClick={deleteFromCollection} size="l">
               <Text variant="body1">{formatMessage({ id: 'remove_button' })}</Text>
             </Button>
           ) : (
             <></>
           )}
-            {clickable ? (
+            {clickable && !searchParams.get("client") ? (
                 <></>
             ) : (
                 <Button
                     onClick={handleClickLikeButton}
                     className={styles.like}
+                    disabled={!!searchParams.get("client")}
                     variant="cta"
                     style={{
                         width: '210px'

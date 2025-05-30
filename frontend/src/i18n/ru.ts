@@ -233,6 +233,7 @@ export default {
 
   'userCollection.objects': `{count, plural, one {# объект} few {# объекта} many {# объектов} other {# объекта}}`,
   'userCollection.view': 'Посмотреть',
+  'userCollection.clientView': 'Как видит клиент',
   'userCollection.copyLink': 'Скопировать ссылку',
   'userCollection.rename': 'Изменение названия',
   'userCollection.cancel': 'Отмена',

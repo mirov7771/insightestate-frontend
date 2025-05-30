@@ -90,9 +90,12 @@ export const Profile: FC = () => {
         setUpdateStatus('SUCCESS');
         localStorage.removeItem('basicToken');
         navigate('/');
+        window.location.reload();
       }
     } catch (e) {
       console.log({ e });
+    } finally {
+      localStorage.clear()
     }
   };
 

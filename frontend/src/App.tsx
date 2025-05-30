@@ -83,7 +83,7 @@ const App = () => {
                   <Route path="/offer-collection">
                     <Route path=":id" element={<OfferCollection />} />
                   </Route>
-                  <Route path="/offer-collection-v2">
+                  <Route path="/cl">
                     <Route path=":id" element={<OfferCollectionV2 />} />
                   </Route>
                   <Route path="/tariffs" element={<Tariffs />} />

@@ -13,6 +13,7 @@ type BlockViewProps = {
   deleteCollection: () => void;
   estates: Estate[];
   goToCollection: () => void;
+  goToCollectionClient: () => void;
   id: string;
   name: string;
 };
@@ -21,6 +22,7 @@ export const BlockView: FC<BlockViewProps> = ({
   name,
   estates,
   goToCollection,
+  goToCollectionClient,
   deleteCollection,
   copyLink,
   id,
@@ -84,6 +86,11 @@ export const BlockView: FC<BlockViewProps> = ({
             <Button onClick={goToCollection}>
               <Text variant="heading4">
                 <FormattedMessage id="userCollection.view" />
+              </Text>
+            </Button>
+            <Button onClick={goToCollectionClient}>
+              <Text variant="heading4">
+                <FormattedMessage id="userCollection.clientView" />
               </Text>
             </Button>
             <Button variant="base" onClick={copyLink} loading={copyLinkStatus === 'LOADING'}>

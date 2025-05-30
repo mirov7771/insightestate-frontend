@@ -5,11 +5,12 @@ import { theme } from '@/theme/theme';
 export const StyledButton = styled(Button)<ButtonProps & { isLoading?: boolean }>`
   &.MuiButton-root {
     font-family: 'Inter', sans-serif;
-    font-weight: 600;
+    font-weight: 400;
     letter-spacing: -0.2px;
-    border-radius: 8px;
+    border-radius: 200px;
     box-shadow: none;
     text-transform: none;
+    background-color: #04b0be;
   }
 
   &.MuiButton-sizeSmall {
@@ -33,8 +34,8 @@ export const StyledButton = styled(Button)<ButtonProps & { isLoading?: boolean }
     color: ${({ isLoading }) => (isLoading ? 'transparent' : theme.colors.white100)};
   }
   &.MuiButton-containedSecondary {
-    background-color: ${theme.colors.white200};
-    color: ${({ isLoading }) => (isLoading ? 'transparent' : theme.colors.black200)};
+    background-color: #04b0be;
+    color: ${({ isLoading }) => (isLoading ? 'transparent' : theme.colors.white100)};
   }
   &.MuiButton-containedInfo {
     background-color: ${theme.colors.link};

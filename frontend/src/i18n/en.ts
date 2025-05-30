@@ -177,7 +177,7 @@ export default {
   create_new: 'Create new',
   project_add: 'Property added',
   project_add_info:
-    'Объект успешно добавлен в подборку, перейдите в раздел «Мои подборки» чтобы посмотреть все объекты и сформировать оффер',
+    'The object has been successfully added to the collection. Go to the "My collections" section to view all the objects and create an offer.',
   overallRating: 'Overall rating',
   locationRating: 'Location',
   priceFrom: 'Price, from',
@@ -291,5 +291,6 @@ export default {
 
   like: 'Like',
 
-  'listing.info': 'On this page, you can select projects based on your client\'s request. We have identified the key parameters by which you can filter projects and add those of interest to collections.'
+  'listing.info': 'On this page, you can select projects based on your client\'s request. We have identified the key parameters by which you can filter projects and add those of interest to collections.',
+  'userCollection.clientView': 'Client view',
 };
