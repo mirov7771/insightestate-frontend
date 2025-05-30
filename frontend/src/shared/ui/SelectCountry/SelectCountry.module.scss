@@ -1,0 +1,38 @@
+@use '~@/sass/index' as *;
+
+@mixin text() {
+  font-family: 'Wix Madefor Display', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+
+  @media (min-width: $media-md) {
+    font-size: 18px;
+    line-height: 24px;
+  }
+}
+
+.select {
+  width: 100%;
+  border: 1px solid var(--ui-color-black-24-opacity);
+  min-height: 56px;
+  transition: border 0.25s ease-in-out;
+  outline: none;
+  padding-left: 24px;
+  padding-right: 8px;
+  border-radius: 200px;
+  -moz-appearance: none;
+  /* for Safari, Chrome, Opera */
+  -webkit-appearance: none;
+
+  @include text;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.label {
+  color: var(--ui-color-black);
+  margin-bottom: 8px;
+}

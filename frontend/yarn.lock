@@ -6439,6 +6439,11 @@ react-copy-to-clipboard@^5.1.0:
     copy-to-clipboard "^3.3.1"
     prop-types "^15.8.1"
 
+react-country-region-selector@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/react-country-region-selector/-/react-country-region-selector-4.0.2.tgz#99f7b312af2ac12b734c7abc20c7ef826cde11c9"
+  integrity sha512-BmCITaaXsVMkZkGoX/Nqezt934wBmdBCmMAChG9Hw7C4+rNtEqdq616hhBjYUf/RvXMtvwXU2tW4qcFyl84sGA==
+
 react-device-detect@^2.2.3:
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/react-device-detect/-/react-device-detect-2.2.3.tgz#97a7ae767cdd004e7c3578260f48cf70c036e7ca"

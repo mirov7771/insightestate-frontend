@@ -1,6 +1,6 @@
 import { ChangeEvent, FC, FormEventHandler, useEffect, useState } from 'react';
 import styles from './Register.module.scss';
-import { Button, Input, PhoneInput, Text } from '@/shared/ui';
+import { Button, Input, PhoneInput, SelectCountry, Text } from '@/shared/ui';
 import { Link, useNavigate } from 'react-router';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { detailApi } from '@/widgets/Detail/api/detailApi';
@@ -118,11 +118,10 @@ export const Register: FC = () => {
             onChange={onChangePhone}
             placeholder={formatMessage({ id: 'phone_number' })}
           />
-          <Input
+          <SelectCountry
             name="location"
+            onChange={(val, event) => onChangeLocation(event)}
             value={location}
-            onChange={onChangeLocation}
-            placeholder={formatMessage({ id: 'location' })}
           />
           {/*<Input*/}
           {/*  name="whatsUp"*/}
