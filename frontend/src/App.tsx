@@ -53,53 +53,41 @@ const App = () => {
     <HelmetProvider>
       <StyledEngineProvider injectFirst>
         <NotificationsProvider>
-          <I18nProvider locale={localStorageUserLocale || 'en'}>
-            <BrowserRouter>
-              <ScrollToTop />
-              <Routes>
-                <Route element={<RegistrationLayout />}>
-                  <Route path="/login" element={<Login />} />
-                  <Route path="/sign-up" element={<SignUp />} />
-                  <Route path="/sign-up-end" element={<SignUpEnd />} />
-                  <Route path="/register" element={<Register />} />
-                  <Route path="/reset-password" element={<ResetPassword />} />
-                  <Route path="/reset-password/code" element={<ResetPasswordCode />} />
-                  <Route path="/reset-password/new" element={<NewPassword />} />
-                </Route>
-                <Route path="/" element={<Layout />}>
-                  <Route path="/profile" element={<Profile />} />
-                  <Route index element={<Authorization />} />
-                  <Route
-                    path="/listing"
-                    element={
-                      <FiltersProvider>
-                        <Listing />
-                      </FiltersProvider>
-                    }
-                  />
-                  <Route path="/property">
-                    <Route path=":id" element={<EstateDetail />} />
+          <FiltersProvider>
+            <I18nProvider locale={localStorageUserLocale || 'en'}>
+              <BrowserRouter>
+                <ScrollToTop />
+                <Routes>
+                  <Route element={<RegistrationLayout />}>
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/sign-up" element={<SignUp />} />
+                    <Route path="/sign-up-end" element={<SignUpEnd />} />
+                    <Route path="/register" element={<Register />} />
+                    <Route path="/reset-password" element={<ResetPassword />} />
+                    <Route path="/reset-password/code" element={<ResetPasswordCode />} />
+                    <Route path="/reset-password/new" element={<NewPassword />} />
                   </Route>
-                  <Route path="/offer-collection">
-                    <Route path=":id" element={<OfferCollection />} />
+                  <Route path="/" element={<Layout />}>
+                    <Route path="/profile" element={<Profile />} />
+                    <Route index element={<Authorization />} />
+                    <Route path="/listing" element={<Listing />} />
+                    <Route path="/property">
+                      <Route path=":id" element={<EstateDetail />} />
+                    </Route>
+                    <Route path="/offer-collection">
+                      <Route path=":id" element={<OfferCollection />} />
+                    </Route>
+                    <Route path="/cl">
+                      <Route path=":id" element={<OfferCollectionV2 />} />
+                    </Route>
+                    <Route path="/tariffs" element={<Tariffs />} />
+                    <Route path="/user-collection" element={<UserCollection />} />
+                    <Route path="/ai-listing" element={<AiListing />} />
                   </Route>
-                  <Route path="/cl">
-                    <Route path=":id" element={<OfferCollectionV2 />} />
-                  </Route>
-                  <Route path="/tariffs" element={<Tariffs />} />
-                  <Route path="/user-collection" element={<UserCollection />} />
-                  <Route
-                    path="/ai-listing"
-                    element={
-                      <FiltersProvider>
-                        <AiListing />
-                      </FiltersProvider>
-                    }
-                  />
-                </Route>
-              </Routes>
-            </BrowserRouter>
-          </I18nProvider>
+                </Routes>
+              </BrowserRouter>
+            </I18nProvider>
+          </FiltersProvider>
         </NotificationsProvider>
       </StyledEngineProvider>
     </HelmetProvider>

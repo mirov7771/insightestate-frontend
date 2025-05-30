@@ -21,7 +21,11 @@ export const CompletionDate: FC = () => {
   };
 
   return (
-    <Accordion icon={<Calendar />} title={formatMessage({ id: 'completion_date' })}>
+    <Accordion
+      icon={<Calendar />}
+      title={formatMessage({ id: 'completion_date' })}
+      activeFilters={buildEndYears}
+    >
       <div className={styles.content}>
         <Checkbox
           label="2025"

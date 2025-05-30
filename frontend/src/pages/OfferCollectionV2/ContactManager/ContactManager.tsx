@@ -12,7 +12,7 @@ import { useIntl } from 'react-intl';
 import { Spacer } from '@/widgets/Spacer/Spacer';
 import { copyToClipboard } from '@/shared/utils';
 
-export const ContactManager: FC<{ id: string, client?: string | null }> = ({ id, client }) => {
+export const ContactManager: FC<{ id: string; client?: string | null }> = ({ id, client }) => {
   const { formatMessage } = useIntl();
   const { notify } = useNotifications();
   const refManager = useRef<HTMLDivElement>(null);
@@ -67,7 +67,13 @@ export const ContactManager: FC<{ id: string, client?: string | null }> = ({ id,
           ref={refManager}
         >
           <div className={styles.content}>
-            <img src={agentInfo?.profileImage || 'https://insightestate.pro/estate-images/profile_img.png'} alt="avatar" className={styles.avatar} />
+            <img
+              src={
+                agentInfo?.profileImage || 'https://insightestate.pro/estate-images/profile_img.png'
+              }
+              alt="avatar"
+              className={styles.avatar}
+            />
             <div>
               <Text variant="heading4">{agentInfo?.fio}</Text>
               <Text variant="caption1" className={styles.manager}>

@@ -19,7 +19,7 @@ export const City: FC = () => {
   };
 
   return (
-    <Accordion icon={<CityImg />} title={formatMessage({ id: 'city' })}>
+    <Accordion icon={<CityImg />} title={formatMessage({ id: 'city' })} activeFilters={city}>
       <div className={styles.content}>
         <Checkbox
           name="city"

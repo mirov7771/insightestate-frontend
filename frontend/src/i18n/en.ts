@@ -119,9 +119,8 @@ export default {
   ai_header:
     '1. Describe what you’re looking for — just share key details like your budget, number of bedrooms, distance to the beach, and anything else that’s important.',
   ai_header_1:
-      '2. The AI-selection assistant will analyze our database and show you the most suitable options.',
-  ai_header_2:
-      '3. You can instantly add your favorite properties to a collection.\n',
+    '2. The AI-selection assistant will analyze our database and show you the most suitable options.',
+  ai_header_2: '3. You can instantly add your favorite properties to a collection.\n',
   ai_body:
     'The assistant is currently in beta and available to a limited number of users. Results may vary slightly in accuracy for now, but we’re actively improving the algorithm — and the full version is coming soon!',
   ai_label:
@@ -296,11 +295,13 @@ export default {
 
   like: 'Like',
 
-  'listing.info': 'On this page, you can select projects based on your client\'s request. We have identified the key parameters by which you can filter projects and add those of interest to collections.',
+  'listing.info':
+    "On this page, you can select projects based on your client's request. We have identified the key parameters by which you can filter projects and add those of interest to collections.",
   'userCollection.clientView': 'Client view',
 
   deleteProfile: 'Are you sure you want to delete the profile?',
-  deleteProfileMessage: 'If you delete a profile, it will no longer be possible to restore it — all data and collections will disappear forever. Please make sure that you definitely want to do this.',
+  deleteProfileMessage:
+    'If you delete a profile, it will no longer be possible to restore it — all data and collections will disappear forever. Please make sure that you definitely want to do this.',
   deleteProfileYes: 'Yes, delete',
   deleteProfileNo: 'No, I have changed my mind',
 };

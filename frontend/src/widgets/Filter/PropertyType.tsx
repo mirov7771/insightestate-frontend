@@ -19,7 +19,7 @@ export const PropertyType: FC = () => {
   };
 
   return (
-    <Accordion icon={<Home />} title={formatMessage({ id: 'type_of_place' })}>
+    <Accordion icon={<Home />} title={formatMessage({ id: 'type_of_place' })} activeFilters={types}>
       <div className={styles.content}>
         <Checkbox
           label={formatMessage({ id: 'villa_type' })}

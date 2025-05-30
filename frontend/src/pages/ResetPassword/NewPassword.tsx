@@ -65,7 +65,7 @@ export const NewPassword: FC = () => {
             onChange={handleChangeInput}
             placeholder={formatMessage({ id: 'reset.confirmPassword' })}
             type="password"
-            autoComplete={"new-password"}
+            autoComplete={'new-password'}
           />
           <Button
             wide

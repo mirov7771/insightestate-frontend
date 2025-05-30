@@ -19,7 +19,11 @@ export const Region: FC = () => {
   };
 
   return (
-    <Accordion icon={<LocationImg2 />} title={formatMessage({ id: 'region' })}>
+    <Accordion
+      icon={<LocationImg2 />}
+      title={formatMessage({ id: 'region' })}
+      activeFilters={beachName}
+    >
       <div className={styles.content}>
         <Checkbox
           name="beachName"

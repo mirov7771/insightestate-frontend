@@ -14,7 +14,11 @@ export const Company: FC = () => {
   };
 
   return (
-    <Accordion icon={<Money />} title={formatMessage({ id: 'uk' })}>
+    <Accordion
+      icon={<Money />}
+      title={formatMessage({ id: 'uk' })}
+      activeFilters={managementCompanyEnabled ? [managementCompanyEnabled] : undefined}
+    >
       <div className={styles.content}>
         <RadioButton
           name="managementCompanyEnabled"

@@ -51,7 +51,7 @@ export const StyledButton = styled(Button)`
   position: relative;
   width: 90%;
   margin-left: auto;
-  margin-right: auto;  
+  margin-right: auto;
 `;
 
 export const StyledWrapperText = styled.div`

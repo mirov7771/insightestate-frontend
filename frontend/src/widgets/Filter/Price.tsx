@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, useEffect, useState } from 'react';
+import { ChangeEvent, FC, useEffect, useMemo, useState } from 'react';
 import { Coins } from '@/shared/assets/icons';
 import styles from './Filter.module.scss';
 import { Accordion, Input } from '@/shared/ui';
@@ -13,7 +13,7 @@ export const Price: FC = () => {
   const [values, setValues] = useState<number[]>([0, 4000000]);
 
   useEffect(() => {
-    if (minPrice == 0 && maxPrice == 4000000) setValues([0, 4000000]);
+    if (minPrice === 0 && maxPrice === 4000000) setValues([0, 4000000]);
   }, [minPrice, maxPrice]);
 
   const handleClick = (event: Event, value: number | number[], activeThumb: number) => {
@@ -44,8 +44,20 @@ export const Price: FC = () => {
     return `${formatNumber(value)} $`;
   };
 
+  const isActiveFilter = useMemo(() => {
+    console.log({ minPrice, maxPrice });
+    return (
+      (typeof minPrice === 'number' && minPrice > 0) ||
+      (typeof maxPrice === 'number' && maxPrice < 4000000)
+    );
+  }, [maxPrice, minPrice]);
+
   return (
-    <Accordion icon={<Coins />} title={formatMessage({ id: 'price' })}>
+    <Accordion
+      icon={<Coins />}
+      title={formatMessage({ id: 'price' })}
+      activeFilters={isActiveFilter ? ['active'] : undefined}
+    >
       <div className={styles.content}>
         <CustomSlider
           min={0}
@@ -87,7 +99,7 @@ export const Price: FC = () => {
             value={maxPrice}
             name="max"
             type={'number'}
-            defaultValue={1000000}
+            defaultValue={4000000}
             onChange={handleMaxPrice}
             style={{
               minHeight: '30px',

@@ -43,7 +43,7 @@ export const NotificationsProvider = ({ children }: { children: ReactNode }) => 
         open={show}
         autoHideDuration={snackbarItem?.duration}
         onClose={() => handleClose()}
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
         message={renderMessages()}
         classes={{ root: styles.root }}
       />

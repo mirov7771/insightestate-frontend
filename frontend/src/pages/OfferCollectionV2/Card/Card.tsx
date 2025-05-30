@@ -180,7 +180,9 @@ export const Card: FC<
               {estate.name}
             </Text>
             <Text as="p" variant="body2" className={styles.text}>
-              {localStorage.getItem('language') === 'en' ? estate.shortDescriptionEn : estate.shortDescriptionRu}
+              {localStorage.getItem('language') === 'en'
+                ? estate.shortDescriptionEn
+                : estate.shortDescriptionRu}
             </Text>
           </div>
         </section>
