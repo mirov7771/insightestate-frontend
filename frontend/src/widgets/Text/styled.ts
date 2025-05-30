@@ -7,7 +7,7 @@ const fontSize = {
   xxl: 24,
   xl: 20,
   l: 16,
-  m: 14,
+  m: 18,
   s: 12,
 };
 const lineHeight = {
