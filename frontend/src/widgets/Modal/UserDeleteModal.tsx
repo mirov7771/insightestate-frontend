@@ -10,9 +10,9 @@ import {
 import { Spacer } from '../Spacer/Spacer';
 import { Text } from '../Text/Text';
 import { isMobile } from 'react-device-detect';
-import {usersApi} from "@/shared/api/users";
-import {useNavigate} from "react-router";
-import {useIntl} from "react-intl";
+import { usersApi } from '@/shared/api/users';
+import { useNavigate } from 'react-router';
+import { useIntl } from 'react-intl';
 
 export const UserDeleteModal: FC<
   TModalProps & {
@@ -24,16 +24,17 @@ export const UserDeleteModal: FC<
   const navigate = useNavigate();
   const deleteUser = async () => {
     try {
-        await usersApi.deleteUser(id);
-        localStorage.removeItem('basicToken');
-        navigate('/');
-        window.location.reload();
+      await usersApi.deleteUser(id);
+      localStorage.removeItem('basicToken');
+      navigate('/');
+      window.location.reload();
     } catch (e) {
       console.log({ e });
     } finally {
-      localStorage.clear()
+      localStorage.clear();
     }
   };
+
   return (
     <>
       <StyledSwipeableDrawer
@@ -50,30 +51,32 @@ export const UserDeleteModal: FC<
             <Spacer width="100%" height={8} />
             <Spacer width="100%" height={8} />
             <Text size="xl" align="center" colorTheme={'black200'} isBold>
-                {formatMessage({ id: 'deleteProfile' })}
+              {formatMessage({ id: 'deleteProfile' })}
             </Text>
             <Spacer width="100%" height={8} />
             <StyledWrapperText>
               <Text size="m" align="left" colorTheme={'black200'}>
-                  {formatMessage({ id: 'deleteProfileMessage' })}
+                {formatMessage({ id: 'deleteProfileMessage' })}
               </Text>
             </StyledWrapperText>
             <Spacer width="100%" height={8} />
           </StyledWrapperProgress>
         </StyledUpperWrapperProgress>
         <Spacer width="100%" height={24} />
-        <div style={{
+        <div
+          style={{
             display: 'inline-flex',
             gap: '20px',
             width: '90%',
-            margin: 'auto'
-        }}>
-            <StyledButton color="secondary" variant="contained" size="small" onClick={deleteUser}>
-                {formatMessage({ id: 'deleteProfileYes' })}
-            </StyledButton>
-            <StyledButton color="primary" variant="contained" size="small" onClick={onClose}>
-                {formatMessage({ id: 'deleteProfileNo' })}
-            </StyledButton>
+            margin: 'auto',
+          }}
+        >
+          <StyledButton color="secondary" variant="contained" size="small" onClick={deleteUser}>
+            {formatMessage({ id: 'deleteProfileYes' })}
+          </StyledButton>
+          <StyledButton color="primary" variant="contained" size="small" onClick={onClose}>
+            {formatMessage({ id: 'deleteProfileNo' })}
+          </StyledButton>
         </div>
       </StyledSwipeableDrawer>
     </>

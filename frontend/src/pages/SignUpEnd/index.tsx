@@ -56,7 +56,7 @@ export const SignUpEnd: FC = () => {
               onChange={onChangeCode}
               value={code}
               name="code"
-              autoComplete={"one-time-code webauthn"}
+              autoComplete={'one-time-code webauthn'}
               placeholder={formatMessage({ id: 'code' })}
             />
             <Button onClick={handleLogin} wide size={'l'} loading={loading}>

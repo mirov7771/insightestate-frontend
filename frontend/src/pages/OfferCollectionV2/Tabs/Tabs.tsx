@@ -33,7 +33,7 @@ const CustomTabPanel = (props: TabPanelProps) => {
   );
 };
 
-export const Tabs: FC<{ id: string, client?: string | null }> = ({ id, client }) => {
+export const Tabs: FC<{ id: string; client?: string | null }> = ({ id, client }) => {
   const { width } = useWindowResize();
   const { formatMessage } = useIntl();
   const [estateCollection, setEstateCollection] = useState<EstateCollection>();

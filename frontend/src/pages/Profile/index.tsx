@@ -2,7 +2,7 @@ import { ChangeEvent, FC, MouseEventHandler, useEffect, useMemo, useRef, useStat
 import MuiAvatar from '@mui/material/Avatar';
 import styles from './Profile.module.scss';
 import { OfferCollectionArrowLeft } from '@/shared/assets/icons';
-import {BottomSheet, Button, Text} from '@/shared/ui';
+import { BottomSheet, Button, Text } from '@/shared/ui';
 import { useNavigate } from 'react-router';
 import { useIntl } from 'react-intl';
 import { detailApi } from '@/widgets/Detail/api/detailApi';
@@ -12,8 +12,8 @@ import { FETCHING_STATUS } from '@/shared/constants/constants';
 import { ProfileSkeleton } from '@/pages/Profile/ProfileSkeleton/ProfileSkeleton';
 import { usersApi } from '@/shared/api/users';
 import { TData } from './types';
-import {Spacer} from "@/widgets/Spacer/Spacer";
-import {UserDeleteModal} from "@/widgets/Modal/UserDeleteModal";
+import { Spacer } from '@/widgets/Spacer/Spacer';
+import { UserDeleteModal } from '@/widgets/Modal/UserDeleteModal';
 
 export const Profile: FC = () => {
   const { formatMessage } = useIntl();
@@ -86,15 +86,15 @@ export const Profile: FC = () => {
   };
 
   const handleOpenInfoModal = () => {
-    setOpenInfo(true)
-  }
+    setOpenInfo(true);
+  };
 
   const handleCloseInfoModal = () => {
-    setOpenInfo(false)
-  }
+    setOpenInfo(false);
+  };
 
   const deleteUser = async () => {
-    setOpenInfo(true)
+    setOpenInfo(true);
     // try {
     //   if (token) {
     //     setUpdateStatus('LOADING');
@@ -278,12 +278,12 @@ export const Profile: FC = () => {
         </>
       )}
       <UserDeleteModal
-          open={openInfo}
-          onClose={handleCloseInfoModal}
-          onOpen={handleOpenInfoModal}
-          anchor="bottom"
-          bottom={30}
-          id={token!!}
+        open={openInfo}
+        onClose={handleCloseInfoModal}
+        onOpen={handleOpenInfoModal}
+        anchor="bottom"
+        bottom={30}
+        id={token!!}
       />
     </div>
   );

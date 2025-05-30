@@ -6,7 +6,7 @@ import { Button } from '@/shared/ui';
 import { Cross } from '@/shared/assets/icons';
 import { useWindowResize } from '@/shared/utils/useWindowResize';
 import { useIntl } from 'react-intl';
-import {isMobile} from "react-device-detect";
+import { isMobile } from 'react-device-detect';
 
 type GalleryProps = {
   images: string[];
@@ -31,7 +31,7 @@ const renderImg =
     const nextItem = currentImages[currentIndex + 1] || currentImages[0];
 
     return (
-      <div className={isMobile ? "custom-slide_mobile": "custom-slide"}>
+      <div className={isMobile ? 'custom-slide_mobile' : 'custom-slide'}>
         <img src={img.original} alt="" />
         {!isFullscreen && windowWidth >= 992 && <img src={nextItem.original} alt="" />}
       </div>
