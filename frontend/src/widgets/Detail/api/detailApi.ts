@@ -311,7 +311,7 @@ export const detailApi = {
         {
           fio: username,
           login: email,
-          password: password,
+          password: password !== "" ? password : null,
           mobileNumber: phone,
           location,
           whatsUp,

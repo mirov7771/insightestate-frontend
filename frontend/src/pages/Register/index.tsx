@@ -127,43 +127,43 @@ export const Register: FC = () => {
             onChange={onChangeLocation}
             placeholder={formatMessage({ id: 'location' })}
           />
-          <Input
-            name="whatsUp"
-            value={whatsUp}
-            onChange={onChangeWhatsUp}
-            placeholder={formatMessage({ id: 'wa' })}
-          />
-          <Input
-            name="tgName"
-            value={tgName}
-            onChange={onChangeTgName}
-            placeholder={formatMessage({ id: 'tg' })}
-          />
-          <Button
-            onClick={() => document.getElementById('profileImage')!!.click()}
-            size="s"
-            wide
-            type="button"
-          >
-            <Text variant="heading5" align="center" as="span">
-              {formatMessage({ id: 'photo' })}
-            </Text>
-          </Button>
-          <input
-            id="profileImage"
-            style={{
-              display: 'none',
-            }}
-            accept="image/*"
-            type="file"
-            name="profileImage"
-            onChange={onChangeProfileImage}
-          />
-          {profileImage ? (
-            <img src={profileImage} alt="profileImage" className={styles.profileIcon} />
-          ) : (
-            <></>
-          )}
+          {/*<Input*/}
+          {/*  name="whatsUp"*/}
+          {/*  value={whatsUp}*/}
+          {/*  onChange={onChangeWhatsUp}*/}
+          {/*  placeholder={formatMessage({ id: 'wa' })}*/}
+          {/*/>*/}
+          {/*<Input*/}
+          {/*  name="tgName"*/}
+          {/*  value={tgName}*/}
+          {/*  onChange={onChangeTgName}*/}
+          {/*  placeholder={formatMessage({ id: 'tg' })}*/}
+          {/*/>*/}
+          {/*<Button*/}
+          {/*  onClick={() => document.getElementById('profileImage')!!.click()}*/}
+          {/*  size="s"*/}
+          {/*  wide*/}
+          {/*  type="button"*/}
+          {/*>*/}
+          {/*  <Text variant="heading5" align="center" as="span">*/}
+          {/*    {formatMessage({ id: 'photo' })}*/}
+          {/*  </Text>*/}
+          {/*</Button>*/}
+          {/*<input*/}
+          {/*  id="profileImage"*/}
+          {/*  style={{*/}
+          {/*    display: 'none',*/}
+          {/*  }}*/}
+          {/*  accept="image/*"*/}
+          {/*  type="file"*/}
+          {/*  name="profileImage"*/}
+          {/*  onChange={onChangeProfileImage}*/}
+          {/*/>*/}
+          {/*{profileImage ? (*/}
+          {/*  <img src={profileImage} alt="profileImage" className={styles.profileIcon} />*/}
+          {/*) : (*/}
+          {/*  <></>*/}
+          {/*)}*/}
           <Input
             type="password"
             name="password"
