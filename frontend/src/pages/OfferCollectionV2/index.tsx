@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { useIntl } from 'react-intl';
-import {useLocation, useParams, useSearchParams} from 'react-router';
+import { useLocation, useParams, useSearchParams } from 'react-router';
 import { Helmet } from 'react-helmet-async';
 import { Text } from '@/shared/ui';
 import styles from './OfferCollectionV2.module.scss';
@@ -12,7 +12,7 @@ const OfferCollectionV2: FC = () => {
   const { formatMessage } = useIntl();
   const location = useLocation();
   const { id } = useParams<{ id: string }>();
-  const [searchParams, setSearchParams] = useSearchParams()
+  const [searchParams, setSearchParams] = useSearchParams();
   const url = `${window.location.origin}${location.pathname}`;
 
   return (
@@ -35,9 +35,9 @@ const OfferCollectionV2: FC = () => {
         <Text variant="heading1" as="h1" align="center">
           {formatMessage({ id: 'projects_for_you' })}
         </Text>
-        <Tabs id={id!!} />
+        {id && <Tabs id={id} />}
         <WhyThai />
-        <ContactManager id={id!!} client={searchParams.get("client")}/>
+        {id && <ContactManager id={id} client={searchParams.get('client')} />}
       </div>
     </>
   );

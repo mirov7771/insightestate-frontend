@@ -8,9 +8,10 @@ import {
   estateCollectionApi,
 } from '@/widgets/EstateCollection/api/estateCollectionApi';
 import {
-    Heart, OfferCollectionHeart,
-    OfferCollectionMapPinFilled,
-    VectorRating,
+  Heart,
+  OfferCollectionHeart,
+  OfferCollectionMapPinFilled,
+  VectorRating,
 } from '@/shared/assets/icons';
 import { useIntl } from 'react-intl';
 import { Flats } from '../CommonComponents/Flats/Flats';
@@ -20,7 +21,7 @@ import { Progresses } from '../CommonComponents/Progress/Progresses';
 import { Slider } from '../CommonComponents/Slider/Slider';
 import { TablesInfo } from '@/pages/OfferCollectionV2/CommonComponents/TablesInfo/TablesInfo';
 import { InfoModal } from '@/widgets/Modal/InfoModal';
-import {useSearchParams} from "react-router";
+import { useSearchParams } from 'react-router';
 
 type CardLayoutProps = {
   estate: Estate & { collection: string; collectionId: string; agentInfo?: AgentInfo };
@@ -55,7 +56,7 @@ export const CardLayout: FC<CardLayoutProps> = ({ estate }) => {
     localStorage.getItem('basicToken') !== null &&
     localStorage.getItem('basicToken') !== undefined &&
     localStorage.getItem('basicToken') !== '';
-  const [searchParams, setSearchParams] = useSearchParams()
+  const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     setSquare(
@@ -122,6 +123,8 @@ export const CardLayout: FC<CardLayoutProps> = ({ estate }) => {
     }
   }, [like]);
 
+  console.log({ estate });
+
   return (
     <section className={styles.grid}>
       <div className={styles.slider}>
@@ -150,16 +153,16 @@ export const CardLayout: FC<CardLayoutProps> = ({ estate }) => {
             text={estate.location?.beach || ''}
             background="white"
           />
-            {estate.likes ? (
-                <BadgeRating
-                    icon={<Heart />}
-                    size="sm"
-                    text={`${estate.likes || '0'}`}
-                    background="white"
-                />
-            ) : (
-                <></>
-            )}
+          {estate.likes ? (
+            <BadgeRating
+              icon={<Heart />}
+              size="sm"
+              text={`${estate.likes || '0'}`}
+              background="white"
+            />
+          ) : (
+            <></>
+          )}
         </div>
         <div className={styles.header__wrapper}>
           <Text className={styles.header} variant="heading2">
@@ -167,34 +170,36 @@ export const CardLayout: FC<CardLayoutProps> = ({ estate }) => {
           </Text>
         </div>
         <Text as="p" variant="body2" className={styles.text}>
-          {localStorage.getItem('language') === 'en' ? estate.shortDescriptionEn : estate.shortDescriptionRu}
+          {localStorage.getItem('language') === 'en'
+            ? estate.shortDescriptionEn
+            : estate.shortDescriptionRu}
         </Text>
         <div className={styles.delete}>
-          {clickable && !searchParams.get("client") ? (
+          {clickable && !searchParams.get('client') ? (
             <Button onClick={deleteFromCollection} size="l">
               <Text variant="body1">{formatMessage({ id: 'remove_button' })}</Text>
             </Button>
           ) : (
             <></>
           )}
-            {clickable && !searchParams.get("client") ? (
-                <></>
-            ) : (
-                <Button
-                    onClick={handleClickLikeButton}
-                    className={styles.like}
-                    disabled={!!searchParams.get("client")}
-                    variant="cta"
-                    style={{
-                        width: '210px'
-                    }}
-                >
-                      <span className={styles.like__icon}>
-                        {like ? <Heart /> : <OfferCollectionHeart />}
-                      </span>
-                    <Text variant="heading4">{formatMessage({ id: 'like' })}</Text>
-                </Button>
-            )}
+          {clickable && !searchParams.get('client') ? (
+            <></>
+          ) : (
+            <Button
+              onClick={handleClickLikeButton}
+              className={styles.like}
+              disabled={!!searchParams.get('client')}
+              variant="cta"
+              style={{
+                width: '210px',
+              }}
+            >
+              <span className={styles.like__icon}>
+                {like ? <Heart /> : <OfferCollectionHeart />}
+              </span>
+              <Text variant="heading4">{formatMessage({ id: 'like' })}</Text>
+            </Button>
+          )}
         </div>
       </div>
       <div className={styles.flats}>
@@ -217,20 +222,20 @@ export const CardLayout: FC<CardLayoutProps> = ({ estate }) => {
                   description: estate.buildEndDate,
                 },
                 {
-                    name: formatMessage({ id: 'roiSummary' }),
-                    description: `${estate.profitability?.roiSummary || 200}%`,
+                  name: formatMessage({ id: 'roiSummary' }),
+                  description: `${estate.profitability?.roiSummary || 200}%`,
                 },
                 {
-                    name: formatMessage({ id: 'roi' }),
-                    description: `${estate.profitability?.roi || 200}%`,
+                  name: formatMessage({ id: 'roi' }),
+                  description: `${estate.profitability?.roi || 200}%`,
                 },
                 {
                   name: formatMessage({ id: 'irr' }),
                   description: `${estate.profitability?.irr || 13}%`,
                 },
                 {
-                    name: formatMessage({ id: 'capRateFirstYear' }),
-                    description: `${estate.profitability?.capRateFirstYear || 5}%`,
+                  name: formatMessage({ id: 'capRateFirstYear' }),
+                  description: `${estate.profitability?.capRateFirstYear || 5}%`,
                 },
               ],
             },

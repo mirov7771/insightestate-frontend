@@ -27,13 +27,22 @@ export function getValueByPath(obj: any, path: string): any {
 
 export function extractNestedValuesOrFallback<T>(
   items: T[],
-  checkPath: string,
+  checkPath: string[],
   defaultValue: string = '-'
 ): Array<string> | undefined {
   const hasAnyValue = items.some((item) => {
-    const value = getValueByPath(item, checkPath);
+    let result = '';
 
-    return value !== null && value !== undefined && value !== '';
+    for (const path of checkPath) {
+      const value = getValueByPath(item, path);
+
+      if (value) {
+        result = value;
+        break;
+      }
+    }
+
+    return result !== null && result !== undefined && result !== '';
   });
 
   if (!hasAnyValue) {
@@ -41,9 +50,18 @@ export function extractNestedValuesOrFallback<T>(
   }
 
   return items.map((item) => {
-    const value = getValueByPath(item, checkPath);
+    let result = '';
 
-    return value !== null && value !== undefined && value !== '' ? String(value) : defaultValue;
+    for (const path of checkPath) {
+      const value = getValueByPath(item, path);
+
+      if (value) {
+        result = value;
+        break;
+      }
+    }
+
+    return result !== null && result !== undefined && result !== '' ? String(result) : defaultValue;
   });
 }
 
