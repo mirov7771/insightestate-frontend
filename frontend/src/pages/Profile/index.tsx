@@ -2,7 +2,7 @@ import { ChangeEvent, FC, MouseEventHandler, useEffect, useMemo, useRef, useStat
 import MuiAvatar from '@mui/material/Avatar';
 import styles from './Profile.module.scss';
 import { OfferCollectionArrowLeft } from '@/shared/assets/icons';
-import { Button, Text } from '@/shared/ui';
+import {BottomSheet, Button, Text} from '@/shared/ui';
 import { useNavigate } from 'react-router';
 import { useIntl } from 'react-intl';
 import { detailApi } from '@/widgets/Detail/api/detailApi';
@@ -12,11 +12,14 @@ import { FETCHING_STATUS } from '@/shared/constants/constants';
 import { ProfileSkeleton } from '@/pages/Profile/ProfileSkeleton/ProfileSkeleton';
 import { usersApi } from '@/shared/api/users';
 import { TData } from './types';
+import {Spacer} from "@/widgets/Spacer/Spacer";
+import {UserDeleteModal} from "@/widgets/Modal/UserDeleteModal";
 
 export const Profile: FC = () => {
   const { formatMessage } = useIntl();
   const navigate = useNavigate();
   const [token, setToken] = useState(localStorage.getItem('basicToken'));
+  const [openInfo, setOpenInfo] = useState(false);
   const [data, setData] = useState<TData>({
     username: '',
     email: '',
@@ -82,21 +85,30 @@ export const Profile: FC = () => {
     }
   };
 
+  const handleOpenInfoModal = () => {
+    setOpenInfo(true)
+  }
+
+  const handleCloseInfoModal = () => {
+    setOpenInfo(false)
+  }
+
   const deleteUser = async () => {
-    try {
-      if (token) {
-        setUpdateStatus('LOADING');
-        await usersApi.deleteUser(token);
-        setUpdateStatus('SUCCESS');
-        localStorage.removeItem('basicToken');
-        navigate('/');
-        window.location.reload();
-      }
-    } catch (e) {
-      console.log({ e });
-    } finally {
-      localStorage.clear()
-    }
+    setOpenInfo(true)
+    // try {
+    //   if (token) {
+    //     setUpdateStatus('LOADING');
+    //     await usersApi.deleteUser(token);
+    //     setUpdateStatus('SUCCESS');
+    //     localStorage.removeItem('basicToken');
+    //     navigate('/');
+    //     window.location.reload();
+    //   }
+    // } catch (e) {
+    //   console.log({ e });
+    // } finally {
+    //   localStorage.clear()
+    // }
   };
 
   useEffect(() => {
@@ -265,6 +277,14 @@ export const Profile: FC = () => {
           </div>
         </>
       )}
+      <UserDeleteModal
+          open={openInfo}
+          onClose={handleCloseInfoModal}
+          onOpen={handleOpenInfoModal}
+          anchor="bottom"
+          bottom={30}
+          id={token!!}
+      />
     </div>
   );
 };

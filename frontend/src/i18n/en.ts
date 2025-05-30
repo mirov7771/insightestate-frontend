@@ -298,4 +298,9 @@ export default {
 
   'listing.info': 'On this page, you can select projects based on your client\'s request. We have identified the key parameters by which you can filter projects and add those of interest to collections.',
   'userCollection.clientView': 'Client view',
+
+  deleteProfile: 'Are you sure you want to delete the profile?',
+  deleteProfileMessage: 'If you delete a profile, it will no longer be possible to restore it — all data and collections will disappear forever. Please make sure that you definitely want to do this.',
+  deleteProfileYes: 'Yes, delete',
+  deleteProfileNo: 'No, I have changed my mind',
 };
