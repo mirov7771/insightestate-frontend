@@ -81,7 +81,7 @@ export const UserCollectionModal: FC<TModalProps & { id: string; token: string }
       .addToCollection(token!!, id, estateId)
       .then((r) => {
         setInfoTitle(formatMessage({ id: 'project_add' }));
-        setInfoText(formatMessage({ id: 'project_add_info' }));
+        setInfoText(formatMessage({ id: 'project_add_info' }).replace('ss', name));
         handleOpenInfoModal();
       })
       .catch((e) => console.log(e));
@@ -90,6 +90,7 @@ export const UserCollectionModal: FC<TModalProps & { id: string; token: string }
   const select = (values: EstateCollection[]) => {
     console.log(values);
     setCollectionId(values[0].id);
+    setName(values[0].name)
   };
 
   return (

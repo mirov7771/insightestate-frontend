@@ -115,11 +115,15 @@ export default {
   car_10: '6-10 min by car',
   car_30: '11-30 min by car',
   studio: 'Studio',
-  ai_title: 'AI-selection assistant',
+  ai_title: 'Try the beta version of our AI-selection assistant!\n',
   ai_header:
-    'We’ve developed an AI assistant that helps you quickly find the right properties for your clients – no more manual searching.',
+    '1. Describe what you’re looking for — just share key details like your budget, number of bedrooms, distance to the beach, and anything else that’s important.',
+  ai_header_1:
+      '2. The AI-selection assistant will analyze our database and show you the most suitable options.',
+  ai_header_2:
+      '3. You can instantly add your favorite properties to a collection.\n',
   ai_body:
-    'Just describe what your client is looking for, and in a couple of minutes you’ll get a ready-to-use selection you can share right away.',
+    'The assistant is currently in beta and available to a limited number of users. Results may vary slightly in accuracy for now, but we’re actively improving the algorithm — and the full version is coming soon!',
   ai_label:
     'Describe your client’s preferences: number of bedrooms, budget, gym, pool, property management, time to the beach or any other details that will help create a personal selection',
   ai_button_1: 'Generate based on description',
@@ -148,8 +152,9 @@ export default {
   save: 'Save',
   come_back: 'Go back',
   ai_button: 'AI-selection assistant',
+  ai_header_text: 'Try out the beta version of our AI-selection assistant',
   ai_text:
-    'Мы разработали AI подборщик который поможет вам с рутинным занятием подбора нужных объектов для ваших клиентов',
+    'Just tell us what you’re looking for — a villa or condo, number of bedrooms, budget, and anything else that matters to you. Our AI will find the best matching properties from our database. Quick and easy!',
   main_title: 'Well-informed investment decisions in Phuket Real Estate',
   main_text:
     'Помогаем выбрать самый выгодный и надёжный объект инвестиций на основе анализа по более чем 100 параметрам',
@@ -177,7 +182,7 @@ export default {
   create_new: 'Create new',
   project_add: 'Property added',
   project_add_info:
-    'The object has been successfully added to the collection. Go to the "My collections" section to view all the objects and create an offer.',
+    'The property has been added to your collection «ss»! Head over to the «My Collections» section to view all saved properties and put together a proposal for your client.',
   overallRating: 'Overall rating',
   locationRating: 'Location',
   priceFrom: 'Price, from',

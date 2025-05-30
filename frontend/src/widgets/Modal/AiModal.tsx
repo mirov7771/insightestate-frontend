@@ -60,6 +60,11 @@ export const AiModal: FC<TModalProps> = ({ onClose, open, anchor, onOpen }) => {
                 <Text size="m" align="left" colorTheme={'black200'}>
                   {formatMessage({ id: 'ai_header' })}
                   <br />
+                  {formatMessage({ id: 'ai_header_1' })}
+                  <br />
+                  {formatMessage({ id: 'ai_header_2' })}
+                  <br />
+                  <br />
                   <br />
                   {formatMessage({ id: 'ai_body' })}
                 </Text>

@@ -59,6 +59,11 @@ const AiFilter: FC = () => {
   return (
     <>
       <div className={styles.info}>
+        <p style={{
+            fontSize: '18px',
+            fontWeight: 'bold',
+        }}>{formatMessage({ id: 'ai_header_text' })}</p>
+          <Spacer height={20} width={100} />
         <p>{formatMessage({ id: 'ai_text' })}</p>
         <Spacer height={20} width={100} />
         <Button onClick={handleOpenAiModal} wide size={'m'}>
