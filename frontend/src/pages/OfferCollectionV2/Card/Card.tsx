@@ -22,6 +22,7 @@ import { Flats } from '@/pages/OfferCollectionV2/CommonComponents/Flats/Flats';
 import { TablesInfo } from '@/pages/OfferCollectionV2/CommonComponents/TablesInfo/TablesInfo';
 import { PaymentStepper } from '@/pages/OfferCollectionV2/CommonComponents/PaymentStepper/PaymentStepper';
 import { EstateOptionsInfo } from '@/pages/OfferCollectionV2/CommonComponents/EstateOptionsInfo/EstateOptionsInfo';
+import {useSearchParams} from "react-router";
 
 export const Card: FC<
   Estate & { collection: string; collectionId: string; agentInfo?: AgentInfo }
@@ -54,6 +55,7 @@ export const Card: FC<
     localStorage.getItem('basicToken') !== null &&
     localStorage.getItem('basicToken') !== undefined &&
     localStorage.getItem('basicToken') !== '';
+  const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     setSquare(
@@ -303,17 +305,23 @@ export const Card: FC<
               },
             ]}
           />
-          {clickable ? (
+          {clickable && !searchParams.get('client') ? (
             <></>
           ) : (
-            <Button onClick={handleClickLikeButton} className={styles.like} variant="cta" size="s">
+            <Button
+                onClick={handleClickLikeButton}
+                className={styles.like}
+                variant="cta"
+                size="s"
+                disabled={!!searchParams.get('client')}
+            >
               <span className={styles.like__icon}>
                 {like ? <Heart /> : <OfferCollectionHeart />}
               </span>
               <Text variant="heading4">{formatMessage({ id: 'like' })}</Text>
             </Button>
           )}
-          {clickable ? (
+          {clickable && !searchParams.get('client') ? (
             <Button
               style={{
                 margin: 'auto',

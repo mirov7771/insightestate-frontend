@@ -71,10 +71,10 @@ export const UserDeleteModal: FC<
             margin: 'auto',
           }}
         >
-          <StyledButton color="secondary" variant="contained" size="small" onClick={deleteUser}>
+          <StyledButton color="primary" variant="contained" size="small" onClick={deleteUser}>
             {formatMessage({ id: 'deleteProfileYes' })}
           </StyledButton>
-          <StyledButton color="primary" variant="contained" size="small" onClick={onClose}>
+          <StyledButton color="secondary" variant="contained" size="small" onClick={onClose}>
             {formatMessage({ id: 'deleteProfileNo' })}
           </StyledButton>
         </div>
