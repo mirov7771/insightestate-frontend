@@ -54,9 +54,9 @@ export const Dropdown: FC = () => {
 
   return (
     <div className={styles.container}>
-      {/*<Button size={'s'} onClick={goToTariffs}>*/}
-      {/*  {formatMessage({ id: 'change.tariff' })}*/}
-      {/*</Button>*/}
+      <Button size={'s'} onClick={goToTariffs}>
+        {formatMessage({ id: 'change.tariff' })}
+      </Button>
       <button
         type="button"
         className={styles.button}
