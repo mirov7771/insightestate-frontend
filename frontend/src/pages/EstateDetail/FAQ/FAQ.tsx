@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { Accordion } from '@/shared/ui';
 import styles from './FAQ.module.scss';
 

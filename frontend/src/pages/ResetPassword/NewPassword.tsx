@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FC, FormEventHandler, useState } from 'react';
+import { ChangeEvent, FC, FormEventHandler, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 import { useIntl } from 'react-intl';
 import { LayoutForm } from '@/widgets/RegistrationLayout/LayoutForm/LayoutForm';

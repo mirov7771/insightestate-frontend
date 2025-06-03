@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import styles from './CardLayout.module.scss';
 import { BadgeRating, Button, GMap, Text } from '@/shared/ui';
 import { DEFAULT_IMG } from '@/entities/Card/Card';
@@ -20,7 +20,7 @@ import { EstateOptionsInfo } from '../CommonComponents/EstateOptionsInfo/EstateO
 import { Progresses } from '../CommonComponents/Progress/Progresses';
 import { Slider } from '../CommonComponents/Slider/Slider';
 import { TablesInfo } from '@/pages/OfferCollectionV2/CommonComponents/TablesInfo/TablesInfo';
-import { InfoModal } from '@/widgets/Modal/InfoModal';
+import { InfoModal } from '@/shared/ui/modals';
 import { useSearchParams } from 'react-router';
 
 type CardLayoutProps = {
@@ -304,15 +304,7 @@ export const CardLayout: FC<CardLayoutProps> = ({ estate }) => {
           ]}
         />
       </div>
-      <InfoModal
-        open={infoModal}
-        onClose={handleCloseInfoModal}
-        onOpen={handleOpenInfoModal}
-        anchor="bottom"
-        title={infoTitle}
-        text={infoText}
-        bottom={30}
-      />
+      <InfoModal open={infoModal} setOpen={setInfoModal} title={infoTitle} text={infoText} />
     </section>
   );
 };

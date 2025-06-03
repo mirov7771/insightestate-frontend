@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { isMobile } from 'react-device-detect';
 import { useIntl } from 'react-intl';
 import styles from '@/pages/Authorization/Authorization.module.scss';

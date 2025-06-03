@@ -1,4 +1,4 @@
-import React, { ChangeEvent, Dispatch, FC, SetStateAction, useState } from 'react';
+import { ChangeEvent, Dispatch, FC, SetStateAction, useState } from 'react';
 import { Button, Input, Modal, Text } from '@/shared/ui';
 import styles from './ModalChangeEstateName.module.scss';
 import { FormattedMessage, useIntl } from 'react-intl';

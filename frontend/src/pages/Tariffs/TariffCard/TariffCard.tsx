@@ -1,4 +1,4 @@
-import React, { FC, ReactElement, useEffect, useState } from 'react';
+import { FC, ReactElement, useEffect, useState } from 'react';
 import styles from './TariffCard.module.scss';
 import { useNavigate } from 'react-router';
 import { estateCollectionApi } from '@/widgets/EstateCollection/api/estateCollectionApi';

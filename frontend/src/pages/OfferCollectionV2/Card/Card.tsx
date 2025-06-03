@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { BadgeRating, Button, GMap } from '@/shared/ui';
 import {
   VectorRating,
@@ -6,6 +6,8 @@ import {
   Heart,
   OfferCollectionHeart,
 } from '@/shared/assets/icons';
+import { useIntl } from 'react-intl';
+import { useSearchParams } from 'react-router';
 import { Text } from '@/shared/ui';
 import styles from './Card.module.scss';
 import {
@@ -14,15 +16,13 @@ import {
   estateCollectionApi,
 } from '@/widgets/EstateCollection/api/estateCollectionApi';
 import { DEFAULT_IMG } from '@/entities/Card/Card';
-import { useIntl } from 'react-intl';
-import { InfoModal } from '@/widgets/Modal/InfoModal';
+import { InfoModal } from '@/shared/ui/modals';
 import { Slider } from '../CommonComponents/Slider/Slider';
 import { Progresses } from '../CommonComponents/Progress/Progresses';
 import { Flats } from '@/pages/OfferCollectionV2/CommonComponents/Flats/Flats';
 import { TablesInfo } from '@/pages/OfferCollectionV2/CommonComponents/TablesInfo/TablesInfo';
 import { PaymentStepper } from '@/pages/OfferCollectionV2/CommonComponents/PaymentStepper/PaymentStepper';
 import { EstateOptionsInfo } from '@/pages/OfferCollectionV2/CommonComponents/EstateOptionsInfo/EstateOptionsInfo';
-import {useSearchParams} from "react-router";
 
 export const Card: FC<
   Estate & { collection: string; collectionId: string; agentInfo?: AgentInfo }
@@ -309,11 +309,11 @@ export const Card: FC<
             <></>
           ) : (
             <Button
-                onClick={handleClickLikeButton}
-                className={styles.like}
-                variant="cta"
-                size="s"
-                disabled={!!searchParams.get('client')}
+              onClick={handleClickLikeButton}
+              className={styles.like}
+              variant="cta"
+              size="s"
+              disabled={!!searchParams.get('client')}
             >
               <span className={styles.like__icon}>
                 {like ? <Heart /> : <OfferCollectionHeart />}
@@ -335,15 +335,7 @@ export const Card: FC<
             <></>
           )}
         </div>
-        <InfoModal
-          open={infoModal}
-          onClose={handleCloseInfoModal}
-          onOpen={handleOpenInfoModal}
-          anchor="bottom"
-          title={infoTitle}
-          text={infoText}
-          bottom={30}
-        />
+        <InfoModal setOpen={setInfoModal} open={infoModal} title={infoTitle} text={infoText} />
       </div>
     </section>
   );

@@ -1,4 +1,4 @@
-import React, { Dispatch, FC, SetStateAction } from 'react';
+import { Dispatch, FC, SetStateAction } from 'react';
 import { Button, Modal, Text } from '@/shared/ui';
 import { useIntl } from 'react-intl';
 import styles from './InfoModal.module.scss';

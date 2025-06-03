@@ -4,6 +4,7 @@ import { Text } from '@/shared/ui';
 import Tooltip, { TooltipProps } from '@mui/material/Tooltip';
 
 const tooltipProps: Omit<TooltipProps, 'title' | 'children'> = {
+  enterTouchDelay: 0,
   placement: 'top',
   classes: { tooltip: styles.tooltip },
   slotProps: {

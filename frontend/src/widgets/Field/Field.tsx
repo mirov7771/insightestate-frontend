@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { StyledField } from './styled';
 import { TFieldProps } from './types';
 

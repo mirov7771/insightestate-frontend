@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import { FC, useState } from 'react';
 import styles from './Filter.module.scss';
 import { PropertyType } from './PropertyType';
 import { CompletionDate } from './CompletionDate';

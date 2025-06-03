@@ -1,6 +1,6 @@
-import React from 'react';
+import { ElementType, ReactElement } from 'react';
 import { ButtonProps } from '@mui/material';
 
-export type TButtonProps = <C extends React.ElementType>(
+export type TButtonProps = <C extends ElementType>(
   props: ButtonProps<C, { className?: string; component?: C; isLoading?: boolean }>
-) => React.ReactElement | null;
+) => ReactElement | null;

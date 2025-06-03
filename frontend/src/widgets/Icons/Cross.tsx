@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { TIconProps } from '@/widgets/Icons/types';
 
 export const Cross: FC<TIconProps> = ({ className, fill }) => {

@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FC, useState } from 'react';
+import { ChangeEvent, FC, useState } from 'react';
 import { PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import { estateCollectionApi } from '@/widgets/EstateCollection/api/estateCollectionApi';
 import { Spacer } from '@/widgets/Spacer/Spacer';

@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC, ReactNode } from 'react';
 import { TModalProps } from './types';
 import {
   StyledSwipeableDrawer,
@@ -16,7 +16,7 @@ export const InfoModal: FC<
   TModalProps & {
     bottom: number;
     title: string;
-    children?: React.ReactNode;
+    children?: ReactNode;
     text?: string;
   }
 > = ({ onClose, open, anchor, onOpen, title, text, bottom, children }) => {

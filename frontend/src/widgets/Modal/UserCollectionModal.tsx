@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FC, useEffect, useState } from 'react';
+import { ChangeEvent, FC, useEffect, useState } from 'react';
 import { TModalProps } from './types';
 import {
   StyledSwipeableDrawer,
@@ -14,7 +14,7 @@ import {
   estateCollectionApi,
 } from '@/widgets/EstateCollection/api/estateCollectionApi';
 import Select from 'react-dropdown-select';
-import { InfoModal } from '@/widgets/Modal/InfoModal';
+import { InfoModal } from '@/shared/ui/modals';
 import { isMobile } from 'react-device-detect';
 import { useIntl } from 'react-intl';
 
@@ -167,15 +167,7 @@ export const UserCollectionModal: FC<TModalProps & { id: string; token: string }
           </StyledButton>
         )}
       </StyledSwipeableDrawer>
-      <InfoModal
-        open={infoModal}
-        onClose={handleCloseInfoModal}
-        onOpen={handleOpenInfoModal}
-        anchor="bottom"
-        title={infoTitle}
-        text={infoText}
-        bottom={30}
-      />
+      <InfoModal setOpen={setInfoModal} open={infoModal} title={infoTitle} text={infoText} />
     </>
   );
 };

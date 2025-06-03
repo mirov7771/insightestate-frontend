@@ -1,12 +1,11 @@
-import React, { FC, useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import styles from './Listing.module.scss';
 import { Filter } from '@/widgets/Filter/Filter';
 import { Card } from '@/entities/Card/Card';
 import { Pagination, Text } from '@/shared/ui';
 import { useFilters } from '@/widgets/Filter/model/useFilters';
-import { Watch } from 'react-loader-spinner';
 import { useIntl } from 'react-intl';
-import { InfoModal } from '@/widgets/Modal/InfoModal';
+import { InfoModal } from '@/shared/ui/modals';
 import { CardSlide } from '@/entities/CardSlide/CardSlide';
 
 const Listing: FC = () => {
@@ -68,15 +67,7 @@ const Listing: FC = () => {
           pageNumber={pageNumber as number}
         />
       </div>
-      <InfoModal
-        open={infoModal}
-        onClose={handleCloseInfoModal}
-        onOpen={handleOpenInfoModal}
-        anchor="bottom"
-        title={infoTitle}
-        text={infoText}
-        bottom={30}
-      />
+      <InfoModal setOpen={setInfoModal} open={infoModal} title={infoTitle} text={infoText} />
     </div>
   );
 };

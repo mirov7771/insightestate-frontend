@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { Section } from '../Section';
 import styles from './Infrastructure.module.scss';
 import baby from '@/shared/assets/icons/BabyFace.svg';

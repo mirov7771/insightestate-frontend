@@ -1,10 +1,10 @@
-import React, { FC, useState } from 'react';
+import { FC, useState } from 'react';
 import styles from './Card.module.scss';
 import { Beach, VectorRating } from '@/shared/assets/icons';
 import { Estate } from '@/widgets/Filter/api/filterApi';
 import { Button, Text } from '@/shared/ui';
 import { estateCollectionApi } from '@/widgets/EstateCollection/api/estateCollectionApi';
-import { InfoModal } from '@/widgets/Modal/InfoModal';
+import { InfoModal } from '@/shared/ui/modals';
 import { useIntl } from 'react-intl';
 import { UserCollectionModal } from '@/widgets/Modal/UserCollectionModal';
 
@@ -160,15 +160,7 @@ export const Card: FC<
         Доходность до <strong>136%</strong> за 10 лет
       </p>*/}
 
-      <InfoModal
-        open={infoModal}
-        onClose={handleCloseInfoModal}
-        onOpen={handleOpenInfoModal}
-        anchor="bottom"
-        title={infoTitle}
-        text={infoText}
-        bottom={30}
-      />
+      <InfoModal setOpen={setInfoModal} open={infoModal} title={infoTitle} text={infoText} />
       <UserCollectionModal
         open={userCollectionModal}
         onClose={handleCloseUserCollectionModal}

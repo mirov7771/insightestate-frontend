@@ -1,4 +1,4 @@
-import React, { Dispatch, FC, SetStateAction } from 'react';
+import { Dispatch, FC, SetStateAction } from 'react';
 import styles from './Header.module.scss';
 import { Link } from 'react-router';
 import { useIntl } from 'react-intl';

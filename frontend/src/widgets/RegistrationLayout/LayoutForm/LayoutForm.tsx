@@ -1,4 +1,4 @@
-import React, { FC, FormEventHandler, ReactNode } from 'react';
+import { FC, FormEventHandler, ReactNode } from 'react';
 import styles from './LayoutForm.module.scss';
 import { LogoIcon } from '@/shared/assets/icons';
 import { Text } from '@/shared/ui';

@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import styles from './OfferCollection.module.scss';
 import { AnalyzeSteps, InfoCards } from '@/shared/constants/constants';
 import { InfoCard } from '@/entities/InfoCard/InfoCard';
@@ -14,7 +14,7 @@ import { useParams, useSearchParams } from 'react-router';
 import { Button } from '@/shared/ui';
 import { isMobile } from 'react-device-detect';
 import { BlackWhatsApp, ButtonEmail, ButtonWhatsUp, TelegramBlack } from '@/shared/assets/icons';
-import { InfoModal } from '@/widgets/Modal/InfoModal';
+import { InfoModal } from '@/shared/ui/modals';
 
 const OfferCollection: FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -255,15 +255,7 @@ const OfferCollection: FC = () => {
       ) : (
         <></>
       )}
-      <InfoModal
-        open={infoModal}
-        onClose={handleCloseInfoModal}
-        onOpen={handleOpenInfoModal}
-        anchor="bottom"
-        title={infoTitle}
-        text={infoText}
-        bottom={30}
-      />
+      <InfoModal setOpen={setInfoModal} open={infoModal} title={infoTitle} text={infoText} />
     </div>
   );
 };

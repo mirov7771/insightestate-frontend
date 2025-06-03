@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import { FC, ReactNode, useState } from 'react';
 import styles from './Rating.module.scss';
 import { Info, VectorRating } from '@/shared/assets/icons';
 import { Grade } from '@/widgets/Detail/api/detailApi';
@@ -16,7 +16,7 @@ export const Rating: FC<Grade> = ({
   const [infoModal, setInfoModal] = useState(false);
   const [infoTitle, setInfoTitle] = useState('');
   const [infoText, setInfoText] = useState<string>();
-  const [children, setChildren] = useState<React.ReactNode>();
+  const [children, setChildren] = useState<ReactNode>();
   const handleOpenInfoModal = () => {
     setInfoModal(true);
   };

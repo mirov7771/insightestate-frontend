@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { IconButton, InputAdornment } from '@mui/material';
 import { Field } from '../Field/Field';
 import { TFieldProps } from '../Field/types';

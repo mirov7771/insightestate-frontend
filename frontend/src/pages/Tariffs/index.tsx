@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FC, useEffect, useState } from 'react';
+import { ChangeEvent, FC, useEffect, useState } from 'react';
 import styles from './Tariffs.module.scss';
 import { estateCollectionApi, TariffRs } from '@/widgets/EstateCollection/api/estateCollectionApi';
 import { Switcher, Text } from '@/shared/ui';

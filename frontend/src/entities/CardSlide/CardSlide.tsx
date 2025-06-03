@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import { FC, useState } from 'react';
 import { useIntl } from 'react-intl';
 import { Estate, filterApi, GetEstateParams } from '@/widgets/Filter/api/filterApi';
 import { InfoModal } from '@/shared/ui/modals';

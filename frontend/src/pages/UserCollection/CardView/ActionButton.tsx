@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import { FC, useState, MouseEvent } from 'react';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import styles from './CardView.module.scss';
@@ -28,7 +28,7 @@ export const ActionButton: FC<ActionButtonProps> = ({
   id,
 }) => {
   const { formatMessage } = useIntl();
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const [openChangeNameModal, setOpenChangeNameModal] = useState(false);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
@@ -38,7 +38,7 @@ export const ActionButton: FC<ActionButtonProps> = ({
   const handleToggleShowDeleteEstateModal = () => {
     setOpenDeleteModal(!openDeleteModal);
   };
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
