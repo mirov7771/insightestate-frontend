@@ -183,9 +183,6 @@
     &__price {
       color: var(--ui-color-white);
     }
-
-    &__advantages {
-    }
   }
 
   &__content {
@@ -195,9 +192,23 @@
     gap: 12px;
 
     @media (min-width: $media-md) {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      grid-column-gap: 24px;
+      flex-direction: row;
+    }
+
+    .left {
+      @media (min-width: $media-md) {
+        flex: 1 1 0;
+        overflow: hidden;
+      }
+    }
+
+    .right {
+      margin-top: auto;
+      @media (min-width: $media-md) {
+        flex: 1 1 0;
+        overflow: hidden;
+        margin-top: 0;
+      }
     }
   }
 
@@ -209,12 +220,23 @@
       display: flex;
       align-items: center;
       gap: 4px;
+      white-space: nowrap;
     }
 
     & svg {
       width: 20px;
       height: 20px;
     }
+  }
+
+  &__button {
+    margin: 0 auto;
+    width: 100%;
+    @media (min-width: $media-md) {
+      width: auto;
+      margin: 0  0 0 auto;
+    }
+
   }
 }
 
@@ -233,6 +255,7 @@
     height: 24px;
     border-radius: 200px;
     pointer-events: auto;
+    cursor: default;
 
     &_green {
       background-color: var(--ui-color-green);
@@ -255,6 +278,7 @@
 
   &__text {
     color: var(--ui-color-black);
+    cursor: default;
   }
 }
 

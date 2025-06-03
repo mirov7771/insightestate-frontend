@@ -1,6 +1,45 @@
+@use '~@/sass/index' as *;
+
 .pagination {
   display: flex;
-  gap: 16px;
   align-items: center;
   justify-content: center;
+}
+
+.root {
+  :global {
+    .Mui-selected {
+      background-color: var(--ui-color-black);
+      color: var(--ui-color-white);
+
+      &:hover {
+        background-color: var(--ui-color-black);
+      }
+    }
+
+    .MuiPaginationItem-previousNext {
+      border: 1px solid var(--ui-color-black-24-opacity);
+    }
+
+    .MuiPaginationItem-root {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 0;
+
+      @media (min-width: $media-md) {
+        font-size: 18px;
+        line-height: 24px;
+        width: 48px;
+        height: 48px;
+      }
+    }
+
+    .MuiPaginationItem-ellipsis {
+      display: flex;
+      align-items: center;
+    }
+  }
 }

@@ -56,9 +56,9 @@
 }
 
 .pagination {
+  margin-top: 40px;
   @media (min-width: $media-md) {
     margin-top: 48px;
-    text-align: center;
     grid-column-start: 2;
   }
 }

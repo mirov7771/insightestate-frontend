@@ -60,11 +60,11 @@ const Listing: FC = () => {
           onChangePage={(_, page) => {
             setFilters((filtersState) => ({
               ...filtersState,
-              pageNumber: page,
+              pageNumber: page - 1,
             }));
           }}
           totalPages={totalPages}
-          pageNumber={pageNumber as number}
+          pageNumber={(pageNumber as number) + 1}
         />
       </div>
       <InfoModal setOpen={setInfoModal} open={infoModal} title={infoTitle} text={infoText} />

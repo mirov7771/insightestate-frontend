@@ -102,7 +102,7 @@ export const CardSlide: FC<CardSlideProps> = ({
           </div>
         </div>
         <div className={styles.card__content}>
-          <div>
+          <div className={styles.left}>
             <Text variant="heading3-1">{estate.name}</Text>
             <div className={styles.card__desciption}>
               <Text variant="body1">Паттайя, Джомтьен</Text>
@@ -117,13 +117,17 @@ export const CardSlide: FC<CardSlideProps> = ({
               </Text>
             </div>
           </div>
-          <div>
-            {!!token && (
-              <Button onClick={handleOpenUserCollectionModal} wide size="s">
+          {!!token && (
+            <div className={styles.right}>
+              <Button
+                onClick={handleOpenUserCollectionModal}
+                size="s"
+                className={styles.card__button}
+              >
                 <Text variant="heading5">+ {formatMessage({ id: 'add_to_collection' })}</Text>
               </Button>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </div>
       <InfoModal open={infoModal} title={infoTitle} text={infoText} setOpen={setInfoModal} />
