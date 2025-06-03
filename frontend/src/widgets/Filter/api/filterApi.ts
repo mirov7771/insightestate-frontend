@@ -50,7 +50,7 @@ export const filterApi = {
   getEstate: async (params?: GetEstateParams): Promise<AxiosResponse<ResponseGetEstate>> => {
     try {
       const response = await api.get<ResponseGetEstate>('v1/estate', {
-        params: { ...params, pageSize: 8 },
+        params: { ...params, pageSize: 4 },
       });
 
       return response;

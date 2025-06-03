@@ -25,7 +25,6 @@
   @media (min-width: $media-md) {
     column-gap: 90px;
     grid-template-rows: auto;
-    grid-template-columns: 1fr 2fr;
     grid-auto-columns: 1fr;
     place-items: start stretch;
   }
@@ -33,14 +32,26 @@
 
 .main {
   display: grid;
-  grid-column-gap: 2rem;
-  grid-row-gap: 2rem;
+  grid-column-gap: 32px;
+  grid-row-gap: 32px;
   grid-template-rows: auto auto;
   grid-auto-columns: 1fr;
   grid-template-columns: repeat(auto-fit, minmax(268px, 1fr));
 
   @media (min-width: $media-md) {
+    grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
+  }
+
+  @media (min-width: $media-lg) {
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  }
+
+  @media (min-width: $media-xl) {
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  }
+
+  @media (min-width: $media-xxl) {
+    grid-template-columns: repeat(auto-fit, minmax(648px, 1fr));
   }
 }
 

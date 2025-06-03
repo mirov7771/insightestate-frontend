@@ -23,10 +23,7 @@ const OfferCollection: FC = () => {
   const [cSize, setCSize] = useState<number>(0);
   const [loaded, setLoaded] = useState<boolean>(false);
   const token = localStorage.getItem('basicToken');
-  const clickable =
-    localStorage.getItem('basicToken') !== null &&
-    localStorage.getItem('basicToken') !== undefined &&
-    localStorage.getItem('basicToken') !== '';
+  const clickable = !!token;
   const [agentInfo, setAgentInfo] = useState<AgentInfo>();
   const [infoModal, setInfoModal] = useState(false);
   const [infoTitle, setInfoTitle] = useState('');

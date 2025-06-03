@@ -66,6 +66,8 @@ import OfferCollectionArrowLeft from './offer-collection/tabler-icon-arrow-left.
 import OfferCollectionBarbell from './offer-collection/tabler-icon-barbell.svg?react';
 import OfferCollectionDeviceLaptop from './offer-collection/tabler-icon-device-laptop.svg?react';
 import OfferCollectionHorseToy from './offer-collection/tabler-icon-horse-toy.svg?react';
+import OfferCollectionWalk from './offer-collection/tabler-icon-walk.svg?react';
+import OfferCollectionCar from './offer-collection/tabler-icon-car.svg?react';
 
 export {
   Bed,
@@ -137,4 +139,6 @@ export {
   OfferCollectionBarbell,
   OfferCollectionDeviceLaptop,
   OfferCollectionHorseToy,
+  OfferCollectionWalk,
+  OfferCollectionCar,
 };

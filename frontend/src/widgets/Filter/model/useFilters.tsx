@@ -41,17 +41,7 @@ export const FiltersProvider: FC<PropsWithChildren> = ({ children }) => {
   const [estates, setEstates] = useState<Estate[]>([]);
   const [totalPages, setTotalPages] = useState<number>(0);
   const [hasMore, setHasMore] = useState<boolean>(false);
-  const [loading, setLoading] = useState<boolean>(true);
-
-  useEffect(() => {
-    filterApi
-      .getEstate({ pageNumber: 0 })
-      .then((response) => {
-        setEstates(response.data.items);
-        setHasMore(response.data.hasMore);
-      })
-      .finally(() => setLoading(false));
-  }, []);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     setLoading(true);

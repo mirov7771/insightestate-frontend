@@ -1,23 +1,22 @@
 import { FC } from 'react';
 import styles from './Pagination.module.scss';
 import { useIntl } from 'react-intl';
+import MuiPagination, { PaginationProps as MUIPaginationProps } from '@mui/material/Pagination';
 
 type PaginationProps = {
-  goToNextPage: () => void;
-  goToPreviousPage: () => void;
+  onChangePage: MUIPaginationProps['onChange'];
   pageNumber: number;
   totalPages: number;
 };
 
-export const Pagination: FC<PaginationProps> = ({
-  totalPages,
-  pageNumber,
-  goToPreviousPage,
-  goToNextPage,
-}) => {
-  const { formatMessage } = useIntl();
-
+export const Pagination: FC<PaginationProps> = ({ totalPages, pageNumber, onChangePage }) => {
   return (
+    <div className={styles.pagination}>
+      <MuiPagination count={totalPages} onChange={onChangePage} page={pageNumber} />
+    </div>
+  );
+
+  /*return (
     <div className={styles.pagination}>
       <div className={styles.pagination__buttons}>
         {pageNumber !== 0 && (
@@ -39,5 +38,5 @@ export const Pagination: FC<PaginationProps> = ({
         {pageNumber + 1} / {totalPages}
       </span>
     </div>
-  );
+  );*/
 };

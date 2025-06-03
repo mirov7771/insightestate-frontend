@@ -5,6 +5,7 @@ type TextVariant =
   | 'heading1'
   | 'heading2'
   | 'heading3'
+  | 'heading3-1'
   | 'heading4'
   | 'heading5'
   | 'subheading'

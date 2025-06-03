@@ -137,16 +137,12 @@ export const Card: FC<
           maximumFractionDigits: 0,
         }).format(priceMin)}
       </p>
-      {collectionId ? (
+      {!!collectionId && (
         <Button onClick={deleteFromCollection}>
           <Text variant="body1">{formatMessage({ id: 'remove_button' })}</Text>
         </Button>
-      ) : (
-        <></>
       )}
-      {token === null || token === undefined || token === '' ? (
-        <></>
-      ) : (
+      {!!token && (
         <Button
           onClick={handleOpenUserCollectionModal}
           wide={false}
