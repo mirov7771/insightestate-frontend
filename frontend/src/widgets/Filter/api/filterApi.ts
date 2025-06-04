@@ -51,6 +51,7 @@ type ResponseGetEstate = {
   pageNumber: number;
   pageSize: number;
   totalPages: number;
+  totalCount: number;
 };
 
 export const filterApi = {
