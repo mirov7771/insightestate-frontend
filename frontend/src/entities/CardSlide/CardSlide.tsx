@@ -105,14 +105,14 @@ export const CardSlide: FC<CardSlideProps> = ({
           <div className={styles.left}>
             <Text variant="heading3-1">{estate.name}</Text>
             <div className={styles.card__desciption}>
-              <Text variant="body1">Паттайя, Джомтьен</Text>
+              <Text variant="body1">{estate.city}, {estate.beach}</Text>
               <Text variant="body1">
                 До пляжа:{' '}
                 <span>
-                  <OfferCollectionCar /> 5 мин
+                  <OfferCollectionCar /> {estate.beachTravelTimeCar} {formatMessage({ id: 'min' })}
                 </span>
                 <span>
-                  <OfferCollectionWalk /> 12 мин
+                  <OfferCollectionWalk /> {estate.beachTravelTimeWalk} {formatMessage({ id: 'min' })}
                 </span>
               </Text>
             </div>

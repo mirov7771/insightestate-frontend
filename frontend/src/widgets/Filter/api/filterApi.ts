@@ -14,6 +14,13 @@ export type Estate = {
   exteriorImages?: string[];
   facilityImages?: string[];
   interiorImages?: string[];
+  toolTip1?: string,
+  toolTip2?: string,
+  toolTip3?: string,
+  city?: string,
+  beach?: string,
+  beachTravelTimeCar?: number,
+  beachTravelTimeWalk?: number,
 };
 
 export type GetEstateParams = {
