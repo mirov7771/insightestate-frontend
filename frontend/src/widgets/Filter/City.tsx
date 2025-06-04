@@ -1,7 +1,7 @@
 import { ChangeEvent, FC } from 'react';
 import { City as CityImg } from '@/shared/assets/icons';
 import styles from './Filter.module.scss';
-import { Accordion, Checkbox, RadioButton } from '@/shared/ui';
+import { Accordion, Checkbox } from '@/shared/ui';
 import { useFilters } from '@/widgets/Filter/model/useFilters';
 import { useIntl } from 'react-intl';
 

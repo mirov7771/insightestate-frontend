@@ -87,6 +87,11 @@ export const CardSlide: FC<CardSlideProps> = ({
                 <Text variant="heading4">{estate.buildEndDate}</Text>
               </li>
             )}
+            {estate.roiSummary && (
+              <li className={styles.badges__badge}>
+                <Text variant="heading4">ROI {estate.roiSummary}%</Text>
+              </li>
+            )}
           </ul>
           <Slider images={images} />
           <div className={styles.info}>
@@ -109,14 +114,17 @@ export const CardSlide: FC<CardSlideProps> = ({
           <div className={styles.left}>
             <Text variant="heading3-1">{estate.name}</Text>
             <div className={styles.card__desciption}>
-              <Text variant="body1">{estate.city}, {estate.beach}</Text>
               <Text variant="body1">
-                {formatMessage( { id: 'to_beach' } )}:{' '}
+                {estate.city}, {estate.beach}
+              </Text>
+              <Text variant="body1">
+                {formatMessage({ id: 'to_beach' })}:{' '}
                 <span>
                   <OfferCollectionCar /> {estate.beachTravelTimeCar} {formatMessage({ id: 'min' })}
                 </span>
                 <span>
-                  <OfferCollectionWalk /> {estate.beachTravelTimeWalk} {formatMessage({ id: 'min' })}
+                  <OfferCollectionWalk /> {estate.beachTravelTimeWalk}{' '}
+                  {formatMessage({ id: 'min' })}
                 </span>
               </Text>
             </div>

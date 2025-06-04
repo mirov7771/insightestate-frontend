@@ -11,16 +11,17 @@ export type Estate = {
   priceMin: number;
   projectId: string;
   roi: number;
+  beach?: string;
+  beachTravelTimeCar?: number;
+  beachTravelTimeWalk?: number;
+  city?: string;
   exteriorImages?: string[];
   facilityImages?: string[];
   interiorImages?: string[];
-  toolTip1?: string,
-  toolTip2?: string,
-  toolTip3?: string,
-  city?: string,
-  beach?: string,
-  beachTravelTimeCar?: number,
-  beachTravelTimeWalk?: number,
+  roiSummary?: number;
+  toolTip1?: string;
+  toolTip2?: string;
+  toolTip3?: string;
 };
 
 export type GetEstateParams = {
@@ -50,8 +51,8 @@ type ResponseGetEstate = {
   items: Array<Estate>;
   pageNumber: number;
   pageSize: number;
-  totalPages: number;
   totalCount: number;
+  totalPages: number;
 };
 
 export const filterApi = {
