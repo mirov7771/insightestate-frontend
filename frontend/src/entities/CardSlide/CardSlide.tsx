@@ -111,7 +111,7 @@ export const CardSlide: FC<CardSlideProps> = ({
             <div className={styles.card__desciption}>
               <Text variant="body1">{estate.city}, {estate.beach}</Text>
               <Text variant="body1">
-                До пляжа:{' '}
+                {formatMessage( { id: 'to_beach' } )}:{' '}
                 <span>
                   <OfferCollectionCar /> {estate.beachTravelTimeCar} {formatMessage({ id: 'min' })}
                 </span>
