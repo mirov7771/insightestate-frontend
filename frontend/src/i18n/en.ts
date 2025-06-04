@@ -304,4 +304,13 @@ export default {
     'If you delete a profile, it will no longer be possible to restore it — all data and collections will disappear forever. Please make sure that you definitely want to do this.',
   deleteProfileYes: 'Yes, delete',
   deleteProfileNo: 'No, I have changed my mind',
+
+  toolTip1_desc: 'Suitable for investment',
+  toolTip1_badge: 'I',
+
+  toolTip2_desc: 'Suitable for resale',
+  toolTip2_badge: 'R',
+
+  toolTip3_desc: 'Suitable for living',
+  toolTip3_badge: 'L',
 };

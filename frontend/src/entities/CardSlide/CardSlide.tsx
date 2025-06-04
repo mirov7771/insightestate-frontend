@@ -98,7 +98,11 @@ export const CardSlide: FC<CardSlideProps> = ({
                 maximumFractionDigits: 0,
               }).format(estate.priceMin)}
             </Text>
-            <AdvantagesBadges />
+            <AdvantagesBadges
+              toolTip1={estate.toolTip1}
+              toolTip2={estate.toolTip2}
+              toolTip3={estate.toolTip3}
+            />
           </div>
         </div>
         <div className={styles.card__content}>

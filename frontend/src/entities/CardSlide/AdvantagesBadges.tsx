@@ -2,6 +2,7 @@ import { FC } from 'react';
 import styles from './CardSlide.module.scss';
 import { Text } from '@/shared/ui';
 import Tooltip, { TooltipProps } from '@mui/material/Tooltip';
+import {useIntl} from "react-intl";
 
 const tooltipProps: Omit<TooltipProps, 'title' | 'children'> = {
   enterTouchDelay: 0,
@@ -21,45 +22,60 @@ const tooltipProps: Omit<TooltipProps, 'title' | 'children'> = {
   },
 };
 
-export const AdvantagesBadges: FC = () => {
+type AdvantagesBadgesProps = {
+    toolTip1?: string;
+    toolTip2?: string;
+    toolTip3?: string;
+}
+
+export const AdvantagesBadges: FC<AdvantagesBadgesProps> = ({
+    toolTip1, toolTip2,toolTip3
+}) => {
+  const { formatMessage } = useIntl();
   return (
     <ul className={styles.advantages}>
-      <Tooltip
-        {...tooltipProps}
-        title={
-          <Text variant="caption2" className={styles.tooltip__text}>
-            Подходит для инвестиций
-          </Text>
+        {toolTip1 ?
+            <Tooltip
+                {...tooltipProps}
+                title={
+                    <Text variant="caption2" className={styles.tooltip__text}>
+                      {formatMessage({ id: 'toolTip1_desc' })}
+                    </Text>
+                }
+            >
+                <li className={`${styles.advantages__item} ${styles.advantages__item_green}`}>
+                    <Text variant="heading5">{formatMessage({ id: 'toolTip1_badge' })}</Text>
+                </li>
+            </Tooltip> : <></>
         }
-      >
-        <li className={`${styles.advantages__item} ${styles.advantages__item_green}`}>
-          <Text variant="heading5">И</Text>
-        </li>
-      </Tooltip>
-      <Tooltip
-        {...tooltipProps}
-        title={
-          <Text variant="caption2" className={styles.tooltip__text}>
-            Подходит для перепродажи
-          </Text>
+        {toolTip2 ?
+            <Tooltip
+                {...tooltipProps}
+                title={
+                    <Text variant="caption2" className={styles.tooltip__text}>
+                      {formatMessage({ id: 'toolTip2_desc' })}
+                    </Text>
+                }
+            >
+                <li className={`${styles.advantages__item} ${styles.advantages__item_yellow}`}>
+                    <Text variant="heading5">{formatMessage({ id: 'toolTip2_badge' })}</Text>
+                </li>
+            </Tooltip> : <></>
         }
-      >
-        <li className={`${styles.advantages__item} ${styles.advantages__item_yellow}`}>
-          <Text variant="heading5">П</Text>
-        </li>
-      </Tooltip>
-      <Tooltip
-        {...tooltipProps}
-        title={
-          <Text variant="caption2" className={styles.tooltip__text}>
-            Подходит для проживания
-          </Text>
+        {toolTip3 ?
+            <Tooltip
+                {...tooltipProps}
+                title={
+                    <Text variant="caption2" className={styles.tooltip__text}>
+                      {formatMessage({ id: 'toolTip3_desc' })}
+                    </Text>
+                }
+            >
+                <li className={`${styles.advantages__item} ${styles.advantages__item_blue}`}>
+                    <Text variant="heading5">{formatMessage({ id: 'toolTip3_badge' })}</Text>
+                </li>
+            </Tooltip> : <></>
         }
-      >
-        <li className={`${styles.advantages__item} ${styles.advantages__item_blue}`}>
-          <Text variant="heading5">Ж</Text>
-        </li>
-      </Tooltip>
     </ul>
   );
 };
