@@ -6,6 +6,7 @@ import { PayModal } from '../PayModal/PayModal';
 import { Button, Text } from '@/shared/ui';
 import { DESCRIPTIONS_ENG, DESCRIPTIONS_RU } from './constants';
 import { useIntl } from 'react-intl';
+import {Spacer} from "@/widgets/Spacer/Spacer";
 
 type TariffCardProps = {
   description: string[];
@@ -15,6 +16,8 @@ type TariffCardProps = {
   extraId?: string;
   switcher?: ReactElement;
   userSubscriptionId?: string | null | undefined;
+  selected: boolean;
+  onClick: (id: string) => void;
 };
 
 export const TariffCard: FC<TariffCardProps> = ({
@@ -25,6 +28,8 @@ export const TariffCard: FC<TariffCardProps> = ({
   extraId,
   userSubscriptionId,
   switcher,
+  selected,
+  onClick
 }) => {
   const { formatMessage } = useIntl();
   const navigate = useNavigate();
@@ -61,7 +66,7 @@ export const TariffCard: FC<TariffCardProps> = ({
       if (userSubscriptionId === id) {
         return price > 0
           ? formatMessage({ id: 'tariff_my' })
-          : formatMessage({ id: 'tariff_free_continue' });
+          : formatMessage({ id: 'tariff_free' });
       }
     }
     return price > 0
@@ -73,9 +78,19 @@ export const TariffCard: FC<TariffCardProps> = ({
     setDesc(localStorage.getItem('language') === 'ru' ? DESCRIPTIONS_RU : DESCRIPTIONS_ENG);
   }, []);
 
+  const handleSelect = () => {
+    onClick(id)
+  }
+
   return (
     <>
-      <div className={styles.card}>
+      <div className={styles.card}
+        style={{
+          border: selected ? '1px solid var(--ui-color-black)' : '1px solid var(--ui-color-black-24-opacity)',
+          cursor: 'pointer'
+        }}
+        onClick={handleSelect}
+      >
         <div className={styles.card__title}>
           <Text variant="heading3" as="span">
             {title}
@@ -95,15 +110,33 @@ export const TariffCard: FC<TariffCardProps> = ({
           ))}
         </ul>
         {switcher}
-        <Button
-          className={styles.card__button}
-          onClick={handleTariff}
-          wide
-          variant={userSubscriptionId === id ? 'base' : 'primary'}
-          size="l"
-        >
-          <Text variant="heading4">{getSubscription()}</Text>
-        </Button>
+        <Spacer height={10} width={100}/>
+        <div className={styles.card__button}>
+          <div className={styles.card__border}/>
+          <Spacer height={25} width={100}/>
+          {
+            price === 0 ?
+                <p className={styles.card__text_p}>{getSubscription()}</p> :
+                <div style={{
+                  display: 'inline-flex',
+                  gap: '10px'
+                }}>
+                  <p className={styles.card__text_p_decline}>{getSubscription()}</p>
+                  <li className={styles.card__badge_discount}>
+                    <Text variant="heading4_White">-100%</Text>
+                  </li>
+                </div>
+          }
+          <Spacer height={10} width={100}/>
+          {/*<Button*/}
+          {/*  onClick={handleTariff}*/}
+          {/*  wide*/}
+          {/*  variant={userSubscriptionId === id ? 'base' : 'primary'}*/}
+          {/*  size="l"*/}
+          {/*>*/}
+          {/*  <Text variant="heading4">{getSubscription()}</Text>*/}
+          {/*</Button>*/}
+        </div>
       </div>
       <PayModal
         open={infoModal}

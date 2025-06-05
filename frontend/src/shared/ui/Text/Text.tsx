@@ -12,7 +12,8 @@ type TextVariant =
   | 'body1'
   | 'body2'
   | 'caption1'
-  | 'caption2';
+  | 'caption2'
+  | 'heading4_White';
 
 type TextAlign = 'left' | 'center' | 'right';
 
