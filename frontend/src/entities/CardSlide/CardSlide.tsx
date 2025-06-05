@@ -104,9 +104,9 @@ export const CardSlide: FC<CardSlideProps> = ({
               }).format(estate.priceMin)}
             </Text>
             <AdvantagesBadges
-              toolTip1={estate.toolTip1}
-              toolTip2={estate.toolTip2}
-              toolTip3={estate.toolTip3}
+              toolTip1={estate.toolTip1 === 'true' ? estate.toolTip1 : undefined}
+              toolTip2={estate.toolTip2 === 'true' ? estate.toolTip2 : undefined}
+              toolTip3={estate.toolTip3 === 'true' ? estate.toolTip3 : undefined}
             />
           </div>
         </div>
