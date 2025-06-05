@@ -28,3 +28,31 @@
   align-items: center;
   gap: 16px;
 }
+
+.badge {
+  background: rgba(254, 230, 137, 0.24);
+  color: rgba(116, 91, 0, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 100;
+  padding: 4px 12px;
+  height: 100px;
+  width: 50%;
+  margin: auto;
+  text-align: center;
+}
+
+.badge_mobile {
+  background: rgba(254, 230, 137, 0.24);
+  color: rgba(116, 91, 0, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 100;
+  padding: 4px 12px;
+  height: 150px;
+  width: 100%;
+  margin: auto;
+  text-align: center;
+}

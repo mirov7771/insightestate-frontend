@@ -313,4 +313,7 @@ export default {
 
   toolTip3_desc: 'Suitable for living',
   toolTip3_badge: 'L',
+
+  tariff_free_description: '🎉 You are participating in the beta test! All tariffs are free for you during the testing period.  We have already activated the Pro tariff — no restrictions',
+  tariff_continue_button: 'Continue with '
 };
