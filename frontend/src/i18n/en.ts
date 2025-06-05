@@ -8,8 +8,8 @@ export default {
   completion_date: 'Handover date',
   number_of_bedrooms: 'Number of bedrooms',
   price: 'Price',
-  potential: 'Comfort and investment potential',
-  uk: 'Property management company',
+  potential: 'Comfort and potential',
+  uk: 'Management company',
   properties: 'Properties',
   selections: 'My selections',
   profile: 'My profile',
@@ -295,8 +295,7 @@ export default {
 
   like: 'Like',
 
-  'listing.info':
-    "On this page, you can select projects based on your client's request. We have identified the key parameters by which you can filter projects and add those of interest to collections.",
+  'listing.info': `On this page, you can select projects based on your client's request. We have identified the key parameters by which you can filter projects and add those of interest to collections.`,
   'userCollection.clientView': 'Client view',
 
   deleteProfile: 'Are you sure you want to delete the profile?',
@@ -313,4 +312,6 @@ export default {
 
   toolTip3_desc: 'Suitable for living',
   toolTip3_badge: 'L',
+
+  'filters.header': 'Filters',
 };

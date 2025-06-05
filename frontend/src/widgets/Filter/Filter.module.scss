@@ -1,23 +1,61 @@
+@use '~@/sass/index' as *;
+
+.filters {
+  width: 448px;
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding: 24px;
+  }
+
+  &__buttons {
+    background-color: var(--ui-color-white);
+    position: sticky;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 24px;
+    border-top: 1px solid var(--ui-color-black-12-opacity);
+  }
+}
+
 .header {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 24px;
-  border-bottom: 1px solid var(--bg-2);
+  padding: 19px 16px 19px 24px;
+  border-bottom: 1px solid var(--ui-color-black-12-opacity);
 }
 
 .reset {
-  text-decoration: underline;
   cursor: pointer;
+  width: 28px;
+  height: 28px;
+
+  & > svg {
+    width: 28px;
+    height: 28px;
+    color: var(--ui-color-black);
+  }
 }
 
 .content {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  color: black;
+  gap: 12px;
+
+  &__border {
+    border: 1px solid var(--ui-color-black-12-opacity);
+    border-radius: 16px;
+    padding: 12px;
+    max-height: 300px;
+    overflow: auto;
+
+    @include customScrollbar();
+  }
 }
 
 .info {
@@ -46,5 +84,23 @@
       padding-bottom: 0;
       border-bottom: none;
     }
+  }
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  &__reset {
+    color: var(--ui-color-primary-2);
+    cursor: pointer;
+    margin-left: auto;
   }
 }

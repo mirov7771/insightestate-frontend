@@ -1,9 +1,9 @@
 import { ChangeEvent, FC } from 'react';
-import { Home } from '@/shared/assets/icons';
 import styles from './Filter.module.scss';
 import { useFilters } from '@/widgets/Filter/model/useFilters';
-import { Accordion, Checkbox } from '@/shared/ui';
+import { Checkbox } from '@/shared/ui';
 import { useIntl } from 'react-intl';
+import { FilterLayout } from '@/widgets/Filter/FilterLayout';
 
 export const PropertyType: FC = () => {
   const { formatMessage } = useIntl();
@@ -18,22 +18,34 @@ export const PropertyType: FC = () => {
     }));
   };
 
+  const handleReset = () => {
+    setFilters((filtersState) => ({
+      ...filtersState,
+      types: [],
+    }));
+  };
+
   return (
-    <Accordion icon={<Home />} title={formatMessage({ id: 'type_of_place' })} activeFilters={types}>
-      <div className={styles.content}>
-        <Checkbox
-          label={formatMessage({ id: 'villa_type' })}
-          name="VILLA"
-          onChange={handleClick}
-          checked={types?.includes('VILLA')}
-        />
-        <Checkbox
-          label={formatMessage({ id: 'apartment_type' })}
-          name="APARTMENT"
-          onChange={handleClick}
-          checked={types?.includes('APARTMENT')}
-        />
-      </div>
-    </Accordion>
+    <FilterLayout
+      name={formatMessage({ id: 'type_of_place' })}
+      isActiveFilter={!!types?.length}
+      onResetFilter={handleReset}
+      filter={
+        <div className={styles.content}>
+          <Checkbox
+            label={formatMessage({ id: 'villa_type' })}
+            name="VILLA"
+            onChange={handleClick}
+            checked={types?.includes('VILLA')}
+          />
+          <Checkbox
+            label={formatMessage({ id: 'apartment_type' })}
+            name="APARTMENT"
+            onChange={handleClick}
+            checked={types?.includes('APARTMENT')}
+          />
+        </div>
+      }
+    />
   );
 };

@@ -15,3 +15,25 @@
     }
   }
 }
+
+@mixin customScrollbar() {
+  &::-webkit-scrollbar {
+    width: 6px;
+    border-radius: 24px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    width: 6px;
+    border-radius: 24px;
+    background-color: var(--ui-color-black-24-opacity);
+
+    &:hover {
+      background-color: var(--ui-color-black-64-opacity);
+      cursor: default;
+    }
+  }
+
+  &::-webkit-scrollbar-button {
+    display: none;
+  }
+}

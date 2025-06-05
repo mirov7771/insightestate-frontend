@@ -8,8 +8,8 @@ export default {
   completion_date: 'Дата сдачи объекта',
   number_of_bedrooms: 'Количество спален',
   price: 'Стоимость',
-  potential: 'Комфорт и инвестиционный потенциал',
-  uk: 'Наличие УК',
+  potential: 'Комфорт и потенциал',
+  uk: 'Есть управляющая компания',
   properties: 'Недвижимость',
   selections: 'Мои подборки',
   profile: 'Мой профиль',
@@ -306,10 +306,10 @@ export default {
 
   toolTip1_desc: 'Подходит для инвестиций',
   toolTip1_badge: 'И',
-
   toolTip2_desc: 'Подходит для перепродажи',
   toolTip2_badge: 'П',
-
   toolTip3_desc: 'Подходит для проживания',
   toolTip3_badge: 'Ж',
+
+  'filters.header': 'Фильтры',
 };

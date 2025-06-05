@@ -1,22 +1,15 @@
-import { ChangeEvent, FC, useEffect, useState } from 'react';
-import { Airport as AirportIcon } from '@/shared/assets/icons';
+import { ChangeEvent, FC } from 'react';
 import styles from './Filter.module.scss';
-import { Accordion, Checkbox } from '@/shared/ui';
+import { Checkbox } from '@/shared/ui';
 import { useFilters } from '@/widgets/Filter/model/useFilters';
 import { useIntl } from 'react-intl';
+import { FilterLayout } from './FilterLayout';
 
 export const Airport: FC = () => {
   const { formatMessage } = useIntl();
   const { setFilters, airportTravelTimes } = useFilters();
-  const [filter, setFilter] = useState<string[]>(airportTravelTimes || []);
 
   const handleClick = (e: ChangeEvent<HTMLInputElement>) => {
-    setFilter((prevState) =>
-      prevState.includes(e.target.value)
-        ? prevState.filter((val) => val !== e.target.value)
-        : [...prevState, e.target.value]
-    );
-
     setFilters((filtersState) => {
       return {
         ...filtersState,
@@ -27,36 +20,40 @@ export const Airport: FC = () => {
     });
   };
 
-  useEffect(() => {
-    setFilters((filtersState) => ({ ...filtersState, airportTravelTimes: filter }));
-  }, [filter]);
+  const handleReset = () => {
+    setFilters((filtersState) => ({
+      ...filtersState,
+      airportTravelTimes: [],
+    }));
+  };
 
   return (
-    <Accordion
-      icon={<AirportIcon />}
-      title={formatMessage({ id: 'airport_time' })}
-      activeFilters={airportTravelTimes}
-    >
-      <div className={styles.content}>
-        <Checkbox
-          value="1"
-          onChange={handleClick}
-          checked={airportTravelTimes?.includes('1')}
-          label={formatMessage({ id: 'min_30_car' })}
-        />
-        <Checkbox
-          value="2"
-          onChange={handleClick}
-          checked={airportTravelTimes?.includes('2')}
-          label={formatMessage({ id: 'min_60_car' })}
-        />
-        <Checkbox
-          value="3"
-          onChange={handleClick}
-          checked={airportTravelTimes?.includes('3')}
-          label={formatMessage({ id: 'min_60_plus_car' })}
-        />
-      </div>
-    </Accordion>
+    <FilterLayout
+      name={formatMessage({ id: 'airport_time' })}
+      isActiveFilter={!!airportTravelTimes?.length}
+      onResetFilter={handleReset}
+      filter={
+        <div className={styles.content}>
+          <Checkbox
+            value="1"
+            onChange={handleClick}
+            checked={airportTravelTimes?.includes('1')}
+            label={formatMessage({ id: 'min_30_car' })}
+          />
+          <Checkbox
+            value="2"
+            onChange={handleClick}
+            checked={airportTravelTimes?.includes('2')}
+            label={formatMessage({ id: 'min_60_car' })}
+          />
+          <Checkbox
+            value="3"
+            onChange={handleClick}
+            checked={airportTravelTimes?.includes('3')}
+            label={formatMessage({ id: 'min_60_plus_car' })}
+          />
+        </div>
+      }
+    />
   );
 };

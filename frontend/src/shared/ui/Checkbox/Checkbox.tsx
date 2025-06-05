@@ -1,6 +1,7 @@
 import { FC, InputHTMLAttributes } from 'react';
 import styles from './Checkbox.module.scss';
 import Tick from './Tick.svg?react';
+import { Text } from '@/shared/ui';
 
 type CheckboxProps = InputHTMLAttributes<HTMLInputElement> & {
   label?: string;
@@ -23,7 +24,7 @@ export const Checkbox: FC<CheckboxProps> = ({ label, checked = false, onChange, 
       <span className={styles.checkbox__box}>
         <Tick />
       </span>
-      {label && <span className={styles.checkbox__label}>{label}</span>}
+      {label && <Text variant="body1">{label}</Text>}
     </label>
   );
 };

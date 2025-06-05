@@ -1,9 +1,9 @@
 import { ChangeEvent, FC } from 'react';
-import { City as CityImg } from '@/shared/assets/icons';
 import styles from './Filter.module.scss';
-import { Accordion, Checkbox } from '@/shared/ui';
+import { Checkbox, Text } from '@/shared/ui';
 import { useFilters } from '@/widgets/Filter/model/useFilters';
 import { useIntl } from 'react-intl';
+import { FilterLayout } from '@/widgets/Filter/FilterLayout';
 
 export const City: FC = () => {
   const { formatMessage } = useIntl();
@@ -18,31 +18,43 @@ export const City: FC = () => {
     }));
   };
 
+  const handleReset = () => {
+    setFilters((filtersState) => ({
+      ...filtersState,
+      city: [],
+    }));
+  };
+
   return (
-    <Accordion icon={<CityImg />} title={formatMessage({ id: 'city' })} activeFilters={city}>
-      <div className={styles.content}>
-        <Checkbox
-          name="city"
-          value="Phuket"
-          onChange={handleClick}
-          checked={city?.includes('Phuket')}
-          label="Phuket"
-        />
-        <Checkbox
-          name="city"
-          value="Bangkok"
-          onChange={handleClick}
-          checked={city?.includes('Bangkok')}
-          label="Bangkok"
-        />
-        <Checkbox
-          name="city"
-          value="Pattaya"
-          onChange={handleClick}
-          checked={city?.includes('Pattaya')}
-          label="Pattaya"
-        />
-      </div>
-    </Accordion>
+    <FilterLayout
+      name={formatMessage({ id: 'city' })}
+      isActiveFilter={!!city?.length}
+      onResetFilter={handleReset}
+      filter={
+        <div className={styles.content}>
+          <Checkbox
+            name="city"
+            value="Phuket"
+            onChange={handleClick}
+            checked={city?.includes('Phuket')}
+            label="Phuket"
+          />
+          <Checkbox
+            name="city"
+            value="Bangkok"
+            onChange={handleClick}
+            checked={city?.includes('Bangkok')}
+            label="Bangkok"
+          />
+          <Checkbox
+            name="city"
+            value="Pattaya"
+            onChange={handleClick}
+            checked={city?.includes('Pattaya')}
+            label="Pattaya"
+          />
+        </div>
+      }
+    />
   );
 };

@@ -1,11 +1,11 @@
 import { ChangeEvent, FC, useEffect, useMemo, useState } from 'react';
-import { Coins } from '@/shared/assets/icons';
 import styles from './Filter.module.scss';
-import { Accordion, Input } from '@/shared/ui';
+import { Input } from '@/shared/ui';
 import { useFilters } from '@/widgets/Filter/model/useFilters';
 import { useIntl } from 'react-intl';
 import { CustomSlider } from '@/widgets/Filter/CustomSlider';
 import { formatNumber } from '@/shared/utils';
+import { FilterLayout } from '@/widgets/Filter/FilterLayout';
 
 export const Price: FC = () => {
   const { formatMessage } = useIntl();
@@ -52,62 +52,72 @@ export const Price: FC = () => {
     );
   }, [maxPrice, minPrice]);
 
+  const handleReset = () => {
+    setValues([0, 4000000]);
+    setFilters((filtersState) => ({
+      ...filtersState,
+      minPrice: 0,
+      maxPrice: 4000000,
+    }));
+  };
+
   return (
-    <Accordion
-      icon={<Coins />}
-      title={formatMessage({ id: 'price' })}
-      activeFilters={isActiveFilter ? ['active'] : undefined}
-    >
-      <div className={styles.content}>
-        <CustomSlider
-          min={0}
-          max={4000000}
-          step={10000}
-          style={{
-            width: '95%',
-            marginTop: '10px',
-          }}
-          getAriaValueText={labelValue}
-          valueLabelFormat={labelValue}
-          valueLabelDisplay={'on'}
-          value={values}
-          onChange={handleClick}
-        />
-        <div
-          style={{
-            display: 'inline-flex',
-            width: '95%',
-            alignItems: 'center',
-            gap: '10px',
-          }}
-        >
-          <Input
-            placeholder={'min'}
-            value={minPrice}
-            name="min"
-            type={'number'}
-            defaultValue={0}
-            onChange={handleMinPrice}
+    <FilterLayout
+      name={formatMessage({ id: 'price' })}
+      isActiveFilter={isActiveFilter}
+      onResetFilter={handleReset}
+      filter={
+        <div className={styles.content}>
+          <CustomSlider
+            min={0}
+            max={4000000}
+            step={10000}
             style={{
-              minHeight: '30px',
-              fontSize: '12px',
+              width: '95%',
+              marginTop: '10px',
             }}
+            getAriaValueText={labelValue}
+            valueLabelFormat={labelValue}
+            valueLabelDisplay={'on'}
+            value={values}
+            onChange={handleClick}
           />
-          <p>-</p>
-          <Input
-            placeholder={'max'}
-            value={maxPrice}
-            name="max"
-            type={'number'}
-            defaultValue={4000000}
-            onChange={handleMaxPrice}
+          <div
             style={{
-              minHeight: '30px',
-              fontSize: '12px',
+              display: 'inline-flex',
+              width: '95%',
+              alignItems: 'center',
+              gap: '10px',
             }}
-          />
+          >
+            <Input
+              placeholder={'min'}
+              value={minPrice}
+              name="min"
+              type={'number'}
+              defaultValue={0}
+              onChange={handleMinPrice}
+              style={{
+                minHeight: '30px',
+                fontSize: '12px',
+              }}
+            />
+            <p>-</p>
+            <Input
+              placeholder={'max'}
+              value={maxPrice}
+              name="max"
+              type={'number'}
+              defaultValue={4000000}
+              onChange={handleMaxPrice}
+              style={{
+                minHeight: '30px',
+                fontSize: '12px',
+              }}
+            />
+          </div>
         </div>
-      </div>
-    </Accordion>
+      }
+    />
   );
 };

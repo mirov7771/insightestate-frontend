@@ -1,7 +1,6 @@
 import { ChangeEvent, FC } from 'react';
-import { Money } from '@/shared/assets/icons';
 import styles from './Filter.module.scss';
-import { Accordion, RadioButton } from '@/shared/ui';
+import { Checkbox } from '@/shared/ui';
 import { useFilters } from '@/widgets/Filter/model/useFilters';
 import { useIntl } from 'react-intl';
 
@@ -14,27 +13,14 @@ export const Company: FC = () => {
   };
 
   return (
-    <Accordion
-      icon={<Money />}
-      title={formatMessage({ id: 'uk' })}
-      activeFilters={managementCompanyEnabled ? [managementCompanyEnabled] : undefined}
-    >
-      <div className={styles.content}>
-        <RadioButton
-          name="managementCompanyEnabled"
-          value="true"
-          onChange={handleClick}
-          checked={managementCompanyEnabled === 'true'}
-          label={formatMessage({ id: 'yes' })}
-        />
-        <RadioButton
-          name="managementCompanyEnabled"
-          value="false"
-          onChange={handleClick}
-          checked={managementCompanyEnabled === 'false'}
-          label={formatMessage({ id: 'no' })}
-        />
-      </div>
-    </Accordion>
+    <div className={`${styles.content} ${styles.content__border}`}>
+      <Checkbox
+        name="managementCompanyEnabled"
+        value="true"
+        onChange={handleClick}
+        checked={managementCompanyEnabled === 'true'}
+        label={formatMessage({ id: 'uk' })}
+      />
+    </div>
   );
 };

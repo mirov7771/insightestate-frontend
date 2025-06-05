@@ -1,8 +1,7 @@
 import { FC, useEffect, useState } from 'react';
 import styles from './Listing.module.scss';
 import { Filter } from '@/widgets/Filter/Filter';
-import { Card } from '@/entities/Card/Card';
-import { Pagination, Text } from '@/shared/ui';
+import { Button, Pagination, Text } from '@/shared/ui';
 import { useFilters } from '@/widgets/Filter/model/useFilters';
 import { useIntl } from 'react-intl';
 import { InfoModal } from '@/shared/ui/modals';
@@ -12,6 +11,7 @@ const Listing: FC = () => {
   const { formatMessage } = useIntl();
   const { setFilters, pageNumber, estates, totalPages, hasMore, loading } = useFilters();
   const token = localStorage.getItem('basicToken');
+  const [openFilters, setOpenFilters] = useState(true);
 
   const [infoModal, setInfoModal] = useState(false);
   const [infoTitle, setInfoTitle] = useState('');
@@ -36,6 +36,8 @@ const Listing: FC = () => {
   return (
     <div className={styles.wrap}>
       <h1 className={styles.header}>{formatMessage({ id: 'projects' })}</h1>
+      <Button onClick={() => setOpenFilters(true)}>Все фильтры</Button>
+      <Filter open={openFilters} setOpen={setOpenFilters} />
       <div className={styles.layout}>
         <main className={styles.main}>
           {!loading && !estates.length && (
@@ -45,12 +47,6 @@ const Listing: FC = () => {
             estates.map((estate) => (
               <div>
                 <CardSlide estate={estate} token={token} loading={loading} clickable />
-                {/*<Card
-                    key={estate.id}
-                    {...estate}
-                    clickable={true}
-                    token={localStorage.getItem('basicToken')}
-                  />*/}
               </div>
             ))}
         </main>

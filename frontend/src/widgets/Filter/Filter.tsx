@@ -1,4 +1,5 @@
-import { FC, useState } from 'react';
+import { Dispatch, FC, SetStateAction, useState } from 'react';
+import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import styles from './Filter.module.scss';
 import { PropertyType } from './PropertyType';
 import { CompletionDate } from './CompletionDate';
@@ -13,36 +14,58 @@ import { Region } from '@/widgets/Filter/Region';
 import { City } from '@/widgets/Filter/City';
 import { useIntl } from 'react-intl';
 import { Spacer } from '@/widgets/Spacer/Spacer';
-import { Button } from '@/shared/ui';
+import { Button, Text } from '@/shared/ui';
 import { AiModal } from '@/widgets/Modal/AiModal';
+import { OfferCollectionX } from '@/shared/assets/icons';
 
-export const Filter: FC = () => {
+type FilterProps = { open: boolean; setOpen: Dispatch<SetStateAction<boolean>> };
+
+export const Filter: FC<FilterProps> = ({ open, setOpen }) => {
   const { formatMessage } = useIntl();
   const { setFilters } = useFilters();
   const resetFilters = () => {
     setFilters(DEFAULT_FILTERS);
   };
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return (
-    <>
-      <div className={styles.header}>
-        <h5>{formatMessage({ id: 'filter_params' })}</h5>
-        <span className={styles.reset} onClick={resetFilters}>
-          {formatMessage({ id: 'filter_clear' })}
-        </span>
+    <SwipeableDrawer onClose={handleClose} onOpen={handleOpen} open={open} anchor="right">
+      <div className={styles.filters}>
+        <div className={styles.header}>
+          <h5>{formatMessage({ id: 'filters.header' })}</h5>
+          <span className={styles.reset} onClick={handleClose}>
+            <OfferCollectionX />
+          </span>
+        </div>
+        <div className={styles.filters__wrapper}>
+          <City />
+          <Region />
+          <PropertyType />
+          <CompletionDate />
+          <NumberOfBedrooms />
+          <Price />
+          <Potential />
+          <Beach />
+          <Airport />
+          <Company />
+          <AiFilter />
+        </div>
+        <div className={styles.filters__buttons}>
+          <Button variant="primary" onClick={handleClose} wide>
+            <Text variant="heading4">Показать 26 объектов</Text>
+          </Button>
+          <Button variant="base" onClick={resetFilters} wide>
+            <Text variant="heading4">{formatMessage({ id: 'filter_clear' })}</Text>
+          </Button>
+        </div>
       </div>
-      <City />
-      <PropertyType />
-      <CompletionDate />
-      <NumberOfBedrooms />
-      <Price />
-      <Potential />
-      <Beach />
-      <Airport />
-      <Company />
-      <Region />
-      <AiFilter />
-    </>
+    </SwipeableDrawer>
   );
 };
 
