@@ -8,7 +8,7 @@ import { isAxiosError } from 'axios';
 import { LayoutForm } from '@/widgets/RegistrationLayout/LayoutForm/LayoutForm';
 
 // Регистрация
-export const SignUp: FC = () => {
+const SignUp: FC = () => {
   const { formatMessage } = useIntl();
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
@@ -99,3 +99,5 @@ export const SignUp: FC = () => {
     />
   );
 };
+
+export default SignUp;

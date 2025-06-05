@@ -8,7 +8,7 @@ import { FETCHING_STATUS } from '@/shared/constants/constants';
 import { detailApi } from '@/widgets/Detail/api/detailApi';
 import { getNavigate } from '@/pages/Authorization';
 
-export const NewPassword: FC = () => {
+const NewPassword: FC = () => {
   const { formatMessage } = useIntl();
   const navigate = useNavigate();
   const location = useLocation();
@@ -84,3 +84,5 @@ export const NewPassword: FC = () => {
     />
   );
 };
+
+export default NewPassword;

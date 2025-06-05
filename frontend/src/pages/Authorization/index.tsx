@@ -24,7 +24,7 @@ export const getNavigate = async () => {
   // return '/tariffs';
 };
 
-export const Authorization: FC = () => {
+const Authorization: FC = () => {
   const { formatMessage } = useIntl();
   const navigate = useNavigate();
   const [session, setSession] = useState<string | undefined | null>(
@@ -141,3 +141,5 @@ export const Authorization: FC = () => {
     </>
   );
 };
+
+export default Authorization;

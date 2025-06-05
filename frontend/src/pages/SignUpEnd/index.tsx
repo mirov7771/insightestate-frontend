@@ -6,7 +6,7 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import { detailApi } from '@/widgets/Detail/api/detailApi';
 import { LayoutForm } from '@/widgets/RegistrationLayout/LayoutForm/LayoutForm';
 
-export const SignUpEnd: FC = () => {
+const SignUpEnd: FC = () => {
   const { formatMessage } = useIntl();
   const navigate = useNavigate();
   const [code, setCode] = useState('');
@@ -84,3 +84,5 @@ export const SignUpEnd: FC = () => {
     </div>
   );
 };
+
+export default SignUpEnd;

@@ -130,7 +130,7 @@ const ItemCollection: FC<EstateCollection & { token: string; value: number }> = 
   );
 };
 
-export const UserCollection: FC = () => {
+const UserCollection: FC = () => {
   const { formatMessage } = useIntl();
   const [value, setValue] = useState(0);
   const [collection, setCollection] = useState<EstateCollection[]>([]);
@@ -199,3 +199,5 @@ export const UserCollection: FC = () => {
     </div>
   );
 };
+
+export default UserCollection;

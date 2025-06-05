@@ -4,9 +4,11 @@ import {
   FC,
   PropsWithChildren,
   SetStateAction,
+  useCallback,
   useContext,
   useEffect,
   useMemo,
+  useRef,
   useState,
 } from 'react';
 import { Estate, filterApi, GetEstateParams } from '@/widgets/Filter/api/filterApi';
@@ -31,6 +33,7 @@ type FiltersContextValues = GetEstateParams & {
   hasMore: boolean;
   loading: boolean;
   setFilters: Dispatch<SetStateAction<GetEstateParams>>;
+  totalCount: number;
   totalPages: number;
 };
 
@@ -42,22 +45,33 @@ export const FiltersProvider: FC<PropsWithChildren> = ({ children }) => {
   const [totalPages, setTotalPages] = useState<number>(0);
   const [hasMore, setHasMore] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
+  const [totalCount, setTotalCount] = useState<number>(0);
 
-  useEffect(() => {
+  const getEstate = useCallback(async () => {
     setLoading(true);
-    filterApi
-      .getEstate(filters)
-      .then((response) => {
-        setEstates(response.data.items);
-        setTotalPages(response.data.totalPages);
-        setHasMore(response.data.hasMore);
-      })
-      .finally(() => setLoading(false));
+    try {
+      const {
+        data: { items, totalCount, totalPages, hasMore },
+      } = await filterApi.getEstate(filters);
+
+      setEstates(items);
+      setTotalPages(totalPages);
+      setHasMore(hasMore);
+      setTotalCount(totalCount);
+    } catch (e) {
+      console.error('Error fetching estates:', e);
+    } finally {
+      setLoading(false);
+    }
   }, [filters]);
 
+  useEffect(() => {
+    getEstate();
+  }, [getEstate]);
+
   const contextValue = useMemo(
-    () => ({ ...filters, setFilters, estates, totalPages, hasMore, loading }),
-    [filters, estates, totalPages, hasMore, loading]
+    () => ({ ...filters, setFilters, estates, totalPages, hasMore, loading, totalCount }),
+    [filters, estates, totalPages, hasMore, loading, totalCount]
   );
 
   return <FiltersContext.Provider value={contextValue}>{children}</FiltersContext.Provider>;

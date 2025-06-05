@@ -8,7 +8,7 @@ import { isAxiosError } from 'axios';
 import { getNavigate } from '@/pages/Authorization';
 import { LayoutForm } from '@/widgets/RegistrationLayout/LayoutForm/LayoutForm';
 
-export const Login: FC = () => {
+const Login: FC = () => {
   const { formatMessage } = useIntl();
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
@@ -123,3 +123,5 @@ export const Login: FC = () => {
     />
   );
 };
+
+export default Login;

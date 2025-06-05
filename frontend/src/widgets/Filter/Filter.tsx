@@ -22,7 +22,7 @@ type FilterProps = { open: boolean; setOpen: Dispatch<SetStateAction<boolean>> }
 
 export const Filter: FC<FilterProps> = ({ open, setOpen }) => {
   const { formatMessage } = useIntl();
-  const { setFilters } = useFilters();
+  const { setFilters, totalCount } = useFilters();
   const resetFilters = () => {
     setFilters(DEFAULT_FILTERS);
   };
@@ -58,7 +58,7 @@ export const Filter: FC<FilterProps> = ({ open, setOpen }) => {
         </div>
         <div className={styles.filters__buttons}>
           <Button variant="primary" onClick={handleClose} wide>
-            <Text variant="heading4">Показать 26 объектов</Text>
+            <Text variant="heading4">Показать {totalCount} объектов</Text>
           </Button>
           <Button variant="base" onClick={resetFilters} wide>
             <Text variant="heading4">{formatMessage({ id: 'filter_clear' })}</Text>

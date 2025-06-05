@@ -7,7 +7,7 @@ import { Watch } from 'react-loader-spinner';
 import { useIntl } from 'react-intl';
 import { isMobile } from 'react-device-detect';
 
-export const AiListing: FC = () => {
+const AiListing: FC = () => {
   const { formatMessage } = useIntl();
   const [searchParams, setSearchParams] = useSearchParams();
   const [estates, setEstates] = useState<Estate[]>([]);
@@ -58,3 +58,5 @@ export const AiListing: FC = () => {
     </div>
   );
 };
+
+export default AiListing;

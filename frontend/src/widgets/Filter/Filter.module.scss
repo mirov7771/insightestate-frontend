@@ -104,3 +104,9 @@
     margin-left: auto;
   }
 }
+
+.price {
+  display: flex;
+  gap: 8px;
+  flex-wrap: nowrap;
+}
