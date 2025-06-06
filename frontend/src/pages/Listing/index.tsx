@@ -6,12 +6,31 @@ import { useFilters } from '@/widgets/Filter/model/useFilters';
 import { useIntl } from 'react-intl';
 import { InfoModal } from '@/shared/ui/modals';
 import { CardSlide } from '@/entities/CardSlide/CardSlide';
+import { OfferCollectionAdjustmentsFilter } from '@/shared/assets/icons';
+import Divider from '@mui/material/Divider';
+import { FastFilter } from '@/widgets/FastFilter/FastFilter';
+import { City } from '@/widgets/Filter/City';
+import { PropertyType } from '@/widgets/Filter/PropertyType';
+import { CompletionDate } from '@/widgets/Filter/CompletionDate';
+import { NumberOfBedrooms } from '@/widgets/Filter/NumberOfBedrooms';
+import { Potential } from '@/widgets/Filter/Potential';
+import { Beach } from '@/widgets/Filter/Beach';
+import { Airport } from '@/widgets/Filter/Airport';
 
 const Listing: FC = () => {
   const { formatMessage } = useIntl();
-  const { setFilters, pageNumber, estates, totalPages, hasMore, loading } = useFilters();
+  const {
+    setFilters,
+    pageNumber,
+    estates,
+    totalPages,
+    totalCount,
+    hasMore,
+    loading,
+    countActiveFilters,
+  } = useFilters();
   const token = localStorage.getItem('basicToken');
-  const [openFilters, setOpenFilters] = useState(true);
+  const [openFilters, setOpenFilters] = useState(false);
 
   const [infoModal, setInfoModal] = useState(false);
   const [infoTitle, setInfoTitle] = useState('');
@@ -35,8 +54,66 @@ const Listing: FC = () => {
 
   return (
     <div className={styles.wrap}>
-      <h1 className={styles.header}>{formatMessage({ id: 'projects' })}</h1>
-      <Button onClick={() => setOpenFilters(true)}>Все фильтры</Button>
+      <div className={styles.header}>
+        <div className={styles.filters__wrapper}>
+          <Button
+            className={styles.button}
+            variant="base"
+            size="s"
+            onClick={() => setOpenFilters(true)}
+          >
+            <OfferCollectionAdjustmentsFilter />
+            <Text variant="heading5" className={styles.button__text}>
+              Все фильтры
+            </Text>
+            {!!countActiveFilters && (
+              <Text variant="caption2" className={styles.button__counter}>
+                {countActiveFilters}
+              </Text>
+            )}
+          </Button>
+          <Divider orientation="vertical" flexItem />
+          <div className={styles.filters}>
+            <div className={styles.filters__scroll}>
+              <FastFilter
+                filter={<City />}
+                name={formatMessage({ id: 'city' })}
+                filterName="city"
+              />
+              <FastFilter
+                filter={<PropertyType />}
+                name={formatMessage({ id: 'type_of_place' })}
+                filterName="types"
+              />
+              <FastFilter
+                filter={<CompletionDate />}
+                name={formatMessage({ id: 'completion_date' })}
+                filterName="buildEndYears"
+              />
+              <FastFilter
+                filter={<NumberOfBedrooms />}
+                name={formatMessage({ id: 'number_of_bedrooms' })}
+                filterName="rooms"
+              />
+              <FastFilter
+                filter={<Potential />}
+                name={formatMessage({ id: 'potential' })}
+                filterName="grades"
+              />
+              <FastFilter
+                filter={<Beach />}
+                name={formatMessage({ id: 'beach_time' })}
+                filterName="beachTravelTimes"
+              />
+              <FastFilter
+                filter={<Airport />}
+                name={formatMessage({ id: 'airport_time' })}
+                filterName="airportTravelTimes"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
       <Filter open={openFilters} setOpen={setOpenFilters} />
       <div className={styles.layout}>
         <main className={styles.main}>
@@ -51,18 +128,20 @@ const Listing: FC = () => {
             ))}
         </main>
       </div>
-      <div className={styles.pagination}>
-        <Pagination
-          onChangePage={(_, page) => {
-            setFilters((filtersState) => ({
-              ...filtersState,
-              pageNumber: page - 1,
-            }));
-          }}
-          totalPages={totalPages}
-          pageNumber={(pageNumber as number) + 1}
-        />
-      </div>
+      {!!totalCount && (
+        <div className={styles.pagination}>
+          <Pagination
+            onChangePage={(_, page) => {
+              setFilters((filtersState) => ({
+                ...filtersState,
+                pageNumber: page - 1,
+              }));
+            }}
+            totalPages={totalPages}
+            pageNumber={(pageNumber as number) + 1}
+          />
+        </div>
+      )}
       <InfoModal setOpen={setInfoModal} open={infoModal} title={infoTitle} text={infoText} />
     </div>
   );

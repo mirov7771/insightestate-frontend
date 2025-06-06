@@ -35,7 +35,14 @@ export const Filter: FC<FilterProps> = ({ open, setOpen }) => {
   };
 
   return (
-    <SwipeableDrawer onClose={handleClose} onOpen={handleOpen} open={open} anchor="right">
+    <SwipeableDrawer
+      onClose={handleClose}
+      onOpen={handleOpen}
+      open={open}
+      anchor="right"
+      disableSwipeToOpen
+      disableDiscovery
+    >
       <div className={styles.filters}>
         <div className={styles.header}>
           <h5>{formatMessage({ id: 'filters.header' })}</h5>
@@ -58,7 +65,9 @@ export const Filter: FC<FilterProps> = ({ open, setOpen }) => {
         </div>
         <div className={styles.filters__buttons}>
           <Button variant="primary" onClick={handleClose} wide>
-            <Text variant="heading4">Показать {totalCount} объектов</Text>
+            <Text variant="heading4">
+              {formatMessage({ id: 'filter.show_objects' }, { totalCount })}
+            </Text>
           </Button>
           <Button variant="base" onClick={resetFilters} wide>
             <Text variant="heading4">{formatMessage({ id: 'filter_clear' })}</Text>

@@ -35,7 +35,6 @@ export type GetEstateParams = {
   maxPrice?: number;
   minPrice?: number;
   pageNumber?: number;
-  pageSize?: number;
   parking?: boolean;
   price?: string;
   rooms?: string[];

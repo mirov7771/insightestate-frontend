@@ -1,10 +1,10 @@
-import { ChangeEvent, FC, useEffect, useMemo, useState } from 'react';
+import { ChangeEvent, FC, useMemo, useState } from 'react';
 import styles from './Filter.module.scss';
 import Slider from '@mui/material/Slider';
 import { Input } from '@/shared/ui';
 import { useFilters } from '@/widgets/Filter/model/useFilters';
 import { useIntl } from 'react-intl';
-import { debounce, formatNumber } from '@/shared/utils';
+import { debounce } from '@/shared/utils';
 import { FilterLayout } from '@/widgets/Filter/FilterLayout';
 
 export const Price: FC = () => {
@@ -28,7 +28,7 @@ export const Price: FC = () => {
     [setFilters]
   );
 
-  const handleChange = (event: Event, newValue: number[], activeThumb: number) => {
+  const handleChange = (event: Event, newValue: number[]) => {
     setValues(newValue);
   };
   const handleChangeCommitted = (newValue: number[]) => {
@@ -72,16 +72,15 @@ export const Price: FC = () => {
       filter={
         <div className={styles.content}>
           <Slider
+            className={styles.slider}
+            classes={{ thumb: styles.thumb, track: styles.track, rail: styles.track }}
             min={0}
             max={4000000}
             onChangeCommitted={(e, value) => {
               handleChangeCommitted(value as number[]);
             }}
-            getAriaLabel={() => 'Temperature range'}
             value={value}
-            onChange={(event, value, activeThumb) =>
-              handleChange(event, value as number[], activeThumb)
-            }
+            onChange={(event, value) => handleChange(event, value as number[])}
             valueLabelDisplay="auto"
           />
           <div className={styles.price}>

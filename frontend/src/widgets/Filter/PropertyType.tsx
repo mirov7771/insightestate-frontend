@@ -5,7 +5,7 @@ import { Checkbox } from '@/shared/ui';
 import { useIntl } from 'react-intl';
 import { FilterLayout } from '@/widgets/Filter/FilterLayout';
 
-export const PropertyType: FC = () => {
+export const PropertyType: FC<{ renderName?: boolean }> = ({ renderName = true }) => {
   const { formatMessage } = useIntl();
   const { setFilters, types } = useFilters();
 
@@ -27,7 +27,7 @@ export const PropertyType: FC = () => {
 
   return (
     <FilterLayout
-      name={formatMessage({ id: 'type_of_place' })}
+      name={renderName ? formatMessage({ id: 'type_of_place' }) : ''}
       isActiveFilter={!!types?.length}
       onResetFilter={handleReset}
       filter={

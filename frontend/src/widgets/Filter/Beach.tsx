@@ -5,16 +5,16 @@ import { useFilters } from '@/widgets/Filter/model/useFilters';
 import { useIntl } from 'react-intl';
 import { FilterLayout } from './FilterLayout';
 
-export const Beach: FC = () => {
+export const Beach: FC<{ renderName?: boolean }> = ({ renderName }) => {
   const { formatMessage } = useIntl();
   const { setFilters, beachTravelTimes } = useFilters();
 
   const handleClick = (e: ChangeEvent<HTMLInputElement>) => {
     setFilters((filtersState) => ({
       ...filtersState,
-      beachTravelTimes: filtersState.beachName?.includes(e.target.value)
-        ? filtersState.beachName?.filter((val) => val !== e.target.value)
-        : [...(filtersState.beachName || []), e.target.value],
+      beachTravelTimes: filtersState.beachTravelTimes?.includes(e.target.value)
+        ? filtersState.beachTravelTimes?.filter((val) => val !== e.target.value)
+        : [...(filtersState.beachTravelTimes || []), e.target.value],
     }));
   };
 
@@ -27,7 +27,7 @@ export const Beach: FC = () => {
 
   return (
     <FilterLayout
-      name={formatMessage({ id: 'beach_time' })}
+      name={renderName ? formatMessage({ id: 'beach_time' }) : ''}
       isActiveFilter={!!beachTravelTimes?.length}
       onResetFilter={handleReset}
       filter={

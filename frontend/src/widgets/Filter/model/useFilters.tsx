@@ -8,7 +8,6 @@ import {
   useContext,
   useEffect,
   useMemo,
-  useRef,
   useState,
 } from 'react';
 import { Estate, filterApi, GetEstateParams } from '@/widgets/Filter/api/filterApi';
@@ -21,14 +20,52 @@ export const DEFAULT_FILTERS = {
   airportTravelTimes: [],
   beachTravelTimes: [],
   pageNumber: 0,
-  beachName: undefined,
+  beachName: [],
   managementCompanyEnabled: undefined,
-  city: undefined,
+  city: [],
   minPrice: 0,
   maxPrice: undefined,
 };
 
+const activeFiltersCounter = (filters: GetEstateParams): number => {
+  let count = 0;
+
+  Object.entries(filters).forEach(([key, value]) => {
+    // Пропускаем служебные поля, если они есть
+    if (key === 'page' || key === 'pageSize') return;
+
+    // Для массивов: если не пустой массив
+    if (Array.isArray(value) && value.length > 0) {
+      count += 1;
+      return;
+    }
+
+    // Для строк: если не пустая строка
+    if (typeof value === 'string' && value.trim() !== '') {
+      count += 1;
+      return;
+    }
+
+    // Для чисел: если не null/undefined и не дефолтное значение (например, 0)
+    if (typeof value === 'number' && value !== 0 && value !== 4000000 && !isNaN(value)) {
+      count += 1;
+      return;
+    }
+
+    // Для boolean: если true (например, "есть управляющая компания")
+    if (typeof value === 'boolean' && value) {
+      count += 1;
+      return;
+    }
+
+    // Для других типов (например, объектов) — можно добавить обработку по необходимости
+  });
+
+  return count;
+};
+
 type FiltersContextValues = GetEstateParams & {
+  countActiveFilters: number;
   estates: Estate[];
   hasMore: boolean;
   loading: boolean;
@@ -46,6 +83,9 @@ export const FiltersProvider: FC<PropsWithChildren> = ({ children }) => {
   const [hasMore, setHasMore] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [totalCount, setTotalCount] = useState<number>(0);
+  const [countActiveFilters, setCountActiveFilters] = useState<number>(
+    activeFiltersCounter(filters)
+  );
 
   const getEstate = useCallback(async () => {
     setLoading(true);
@@ -63,6 +103,12 @@ export const FiltersProvider: FC<PropsWithChildren> = ({ children }) => {
     } finally {
       setLoading(false);
     }
+
+    const val = activeFiltersCounter(filters);
+
+    console.log({ val });
+
+    setCountActiveFilters(val);
   }, [filters]);
 
   useEffect(() => {
@@ -70,8 +116,17 @@ export const FiltersProvider: FC<PropsWithChildren> = ({ children }) => {
   }, [getEstate]);
 
   const contextValue = useMemo(
-    () => ({ ...filters, setFilters, estates, totalPages, hasMore, loading, totalCount }),
-    [filters, estates, totalPages, hasMore, loading, totalCount]
+    () => ({
+      ...filters,
+      setFilters,
+      estates,
+      totalPages,
+      hasMore,
+      loading,
+      totalCount,
+      countActiveFilters,
+    }),
+    [filters, estates, totalPages, hasMore, loading, totalCount, countActiveFilters]
   );
 
   return <FiltersContext.Provider value={contextValue}>{children}</FiltersContext.Provider>;

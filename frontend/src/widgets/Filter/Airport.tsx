@@ -5,7 +5,7 @@ import { useFilters } from '@/widgets/Filter/model/useFilters';
 import { useIntl } from 'react-intl';
 import { FilterLayout } from './FilterLayout';
 
-export const Airport: FC = () => {
+export const Airport: FC<{ renderName?: boolean }> = ({ renderName }) => {
   const { formatMessage } = useIntl();
   const { setFilters, airportTravelTimes } = useFilters();
 
@@ -29,7 +29,7 @@ export const Airport: FC = () => {
 
   return (
     <FilterLayout
-      name={formatMessage({ id: 'airport_time' })}
+      name={renderName ? formatMessage({ id: 'airport_time' }) : ''}
       isActiveFilter={!!airportTravelTimes?.length}
       onResetFilter={handleReset}
       filter={
