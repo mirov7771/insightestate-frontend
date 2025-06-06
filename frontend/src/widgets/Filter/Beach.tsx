@@ -38,21 +38,21 @@ export const Beach: FC<{ renderName?: boolean }> = ({ renderName }) => {
             value="1"
             onChange={handleClick}
             checked={beachTravelTimes?.includes('1')}
-            label="До 5 минут"
+            label={formatMessage( { id: 'from_5' } )}
           />
           <Checkbox
             name="beachName"
             value="2"
             onChange={handleClick}
             checked={beachTravelTimes?.includes('2')}
-            label="До 15 минут"
+            label={formatMessage( { id: 'from_15' } )}
           />
           <Checkbox
             name="beachName"
             value="3"
             onChange={handleClick}
             checked={beachTravelTimes?.includes('3')}
-            label="До 30 минут"
+            label={formatMessage( { id: 'from_30' } )}
           />
           <Text variant="heading5">{formatMessage({ id: 'beach.car' })}</Text>
           <Checkbox
@@ -60,21 +60,21 @@ export const Beach: FC<{ renderName?: boolean }> = ({ renderName }) => {
             value="11"
             onChange={handleClick}
             checked={beachTravelTimes?.includes('11')}
-            label="До 5 минут"
+            label={formatMessage( { id: 'from_5' } )}
           />
           <Checkbox
             name="beachName"
             value="12"
             onChange={handleClick}
             checked={beachTravelTimes?.includes('12')}
-            label="До 15 минут"
+            label={formatMessage( { id: 'from_15' } )}
           />
           <Checkbox
             name="beachName"
             value="13"
             onChange={handleClick}
             checked={beachTravelTimes?.includes('13')}
-            label="До 30 минут"
+            label={formatMessage( { id: 'from_30' } )}
           />
         </div>
       }

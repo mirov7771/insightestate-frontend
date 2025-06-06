@@ -223,11 +223,11 @@ export const CardLayout: FC<CardLayoutProps> = ({ estate }) => {
                 },
                 {
                   name: formatMessage({ id: 'roiSummary' }),
-                  description: `${estate.profitability?.roiSummary || 200}%`,
+                  description: `${estate.profitability?.roi || 10}%`,
                 },
                 {
                   name: formatMessage({ id: 'roi' }),
-                  description: `${estate.profitability?.roi || 200}%`,
+                  description: `${estate.profitability?.roiSummary || 200}%`,
                 },
                 {
                   name: formatMessage({ id: 'irr' }),

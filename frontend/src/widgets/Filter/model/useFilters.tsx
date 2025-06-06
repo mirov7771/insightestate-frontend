@@ -72,6 +72,7 @@ type FiltersContextValues = GetEstateParams & {
   setFilters: Dispatch<SetStateAction<GetEstateParams>>;
   totalCount: number;
   totalPages: number;
+  totalCount: number;
 };
 
 const FiltersContext = createContext<FiltersContextValues | undefined>(undefined);

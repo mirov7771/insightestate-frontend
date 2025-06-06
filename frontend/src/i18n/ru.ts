@@ -320,4 +320,11 @@ export default {
   tariff_continue_button: 'Продолжить бесплатно с ',
 
   in_collection: 'В %s подборке',
+  all_filters: 'Все фильтры',
+
+  show_count: 'Показать %s объектов',
+
+  from_5: 'До 5 минут',
+  from_15: 'До 15 минут',
+  from_30: 'До 30 минут',
 };

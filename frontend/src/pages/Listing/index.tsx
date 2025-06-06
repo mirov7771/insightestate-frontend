@@ -64,7 +64,7 @@ const Listing: FC = () => {
           >
             <OfferCollectionAdjustmentsFilter />
             <Text variant="heading5" className={styles.button__text}>
-              Все фильтры
+              {formatMessage({ id: 'all_filters' })}
             </Text>
             {!!countActiveFilters && (
               <Text variant="caption2" className={styles.button__counter}>
