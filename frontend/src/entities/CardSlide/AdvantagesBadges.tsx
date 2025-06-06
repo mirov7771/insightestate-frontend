@@ -42,12 +42,12 @@ export const AdvantagesBadges: FC<AdvantagesBadgesProps> = ({ toolTip1, toolTip2
           {...tooltipProps}
           title={
             <Text variant="caption2" className={styles.tooltip__text}>
-              {formatMessage({ id: 'toolTip1_desc' })}
+              {formatMessage({ id: 'toolTip2_desc' })}
             </Text>
           }
         >
           <li className={`${styles.advantages__item} ${styles.advantages__item_green}`}>
-            <Text variant="heading5">{formatMessage({ id: 'toolTip1_badge' })}</Text>
+            <Text variant="heading5">{formatMessage({ id: 'toolTip2_badge' })}</Text>
           </li>
         </Tooltip>
       )}
@@ -56,12 +56,12 @@ export const AdvantagesBadges: FC<AdvantagesBadgesProps> = ({ toolTip1, toolTip2
           {...tooltipProps}
           title={
             <Text variant="caption2" className={styles.tooltip__text}>
-              {formatMessage({ id: 'toolTip2_desc' })}
+              {formatMessage({ id: 'toolTip1_desc' })}
             </Text>
           }
         >
           <li className={`${styles.advantages__item} ${styles.advantages__item_yellow}`}>
-            <Text variant="heading5">{formatMessage({ id: 'toolTip2_badge' })}</Text>
+            <Text variant="heading5">{formatMessage({ id: 'toolTip1_badge' })}</Text>
           </li>
         </Tooltip>
       )}
