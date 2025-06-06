@@ -5,7 +5,7 @@ import { useFilters } from '@/widgets/Filter/model/useFilters';
 import { useIntl } from 'react-intl';
 import { FilterLayout } from '@/widgets/Filter/FilterLayout';
 
-export const NumberOfBedrooms: FC = () => {
+export const NumberOfBedrooms: FC<{ renderName?: boolean }> = ({ renderName = true }) => {
   const { formatMessage } = useIntl();
   const { setFilters, rooms } = useFilters();
 
@@ -31,7 +31,7 @@ export const NumberOfBedrooms: FC = () => {
 
   return (
     <FilterLayout
-      name={formatMessage({ id: 'number_of_bedrooms' })}
+      name={renderName ? formatMessage({ id: 'number_of_bedrooms' }) : ''}
       isActiveFilter={!!rooms?.length}
       onResetFilter={handleReset}
       filter={

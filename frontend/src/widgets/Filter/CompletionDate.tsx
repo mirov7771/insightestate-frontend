@@ -5,7 +5,7 @@ import { useFilters } from '@/widgets/Filter/model/useFilters';
 import { useIntl } from 'react-intl';
 import { FilterLayout } from '@/widgets/Filter/FilterLayout';
 
-export const CompletionDate: FC = () => {
+export const CompletionDate: FC<{ renderName?: boolean }> = ({ renderName = true }) => {
   const { formatMessage } = useIntl();
   const { setFilters, buildEndYears } = useFilters();
 
@@ -31,7 +31,7 @@ export const CompletionDate: FC = () => {
 
   return (
     <FilterLayout
-      name={formatMessage({ id: 'completion_date' })}
+      name={renderName ? formatMessage({ id: 'completion_date' }) : ''}
       isActiveFilter={!!buildEndYears?.length}
       onResetFilter={handleReset}
       filter={

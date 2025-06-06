@@ -7,7 +7,7 @@ import { detailApi } from '@/widgets/Detail/api/detailApi';
 import { getNavigate } from '@/pages/Authorization';
 import { LayoutForm } from '@/widgets/RegistrationLayout/LayoutForm/LayoutForm';
 
-export const Register: FC = () => {
+const Register: FC = () => {
   const { formatMessage } = useIntl();
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
@@ -201,3 +201,5 @@ export const Register: FC = () => {
     />
   );
 };
+
+export default Register;

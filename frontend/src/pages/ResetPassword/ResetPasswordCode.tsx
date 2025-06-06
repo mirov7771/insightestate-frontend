@@ -4,7 +4,7 @@ import { useNavigate, useLocation, Link } from 'react-router';
 import { LayoutForm } from '@/widgets/RegistrationLayout/LayoutForm/LayoutForm';
 import { Button, Input, Text } from '@/shared/ui';
 
-export const ResetPasswordCode: FC = () => {
+const ResetPasswordCode: FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { login = '' } = location.state || {};
@@ -50,3 +50,5 @@ export const ResetPasswordCode: FC = () => {
     />
   );
 };
+
+export default ResetPasswordCode;

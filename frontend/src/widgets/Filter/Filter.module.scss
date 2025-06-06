@@ -1,7 +1,8 @@
 @use '~@/sass/index' as *;
 
 .filters {
-  width: 448px;
+  width: 100%;
+  max-width: 448px;
 
   &__wrapper {
     display: flex;
@@ -96,11 +97,34 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    gap: 8px;
   }
 
   &__reset {
     color: var(--ui-color-primary-2);
     cursor: pointer;
     margin-left: auto;
+  }
+}
+
+.price {
+  display: flex;
+  gap: 8px;
+  flex-wrap: nowrap;
+}
+
+.slider {
+  .thumb {
+    background-color: var(--ui-color-white);
+    border: 2px solid var(--ui-color-primary-2);
+
+    &:hover {
+      box-shadow: none;
+    }
+  }
+
+  .track {
+    background-color: var(--ui-color-primary-2);
+    border-color: var(--ui-color-primary-2);
   }
 }

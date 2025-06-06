@@ -14,6 +14,96 @@
 .header {
   margin-bottom: 48px;
   display: inline-block;
+  width: 100%;
+  background-color: var(--ui-color-white);
+  padding-bottom: 8px;
+  position: sticky;
+  top: 68px;
+  z-index: 3;
+}
+
+.button {
+  & > svg {
+    width: 20px;
+    height: 20px;
+    color: var(--ui-color-black);
+
+    @media (min-width: $media-md) {
+      margin-right: 8px;
+    }
+  }
+
+  &__text {
+    display: none;
+
+    @media (min-width: $media-md) {
+      display: block;
+    }
+  }
+
+  &__counter {
+    color: var(--ui-color-white);
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: var(--ui-color-red);
+    margin-left: 8px;
+  }
+}
+
+.filters {
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    display: none;
+    width: 100%;
+    max-width: 128px;
+    background: linear-gradient(270deg, #ffffff 29.3%, rgba(255, 255, 255, 0) 100%);
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    z-index: 1;
+
+    @media (min-width: $media-md) {
+      display: block;
+    }
+  }
+
+  &__scroll {
+    display: flex;
+    gap: 8px;
+    flex-wrap: nowrap;
+    overflow: auto;
+    position: relative;
+
+    @media (min-width: $media-md) {
+      padding-right: 128px;
+    }
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      display: none;
+    }
+
+    &::-webkit-scrollbar-button {
+      display: none;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    gap: 16px;
+    flex-wrap: nowrap;
+  }
 }
 
 .layout {

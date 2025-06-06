@@ -6,7 +6,7 @@ import { LayoutForm } from '@/widgets/RegistrationLayout/LayoutForm/LayoutForm';
 import { resetPasswordApi } from '@/shared/api/resetPassword/resetPasswordApi';
 import { FETCHING_STATUS } from '@/shared/constants/constants';
 
-export const ResetPassword: FC = () => {
+const ResetPassword: FC = () => {
   const { formatMessage } = useIntl();
   const navigate = useNavigate();
   const [email, setEmail] = useState<string>('');
@@ -63,3 +63,5 @@ export const ResetPassword: FC = () => {
     />
   );
 };
+
+export default ResetPassword;

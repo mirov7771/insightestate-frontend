@@ -15,7 +15,7 @@ import { TData } from './types';
 import { Spacer } from '@/widgets/Spacer/Spacer';
 import { UserDeleteModal } from '@/widgets/Modal/UserDeleteModal';
 
-export const Profile: FC = () => {
+const Profile: FC = () => {
   const { formatMessage } = useIntl();
   const navigate = useNavigate();
   const [token, setToken] = useState(localStorage.getItem('basicToken'));
@@ -288,3 +288,5 @@ export const Profile: FC = () => {
     </div>
   );
 };
+
+export default Profile;

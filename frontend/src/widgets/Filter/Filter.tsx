@@ -18,15 +18,11 @@ import { Button, Text } from '@/shared/ui';
 import { AiModal } from '@/widgets/Modal/AiModal';
 import { OfferCollectionX } from '@/shared/assets/icons';
 
-type FilterProps = {
-  open: boolean;
-  setOpen: Dispatch<SetStateAction<boolean>>;
-  count?: number;
-};
+type FilterProps = { open: boolean; setOpen: Dispatch<SetStateAction<boolean>> };
 
-export const Filter: FC<FilterProps> = ({ open, setOpen, count }) => {
+export const Filter: FC<FilterProps> = ({ open, setOpen }) => {
   const { formatMessage } = useIntl();
-  const { setFilters } = useFilters();
+  const { setFilters, totalCount } = useFilters();
   const resetFilters = () => {
     setFilters(DEFAULT_FILTERS);
   };
@@ -39,7 +35,14 @@ export const Filter: FC<FilterProps> = ({ open, setOpen, count }) => {
   };
 
   return (
-    <SwipeableDrawer onClose={handleClose} onOpen={handleOpen} open={open} anchor="right">
+    <SwipeableDrawer
+      onClose={handleClose}
+      onOpen={handleOpen}
+      open={open}
+      anchor="right"
+      disableSwipeToOpen
+      disableDiscovery
+    >
       <div className={styles.filters}>
         <div className={styles.header}>
           <h5>{formatMessage({ id: 'filters.header' })}</h5>
@@ -62,7 +65,9 @@ export const Filter: FC<FilterProps> = ({ open, setOpen, count }) => {
         </div>
         <div className={styles.filters__buttons}>
           <Button variant="primary" onClick={handleClose} wide>
-            <Text variant="heading4">{formatMessage({ id: 'show_count' }).replace('%s', (count || 0) + '' )}</Text>
+            <Text variant="heading4">
+              {formatMessage({ id: 'filter.show_objects' }, { totalCount })}
+            </Text>
           </Button>
           <Button variant="base" onClick={resetFilters} wide>
             <Text variant="heading4">{formatMessage({ id: 'filter_clear' })}</Text>

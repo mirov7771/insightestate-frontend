@@ -5,10 +5,10 @@ import { Switcher, Text, Button } from '@/shared/ui';
 import { useNavigate, useSearchParams } from 'react-router';
 import { TariffCard } from '@/pages/Tariffs/TariffCard/TariffCard';
 import { useIntl } from 'react-intl';
-import {Spacer} from "@/widgets/Spacer/Spacer";
-import {isMobile} from "react-device-detect";
+import { Spacer } from '@/widgets/Spacer/Spacer';
+import { isMobile } from 'react-device-detect';
 
-export const Tariffs: FC = () => {
+const Tariffs: FC = () => {
   const { formatMessage } = useIntl();
   const [tariffs, setTariffs] = useState<TariffRs>();
   const [extra, setExtra] = useState(false);
@@ -16,11 +16,13 @@ export const Tariffs: FC = () => {
   const [extraId, setExtraId] = useState<string>();
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
-  const [mySubsId, seMySubsId] = useState(localStorage.getItem('subscriptionId') || 'f1628768-72c2-40e4-9e6d-7c4ab7b1909b')
+  const [mySubsId, seMySubsId] = useState(
+    localStorage.getItem('subscriptionId') || 'f1628768-72c2-40e4-9e6d-7c4ab7b1909b'
+  );
 
   const handleSubsId = (id: string) => {
-      seMySubsId(id)
-  }
+    seMySubsId(id);
+  };
 
   useEffect(() => {
     const tariffId = searchParams.get('tariffId');
@@ -47,7 +49,7 @@ export const Tariffs: FC = () => {
         .catch((e) => console.log(e));
     }
 
-      seMySubsId(localStorage.getItem('subscriptionId') || 'f1628768-72c2-40e4-9e6d-7c4ab7b1909b')
+    seMySubsId(localStorage.getItem('subscriptionId') || 'f1628768-72c2-40e4-9e6d-7c4ab7b1909b');
   }, []);
 
   const handleChangeChecked = (e: ChangeEvent<HTMLInputElement>) => {
@@ -67,15 +69,15 @@ export const Tariffs: FC = () => {
       .catch((e) => console.log(e));
   }, [extra]);
 
-    const handleTariff = () => {
-        estateCollectionApi
-            .saveUserSubscription('f1628768-72c2-40e4-9e6d-7c4ab7b1909b')
-            .then(async () => {
-                localStorage.setItem('subscriptionId', 'f1628768-72c2-40e4-9e6d-7c4ab7b1909b');
-                navigate('/listing');
-            })
-            .catch((e) => console.log(e));
-    };
+  const handleTariff = () => {
+    estateCollectionApi
+      .saveUserSubscription('f1628768-72c2-40e4-9e6d-7c4ab7b1909b')
+      .then(async () => {
+        localStorage.setItem('subscriptionId', 'f1628768-72c2-40e4-9e6d-7c4ab7b1909b');
+        navigate('/listing');
+      })
+      .catch((e) => console.log(e));
+  };
 
   return (
     <>
@@ -86,9 +88,13 @@ export const Tariffs: FC = () => {
         <Text variant="body1" as="h2" align="center" className={styles.description}>
           {formatMessage({ id: 'tariff_description' })}
         </Text>
-        <Spacer height={35} width={100}/>
-        <Text variant="heading4" as="span" className={isMobile ? styles.badge_mobile : styles.badge}>
-            {formatMessage({ id: 'tariff_free_description' })}
+        <Spacer height={35} width={100} />
+        <Text
+          variant="heading4"
+          as="span"
+          className={isMobile ? styles.badge_mobile : styles.badge}
+        >
+          {formatMessage({ id: 'tariff_free_description' })}
         </Text>
       </div>
       <div className={styles.wrapper}>
@@ -121,24 +127,27 @@ export const Tariffs: FC = () => {
           />
         ))}
       </div>
-        <div style={{
-            width: isMobile ? '70%' : '50%',
-            margin: 'auto',
-        }}>
-            <Spacer height={35} width={100}/>
-            <Button
-                onClick={handleTariff}
-                wide
-                size="l"
-            >{
-               mySubsId === 'f1628768-72c2-40e4-9e6d-7c4ab7b1909b' ?
-                   <Text variant="heading4">{formatMessage({ id: 'tariff_free_continue' })}</Text> :
-                   <Text variant="heading4">{formatMessage({ id: 'tariff_continue_button' })}{' '}{mySubsId == 'b749d197-846e-49d4-aedc-abf7b3784b11' ? 'Pro' : 'Standart'}</Text>
-            }
-
-            </Button>
-            <Spacer height={35} width={100}/>
-        </div>
+      <div
+        style={{
+          width: isMobile ? '70%' : '50%',
+          margin: 'auto',
+        }}
+      >
+        <Spacer height={35} width={100} />
+        <Button onClick={handleTariff} wide size="l">
+          {mySubsId === 'f1628768-72c2-40e4-9e6d-7c4ab7b1909b' ? (
+            <Text variant="heading4">{formatMessage({ id: 'tariff_free_continue' })}</Text>
+          ) : (
+            <Text variant="heading4">
+              {formatMessage({ id: 'tariff_continue_button' })}{' '}
+              {mySubsId == 'b749d197-846e-49d4-aedc-abf7b3784b11' ? 'Pro' : 'Standart'}
+            </Text>
+          )}
+        </Button>
+        <Spacer height={35} width={100} />
+      </div>
     </>
   );
 };
+
+export default Tariffs;

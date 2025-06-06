@@ -68,6 +68,7 @@ import OfferCollectionDeviceLaptop from './offer-collection/tabler-icon-device-l
 import OfferCollectionHorseToy from './offer-collection/tabler-icon-horse-toy.svg?react';
 import OfferCollectionWalk from './offer-collection/tabler-icon-walk.svg?react';
 import OfferCollectionCar from './offer-collection/tabler-icon-car.svg?react';
+import OfferCollectionAdjustmentsFilter from './offer-collection/tabler-icon-adjustments-filter.svg?react';
 import FilterIcon from './FilterIcon.svg?react';
 
 export {
@@ -142,5 +143,6 @@ export {
   OfferCollectionHorseToy,
   OfferCollectionWalk,
   OfferCollectionCar,
-  FilterIcon
+  FilterIcon,
+  OfferCollectionAdjustmentsFilter,
 };

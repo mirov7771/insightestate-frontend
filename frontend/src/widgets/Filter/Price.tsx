@@ -1,51 +1,54 @@
-import { ChangeEvent, FC, useEffect, useMemo, useState } from 'react';
+import { ChangeEvent, FC, useMemo, useState } from 'react';
 import styles from './Filter.module.scss';
+import Slider from '@mui/material/Slider';
 import { Input } from '@/shared/ui';
 import { useFilters } from '@/widgets/Filter/model/useFilters';
 import { useIntl } from 'react-intl';
-import { CustomSlider } from '@/widgets/Filter/CustomSlider';
-import { formatNumber } from '@/shared/utils';
+import { debounce } from '@/shared/utils';
 import { FilterLayout } from '@/widgets/Filter/FilterLayout';
 
 export const Price: FC = () => {
   const { formatMessage } = useIntl();
   const { setFilters, minPrice, maxPrice } = useFilters();
-  const [values, setValues] = useState<number[]>([0, 4000000]);
+  const [value, setValues] = useState<number[]>([0, 4000000]);
 
-  useEffect(() => {
-    if (minPrice === 0 && maxPrice === 4000000) setValues([0, 4000000]);
-  }, [minPrice, maxPrice]);
+  const debouncedSetMinPrice = useMemo(
+    () =>
+      debounce((val: number) => {
+        setFilters((prevState) => ({ ...prevState, minPrice: val }));
+      }, 500),
+    [setFilters]
+  );
 
-  const handleClick = (event: Event, value: number | number[], activeThumb: number) => {
-    setValues(value as number[]);
-    setFilters((filtersState) => ({
-      ...filtersState,
-      minPrice: (value as number[])[0],
-      maxPrice: (value as number[])[1],
-    }));
+  const debouncedSetMaxPrice = useMemo(
+    () =>
+      debounce((val: number) => {
+        setFilters((prevState) => ({ ...prevState, maxPrice: val }));
+      }, 500),
+    [setFilters]
+  );
+
+  const handleChange = (event: Event, newValue: number[]) => {
+    setValues(newValue);
+  };
+  const handleChangeCommitted = (newValue: number[]) => {
+    setFilters((prevState) => ({ ...prevState, maxPrice: newValue[1], minPrice: newValue[0] }));
   };
 
-  const handleMinPrice = (e: ChangeEvent<HTMLInputElement>) => {
-    setFilters((filtersState) => ({ ...filtersState, minPrice: (e.target.value || 0) as number }));
-  };
+  const handleChangeInput = (type: 'min' | 'max') => (e: ChangeEvent<HTMLInputElement>) => {
+    const val = Number(e.target.value) || (type === 'min' ? 0 : 4000000);
 
-  const handleMaxPrice = (e: ChangeEvent<HTMLInputElement>) => {
-    const value = (e.target.value || 0) as number;
-
-    if (value > 0)
-      setFilters((filtersState) => ({
-        ...filtersState,
-        maxPrice: (e.target.value || 0) as number,
-      }));
-  };
-
-  const labelValue = (value: number) => {
-    if (value === 0) return '0 $';
-    return `${formatNumber(value)} $`;
+    if (type === 'min') {
+      setValues((prev) => [val, prev[1]]);
+      debouncedSetMinPrice(val);
+    }
+    if (type === 'max') {
+      setValues((prev) => [prev[0], val]);
+      debouncedSetMaxPrice(val);
+    }
   };
 
   const isActiveFilter = useMemo(() => {
-    console.log({ minPrice, maxPrice });
     return (
       (typeof minPrice === 'number' && minPrice > 0) ||
       (typeof maxPrice === 'number' && maxPrice < 4000000)
@@ -68,53 +71,21 @@ export const Price: FC = () => {
       onResetFilter={handleReset}
       filter={
         <div className={styles.content}>
-          <CustomSlider
+          <Slider
+            className={styles.slider}
+            classes={{ thumb: styles.thumb, track: styles.track, rail: styles.track }}
             min={0}
             max={4000000}
-            step={10000}
-            style={{
-              width: '95%',
-              marginTop: '10px',
+            onChangeCommitted={(e, value) => {
+              handleChangeCommitted(value as number[]);
             }}
-            getAriaValueText={labelValue}
-            valueLabelFormat={labelValue}
-            valueLabelDisplay={'on'}
-            value={values}
-            onChange={handleClick}
+            value={value}
+            onChange={(event, value) => handleChange(event, value as number[])}
+            valueLabelDisplay="auto"
           />
-          <div
-            style={{
-              display: 'inline-flex',
-              width: '95%',
-              alignItems: 'center',
-              gap: '10px',
-            }}
-          >
-            <Input
-              placeholder={'min'}
-              value={minPrice}
-              name="min"
-              type={'number'}
-              defaultValue={0}
-              onChange={handleMinPrice}
-              style={{
-                minHeight: '30px',
-                fontSize: '12px',
-              }}
-            />
-            <p>-</p>
-            <Input
-              placeholder={'max'}
-              value={maxPrice}
-              name="max"
-              type={'number'}
-              defaultValue={4000000}
-              onChange={handleMaxPrice}
-              style={{
-                minHeight: '30px',
-                fontSize: '12px',
-              }}
-            />
+          <div className={styles.price}>
+            <Input value={value[0]} onChange={handleChangeInput('min')} />
+            <Input value={value[1]} onChange={handleChangeInput('max')} />
           </div>
         </div>
       }
