@@ -131,13 +131,27 @@ export const CardSlide: FC<CardSlideProps> = ({
           </div>
           {!!token && (
             <div className={styles.right}>
-              <Button
-                onClick={handleOpenUserCollectionModal}
-                size="s"
-                className={styles.card__button}
-              >
-                <Text variant="heading5">+ {formatMessage({ id: 'add_to_collection' })}</Text>
-              </Button>
+              {(estate.collectionCount || 0) !== 0 ?
+                  <Button
+                      onClick={handleOpenUserCollectionModal}
+                      size="s"
+                      className={styles.card__button}
+                      style={{
+                        backgroundColor: 'white',
+                        color: 'black',
+                        border: '1px solid #04b0be',
+                      }}
+                  >
+                    <Text variant="heading5">+ {formatMessage({ id: 'in_collection' }).replace('%s', (estate.collectionCount || 0) + '')}</Text>
+                  </Button> :
+                  <Button
+                      onClick={handleOpenUserCollectionModal}
+                      size="s"
+                      className={styles.card__button}
+                  >
+                    <Text variant="heading5">+ {formatMessage({ id: 'add_to_collection' })}</Text>
+                  </Button>
+              }
             </div>
           )}
         </div>

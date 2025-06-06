@@ -22,6 +22,7 @@ export type Estate = {
   toolTip1?: string;
   toolTip2?: string;
   toolTip3?: string;
+  collectionCount?: number;
 };
 
 export type GetEstateParams = {
@@ -57,7 +58,11 @@ type ResponseGetEstate = {
 export const filterApi = {
   getEstate: async (params?: GetEstateParams): Promise<AxiosResponse<ResponseGetEstate>> => {
     try {
-      const response = await api.get<ResponseGetEstate>('v1/estate', {
+      const userId = localStorage.getItem('userId')
+      const response = userId ? await api.get<ResponseGetEstate>('v1/estate', {
+        params: { ...params, pageSize: 4 },
+        headers: { 'x-user-id': userId },
+      }) : await api.get<ResponseGetEstate>('v1/estate', {
         params: { ...params, pageSize: 4 },
       });
 
