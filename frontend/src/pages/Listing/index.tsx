@@ -6,12 +6,14 @@ import { useFilters } from '@/widgets/Filter/model/useFilters';
 import { useIntl } from 'react-intl';
 import { InfoModal } from '@/shared/ui/modals';
 import { CardSlide } from '@/entities/CardSlide/CardSlide';
+import {Spacer} from "@/widgets/Spacer/Spacer";
+import {FilterIcon} from "@/shared/assets/icons";
 
 const Listing: FC = () => {
   const { formatMessage } = useIntl();
-  const { setFilters, pageNumber, estates, totalPages, hasMore, loading } = useFilters();
+  const { setFilters, pageNumber, estates, totalPages, hasMore, loading, totalCount } = useFilters();
   const token = localStorage.getItem('basicToken');
-  const [openFilters, setOpenFilters] = useState(true);
+  const [openFilters, setOpenFilters] = useState(false);
 
   const [infoModal, setInfoModal] = useState(false);
   const [infoTitle, setInfoTitle] = useState('');
@@ -35,9 +37,18 @@ const Listing: FC = () => {
 
   return (
     <div className={styles.wrap}>
-      <h1 className={styles.header}>{formatMessage({ id: 'projects' })}</h1>
-      <Button onClick={() => setOpenFilters(true)}>Все фильтры</Button>
-      <Filter open={openFilters} setOpen={setOpenFilters} />
+      {/*<h1 className={styles.header}>{formatMessage({ id: 'projects' })}</h1>*/}
+      <Button
+          style={{
+              backgroundColor: 'white',
+              color: 'black',
+              border: '1px solid #04b0be',
+          }}
+          onClick={() => setOpenFilters(true)}>
+          <FilterIcon />{formatMessage( {id: 'all_filters'} )}
+      </Button>
+      <Spacer height={30} width={100}/>
+      <Filter open={openFilters} setOpen={setOpenFilters} count={totalCount}/>
       <div className={styles.layout}>
         <main className={styles.main}>
           {!loading && !estates.length && (

@@ -68,6 +68,7 @@ import OfferCollectionDeviceLaptop from './offer-collection/tabler-icon-device-l
 import OfferCollectionHorseToy from './offer-collection/tabler-icon-horse-toy.svg?react';
 import OfferCollectionWalk from './offer-collection/tabler-icon-walk.svg?react';
 import OfferCollectionCar from './offer-collection/tabler-icon-car.svg?react';
+import FilterIcon from './FilterIcon.svg?react';
 
 export {
   Bed,
@@ -141,4 +142,5 @@ export {
   OfferCollectionHorseToy,
   OfferCollectionWalk,
   OfferCollectionCar,
+  FilterIcon
 };

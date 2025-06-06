@@ -32,6 +32,7 @@ type FiltersContextValues = GetEstateParams & {
   loading: boolean;
   setFilters: Dispatch<SetStateAction<GetEstateParams>>;
   totalPages: number;
+  totalCount: number;
 };
 
 const FiltersContext = createContext<FiltersContextValues | undefined>(undefined);
@@ -42,6 +43,7 @@ export const FiltersProvider: FC<PropsWithChildren> = ({ children }) => {
   const [totalPages, setTotalPages] = useState<number>(0);
   const [hasMore, setHasMore] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
+  const [totalCount, setTotalCount] = useState<number>(0);
 
   useEffect(() => {
     setLoading(true);
@@ -51,13 +53,14 @@ export const FiltersProvider: FC<PropsWithChildren> = ({ children }) => {
         setEstates(response.data.items);
         setTotalPages(response.data.totalPages);
         setHasMore(response.data.hasMore);
+        setTotalCount(response.data.totalCount)
       })
       .finally(() => setLoading(false));
   }, [filters]);
 
   const contextValue = useMemo(
-    () => ({ ...filters, setFilters, estates, totalPages, hasMore, loading }),
-    [filters, estates, totalPages, hasMore, loading]
+    () => ({ ...filters, setFilters, estates, totalPages, hasMore, loading, totalCount }),
+    [filters, estates, totalPages, hasMore, loading, totalCount]
   );
 
   return <FiltersContext.Provider value={contextValue}>{children}</FiltersContext.Provider>;

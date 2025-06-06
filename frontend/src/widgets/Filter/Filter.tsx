@@ -18,9 +18,13 @@ import { Button, Text } from '@/shared/ui';
 import { AiModal } from '@/widgets/Modal/AiModal';
 import { OfferCollectionX } from '@/shared/assets/icons';
 
-type FilterProps = { open: boolean; setOpen: Dispatch<SetStateAction<boolean>> };
+type FilterProps = {
+  open: boolean;
+  setOpen: Dispatch<SetStateAction<boolean>>;
+  count?: number;
+};
 
-export const Filter: FC<FilterProps> = ({ open, setOpen }) => {
+export const Filter: FC<FilterProps> = ({ open, setOpen, count }) => {
   const { formatMessage } = useIntl();
   const { setFilters } = useFilters();
   const resetFilters = () => {
@@ -58,7 +62,7 @@ export const Filter: FC<FilterProps> = ({ open, setOpen }) => {
         </div>
         <div className={styles.filters__buttons}>
           <Button variant="primary" onClick={handleClose} wide>
-            <Text variant="heading4">Показать 26 объектов</Text>
+            <Text variant="heading4">{formatMessage({ id: 'show_count' }).replace('%s', (count || 0) + '' )}</Text>
           </Button>
           <Button variant="base" onClick={resetFilters} wide>
             <Text variant="heading4">{formatMessage({ id: 'filter_clear' })}</Text>
