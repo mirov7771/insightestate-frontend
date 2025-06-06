@@ -22,6 +22,7 @@ export type Estate = {
   toolTip1?: string;
   toolTip2?: string;
   toolTip3?: string;
+  collectionCount?: number;
 };
 
 export type GetEstateParams = {

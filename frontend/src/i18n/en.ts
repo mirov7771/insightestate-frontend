@@ -316,5 +316,7 @@ export default {
   'filters.header': 'Filters',
 
   tariff_free_description: '🎉 You are participating in the beta test! All tariffs are free for you during the testing period.  We have already activated the Pro tariff — no restrictions',
-  tariff_continue_button: 'Continue with '
+  tariff_continue_button: 'Continue with ',
+
+  in_collection: 'In %s selection'
 };
