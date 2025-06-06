@@ -17,7 +17,7 @@ export const FilterLayout: FC<FilterLayoutProps> = ({
 }) => {
   return (
     <div className={styles.layout}>
-      {(!!name || isActiveFilter) && (
+      {!!name && (
         <div className={styles.layout__header}>
           {name && <Text variant="heading3-1">{name}</Text>}
           {isActiveFilter && (

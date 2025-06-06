@@ -72,7 +72,6 @@ type FiltersContextValues = GetEstateParams & {
   setFilters: Dispatch<SetStateAction<GetEstateParams>>;
   totalCount: number;
   totalPages: number;
-  totalCount: number;
 };
 
 const FiltersContext = createContext<FiltersContextValues | undefined>(undefined);
@@ -105,11 +104,7 @@ export const FiltersProvider: FC<PropsWithChildren> = ({ children }) => {
       setLoading(false);
     }
 
-    const val = activeFiltersCounter(filters);
-
-    console.log({ val });
-
-    setCountActiveFilters(val);
+    setCountActiveFilters(activeFiltersCounter(filters));
   }, [filters]);
 
   useEffect(() => {
