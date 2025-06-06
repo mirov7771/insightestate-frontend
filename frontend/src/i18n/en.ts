@@ -321,5 +321,9 @@ export default {
   in_collection: 'In %s selection',
   all_filters: 'All filters',
 
-  show_count: 'Show %s objects'
+  show_count: 'Show %s objects',
+
+  from_5: 'Up to 5 minutes',
+  from_15: 'Up to 15 minutes',
+  from_30: 'Up to 30 minutes',
 };
