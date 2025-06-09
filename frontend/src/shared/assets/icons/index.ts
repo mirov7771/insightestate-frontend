@@ -70,6 +70,7 @@ import OfferCollectionWalk from './offer-collection/tabler-icon-walk.svg?react';
 import OfferCollectionCar from './offer-collection/tabler-icon-car.svg?react';
 import OfferCollectionAdjustmentsFilter from './offer-collection/tabler-icon-adjustments-filter.svg?react';
 import FilterIcon from './FilterIcon.svg?react';
+import EstateIcon from './EstateIcon.svg?react';
 
 export {
   Bed,
@@ -145,4 +146,5 @@ export {
   OfferCollectionCar,
   FilterIcon,
   OfferCollectionAdjustmentsFilter,
+  EstateIcon
 };

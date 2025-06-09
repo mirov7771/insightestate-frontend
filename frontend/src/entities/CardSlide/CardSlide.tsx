@@ -8,7 +8,7 @@ import styles from './CardSlide.module.scss';
 import { Button, Text } from '@/shared/ui';
 import { AdvantagesBadges } from '@/entities/CardSlide/AdvantagesBadges';
 import { UserCollectionModal } from '@/widgets/Modal/UserCollectionModal';
-import { OfferCollectionCar, OfferCollectionWalk } from '@/shared/assets/icons';
+import {EstateIcon, OfferCollectionCar, OfferCollectionWalk, VectorRating} from '@/shared/assets/icons';
 import { CardSlideSkeleton } from '@/entities/CardSlide/CardSlideSkeleton';
 
 type CardSlideProps = {
@@ -80,7 +80,17 @@ export const CardSlide: FC<CardSlideProps> = ({
         <div className={styles.card__slider}>
           <ul className={styles.badges}>
             <li className={styles.badges__badge} onClick={openRatingInfo}>
-              <Text variant="heading4">{estate.grade.toPrecision(2)}</Text>
+              <Text variant="heading4">
+                <div style={{
+                  display: 'inline-flex',
+                  gap: '5px',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}>
+                <EstateIcon />
+                {estate.grade.toPrecision(2)}
+                </div>
+              </Text>
             </li>
             {estate.buildEndDate !== '-' && (
               <li className={styles.badges__badge}>
