@@ -35,12 +35,6 @@ export const Potential: FC<{ renderName?: boolean }> = ({ renderName = true }) =
       filter={
         <div className={styles.content}>
           <Checkbox
-            value="3"
-            onChange={handleClick}
-            checked={grades?.includes('3')}
-            label={formatMessage({ id: 'invest_f1' })}
-          />
-          <Checkbox
             value="4"
             onChange={handleClick}
             checked={grades?.includes('4')}

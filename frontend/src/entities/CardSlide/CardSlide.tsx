@@ -128,7 +128,7 @@ export const CardSlide: FC<CardSlideProps> = ({
                 {estate.city}, {estate.beach}
               </Text>
               <Text variant="body1">
-                {formatMessage({ id: 'to_beach' })}:{' '}
+                {estate.city !== 'Bangkok' ? `${formatMessage({ id: 'to_beach' })}: ` : `${formatMessage({ id: 'to_subway' })}: `}
                 <span>
                   <OfferCollectionCar /> {estate.beachTravelTimeCar} {formatMessage({ id: 'min' })}
                 </span>
