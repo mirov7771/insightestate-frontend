@@ -58,8 +58,8 @@ export const Filter: FC<FilterProps> = ({ open, setOpen }) => {
           <NumberOfBedrooms />
           <Price />
           <Potential />
-          <Beach />
-          <Airport />
+          <Beach renderName/>
+          <Airport renderName/>
           <Company />
           <AiFilter />
         </div>
