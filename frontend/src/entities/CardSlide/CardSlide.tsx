@@ -10,6 +10,7 @@ import { AdvantagesBadges } from '@/entities/CardSlide/AdvantagesBadges';
 import { UserCollectionModal } from '@/widgets/Modal/UserCollectionModal';
 import {EstateIcon, OfferCollectionCar, OfferCollectionWalk, VectorRating} from '@/shared/assets/icons';
 import { CardSlideSkeleton } from '@/entities/CardSlide/CardSlideSkeleton';
+import {useNavigate} from "react-router";
 
 type CardSlideProps = {
   clickable: boolean;
@@ -36,6 +37,7 @@ export const CardSlide: FC<CardSlideProps> = ({
     ...(estate.interiorImages || []),
     ...(estate.facilityImages || []),
   ].slice(0, 4);
+  const navigate = useNavigate()
 
   const handleOpenInfoModal = () => {
     setInfoModal(true);
@@ -70,6 +72,10 @@ export const CardSlide: FC<CardSlideProps> = ({
     setUserCollectionModal(false);
   };
 
+  const goToProperty = () => {
+    navigate(`/property/${estate.id}`)
+  }
+
   console.log({ estate });
 
   return loading ? (
@@ -103,7 +109,12 @@ export const CardSlide: FC<CardSlideProps> = ({
               </li>
             )}
           </ul>
-          <Slider images={images} />
+          <a href={`/property/${estate.id}`}
+             target="_blank"
+             rel="noreferrer"
+          >
+          <Slider images={images}/>
+          </a>
           <div className={styles.info}>
             <Text variant="heading3" className={styles.info__price}>
               {formatMessage({ id: 'from' })}{' '}
@@ -122,7 +133,13 @@ export const CardSlide: FC<CardSlideProps> = ({
         </div>
         <div className={styles.card__content}>
           <div className={styles.left}>
-            <Text variant="heading3-1">{estate.name}</Text>
+            <a href={`/property/${estate.id}`}
+               target="_blank"
+               rel="noreferrer"
+               className={styles.card__title}
+            >
+              <Text variant="heading3-1">{estate.name}</Text>
+            </a>
             <div className={styles.card__desciption}>
               <Text variant="body1">
                 {estate.city}, {estate.beach}

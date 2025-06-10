@@ -231,6 +231,15 @@
     }
   }
 
+  &__title {
+    font-size: var(--heading--h6);
+    margin-top: 16px;
+    color: var(--dark);
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+  }
+
   &__button {
     margin: 0 auto;
     width: 100%;
