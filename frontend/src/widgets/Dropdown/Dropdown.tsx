@@ -8,7 +8,7 @@ import { Button, Text } from '@/shared/ui';
 import Menu from '@mui/material/Menu';
 import { useNavigate } from 'react-router';
 
-export const Dropdown: FC = () => {
+export const Dropdown: FC<{unauth?: boolean}> = ({unauth}) => {
   const { formatMessage } = useIntl();
   const navigate = useNavigate();
 
@@ -94,6 +94,7 @@ export const Dropdown: FC = () => {
           <Text variant="heading5">Eng</Text>
         </MenuItem>
       </Menu>
+        {unauth ? <></> :
       <Button
         type={'submit'}
         size={'s'}
@@ -107,6 +108,7 @@ export const Dropdown: FC = () => {
       >
         {formatMessage({ id: 'login.exit' })}
       </Button>
+        }
     </div>
   );
 };

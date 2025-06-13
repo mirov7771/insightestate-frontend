@@ -3,6 +3,7 @@ import { Header } from './Header/Header';
 import { Footer } from './Footer/Footer';
 import styles from './Layout.module.scss';
 import { useEffect, useState } from 'react';
+import {HeaderUnauth} from "@/widgets/Layout/Header/HeaderUnauth";
 
 const Layout = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -31,6 +32,7 @@ const Layout = () => {
       ) : (
         <>
           <main className={styles.main}>
+            <HeaderUnauth />
             <Outlet />
           </main>
         </>

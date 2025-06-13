@@ -88,7 +88,7 @@ const ItemCollection: FC<EstateCollection & { token: string; value: number }> = 
   const handleCopyLink = async () => {
     try {
       setCopyLinkStatus('LOADING');
-      const fullUrl = `${window.location.origin}${collectionLink}`;
+      const fullUrl = `${window.location.origin}${collectionLinkClient}`;
       const result = await copyToClipboard(fullUrl);
 
       if (result) {
