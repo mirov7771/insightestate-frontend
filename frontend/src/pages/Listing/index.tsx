@@ -17,6 +17,9 @@ import { Potential } from '@/widgets/Filter/Potential';
 import { Beach } from '@/widgets/Filter/Beach';
 import { Airport } from '@/widgets/Filter/Airport';
 import {filterApi} from "@/widgets/Filter/api/filterApi";
+import {useSearchParams} from "react-router";
+import {types} from "sass";
+import Number = types.Number;
 
 const Listing: FC = () => {
   const { formatMessage } = useIntl();
@@ -36,6 +39,7 @@ const Listing: FC = () => {
   const [infoModal, setInfoModal] = useState(false);
   const [infoTitle, setInfoTitle] = useState('');
   const infoText = formatMessage({ id: 'listing.info' });
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const handleOpenInfoModal = () => {
     setInfoModal(true);
@@ -51,6 +55,11 @@ const Listing: FC = () => {
       localStorage.setItem('onboarding', 'showed');
       handleOpenInfoModal();
     }
+
+    setFilters((filtersState) => ({
+      ...filtersState,
+      pageNumber: parseInt(searchParams.get('page') || '0'),
+    }))
   }, []);
 
   return (
@@ -137,6 +146,10 @@ const Listing: FC = () => {
                 ...filtersState,
                 pageNumber: page - 1,
               }));
+              setSearchParams(params => {
+                params.set("page", (page - 1) + '');
+                return params;
+              });
             }}
             totalPages={totalPages}
             pageNumber={(pageNumber as number) + 1}

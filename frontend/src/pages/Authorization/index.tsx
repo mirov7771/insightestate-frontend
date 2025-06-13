@@ -17,11 +17,18 @@ export const getNavigate = async () => {
   if (subscriptionId) {
     localStorage.setItem('subscriptionId', subscriptionId);
   }
-  if (payAmount > 0) {
-    return '/tariffs';
+
+  const openAuth = parseInt(localStorage.getItem('openAuth') || '0');
+  if (openAuth === 0) {
+    localStorage.setItem('openAuth', (openAuth + 1) + '')
+    return '/tariffs'
+  } else if (openAuth < 4) {
+    localStorage.setItem('openAuth', (openAuth + 1) + '')
+    return 'listing'
+  } else {
+    localStorage.setItem('openAuth', '0')
+    return 'listing'
   }
-  return '/tariffs';
-  // return '/tariffs';
 };
 
 const Authorization: FC = () => {

@@ -32,7 +32,7 @@ const activeFiltersCounter = (filters: GetEstateParams): number => {
 
   Object.entries(filters).forEach(([key, value]) => {
     // Пропускаем служебные поля, если они есть
-    if (key === 'page' || key === 'pageSize') return;
+    if (key === 'page' || key === 'pageSize' || key === 'pageNumber') return;
 
     // Для массивов: если не пустой массив
     if (Array.isArray(value) && value.length > 0) {
@@ -110,10 +110,6 @@ export const FiltersProvider: FC<PropsWithChildren> = ({ children }) => {
   useEffect(() => {
     getEstate();
   }, [getEstate]);
-
-  useEffect(() => {
-    getEstate();
-  }, [localStorage.getItem('userId')]);
 
   const contextValue = useMemo(
     () => ({
