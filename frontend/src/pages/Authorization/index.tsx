@@ -18,9 +18,9 @@ export const getNavigate = async () => {
     localStorage.setItem('subscriptionId', subscriptionId);
   }
   if (payAmount > 0) {
-    return '/listing';
+    return '/tariffs';
   }
-  return '/listing';
+  return '/tariffs';
   // return '/tariffs';
 };
 

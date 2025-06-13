@@ -10,6 +10,8 @@ const Layout = () => {
   const [basicToken, setBasicToken] = useState<string | undefined | null>(
     localStorage.getItem('basicToken')
   );
+  const [location, setLocation] = useState(window.location.pathname)
+  const [showHeader, setShowHeader] = useState(false)
 
   useEffect(() => {
     localStorage.setItem(
@@ -18,6 +20,8 @@ const Layout = () => {
     );
     setBasicToken(searchParams.get('basicToken') || localStorage.getItem('basicToken'));
     console.log(basicToken);
+    setLocation(window.location.href)
+    setShowHeader(location === '/')
   }, []);
   return (
     <>
@@ -32,7 +36,9 @@ const Layout = () => {
       ) : (
         <>
           <main className={styles.main}>
-            <HeaderUnauth />
+            {
+              showHeader ? <></> : <HeaderUnauth />
+            }
             <Outlet />
           </main>
         </>

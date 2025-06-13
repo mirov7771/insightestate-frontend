@@ -78,7 +78,7 @@ const Register: FC = () => {
         .then((r) => navigate(r))
         .catch((e) => {
           console.log(e);
-          navigate('/listing');
+          navigate('/tariffs');
         });
     }
     setLoading(false);

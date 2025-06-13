@@ -98,7 +98,7 @@ export const CardSlide: FC<CardSlideProps> = ({
                 </div>
               </Text>
             </li>
-            {estate.buildEndDate !== '-' && (
+            {(estate.buildEndDate !== '-' && estate.buildEndDate) && (
               <li className={styles.badges__badge}>
                 <Text variant="heading4">{estate.buildEndDate}</Text>
               </li>
