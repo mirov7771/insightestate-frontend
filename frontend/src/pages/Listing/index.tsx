@@ -16,6 +16,7 @@ import { NumberOfBedrooms } from '@/widgets/Filter/NumberOfBedrooms';
 import { Potential } from '@/widgets/Filter/Potential';
 import { Beach } from '@/widgets/Filter/Beach';
 import { Airport } from '@/widgets/Filter/Airport';
+import {filterApi} from "@/widgets/Filter/api/filterApi";
 
 const Listing: FC = () => {
   const { formatMessage } = useIntl();
@@ -27,7 +28,7 @@ const Listing: FC = () => {
     totalCount,
     hasMore,
     loading,
-    countActiveFilters,
+    countActiveFilters
   } = useFilters();
   const token = localStorage.getItem('basicToken');
   const [openFilters, setOpenFilters] = useState(false);
@@ -142,7 +143,12 @@ const Listing: FC = () => {
           />
         </div>
       )}
-      <InfoModal setOpen={setInfoModal} open={infoModal} title={infoTitle} text={infoText} />
+      <InfoModal
+          setOpen={setInfoModal}
+          open={infoModal}
+          title={infoTitle}
+          text={infoText}
+      />
     </div>
   );
 };

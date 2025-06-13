@@ -111,6 +111,10 @@ export const FiltersProvider: FC<PropsWithChildren> = ({ children }) => {
     getEstate();
   }, [getEstate]);
 
+  useEffect(() => {
+    getEstate();
+  }, [localStorage.getItem('userId')]);
+
   const contextValue = useMemo(
     () => ({
       ...filters,
@@ -120,7 +124,7 @@ export const FiltersProvider: FC<PropsWithChildren> = ({ children }) => {
       hasMore,
       loading,
       totalCount,
-      countActiveFilters,
+      countActiveFilters
     }),
     [filters, estates, totalPages, hasMore, loading, totalCount, countActiveFilters]
   );

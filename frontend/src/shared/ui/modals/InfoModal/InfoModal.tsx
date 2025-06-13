@@ -13,6 +13,7 @@ export const InfoModal: FC<InfoModalProps> = ({ open, title, text, setOpen }) =>
   const { formatMessage } = useIntl();
   const handleCloseModal = () => {
     setOpen(false);
+    window.location.reload();
   };
 
   return (
