@@ -4,25 +4,37 @@ import { Checkbox } from '@/shared/ui';
 import { useFilters } from '@/widgets/Filter/model/useFilters';
 import { useIntl } from 'react-intl';
 import { FilterLayout } from '@/widgets/Filter/FilterLayout';
+import {useSearchParams} from "react-router";
 
 export const Region: FC = () => {
   const { formatMessage } = useIntl();
   const { setFilters, beachName, city } = useFilters();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const handleClick = (e: ChangeEvent<HTMLInputElement>) => {
     setFilters((filtersState) => ({
       ...filtersState,
+      pageNumber: 0,
       beachName: filtersState.beachName?.includes(e.target.value)
         ? filtersState.beachName?.filter((val) => val !== e.target.value)
         : [...(filtersState.beachName || []), e.target.value],
     }));
+    setSearchParams(params => {
+      params.set("page", '0');
+      return params;
+    });
   };
 
   const handleReset = () => {
     setFilters((filtersState) => ({
       ...filtersState,
+      pageNumber: 0,
       beachName: [],
     }));
+    setSearchParams(params => {
+      params.set("page", '0');
+      return params;
+    });
   };
 
   useEffect(() => {

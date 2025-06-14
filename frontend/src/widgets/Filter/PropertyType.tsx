@@ -4,25 +4,38 @@ import { useFilters } from '@/widgets/Filter/model/useFilters';
 import { Checkbox } from '@/shared/ui';
 import { useIntl } from 'react-intl';
 import { FilterLayout } from '@/widgets/Filter/FilterLayout';
+import {useSearchParams} from "react-router";
 
 export const PropertyType: FC<{ renderName?: boolean }> = ({ renderName = true }) => {
   const { formatMessage } = useIntl();
   const { setFilters, types } = useFilters();
+  const [searchParams, setSearchParams] = useSearchParams();
+
 
   const handleClick = (e: ChangeEvent<HTMLInputElement>) => {
     setFilters((filtersState) => ({
       ...filtersState,
+      pageNumber: 0,
       types: filtersState.types?.includes(e.target.name)
         ? filtersState.types?.filter((val) => val !== e.target.name)
         : [...(filtersState.types || []), e.target.name],
     }));
+    setSearchParams(params => {
+      params.set("page", '0');
+      return params;
+    });
   };
 
   const handleReset = () => {
     setFilters((filtersState) => ({
       ...filtersState,
+      pageNumber: 0,
       types: [],
     }));
+    setSearchParams(params => {
+      params.set("page", '0');
+      return params;
+    });
   };
 
   return (

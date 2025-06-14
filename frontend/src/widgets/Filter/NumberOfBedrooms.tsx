@@ -4,19 +4,26 @@ import { Checkbox } from '@/shared/ui';
 import { useFilters } from '@/widgets/Filter/model/useFilters';
 import { useIntl } from 'react-intl';
 import { FilterLayout } from '@/widgets/Filter/FilterLayout';
+import {useSearchParams} from "react-router";
 
 export const NumberOfBedrooms: FC<{ renderName?: boolean }> = ({ renderName = true }) => {
   const { formatMessage } = useIntl();
   const { setFilters, rooms } = useFilters();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const handleClick = (e: ChangeEvent<HTMLInputElement>) => {
     setFilters((filtersState) => {
       return {
         ...filtersState,
+        pageNumber: 0,
         rooms: filtersState.rooms?.includes(e.target.value)
           ? filtersState.rooms?.filter((val) => val !== e.target.value)
           : [...(filtersState.rooms || []), e.target.value],
       };
+    });
+    setSearchParams(params => {
+      params.set("page", '0');
+      return params;
     });
   };
 
@@ -24,8 +31,13 @@ export const NumberOfBedrooms: FC<{ renderName?: boolean }> = ({ renderName = tr
     setFilters((filtersState) => {
       return {
         ...filtersState,
+        pageNumber: 0,
         rooms: [],
       };
+    });
+    setSearchParams(params => {
+      params.set("page", '0');
+      return params;
     });
   };
 

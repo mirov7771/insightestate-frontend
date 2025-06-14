@@ -6,11 +6,13 @@ import { useFilters } from '@/widgets/Filter/model/useFilters';
 import { useIntl } from 'react-intl';
 import { debounce } from '@/shared/utils';
 import { FilterLayout } from '@/widgets/Filter/FilterLayout';
+import {useSearchParams} from "react-router";
 
 export const Price: FC = () => {
   const { formatMessage } = useIntl();
   const { setFilters, minPrice, maxPrice } = useFilters();
   const [value, setValues] = useState<number[]>([0, 4000000]);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const debouncedSetMinPrice = useMemo(
     () =>
@@ -62,6 +64,10 @@ export const Price: FC = () => {
       minPrice: 0,
       maxPrice: 4000000,
     }));
+    setSearchParams(params => {
+      params.set("page", '0');
+      return params;
+    });
   };
 
   return (
