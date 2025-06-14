@@ -74,7 +74,9 @@ export const Header: FC<{ basicToken: string }> = ({ basicToken }) => {
         </menu>
         <div className={styles.right}>
           {isMobile ? (
-            <></>
+            <>
+              <Dropdown />
+            </>
           ) : (
             <>
               <Dropdown />

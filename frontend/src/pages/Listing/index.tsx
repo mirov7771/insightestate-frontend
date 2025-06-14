@@ -20,6 +20,7 @@ import {filterApi} from "@/widgets/Filter/api/filterApi";
 import {useSearchParams} from "react-router";
 import {types} from "sass";
 import Number = types.Number;
+import {isMobile} from "react-device-detect";
 
 const Listing: FC = () => {
   const { formatMessage } = useIntl();
@@ -64,7 +65,7 @@ const Listing: FC = () => {
 
   return (
     <div className={styles.wrap}>
-      <div className={styles.header}>
+      <div className={isMobile ? styles.header_mobile : styles.header}>
         <div className={styles.filters__wrapper}>
           <Button
             className={styles.button}

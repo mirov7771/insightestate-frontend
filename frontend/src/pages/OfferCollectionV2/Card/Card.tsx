@@ -313,7 +313,7 @@ export const Card: FC<
               className={styles.like}
               variant="cta"
               size="s"
-              disabled={!!searchParams.get('client')}
+              disabled={!!searchParams.get('client') && searchParams.get('like') != 'true'}
             >
               <span className={styles.like__icon}>
                 {like ? <Heart /> : <OfferCollectionHeart />}

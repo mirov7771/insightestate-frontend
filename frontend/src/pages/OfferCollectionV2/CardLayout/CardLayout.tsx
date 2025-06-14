@@ -188,7 +188,7 @@ export const CardLayout: FC<CardLayoutProps> = ({ estate }) => {
             <Button
               onClick={handleClickLikeButton}
               className={styles.like}
-              disabled={!!searchParams.get('client')}
+              disabled={!!searchParams.get('client') && searchParams.get('like') != 'true'}
               variant="cta"
               style={{
                 width: '210px',
