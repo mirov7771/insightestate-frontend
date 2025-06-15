@@ -8,9 +8,14 @@ import styles from './CardSlide.module.scss';
 import { Button, Text } from '@/shared/ui';
 import { AdvantagesBadges } from '@/entities/CardSlide/AdvantagesBadges';
 import { UserCollectionModal } from '@/widgets/Modal/UserCollectionModal';
-import {EstateIcon, OfferCollectionCar, OfferCollectionWalk, VectorRating} from '@/shared/assets/icons';
+import {
+  EstateIcon,
+  OfferCollectionCar,
+  OfferCollectionWalk,
+  VectorRating,
+} from '@/shared/assets/icons';
 import { CardSlideSkeleton } from '@/entities/CardSlide/CardSlideSkeleton';
-import {useNavigate} from "react-router";
+import { useNavigate } from 'react-router';
 
 type CardSlideProps = {
   clickable: boolean;
@@ -37,7 +42,7 @@ export const CardSlide: FC<CardSlideProps> = ({
     ...(estate.interiorImages || []),
     ...(estate.facilityImages || []),
   ].slice(0, 4);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleOpenInfoModal = () => {
     setInfoModal(true);
@@ -73,8 +78,8 @@ export const CardSlide: FC<CardSlideProps> = ({
   };
 
   const goToProperty = () => {
-    navigate(`/property/${estate.id}`)
-  }
+    navigate(`/property/${estate.id}`);
+  };
 
   console.log({ estate });
 
@@ -87,18 +92,20 @@ export const CardSlide: FC<CardSlideProps> = ({
           <ul className={styles.badges}>
             <li className={styles.badges__badge} onClick={openRatingInfo}>
               <Text variant="heading4">
-                <div style={{
-                  display: 'inline-flex',
-                  gap: '5px',
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }}>
-                <EstateIcon />
-                {estate.grade.toPrecision(2)}
+                <div
+                  style={{
+                    display: 'inline-flex',
+                    gap: '5px',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <EstateIcon />
+                  {estate.grade.toPrecision(2)}
                 </div>
               </Text>
             </li>
-            {(estate.buildEndDate !== '-' && estate.buildEndDate) && (
+            {estate.buildEndDate !== '-' && estate.buildEndDate && (
               <li className={styles.badges__badge}>
                 <Text variant="heading4">{estate.buildEndDate}</Text>
               </li>
@@ -109,11 +116,8 @@ export const CardSlide: FC<CardSlideProps> = ({
               </li>
             )}
           </ul>
-          <a href={`/property/${estate.id}`}
-             target="_blank"
-             rel="noreferrer"
-          >
-          <Slider images={images}/>
+          <a href={`/property/${estate.id}`} target="_blank" rel="noreferrer">
+            <Slider images={images} />
           </a>
           <div className={styles.info}>
             <Text variant="heading3" className={styles.info__price}>
@@ -133,10 +137,11 @@ export const CardSlide: FC<CardSlideProps> = ({
         </div>
         <div className={styles.card__content}>
           <div className={styles.left}>
-            <a href={`/property/${estate.id}`}
-               target="_blank"
-               rel="noreferrer"
-               className={styles.card__title}
+            <a
+              href={`/property/${estate.id}`}
+              target="_blank"
+              rel="noreferrer"
+              className={styles.card__title}
             >
               <Text variant="heading3-1">{estate.name}</Text>
             </a>
@@ -145,7 +150,9 @@ export const CardSlide: FC<CardSlideProps> = ({
                 {estate.city}, {estate.beach}
               </Text>
               <Text variant="body1">
-                {estate.city !== 'Bangkok' ? `${formatMessage({ id: 'to_beach' })}: ` : `${formatMessage({ id: 'to_subway' })}: `}
+                {estate.city !== 'Bangkok'
+                  ? `${formatMessage({ id: 'to_beach' })}: `
+                  : `${formatMessage({ id: 'to_subway' })}: `}
                 <span>
                   <OfferCollectionCar /> {estate.beachTravelTimeCar} {formatMessage({ id: 'min' })}
                 </span>
@@ -158,27 +165,34 @@ export const CardSlide: FC<CardSlideProps> = ({
           </div>
           {!!token && (
             <div className={styles.right}>
-              {(estate.collectionCount || 0) !== 0 ?
-                  <Button
-                      onClick={handleOpenUserCollectionModal}
-                      size="s"
-                      className={styles.card__button}
-                      style={{
-                        backgroundColor: 'white',
-                        color: 'black',
-                        border: '1px solid #04b0be',
-                      }}
-                  >
-                    <Text variant="heading5">+ {formatMessage({ id: 'in_collection' }).replace('%s', (estate.collectionCount || 0) + '')}</Text>
-                  </Button> :
-                  <Button
-                      onClick={handleOpenUserCollectionModal}
-                      size="s"
-                      className={styles.card__button}
-                  >
-                    <Text variant="heading5">+ {formatMessage({ id: 'add_to_collection' })}</Text>
-                  </Button>
-              }
+              {(estate.collectionCount || 0) !== 0 ? (
+                <Button
+                  onClick={handleOpenUserCollectionModal}
+                  size="s"
+                  className={styles.card__button}
+                  style={{
+                    backgroundColor: 'white',
+                    color: 'black',
+                    border: '1px solid #04b0be',
+                  }}
+                >
+                  <Text variant="heading5">
+                    +{' '}
+                    {formatMessage({ id: 'in_collection' }).replace(
+                      '%s',
+                      (estate.collectionCount || 0) + ''
+                    )}
+                  </Text>
+                </Button>
+              ) : (
+                <Button
+                  onClick={handleOpenUserCollectionModal}
+                  size="s"
+                  className={styles.card__button}
+                >
+                  <Text variant="heading5">+ {formatMessage({ id: 'add_to_collection' })}</Text>
+                </Button>
+              )}
             </div>
           )}
         </div>

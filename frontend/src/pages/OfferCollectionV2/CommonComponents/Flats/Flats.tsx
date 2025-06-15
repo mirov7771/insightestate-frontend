@@ -38,11 +38,12 @@ export const Flats: FC<RoomLayouts> = (props) => {
       return price;
     }
     const p = price.toLocaleString();
+
     if (p.indexOf(',') != -1) {
       return p.split(',')[0];
     }
     return p;
-  }
+  };
 
   return Object.entries(sorted).length ? (
     <section className={styles.flats}>
@@ -50,11 +51,13 @@ export const Flats: FC<RoomLayouts> = (props) => {
         <>
           <div className={styles.flat}>
             <Text variant="body1" className={styles.flat__name}>
-              {formatMessage({ id: `offerCollection.${key}` })}, {formatPrice(layout.square?.min?.toLocaleString())} -{' '}
+              {formatMessage({ id: `offerCollection.${key}` })},{' '}
+              {formatPrice(layout.square?.min?.toLocaleString())} -{' '}
               {formatPrice(layout.square?.max?.toLocaleString())}м2
             </Text>
             <Text variant="heading4" className={styles.flat__price}>
-              ${formatPrice(layout.price?.min?.toLocaleString())} - ${formatPrice(layout.price?.max?.toLocaleString())}
+              ${formatPrice(layout.price?.min?.toLocaleString())} - $
+              {formatPrice(layout.price?.max?.toLocaleString())}
             </Text>
           </div>
           {index + 1 < targetArray.length ? <div className={styles.divider} /> : ''}

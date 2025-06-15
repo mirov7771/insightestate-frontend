@@ -8,7 +8,7 @@ import { Button, Text } from '@/shared/ui';
 import Menu from '@mui/material/Menu';
 import { useNavigate } from 'react-router';
 
-export const Dropdown: FC<{unauth?: boolean}> = ({unauth}) => {
+export const Dropdown: FC<{ unauth?: boolean }> = ({ unauth }) => {
   const { formatMessage } = useIntl();
   const navigate = useNavigate();
 
@@ -94,21 +94,23 @@ export const Dropdown: FC<{unauth?: boolean}> = ({unauth}) => {
           <Text variant="heading5">Eng</Text>
         </MenuItem>
       </Menu>
-        {unauth ? <></> :
-      <Button
-        type={'submit'}
-        size={'s'}
-        onClick={goToExit}
-        style={{
-          backgroundColor: 'transparent',
-          borderRadius: '100vw',
-          border: '1px solid #04b0be',
-          color: 'black',
-        }}
-      >
-        {formatMessage({ id: 'login.exit' })}
-      </Button>
-        }
+      {unauth ? (
+        <></>
+      ) : (
+        <Button
+          type={'submit'}
+          size={'s'}
+          onClick={goToExit}
+          style={{
+            backgroundColor: 'transparent',
+            borderRadius: '100vw',
+            border: '1px solid #04b0be',
+            color: 'black',
+          }}
+        >
+          {formatMessage({ id: 'login.exit' })}
+        </Button>
+      )}
     </div>
   );
 };

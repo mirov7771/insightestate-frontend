@@ -4,7 +4,7 @@ import { Checkbox } from '@/shared/ui';
 import { useFilters } from '@/widgets/Filter/model/useFilters';
 import { useIntl } from 'react-intl';
 import { FilterLayout } from './FilterLayout';
-import {useSearchParams} from "react-router";
+import { useSearchParams } from 'react-router';
 
 export const Airport: FC<{ renderName?: boolean }> = ({ renderName }) => {
   const { formatMessage } = useIntl();
@@ -21,8 +21,8 @@ export const Airport: FC<{ renderName?: boolean }> = ({ renderName }) => {
           : [...(filtersState.airportTravelTimes || []), e.target.value],
       };
     });
-    setSearchParams(params => {
-      params.set("page", '0');
+    setSearchParams((params) => {
+      params.set('page', '0');
       return params;
     });
   };
@@ -33,8 +33,8 @@ export const Airport: FC<{ renderName?: boolean }> = ({ renderName }) => {
       pageNumber: 0,
       airportTravelTimes: [],
     }));
-    setSearchParams(params => {
-      params.set("page", '0');
+    setSearchParams((params) => {
+      params.set('page', '0');
       return params;
     });
   };

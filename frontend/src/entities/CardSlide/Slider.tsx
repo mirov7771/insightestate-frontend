@@ -43,7 +43,7 @@ export const Slider: FC<SliderProps> = ({ images }) => {
   return (
     <SlickSlider {...config}>
       {images.map((img) => (
-        <img src={img} key={img} alt=""/>
+        <img src={img} key={img} alt="" />
       ))}
     </SlickSlider>
   );

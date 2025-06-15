@@ -6,7 +6,7 @@ import { useFilters } from '@/widgets/Filter/model/useFilters';
 import { useIntl } from 'react-intl';
 import { debounce } from '@/shared/utils';
 import { FilterLayout } from '@/widgets/Filter/FilterLayout';
-import {useSearchParams} from "react-router";
+import { useSearchParams } from 'react-router';
 
 export const Price: FC = () => {
   const { formatMessage } = useIntl();
@@ -64,8 +64,8 @@ export const Price: FC = () => {
       minPrice: 0,
       maxPrice: 4000000,
     }));
-    setSearchParams(params => {
-      params.set("page", '0');
+    setSearchParams((params) => {
+      params.set('page', '0');
       return params;
     });
   };

@@ -3,15 +3,15 @@ import { Header } from './Header/Header';
 import { Footer } from './Footer/Footer';
 import styles from './Layout.module.scss';
 import { useEffect, useState } from 'react';
-import {HeaderUnauth} from "@/widgets/Layout/Header/HeaderUnauth";
+import { HeaderUnauth } from '@/widgets/Layout/Header/HeaderUnauth';
 
 const Layout = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [basicToken, setBasicToken] = useState<string | undefined | null>(
     localStorage.getItem('basicToken')
   );
-  const [location, setLocation] = useState(window.location.pathname)
-  const [showHeader, setShowHeader] = useState(false)
+  const [location, setLocation] = useState(window.location.pathname);
+  const [showHeader, setShowHeader] = useState(false);
 
   useEffect(() => {
     localStorage.setItem(
@@ -20,8 +20,8 @@ const Layout = () => {
     );
     setBasicToken(searchParams.get('basicToken') || localStorage.getItem('basicToken'));
     console.log(basicToken);
-    setLocation(window.location.href)
-    setShowHeader(location === '/')
+    setLocation(window.location.href);
+    setShowHeader(location === '/');
   }, []);
   return (
     <>
@@ -36,9 +36,7 @@ const Layout = () => {
       ) : (
         <>
           <main className={styles.main}>
-            {
-              showHeader ? <></> : <HeaderUnauth />
-            }
+            {showHeader ? <></> : <HeaderUnauth />}
             <Outlet />
           </main>
         </>

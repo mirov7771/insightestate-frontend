@@ -6,18 +6,19 @@ import { PayModal } from '../PayModal/PayModal';
 import { Button, Text } from '@/shared/ui';
 import { DESCRIPTIONS_ENG, DESCRIPTIONS_RU } from './constants';
 import { useIntl } from 'react-intl';
-import {Spacer} from "@/widgets/Spacer/Spacer";
+import { Spacer } from '@/widgets/Spacer/Spacer';
 
 type TariffCardProps = {
   description: string[];
   id: string;
+  onClick: (id: string) => void;
   price: number;
-  title: string; // Pro | Standart | Starter
+  selected: boolean;
+  title: string;
+  // Pro | Standart | Starter
   extraId?: string;
   switcher?: ReactElement;
   userSubscriptionId?: string | null | undefined;
-  selected: boolean;
-  onClick: (id: string) => void;
 };
 
 export const TariffCard: FC<TariffCardProps> = ({
@@ -29,7 +30,7 @@ export const TariffCard: FC<TariffCardProps> = ({
   userSubscriptionId,
   switcher,
   selected,
-  onClick
+  onClick,
 }) => {
   const { formatMessage } = useIntl();
   const navigate = useNavigate();
@@ -79,15 +80,18 @@ export const TariffCard: FC<TariffCardProps> = ({
   }, []);
 
   const handleSelect = () => {
-    onClick(id)
-  }
+    onClick(id);
+  };
 
   return (
     <>
-      <div className={styles.card}
+      <div
+        className={styles.card}
         style={{
-          border: selected ? '1px solid var(--ui-color-black)' : '1px solid var(--ui-color-black-24-opacity)',
-          cursor: 'pointer'
+          border: selected
+            ? '1px solid var(--ui-color-black)'
+            : '1px solid var(--ui-color-black-24-opacity)',
+          cursor: 'pointer',
         }}
         onClick={handleSelect}
       >
@@ -110,24 +114,26 @@ export const TariffCard: FC<TariffCardProps> = ({
           ))}
         </ul>
         {switcher}
-        <Spacer height={10} width={100}/>
+        <Spacer height={10} width={100} />
         <div className={styles.card__button}>
-          <div className={styles.card__border}/>
-          <Spacer height={25} width={100}/>
-          {
-            price === 0 ?
-                <p className={styles.card__text_p}>{getSubscription()}</p> :
-                <div style={{
-                  display: 'inline-flex',
-                  gap: '10px'
-                }}>
-                  <p className={styles.card__text_p_decline}>{getSubscription()}</p>
-                  <li className={styles.card__badge_discount}>
-                    <Text variant="heading4_White">-100%</Text>
-                  </li>
-                </div>
-          }
-          <Spacer height={10} width={100}/>
+          <div className={styles.card__border} />
+          <Spacer height={25} width={100} />
+          {price === 0 ? (
+            <p className={styles.card__text_p}>{getSubscription()}</p>
+          ) : (
+            <div
+              style={{
+                display: 'inline-flex',
+                gap: '10px',
+              }}
+            >
+              <p className={styles.card__text_p_decline}>{getSubscription()}</p>
+              <li className={styles.card__badge_discount}>
+                <Text variant="heading4_White">-100%</Text>
+              </li>
+            </div>
+          )}
+          <Spacer height={10} width={100} />
           {/*<Button*/}
           {/*  onClick={handleTariff}*/}
           {/*  wide*/}
