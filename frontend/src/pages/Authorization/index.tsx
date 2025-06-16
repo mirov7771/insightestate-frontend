@@ -19,15 +19,16 @@ export const getNavigate = async () => {
   }
 
   const openAuth = parseInt(localStorage.getItem('openAuth') || '0');
+
   if (openAuth === 0) {
-    localStorage.setItem('openAuth', (openAuth + 1) + '')
-    return '/tariffs'
+    localStorage.setItem('openAuth', openAuth + 1 + '');
+    return '/tariffs';
   } else if (openAuth < 4) {
-    localStorage.setItem('openAuth', (openAuth + 1) + '')
-    return 'listing'
+    localStorage.setItem('openAuth', openAuth + 1 + '');
+    return 'listing';
   } else {
-    localStorage.setItem('openAuth', '0')
-    return 'listing'
+    localStorage.setItem('openAuth', '0');
+    return 'listing';
   }
 };
 

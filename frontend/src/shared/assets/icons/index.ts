@@ -146,5 +146,5 @@ export {
   OfferCollectionCar,
   FilterIcon,
   OfferCollectionAdjustmentsFilter,
-  EstateIcon
+  EstateIcon,
 };

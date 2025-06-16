@@ -3,7 +3,7 @@ import styles from './Filter.module.scss';
 import { Checkbox } from '@/shared/ui';
 import { useFilters } from '@/widgets/Filter/model/useFilters';
 import { useIntl } from 'react-intl';
-import {useSearchParams} from "react-router";
+import { useSearchParams } from 'react-router';
 
 export const Company: FC = () => {
   const { formatMessage } = useIntl();
@@ -19,8 +19,8 @@ export const Company: FC = () => {
       managementCompanyEnabled:
         filtersState.managementCompanyEnabled === 'true' ? undefined : 'true',
     }));
-    setSearchParams(params => {
-      params.set("page", '0');
+    setSearchParams((params) => {
+      params.set('page', '0');
       return params;
     });
   };

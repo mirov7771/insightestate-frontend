@@ -16,11 +16,11 @@ import { NumberOfBedrooms } from '@/widgets/Filter/NumberOfBedrooms';
 import { Potential } from '@/widgets/Filter/Potential';
 import { Beach } from '@/widgets/Filter/Beach';
 import { Airport } from '@/widgets/Filter/Airport';
-import {filterApi} from "@/widgets/Filter/api/filterApi";
-import {useSearchParams} from "react-router";
-import {types} from "sass";
+import { filterApi } from '@/widgets/Filter/api/filterApi';
+import { useSearchParams } from 'react-router';
+import { types } from 'sass';
 import Number = types.Number;
-import {isMobile} from "react-device-detect";
+import { isMobile } from 'react-device-detect';
 
 const Listing: FC = () => {
   const { formatMessage } = useIntl();
@@ -32,7 +32,7 @@ const Listing: FC = () => {
     totalCount,
     hasMore,
     loading,
-    countActiveFilters
+    countActiveFilters,
   } = useFilters();
   const token = localStorage.getItem('basicToken');
   const [openFilters, setOpenFilters] = useState(false);
@@ -60,7 +60,7 @@ const Listing: FC = () => {
     setFilters((filtersState) => ({
       ...filtersState,
       pageNumber: parseInt(searchParams.get('page') || '0'),
-    }))
+    }));
   }, []);
 
   return (
@@ -147,8 +147,8 @@ const Listing: FC = () => {
                 ...filtersState,
                 pageNumber: page - 1,
               }));
-              setSearchParams(params => {
-                params.set("page", (page - 1) + '');
+              setSearchParams((params) => {
+                params.set('page', page - 1 + '');
                 return params;
               });
             }}
@@ -157,12 +157,7 @@ const Listing: FC = () => {
           />
         </div>
       )}
-      <InfoModal
-          setOpen={setInfoModal}
-          open={infoModal}
-          title={infoTitle}
-          text={infoText}
-      />
+      <InfoModal setOpen={setInfoModal} open={infoModal} title={infoTitle} text={infoText} />
     </div>
   );
 };

@@ -4,7 +4,7 @@ import { Checkbox, Text } from '@/shared/ui';
 import { useFilters } from '@/widgets/Filter/model/useFilters';
 import { useIntl } from 'react-intl';
 import { FilterLayout } from './FilterLayout';
-import {useSearchParams} from "react-router";
+import { useSearchParams } from 'react-router';
 
 export const Beach: FC<{ renderName?: boolean }> = ({ renderName }) => {
   const { formatMessage } = useIntl();
@@ -19,8 +19,8 @@ export const Beach: FC<{ renderName?: boolean }> = ({ renderName }) => {
         ? filtersState.beachTravelTimes?.filter((val) => val !== e.target.value)
         : [...(filtersState.beachTravelTimes || []), e.target.value],
     }));
-    setSearchParams(params => {
-      params.set("page", '0');
+    setSearchParams((params) => {
+      params.set('page', '0');
       return params;
     });
   };
@@ -31,8 +31,8 @@ export const Beach: FC<{ renderName?: boolean }> = ({ renderName }) => {
       pageNumber: 0,
       beachTravelTimes: [],
     }));
-    setSearchParams(params => {
-      params.set("page", '0');
+    setSearchParams((params) => {
+      params.set('page', '0');
       return params;
     });
   };
@@ -50,21 +50,21 @@ export const Beach: FC<{ renderName?: boolean }> = ({ renderName }) => {
             value="1"
             onChange={handleClick}
             checked={beachTravelTimes?.includes('1')}
-            label={formatMessage( { id: 'from_5' } )}
+            label={formatMessage({ id: 'from_5' })}
           />
           <Checkbox
             name="beachName"
             value="2"
             onChange={handleClick}
             checked={beachTravelTimes?.includes('2')}
-            label={formatMessage( { id: 'from_15' } )}
+            label={formatMessage({ id: 'from_15' })}
           />
           <Checkbox
             name="beachName"
             value="3"
             onChange={handleClick}
             checked={beachTravelTimes?.includes('3')}
-            label={formatMessage( { id: 'from_30' } )}
+            label={formatMessage({ id: 'from_30' })}
           />
           <Text variant="heading5">{formatMessage({ id: 'beach.car' })}</Text>
           <Checkbox
@@ -72,21 +72,21 @@ export const Beach: FC<{ renderName?: boolean }> = ({ renderName }) => {
             value="11"
             onChange={handleClick}
             checked={beachTravelTimes?.includes('11')}
-            label={formatMessage( { id: 'from_5' } )}
+            label={formatMessage({ id: 'from_5' })}
           />
           <Checkbox
             name="beachName"
             value="12"
             onChange={handleClick}
             checked={beachTravelTimes?.includes('12')}
-            label={formatMessage( { id: 'from_15' } )}
+            label={formatMessage({ id: 'from_15' })}
           />
           <Checkbox
             name="beachName"
             value="13"
             onChange={handleClick}
             checked={beachTravelTimes?.includes('13')}
-            label={formatMessage( { id: 'from_30' } )}
+            label={formatMessage({ id: 'from_30' })}
           />
         </div>
       }

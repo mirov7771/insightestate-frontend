@@ -4,7 +4,7 @@ import { Checkbox } from '@/shared/ui';
 import { useFilters } from '@/widgets/Filter/model/useFilters';
 import { useIntl } from 'react-intl';
 import { FilterLayout } from '@/widgets/Filter/FilterLayout';
-import {useSearchParams} from "react-router";
+import { useSearchParams } from 'react-router';
 
 export const CompletionDate: FC<{ renderName?: boolean }> = ({ renderName = true }) => {
   const { formatMessage } = useIntl();
@@ -21,8 +21,8 @@ export const CompletionDate: FC<{ renderName?: boolean }> = ({ renderName = true
           : [...(filtersState.buildEndYears || []), Number(e.target.value)],
       };
     });
-    setSearchParams(params => {
-      params.set("page", '0');
+    setSearchParams((params) => {
+      params.set('page', '0');
       return params;
     });
   };
@@ -35,8 +35,8 @@ export const CompletionDate: FC<{ renderName?: boolean }> = ({ renderName = true
         buildEndYears: [],
       };
     });
-    setSearchParams(params => {
-      params.set("page", '0');
+    setSearchParams((params) => {
+      params.set('page', '0');
       return params;
     });
   };
