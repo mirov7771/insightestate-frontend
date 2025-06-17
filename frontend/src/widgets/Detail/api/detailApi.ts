@@ -79,9 +79,9 @@ export type InfrastructureDto = {
 };
 
 export type Price = {
-  avg?: number;
-  max?: number;
-  min?: number;
+  avg?: string;
+  max?: string;
+  min?: string;
 };
 
 type RoomLayout = {

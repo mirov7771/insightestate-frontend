@@ -30,7 +30,7 @@ type CardLayoutProps = {
 export const CardLayout: FC<CardLayoutProps> = ({ estate }) => {
   const { formatMessage } = useIntl();
   const [like, setLike] = useState(false);
-  const [square, setSquare] = useState(100);
+  const [square, setSquare] = useState('100');
   const [token, setToken] = useState<string | undefined | null>(localStorage.getItem('basicToken'));
   const handleClickLikeButton = () => {
     setLike(!like);
@@ -90,7 +90,7 @@ export const CardLayout: FC<CardLayoutProps> = ({ estate }) => {
         estate.roomLayouts?.one?.square?.min ||
         estate.roomLayouts?.one?.square?.max ||
         estate.roomLayouts?.one?.square?.avg ||
-        110
+        '110'
     );
     setToken(localStorage.getItem('basicToken'));
   }, []);
