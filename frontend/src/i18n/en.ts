@@ -331,4 +331,5 @@ export default {
   from_30: 'Up to 30 minutes',
 
   beach_time_subway: 'Time to beach/subway',
+  subway: 'Subway'
 };

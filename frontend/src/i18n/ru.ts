@@ -330,4 +330,5 @@ export default {
   from_30: 'До 30 минут',
 
   beach_time_subway: 'Время до пляжа/метро',
+  subway: 'Метро'
 };
