@@ -25,7 +25,7 @@ const SamplePrevArrow = (props: any) => {
   );
 };
 
-const config: Settings = {
+export const baseConfig: Settings = {
   dots: true,
   infinite: true,
   arrows: true,
@@ -37,9 +37,10 @@ const config: Settings = {
 
 type SliderProps = {
   images: string[];
+  config?: Settings;
 };
 
-export const Slider: FC<SliderProps> = ({ images }) => {
+export const Slider: FC<SliderProps> = ({ images, config = baseConfig }) => {
   return (
     <SlickSlider {...config}>
       {images.map((img) => (

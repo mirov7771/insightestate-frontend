@@ -1,26 +1,15 @@
 import { FC, useState } from 'react';
 import styles from './Info.module.scss';
 import {
-  Airport,
-  Beach,
-  Calendar,
-  Car,
-  CityBuilding,
-  Conference,
-  Constructing,
-  Diamond,
-  Home,
-  Money,
-} from '@/shared/assets/icons';
-import {
+  EstateDetail,
   EstateTypeEn,
   EstateTypeRu,
-  InfrastructureDto,
   LevelTypeEn,
   LevelTypeRu,
   ProjectUnitCount,
 } from '@/widgets/Detail/api/detailApi';
 import { useIntl } from 'react-intl';
+import { Text } from '@/shared/ui';
 
 export const Info: FC<{
   companyEnabled: boolean;
@@ -29,124 +18,90 @@ export const Info: FC<{
   type: string;
   buildEndDate?: string;
   developer?: string;
-  infrastructure?: InfrastructureDto;
   parkingSize?: number;
+  price?: EstateDetail['price'];
   project?: ProjectUnitCount;
-}> = ({
-  infrastructure,
-  floors,
-  project,
-  buildEndDate,
-  level,
-  type,
-  developer,
-  parkingSize,
-  companyEnabled,
-}) => {
+}> = ({ floors, project, buildEndDate, level, type, developer, companyEnabled, price }) => {
   const { formatMessage } = useIntl();
   const [locale, setLocale] = useState<string>(localStorage.getItem('language') || 'ru');
 
   return (
     <div className={styles.info}>
       <div className={styles.info__item}>
-        <span className={styles.text}>
-          <Diamond /> {formatMessage({ id: 'class' })}
-        </span>
-        <span className={styles.text}>
+        <Text variant="body1" className={`${styles.text} ${styles.text__grey}`}>
+          {formatMessage({ id: 'class' })}
+        </Text>
+        <Text variant="body1" className={styles.text}>
           {(locale === 'en' ? LevelTypeEn.get(level) : LevelTypeRu.get(level)) ||
             formatMessage({ id: 'not_selected' })}
-        </span>
+        </Text>
       </div>
       <div className={styles.info__item}>
-        <span className={styles.text}>
-          <Home /> {formatMessage({ id: 'type_of_place' })}
-        </span>
-        <span className={styles.text}>
+        <Text variant="body1" className={`${styles.text} ${styles.text__grey}`}>
+          {formatMessage({ id: 'type_of_place' })}
+        </Text>
+        <Text className={styles.text}>
           {(locale === 'en' ? EstateTypeEn.get(type) : EstateTypeRu.get(type)) || 'Villa'}
-        </span>
+        </Text>
       </div>
-      {buildEndDate ? (
+      {developer && (
         <div className={styles.info__item}>
-          <span className={styles.text}>
-            <Calendar /> {formatMessage({ id: 'completion_date' })}
-          </span>
-          <span className={styles.text}>{buildEndDate}</span>
+          <Text variant="body1" className={`${styles.text} ${styles.text__grey}`}>
+            {formatMessage({ id: 'developer' })}
+          </Text>
+          <Text variant="body1" className={styles.text}>
+            {developer}
+          </Text>
         </div>
-      ) : (
-        <></>
-      )}
-      {floors ? (
-        <div className={styles.info__item}>
-          <span className={styles.text}>
-            <CityBuilding /> {formatMessage({ id: 'total_floors' })}
-          </span>
-          <span className={styles.text}>{floors}</span>
-        </div>
-      ) : (
-        <></>
-      )}
-      {project?.total ? (
-        <div className={styles.info__item}>
-          <span className={styles.text}>
-            <Conference /> {formatMessage({ id: 'total_aparts' })}
-          </span>
-          <span className={styles.text}>{project?.total}</span>
-        </div>
-      ) : (
-        <></>
-      )}
-      {infrastructure?.beachTime?.car ? (
-        <div className={styles.info__item}>
-          <span className={styles.text}>
-            <Beach /> {formatMessage({ id: 'to_beach' })}
-          </span>
-          <span className={styles.text}>
-            {infrastructure?.beachTime?.car} {formatMessage({ id: 'min' })}
-          </span>
-        </div>
-      ) : (
-        <></>
-      )}
-      {infrastructure?.airportTime?.car ? (
-        <div className={styles.info__item}>
-          <span className={styles.text}>
-            <Airport /> {formatMessage({ id: 'to_airport' })}
-          </span>
-          <span className={styles.text}>
-            {infrastructure?.airportTime?.car} {formatMessage({ id: 'min' })}
-          </span>
-        </div>
-      ) : (
-        <></>
-      )}
-      {parkingSize ? (
-        <div className={styles.info__item}>
-          <span className={styles.text}>
-            <Car /> {formatMessage({ id: 'parking' })}
-          </span>
-          <span className={styles.text}>{parkingSize}</span>
-        </div>
-      ) : (
-        <></>
-      )}
-      {developer ? (
-        <div className={styles.info__item}>
-          <span className={styles.text}>
-            <Constructing /> {formatMessage({ id: 'developer' })}
-          </span>
-          <span className={styles.text}>{developer}</span>
-        </div>
-      ) : (
-        <></>
       )}
       <div className={styles.info__item}>
-        <span className={styles.text}>
-          <Money /> {formatMessage({ id: 'uk' })}
-        </span>
-        <span className={styles.text}>
+        <Text variant="body1" className={`${styles.text} ${styles.text__grey}`}>
+          {formatMessage({ id: 'uk' })}
+        </Text>
+        <Text variant="body1" className={styles.text}>
           {companyEnabled ? formatMessage({ id: 'yes' }) : formatMessage({ id: 'no' })}
-        </span>
+        </Text>
       </div>
+      {buildEndDate && (
+        <div className={styles.info__item}>
+          <Text variant="body1" className={`${styles.text} ${styles.text__grey}`}>
+            {formatMessage({ id: 'completion_date' })}
+          </Text>
+          <Text variant="body1" className={styles.text}>
+            {buildEndDate}
+          </Text>
+        </div>
+      )}
+      {floors && (
+        <div className={styles.info__item}>
+          <Text variant="body1" className={`${styles.text} ${styles.text__grey}`}>
+            {formatMessage({ id: 'total_floors' })}
+          </Text>
+          <Text variant="body1" className={styles.text}>
+            {floors}
+          </Text>
+        </div>
+      )}
+      {project?.total && (
+        <div className={styles.info__item}>
+          <Text variant="body1" className={`${styles.text} ${styles.text__grey}`}>
+            {formatMessage({ id: 'total_aparts' })}
+          </Text>
+          <Text variant="body1" className={styles.text}>
+            {project?.total}
+          </Text>
+        </div>
+      )}
+      {price && (
+        <div className={styles.info__item}>
+          <Text variant="body1" className={`${styles.text} ${styles.text__grey}`}>
+            {formatMessage({ id: 'price' })}
+          </Text>
+          <Text variant="body1" className={styles.text}>
+            {price.min}$ — {price.max}$
+          </Text>
+        </div>
+      )}
     </div>
   );
 };

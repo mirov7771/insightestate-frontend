@@ -15,7 +15,7 @@ import {
 } from '@/shared/assets/icons';
 import { useIntl } from 'react-intl';
 import { Flats } from '../CommonComponents/Flats/Flats';
-import { PaymentStepper } from '../CommonComponents/PaymentStepper/PaymentStepper';
+import { PaymentStepper } from '@/entities/PaymentStepper/PaymentStepper';
 import { EstateOptionsInfo } from '../CommonComponents/EstateOptionsInfo/EstateOptionsInfo';
 import { Progresses } from '../CommonComponents/Progress/Progresses';
 import { Slider } from '../CommonComponents/Slider/Slider';

@@ -1,0 +1,1 @@
+export { EstateSlider } from './EstateSlider';

@@ -1,55 +1,26 @@
 @use '~@/sass/index' as *;
 
 .info {
-  margin-top: 32px;
-  background-color: var(--bg-1);
-  padding: 16px;
-
-  @media (min-width: $media-md) {
-    padding: 32px;
-  }
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 
   &__item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 16px 0;
-    border-bottom: 1px solid var(--border-dark);
-    gap: 12px;
     flex-wrap: wrap;
-
-    &:first-child {
-      padding-top: 0;
-    }
-
-    &:last-child {
-      padding-bottom: 0;
-      border-bottom: none;
-    }
+    gap: 8px;
   }
 
   .text {
-    font-size: var(--text--text-small);
-    font-weight: 600;
     display: flex;
-    gap: 12px;
+    flex: 1 1 0;
+    white-space: nowrap;
 
-    @media (min-width: $media-md) {
-      font-size: var(--text--text-body);
-    }
-
-    & > svg {
-      width: 16px;
-      height: 16px;
-
-      @media (min-width: $media-md) {
-        width: 20px;
-        height: 20px;
-      }
-    }
-
-    &:last-child {
-      text-align: right;
+    &__grey {
+      color: var(--ui-color-black-64-opacity);
     }
   }
 }

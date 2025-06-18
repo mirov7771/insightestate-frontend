@@ -116,10 +116,7 @@ const EstateDetail: FC = () => {
         title={name}
         rightSide={
           <div className={styles.title}>
-            <Button
-              disabled={token === null || token === undefined || token === ''}
-              onClick={handleOpenUserCollectionModal}
-            >
+            <Button disabled={!!token} onClick={handleOpenUserCollectionModal}>
               <Text variant="heading4">{formatMessage({ id: 'add_to_collection' })}</Text>
             </Button>
             {/*<Button*/}
@@ -169,7 +166,6 @@ const EstateDetail: FC = () => {
         <aside className={styles.aside}>
           <Rating {...grade} />
           <Info
-            infrastructure={infrastructure}
             floors={floors}
             project={project}
             buildEndDate={buildEndDate}

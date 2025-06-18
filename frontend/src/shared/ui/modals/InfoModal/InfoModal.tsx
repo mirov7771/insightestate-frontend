@@ -1,19 +1,28 @@
-import { Dispatch, FC, SetStateAction } from 'react';
+import { Dispatch, FC, ReactNode, SetStateAction } from 'react';
 import { Button, Modal, Text } from '@/shared/ui';
 import { useIntl } from 'react-intl';
 import styles from './InfoModal.module.scss';
 type InfoModalProps = {
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
-  text: string;
+  text: string | ReactNode;
   title: string;
+  withReload?: boolean;
 };
 
-export const InfoModal: FC<InfoModalProps> = ({ open, title, text, setOpen }) => {
+export const InfoModal: FC<InfoModalProps> = ({
+  open,
+  title,
+  text,
+  setOpen,
+  withReload = false,
+}) => {
   const { formatMessage } = useIntl();
   const handleCloseModal = () => {
     setOpen(false);
-    window.location.reload();
+    if (withReload) {
+      window.location.reload();
+    }
   };
 
   return (

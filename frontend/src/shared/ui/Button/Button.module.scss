@@ -12,6 +12,7 @@
 
   &:disabled {
     background-color: #eff2f3;
+    background-image: none;
     color: #9ca2a6;
     cursor: default;
     pointer-events: none;
@@ -113,6 +114,32 @@
 
     .button_loading:disabled & {
       background-color: var(--border-light);
+      color: var(--border-dark);
+    }
+  }
+
+  &__variant-ai {
+    background: var(--ui-color-ai-gradient);
+    border-radius: 200px;
+    color: var(--ui-color-white);
+    transition: box-shadow 0.2s ease-in-out;
+
+    &:hover {
+      background: var(--ui-color-ai-gradient);
+      cursor: pointer;
+      box-shadow: 0 4px 24px 0 #0000001F;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:active {
+      background: var(--ui-color-ai-gradient);
+    }
+
+    .button_loading:disabled & {
+      background-image: var(--border-light);
       color: var(--border-dark);
     }
   }
