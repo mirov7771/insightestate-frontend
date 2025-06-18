@@ -30,6 +30,7 @@ export type EstateDetail = {
   status?: string;
   type?: string;
   unitCount?: ProjectUnitCount;
+  city?: string;
 };
 
 export type Developer = {

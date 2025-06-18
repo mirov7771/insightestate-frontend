@@ -54,6 +54,7 @@ export type Estate = {
   roomLayouts?: RoomLayouts;
   shortDescriptionEn?: string;
   shortDescriptionRu?: string;
+  city: string;
 };
 
 export type CreateCollectionRs = {

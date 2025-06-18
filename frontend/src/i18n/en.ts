@@ -155,15 +155,15 @@ export default {
   ai_header_text: 'Try out the beta version of our AI-selection assistant',
   ai_text:
     'Just tell us what you’re looking for — a villa or condo, number of bedrooms, budget, and anything else that matters to you. Our AI will find the best matching properties from our database. Quick and easy!',
-  main_title: 'Well-informed investment decisions in Phuket Real Estate',
+  main_title: 'Well-informed investment decisions in Thailand Real Estate',
   main_text:
-    'Помогаем выбрать самый выгодный и надёжный объект инвестиций на основе анализа по более чем 100 параметрам',
+    'We help you choose the most profitable and reliable investment object based on an analysis of more than 100 parameters.',
   projects_for_you: 'Projects for you',
   list: 'List',
   comparison: 'Comparison',
   p_from: 'from',
   sqm: 'm2',
-  why: 'Why investors choose Phuket',
+  why: 'Why investors choose Thailand',
   why_1: 'Stable currency',
   why_2: 'Growing GDP',
   why_3: 'Low inflation',
@@ -329,4 +329,6 @@ export default {
   from_5: 'Up to 5 minutes',
   from_15: 'Up to 15 minutes',
   from_30: 'Up to 30 minutes',
+
+  beach_time_subway: 'Time to beach/subway',
 };

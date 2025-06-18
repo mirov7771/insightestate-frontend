@@ -111,7 +111,7 @@ const Login: FC = () => {
               id="login.haveAccount"
               values={{
                 a: (chunk) => (
-                  <Link to="/sign-up" className="button">
+                  <Link to="/register" className="button">
                     {chunk}
                   </Link>
                 ),
