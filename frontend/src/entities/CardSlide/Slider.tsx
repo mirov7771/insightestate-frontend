@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 import SlickSlider, { Settings } from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -36,16 +36,20 @@ export const baseConfig: Settings = {
 };
 
 type SliderProps = {
-  images: string[];
   config?: Settings;
+  images?: string[];
+  slides?: ReactNode[];
 };
 
-export const Slider: FC<SliderProps> = ({ images, config = baseConfig }) => {
+export const Slider: FC<SliderProps> = ({ images, config = baseConfig, slides }) => {
+  const renderSlides = slides || images;
+
   return (
     <SlickSlider {...config}>
-      {images.map((img) => (
-        <img src={img} key={img} alt="" />
-      ))}
+      {Array.isArray(renderSlides) &&
+        typeof renderSlides?.[0] === 'string' &&
+        images?.map((img) => <img src={img} key={img} alt="" loading="lazy" />)}
+      {Array.isArray(renderSlides) && typeof renderSlides?.[0] !== 'string' && slides}
     </SlickSlider>
   );
 };

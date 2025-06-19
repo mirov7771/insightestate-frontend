@@ -1,0 +1,126 @@
+@use '~@/sass/index' as *;
+
+.container {
+  background-color: #f1f1f1;
+  border-radius: 40px;
+  padding: 24px;
+}
+
+.unit {
+  //box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.12);
+  border-radius: 24px;
+  padding: 16px;
+  max-width: 397px;
+  width: 100%;
+  background-color: var(--ui-color-white);
+
+  &__name {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .info {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+
+    &__card {
+      flex: 1 1 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid var(--ui-color-black-12-opacity);
+      border-radius: 8px;
+      padding: 8px;
+
+      &_description {
+        color: var(--ui-color-black-64-opacity);
+      }
+    }
+  }
+
+  &__plan {
+    display: flex;
+    overflow: hidden;
+    border-radius: 8px;
+    border: 1px solid var(--ui-color-black-12-opacity);
+    margin-top: 8px;
+
+    & > img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+  }
+
+  &__button {
+    margin-top: 16px;
+  }
+}
+
+.slider {
+  &::before,
+  &::after {
+    display: none;
+  }
+  :global {
+    .slick-slide {
+      //max-height: 430px;
+      margin-right: 8px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    .slick-track {
+      display: flex;
+      flex-wrap: nowrap;
+    }
+
+    .slick-list {
+      margin-right: -8px;
+    }
+
+    .slick-slide {
+      max-height: unset;
+    }
+
+    .slick-slide img {
+      height: unset;
+    }
+
+    .slick-arrow {
+      display: none;
+      opacity: 1;
+
+      @media (min-width: $media-md) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 48px;
+        height: 48px;
+        z-index: 1;
+        background-color: var(--ui-color-white);
+        border-radius: 50%;
+
+        > svg {
+          width: 28px;
+          height: 28px;
+          color: var(--ui-color-black);
+        }
+      }
+
+      &::before {
+        display: none;
+      }
+
+      &.slick-disabled {
+        display: none;
+      }
+    }
+  }
+}

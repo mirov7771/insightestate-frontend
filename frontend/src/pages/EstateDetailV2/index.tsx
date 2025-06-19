@@ -20,6 +20,7 @@ import { Rating } from '@/pages/EstateDetail/Rating/Rating';
 import { Section } from '@/pages/EstateDetail/Section/Section';
 import { Infrastructure } from '@/pages/EstateDetail/Section/Infrastructure/Infrastructure';
 import { AverageYield } from '@/pages/EstateDetail/Section/AverageYield/AverageYield';
+import { Units } from '@/pages/EstateDetailV2/Units';
 
 const EstateDetailV2: FC = () => {
   const { formatMessage } = useIntl();
@@ -80,7 +81,9 @@ const EstateDetailV2: FC = () => {
           <div>
             <Rating {...estateDetailData.grade} />
           </div>
-          <div>доступные юниты</div>
+          <div>
+            <Units />
+          </div>
           <div>
             <Infrastructure
               gym={estateDetailData.options?.gym || false}
