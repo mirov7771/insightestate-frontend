@@ -20,7 +20,7 @@ export default {
   juridical_info: 'Legal information',
   politics: 'Data processing policy',
   footer_info:
-    'This information is provided for informational purposes only and does not constitute a public offer. All investments carry the risk of capital loss. Past performance does not guarantee future results. The property rating and qualification system is based on publicly available data and expert assessments. The final rating is generated using a proprietary internal algorithm. Terms, rates, and data are subject to change without prior notice.',
+    'All data provided in this material is for informational purposes only and does not constitute a commercial offer or public offer of any kind. All prices and availability are presented to the best of our knowledge at the time of publication but are subject to change at any time without prior notice. Pricing, terms, and conditions are solely determined by the respective developers at their sole discretion. Insight Estate acts as an independent intermediary and is not an official representative or sales agent of any developer. Insight Estate shall not be held responsible for any changes in prices, terms, availability, or other conditions in respect of real estate properties listed in this material.',
   rights_reserved: 'All rights reserved.',
   not_found: 'No properties found matching your criteria.',
   projects: 'Projects',
