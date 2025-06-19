@@ -10,7 +10,7 @@ export default {
   price: 'Price',
   potential: 'Comfort and potential',
   uk: 'Management company',
-  properties: 'Properties',
+  properties: 'Objects, Units',
   selections: 'My selections',
   profile: 'My profile',
   about_us: 'About us',
