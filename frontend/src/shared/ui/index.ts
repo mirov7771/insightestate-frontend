@@ -14,3 +14,4 @@ export { Modal, ModalCopy, ModalChangeEstateName, ModalDeleteEstate } from './mo
 export { NotificationsProvider, useNotifications } from './NotificationCenter';
 export { PhoneInput } from './PhoneInput';
 export { SelectCountry } from './SelectCountry';
+export { Segment } from './Segment';

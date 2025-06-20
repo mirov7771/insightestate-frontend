@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from 'react';
-import { Accordion } from '@/shared/ui';
+import { Accordion, Text } from '@/shared/ui';
 import styles from './FAQ.module.scss';
 
 export const FAQ: FC = () => {
@@ -12,14 +12,10 @@ export const FAQ: FC = () => {
     <section>
       {locale === 'ru' ? (
         <>
-          <h5 className={styles.header}>Ответы на вопросы</h5>
-          <Accordion
-            title={
-              <span className={styles.accordion__title}>
-                Могут ли иностранцы приобрести недвижимость в Таиланде?
-              </span>
-            }
-          >
+          <Text variant="heading3" className={styles.header}>
+            Ответы на вопросы
+          </Text>
+          <Accordion title="Могут ли иностранцы приобрести недвижимость в Таиланде?">
             Иностранцы могут:
             <br />– купить квартиру (кондоминиум) в полную собственность (Freehold);
             <br />– оформить долгосрочную аренду земли (Leasehold);
@@ -28,11 +24,7 @@ export const FAQ: FC = () => {
             Для других типов недвижимости есть ограничения, но в таких случаях можно
             зарегистрировать собственность через тайскую компанию.
           </Accordion>
-          <Accordion
-            title={
-              <span className={styles.accordion__title}>Чем отличаются Leasehold и Freehold?</span>
-            }
-          >
+          <Accordion title="Чем отличаются Leasehold и Freehold?">
             <p>
               <strong>Freehold</strong> — это полное владение недвижимостью без ограничений по
               времени. Собственник имеет право продавать, сдавать в аренду или передавать объект в
@@ -45,13 +37,7 @@ export const FAQ: FC = () => {
               90 лет. Leasehold можно продать, сдать в аренду или передать в наследство.
             </p>
           </Accordion>
-          <Accordion
-            title={
-              <span className={styles.accordion__title}>
-                Какой тип собственности выбрать иностранцу?
-              </span>
-            }
-          >
+          <Accordion title="Какой тип собственности выбрать иностранцу?">
             <p>Выбор формы владения зависит от цели покупки недвижимости:</p>
             <br />
             <p>
@@ -68,13 +54,7 @@ export const FAQ: FC = () => {
             <br />
             <p>Также мы можем помочь оформить полное владение, если вы хотите купить землю.</p>
           </Accordion>
-          <Accordion
-            title={
-              <span className={styles.accordion__title}>
-                Какие документы необходимы для покупки недвижимости на первичном и вторичном рынках?
-              </span>
-            }
-          >
+          <Accordion title="Какие документы необходимы для покупки недвижимости на первичном и вторичном рынках?">
             <p>
               <strong>На первичном рынке:</strong>
             </p>
@@ -98,13 +78,7 @@ export const FAQ: FC = () => {
               <li> Сертификат о выплате всех налогов и сборов, связанных с недвижимостью.</li>
             </ol>
           </Accordion>
-          <Accordion
-            title={
-              <span className={styles.accordion__title}>
-                Нужен ли юрист для сопровождения сделки?
-              </span>
-            }
-          >
+          <Accordion title="Нужен ли юрист для сопровождения сделки?">
             <p>
               Да, проверка юридической чистоты — один из главных этапов при совершении сделки.
               Юридический департамент компании защищает интресы наших клиентов, проводит полную
@@ -112,26 +86,14 @@ export const FAQ: FC = () => {
               требованиям законодательства Таиланда.
             </p>
           </Accordion>
-          <Accordion
-            title={
-              <span className={styles.accordion__title}>
-                Можно ли оформить сделку по доверенности?
-              </span>
-            }
-          >
+          <Accordion title="Можно ли оформить сделку по доверенности?">
             <p>
               Да, сделку можно оформить по доверенности. Для этого доверенность нужно заверить у
               юриста или нотариуса. Это удобно, если вы не можете лично присутствовать на
               регистрации сделки в земельном департаменте.
             </p>
           </Accordion>
-          <Accordion
-            title={
-              <span className={styles.accordion__title}>
-                Какие документы получает покупатель при покупке недвижимости?
-              </span>
-            }
-          >
+          <Accordion title="Какие документы получает покупатель при покупке недвижимости?">
             <p>
               Покупатель получает <strong>ряд документов</strong>, в том числе: <br />
               – договор купли-продажи; <br />
@@ -145,14 +107,10 @@ export const FAQ: FC = () => {
         </>
       ) : (
         <>
-          <h5 className={styles.header}>FAQ</h5>
-          <Accordion
-            title={
-              <span className={styles.accordion__title}>
-                Can foreigners buy (own) a property in Thailand?
-              </span>
-            }
-          >
+          <Text variant="heading3" className={styles.header}>
+            FAQ
+          </Text>
+          <Accordion title="Can foreigners buy (own) a property in Thailand?">
             Foreigners can:
             <br />— buy a fully owned apartment (condominium) (Freehold);
             <br />— apply for a long-term land lease (Leasehold);
@@ -161,13 +119,7 @@ export const FAQ: FC = () => {
             There are restrictions for other types of real estate, but in such cases it is possible
             to register property through a Thai company.
           </Accordion>
-          <Accordion
-            title={
-              <span className={styles.accordion__title}>
-                What is the difference between Leasehold and Freehold ownership?
-              </span>
-            }
-          >
+          <Accordion title="What is the difference between Leasehold and Freehold ownership?">
             <p>
               <strong>Freehold</strong> — full ownership of real estate without time limits. The
               owner has the right to sell, rent or inherit the property.{' '}
@@ -179,11 +131,7 @@ export const FAQ: FC = () => {
               retained for up to 90 years. Leasehold can be sold, leased, or inherited.
             </p>
           </Accordion>
-          <Accordion
-            title={
-              <span className={styles.accordion__title}>Which type of ownership to choose?</span>
-            }
-          >
+          <Accordion title="Which type of ownership to choose?">
             <p>The choice of ownership depends on the purpose of buying the property:</p>
             <br />
             <p>
@@ -200,13 +148,7 @@ export const FAQ: FC = () => {
             <br />
             <p>We can also help you register full ownership if you want to buy land.</p>
           </Accordion>
-          <Accordion
-            title={
-              <span className={styles.accordion__title}>
-                Which documents do I need to buy property in Thailand?
-              </span>
-            }
-          >
+          <Accordion title="Which documents do I need to buy property in Thailand?">
             <p>
               <strong>On the primary market:</strong>
             </p>
@@ -230,13 +172,7 @@ export const FAQ: FC = () => {
               <li> Certificate of payment of all taxes and fees related to real estate.</li>
             </ol>
           </Accordion>
-          <Accordion
-            title={
-              <span className={styles.accordion__title}>
-                Do I need legal counsel to invest in property?
-              </span>
-            }
-          >
+          <Accordion title="Do I need legal counsel to invest in property?">
             <p>
               Yes, checking legal purity is one of the main stages in making a deal. The company's
               legal department protects the interests of our clients, conducts a full legal review
@@ -244,26 +180,14 @@ export const FAQ: FC = () => {
               legislation.
             </p>
           </Accordion>
-          <Accordion
-            title={
-              <span className={styles.accordion__title}>
-                Can I buy a property through power of attorney?
-              </span>
-            }
-          >
+          <Accordion title="Can I buy a property through power of attorney?">
             <p>
               Yes, the deal can be made by proxy. To do this, the power of attorney must be
               certified by a lawyer or notary. This is convenient if you cannot personally attend
               the registration of the transaction at the Land Department.
             </p>
           </Accordion>
-          <Accordion
-            title={
-              <span className={styles.accordion__title}>
-                Which documents do I get after buying the property?
-              </span>
-            }
-          >
+          <Accordion title="Which documents do I get after buying the property?">
             <p>
               The buyer gets a <strong>number of documents</strong>, including: <br />
               — purchase agreement; <br />

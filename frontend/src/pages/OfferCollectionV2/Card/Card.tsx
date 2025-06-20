@@ -21,8 +21,8 @@ import { Slider } from '../CommonComponents/Slider/Slider';
 import { Progresses } from '../CommonComponents/Progress/Progresses';
 import { Flats } from '@/pages/OfferCollectionV2/CommonComponents/Flats/Flats';
 import { TablesInfo } from '@/pages/OfferCollectionV2/CommonComponents/TablesInfo/TablesInfo';
-import { PaymentStepper } from '@/pages/OfferCollectionV2/CommonComponents/PaymentStepper/PaymentStepper';
 import { EstateOptionsInfo } from '@/pages/OfferCollectionV2/CommonComponents/EstateOptionsInfo/EstateOptionsInfo';
+import { PaymentStepper } from '@/entities/PaymentStepper/PaymentStepper';
 
 export const Card: FC<
   Estate & { collection: string; collectionId: string; agentInfo?: AgentInfo }

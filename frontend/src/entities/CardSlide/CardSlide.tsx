@@ -81,8 +81,6 @@ export const CardSlide: FC<CardSlideProps> = ({
     navigate(`/property/${estate.id}`);
   };
 
-  console.log({ estate });
-
   return loading ? (
     <CardSlideSkeleton />
   ) : (

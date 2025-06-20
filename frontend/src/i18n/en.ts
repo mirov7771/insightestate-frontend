@@ -52,8 +52,8 @@ export default {
   total_aparts: 'Total units',
   total_floors: 'Total floors',
   not_selected: 'Not specified',
-  our_rating: 'Our property score',
-  overall: 'Overall score',
+  our_rating: 'Our rating',
+  overall: 'Overall project rating',
   security: 'Investment security:',
   invest_potential: 'Investment potential',
   project_location: 'Location',
@@ -331,5 +331,17 @@ export default {
   from_30: 'Up to 30 minutes',
 
   beach_time_subway: 'Time to beach/subway',
-  subway: 'Subway'
+  subway: 'Subway',
+
+  'units.available_units': 'Available Units',
+  'units.floor': 'Floor',
+  'units.number': 'Number',
+  'units.pricePerMeter': 'Price per m2',
+  'units.annualIncome': 'Annual income',
+  'units.payback': 'Payback',
+  'units.bedroom.Studio': 'Studio',
+  'units.bedroom.1': '1 bedroom',
+  'units.bedroom.2': '2 bedrooms',
+  'units.bedroom.3': '3 bedrooms',
+  'units.bedroom.4': '4 bedrooms',
 };

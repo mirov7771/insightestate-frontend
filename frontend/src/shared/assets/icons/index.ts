@@ -55,6 +55,7 @@ import OfferCollectionArrowRight from './offer-collection/tabler-icon-chevron-ri
 import OfferCollectionChevronLeft from './offer-collection/tabler-icon-chevron-left.svg?react';
 import OfferCollectionGraphMonitor from './offer-collection/graph-monitor.svg?react';
 import OfferCollectionSpark from './offer-collection/spark.svg?react';
+import OfferCollectionBrandSpark from './offer-collection/brand-spark.svg?react';
 import OfferCollectionHomeStar from './offer-collection/tabler-icon-home-star.svg?react';
 import OfferCollectionDots from './offer-collection/tabler-icon-dots.svg?react';
 import OfferCollectionCopy from './offer-collection/tabler-icon-copy.svg?react';
@@ -62,6 +63,7 @@ import OfferCollectionEdit from './offer-collection/tabler-icon-edit.svg?react';
 import OfferCollectionTrash from './offer-collection/tabler-icon-trash.svg?react';
 import OfferCollectionX from './offer-collection/tabler-icon-x.svg?react';
 import OfferCollectionCircleCheckFilled from './offer-collection/tabler-icon-circle-check-filled.svg?react';
+import OfferCollectionInfoCircle from './offer-collection/tabler-icon-info-circle.svg?react';
 import OfferCollectionArrowLeft from './offer-collection/tabler-icon-arrow-left.svg?react';
 import OfferCollectionBarbell from './offer-collection/tabler-icon-barbell.svg?react';
 import OfferCollectionDeviceLaptop from './offer-collection/tabler-icon-device-laptop.svg?react';
@@ -69,6 +71,9 @@ import OfferCollectionHorseToy from './offer-collection/tabler-icon-horse-toy.sv
 import OfferCollectionWalk from './offer-collection/tabler-icon-walk.svg?react';
 import OfferCollectionCar from './offer-collection/tabler-icon-car.svg?react';
 import OfferCollectionAdjustmentsFilter from './offer-collection/tabler-icon-adjustments-filter.svg?react';
+import CarouselHorizontal from './offer-collection/tabler-icon-carousel-horizontal.svg?react';
+import LayoutList from './offer-collection/tabler-icon-layout-list.svg?react';
+import Plus from './offer-collection/tabler-icon-plus.svg?react';
 import FilterIcon from './FilterIcon.svg?react';
 import EstateIcon from './EstateIcon.svg?react';
 
@@ -131,6 +136,8 @@ export {
   OfferCollectionChevronLeft,
   OfferCollectionGraphMonitor,
   OfferCollectionSpark,
+  OfferCollectionBrandSpark,
+  OfferCollectionInfoCircle,
   OfferCollectionHomeStar,
   OfferCollectionDots,
   OfferCollectionCopy,
@@ -147,4 +154,7 @@ export {
   FilterIcon,
   OfferCollectionAdjustmentsFilter,
   EstateIcon,
+  CarouselHorizontal,
+  LayoutList,
+  Plus,
 };

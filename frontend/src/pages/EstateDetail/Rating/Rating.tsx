@@ -1,9 +1,10 @@
 import { FC, ReactNode, useState } from 'react';
 import styles from './Rating.module.scss';
-import { Info, VectorRating } from '@/shared/assets/icons';
+import { OfferCollectionBrandSpark, OfferCollectionInfoCircle } from '@/shared/assets/icons';
 import { Grade } from '@/widgets/Detail/api/detailApi';
-import { InfoModal } from '@/widgets/Modal/InfoModal';
-import { useIntl } from 'react-intl';
+import { InfoModal } from '@/shared/ui/modals';
+import { FormattedMessage, useIntl } from 'react-intl';
+import { Text } from '@/shared/ui';
 
 export const Rating: FC<Grade> = ({
   investmentPotential,
@@ -15,27 +16,22 @@ export const Rating: FC<Grade> = ({
   const { formatMessage } = useIntl();
   const [infoModal, setInfoModal] = useState(false);
   const [infoTitle, setInfoTitle] = useState('');
-  const [infoText, setInfoText] = useState<string>();
-  const [children, setChildren] = useState<ReactNode>();
+  const [infoText, setInfoText] = useState<string | ReactNode>();
   const handleOpenInfoModal = () => {
     setInfoModal(true);
-  };
-  const handleCloseInfoModal = () => {
-    setInfoModal(false);
   };
 
   const handleSecurity = () => {
     setInfoTitle(formatMessage({ id: 'security' }));
-    setInfoText(undefined);
-    setChildren(
+    setInfoText(
       <>
-        {formatMessage({ id: 'info_title' })}
+        <FormattedMessage id="info_title" />
         <br />
-        {formatMessage({ id: 'security_p1' })}
+        <FormattedMessage id="security_p1" />
         <br />
-        {formatMessage({ id: 'security_p2' })}
+        <FormattedMessage id="security_p2" />
         <br />
-        {formatMessage({ id: 'security_p3' })}
+        <FormattedMessage id="security_p3" />
       </>
     );
     handleOpenInfoModal();
@@ -43,16 +39,15 @@ export const Rating: FC<Grade> = ({
 
   const handleInvest = () => {
     setInfoTitle(formatMessage({ id: 'invest_potential' }));
-    setInfoText(undefined);
-    setChildren(
+    setInfoText(
       <>
-        {formatMessage({ id: 'info_title' })}
+        <FormattedMessage id="info_title" />
         <br />
-        {formatMessage({ id: 'invest_p1' })}
+        <FormattedMessage id="invest_p1" />
         <br />
-        {formatMessage({ id: 'invest_p2' })}
+        <FormattedMessage id="invest_p2" />
         <br />
-        {formatMessage({ id: 'invest_p3' })}
+        <FormattedMessage id="invest_p3" />
       </>
     );
     handleOpenInfoModal();
@@ -60,14 +55,15 @@ export const Rating: FC<Grade> = ({
 
   const handleLocation = () => {
     setInfoTitle(formatMessage({ id: 'project_location' }));
-    setInfoText(undefined);
-    setChildren(
+    setInfoText(
       <>
-        {formatMessage({ id: 'info_title' })}
+        <FormattedMessage id="info_title" />
         <br />
-        {formatMessage({ id: 'location_p1' })}
+        <FormattedMessage id="location_p1" />
         <br />
-        {formatMessage({ id: 'location_p2' })}
+        <FormattedMessage id="invest_p2" />
+        <br />
+        <FormattedMessage id="location_p2" />
       </>
     );
     handleOpenInfoModal();
@@ -75,20 +71,19 @@ export const Rating: FC<Grade> = ({
 
   const handleComfort = () => {
     setInfoTitle(formatMessage({ id: 'comfort' }));
-    setInfoText(undefined);
-    setChildren(
+    setInfoText(
       <>
-        {formatMessage({ id: 'info_title' })}
+        <FormattedMessage id="info_title" />
         <br />
-        {formatMessage({ id: 'comfort_p1' })}
+        <FormattedMessage id="comfort_p1" />
         <br />
-        {formatMessage({ id: 'comfort_p2' })}
+        <FormattedMessage id="comfort_p2" />
         <br />
-        {formatMessage({ id: 'comfort_p3' })}
+        <FormattedMessage id="comfort_p3" />
         <br />
-        {formatMessage({ id: 'comfort_p4' })}
+        <FormattedMessage id="comfort_p4" />
         <br />
-        {formatMessage({ id: 'comfort_p5' })}
+        <FormattedMessage id="comfort_p5" />
       </>
     );
     handleOpenInfoModal();
@@ -97,73 +92,74 @@ export const Rating: FC<Grade> = ({
   const openRatingInfo = () => {
     setInfoTitle(formatMessage({ id: 'object_info_title' }));
     setInfoText(formatMessage({ id: 'object_info_message' }));
-    setChildren(undefined);
     handleOpenInfoModal();
   };
 
   return (
     <div>
-      <h5 className={styles.info_icon}>
+      <Text variant="heading3" className={styles.info_icon}>
         {formatMessage({ id: 'our_rating' })}
         <div className={styles.icon} onClick={openRatingInfo}>
-          <Info />
+          <OfferCollectionInfoCircle />
         </div>
-      </h5>
+      </Text>
       <div className={styles.rating}>
         {main && (
-          <div className={styles.rating__item}>
-            <span className={styles.rating__text}>{formatMessage({ id: 'overall' })}</span>
-            <span
+          <div className={`${styles.rating__item} ${styles.rating__item_main}`}>
+            <Text variant="body1" className={styles.rating__text}>
+              {formatMessage({ id: 'overall' })}
+            </Text>
+            <Text
+              variant="heading3"
               className={`${styles.rating__score} ${styles.rating__score_result}`}
               onClick={openRatingInfo}
             >
-              {main.toPrecision(2)} <VectorRating />
-            </span>
+              {main.toPrecision(2)} <OfferCollectionBrandSpark />
+            </Text>
           </div>
         )}
         {investmentSecurity && (
           <div className={styles.rating__item}>
-            <span className={styles.rating__text}>{formatMessage({ id: 'security' })}</span>
-            <span className={styles.rating__score} onClick={handleSecurity}>
+            <Text variant="body1" className={styles.rating__text}>
+              {formatMessage({ id: 'security' })}
+            </Text>
+            <Text variant="heading3" className={styles.rating__score} onClick={handleSecurity}>
               {investmentSecurity.toPrecision(2)}
-            </span>
+            </Text>
           </div>
         )}
         {investmentPotential && (
           <div className={styles.rating__item}>
-            <span className={styles.rating__text}>{formatMessage({ id: 'invest_potential' })}</span>
-            <span className={styles.rating__score} onClick={handleInvest}>
+            <Text variant="body1" className={styles.rating__text}>
+              {formatMessage({ id: 'invest_potential' })}
+            </Text>
+            <Text variant="heading3" className={styles.rating__score} onClick={handleInvest}>
               {investmentPotential.toPrecision(2)}
-            </span>
+            </Text>
           </div>
         )}
         {projectLocation && (
           <div className={styles.rating__item}>
-            <span className={styles.rating__text}>{formatMessage({ id: 'project_location' })}</span>
-            <span className={styles.rating__score} onClick={handleLocation}>
+            <Text variant="body1" className={styles.rating__text}>
+              {formatMessage({ id: 'project_location' })}
+            </Text>
+            <Text variant="heading3" className={styles.rating__score} onClick={handleLocation}>
               {projectLocation.toPrecision(2)}
-            </span>
+            </Text>
           </div>
         )}
         {comfortOfLife && (
           <div className={styles.rating__item}>
-            <span className={styles.rating__text}>{formatMessage({ id: 'comfort' })}</span>
-            <span className={styles.rating__score} onClick={handleComfort}>
+            <Text variant="body1" className={styles.rating__text}>
+              {formatMessage({ id: 'comfort' })}
+            </Text>
+            <Text variant="heading3" className={styles.rating__score} onClick={handleComfort}>
               {comfortOfLife.toPrecision(2)}
-            </span>
+            </Text>
           </div>
         )}
       </div>
-      <InfoModal
-        open={infoModal}
-        onClose={handleCloseInfoModal}
-        onOpen={handleOpenInfoModal}
-        anchor="bottom"
-        title={infoTitle}
-        text={infoText}
-        bottom={30}
-        children={children}
-      />
+      <InfoModal open={infoModal} title={infoTitle} text={infoText || ''} setOpen={setInfoModal} />
     </div>
   );
 };

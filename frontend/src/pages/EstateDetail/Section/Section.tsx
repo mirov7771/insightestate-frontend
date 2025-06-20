@@ -1,8 +1,9 @@
 import { FC, PropsWithChildren, ReactNode } from 'react';
 import styles from './Section.module.scss';
+import { Text } from '@/shared/ui';
 
 type SectionProps = {
-  title: string;
+  title: string | ReactNode;
   rightSide?: ReactNode;
 };
 
@@ -14,7 +15,7 @@ export const Section: FC<PropsWithChildren<SectionProps>> = ({
   return (
     <section className={styles.section}>
       <div className={styles.header}>
-        <h5 className={styles.title}>{title}</h5>
+        <Text variant="heading3">{title}</Text>
         {rightSide}
       </div>
       <div>{children}</div>
