@@ -85,7 +85,7 @@ const Authorization: FC = () => {
                   color="info"
                   variant="contained"
                   size="small"
-                  onClick={() => navigate('/sign-up')}
+                  onClick={() => navigate('/register')}
                   style={{
                     backgroundColor: 'transparent',
                     borderRadius: '100vw',
@@ -131,7 +131,7 @@ const Authorization: FC = () => {
                   color="info"
                   variant="contained"
                   size="small"
-                  onClick={() => navigate('/sign-up')}
+                  onClick={() => navigate('/register')}
                   style={{
                     backgroundColor: 'transparent',
                     borderRadius: '100vw',

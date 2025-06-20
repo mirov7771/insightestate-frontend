@@ -43,9 +43,9 @@ export const TableComparison: FC<TableComparisonProps> = ({ estate }) => {
       priceTo: formatMessage({ id: 'priceTo' }),
       pricePerSquareMeter: formatMessage({ id: 'pricePerSquareMeter' }),
       deliveryDate: formatMessage({ id: 'completion_date' }),
-      roiOver10Years: formatMessage({ id: 'roi' }),
+      roiOver10Years: formatMessage({ id: 'roiSummary' }),
       irrOver10Years: formatMessage({ id: 'irr' }),
-      beachTime: formatMessage({ id: 'beach_time' }),
+      beachTime: formatMessage({ id: 'beach_time_subway' }),
       timeToShoppingMall: formatMessage({ id: 'timeToShoppingMall' }),
       airportTime: formatMessage({ id: 'airport_time' }),
       plan: formatMessage({ id: 'plan' }),
@@ -73,10 +73,10 @@ export const TableComparison: FC<TableComparisonProps> = ({ estate }) => {
       (rating) => Number(rating).toFixed(1).replace('.', ',')
     ),
     priceFrom: extractNestedValuesOrFallback(estate, ['price.min'])?.map(
-      (price) => `$${formatNumber(Number(price))}`
+      (price) => `$${formatNumber((price))}`
     ),
     priceTo: extractNestedValuesOrFallback(estate, ['price.max'])?.map(
-      (price) => `$${formatNumber(Number(price))}`
+      (price) => `$${formatNumber((price))}`
     ), // priceMax
     pricePerSquareMeter: undefined,
     deliveryDate: extractNestedValuesOrFallback(estate, ['buildEndDate']),

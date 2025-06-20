@@ -33,6 +33,7 @@ export type EstateDetail = {
   toolTip3?: 'true';
   type?: string;
   unitCount?: ProjectUnitCount;
+  city?: string;
 };
 
 export type Developer = {
@@ -82,9 +83,9 @@ export type InfrastructureDto = {
 };
 
 export type Price = {
-  avg?: number;
-  max?: number;
-  min?: number;
+  avg?: string;
+  max?: string;
+  min?: string;
 };
 
 type RoomLayout = {

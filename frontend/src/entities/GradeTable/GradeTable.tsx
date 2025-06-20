@@ -11,6 +11,11 @@ export const GradeTable: FC<
     token?: string;
   }
 > = ({ estates, clickable, isMobile, collectionId, token }) => {
+  const formatPrice = (price: string | undefined): number => {
+      if (!price)
+          return 0
+      return parseInt(price.replace(' ', ''))
+  }
   return (
     <div className={styles.masterNeighbourhood2}>
       <table className={styles.tb}>
@@ -79,7 +84,7 @@ export const GradeTable: FC<
               beachTravelTime={estate.infrastructure?.beachTime?.car || 0}
               grade={estate.grade?.main || 0}
               buildEndDate={estate.buildEndDate}
-              priceMin={estate.price?.min || 0}
+              priceMin={formatPrice(estate.price?.min)}
               facilityImages={estate.facilityImages}
               interiorImages={estate.interiorImages}
               exteriorImages={estate.exteriorImages}
