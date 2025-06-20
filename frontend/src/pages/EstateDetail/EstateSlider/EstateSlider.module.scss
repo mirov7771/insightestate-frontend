@@ -1,6 +1,7 @@
 @use '~@/sass/index' as *;
 
 .slider {
+  overflow: hidden;
   :global {
     .slick-slide {
       max-height: 241px;
