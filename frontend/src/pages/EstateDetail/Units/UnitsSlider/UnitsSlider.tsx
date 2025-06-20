@@ -52,6 +52,23 @@ export const UnitsSlider: FC<{ items: Unit[] }> = ({ items }) => {
           dots: false,
           centerPadding: '8px',
           afterChange: handleAfterChange,
+          responsive: [
+            {
+              breakpoint: 767,
+              settings: {
+                slidesToShow: 1.3,
+                arrows: false,
+              },
+            },
+            {
+              breakpoint: 991,
+              settings: {
+                slidesToShow: 1.6,
+                dots: true,
+                arrows: false,
+              },
+            },
+          ],
         }}
         slides={items.map((unit, idx) =>
           visibleSlides.has(idx) ? (

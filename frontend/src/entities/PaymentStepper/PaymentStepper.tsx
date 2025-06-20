@@ -36,12 +36,15 @@ export const PaymentStepper: FC<PaymentStepperProps> = ({ steps, variant = 'card
       <div className={styles.steps}>
         {steps.map((step, index) => (
           <Fragment key={index}>
-            <div className={styles.step}>
-              <Text variant="heading3" as="span" align="center">
+            <div className={`${styles.step} ${styles.step_estate_detail}`}>
+              <Text variant="heading3" as="span" align="center" className={styles.step__percent}>
                 {step}
               </Text>
               <Text variant="body1" as="span" align="center" className={styles.info}>
-                {index + 1} платёж
+                {index + 1}
+                <span className={styles.hidden_mobile}>
+                  &nbsp;{formatMessage({ id: 'payment' })}
+                </span>
               </Text>
             </div>
             {index < steps.length - 1 && <div className={styles.line} />}

@@ -2,8 +2,14 @@
 
 .container {
   background-color: #f1f1f1;
-  border-radius: 40px;
-  padding: 24px;
+  padding: 16px;
+  margin: 0 -12px;
+
+  @media (min-width: $media-md) {
+    border-radius: 40px;
+    padding: 24px;
+  }
+  @media (min-width: $media-lg) {}
 }
 
 .unit {

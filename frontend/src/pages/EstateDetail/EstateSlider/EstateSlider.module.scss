@@ -1,20 +1,26 @@
 @use '~@/sass/index' as *;
 
 .slider {
+  margin: 0 -12px;
   overflow: hidden;
+
+  @media (min-width: $media-md) {
+    overflow: hidden;
+    margin: 0;
+  }
   :global {
     .slick-slide {
       max-height: 241px;
-      border-radius: 16px;
-      overflow: hidden;
-      margin-right: 8px;
-
-      &:last-child {
-        margin-right: 0;
-      }
 
       @media (min-width: $media-md) {
         max-height: 270px;
+        border-radius: 16px;
+        overflow: hidden;
+        margin-right: 8px;
+
+        &:last-child {
+          margin-right: 0;
+        }
       }
 
       @media (min-width: $media-lg) {
@@ -100,8 +106,9 @@
     .slick-dots {
       width: max-content;
       bottom: 12px;
-      right: 12px;
+      right: 50%;
       z-index: 1;
+      transform: translateX(50%);
     }
 
     .slick-dots li {

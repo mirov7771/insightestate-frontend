@@ -1,7 +1,10 @@
+@use '~@/sass/index' as *;
+
 .infrastructure {
   display: flex;
   gap: 32px;
   margin-bottom: 24px;
+  flex-wrap: wrap;
 
   &__item {
     display: flex;
