@@ -15,19 +15,25 @@ export const AverageYield: FC<Profitability> = ({ roi, irr, capRateFirstYear }) 
           <Text variant="heading3" className={styles.bold}>
             {roi}%
           </Text>
-          <Text variant="body1">{formatMessage({ id: 'roiSummary' })}</Text>
+          <Text variant="body1" className={styles.description}>
+            {formatMessage({ id: 'roiSummary' })}
+          </Text>
         </div>
         <div className={styles.item}>
           <Text variant="heading3" className={styles.bold}>
             {irr}%
           </Text>
-          <Text variant="body1">{formatMessage({ id: 'irr' })}</Text>
+          <Text variant="body1" className={styles.description}>
+            {formatMessage({ id: 'irr' })}
+          </Text>
         </div>
         <div className={styles.item}>
           <Text variant="heading3" className={styles.bold}>
             {capRateFirstYear}%
           </Text>
-          <Text variant="body1">{formatMessage({ id: 'net' })}</Text>
+          <Text variant="body1" className={styles.description}>
+            {formatMessage({ id: 'net' })}
+          </Text>
         </div>
       </div>
     </Section>

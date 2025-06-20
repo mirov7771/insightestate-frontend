@@ -14,3 +14,9 @@
 .bold {
   font-weight: 700;
 }
+
+.description {
+  hyphens: auto;
+  overflow-wrap: break-word;
+  color: var(--ui-color-black-64-opacity);
+}

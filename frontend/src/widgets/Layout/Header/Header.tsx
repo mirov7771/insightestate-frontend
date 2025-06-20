@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from 'react';
 import styles from './Header.module.scss';
 import { Logo, Menu } from '@/shared/assets/icons';
-import {Link, useLocation, useNavigate} from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { Dropdown } from '@/widgets/Dropdown/Dropdown';
 import { useIntl } from 'react-intl';
 import { MobileMenu } from '@/widgets/Layout/Header/MobileMenu';
@@ -58,12 +58,24 @@ export const Header: FC<{ basicToken: string }> = ({ basicToken }) => {
         </div>
         <menu className={styles.menu}>
           <li className={styles.menu__item}>
-            <Link className={location.pathname === '/listing' ? styles.menu__link : styles.menu__link_no_select} to="listing">
+            <Link
+              className={
+                location.pathname === '/listing' ? styles.menu__link : styles.menu__link_no_select
+              }
+              to="listing"
+            >
               {formatMessage({ id: 'properties' })}
             </Link>
           </li>
           <li className={styles.menu__item}>
-            <Link className={location.pathname === '/user-collection' ? styles.menu__link : styles.menu__link_no_select} to="user-collection">
+            <Link
+              className={
+                location.pathname === '/user-collection'
+                  ? styles.menu__link
+                  : styles.menu__link_no_select
+              }
+              to="user-collection"
+            >
               {formatMessage({ id: 'selections' })}
             </Link>
           </li>

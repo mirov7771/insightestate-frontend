@@ -6,7 +6,7 @@
   margin-top: 24px;
   flex-wrap: wrap;
 
-  @media (min-width: $media-md) {
+  @media (min-width: $media-lg) {
     flex-wrap: nowrap;
   }
 
@@ -18,7 +18,7 @@
     &_main {
       width: 100%;
 
-      @media (min-width: $media-md) {
+      @media (min-width: $media-lg) {
         width: auto;
       }
     }
@@ -36,7 +36,7 @@
       height: 22px;
       color: var(--ui-color-primary-2);
 
-      @media (min-width: $media-md) {
+      @media (min-width: $media-lg) {
         width: 32px;
         height: 32px;
       }

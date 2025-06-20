@@ -57,6 +57,56 @@ const EstateDetail: FC = () => {
       });
   }, []);
 
+  const renderSideSection = () => {
+    return estateDetailData ? (
+      <>
+        <div className={styles.badges}>
+          <BadgeRating
+            icon={<OfferCollectionBrandSpark />}
+            text={String(estateDetailData.grade?.main?.toFixed(1) || '')}
+            background="white"
+            className={styles.rating}
+          />
+          {estateDetailData.location?.name && (
+            <BadgeRating
+              icon={<OfferCollectionMapPinFilled />}
+              text={estateDetailData.location.name}
+              background="white"
+              className={styles.rating}
+            />
+          )}
+          <AdvantagesBadges
+            toolTip1={estateDetailData.toolTip1}
+            toolTip2={estateDetailData.toolTip2}
+            toolTip3={estateDetailData.toolTip3}
+          />
+        </div>
+        <Text variant="heading3" className={styles.name}>
+          {estateDetailData.name}
+        </Text>
+        <Info
+          floors={estateDetailData.floors}
+          project={estateDetailData.unitCount}
+          buildEndDate={estateDetailData.buildEndDate}
+          level={estateDetailData.level || 'UNKNOWN'}
+          type={estateDetailData.type || 'VILLA'}
+          developer={estateDetailData.developer?.name}
+          parkingSize={estateDetailData.options?.parkingSize}
+          companyEnabled={estateDetailData.managementCompany?.enabled || false}
+          price={estateDetailData.price}
+        />
+        <div className={styles.buttons}>
+          <Button disabled={!token} onClick={handleOpenUserCollectionModal} wide>
+            <Text variant="heading4">{formatMessage({ id: 'add_to_collection' })}</Text>
+          </Button>
+          <Button disabled={!token} onClick={handleOpenAiModal} variant="ai" wide>
+            <Text variant="heading4">{formatMessage({ id: 'ai_collection' })}</Text>
+          </Button>
+        </div>
+      </>
+    ) : null;
+  };
+
   if (status === 'LOADING') {
     return (
       <Text variant="heading2" as="span" align="center">
@@ -69,15 +119,16 @@ const EstateDetail: FC = () => {
     return (
       <div className={styles.container}>
         <main className={styles.main}>
-          <div>
-            <EstateSlider
-              images={[
-                ...(estateDetailData.exteriorImages || []),
-                ...(estateDetailData.interiorImages || []),
-                ...(estateDetailData.facilityImages || []),
-              ]}
-            />
-          </div>
+          <EstateSlider
+            images={[
+              ...(estateDetailData.exteriorImages || []),
+              ...(estateDetailData.interiorImages || []),
+              ...(estateDetailData.facilityImages || []),
+            ]}
+          />
+          <aside className={`${styles.side} ${styles.side_hidden_desktop}`}>
+            <div className={styles.sticky}>{renderSideSection()}</div>
+          </aside>
           <div>
             <Rating {...estateDetailData.grade} />
           </div>
@@ -122,52 +173,8 @@ const EstateDetail: FC = () => {
             <FAQ />
           </div>
         </main>
-        <aside className={styles.side}>
-          <div className={styles.sticky}>
-            <div className={styles.badges}>
-              <BadgeRating
-                icon={<OfferCollectionBrandSpark />}
-                text={String(estateDetailData.grade?.main?.toFixed(1) || '')}
-                background="white"
-                className={styles.rating}
-              />
-              {estateDetailData.location?.name && (
-                <BadgeRating
-                  icon={<OfferCollectionMapPinFilled />}
-                  text={estateDetailData.location.name}
-                  background="white"
-                  className={styles.rating}
-                />
-              )}
-              <AdvantagesBadges
-                toolTip1={estateDetailData.toolTip1}
-                toolTip2={estateDetailData.toolTip2}
-                toolTip3={estateDetailData.toolTip3}
-              />
-            </div>
-            <Text variant="heading3" className={styles.name}>
-              {estateDetailData.name}
-            </Text>
-            <Info
-              floors={estateDetailData.floors}
-              project={estateDetailData.unitCount}
-              buildEndDate={estateDetailData.buildEndDate}
-              level={estateDetailData.level || 'UNKNOWN'}
-              type={estateDetailData.type || 'VILLA'}
-              developer={estateDetailData.developer?.name}
-              parkingSize={estateDetailData.options?.parkingSize}
-              companyEnabled={estateDetailData.managementCompany?.enabled || false}
-              price={estateDetailData.price}
-            />
-            <div className={styles.buttons}>
-              <Button disabled={!token} onClick={handleOpenUserCollectionModal} wide>
-                <Text variant="heading4">{formatMessage({ id: 'add_to_collection' })}</Text>
-              </Button>
-              <Button disabled={!token} onClick={handleOpenAiModal} variant="ai" wide>
-                <Text variant="heading4">{formatMessage({ id: 'ai_collection' })}</Text>
-              </Button>
-            </div>
-          </div>
+        <aside className={`${styles.side} ${styles.side_hidden_mobile}`}>
+          <div className={styles.sticky}>{renderSideSection()}</div>
         </aside>
         <UserCollectionModal
           open={userCollectionModal}

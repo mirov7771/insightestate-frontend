@@ -2,23 +2,50 @@
 
 .container {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 32px;
   max-width: 1328px;
   margin-left: auto;
   margin-right: auto;
   padding: 0 12px;
+
+  @media (min-width: $media-lg) {
+    grid-template-columns: repeat(12, 1fr);
+    gap: 32px;
+  }
 }
 
 .main {
-  grid-column: span 8;
+  grid-column: span 4;
   display: flex;
   flex-direction: column;
-  gap: 64px;
+  gap: 40px;
+  //overflow: hidden;
+
+  @media (min-width: $media-lg) {
+    grid-column: span 8;
+    gap: 64px;
+  }
 }
 
 .side {
   grid-column: span 4;
+
+  &_hidden_desktop {
+    display: block;
+
+    @media (min-width: $media-lg) {
+      display: none;
+    }
+  }
+
+  &_hidden_mobile {
+    display: none;
+
+    @media (min-width: $media-lg) {
+      display: block;
+    }
+  }
 
   .sticky {
     position: relative;
@@ -51,5 +78,13 @@
     flex-direction: column;
     gap: 8px;
     margin-top: 32px;
+  }
+}
+
+.hidden_desktop {
+  display: block;
+
+  @media (min-width: $media-lg) {
+    display: none;
   }
 }

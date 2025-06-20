@@ -1,10 +1,19 @@
+@use '~@/sass/index' as *;
+
 .container {
   display: flex;
   flex-direction: column;
   border-radius: 24px;
   border: 1px solid var(--ui-color-black-24-opacity);
-  max-height: 682px;
+  max-height: 478px;
   overflow: auto;
+  /* Для Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: #e3e6ea transparent;
+
+  @media (min-width: $media-lg) {
+    max-height: 682px;
+  }
 
   /* Кастомный скроллбар для Webkit-браузеров */
   &::-webkit-scrollbar {
@@ -29,19 +38,17 @@
     background: transparent;
     border-radius: 6px;
   }
-
-  /* Для Firefox */
-  scrollbar-width: thin;
-  scrollbar-color: #e3e6ea transparent;
 }
 
 .unit {
   padding: 24px;
   display: grid;
-  grid-template-columns: 2fr repeat(5, 1fr);
+  grid-template-columns: 2fr repeat(5, minmax(100px, 1fr));
+  grid-column-gap: 12px;
   border-bottom: 1px solid var(--ui-color-black-24-opacity);
   background-color: transparent;
   transition: background-color 0.2s ease-in-out;
+  width: fit-content;
 
   &:hover {
     background-color: var(--ui-color-black-24-opacity);

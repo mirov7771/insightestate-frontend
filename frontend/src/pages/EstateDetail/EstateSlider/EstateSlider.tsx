@@ -9,6 +9,17 @@ const config: Settings = {
   dots: false,
   slidesToShow: 1.3,
   infinite: false,
+  responsive: [
+    {
+      breakpoint: 767,
+      settings: {
+        slidesToShow: 1,
+        dots: true,
+        infinite: false,
+      },
+    },
+    { breakpoint: 991, settings: {} },
+  ],
 };
 
 export const EstateSlider: FC<{ images: string[] }> = ({ images }) => {
