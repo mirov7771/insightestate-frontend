@@ -3,8 +3,11 @@ import { Unit } from '@/shared/api/units';
 import styles from './UnitsSlider.module.scss';
 import { Button, Text } from '@/shared/ui';
 import { baseConfig, Slider } from '@/entities/CardSlide/Slider';
+import { useIntl } from 'react-intl';
+import PlaceholderImg from '../assets/placeholder.png';
 
 export const UnitsSlider: FC<{ items: Unit[] }> = ({ items }) => {
+  const { formatMessage } = useIntl();
   const virtualizationWindow = 7;
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -55,47 +58,44 @@ export const UnitsSlider: FC<{ items: Unit[] }> = ({ items }) => {
             <div className={styles.unit} key={unit.id}>
               <div className={styles.unit__name}>
                 <Text variant="heading4">
-                  {unit.rooms}, {unit.square} м2 - ${unit.price}
+                  {formatMessage({ id: `units.bedroom.${unit.rooms}` })}, {unit.square} м2 - $
+                  {unit.price}
                 </Text>
-                <Text variant="body2">
+                {/*<Text variant="body2">
                   <b>$20,000</b> доход от аренды в год
                 </Text>
                 <Text variant="body2">
                   <b>5 лет</b> срок окупаемости
-                </Text>
+                </Text>*/}
               </div>
               <div className={styles.info}>
                 {unit.floor && (
                   <div className={styles.info__card}>
                     <Text variant="heading5">{unit.floor}</Text>
                     <Text variant="caption1" className={styles.info__card_description}>
-                      Этаж
+                      {formatMessage({ id: 'units.floor' })}
                     </Text>
                   </div>
                 )}
                 <div className={styles.info__card}>
                   <Text variant="heading5">{unit.number}</Text>
                   <Text variant="caption1" className={styles.info__card_description}>
-                    Номер
+                    {formatMessage({ id: 'units.number' })}
                   </Text>
                 </div>
                 <div className={styles.info__card}>
                   <Text variant="heading5">${unit.priceSq}</Text>
                   <Text variant="caption1" className={styles.info__card_description}>
-                    Цена за м2
+                    {formatMessage({ id: 'units.pricePerMeter' })}
                   </Text>
                 </div>
               </div>
               <div className={styles.unit__plan}>
-                <img
-                  src="https://insightestate.pro/estate-images/TH-UTP-DT-00113_ext_1.jpeg"
-                  alt="plan"
-                  loading="lazy"
-                />
+                <img src={unit.planImage || PlaceholderImg} alt="plan" loading="lazy" />
               </div>
-              <Button wide variant="primary" className={styles.unit__button}>
+              {/*<Button wide variant="primary" className={styles.unit__button}>
                 <Text variant="heading4">Добавить в подборку</Text>
-              </Button>
+              </Button>*/}
             </div>
           ) : (
             <div key={unit.id} />

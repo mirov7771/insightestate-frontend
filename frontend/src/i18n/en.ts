@@ -329,4 +329,16 @@ export default {
   from_5: 'Up to 5 minutes',
   from_15: 'Up to 15 minutes',
   from_30: 'Up to 30 minutes',
+
+  'units.available_units': 'Available Units',
+  'units.floor': 'Floor',
+  'units.number': 'Number',
+  'units.pricePerMeter': 'Price per m2',
+  'units.annualIncome': 'Annual income',
+  'units.payback': 'Payback',
+  'units.bedroom.Studio': 'Studio',
+  'units.bedroom.1': '1 bedroom',
+  'units.bedroom.2': '2 bedrooms',
+  'units.bedroom.3': '3 bedrooms',
+  'units.bedroom.4': '4 bedrooms',
 };

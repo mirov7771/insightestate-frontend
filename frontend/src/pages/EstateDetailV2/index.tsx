@@ -127,7 +127,7 @@ const EstateDetailV2: FC = () => {
             <div className={styles.badges}>
               <BadgeRating
                 icon={<OfferCollectionBrandSpark />}
-                text={String(estateDetailData.grade?.main || '')}
+                text={String(estateDetailData.grade?.main?.toFixed(1) || '')}
                 background="white"
                 className={styles.rating}
               />
@@ -160,10 +160,10 @@ const EstateDetailV2: FC = () => {
               price={estateDetailData.price}
             />
             <div className={styles.buttons}>
-              <Button disabled={!!token} onClick={handleOpenUserCollectionModal} wide>
+              <Button disabled={!token} onClick={handleOpenUserCollectionModal} wide>
                 <Text variant="heading4">{formatMessage({ id: 'add_to_collection' })}</Text>
               </Button>
-              <Button disabled={!!token} onClick={handleOpenAiModal} variant="ai" wide>
+              <Button disabled={!token} onClick={handleOpenAiModal} variant="ai" wide>
                 <Text variant="heading4">{formatMessage({ id: 'ai_collection' })}</Text>
               </Button>
             </div>

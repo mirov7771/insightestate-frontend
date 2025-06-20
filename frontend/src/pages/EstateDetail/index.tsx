@@ -116,7 +116,7 @@ const EstateDetail: FC = () => {
         title={name}
         rightSide={
           <div className={styles.title}>
-            <Button disabled={!!token} onClick={handleOpenUserCollectionModal}>
+            <Button disabled={!token} onClick={handleOpenUserCollectionModal}>
               <Text variant="heading4">{formatMessage({ id: 'add_to_collection' })}</Text>
             </Button>
             {/*<Button*/}
@@ -125,10 +125,7 @@ const EstateDetail: FC = () => {
             {/*>*/}
             {/*  <Text variant="heading4">{formatMessage({ id: 'help_with_client' })}</Text>*/}
             {/*</Button>*/}
-            <Button
-              disabled={token === null || token === undefined || token === ''}
-              onClick={handleOpenAiModal}
-            >
+            <Button disabled={!token} onClick={handleOpenAiModal}>
               <Text variant="heading4">{formatMessage({ id: 'ai_collection' })}</Text>
             </Button>
           </div>

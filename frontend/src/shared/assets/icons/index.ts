@@ -71,6 +71,9 @@ import OfferCollectionHorseToy from './offer-collection/tabler-icon-horse-toy.sv
 import OfferCollectionWalk from './offer-collection/tabler-icon-walk.svg?react';
 import OfferCollectionCar from './offer-collection/tabler-icon-car.svg?react';
 import OfferCollectionAdjustmentsFilter from './offer-collection/tabler-icon-adjustments-filter.svg?react';
+import CarouselHorizontal from './offer-collection/tabler-icon-carousel-horizontal.svg?react';
+import LayoutList from './offer-collection/tabler-icon-layout-list.svg?react';
+import Plus from './offer-collection/tabler-icon-plus.svg?react';
 import FilterIcon from './FilterIcon.svg?react';
 import EstateIcon from './EstateIcon.svg?react';
 
@@ -151,4 +154,7 @@ export {
   FilterIcon,
   OfferCollectionAdjustmentsFilter,
   EstateIcon,
+  CarouselHorizontal,
+  LayoutList,
+  Plus,
 };
