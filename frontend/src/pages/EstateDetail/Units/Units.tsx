@@ -1,8 +1,8 @@
 import React, { FC, useCallback, useEffect, useState } from 'react';
 import { Segment, Text } from '@/shared/ui';
 import { Section } from '@/pages/EstateDetail/Section/Section';
-import { UnitsSlider } from '@/pages/EstateDetailV2/Units/UnitsSlider';
-import { UnitsCards } from '@/pages/EstateDetailV2/Units/UnitsCards';
+import { UnitsSlider } from '@/pages/EstateDetail/Units/UnitsSlider';
+import { UnitsCards } from '@/pages/EstateDetail/Units/UnitsCards';
 import { Unit, unitsApi } from '@/shared/api/units';
 import { useParams } from 'react-router';
 import { useStatus } from '@/shared/utils/useStatus';

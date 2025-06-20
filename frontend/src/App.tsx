@@ -14,7 +14,6 @@ import { I18nProvider } from '@/i18n/I18nProvider';
 // Lazy imports for pages
 const Listing = lazy(() => import('@/pages/Listing'));
 const EstateDetail = lazy(() => import('@/pages/EstateDetail'));
-const EstateDetailV2 = lazy(() => import('@/pages/EstateDetailV2'));
 const OfferCollection = lazy(() => import('@/pages/OfferCollection'));
 const UserCollection = lazy(() => import('@/pages/UserCollection'));
 const AiListing = lazy(() => import('@/pages/AiListing'));
@@ -78,9 +77,6 @@ const App = () => {
                       <Route path="/listing" element={<Listing />} />
                       <Route path="/property">
                         <Route path=":id" element={<EstateDetail />} />
-                      </Route>
-                      <Route path="/property-v2">
-                        <Route path=":id" element={<EstateDetailV2 />} />
                       </Route>
                       <Route path="/offer-collection">
                         <Route path=":id" element={<OfferCollection />} />
