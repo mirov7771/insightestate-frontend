@@ -4,6 +4,7 @@ import { Footer } from './Footer/Footer';
 import styles from './Layout.module.scss';
 import { useEffect, useState } from 'react';
 import { HeaderUnauth } from '@/widgets/Layout/Header/HeaderUnauth';
+import { HeaderV2 } from '@/widgets/Layout/HeaderV2/HeaderV2';
 
 const Layout = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -27,11 +28,12 @@ const Layout = () => {
     <>
       {basicToken ? (
         <>
-          <Header basicToken={basicToken} />
+          {/*<Header basicToken={basicToken} />*/}
           <main className={styles.main}>
+            <HeaderV2 basicToken={basicToken} />
             <Outlet />
+            <Footer />
           </main>
-          <Footer />
         </>
       ) : (
         <>

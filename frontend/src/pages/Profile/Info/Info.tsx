@@ -77,7 +77,7 @@ export const Info: FC<InfoProps> = ({
       {!editMode && (
         <div className={styles.wrapper}>
           <div className={styles.content}>
-            <Text variant="heading4">{name}</Text>
+            <Text variant="heading5">{name}</Text>
             <Text className={styles.content__value} variant="body1">
               {dataKey === 'password'
                 ? '********'
@@ -85,7 +85,7 @@ export const Info: FC<InfoProps> = ({
             </Text>
           </div>
           <Button variant="base" onClick={handleToggleEditClick} disabled={isLoading}>
-            <Text variant="heading5">
+            <Text variant="body1" bold>
               {val || dataKey === 'password'
                 ? formatMessage({ id: 'common.edit' })
                 : formatMessage({ id: 'common.add' })}
@@ -98,10 +98,14 @@ export const Info: FC<InfoProps> = ({
           {renderInputField()}
           <div className={styles.form__buttons}>
             <Button type="submit" onSubmit={onSubmit} size="s" loading={isLoading}>
-              <Text variant="heading5">{formatMessage({ id: 'common.save' })}</Text>
+              <Text variant="body1" bold>
+                {formatMessage({ id: 'common.save' })}
+              </Text>
             </Button>
             <Button onClick={handleToggleEditClick} size="s" variant="base" disabled={isLoading}>
-              <Text variant="heading5">{formatMessage({ id: 'common.cancel' })}</Text>
+              <Text variant="body1" bold>
+                {formatMessage({ id: 'common.cancel' })}
+              </Text>
             </Button>
           </div>
         </form>

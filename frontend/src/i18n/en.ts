@@ -344,4 +344,11 @@ export default {
   'units.bedroom.2': '2 bedrooms',
   'units.bedroom.3': '3 bedrooms',
   'units.bedroom.4': '4 bedrooms',
+
+  'userProfile.language.ru': 'Russian',
+  'userProfile.language.en': 'English',
+  'userProfile.balance': 'Balance',
+  'userProfile.tgGroup': 'Telegram group',
+  'userProfile.settings': 'Profile settings',
+  'userProfile.exit': 'Log out of account',
 };

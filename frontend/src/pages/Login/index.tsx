@@ -78,7 +78,7 @@ const Login: FC = () => {
             name="password"
           />
           <Button onClick={handleLogin} wide size="l" loading={loading}>
-            <Text variant="heading4" align="center" as="span">
+            <Text variant="body1" bold align="center" as="span">
               {formatMessage({ id: 'log_in' })}
             </Text>
           </Button>

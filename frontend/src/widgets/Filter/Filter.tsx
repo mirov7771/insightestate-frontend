@@ -45,7 +45,7 @@ export const Filter: FC<FilterProps> = ({ open, setOpen }) => {
     >
       <div className={styles.filters}>
         <div className={styles.header}>
-          <h5>{formatMessage({ id: 'filters.header' })}</h5>
+          <Text variant="heading4">{formatMessage({ id: 'filters.header' })}</Text>
           <span className={styles.reset} onClick={handleClose}>
             <OfferCollectionX />
           </span>
@@ -65,12 +65,14 @@ export const Filter: FC<FilterProps> = ({ open, setOpen }) => {
         </div>
         <div className={styles.filters__buttons}>
           <Button variant="primary" onClick={handleClose} wide>
-            <Text variant="heading4">
+            <Text variant="body1" bold>
               {formatMessage({ id: 'filter.show_objects' }, { totalCount })}
             </Text>
           </Button>
           <Button variant="base" onClick={resetFilters} wide>
-            <Text variant="heading4">{formatMessage({ id: 'filter_clear' })}</Text>
+            <Text variant="body1" bold>
+              {formatMessage({ id: 'filter_clear' })}
+            </Text>
           </Button>
         </div>
       </div>
@@ -91,19 +93,14 @@ const AiFilter: FC = () => {
   return (
     <>
       <div className={styles.info}>
-        <p
-          style={{
-            fontSize: '18px',
-            fontWeight: 'bold',
-          }}
-        >
-          {formatMessage({ id: 'ai_header_text' })}
-        </p>
+        <Text variant="heading4">{formatMessage({ id: 'ai_header_text' })}</Text>
         <Spacer height={20} width={100} />
-        <p>{formatMessage({ id: 'ai_text' })}</p>
+        <Text variant="body1">{formatMessage({ id: 'ai_text' })}</Text>
         <Spacer height={20} width={100} />
         <Button onClick={handleOpenAiModal} wide size={'m'}>
-          {formatMessage({ id: 'ai_button' })}
+          <Text variant="body1" bold>
+            {formatMessage({ id: 'ai_button' })}
+          </Text>
         </Button>
       </div>
       <AiModal

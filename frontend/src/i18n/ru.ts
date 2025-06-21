@@ -1,3 +1,5 @@
+import { UserProfile } from '@/widgets/Layout/HeaderV2/UserProfile';
+
 export default {
   language: 'Язык',
   city: 'Город',
@@ -343,4 +345,11 @@ export default {
   'units.bedroom.2': '2 спальни',
   'units.bedroom.3': '3 спальни',
   'units.bedroom.4': '4 спальни',
+
+  'userProfile.language.ru': 'Русский',
+  'userProfile.language.en': 'Английский',
+  'userProfile.balance': 'Баланс',
+  'userProfile.tgGroup': 'Группа в Telegram',
+  'userProfile.settings': 'Настройки профиля',
+  'userProfile.exit': 'Выйти из аккаунта',
 };

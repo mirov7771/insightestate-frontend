@@ -32,7 +32,9 @@ export const FastFilter: FC<FasFilterProps> = ({ name, filter, filterName }) => 
   return (
     <>
       <Button variant="base" size="s" onClick={handleClick}>
-        <Text variant="heading5">{name}</Text>
+        <Text variant="body1" bold>
+          {name}
+        </Text>
       </Button>
       {width >= 768 ? (
         <Menu

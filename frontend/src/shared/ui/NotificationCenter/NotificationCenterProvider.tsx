@@ -25,7 +25,9 @@ export const NotificationsProvider = ({ children }: { children: ReactNode }) => 
     return typeof snackbarItem?.message === 'string' ? (
       <div className={styles.message}>
         <OfferCollectionCircleCheckFilled />
-        <Text variant="heading5">{snackbarItem?.message}</Text>
+        <Text variant="body1" bold>
+          {snackbarItem?.message}
+        </Text>
       </div>
     ) : (
       <div className={styles.message}>

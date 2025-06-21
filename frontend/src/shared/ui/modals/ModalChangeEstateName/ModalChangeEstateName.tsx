@@ -50,7 +50,7 @@ export const ModalChangeEstateName: FC<ModalChangeEstateNameProps> = ({
       dialogProps={{ open, maxWidth: 'sm', fullWidth: true, onClose: () => handleCancel() }}
       withCloseIcon
     >
-      <Text variant="heading3">
+      <Text variant="heading4">
         <FormattedMessage id="userCollection.rename" />
       </Text>
       <Input
@@ -61,12 +61,12 @@ export const ModalChangeEstateName: FC<ModalChangeEstateNameProps> = ({
       />
       <div className={styles.buttons}>
         <Button wide variant="base" onClick={handleCancel} disabled={status === 'LOADING'}>
-          <Text variant="heading4" align="center">
+          <Text variant="body1" bold align="center">
             <FormattedMessage id="userCollection.cancel" />
           </Text>
         </Button>
         <Button wide loading={status === 'LOADING'}>
-          <Text variant="heading4" align="center" onClick={handleChange}>
+          <Text variant="body1" bold align="center" onClick={handleChange}>
             <FormattedMessage id="userCollection.save" />
           </Text>
         </Button>

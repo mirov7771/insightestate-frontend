@@ -57,7 +57,7 @@ export const BlockView: FC<BlockViewProps> = ({
             />
           </div>
         </div>
-        <Text className={styles.description} variant="heading4">
+        <Text className={styles.description} variant="body1" bold>
           <FormattedMessage id={'userCollection.objects'} values={{ count: estates.length }} />
         </Text>
         <div className={styles.slide}>
@@ -72,7 +72,7 @@ export const BlockView: FC<BlockViewProps> = ({
               return (
                 <div className={styles.estate}>
                   <img className={styles.estate__img} src={img} width={200} height={200} />
-                  <Text className={styles.estate__text} variant="heading5">
+                  <Text className={styles.estate__text} variant="body1" bold>
                     {estate.name}
                   </Text>
                 </div>
@@ -84,17 +84,17 @@ export const BlockView: FC<BlockViewProps> = ({
         {!!estates.length && (
           <div className={styles.buttons}>
             <Button onClick={goToCollection}>
-              <Text variant="heading4">
+              <Text variant="body1" bold>
                 <FormattedMessage id="userCollection.view" />
               </Text>
             </Button>
             <Button onClick={goToCollectionClient}>
-              <Text variant="heading4">
+              <Text variant="body1" bold>
                 <FormattedMessage id="userCollection.clientView" />
               </Text>
             </Button>
             <Button variant="base" onClick={copyLink} loading={copyLinkStatus === 'LOADING'}>
-              <Text variant="heading4">
+              <Text variant="body1" bold>
                 <FormattedMessage id="userCollection.copyLink" />
               </Text>
             </Button>

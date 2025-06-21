@@ -169,7 +169,7 @@ const Register: FC = () => {
           />
 
           <Button onClick={handleLogin} wide size={'l'} loading={loading} type="submit">
-            <Text variant="heading4" align="center" as="span">
+            <Text variant="body1" bold align="center" as="span">
               {formatMessage({ id: 'registration' })}
             </Text>
           </Button>

@@ -37,7 +37,9 @@ export const InfoModal: FC<InfoModalProps> = ({
           {text}
         </Text>
         <Button onClick={handleCloseModal} size="l" className={styles.button}>
-          <Text variant="heading4">{formatMessage({ id: 'ok' })}</Text>
+          <Text variant="body1" bold>
+            {formatMessage({ id: 'ok' })}
+          </Text>
         </Button>
       </div>
     </Modal>

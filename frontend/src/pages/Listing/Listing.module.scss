@@ -2,13 +2,6 @@
 
 .wrap {
   margin: 0 auto;
-  max-width: 1736px;
-  padding: 0 12px;
-  width: 100%;
-
-  @media (min-width: $media-md) {
-    width: 95%;
-  }
 }
 
 .header {
@@ -17,8 +10,6 @@
   width: 100%;
   background-color: var(--ui-color-white);
   padding-bottom: 8px;
-  position: sticky;
-  top: 68px;
   z-index: 3;
 }
 
@@ -141,7 +132,7 @@
   }
 
   @media (min-width: $media-xxl) {
-    grid-template-columns: repeat(auto-fit, minmax(648px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));
   }
 }
 

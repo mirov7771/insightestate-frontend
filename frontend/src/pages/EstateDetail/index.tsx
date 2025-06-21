@@ -97,10 +97,14 @@ const EstateDetail: FC = () => {
         />
         <div className={styles.buttons}>
           <Button disabled={!token} onClick={handleOpenUserCollectionModal} wide>
-            <Text variant="heading4">{formatMessage({ id: 'add_to_collection' })}</Text>
+            <Text variant="body1" bold>
+              {formatMessage({ id: 'add_to_collection' })}
+            </Text>
           </Button>
           <Button disabled={!token} onClick={handleOpenAiModal} variant="ai" wide>
-            <Text variant="heading4">{formatMessage({ id: 'ai_collection' })}</Text>
+            <Text variant="body1" bold>
+              {formatMessage({ id: 'ai_collection' })}
+            </Text>
           </Button>
         </div>
       </>

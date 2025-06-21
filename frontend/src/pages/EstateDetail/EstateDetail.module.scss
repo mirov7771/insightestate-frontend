@@ -7,7 +7,6 @@
   max-width: 1328px;
   margin-left: auto;
   margin-right: auto;
-  padding: 0 12px;
 
   @media (min-width: $media-lg) {
     grid-template-columns: repeat(12, 1fr);
