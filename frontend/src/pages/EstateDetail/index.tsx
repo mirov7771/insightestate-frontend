@@ -21,7 +21,7 @@ import { Map } from './Section/Map/Map';
 import { Rating } from './Rating/Rating';
 import { Units } from './Units';
 import { EstateSlider } from './EstateSlider';
-import {BaseUserModal} from "@/widgets/Modal/BaseUserModal";
+import { BaseUserModal } from '@/widgets/Modal/BaseUserModal';
 
 const EstateDetail: FC = () => {
   const { formatMessage } = useIntl();
@@ -32,6 +32,7 @@ const EstateDetail: FC = () => {
   const [userCollectionModal, setUserCollectionModal] = useState(false);
   const [aiModal, setAiModal] = useState(false);
   const [helpModal, setHelpModal] = useState(false);
+
   const handleOpenUserCollectionModal = () => {
     setUserCollectionModal(true);
   };
@@ -47,10 +48,10 @@ const EstateDetail: FC = () => {
   };
 
   const handleOpenHelpModal = () => {
-      setHelpModal(true);
+    setHelpModal(true);
   };
   const handleCloseHelpModal = () => {
-      setHelpModal(false);
+    setHelpModal(false);
   };
 
   useEffect(() => {
@@ -106,14 +107,20 @@ const EstateDetail: FC = () => {
         />
         <div className={styles.buttons}>
           <Button disabled={!token} onClick={handleOpenUserCollectionModal} wide>
-            <Text variant="heading4">{formatMessage({ id: 'add_to_collection' })}</Text>
+            <Text variant="body1" bold>
+              {formatMessage({ id: 'add_to_collection' })}
+            </Text>
           </Button>
           <Button disabled={!token} onClick={handleOpenAiModal} variant="ai" wide>
-            <Text variant="heading4">{formatMessage({ id: 'ai_collection' })}</Text>
+            <Text variant="body1" bold>
+              {formatMessage({ id: 'ai_collection' })}
+            </Text>
           </Button>
-            <Button disabled={!token} onClick={handleOpenHelpModal} variant="white" wide>
-                <Text variant="heading4">{formatMessage({ id: 'help_with_client' })}</Text>
-            </Button>
+          <Button disabled={!token} onClick={handleOpenHelpModal} variant="base" wide>
+            <Text variant="body1" bold>
+              {formatMessage({ id: 'help_with_client' })}
+            </Text>
+          </Button>
         </div>
       </>
     ) : null;
@@ -203,13 +210,13 @@ const EstateDetail: FC = () => {
           anchor="bottom"
         />
         <BaseUserModal
-            open={helpModal}
-            onClose={handleCloseHelpModal}
-            onOpen={handleOpenHelpModal}
-            anchor="bottom"
-            id={id!!}
-            object={estateDetailData.name}
-            token={token!!}
+          open={helpModal}
+          onClose={handleCloseHelpModal}
+          onOpen={handleOpenHelpModal}
+          anchor="bottom"
+          id={id!!}
+          object={estateDetailData.name}
+          token={token!!}
         />
       </div>
     );

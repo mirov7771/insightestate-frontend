@@ -1,0 +1,25 @@
+.menu {
+  display: flex;
+  gap: 24px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    color: var(--ui-color-black-24-opacity);
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+
+    &:hover {
+      color: var(--ui-color-black);
+    }
+
+    &_active {
+      color: var(--ui-color-black);
+    }
+  }
+}

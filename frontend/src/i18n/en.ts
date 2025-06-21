@@ -338,6 +338,7 @@ export default {
   'units.number': 'Number',
   'units.pricePerMeter': 'Price per m2',
   'units.annualIncome': 'Annual income',
+  'units.plan': 'Layout will appear later',
   'units.payback': 'Payback',
   'units.bedroom.Studio': 'Studio',
   'units.bedroom.1': '1 bedroom',
@@ -345,17 +346,23 @@ export default {
   'units.bedroom.3': '3 bedrooms',
   'units.bedroom.4': '4 bedrooms',
 
+  'userProfile.language.ru': 'Russian',
+  'userProfile.language.en': 'English',
+  'userProfile.balance': 'Balance',
+  'userProfile.tgGroup': 'Telegram group',
+  'userProfile.settings': 'Profile settings',
+  'userProfile.exit': 'Log out of account',
+
   help_client: 'Client data',
   help_lastName: 'Last name',
   help_firstName: 'Name',
   help_phone: 'Phone number',
   help_object: 'Object for armor',
-  help_city: 'Buyer\'s country and city',
+  help_city: "Buyer's country and city",
   help_title: 'Help with a client',
   help_button1: 'Send',
   help_button2: 'I agree',
-  help_text:
-      `We can help you complete the transaction and take over:
+  help_text: `We can help you complete the transaction and take over:
        <br></br>
        — communication with the developer
        <br></br>
@@ -372,5 +379,5 @@ export default {
        <br></br>
        You can track all the stages of the transaction and communication with the client in your personal account.
        We pay 50% commission immediately after receiving the money from the developer. Payment status
-       and money withdrawal is also available in your personal account.`
+       and money withdrawal is also available in your personal account.`,
 };

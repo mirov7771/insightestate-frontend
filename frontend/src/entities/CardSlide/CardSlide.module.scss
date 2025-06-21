@@ -238,6 +238,10 @@
     font-weight: 600;
     text-decoration: none;
     display: inline-block;
+
+    @media (min-width: $media-md) {
+      margin-top: 0;
+    }
   }
 
   &__button {

@@ -337,12 +337,20 @@ export default {
   'units.number': 'Номер',
   'units.pricePerMeter': 'Цена за м2',
   'units.annualIncome': 'Доход в год',
+  'units.plan': 'Планировка появится позже',
   'units.payback': 'Окупаемость',
   'units.bedroom.Studio': 'Студия',
   'units.bedroom.1': '1 спальня',
   'units.bedroom.2': '2 спальни',
   'units.bedroom.3': '3 спальни',
   'units.bedroom.4': '4 спальни',
+
+  'userProfile.language.ru': 'Русский',
+  'userProfile.language.en': 'Английский',
+  'userProfile.balance': 'Баланс',
+  'userProfile.tgGroup': 'Группа в Telegram',
+  'userProfile.settings': 'Настройки профиля',
+  'userProfile.exit': 'Выйти из аккаунта',
 
   help_client: 'Данные клиента',
   help_lastName: 'Фамилия',
@@ -353,8 +361,7 @@ export default {
   help_title: 'Помощь с клиентом',
   help_button1: 'Отправить',
   help_button2: 'Согласен',
-  help_text:
-      `Мы можем помочь вам с доведением сделки до конца и взять на себя:
+  help_text: `Мы можем помочь вам с доведением сделки до конца и взять на себя:
        <br></br>
        — общение с девелопером
        <br></br>
@@ -371,5 +378,5 @@ export default {
        <br></br>
        Вы можете отслеживать все этапы сделки и общения с клиентом в личном кабинете.
        Выплачиваем 50% комиссии сразу после получения денег от девелопера. Статус оплаты
-       и вывод денег также доступен в личном кабинете.`
+       и вывод денег также доступен в личном кабинете.`,
 };

@@ -60,7 +60,7 @@ const SignUpEnd: FC = () => {
               placeholder={formatMessage({ id: 'code' })}
             />
             <Button onClick={handleLogin} wide size={'l'} loading={loading}>
-              <Text variant="heading4" align="center" as="span">
+              <Text variant="body1" bold align="center" as="span">
                 {formatMessage({ id: 'confirm_button' })}
               </Text>
             </Button>
@@ -69,7 +69,7 @@ const SignUpEnd: FC = () => {
         onSubmit={handleLogin}
         bottomText={
           <>
-            <Text variant="caption2" as="p" className={styles.description} align="center">
+            <Text variant="caption1" as="p" className={styles.description} align="center">
               {formatMessage({ id: 'footer_info_text' })}
             </Text>
             <Text variant="body1" as="p" className={styles.signUp} align="center">

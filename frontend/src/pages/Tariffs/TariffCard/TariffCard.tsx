@@ -129,7 +129,7 @@ export const TariffCard: FC<TariffCardProps> = ({
             >
               <p className={styles.card__text_p_decline}>{getSubscription()}</p>
               <li className={styles.card__badge_discount}>
-                <Text variant="heading4_White">-100%</Text>
+                <Text variant="heading4">-100%</Text>
               </li>
             </div>
           )}

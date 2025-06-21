@@ -1,0 +1,143 @@
+.text {
+  display: block;
+  color: inherit;
+}
+
+.left {
+  text-align: left;
+}
+
+.center {
+  text-align: center;
+}
+
+.right {
+  text-align: right;
+}
+
+.heading1 {
+  font-family: 'Wix Madefor Text', sans-serif;
+  font-weight: 600;
+  font-size: 56px;
+  line-height: 72px;
+  letter-spacing: 0;
+}
+
+.heading2 {
+  font-family: 'Wix Madefor Text', sans-serif;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 48px;
+  letter-spacing: 0;
+}
+
+.heading3 {
+  font-family: 'Wix Madefor Text', sans-serif;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 42px;
+  letter-spacing: 0;
+}
+
+.heading4 {
+  font-family: 'Wix Madefor Text', sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: 0;
+}
+
+.heading5 {
+  font-family: 'Wix Madefor Text', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0;
+}
+
+.subheading1 {
+  font-family: 'Wix Madefor Text', sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: 0;
+}
+
+.subheading2 {
+  font-family: 'Wix Madefor Text', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0;
+}
+
+.body1 {
+  font-family: 'Wix Madefor Text', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0;
+}
+
+.body2 {
+  font-family: 'Wix Madefor Text', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0;
+}
+
+.caption1 {
+  font-family: 'Wix Madefor Text', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0;
+}
+
+// UPPER Case шрифты
+.heading1_upper {
+  font-family: 'Wix Madefor Display', sans-serif;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 80px;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.heading2_upper {
+  font-family: 'Wix Madefor Display', sans-serif;
+  font-weight: 700;
+  font-size: 56px;
+  line-height: 72px;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+.heading3_upper {
+  font-family: 'Wix Madefor Display', sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 52px;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+.heading4_upper {
+  font-family: 'Wix Madefor Display', sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 40px;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+.heading5_upper {
+  font-family: 'Wix Madefor Display', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.bold {
+  font-weight: 600;
+}

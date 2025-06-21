@@ -8,7 +8,7 @@ import {
   StyledWrapperText,
 } from './styled';
 import { Spacer } from '../Spacer/Spacer';
-import { Text } from '../Text/Text';
+import { Text } from '@/shared/ui';
 import { BaseField } from '@/widgets/BaseField/BaseField';
 import { useNavigate } from 'react-router';
 import { isMobile } from 'react-device-detect';
@@ -51,13 +51,13 @@ export const AiModal: FC<TModalProps> = ({ onClose, open, anchor, onOpen }) => {
           <StyledWrapperProgress>
             <Spacer width="100%" height={8} />
             <Spacer width="100%" height={8} />
-            <Text size="xl" align="center" colorTheme={'black200'} isBold>
+            <Text variant="heading4" align="center">
               {formatMessage({ id: 'ai_title' })}
             </Text>
             <Spacer width="100%" height={8} />
             {!isNew ? (
               <StyledWrapperText>
-                <Text size="m" align="left" colorTheme={'black200'}>
+                <Text variant="body1" align="left">
                   {formatMessage({ id: 'ai_header' })}
                   <br />
                   {formatMessage({ id: 'ai_header_1' })}

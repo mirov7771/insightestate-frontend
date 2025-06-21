@@ -1,4 +1,5 @@
 export { Accordion } from './Accordion';
+export { Avatar } from './Avatar';
 export { Checkbox } from './Checkbox';
 export { BottomSheet } from './BottomSheet';
 export { BadgeRating } from './BadgeRating';

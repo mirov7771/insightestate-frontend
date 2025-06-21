@@ -24,7 +24,7 @@ export const Tabs: FC<TabsProps> = ({ value, setValue, content }) => {
           disableRipple
           classes={{ root: styles.tabRoot }}
           label={
-            <Text variant="heading5" align="center">
+            <Text variant="body1" bold align="center">
               {text}
             </Text>
           }

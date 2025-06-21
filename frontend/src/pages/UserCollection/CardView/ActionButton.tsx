@@ -62,7 +62,9 @@ export const ActionButton: FC<ActionButtonProps> = ({
         {!!estates.length && (
           <MenuItem classes={{ root: styles.listItem }} onClick={handleCopyLink}>
             <OfferCollectionCopy />
-            <Text variant="heading5">{formatMessage({ id: 'userCollection.copyLink' })}</Text>
+            <Text variant="body1" bold>
+              {formatMessage({ id: 'userCollection.copyLink' })}
+            </Text>
           </MenuItem>
         )}
         <MenuItem
@@ -73,7 +75,9 @@ export const ActionButton: FC<ActionButtonProps> = ({
           }}
         >
           <OfferCollectionEdit />
-          <Text variant="heading5">{formatMessage({ id: 'userCollection.changeName' })}</Text>
+          <Text variant="body1" bold>
+            {formatMessage({ id: 'userCollection.changeName' })}
+          </Text>
         </MenuItem>
         <MenuItem
           classes={{ root: styles.listItem }}
@@ -83,7 +87,9 @@ export const ActionButton: FC<ActionButtonProps> = ({
           }}
         >
           <OfferCollectionTrash />
-          <Text variant="heading5">{formatMessage({ id: 'userCollection.deleteCollection' })}</Text>
+          <Text variant="body1" bold>
+            {formatMessage({ id: 'userCollection.deleteCollection' })}
+          </Text>
         </MenuItem>
       </Menu>
       <ModalChangeEstateName

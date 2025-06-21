@@ -38,13 +38,13 @@ export const CardView: FC<CardViewProps> = ({
       </div>
       <Text
         className={`${styles.name} ${!estates.length ? styles.name__disabled : ''}`}
-        variant="heading4"
-        as="span"
+        variant="body1"
+        bold
         onClick={!!estates.length ? goToCollection : undefined}
       >
         {name}
       </Text>
-      <Text className={styles.description} variant="heading4" as="span">
+      <Text className={styles.description} variant="body1" bold>
         <FormattedMessage id={'userCollection.objects'} values={{ count: estates.length }} />
       </Text>
     </div>

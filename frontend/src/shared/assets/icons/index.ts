@@ -74,6 +74,11 @@ import OfferCollectionAdjustmentsFilter from './offer-collection/tabler-icon-adj
 import CarouselHorizontal from './offer-collection/tabler-icon-carousel-horizontal.svg?react';
 import LayoutList from './offer-collection/tabler-icon-layout-list.svg?react';
 import Plus from './offer-collection/tabler-icon-plus.svg?react';
+import IconLogout from './offer-collection/tabler-icon-logout.svg?react';
+import IconSettings from './offer-collection/tabler-icon-settings.svg?react';
+import IconWorld from './offer-collection/tabler-icon-world.svg?react';
+import IconCheck from './offer-collection/tabler-icon-check.svg?react';
+import IconLayout from './offer-collection/layout.svg?react';
 import FilterIcon from './FilterIcon.svg?react';
 import EstateIcon from './EstateIcon.svg?react';
 
@@ -157,4 +162,9 @@ export {
   CarouselHorizontal,
   LayoutList,
   Plus,
+  IconLogout,
+  IconSettings,
+  IconWorld,
+  IconCheck,
+  IconLayout,
 };

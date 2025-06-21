@@ -12,7 +12,7 @@ export const FAQ: FC = () => {
     <section>
       {locale === 'ru' ? (
         <>
-          <Text variant="heading3" className={styles.header}>
+          <Text variant="heading4" className={styles.header}>
             Ответы на вопросы
           </Text>
           <Accordion title="Могут ли иностранцы приобрести недвижимость в Таиланде?">
@@ -107,7 +107,7 @@ export const FAQ: FC = () => {
         </>
       ) : (
         <>
-          <Text variant="heading3" className={styles.header}>
+          <Text variant="heading4" className={styles.header}>
             FAQ
           </Text>
           <Accordion title="Can foreigners buy (own) a property in Thailand?">

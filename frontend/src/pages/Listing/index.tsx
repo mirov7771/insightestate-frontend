@@ -74,11 +74,11 @@ const Listing: FC = () => {
             onClick={() => setOpenFilters(true)}
           >
             <OfferCollectionAdjustmentsFilter />
-            <Text variant="heading5" className={styles.button__text}>
+            <Text variant="body1" bold className={styles.button__text}>
               {formatMessage({ id: 'all_filters' })}
             </Text>
             {!!countActiveFilters && (
-              <Text variant="caption2" className={styles.button__counter}>
+              <Text variant="caption1" className={styles.button__counter}>
                 {countActiveFilters}
               </Text>
             )}

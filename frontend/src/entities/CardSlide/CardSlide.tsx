@@ -89,7 +89,7 @@ export const CardSlide: FC<CardSlideProps> = ({
         <div className={styles.card__slider}>
           <ul className={styles.badges}>
             <li className={styles.badges__badge} onClick={openRatingInfo}>
-              <Text variant="heading4">
+              <Text variant="body2" bold>
                 <div
                   style={{
                     display: 'inline-flex',
@@ -105,12 +105,16 @@ export const CardSlide: FC<CardSlideProps> = ({
             </li>
             {estate.buildEndDate !== '-' && estate.buildEndDate && (
               <li className={styles.badges__badge}>
-                <Text variant="heading4">{estate.buildEndDate}</Text>
+                <Text variant="body2" bold>
+                  {estate.buildEndDate}
+                </Text>
               </li>
             )}
             {estate.roiSummary && (
               <li className={styles.badges__badge}>
-                <Text variant="heading4">ROI {estate.roiSummary}%</Text>
+                <Text variant="body2" bold>
+                  ROI {estate.roiSummary}%
+                </Text>
               </li>
             )}
           </ul>
@@ -118,7 +122,7 @@ export const CardSlide: FC<CardSlideProps> = ({
             <Slider images={images} />
           </a>
           <div className={styles.info}>
-            <Text variant="heading3" className={styles.info__price}>
+            <Text variant="heading4" className={styles.info__price}>
               {formatMessage({ id: 'from' })}{' '}
               {Intl.NumberFormat('en-US', {
                 style: 'currency',
@@ -141,7 +145,7 @@ export const CardSlide: FC<CardSlideProps> = ({
               rel="noreferrer"
               className={styles.card__title}
             >
-              <Text variant="heading3-1">{estate.name}</Text>
+              <Text variant="heading4">{estate.name}</Text>
             </a>
             <div className={styles.card__desciption}>
               <Text variant="body1">
@@ -168,13 +172,9 @@ export const CardSlide: FC<CardSlideProps> = ({
                   onClick={handleOpenUserCollectionModal}
                   size="s"
                   className={styles.card__button}
-                  style={{
-                    backgroundColor: 'white',
-                    color: 'black',
-                    border: '1px solid #04b0be',
-                  }}
+                  variant="base"
                 >
-                  <Text variant="heading5">
+                  <Text variant="body1" bold>
                     +{' '}
                     {formatMessage({ id: 'in_collection' }).replace(
                       '%s',
@@ -188,7 +188,9 @@ export const CardSlide: FC<CardSlideProps> = ({
                   size="s"
                   className={styles.card__button}
                 >
-                  <Text variant="heading5">+ {formatMessage({ id: 'add_to_collection' })}</Text>
+                  <Text variant="body1" bold>
+                    + {formatMessage({ id: 'add_to_collection' })}
+                  </Text>
                 </Button>
               )}
             </div>

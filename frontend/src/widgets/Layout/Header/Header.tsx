@@ -21,10 +21,6 @@ export const Header: FC<{ basicToken: string }> = ({ basicToken }) => {
 
   const location = useLocation();
 
-  useEffect(() => {
-    console.log(location.pathname);
-  }, [location]);
-
   const handleClickMobileMenu = () => {
     setShowMobileMenu((prev) => !prev);
   };

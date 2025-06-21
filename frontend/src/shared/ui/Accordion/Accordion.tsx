@@ -15,7 +15,7 @@ export const Accordion: FC<AccordionProps> = ({ title, children }) => {
   return (
     <div className={styles.accordion}>
       <button className={styles.accordion__header} onClick={() => setIsOpen(!isOpen)}>
-        <Text variant="heading4">{title}</Text>
+        <Text variant="heading5">{title}</Text>
         <div className={styles.accordion__icon_wrapper}>
           <span className={`${styles.accordion__icon} ${isOpen ? `${styles.open}` : ''}`}>
             <OfferCollectionChevronLeft />

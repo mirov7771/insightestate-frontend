@@ -1,0 +1,63 @@
+@use '~@/sass/index' as *;
+
+.logo {
+  & .bottom {
+    display: none;
+
+    @media (min-width: $media-lg) {
+      display: block;
+    }
+  }
+  & svg {
+    width: 74px;
+    height: 32px;
+
+    @media (min-width: $media-lg) {
+      width: 92px;
+      height: 40px;
+    }
+  }
+
+  @media (min-width: $media-lg) {
+    display: flex;
+    gap: 40px;
+  }
+}
+
+.header {
+  @media (min-width: $media-lg) {
+    margin-bottom: 24px;
+  }
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  height: 56px;
+  align-items: center;
+
+  @media (min-width: $media-lg) {
+    height: 64px;
+  }
+
+  &_right {
+    display: flex;
+    gap: 8px;
+  }
+}
+
+.bottom {
+  display: block;
+
+  @media (min-width: $media-lg) {
+    display: none;
+  }
+}
+
+.change_tariff_button {
+  display: none;
+
+  @media (min-width: $media-lg) {
+    display: flex;
+  }
+}

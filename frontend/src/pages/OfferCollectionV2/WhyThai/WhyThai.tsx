@@ -20,7 +20,7 @@ export const WhyThai: FC = () => {
     <section className={styles.root}>
       <div className={styles.content}>
         <div className={styles.content__text}>
-          <Text variant="heading2" as="h2" className={styles.title}>
+          <Text variant="heading3" as="h2" className={styles.title}>
             {formatMessage({ id: 'why' })}
           </Text>
 

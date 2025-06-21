@@ -1,0 +1,48 @@
+.avatar {
+  cursor: pointer;
+}
+
+.menu {
+  &__paper {
+    border-radius: 10px;
+    box-shadow: 0 4px 24px 0 #0000001F;
+  }
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 12px;
+    border-bottom: 1px solid var(--ui-color-black-12-opacity);
+
+    &_phone {
+      color: var(--ui-color-black-64-opacity);
+    }
+  }
+
+  :global {
+    .MuiMenu-list {
+      min-width: 232px;
+      padding: 0;
+    }
+  }
+}
+
+.menu__item_root {
+  display: flex;
+  gap: 8px;
+  min-height: 48px;
+  padding: 0 12px;
+
+  & svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  &_red {
+    color: var(--ui-color-red);
+  }
+
+  &_language {
+    justify-content: space-between;
+  }
+}

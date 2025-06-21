@@ -71,7 +71,7 @@ const Profile: FC = () => {
 
   const handleGoBack: MouseEventHandler<HTMLButtonElement> = (e) => {
     e.preventDefault();
-    navigate(-2);
+    navigate(-1);
   };
 
   const handleProfileUpdate = async (updatedData: typeof data) => {
@@ -144,7 +144,9 @@ const Profile: FC = () => {
         <>
           <Button className={styles.back} variant="base" size="s" onClick={handleGoBack}>
             <OfferCollectionArrowLeft />
-            <Text variant="heading5">{formatMessage({ id: 'common.back' })}</Text>
+            <Text variant="body1" bold>
+              {formatMessage({ id: 'common.back' })}
+            </Text>
           </Button>
           <div>
             <MuiAvatar
@@ -166,7 +168,7 @@ const Profile: FC = () => {
               onChange={onChangeProfileImage}
             />
           </div>
-          <Text variant="heading2" as="h2">
+          <Text variant="heading3" as="h2">
             {data.username}
           </Text>
           <Text variant="body1" className={styles.layout__description}>
@@ -270,7 +272,9 @@ const Profile: FC = () => {
                   onClick={deleteUser}
                   disabled={updateStatus === 'LOADING'}
                 >
-                  <Text variant="heading5">{formatMessage({ id: 'common.delete' })}</Text>
+                  <Text variant="body1" bold>
+                    {formatMessage({ id: 'common.delete' })}
+                  </Text>
                 </Button>
               </div>
             </div>

@@ -48,7 +48,7 @@ export const AdvantagesBadges: FC<AdvantagesBadgesProps> = ({
           <Tooltip
             {...tooltipProps}
             title={
-              <Text variant="caption2" className={styles.tooltip__text}>
+              <Text variant="caption1" bold className={styles.tooltip__text}>
                 {formatMessage({ id: 'toolTip2_desc' })}
               </Text>
             }
@@ -65,7 +65,7 @@ export const AdvantagesBadges: FC<AdvantagesBadgesProps> = ({
           <Tooltip
             {...tooltipProps}
             title={
-              <Text variant="caption2" className={styles.tooltip__text}>
+              <Text variant="caption1" bold className={styles.tooltip__text}>
                 {formatMessage({ id: 'toolTip1_desc' })}
               </Text>
             }
@@ -82,7 +82,7 @@ export const AdvantagesBadges: FC<AdvantagesBadgesProps> = ({
           <Tooltip
             {...tooltipProps}
             title={
-              <Text variant="caption2" className={styles.tooltip__text}>
+              <Text variant="caption1" bold className={styles.tooltip__text}>
                 {formatMessage({ id: 'toolTip3_desc' })}
               </Text>
             }

@@ -136,9 +136,11 @@ const Tariffs: FC = () => {
         <Spacer height={35} width={100} />
         <Button onClick={handleTariff} wide size="l">
           {mySubsId === 'f1628768-72c2-40e4-9e6d-7c4ab7b1909b' ? (
-            <Text variant="heading4">{formatMessage({ id: 'tariff_free_continue' })}</Text>
+            <Text variant="body1" bold>
+              {formatMessage({ id: 'tariff_free_continue' })}
+            </Text>
           ) : (
-            <Text variant="heading4">
+            <Text variant="body1" bold>
               {formatMessage({ id: 'tariff_continue_button' })}{' '}
               {mySubsId == 'b749d197-846e-49d4-aedc-abf7b3784b11' ? 'Pro' : 'Standart'}
             </Text>

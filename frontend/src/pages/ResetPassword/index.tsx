@@ -53,7 +53,7 @@ const ResetPassword: FC = () => {
             placeholder={formatMessage({ id: 'login.emailPlaceholder' })}
           />
           <Button onClick={handeSendEmail} wide size={'l'} loading={status === 'LOADING'}>
-            <Text variant="heading4" align="center" as="span">
+            <Text variant="body1" bold align="center" as="span">
               {formatMessage({ id: 'login.continue' })}
             </Text>
           </Button>

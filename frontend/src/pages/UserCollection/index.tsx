@@ -158,7 +158,9 @@ const UserCollection: FC = () => {
 
   return (
     <div className={styles.wrap}>
-      <h1 className={styles.header}>{formatMessage({ id: 'collection_title' })}</h1>
+      <Text variant="heading2" as="h1" className={styles.header}>
+        {formatMessage({ id: 'collection_title' })}
+      </Text>
       {status === 'LOADING' && (
         <Watch
           height="180"

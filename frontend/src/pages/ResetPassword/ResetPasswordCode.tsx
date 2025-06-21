@@ -40,7 +40,7 @@ const ResetPasswordCode: FC = () => {
             placeholder={formatMessage({ id: 'login.codeLetter' })}
           />
           <Button wide size={'l'} type="submit" onSubmit={handleSubmit}>
-            <Text variant="heading4" align="center" as="span">
+            <Text variant="body1" bold align="center" as="span">
               {formatMessage({ id: 'login.continue' })}
             </Text>
           </Button>
