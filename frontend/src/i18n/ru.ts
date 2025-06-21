@@ -308,11 +308,11 @@ export default {
   deleteProfileNo: 'Нет, я передумал',
 
   toolTip1_desc: 'Подходит для инвестиций',
-  toolTip1_badge: 'И',
+  toolTip1_badge: 'I',
   toolTip2_desc: 'Подходит для перепродажи',
-  toolTip2_badge: 'П',
+  toolTip2_badge: 'R',
   toolTip3_desc: 'Подходит для проживания',
-  toolTip3_badge: 'Ж',
+  toolTip3_badge: 'L',
 
   'filters.header': 'Фильтры',
   'filter.show_objects':
@@ -339,6 +339,7 @@ export default {
   'units.number': 'Номер',
   'units.pricePerMeter': 'Цена за м2',
   'units.annualIncome': 'Доход в год',
+  'units.plan': 'Планировка появится позже',
   'units.payback': 'Окупаемость',
   'units.bedroom.Studio': 'Студия',
   'units.bedroom.1': '1 спальня',

@@ -338,6 +338,7 @@ export default {
   'units.number': 'Number',
   'units.pricePerMeter': 'Price per m2',
   'units.annualIncome': 'Annual income',
+  'units.plan': 'Layout will appear later',
   'units.payback': 'Payback',
   'units.bedroom.Studio': 'Studio',
   'units.bedroom.1': '1 bedroom',

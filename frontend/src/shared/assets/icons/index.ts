@@ -78,6 +78,7 @@ import IconLogout from './offer-collection/tabler-icon-logout.svg?react';
 import IconSettings from './offer-collection/tabler-icon-settings.svg?react';
 import IconWorld from './offer-collection/tabler-icon-world.svg?react';
 import IconCheck from './offer-collection/tabler-icon-check.svg?react';
+import IconLayout from './offer-collection/layout.svg?react';
 import FilterIcon from './FilterIcon.svg?react';
 import EstateIcon from './EstateIcon.svg?react';
 
@@ -165,4 +166,5 @@ export {
   IconSettings,
   IconWorld,
   IconCheck,
+  IconLayout,
 };
