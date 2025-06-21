@@ -12,6 +12,7 @@ import { Text } from '../Text/Text';
 import { BaseField } from '@/widgets/BaseField/BaseField';
 import { estateCollectionApi } from '@/widgets/EstateCollection/api/estateCollectionApi';
 import { isMobile } from 'react-device-detect';
+import {FormattedMessage, useIntl} from "react-intl";
 
 export const BaseUserModal: FC<TModalProps & { id: string; object: string; token: string }> = ({
   onClose,
@@ -22,6 +23,7 @@ export const BaseUserModal: FC<TModalProps & { id: string; object: string; token
   object,
   token,
 }) => {
+  const { formatMessage } = useIntl();
   const [agree, setAgree] = useState<boolean>(false);
   const [name, setName] = useState<string>('');
   const [lastName, setLastName] = useState<string>('');
@@ -87,27 +89,27 @@ export const BaseUserModal: FC<TModalProps & { id: string; object: string; token
               <Spacer width="100%" height={8} />
               <Spacer width="100%" height={8} />
               <Text size="xl" align="center" colorTheme={'black200'} isBold>
-                Данные клиента
+                {formatMessage({id : 'help_client'})}
               </Text>
               <Spacer width="100%" height={8} />
-              <BaseField onChange={onChangeName} value={name} name="name" label="Имя" />
+              <BaseField onChange={onChangeName} value={name} name="name" label={formatMessage({id : 'help_firstName'})} />
               <Spacer width="100%" height={8} />
               <BaseField
                 onChange={onChangeLastName}
                 value={lastName}
                 name="lastName"
-                label="Фамилия"
+                label={formatMessage({id : 'help_lastName'})}
               />
               <Spacer width="100%" height={8} />
-              <BaseField onChange={onChangePhone} value={phone} name="phone" label="Телефон" />
+              <BaseField onChange={onChangePhone} value={phone} name="phone" label={formatMessage({id : 'help_phone'})} />
               <Spacer width="100%" height={8} />
-              <BaseField value={object} name="object" disabled={true} label="Объект для брони" />
+              <BaseField value={object} name="object" disabled={true} label={formatMessage({id : 'help_object'})} />
               <Spacer width="100%" height={8} />
               <BaseField
                 onChange={onLocation}
                 value={location}
                 name="location"
-                label="Страна и город покупателя"
+                label={formatMessage({id : 'help_city'})}
               />
             </StyledWrapperProgress>
           ) : (
@@ -115,29 +117,15 @@ export const BaseUserModal: FC<TModalProps & { id: string; object: string; token
               <Spacer width="100%" height={8} />
               <Spacer width="100%" height={8} />
               <Text size="xl" align="center" colorTheme={'black200'} isBold>
-                Помощь с клиентом
+                {formatMessage({id : 'help_title'})}
               </Text>
               <Spacer width="100%" height={8} />
               <StyledWrapperText>
                 <Text size="m" align="left" colorTheme={'black200'}>
-                  Мы можем помочь вам с доведением сделки до конца и взять на себя:
-                  <br />
-                  — общение с девелопером
-                  <br />
-                  — общение с клиентом
-                  <br />
-                  — подбор вариантов
-                  <br />
-                  — формирование бумаг
-                  <br />
-                  — встреча и сопровождение клиента
-                  <br />
-                  — подписание документов с клиентом
-                  <br />
-                  <br />
-                  Вы можете отслеживать все этапы сделки и общения с клиентом в личном кабинете.
-                  Выплачиваем 50% комиссии сразу после получения денег от девелопера. Статус оплаты
-                  и вывод денег также доступен в личном кабинете.
+                  <FormattedMessage
+                      id="help_text"
+                      values={{ br: () => <br /> }}
+                  />
                 </Text>
               </StyledWrapperText>
               <Spacer width="100%" height={8} />
@@ -147,11 +135,11 @@ export const BaseUserModal: FC<TModalProps & { id: string; object: string; token
         <Spacer width="100%" height={24} />
         {agree ? (
           <StyledButton color="secondary" variant="contained" size="medium" onClick={clickSend}>
-            Отправить
+            {formatMessage({id : 'help_button1'})}
           </StyledButton>
         ) : (
           <StyledButton color="secondary" variant="contained" size="medium" onClick={clickAgree}>
-            Согласен
+            {formatMessage({id : 'help_button2'})}
           </StyledButton>
         )}
       </StyledSwipeableDrawer>
