@@ -306,11 +306,11 @@ export default {
   deleteProfileNo: 'Нет, я передумал',
 
   toolTip1_desc: 'Подходит для инвестиций',
-  toolTip1_badge: 'И',
+  toolTip1_badge: 'I',
   toolTip2_desc: 'Подходит для перепродажи',
-  toolTip2_badge: 'П',
+  toolTip2_badge: 'R',
   toolTip3_desc: 'Подходит для проживания',
-  toolTip3_badge: 'Ж',
+  toolTip3_badge: 'L',
 
   'filters.header': 'Фильтры',
   'filter.show_objects':
