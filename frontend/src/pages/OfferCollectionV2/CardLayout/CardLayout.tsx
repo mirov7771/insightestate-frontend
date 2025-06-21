@@ -197,7 +197,9 @@ export const CardLayout: FC<CardLayoutProps> = ({ estate }) => {
               <span className={styles.like__icon}>
                 {like ? <Heart /> : <OfferCollectionHeart />}
               </span>
-              <Text variant="heading4">{formatMessage({ id: 'like' })}</Text>
+              <Text variant="body1" bold>
+                {formatMessage({ id: 'like' })}
+              </Text>
             </Button>
           )}
         </div>
@@ -242,7 +244,10 @@ export const CardLayout: FC<CardLayoutProps> = ({ estate }) => {
             {
               items: [
                 {
-                  name: estate.city === 'Bangkok' ? formatMessage({ id: 'subway' }) : formatMessage({ id: 'beach' }),
+                  name:
+                    estate.city === 'Bangkok'
+                      ? formatMessage({ id: 'subway' })
+                      : formatMessage({ id: 'beach' }),
                   description: `${
                     estate?.infrastructure?.beachTime?.car ||
                     estate?.infrastructure?.beachTime?.walk ||

@@ -73,10 +73,10 @@ export const TableComparison: FC<TableComparisonProps> = ({ estate }) => {
       (rating) => Number(rating).toFixed(1).replace('.', ',')
     ),
     priceFrom: extractNestedValuesOrFallback(estate, ['price.min'])?.map(
-      (price) => `$${formatNumber((price))}`
+      (price) => `$${formatNumber(price)}`
     ),
     priceTo: extractNestedValuesOrFallback(estate, ['price.max'])?.map(
-      (price) => `$${formatNumber((price))}`
+      (price) => `$${formatNumber(price)}`
     ), // priceMax
     pricePerSquareMeter: undefined,
     deliveryDate: extractNestedValuesOrFallback(estate, ['buildEndDate']),
@@ -146,11 +146,11 @@ export const TableComparison: FC<TableComparisonProps> = ({ estate }) => {
         return (
           <div className={styles.table__row}>
             <div className={styles.table__cell_name}>
-              <Text variant="caption1">{fields[key as keyof typeof fields]}</Text>
+              <Text variant="body2">{fields[key as keyof typeof fields]}</Text>
             </div>
             {value.map((val: string) => (
               <div className={styles.table__cell}>
-                <Text variant="heading4">{val}</Text>
+                <Text variant="heading5">{val}</Text>
               </div>
             ))}
           </div>

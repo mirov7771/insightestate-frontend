@@ -18,7 +18,9 @@ export const TablesInfo: FC<TablesInfoProps> = ({ tables }) => {
               <>
                 <div className={styles.table__item} key={item.name}>
                   <Text variant="body1">{item.name}</Text>
-                  <Text variant="heading4">{item.description}</Text>
+                  <Text variant="body1" bold>
+                    {item.description}
+                  </Text>
                 </div>
               </>
             ))}

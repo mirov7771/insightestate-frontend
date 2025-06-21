@@ -21,7 +21,7 @@ export const FilterLayout: FC<FilterLayoutProps> = ({
         <div className={styles.layout__header}>
           {name && <Text variant="heading5">{name}</Text>}
           {isActiveFilter && (
-            <Text className={styles.layout__reset} variant="heading4" onClick={onResetFilter}>
+            <Text className={styles.layout__reset} variant="heading5" onClick={onResetFilter}>
               Reset
             </Text>
           )}

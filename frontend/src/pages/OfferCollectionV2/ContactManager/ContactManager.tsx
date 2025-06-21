@@ -75,7 +75,7 @@ export const ContactManager: FC<{ id: string; client?: string | null }> = ({ id,
               className={styles.avatar}
             />
             <div>
-              <Text variant="heading4">{agentInfo?.fio}</Text>
+              <Text variant="heading5">{agentInfo?.fio}</Text>
               <Text variant="caption1" className={styles.manager}>
                 {formatMessage({ id: 'your_manager' })}
               </Text>
@@ -87,7 +87,7 @@ export const ContactManager: FC<{ id: string; client?: string | null }> = ({ id,
             variant={open || openInfo ? 'cta' : 'primary'}
             className={styles.button}
           >
-            <Text variant="heading4">
+            <Text variant="body1" bold>
               {formatMessage({ id: open || openInfo ? 'close' : 'connect' })}
             </Text>
           </Button>
