@@ -352,4 +352,32 @@ export default {
   'userProfile.tgGroup': 'Telegram group',
   'userProfile.settings': 'Profile settings',
   'userProfile.exit': 'Log out of account',
+
+  help_client: 'Client data',
+  help_lastName: 'Last name',
+  help_firstName: 'Name',
+  help_phone: 'Phone number',
+  help_object: 'Object for armor',
+  help_city: "Buyer's country and city",
+  help_title: 'Help with a client',
+  help_button1: 'Send',
+  help_button2: 'I agree',
+  help_text: `We can help you complete the transaction and take over:
+       <br></br>
+       — communication with the developer
+       <br></br>
+       — communication with the client
+       <br></br>
+       — selection of options
+       <br></br>
+       — formation of papers
+       <br></br>
+       — meeting and accompanying the client
+       <br></br>
+       — signing documents with the client
+       <br></br>
+       <br></br>
+       You can track all the stages of the transaction and communication with the client in your personal account.
+       We pay 50% commission immediately after receiving the money from the developer. Payment status
+       and money withdrawal is also available in your personal account.`,
 };

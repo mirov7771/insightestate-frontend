@@ -144,6 +144,33 @@
     }
   }
 
+  &__variant-white {
+    background: var(--ui-color-white-gradient);
+    border-radius: 200px;
+    border: 1px solid var(--ui-color-black-24-opacity);
+    color: var(--ui-color-black);
+    transition: box-shadow 0.2s ease-in-out;
+
+    &:hover {
+      background: var(--ui-color-white-gradient);
+      cursor: pointer;
+      box-shadow: 0 4px 24px 0 #0000001F;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:active {
+      background: var(--ui-color-white-gradient);
+    }
+
+    .button_loading:disabled & {
+      background-image: var(--border-light);
+      color: var(--border-dark);
+    }
+  }
+
   &__size-l {
     font-size: 15px;
     line-height: 20px;

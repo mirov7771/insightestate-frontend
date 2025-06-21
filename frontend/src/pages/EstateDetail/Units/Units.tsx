@@ -21,10 +21,10 @@ export const Units: FC = () => {
   }, []);
 
   useEffect(() => {
-    if (!!token && params.id) {
+    if (params.id) {
       setStatus('LOADING');
       unitsApi
-        .getUnitsByEstateId({ token, id: params.id })
+        .getUnitsByEstateId({id: params.id })
         .then(({ data }) => {
           setUnits(data.items);
           setStatus('SUCCESS');
