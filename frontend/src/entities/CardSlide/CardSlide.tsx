@@ -172,11 +172,7 @@ export const CardSlide: FC<CardSlideProps> = ({
                   onClick={handleOpenUserCollectionModal}
                   size="s"
                   className={styles.card__button}
-                  style={{
-                    backgroundColor: 'white',
-                    color: 'black',
-                    border: '1px solid #04b0be',
-                  }}
+                  variant="base"
                 >
                   <Text variant="body1" bold>
                     +{' '}

@@ -21,6 +21,7 @@ import { Map } from './Section/Map/Map';
 import { Rating } from './Rating/Rating';
 import { Units } from './Units';
 import { EstateSlider } from './EstateSlider';
+import { BaseUserModal } from '@/widgets/Modal/BaseUserModal';
 
 const EstateDetail: FC = () => {
   const { formatMessage } = useIntl();
@@ -30,6 +31,8 @@ const EstateDetail: FC = () => {
   const token = localStorage.getItem('basicToken');
   const [userCollectionModal, setUserCollectionModal] = useState(false);
   const [aiModal, setAiModal] = useState(false);
+  const [helpModal, setHelpModal] = useState(false);
+
   const handleOpenUserCollectionModal = () => {
     setUserCollectionModal(true);
   };
@@ -42,6 +45,13 @@ const EstateDetail: FC = () => {
   };
   const handleCloseAiModal = () => {
     setAiModal(false);
+  };
+
+  const handleOpenHelpModal = () => {
+    setHelpModal(true);
+  };
+  const handleCloseHelpModal = () => {
+    setHelpModal(false);
   };
 
   useEffect(() => {
@@ -104,6 +114,11 @@ const EstateDetail: FC = () => {
           <Button disabled={!token} onClick={handleOpenAiModal} variant="ai" wide>
             <Text variant="body1" bold>
               {formatMessage({ id: 'ai_collection' })}
+            </Text>
+          </Button>
+          <Button disabled={!token} onClick={handleOpenHelpModal} variant="base" wide>
+            <Text variant="body1" bold>
+              {formatMessage({ id: 'help_with_client' })}
             </Text>
           </Button>
         </div>
@@ -193,6 +208,15 @@ const EstateDetail: FC = () => {
           onClose={handleCloseAiModal}
           onOpen={handleOpenAiModal}
           anchor="bottom"
+        />
+        <BaseUserModal
+          open={helpModal}
+          onClose={handleCloseHelpModal}
+          onOpen={handleOpenHelpModal}
+          anchor="bottom"
+          id={id!!}
+          object={estateDetailData.name}
+          token={token!!}
         />
       </div>
     );
