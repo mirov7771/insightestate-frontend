@@ -28,15 +28,10 @@
 .md {
   font-family: Wix Madefor Text;
   font-weight: 600;
-  font-size: 12px;
-  line-height: 14px;
+  font-size: 16px;
+  line-height: 20px;
   letter-spacing: 0;
   padding: 6px 12px;
-
-  @media (min-width: $media-md) {
-    font-size: 16px;
-    line-height: 20px;
-  }
 }
 
 .lg {

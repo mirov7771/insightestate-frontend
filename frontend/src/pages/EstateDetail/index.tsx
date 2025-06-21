@@ -76,6 +76,7 @@ const EstateDetail: FC = () => {
             text={String(estateDetailData.grade?.main?.toFixed(1) || '')}
             background="white"
             className={styles.rating}
+            size="md"
           />
           {estateDetailData.location?.name && (
             <BadgeRating

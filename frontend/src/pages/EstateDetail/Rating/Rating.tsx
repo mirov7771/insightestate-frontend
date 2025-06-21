@@ -97,7 +97,7 @@ export const Rating: FC<Grade> = ({
 
   return (
     <div>
-      <Text variant="heading3" className={styles.info_icon}>
+      <Text variant="heading4" className={styles.info_icon}>
         {formatMessage({ id: 'our_rating' })}
         <div className={styles.icon} onClick={openRatingInfo}>
           <OfferCollectionInfoCircle />

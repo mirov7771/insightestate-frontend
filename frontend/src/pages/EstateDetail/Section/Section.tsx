@@ -15,7 +15,7 @@ export const Section: FC<PropsWithChildren<SectionProps>> = ({
   return (
     <section className={styles.section}>
       <div className={styles.header}>
-        <Text variant="heading3">{title}</Text>
+        <Text variant="heading4">{title}</Text>
         {rightSide}
       </div>
       <div>{children}</div>

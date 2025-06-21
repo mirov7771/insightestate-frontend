@@ -26,7 +26,7 @@ export const Map: FC<MapProps> = ({ url, infrastructure, location }) => {
   return (
     <Section
       title={
-        <Text variant="heading3">
+        <Text variant="heading4">
           {formatMessage({ id: 'map' })}{' '}
           {location ? (
             <span className={styles.infrastructure__location}>{location}</span>

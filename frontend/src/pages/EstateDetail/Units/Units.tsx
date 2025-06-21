@@ -24,7 +24,7 @@ export const Units: FC = () => {
     if (params.id) {
       setStatus('LOADING');
       unitsApi
-        .getUnitsByEstateId({id: params.id })
+        .getUnitsByEstateId({ id: params.id })
         .then(({ data }) => {
           setUnits(data.items);
           setStatus('SUCCESS');
