@@ -25,30 +25,30 @@ export const UnitsCards: FC<{ items: Unit[] }> = ({ items }) => {
               <Text variant="heading5">${unit.price}</Text>
             </div>
           </div>
-          <div className={styles.unit__base}>
-            <Text variant="body1" className={styles.unit__name}>
-              {formatMessage({ id: 'units.floor' })}
-            </Text>
-            <Text variant="heading5">{unit.floor || '-'}</Text>
-          </div>
+          {/*<div className={styles.unit__base}>*/}
+          {/*  <Text variant="body1" className={styles.unit__name}>*/}
+          {/*    {formatMessage({ id: 'units.floor' })}*/}
+          {/*  </Text>*/}
+          {/*  <Text variant="heading5">{unit.floor || '-'}</Text>*/}
+          {/*</div>*/}
           <div className={styles.unit__base}>
             <Text variant="body1" className={styles.unit__name}>
               {formatMessage({ id: 'units.number' })}
             </Text>
             <Text variant="heading5">{unit.number}</Text>
           </div>
-          <div className={styles.unit__base}>
-            <Text variant="body1" className={styles.unit__name}>
-              {formatMessage({ id: 'units.annualIncome' })}
-            </Text>
-            <Text variant="heading5">&ndash;</Text>
-          </div>
-          <div className={styles.unit__base}>
-            <Text variant="body1" className={styles.unit__name}>
-              {formatMessage({ id: 'units.payback' })}
-            </Text>
-            <Text variant="heading5">&ndash;</Text>
-          </div>
+          {/*<div className={styles.unit__base}>*/}
+          {/*  <Text variant="body1" className={styles.unit__name}>*/}
+          {/*    {formatMessage({ id: 'units.annualIncome' })}*/}
+          {/*  </Text>*/}
+          {/*  <Text variant="heading5">&ndash;</Text>*/}
+          {/*</div>*/}
+          {/*<div className={styles.unit__base}>*/}
+          {/*  <Text variant="body1" className={styles.unit__name}>*/}
+          {/*    {formatMessage({ id: 'units.payback' })}*/}
+          {/*  </Text>*/}
+          {/*  <Text variant="heading5">&ndash;</Text>*/}
+          {/*</div>*/}
           <div className={`${styles.unit__base} ${styles.unit__base_center}`}>
             {/*<Button variant="primary" className={styles.unit__button}>
               <Plus />

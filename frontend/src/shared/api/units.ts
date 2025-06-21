@@ -20,15 +20,11 @@ export type Unit = {
 export const unitsApi = {
   getUnitsByEstateId: async ({
     id,
-    token,
   }: {
     id: string;
-    token: string;
   }): Promise<AxiosResponse<{ id: string; images: string[]; items: Unit[]; name: string }>> => {
     try {
-      return await api.get(`v1/estate/${id}/units`, {
-        headers: { Authorization: `Basic ${token.replace('Basic ', '')}` },
-      });
+      return await api.get(`v1/estate/${id}/units`);
     } catch (e) {
       throw e;
     }
