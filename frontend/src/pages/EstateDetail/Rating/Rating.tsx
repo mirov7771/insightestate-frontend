@@ -122,8 +122,9 @@ export const Rating: FC<Grade> = ({
                 )}
                 <div style={{
                     display: 'grid',
-                    gridTemplateColumns: '13rem 13rem',
-                    gridRowGap: '2rem'
+                    gridTemplateColumns: '10rem 10rem',
+                    gridRowGap: '2rem',
+                    gridColumnGap: '2rem'
                 }}>
                     {investmentSecurity && (
                         <div className={styles.rating__item}>
