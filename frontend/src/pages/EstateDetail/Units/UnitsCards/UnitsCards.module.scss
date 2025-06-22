@@ -112,3 +112,21 @@
   }
 }
 
+.unit_mobile {
+  padding: 24px;
+  display: grid;
+  grid-template-columns: auto;
+  border-bottom: 1px solid var(--ui-color-black-24-opacity);
+  background-color: transparent;
+  transition: background-color 0.2s ease-in-out;
+  width: fit-content;
+
+  &:hover {
+    background-color: var(--ui-color-black-24-opacity);
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+

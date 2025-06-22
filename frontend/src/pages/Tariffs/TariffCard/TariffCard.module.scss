@@ -24,6 +24,18 @@
     height: 32px;
   }
 
+  &__badge_mobile {
+    background-color: var(--ui-color-yellow);
+    color: var(--ui-color-black);
+    border-radius: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 12px;
+    height: 42px;
+    font-size: 16px;
+  }
+
   &__list {
     display: flex;
     flex-direction: column;

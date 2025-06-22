@@ -15,9 +15,10 @@ type MapProps = {
   url: string;
   infrastructure?: EstateDetail['infrastructure'];
   location?: EstateDetail['location']['name'];
+  city?: string;
 };
 
-export const Map: FC<MapProps> = ({ url, infrastructure, location }) => {
+export const Map: FC<MapProps> = ({ url, infrastructure, location, city }) => {
   const { formatMessage } = useIntl();
   const renderMap = () => {
     return <GMap mapContainerStyle={containerStyle} url={url} />;
@@ -38,7 +39,7 @@ export const Map: FC<MapProps> = ({ url, infrastructure, location }) => {
         <div className={styles.infrastructure}>
           {(infrastructure.beachTime?.car || infrastructure.beachTime?.walk) && (
             <div className={styles.infrastructure__item}>
-              <Text variant="heading5">До пляжа:</Text>
+              <Text variant="heading5">{city === 'Bangkok' ? formatMessage({id: 'to_subway_time'}) : formatMessage({id: 'to_beach_time'})}</Text>
               <div className={styles.infrastructure__text}>
                 {!!infrastructure.beachTime?.car && (
                   <Text variant="body1" className={styles.infrastructure__text_item}>
@@ -61,7 +62,7 @@ export const Map: FC<MapProps> = ({ url, infrastructure, location }) => {
           )}
           {(infrastructure.mallTime?.car || infrastructure.mallTime?.walk) && (
             <div className={styles.infrastructure__item}>
-              <Text variant="heading5">До торгового центра:</Text>
+              <Text variant="heading5">{formatMessage({ id: 'to_mall_time' })}</Text>
               <div className={styles.infrastructure__text}>
                 {!!infrastructure.mallTime?.car && (
                   <Text variant="body1" className={styles.infrastructure__text_item}>
@@ -84,7 +85,7 @@ export const Map: FC<MapProps> = ({ url, infrastructure, location }) => {
           )}
           {(infrastructure.airportTime?.car || infrastructure.airportTime?.walk) && (
             <div className={styles.infrastructure__item}>
-              <Text variant="heading5">До аэропорта:</Text>
+              <Text variant="heading5">{formatMessage({ id: 'to_airport_time' })}</Text>
               <div className={styles.infrastructure__text}>
                 {!!infrastructure.airportTime?.car && (
                   <Text variant="body1" className={styles.infrastructure__text_item}>

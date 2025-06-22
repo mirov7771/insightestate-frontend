@@ -14,6 +14,13 @@ type HeaderV2Props = {
 export const HeaderV2: FC<HeaderV2Props> = ({ basicToken }) => {
   const { formatMessage } = useIntl();
   const navigate = useNavigate();
+  const [isFree, setIsFree] = useState(
+      localStorage.getItem('isFree')
+  );
+
+  useEffect(() => {
+    setIsFree(localStorage.getItem('isFree'))
+  }, []);
 
   return (
     <header className={styles.header}>
@@ -25,21 +32,21 @@ export const HeaderV2: FC<HeaderV2Props> = ({ basicToken }) => {
           </div>
         </div>
         <div className={styles.top_right}>
-          <Button
-            className={styles.change_tariff_button}
-            variant="primary"
-            size="s"
-            onClick={() => navigate('/tariffs')}
+          {isFree ? <Button
+              className={styles.change_tariff_button}
+              variant="primary"
+              size="s"
+              onClick={() => navigate('/tariffs')}
           >
             <Text variant="body1" bold>
               {formatMessage({ id: 'change.tariff' })}
             </Text>
-          </Button>
-          <Button variant="base" size="s">
-            <Text variant="body1" bold>
-              {`${formatMessage({ id: 'userProfile.balance' })} 0$`}
-            </Text>
-          </Button>
+          </Button> : <></>}
+          {/*<Button variant="base" size="s">*/}
+          {/*  <Text variant="body1" bold>*/}
+          {/*    {`${formatMessage({ id: 'userProfile.balance' })} 0$`}*/}
+          {/*  </Text>*/}
+          {/*</Button>*/}
           <UserProfile basicToken={basicToken} />
         </div>
       </div>

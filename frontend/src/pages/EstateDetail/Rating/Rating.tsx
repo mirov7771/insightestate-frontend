@@ -5,6 +5,7 @@ import { Grade } from '@/widgets/Detail/api/detailApi';
 import { InfoModal } from '@/shared/ui/modals';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { Text } from '@/shared/ui';
+import {isMobile} from "react-device-detect";
 
 export const Rating: FC<Grade> = ({
   investmentPotential,
@@ -103,62 +104,126 @@ export const Rating: FC<Grade> = ({
           <OfferCollectionInfoCircle />
         </div>
       </Text>
-      <div className={styles.rating}>
-        {main && (
-          <div className={`${styles.rating__item} ${styles.rating__item_main}`}>
-            <Text variant="body1" className={styles.rating__text}>
-              {formatMessage({ id: 'overall' })}
-            </Text>
-            <Text
-              variant="heading3"
-              className={`${styles.rating__score} ${styles.rating__score_result}`}
-              onClick={openRatingInfo}
-            >
-              {main.toPrecision(2)} <OfferCollectionBrandSpark />
-            </Text>
-          </div>
-        )}
-        {investmentSecurity && (
-          <div className={styles.rating__item}>
-            <Text variant="body1" className={styles.rating__text}>
-              {formatMessage({ id: 'security' })}
-            </Text>
-            <Text variant="heading3" className={styles.rating__score} onClick={handleSecurity}>
-              {investmentSecurity.toPrecision(2)}
-            </Text>
-          </div>
-        )}
-        {investmentPotential && (
-          <div className={styles.rating__item}>
-            <Text variant="body1" className={styles.rating__text}>
-              {formatMessage({ id: 'invest_potential' })}
-            </Text>
-            <Text variant="heading3" className={styles.rating__score} onClick={handleInvest}>
-              {investmentPotential.toPrecision(2)}
-            </Text>
-          </div>
-        )}
-        {projectLocation && (
-          <div className={styles.rating__item}>
-            <Text variant="body1" className={styles.rating__text}>
-              {formatMessage({ id: 'project_location' })}
-            </Text>
-            <Text variant="heading3" className={styles.rating__score} onClick={handleLocation}>
-              {projectLocation.toPrecision(2)}
-            </Text>
-          </div>
-        )}
-        {comfortOfLife && (
-          <div className={styles.rating__item}>
-            <Text variant="body1" className={styles.rating__text}>
-              {formatMessage({ id: 'comfort' })}
-            </Text>
-            <Text variant="heading3" className={styles.rating__score} onClick={handleComfort}>
-              {comfortOfLife.toPrecision(2)}
-            </Text>
-          </div>
-        )}
-      </div>
+        {isMobile ?
+            <div className={styles.rating}>
+                {main && (
+                    <div className={`${styles.rating__item} ${styles.rating__item_main}`}>
+                        <Text variant="body1" className={styles.rating__text}>
+                            {formatMessage({ id: 'overall' })}
+                        </Text>
+                        <Text
+                            variant="heading3"
+                            className={`${styles.rating__score} ${styles.rating__score_result}`}
+                            onClick={openRatingInfo}
+                        >
+                            {main.toPrecision(2)} <OfferCollectionBrandSpark />
+                        </Text>
+                    </div>
+                )}
+                <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: '13rem 13rem',
+                    gridRowGap: '2rem'
+                }}>
+                    {investmentSecurity && (
+                        <div className={styles.rating__item}>
+                            <Text variant="body1" className={styles.rating__text}>
+                                {formatMessage({ id: 'security' })}
+                            </Text>
+                            <Text variant="heading3" className={styles.rating__score} onClick={handleSecurity}>
+                                {investmentSecurity.toPrecision(2)}
+                            </Text>
+                        </div>
+                    )}
+                    {investmentPotential && (
+                        <div className={styles.rating__item}>
+                            <Text variant="body1" className={styles.rating__text}>
+                                {formatMessage({ id: 'invest_potential' })}
+                            </Text>
+                            <Text variant="heading3" className={styles.rating__score} onClick={handleInvest}>
+                                {investmentPotential.toPrecision(2)}
+                            </Text>
+                        </div>
+                    )}
+                    {projectLocation && (
+                        <div className={styles.rating__item}>
+                            <Text variant="body1" className={styles.rating__text}>
+                                {formatMessage({ id: 'project_location' })}
+                            </Text>
+                            <Text variant="heading3" className={styles.rating__score} onClick={handleLocation}>
+                                {projectLocation.toPrecision(2)}
+                            </Text>
+                        </div>
+                    )}
+                    {comfortOfLife && (
+                        <div className={styles.rating__item}>
+                            <Text variant="body1" className={styles.rating__text}>
+                                {formatMessage({ id: 'comfort' })}
+                            </Text>
+                            <Text variant="heading3" className={styles.rating__score} onClick={handleComfort}>
+                                {comfortOfLife.toPrecision(2)}
+                            </Text>
+                        </div>
+                    )}
+                </div>
+            </div> :
+            <div className={styles.rating}>
+                {main && (
+                    <div className={`${styles.rating__item} ${styles.rating__item_main}`}>
+                        <Text variant="body1" className={styles.rating__text}>
+                            {formatMessage({ id: 'overall' })}
+                        </Text>
+                        <Text
+                            variant="heading3"
+                            className={`${styles.rating__score} ${styles.rating__score_result}`}
+                            onClick={openRatingInfo}
+                        >
+                            {main.toPrecision(2)} <OfferCollectionBrandSpark />
+                        </Text>
+                    </div>
+                )}
+                {investmentSecurity && (
+                    <div className={styles.rating__item}>
+                        <Text variant="body1" className={styles.rating__text}>
+                            {formatMessage({ id: 'security' })}
+                        </Text>
+                        <Text variant="heading3" className={styles.rating__score} onClick={handleSecurity}>
+                            {investmentSecurity.toPrecision(2)}
+                        </Text>
+                    </div>
+                )}
+                {investmentPotential && (
+                    <div className={styles.rating__item}>
+                        <Text variant="body1" className={styles.rating__text}>
+                            {formatMessage({ id: 'invest_potential' })}
+                        </Text>
+                        <Text variant="heading3" className={styles.rating__score} onClick={handleInvest}>
+                            {investmentPotential.toPrecision(2)}
+                        </Text>
+                    </div>
+                )}
+                {projectLocation && (
+                    <div className={styles.rating__item}>
+                        <Text variant="body1" className={styles.rating__text}>
+                            {formatMessage({ id: 'project_location' })}
+                        </Text>
+                        <Text variant="heading3" className={styles.rating__score} onClick={handleLocation}>
+                            {projectLocation.toPrecision(2)}
+                        </Text>
+                    </div>
+                )}
+                {comfortOfLife && (
+                    <div className={styles.rating__item}>
+                        <Text variant="body1" className={styles.rating__text}>
+                            {formatMessage({ id: 'comfort' })}
+                        </Text>
+                        <Text variant="heading3" className={styles.rating__score} onClick={handleComfort}>
+                            {comfortOfLife.toPrecision(2)}
+                        </Text>
+                    </div>
+                )}
+            </div>
+        }
       <InfoModal open={infoModal} title={infoTitle} text={infoText || ''} setOpen={setInfoModal} />
     </div>
   );

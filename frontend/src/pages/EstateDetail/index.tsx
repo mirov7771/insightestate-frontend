@@ -186,6 +186,7 @@ const EstateDetail: FC = () => {
                 url={estateDetailData.location.mapUrl}
                 infrastructure={estateDetailData.infrastructure}
                 location={estateDetailData.location.name}
+                city={estateDetailData.city}
               />
             </div>
           )}

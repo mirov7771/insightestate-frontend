@@ -85,8 +85,8 @@ export const UserProfile: FC<UserProfileProps> = ({ basicToken }) => {
     return (
       <div>
         <Avatar
-          variant={userInfo.profileImage ? 'pictures' : 'text'}
-          imgSrc={userInfo.profileImage || ''}
+          variant={'pictures'}
+          imgSrc={userInfo.profileImage || 'https://insightestate.pro/estate-images/profile_img.png'}
           text={userInfo.fio || 'U'}
           onClick={handleOpen}
           className={styles.avatar}

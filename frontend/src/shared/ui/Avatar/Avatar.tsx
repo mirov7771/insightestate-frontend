@@ -38,7 +38,7 @@ export const Avatar: FC<AvatarProps> = ({
         return text;
       }
       case 'pictures': {
-        return <img src={imgSrc} alt="avatar" />;
+        return <img className={styles.profile_icon} src={imgSrc} alt="avatar" />;
       }
       case 'icon': {
         return icon;

@@ -21,6 +21,9 @@ const Tariffs: FC = () => {
   );
 
   const handleSubsId = (id: string) => {
+    if (id === 'f1628768-72c2-40e4-9e6d-7c4ab7b1909b') {
+        localStorage.setItem('isFree', 'true')
+    }
     seMySubsId(id);
   };
 

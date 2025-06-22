@@ -5,6 +5,7 @@ import PlaceholderImg from '../assets/placeholder.png';
 import { Button, Text } from '@/shared/ui';
 import { Plus } from '@/shared/assets/icons';
 import { useIntl } from 'react-intl';
+import {isMobile} from "react-device-detect";
 
 export const UnitsCards: FC<{ items: Unit[] }> = ({ items }) => {
   const { formatMessage } = useIntl();
@@ -12,7 +13,7 @@ export const UnitsCards: FC<{ items: Unit[] }> = ({ items }) => {
   return (
     <section className={styles.container}>
       {items.map((unit) => (
-        <div className={styles.unit}>
+        <div className={isMobile ? styles.unit_mobile : styles.unit}>
           <div className={styles.unit__plan}>
             <div className={styles.unit__plan__img}>
               <img src={unit.planImage || PlaceholderImg} alt="plan" />
@@ -21,6 +22,7 @@ export const UnitsCards: FC<{ items: Unit[] }> = ({ items }) => {
               <Text variant="body1" className={styles.unit__name}>
                 {formatMessage({ id: `units.bedroom.${unit.rooms}` })}, {unit.square}&nbsp;м
                 <sup>2</sup>
+                {isMobile && `, ${formatMessage({ id: 'units.number' })} ${unit.number}`}
               </Text>
               <Text variant="heading5">${unit.price}</Text>
             </div>
@@ -31,12 +33,15 @@ export const UnitsCards: FC<{ items: Unit[] }> = ({ items }) => {
           {/*  </Text>*/}
           {/*  <Text variant="heading5">{unit.floor || '-'}</Text>*/}
           {/*</div>*/}
-          <div className={styles.unit__base}>
-            <Text variant="body1" className={styles.unit__name}>
-              {formatMessage({ id: 'units.number' })}
-            </Text>
-            <Text variant="heading5">{unit.number}</Text>
-          </div>
+          {
+            isMobile ? <></> :
+                <div className={styles.unit__base}>
+                  <Text variant="body1" className={styles.unit__name}>
+                    {formatMessage({ id: 'units.number' })}
+                  </Text>
+                  <Text variant="heading5">{unit.number}</Text>
+                </div>
+          }
           {/*<div className={styles.unit__base}>*/}
           {/*  <Text variant="body1" className={styles.unit__name}>*/}
           {/*    {formatMessage({ id: 'units.annualIncome' })}*/}

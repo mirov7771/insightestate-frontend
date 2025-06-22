@@ -2,7 +2,7 @@ export default {
   language: 'Language',
   city: 'City',
   airport_time: 'Time to airport',
-  beach_time: 'Time to beach',
+  beach_time: 'Time to beach/subway',
   region: 'District',
   type_of_place: 'Property type',
   completion_date: 'Handover date',
@@ -10,7 +10,7 @@ export default {
   price: 'Price',
   potential: 'Comfort and potential',
   uk: 'Management company',
-  properties: 'Objects, Units',
+  properties: 'Objects',
   selections: 'My selections',
   profile: 'My profile',
   about_us: 'About us',
@@ -54,7 +54,7 @@ export default {
   not_selected: 'Not specified',
   our_rating: 'Our rating',
   overall: 'Overall project rating',
-  security: 'Investment security:',
+  security: 'Investment security',
   invest_potential: 'Investment potential',
   project_location: 'Location',
   comfort: 'Quality of life',
@@ -380,4 +380,9 @@ export default {
        You can track all the stages of the transaction and communication with the client in your personal account.
        We pay 50% commission immediately after receiving the money from the developer. Payment status
        and money withdrawal is also available in your personal account.`,
+
+  to_mall_time: 'Mall:',
+  to_beach_time: 'Beach:',
+  to_subway_time: 'Subway:',
+  to_airport_time: 'Airport:'
 };
