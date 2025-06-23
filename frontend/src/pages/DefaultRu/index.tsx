@@ -1,4 +1,4 @@
-import {FC} from "react";
+import {FC, useState} from "react";
 import {useNavigate} from "react-router";
 
 export const DefaultRu: FC = () => {
@@ -7,6 +7,9 @@ export const DefaultRu: FC = () => {
         localStorage.setItem('language', 'en')
         navigate('/en')
     }
+
+    const [showCookies, setShowCookies] = useState(true)
+
     return (
         <>
             <style
@@ -100,16 +103,18 @@ export const DefaultRu: FC = () => {
                         }}
                     />
                 </div>
+                {showCookies ?
                 <div fs-cc="banner" className="flowappz-cookie-consent is-v3">
                     <h5 className="cookie-heading-2 is-v3 text-size-body-2-cc">
                         Мы используем Cookies
                     </h5>
                     <div className="cookie-buttons-group is-v3">
-                        <button fs-cc="close" className="accept-button is-v3">
+                        <button fs-cc="close" className="accept-button is-v3" onClick={() => setShowCookies(false)}>
                             OK
                         </button>
                     </div>
-                </div>
+                </div> : <></>
+                }
                 <header className="navbar1_component" style={{ color: "rgb(0, 0, 0)" }}>
                     <div
                         data-animation="default"
