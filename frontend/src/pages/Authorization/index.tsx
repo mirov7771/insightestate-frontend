@@ -47,6 +47,8 @@ const Authorization: FC = () => {
           console.log(e);
           navigate('/listing');
         });
+    } else {
+      navigate(`/${localStorage.getItem('language') || 'ru'}`)
     }
   }, [session]);
 

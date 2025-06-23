@@ -9,6 +9,8 @@ import { StyledEngineProvider } from '@mui/material';
 import { RegistrationLayout } from '@/widgets/RegistrationLayout/RegistrationLayout';
 import { NotificationsProvider } from '@/shared/ui';
 import { I18nProvider } from '@/i18n/I18nProvider';
+import {DefaultRu} from "@/pages/DefaultRu";
+import {DefaultEn} from "@/pages/DefaultEn";
 // import Listing from "@/pages/Listing";
 
 // Lazy imports for pages
@@ -62,6 +64,8 @@ const App = () => {
                 <ScrollToTop />
                 <Suspense fallback={<div />}>
                   <Routes>
+                    <Route path="/ru" element={<DefaultRu />} />
+                    <Route path="/en" element={<DefaultEn />} />
                     <Route element={<RegistrationLayout />}>
                       <Route path="/login" element={<Login />} />
                       <Route path="/sign-up" element={<SignUp />} />
