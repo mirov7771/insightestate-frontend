@@ -14,7 +14,7 @@ export const HeaderUnauth: FC = () => {
           </Link>
         </div>
         <div className={styles.right}>
-          <Dropdown unauth />
+          <Dropdown />
         </div>
       </header>
     </>
