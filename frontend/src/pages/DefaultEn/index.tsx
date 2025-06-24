@@ -236,7 +236,7 @@ export const DefaultEn: FC = () => {
                                     href="/login"
                                     className="button-cc is-navbar2-button w-button"
                                 >
-                                    Get a Quote
+                                    Log in
                                 </a>
                                 <Dropdown changeLocale={handleRu}/>
                             </div>
@@ -274,10 +274,7 @@ export const DefaultEn: FC = () => {
                                 <div className="container-main-cc">
                                     <div className="hero_cc_content agent-page">
                                         <h1 className="heading-style-h2-cc mb-16 mob-size-40">
-                                            From lead to offer in minutes, not{" "}
-                                            <span className="text-span" style={{
-                                                textDecoration: 'line-through'
-                                            }}>hours</span> DAys
+                                            From lead to offer in minutes, not{" "} DAys
                                         </h1>
                                         <p className="text-size-body-1-cc mb-40 is-ch mob-size-20">
                                             Create personalized Thai real estate selections with live
