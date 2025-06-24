@@ -917,10 +917,10 @@ export const DefaultEn: FC = () => {
                                 </a>
                                 <div className="footer_item">
                                     <a
-                                        href="mailto:info@insightestate.com"
+                                        href="mailto:info@insightestate.pro"
                                         className="footer_link heading-style-h5-cc sgoal_click sgoal_hover"
                                     >
-                                        info@insightestate.com
+                                        info@insightestate.pro
                                     </a>
                                     <a
                                         href="tel:+66800054559"
@@ -1009,9 +1009,6 @@ export const DefaultEn: FC = () => {
                                     <div className="text-size-body-2-cc">
                                         © 2025 Insight Estate. All rights reserved.
                                     </div>
-                                    <a href="/en/privacy" className="footer_link heading-style-h5-cc">
-                                        Privacy Policy
-                                    </a>
                                 </div>
                             </div>
                         </div>

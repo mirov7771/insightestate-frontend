@@ -917,10 +917,10 @@ export const DefaultRu: FC = () => {
                                 </a>
                                 <div className="footer_item">
                                     <a
-                                        href="mailto:info@insightestate.com"
+                                        href="mailto:info@insightestate.pro"
                                         className="footer_link heading-style-h5-cc sgoal_click sgoal_hover"
                                     >
-                                        info@insightestate.com
+                                        info@insightestate.pro
                                     </a>
                                     <a
                                         href="tel:+6681148-64-62"
@@ -1069,9 +1069,6 @@ export const DefaultRu: FC = () => {
                                         © <span data-year-footer="">2025</span> Insight Estate. Все
                                         права защищены.
                                     </div>
-                                    <a href="/ru/privacy" className="footer_link heading-style-h5-cc">
-                                        Политика обработки данных
-                                    </a>
                                 </div>
                             </div>
                         </div>
