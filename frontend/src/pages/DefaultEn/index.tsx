@@ -275,7 +275,9 @@ export const DefaultEn: FC = () => {
                                     <div className="hero_cc_content agent-page">
                                         <h1 className="heading-style-h2-cc mb-16 mob-size-40">
                                             From lead to offer in minutes, not{" "}
-                                            <span className="text-span">hours</span> DAys
+                                            <span className="text-span" style={{
+                                                textDecoration: 'line-through'
+                                            }}>hours</span> DAys
                                         </h1>
                                         <p className="text-size-body-1-cc mb-40 is-ch mob-size-20">
                                             Create personalized Thai real estate selections with live
