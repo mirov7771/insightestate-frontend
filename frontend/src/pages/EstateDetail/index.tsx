@@ -155,18 +155,18 @@ const EstateDetail: FC = () => {
           <div>
             <Units />
           </div>
-          <div>
-              {!estateDetailData.options?.gym && !estateDetailData.options?.childRoom && !estateDetailData.options?.coworking ? <></> :
-                <Infrastructure
-                  gym={estateDetailData.options?.gym || false}
-                  childRoom={estateDetailData.options?.childRoom || false}
-                  coworking={estateDetailData.options?.coworking || false}
-                  toolTip1={estateDetailData.toolTip1}
-                  toolTip2={estateDetailData.toolTip2}
-                  toolTip3={estateDetailData.toolTip3}
-                />
-              }
-          </div>
+            {!estateDetailData.options?.gym && !estateDetailData.options?.childRoom && !estateDetailData.options?.coworking ? <></> :
+              <div>
+                    <Infrastructure
+                      gym={estateDetailData.options?.gym || false}
+                      childRoom={estateDetailData.options?.childRoom || false}
+                      coworking={estateDetailData.options?.coworking || false}
+                      toolTip1={estateDetailData.toolTip1}
+                      toolTip2={estateDetailData.toolTip2}
+                      toolTip3={estateDetailData.toolTip3}
+                    />
+              </div>
+            }
           <div>
             <AverageYield
               roi={estateDetailData.profitability?.roi}
