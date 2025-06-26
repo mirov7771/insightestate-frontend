@@ -61,6 +61,13 @@
     }
   }
 
+  .rating_mobile {
+    font-size: 13px;
+    & svg {
+      color: var(--ui-color-primary-2);
+    }
+  }
+
   .name {
     margin-top: 4px;
   }

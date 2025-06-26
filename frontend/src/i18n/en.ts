@@ -384,5 +384,7 @@ export default {
   to_mall_time: 'Mall:',
   to_beach_time: 'Beach:',
   to_subway_time: 'Subway:',
-  to_airport_time: 'Airport:'
+  to_airport_time: 'Airport:',
+
+  roi_card: '10-year ROI'
 };

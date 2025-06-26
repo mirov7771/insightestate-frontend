@@ -383,6 +383,7 @@ export default {
   to_mall_time: 'До торгового центра:',
   to_beach_time: 'До пляжа:',
   to_subway_time: 'До метро:',
-  to_airport_time: 'До аэропорта:'
+  to_airport_time: 'До аэропорта:',
 
+  roi_card: 'ROI (10 лет)'
 };

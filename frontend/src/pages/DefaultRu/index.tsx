@@ -268,6 +268,9 @@ export const DefaultRu: FC = () => {
                                             <a
                                                 href="/register"
                                                 className="button-cc _w-auto sizing-auto w-button"
+                                                style={{
+                                                    fontSize: '22px'
+                                                }}
                                             >
                                                 Попробовать бесплатно
                                             </a>

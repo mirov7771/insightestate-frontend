@@ -22,6 +22,7 @@ import { Rating } from './Rating/Rating';
 import { Units } from './Units';
 import { EstateSlider } from './EstateSlider';
 import { BaseUserModal } from '@/widgets/Modal/BaseUserModal';
+import {isMobile} from "react-device-detect";
 
 const EstateDetail: FC = () => {
   const { formatMessage } = useIntl();
@@ -75,21 +76,21 @@ const EstateDetail: FC = () => {
             icon={<OfferCollectionBrandSpark />}
             text={String(estateDetailData.grade?.main?.toFixed(1) || '')}
             background="white"
-            className={styles.rating}
+            className={isMobile ? styles.rating_mobile : styles.rating}
             size="md"
           />
           {estateDetailData.location?.name && (
             <BadgeRating
               icon={<OfferCollectionMapPinFilled />}
-              text={estateDetailData.location.name}
+              text={estateDetailData.location.beach || estateDetailData.location.name}
               background="white"
-              className={styles.rating}
+              className={isMobile ? styles.rating_mobile : styles.rating}
             />
           )}
           <AdvantagesBadges
-            toolTip1={estateDetailData.toolTip1}
-            toolTip2={estateDetailData.toolTip2}
-            toolTip3={estateDetailData.toolTip3}
+              toolTip1={estateDetailData.toolTip1 === 'true' ? estateDetailData.toolTip1 : undefined}
+              toolTip2={estateDetailData.toolTip2 === 'true' ? estateDetailData.toolTip2 : undefined}
+              toolTip3={estateDetailData.toolTip3 === 'true' ? estateDetailData.toolTip3 : undefined}
           />
         </div>
         <Text variant="heading3" className={styles.name}>
@@ -105,6 +106,7 @@ const EstateDetail: FC = () => {
           parkingSize={estateDetailData.options?.parkingSize}
           companyEnabled={estateDetailData.managementCompany?.enabled || false}
           price={estateDetailData.price}
+          city={estateDetailData.city}
         />
         <div className={styles.buttons}>
           <Button disabled={!token} onClick={handleOpenUserCollectionModal} wide>

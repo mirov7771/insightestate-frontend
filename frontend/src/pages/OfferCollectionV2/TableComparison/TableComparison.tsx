@@ -17,6 +17,7 @@ type TKeys =
   | 'pricePerSquareMeter'
   | 'deliveryDate'
   | 'roiOver10Years'
+  | 'roi'
   | 'irrOver10Years'
   | 'beachTime'
   | 'timeToShoppingMall'
@@ -44,6 +45,7 @@ export const TableComparison: FC<TableComparisonProps> = ({ estate }) => {
       pricePerSquareMeter: formatMessage({ id: 'pricePerSquareMeter' }),
       deliveryDate: formatMessage({ id: 'completion_date' }),
       roiOver10Years: formatMessage({ id: 'roiSummary' }),
+      roi: formatMessage({ id: 'roi' }),
       irrOver10Years: formatMessage({ id: 'irr' }),
       beachTime: formatMessage({ id: 'beach_time_subway' }),
       timeToShoppingMall: formatMessage({ id: 'timeToShoppingMall' }),
@@ -82,6 +84,9 @@ export const TableComparison: FC<TableComparisonProps> = ({ estate }) => {
     deliveryDate: extractNestedValuesOrFallback(estate, ['buildEndDate']),
     roiOver10Years: extractNestedValuesOrFallback(estate, ['profitability.roi'], '200')?.map(
       (text) => `${text}%`
+    ),
+    roi: extractNestedValuesOrFallback(estate, ['profitability.roiSummary'], '200')?.map(
+        (text) => `${text}%`
     ),
     irrOver10Years: extractNestedValuesOrFallback(estate, ['profitability.irr'], '13')?.map(
       (text) => `${text}%`
