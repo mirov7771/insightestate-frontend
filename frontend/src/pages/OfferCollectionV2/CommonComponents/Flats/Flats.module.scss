@@ -17,6 +17,22 @@
   }
 }
 
+.flats_short {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  border: 1px solid var(--ui-color-black-24-opacity);
+  border-radius: 24px;
+  width: 100%;
+
+  @media (min-width: $media-lg) {
+    flex-direction: row;
+    margin-top: 24px;
+    gap: 24px;
+  }
+}
+
 .flat {
   display: flex;
   flex-direction: column;
@@ -27,6 +43,22 @@
   }
 
   &__price {
+    color: var(--ui-color-black);
+  }
+}
+
+.flat_short {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &__name {
+    font-size: 15px;
+    color: var(--ui-color-black-64-opacity);
+  }
+
+  &__price {
+    font-size: 15px;
     color: var(--ui-color-black);
   }
 }

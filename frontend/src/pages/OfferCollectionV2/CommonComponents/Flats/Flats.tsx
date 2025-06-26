@@ -29,26 +29,46 @@ const sortRoomLayouts = (layouts: RoomLayouts): RoomLayouts => {
   return sorted;
 };
 
-export const Flats: FC<RoomLayouts> = (props) => {
+export const Flats: FC<RoomLayouts & {short?: boolean}> = (props) => {
   const { formatMessage } = useIntl();
   const sorted = sortRoomLayouts(props);
 
   return Object.entries(sorted).length ? (
-    <section className={styles.flats}>
-      {Object.entries(sorted).map(([key, layout], index, targetArray) => (
-        <>
-          <div className={styles.flat}>
-            <Text variant="body1" className={styles.flat__name}>
-              {formatMessage({ id: `offerCollection.${key}` })}, {(layout.square?.min || 30) + ''} -{' '}
-              {(layout.square?.max || 100) + ''}м2
-            </Text>
-            <Text variant="heading5" className={styles.flat__price}>
-              ${layout.price?.min} - ${layout.price?.max}
-            </Text>
-          </div>
-          {index + 1 < targetArray.length ? <div className={styles.divider} /> : ''}
-        </>
-      ))}
-    </section>
+    <>
+      {props.short ?
+          <section className={styles.flats_short}>
+            {Object.entries(sorted).map(([key, layout], index, targetArray) => (
+                <>
+                  <div className={styles.flat_short}>
+                    <Text variant="body1" className={styles.flat_short__name}>
+                      {formatMessage({ id: `offerCollection.${key}` })}, {(layout.square?.min || 30) + ''} -{' '}
+                      {(layout.square?.max || 100) + ''}м2
+                    </Text>
+                    <Text variant="heading5" className={styles.flat_short__price}>
+                      ${layout.price?.min} - ${layout.price?.max}
+                    </Text>
+                  </div>
+                  {index + 1 < targetArray.length ? <div className={styles.divider} /> : ''}
+                </>
+            ))}
+          </section> :
+          <section className={styles.flats}>
+            {Object.entries(sorted).map(([key, layout], index, targetArray) => (
+                <>
+                  <div className={styles.flat}>
+                    <Text variant="body1" className={styles.flat__name}>
+                      {formatMessage({ id: `offerCollection.${key}` })}, {(layout.square?.min || 30) + ''} -{' '}
+                      {(layout.square?.max || 100) + ''}м2
+                    </Text>
+                    <Text variant="heading5" className={styles.flat__price}>
+                      ${layout.price?.min} - ${layout.price?.max}
+                    </Text>
+                  </div>
+                  {index + 1 < targetArray.length ? <div className={styles.divider} /> : ''}
+                </>
+            ))}
+          </section>
+      }
+    </>
   ) : null;
 };

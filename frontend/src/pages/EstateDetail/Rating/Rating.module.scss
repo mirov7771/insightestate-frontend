@@ -24,8 +24,28 @@
     }
   }
 
+  &__item_wrap {
+    display: flex;
+    flex-direction: column-reverse;
+    height: 100%;
+    width: 100%;
+
+    &_main {
+      width: 100%;
+
+      @media (min-width: $media-lg) {
+        width: auto;
+      }
+    }
+  }
+
   &__text {
     color: var(--ui-color-black-64-opacity);
+  }
+
+  &__text_wrap {
+    color: var(--ui-color-black-64-opacity);
+    width: 50%;
   }
 
   &__score {

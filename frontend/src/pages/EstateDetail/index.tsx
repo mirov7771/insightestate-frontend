@@ -159,7 +159,7 @@ const EstateDetail: FC = () => {
           <div>
             <Units />
             <Spacer height={20} width={100}/>
-            <Flats {...estateDetailData.roomLayouts} />
+            <Flats {...estateDetailData.roomLayouts} short={!isMobile}/>
           </div>
             {!estateDetailData.options?.gym && !estateDetailData.options?.childRoom && !estateDetailData.options?.coworking ? <></> :
               <div>
