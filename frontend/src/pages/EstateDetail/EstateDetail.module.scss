@@ -48,6 +48,7 @@
 
   .sticky {
     position: relative;
+    background-color: white;
 
     @media (min-width: $media-lg) {
       position: sticky;

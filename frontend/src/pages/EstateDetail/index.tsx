@@ -23,6 +23,8 @@ import { Units } from './Units';
 import { EstateSlider } from './EstateSlider';
 import { BaseUserModal } from '@/widgets/Modal/BaseUserModal';
 import {isMobile} from "react-device-detect";
+import {Flats} from "@/pages/OfferCollectionV2/CommonComponents/Flats/Flats";
+import {Spacer} from "@/widgets/Spacer/Spacer";
 
 const EstateDetail: FC = () => {
   const { formatMessage } = useIntl();
@@ -156,6 +158,8 @@ const EstateDetail: FC = () => {
           </div>
           <div>
             <Units />
+            <Spacer height={20} width={100}/>
+            <Flats {...estateDetailData.roomLayouts} />
           </div>
             {!estateDetailData.options?.gym && !estateDetailData.options?.childRoom && !estateDetailData.options?.coworking ? <></> :
               <div>
