@@ -133,7 +133,7 @@ const Listing: FC = () => {
       </div>
       <Filter open={openFilters} setOpen={setOpenFilters} />
       <div className={styles.layout}>
-        <main className={styles.main}>
+        <main className={isMobile ? styles.main_mobile : styles.main}>
           {!loading && !estates.length && (
             <Text variant="heading5">{formatMessage({ id: 'not_found' })}</Text>
           )}
