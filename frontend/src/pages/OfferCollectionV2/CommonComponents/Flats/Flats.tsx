@@ -13,9 +13,9 @@ const sortRoomLayouts = (layouts: RoomLayouts): RoomLayouts => {
     'four',
     'five',
     'villaTwo',
-    'villaFive',
-    'villaFour',
     'villaThree',
+    'villaFour',
+    'villaFive',
   ];
 
   const sorted: RoomLayouts = {};
