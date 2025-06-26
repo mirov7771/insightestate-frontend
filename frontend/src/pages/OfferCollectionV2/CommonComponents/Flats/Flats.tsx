@@ -39,8 +39,8 @@ export const Flats: FC<RoomLayouts> = (props) => {
         <>
           <div className={styles.flat}>
             <Text variant="body1" className={styles.flat__name}>
-              {formatMessage({ id: `offerCollection.${key}` })}, {layout.square?.min + ''} -{' '}
-              {layout.square?.max + ''}м2
+              {formatMessage({ id: `offerCollection.${key}` })}, {(layout.square?.min || 30) + ''} -{' '}
+              {(layout.square?.max || 100) + ''}м2
             </Text>
             <Text variant="heading5" className={styles.flat__price}>
               ${layout.price?.min} - ${layout.price?.max}
