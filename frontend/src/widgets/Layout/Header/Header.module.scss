@@ -18,6 +18,23 @@ $headerHeight: 60px;
   }
 }
 
+.header_unatuh {
+  background-color: var(--white);
+  width: 100%;
+  padding: 12px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: right;
+  align-items: inherit;
+
+  @media (min-width: $media-md) {
+    padding: 16px 45px;
+    z-index: 999;
+  }
+}
+
 .logo {
   width: 90px;
   height: 36px;
@@ -108,6 +125,11 @@ $headerHeight: 60px;
 
 .right {
   margin-left: auto;
+}
+
+.right_unauth {
+  margin-left: auto;
+  width: 100%;
 }
 
 .profile_icon {
