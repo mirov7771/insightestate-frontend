@@ -8,6 +8,7 @@ import {
   Profitability,
   RoomLayouts,
 } from '@/widgets/Detail/api/detailApi';
+import { Unit } from '@/shared/api/units';
 
 type ResponseGetEstateCollection = {
   hasMore: boolean;
@@ -41,6 +42,7 @@ export type Estate = {
   name: string;
   options: EstateOptions;
   projectId: string;
+  units: Unit[];
   exteriorImages?: string[];
   facilityImages?: string[];
   floors?: number;

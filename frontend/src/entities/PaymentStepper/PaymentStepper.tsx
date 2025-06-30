@@ -37,7 +37,7 @@ export const PaymentStepper: FC<PaymentStepperProps> = ({ steps, variant = 'card
         {steps.map((step, index) => (
           <Fragment key={index}>
             <div className={`${styles.step} ${styles.step_estate_detail}`}>
-              <Text variant="heading3" as="span" align="center" className={styles.step__percent}>
+              <Text variant="heading5" as="span" align="center" className={styles.step__percent}>
                 {step}
               </Text>
               <Text variant="body1" as="span" align="center" className={styles.info}>

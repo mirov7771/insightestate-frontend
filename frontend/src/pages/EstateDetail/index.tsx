@@ -39,9 +39,6 @@ const EstateDetail: FC = () => {
   const handleOpenUserCollectionModal = () => {
     setUserCollectionModal(true);
   };
-  const handleCloseUserCollectionModal = () => {
-    setUserCollectionModal(false);
-  };
 
   const handleOpenAiModal = () => {
     setAiModal(true);

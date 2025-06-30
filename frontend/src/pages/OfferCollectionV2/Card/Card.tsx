@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { BadgeRating, Button, GMap } from '@/shared/ui';
 import {
   VectorRating,
@@ -23,6 +23,8 @@ import { Flats } from '@/pages/OfferCollectionV2/CommonComponents/Flats/Flats';
 import { TablesInfo } from '@/pages/OfferCollectionV2/CommonComponents/TablesInfo/TablesInfo';
 import { EstateOptionsInfo } from '@/pages/OfferCollectionV2/CommonComponents/EstateOptionsInfo/EstateOptionsInfo';
 import { PaymentStepper } from '@/entities/PaymentStepper/PaymentStepper';
+import { UnitsSlider } from '@/pages/OfferCollectionV2/CommonComponents/UnitsSlider/UnitsSlider';
+import { UnitSlide } from '@/pages/OfferCollectionV2/CommonComponents/UnitsSlider/UnitSlide';
 
 export const Card: FC<
   Estate & { collection: string; collectionId: string; agentInfo?: AgentInfo }
@@ -188,7 +190,17 @@ export const Card: FC<
             </Text>
           </div>
         </section>
-        <Flats {...estate.roomLayouts} />
+        {!!estate.units.length ? (
+          <UnitsSlider
+            slides={estate.units.map((unit) => (
+              <div key={unit.id}>
+                <UnitSlide unit={unit} />
+              </div>
+            ))}
+          />
+        ) : (
+          <Flats {...estate.roomLayouts} />
+        )}
         {!!estate.paymentPlanList && <PaymentStepper steps={estate.paymentPlanList} />}
         <EstateOptionsInfo {...estate.options} />
         <div className={styles.main}>

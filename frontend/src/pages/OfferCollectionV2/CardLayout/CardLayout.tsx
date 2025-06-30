@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import styles from './CardLayout.module.scss';
 import { BadgeRating, Button, GMap, Text } from '@/shared/ui';
 import { DEFAULT_IMG } from '@/entities/Card/Card';
@@ -9,6 +9,7 @@ import {
 } from '@/widgets/EstateCollection/api/estateCollectionApi';
 import {
   Heart,
+  IconLayout,
   OfferCollectionHeart,
   OfferCollectionMapPinFilled,
   VectorRating,
@@ -22,6 +23,37 @@ import { Slider } from '../CommonComponents/Slider/Slider';
 import { TablesInfo } from '@/pages/OfferCollectionV2/CommonComponents/TablesInfo/TablesInfo';
 import { InfoModal } from '@/shared/ui/modals';
 import { useSearchParams } from 'react-router';
+import { UnitsSlider } from '@/pages/OfferCollectionV2/CommonComponents/UnitsSlider/UnitsSlider';
+import { UnitSlide } from '@/pages/OfferCollectionV2/CommonComponents/UnitsSlider/UnitSlide';
+
+function getPrioritySquare(estate: Estate): string {
+  const layouts = [
+    'villaFive',
+    'villaFour',
+    'villaThree',
+    'villaTwo',
+    'five',
+    'four',
+    'three',
+    'two',
+    'studio',
+    'one',
+  ] as const;
+  const fields = ['min', 'max', 'avg'] as const;
+
+  for (const layout of layouts) {
+    const squareObj = estate.roomLayouts?.[layout]?.square;
+
+    if (squareObj) {
+      for (const field of fields) {
+        if (squareObj[field] !== undefined && squareObj[field] !== null) {
+          return squareObj[field]?.toString();
+        }
+      }
+    }
+  }
+  return '110';
+}
 
 type CardLayoutProps = {
   estate: Estate & { collection: string; collectionId: string; agentInfo?: AgentInfo };
@@ -59,39 +91,7 @@ export const CardLayout: FC<CardLayoutProps> = ({ estate }) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
-    setSquare(
-      estate.roomLayouts?.villaFive?.square?.min ||
-        estate.roomLayouts?.villaFive?.square?.max ||
-        estate.roomLayouts?.villaFive?.square?.avg ||
-        estate.roomLayouts?.villaFour?.square?.min ||
-        estate.roomLayouts?.villaFour?.square?.max ||
-        estate.roomLayouts?.villaFour?.square?.avg ||
-        estate.roomLayouts?.villaThree?.square?.min ||
-        estate.roomLayouts?.villaThree?.square?.max ||
-        estate.roomLayouts?.villaThree?.square?.avg ||
-        estate.roomLayouts?.villaTwo?.square?.min ||
-        estate.roomLayouts?.villaTwo?.square?.max ||
-        estate.roomLayouts?.villaTwo?.square?.avg ||
-        estate.roomLayouts?.five?.square?.min ||
-        estate.roomLayouts?.five?.square?.max ||
-        estate.roomLayouts?.five?.square?.avg ||
-        estate.roomLayouts?.four?.square?.min ||
-        estate.roomLayouts?.four?.square?.max ||
-        estate.roomLayouts?.four?.square?.avg ||
-        estate.roomLayouts?.three?.square?.min ||
-        estate.roomLayouts?.three?.square?.max ||
-        estate.roomLayouts?.three?.square?.avg ||
-        estate.roomLayouts?.two?.square?.min ||
-        estate.roomLayouts?.two?.square?.max ||
-        estate.roomLayouts?.two?.square?.avg ||
-        estate.roomLayouts?.studio?.square?.min ||
-        estate.roomLayouts?.studio?.square?.max ||
-        estate.roomLayouts?.studio?.square?.avg ||
-        estate.roomLayouts?.one?.square?.min ||
-        estate.roomLayouts?.one?.square?.max ||
-        estate.roomLayouts?.one?.square?.avg ||
-        '110'
-    );
+    setSquare(getPrioritySquare(estate));
     setToken(localStorage.getItem('basicToken'));
   }, []);
 
@@ -119,11 +119,9 @@ export const CardLayout: FC<CardLayoutProps> = ({ estate }) => {
           estateId: estate.id,
         })
         .then(() => console.log('success like'))
-        .catch((e) => console.log('error like'));
+        .catch(() => console.log('error like'));
     }
   }, [like]);
-
-  console.log({ estate });
 
   return (
     <section className={styles.grid}>
@@ -205,7 +203,17 @@ export const CardLayout: FC<CardLayoutProps> = ({ estate }) => {
         </div>
       </div>
       <div className={styles.flats}>
-        <Flats {...estate.roomLayouts} />
+        {!!estate.units.length ? (
+          <UnitsSlider
+            slides={estate.units.map((unit) => (
+              <div key={unit.id}>
+                <UnitSlide unit={unit} />
+              </div>
+            ))}
+          />
+        ) : (
+          <Flats {...estate.roomLayouts} />
+        )}
       </div>
 
       <div className={styles.paymentPlan}>

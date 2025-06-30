@@ -8,6 +8,7 @@ import {
 } from '@/widgets/EstateCollection/api/estateCollectionApi';
 import { useStatus } from '@/shared/utils/useStatus';
 import { InfoModal } from '@/shared/ui/modals';
+import { useWindowResize } from '@/shared/utils/useWindowResize';
 
 type ModalAddToCollectionProps = {
   estateId: string;
@@ -22,6 +23,8 @@ export const ModalAddToCollection: FC<ModalAddToCollectionProps> = ({
   estateId,
   unitId,
 }) => {
+  const { width } = useWindowResize();
+  const isFullScreen = width <= 768;
   const { formatMessage } = useIntl();
   const [name, setName] = useState('');
   const { status, setStatus } = useStatus();
@@ -106,15 +109,17 @@ export const ModalAddToCollection: FC<ModalAddToCollectionProps> = ({
   return (
     <>
       <Modal
+        withCloseIcon={isFullScreen}
         dialogProps={{
           open,
           maxWidth: 'md',
           fullWidth: true,
+          fullScreen: isFullScreen,
           onClose: () => handleCloseModal(),
         }}
       >
         <div className={styles.container}>
-          <Text variant="heading4">Add to selection</Text>
+          <Text variant="heading4">{formatMessage({ id: 'add_to_collection' })}</Text>
           {isAddNewCollection ? (
             <>
               <Input placeholder="Insert collection name" value={name} onChange={onChangeName} />
