@@ -100,13 +100,14 @@
     flex-direction: row;
     height: 248px;
     padding: 24px;
-    justify-content: center;
+    justify-content: space-between;
   }
 
   &__content {
     display: flex;
     flex-direction: column;
     height: 100%;
+    width: 100%;
   }
 
   &__price {
@@ -136,7 +137,7 @@
     overflow: hidden;
 
     @media (min-width: $media-md) {
-      width: 200px;
+      max-width: 200px;
     }
 
     & > img {

@@ -95,6 +95,14 @@
   margin-bottom: 24px;
   margin-top: 24px;
   max-width: 1142px;
+
+  @media (min-width: $media-lg) {
+    max-width: 850px;
+  }
+
+  @media (min-width: $media-xl) {
+    max-width: 1142px;
+  }
 }
 
 .paymentPlan {
