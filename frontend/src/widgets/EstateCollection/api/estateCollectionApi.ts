@@ -42,7 +42,6 @@ export type Estate = {
   name: string;
   options: EstateOptions;
   projectId: string;
-  units: Unit[];
   exteriorImages?: string[];
   facilityImages?: string[];
   floors?: number;
@@ -57,6 +56,7 @@ export type Estate = {
   roomLayouts?: RoomLayouts;
   shortDescriptionEn?: string;
   shortDescriptionRu?: string;
+  units?: Unit[];
 };
 
 export type CreateCollectionRs = {

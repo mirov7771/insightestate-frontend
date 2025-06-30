@@ -190,7 +190,7 @@ export const Card: FC<
             </Text>
           </div>
         </section>
-        {!!estate.units.length ? (
+        {!!estate.units?.length ? (
           <UnitsSlider
             slides={estate.units.map((unit) => (
               <div key={unit.id}>

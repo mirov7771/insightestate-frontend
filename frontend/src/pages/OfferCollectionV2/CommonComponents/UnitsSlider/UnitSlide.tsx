@@ -35,7 +35,7 @@ export const UnitSlide: FC<{ unit: Unit }> = ({ unit }) => {
             </Text>
           )}
           {!!unit.priceSq && (
-            <Text variant="body2" className={styles.unit__price_sq}>
+            <Text variant="body2">
               &nbsp;${unit.priceSq} м<sup>2</sup>
             </Text>
           )}

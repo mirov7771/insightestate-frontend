@@ -32,7 +32,7 @@ const OfferCollectionV2: FC = () => {
         <meta property="og:url" content={url} />
       </Helmet>
       <div className={styles.wrap}>
-        <Text variant="heading1" as="h1" align="center">
+        <Text variant="heading4_upper" as="h1" align="center">
           {formatMessage({ id: 'projects_for_you' })}
         </Text>
         {id && <Tabs id={id} />}

@@ -203,7 +203,7 @@ export const CardLayout: FC<CardLayoutProps> = ({ estate }) => {
         </div>
       </div>
       <div className={styles.flats}>
-        {!!estate.units.length ? (
+        {!!estate.units?.length ? (
           <UnitsSlider
             slides={estate.units.map((unit) => (
               <div key={unit.id}>
