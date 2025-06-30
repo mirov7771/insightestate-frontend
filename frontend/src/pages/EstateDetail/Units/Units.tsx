@@ -36,46 +36,47 @@ export const Units: FC = () => {
   }, [token, params.id]);
 
   return (
-      <>
-          {units.length < 1
-          ? <></> :
-              <Section
-                  title={
-                      <>
-                          <FormattedMessage id="units.available_units" />
-                          {!!units.length && (
-                              <Text variant="heading3" className={styles.info}>
-                                  {units.length}
-                              </Text>
-                          )}
-                      </>
-                  }
-                  rightSide={
-                      <Segment
-                          value={activeTab}
-                          onChange={handleChangeActiveTab}
-                          options={[
-                              { value: 1, icon: <CarouselHorizontal /> },
-                              { value: 2, icon: <LayoutList /> },
-                          ]}
-                      />
-                  }
-              >
-                  {status === 'LOADING' && <div>Loading</div>}
-                  {status === 'SUCCESS' && !!units.length && (
-                      <div>
-                          <div className={activeTab !== 1 ? styles.hidden : ''}>
-                              <UnitsSlider items={units} />
-                          </div>
-                          <div className={activeTab !== 2 ? styles.hidden : ''}>
-                              <UnitsCards items={units} />
-                          </div>
-                      </div>
-                  )}
-                  {status === 'SUCCESS' && !units.length && <div>Empty</div>}
-                  {status === 'ERROR' && <div>Error</div>}
-              </Section>
+    <>
+      {units.length < 1 ? (
+        <></>
+      ) : (
+        <Section
+          title={
+            <>
+              <FormattedMessage id="units.available_units" />
+              {!!units.length && (
+                <Text variant="heading3" className={styles.info}>
+                  {units.length}
+                </Text>
+              )}
+            </>
           }
-      </>
+          rightSide={
+            <Segment
+              value={activeTab}
+              onChange={handleChangeActiveTab}
+              options={[
+                { value: 1, icon: <CarouselHorizontal /> },
+                { value: 2, icon: <LayoutList /> },
+              ]}
+            />
+          }
+        >
+          {status === 'LOADING' && <div>Loading</div>}
+          {status === 'SUCCESS' && !!units.length && (
+            <div>
+              <div className={activeTab !== 1 ? styles.hidden : ''}>
+                <UnitsSlider items={units} />
+              </div>
+              <div className={activeTab !== 2 ? styles.hidden : ''}>
+                <UnitsCards items={units} />
+              </div>
+            </div>
+          )}
+          {status === 'SUCCESS' && !units.length && <div>Empty</div>}
+          {status === 'ERROR' && <div>Error</div>}
+        </Section>
+      )}
+    </>
   );
 };

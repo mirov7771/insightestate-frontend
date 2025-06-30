@@ -17,11 +17,11 @@ export const Info: FC<{
   level: string;
   type: string;
   buildEndDate?: string;
+  city?: string;
   developer?: string;
   parkingSize?: number;
   price?: EstateDetail['price'];
   project?: ProjectUnitCount;
-  city?: string;
 }> = ({ floors, project, buildEndDate, level, type, developer, companyEnabled, price, city }) => {
   const { formatMessage } = useIntl();
   const [locale, setLocale] = useState<string>(localStorage.getItem('language') || 'ru');
@@ -29,14 +29,14 @@ export const Info: FC<{
   return (
     <div className={styles.info}>
       {city && (
-          <div className={styles.info__item}>
-            <Text variant="body1" className={`${styles.text} ${styles.text__grey}`}>
-              {formatMessage({ id: 'city' })}
-            </Text>
-            <Text variant="body1" className={styles.text}>
-              {city}
-            </Text>
-          </div>
+        <div className={styles.info__item}>
+          <Text variant="body1" className={`${styles.text} ${styles.text__grey}`}>
+            {formatMessage({ id: 'city' })}
+          </Text>
+          <Text variant="body1" className={styles.text}>
+            {city}
+          </Text>
+        </div>
       )}
       <div className={styles.info__item}>
         <Text variant="body1" className={`${styles.text} ${styles.text__grey}`}>

@@ -12,10 +12,10 @@ export const GradeTable: FC<
   }
 > = ({ estates, clickable, isMobile, collectionId, token }) => {
   const formatPrice = (price: string | undefined): number => {
-      if (!price)
-          return 0
-      return parseInt(price.replace(' ', ''))
-  }
+    if (!price) return 0;
+    return parseInt(price.replace(' ', ''));
+  };
+
   return (
     <div className={styles.masterNeighbourhood2}>
       <table className={styles.tb}>

@@ -221,7 +221,10 @@ export const Card: FC<
               {
                 items: [
                   {
-                    name: estate.city === 'Bangkok' ? formatMessage({ id: 'subway' }) : formatMessage({ id: 'beach' }),
+                    name:
+                      estate.city === 'Bangkok'
+                        ? formatMessage({ id: 'subway' })
+                        : formatMessage({ id: 'beach' }),
                     description: `${
                       estate?.infrastructure?.beachTime?.car ||
                       estate?.infrastructure?.beachTime?.walk ||

@@ -86,7 +86,7 @@ export const TableComparison: FC<TableComparisonProps> = ({ estate }) => {
       (text) => `${text}%`
     ),
     roi: extractNestedValuesOrFallback(estate, ['profitability.roiSummary'], '200')?.map(
-        (text) => `${text}%`
+      (text) => `${text}%`
     ),
     irrOver10Years: extractNestedValuesOrFallback(estate, ['profitability.irr'], '13')?.map(
       (text) => `${text}%`

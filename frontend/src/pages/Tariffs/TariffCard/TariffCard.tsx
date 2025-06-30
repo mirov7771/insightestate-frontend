@@ -7,7 +7,7 @@ import { Button, Text } from '@/shared/ui';
 import { DESCRIPTIONS_ENG, DESCRIPTIONS_RU } from './constants';
 import { useIntl } from 'react-intl';
 import { Spacer } from '@/widgets/Spacer/Spacer';
-import {isMobile} from "react-device-detect";
+import { isMobile } from 'react-device-detect';
 
 type TariffCardProps = {
   description: string[];
@@ -101,7 +101,11 @@ export const TariffCard: FC<TariffCardProps> = ({
             {title}
           </Text>
           {title === 'Pro' && (
-            <Text variant="heading4" as="span" className={isMobile ? styles.card__badge_mobile : styles.card__badge}>
+            <Text
+              variant="heading4"
+              as="span"
+              className={isMobile ? styles.card__badge_mobile : styles.card__badge}
+            >
               {formatMessage({ id: 'tariff_popular' })}
             </Text>
           )}

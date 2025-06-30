@@ -113,7 +113,7 @@ export const CardSlide: FC<CardSlideProps> = ({
             {estate.roiSummary && (
               <li className={styles.badges__badge}>
                 <Text variant="body2" bold>
-                  {formatMessage({id: 'roi_card'})} {estate.roiSummary}%
+                  {formatMessage({ id: 'roi_card' })} {estate.roiSummary}%
                 </Text>
               </li>
             )}

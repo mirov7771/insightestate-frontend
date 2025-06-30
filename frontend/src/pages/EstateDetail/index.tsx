@@ -22,9 +22,9 @@ import { Rating } from './Rating/Rating';
 import { Units } from './Units';
 import { EstateSlider } from './EstateSlider';
 import { BaseUserModal } from '@/widgets/Modal/BaseUserModal';
-import {isMobile} from "react-device-detect";
-import {Flats} from "@/pages/OfferCollectionV2/CommonComponents/Flats/Flats";
-import {Spacer} from "@/widgets/Spacer/Spacer";
+import { isMobile } from 'react-device-detect';
+import { Flats } from '@/pages/OfferCollectionV2/CommonComponents/Flats/Flats';
+import { Spacer } from '@/widgets/Spacer/Spacer';
 
 const EstateDetail: FC = () => {
   const { formatMessage } = useIntl();
@@ -90,9 +90,9 @@ const EstateDetail: FC = () => {
             />
           )}
           <AdvantagesBadges
-              toolTip1={estateDetailData.toolTip1 === 'true' ? estateDetailData.toolTip1 : undefined}
-              toolTip2={estateDetailData.toolTip2 === 'true' ? estateDetailData.toolTip2 : undefined}
-              toolTip3={estateDetailData.toolTip3 === 'true' ? estateDetailData.toolTip3 : undefined}
+            toolTip1={estateDetailData.toolTip1 === 'true' ? estateDetailData.toolTip1 : undefined}
+            toolTip2={estateDetailData.toolTip2 === 'true' ? estateDetailData.toolTip2 : undefined}
+            toolTip3={estateDetailData.toolTip3 === 'true' ? estateDetailData.toolTip3 : undefined}
           />
         </div>
         <Text variant="heading3" className={styles.name}>
@@ -158,21 +158,25 @@ const EstateDetail: FC = () => {
           </div>
           <div>
             <Units />
-            <Spacer height={20} width={100}/>
-            <Flats {...estateDetailData.roomLayouts} short={!isMobile}/>
+            <Spacer height={20} width={100} />
+            <Flats {...estateDetailData.roomLayouts} short={!isMobile} />
           </div>
-            {!estateDetailData.options?.gym && !estateDetailData.options?.childRoom && !estateDetailData.options?.coworking ? <></> :
-              <div>
-                    <Infrastructure
-                      gym={estateDetailData.options?.gym || false}
-                      childRoom={estateDetailData.options?.childRoom || false}
-                      coworking={estateDetailData.options?.coworking || false}
-                      toolTip1={estateDetailData.toolTip1}
-                      toolTip2={estateDetailData.toolTip2}
-                      toolTip3={estateDetailData.toolTip3}
-                    />
-              </div>
-            }
+          {!estateDetailData.options?.gym &&
+          !estateDetailData.options?.childRoom &&
+          !estateDetailData.options?.coworking ? (
+            <></>
+          ) : (
+            <div>
+              <Infrastructure
+                gym={estateDetailData.options?.gym || false}
+                childRoom={estateDetailData.options?.childRoom || false}
+                coworking={estateDetailData.options?.coworking || false}
+                toolTip1={estateDetailData.toolTip1}
+                toolTip2={estateDetailData.toolTip2}
+                toolTip3={estateDetailData.toolTip3}
+              />
+            </div>
+          )}
           <div>
             <AverageYield
               roi={estateDetailData.profitability?.roi}

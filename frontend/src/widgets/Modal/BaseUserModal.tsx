@@ -12,7 +12,7 @@ import { Text } from '../Text/Text';
 import { BaseField } from '@/widgets/BaseField/BaseField';
 import { estateCollectionApi } from '@/widgets/EstateCollection/api/estateCollectionApi';
 import { isMobile } from 'react-device-detect';
-import {FormattedMessage, useIntl} from "react-intl";
+import { FormattedMessage, useIntl } from 'react-intl';
 
 export const BaseUserModal: FC<TModalProps & { id: string; object: string; token: string }> = ({
   onClose,
@@ -89,27 +89,42 @@ export const BaseUserModal: FC<TModalProps & { id: string; object: string; token
               <Spacer width="100%" height={8} />
               <Spacer width="100%" height={8} />
               <Text size="xl" align="center" colorTheme={'black200'} isBold>
-                {formatMessage({id : 'help_client'})}
+                {formatMessage({ id: 'help_client' })}
               </Text>
               <Spacer width="100%" height={8} />
-              <BaseField onChange={onChangeName} value={name} name="name" label={formatMessage({id : 'help_firstName'})} />
+              <BaseField
+                onChange={onChangeName}
+                value={name}
+                name="name"
+                label={formatMessage({ id: 'help_firstName' })}
+              />
               <Spacer width="100%" height={8} />
               <BaseField
                 onChange={onChangeLastName}
                 value={lastName}
                 name="lastName"
-                label={formatMessage({id : 'help_lastName'})}
+                label={formatMessage({ id: 'help_lastName' })}
               />
               <Spacer width="100%" height={8} />
-              <BaseField onChange={onChangePhone} value={phone} name="phone" label={formatMessage({id : 'help_phone'})} />
+              <BaseField
+                onChange={onChangePhone}
+                value={phone}
+                name="phone"
+                label={formatMessage({ id: 'help_phone' })}
+              />
               <Spacer width="100%" height={8} />
-              <BaseField value={object} name="object" disabled={true} label={formatMessage({id : 'help_object'})} />
+              <BaseField
+                value={object}
+                name="object"
+                disabled={true}
+                label={formatMessage({ id: 'help_object' })}
+              />
               <Spacer width="100%" height={8} />
               <BaseField
                 onChange={onLocation}
                 value={location}
                 name="location"
-                label={formatMessage({id : 'help_city'})}
+                label={formatMessage({ id: 'help_city' })}
               />
             </StyledWrapperProgress>
           ) : (
@@ -117,15 +132,12 @@ export const BaseUserModal: FC<TModalProps & { id: string; object: string; token
               <Spacer width="100%" height={8} />
               <Spacer width="100%" height={8} />
               <Text size="xl" align="center" colorTheme={'black200'} isBold>
-                {formatMessage({id : 'help_title'})}
+                {formatMessage({ id: 'help_title' })}
               </Text>
               <Spacer width="100%" height={8} />
               <StyledWrapperText>
                 <Text size="m" align="left" colorTheme={'black200'}>
-                  <FormattedMessage
-                      id="help_text"
-                      values={{ br: () => <br /> }}
-                  />
+                  <FormattedMessage id="help_text" values={{ br: () => <br /> }} />
                 </Text>
               </StyledWrapperText>
               <Spacer width="100%" height={8} />
@@ -135,11 +147,11 @@ export const BaseUserModal: FC<TModalProps & { id: string; object: string; token
         <Spacer width="100%" height={24} />
         {agree ? (
           <StyledButton color="secondary" variant="contained" size="medium" onClick={clickSend}>
-            {formatMessage({id : 'help_button1'})}
+            {formatMessage({ id: 'help_button1' })}
           </StyledButton>
         ) : (
           <StyledButton color="secondary" variant="contained" size="medium" onClick={clickAgree}>
-            {formatMessage({id : 'help_button2'})}
+            {formatMessage({ id: 'help_button2' })}
           </StyledButton>
         )}
       </StyledSwipeableDrawer>

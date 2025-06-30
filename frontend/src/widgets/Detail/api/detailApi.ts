@@ -9,6 +9,7 @@ export type EstateDetail = {
   name: string;
   projectId: string;
   buildEndDate?: string;
+  city?: string;
   developer?: Developer;
   eiaEnabled?: boolean;
   exteriorImages?: string[];
@@ -18,7 +19,6 @@ export type EstateDetail = {
   interiorImages?: string[];
   level?: string;
   managementCompany?: ManagementCompany;
-  options?: Options;
   paymentPlanList?: string[];
   price?: Price;
   product?: string;
@@ -33,7 +33,7 @@ export type EstateDetail = {
   toolTip3?: 'true';
   type?: string;
   unitCount?: ProjectUnitCount;
-  city?: string;
+  options?: Options;
 };
 
 export type Developer = {

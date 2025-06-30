@@ -35,6 +35,7 @@ export type EstateOptions = {
 
 export type Estate = {
   buildEndDate: string;
+  city: string;
   id: string;
   level: 'COMFORT' | 'LUX' | 'PREMIUM' | 'UNKNOWN';
   name: string;
@@ -44,7 +45,6 @@ export type Estate = {
   facilityImages?: string[];
   floors?: number;
   grade?: Grade;
-  infrastructure?: InfrastructureDto;
   interiorImages?: string[];
   likes?: number;
   location?: Location;
@@ -54,7 +54,7 @@ export type Estate = {
   roomLayouts?: RoomLayouts;
   shortDescriptionEn?: string;
   shortDescriptionRu?: string;
-  city: string;
+  infrastructure?: InfrastructureDto;
 };
 
 export type CreateCollectionRs = {

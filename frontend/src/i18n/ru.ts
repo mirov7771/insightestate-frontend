@@ -385,5 +385,5 @@ export default {
   to_subway_time: 'До метро:',
   to_airport_time: 'До аэропорта:',
 
-  roi_card: 'ROI (10 лет)'
+  roi_card: 'ROI (10 лет)',
 };

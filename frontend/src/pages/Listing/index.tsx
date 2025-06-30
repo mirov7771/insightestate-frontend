@@ -21,7 +21,7 @@ import { useSearchParams } from 'react-router';
 import { types } from 'sass';
 import Number = types.Number;
 import { isMobile } from 'react-device-detect';
-import {Region} from "@/widgets/Filter/Region";
+import { Region } from '@/widgets/Filter/Region';
 
 const Listing: FC = () => {
   const { formatMessage } = useIntl();
@@ -93,9 +93,9 @@ const Listing: FC = () => {
                 filterName="city"
               />
               <FastFilter
-                  filter={<Region />}
-                  name={formatMessage({ id: 'region' })}
-                  filterName="beachName"
+                filter={<Region />}
+                name={formatMessage({ id: 'region' })}
+                filterName="beachName"
               />
               <FastFilter
                 filter={<PropertyType />}

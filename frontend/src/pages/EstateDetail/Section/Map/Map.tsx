@@ -13,9 +13,9 @@ const containerStyle = {
 
 type MapProps = {
   url: string;
+  city?: string;
   infrastructure?: EstateDetail['infrastructure'];
   location?: EstateDetail['location']['name'];
-  city?: string;
 };
 
 export const Map: FC<MapProps> = ({ url, infrastructure, location, city }) => {
@@ -39,7 +39,11 @@ export const Map: FC<MapProps> = ({ url, infrastructure, location, city }) => {
         <div className={styles.infrastructure}>
           {(infrastructure.beachTime?.car || infrastructure.beachTime?.walk) && (
             <div className={styles.infrastructure__item}>
-              <Text variant="heading5">{city === 'Bangkok' ? formatMessage({id: 'to_subway_time'}) : formatMessage({id: 'to_beach_time'})}</Text>
+              <Text variant="heading5">
+                {city === 'Bangkok'
+                  ? formatMessage({ id: 'to_subway_time' })
+                  : formatMessage({ id: 'to_beach_time' })}
+              </Text>
               <div className={styles.infrastructure__text}>
                 {!!infrastructure.beachTime?.car && (
                   <Text variant="body1" className={styles.infrastructure__text_item}>

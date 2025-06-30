@@ -358,7 +358,7 @@ export default {
   help_firstName: 'Name',
   help_phone: 'Phone number',
   help_object: 'Object for armor',
-  help_city: "Buyer's country and city",
+  help_city: 'Buyer\'s country and city',
   help_title: 'Help with a client',
   help_button1: 'Send',
   help_button2: 'I agree',
@@ -386,5 +386,5 @@ export default {
   to_subway_time: 'Subway:',
   to_airport_time: 'Airport:',
 
-  roi_card: '10-year ROI'
+  roi_card: '10-year ROI',
 };

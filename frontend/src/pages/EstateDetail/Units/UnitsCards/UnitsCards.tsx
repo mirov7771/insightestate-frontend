@@ -5,7 +5,7 @@ import PlaceholderImg from '../assets/placeholder.png';
 import { Button, Text } from '@/shared/ui';
 import { Plus } from '@/shared/assets/icons';
 import { useIntl } from 'react-intl';
-import {isMobile} from "react-device-detect";
+import { isMobile } from 'react-device-detect';
 
 export const UnitsCards: FC<{ items: Unit[] }> = ({ items }) => {
   const { formatMessage } = useIntl();
@@ -33,15 +33,16 @@ export const UnitsCards: FC<{ items: Unit[] }> = ({ items }) => {
           {/*  </Text>*/}
           {/*  <Text variant="heading5">{unit.floor || '-'}</Text>*/}
           {/*</div>*/}
-          {
-            isMobile ? <></> :
-                <div className={styles.unit__base}>
-                  <Text variant="body1" className={styles.unit__name}>
-                    {formatMessage({ id: 'units.number' })}
-                  </Text>
-                  <Text variant="heading5">{unit.number}</Text>
-                </div>
-          }
+          {isMobile ? (
+            <></>
+          ) : (
+            <div className={styles.unit__base}>
+              <Text variant="body1" className={styles.unit__name}>
+                {formatMessage({ id: 'units.number' })}
+              </Text>
+              <Text variant="heading5">{unit.number}</Text>
+            </div>
+          )}
           {/*<div className={styles.unit__base}>*/}
           {/*  <Text variant="body1" className={styles.unit__name}>*/}
           {/*    {formatMessage({ id: 'units.annualIncome' })}*/}

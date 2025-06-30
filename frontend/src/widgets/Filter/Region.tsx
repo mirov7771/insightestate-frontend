@@ -121,11 +121,11 @@ export const Region: FC = () => {
                 label="Nai Yang"
               />
               <Checkbox
-                  name="beachName"
-                  value="Nai Harn"
-                  onChange={handleClick}
-                  checked={beachName?.includes('Nai Harn')}
-                  label="Nai Harn"
+                name="beachName"
+                value="Nai Harn"
+                onChange={handleClick}
+                checked={beachName?.includes('Nai Harn')}
+                label="Nai Harn"
               />
               <Checkbox
                 name="beachName"
