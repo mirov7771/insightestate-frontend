@@ -1,0 +1,86 @@
+@use '~@/sass/index' as *;
+
+@mixin text() {
+  font-family: 'Wix Madefor Display', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+
+  @media (min-width: $media-md) {
+    font-size: 18px;
+    line-height: 24px;
+  }
+}
+
+.wrapper {
+  width: 100%;
+  position: relative;
+  @include text;
+
+  .input {
+    width: 100%;
+    border: 1px solid var(--ui-color-black-24-opacity);
+    min-height: 56px;
+    transition: border 0.25s ease-in-out;
+    outline: none;
+    padding-left: 24px;
+    padding-right: 32px; // место под иконку
+    border-radius: 200px;
+    /* Скрываем нативную стрелку */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: none;
+    @include text;
+
+    &:hover {
+      border: 1px solid var(--ui-color-black-64-opacity);
+    }
+
+    &:focus {
+      border: 1px solid var(--ui-color-black);
+    }
+
+    &::placeholder {
+      color: var(--ui-color-black-64-opacity);
+    }
+
+    &:disabled {
+      background-color: var(--ui-color-black-4-opacity);
+      cursor: not-allowed;
+    }
+
+    &__error {
+      border: 1px solid var(--ui-color-red);
+    }
+  }
+
+  .label {
+    color: var(--ui-color-black);
+    margin-bottom: 8px;
+  }
+
+  .errorText {
+    color: var(--ui-color-red);
+  }
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  pointer-events: none;
+  transform: translateY(-50%) rotate(-90deg);
+  width: 24px;
+  height: 24px;
+  color: var(--ui-color-black-64-opacity);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  & > svg {
+    width: 24px;
+    height: 24px;
+    color: var(--ui-color-black-64-opacity);
+  }
+}

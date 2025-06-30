@@ -9,7 +9,7 @@ import { OfferCollectionBrandSpark, OfferCollectionMapPinFilled } from '@/shared
 import { AdvantagesBadges } from '@/entities/CardSlide/AdvantagesBadges';
 
 import { detailApi, EstateDetail as TEstateDetail } from '@/widgets/Detail/api/detailApi';
-import { UserCollectionModal } from '@/widgets/Modal/UserCollectionModal';
+import { ModalAddToCollection } from '@/shared/ui/modals';
 import { AiModal } from '@/widgets/Modal/AiModal';
 
 import { FAQ } from './FAQ/FAQ';
@@ -209,13 +209,10 @@ const EstateDetail: FC = () => {
         <aside className={`${styles.side} ${styles.side_hidden_mobile}`}>
           <div className={styles.sticky}>{renderSideSection()}</div>
         </aside>
-        <UserCollectionModal
+        <ModalAddToCollection
           open={userCollectionModal}
-          onClose={handleCloseUserCollectionModal}
-          onOpen={handleOpenUserCollectionModal}
-          anchor="bottom"
-          id={id!!}
-          token={token!!}
+          setOpen={setUserCollectionModal}
+          estateId={id || ''}
         />
         <AiModal
           open={aiModal}

@@ -309,7 +309,13 @@ export const CardLayout: FC<CardLayoutProps> = ({ estate }) => {
           ]}
         />
       </div>
-      <InfoModal open={infoModal} setOpen={setInfoModal} title={infoTitle} text={infoText} />
+      <InfoModal
+        open={infoModal}
+        setOpen={setInfoModal}
+        title={infoTitle}
+        text={infoText}
+        withReload
+      />
     </section>
   );
 };
