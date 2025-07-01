@@ -128,7 +128,7 @@ const MainMobile: FC<MainProps> = ({
                         </div>
                     </div>
                     <div className={styles.infoCard_mobile}>
-                        <p className={styles.p_mobile}>{formatMessage({id: 'main_card_1'})}{' '}{objects}</p>
+                        <p className={styles.p_mobile}>{formatMessage({id: 'main_card_3'})}{' '}{objects}</p>
                         <div className={styles.icon_mobile}>
                             <Objects />
                         </div>
