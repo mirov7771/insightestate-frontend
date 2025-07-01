@@ -10,7 +10,7 @@ import { RegistrationLayout } from '@/widgets/RegistrationLayout/RegistrationLay
 import { NotificationsProvider } from '@/shared/ui';
 import { I18nProvider } from '@/i18n/I18nProvider';
 import { DefaultRu } from '@/pages/DefaultRu';
-import { DefaultEn } from '@/pages/DefaultEn';
+import { DefaultEn } from '@/pages/DefaultEn';;
 // import Listing from "@/pages/Listing";
 
 // Lazy imports for pages
@@ -30,6 +30,7 @@ const OfferCollectionV2 = lazy(() => import('@/pages/OfferCollectionV2'));
 const Tariffs = lazy(() => import('@/pages/Tariffs'));
 const ResetPasswordCode = lazy(() => import('@/pages/ResetPassword/ResetPasswordCode'));
 const NewPassword = lazy(() => import('@/pages/ResetPassword/NewPassword'));
+const MainMenu = lazy(() => import('@/pages/MainMenu'));
 
 const ScrollToTop = () => {
   const location = useLocation();
@@ -91,6 +92,7 @@ const App = () => {
                       <Route path="/tariffs" element={<Tariffs />} />
                       <Route path="/user-collection" element={<UserCollection />} />
                       <Route path="/ai-listing" element={<AiListing />} />
+                      <Route path="/main_menu" element={<MainMenu />} />
                     </Route>
                   </Routes>
                 </Suspense>

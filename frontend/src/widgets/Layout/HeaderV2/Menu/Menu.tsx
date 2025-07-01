@@ -5,6 +5,7 @@ import { useIntl } from 'react-intl';
 import { Text } from '@/shared/ui';
 
 const MENU_ITEMS: { formatMessageId: string; isActive: string[]; to: string }[] = [
+  { to: 'main_menu', formatMessageId: 'main_menu', isActive: ['/main_menu', '/main_menu'] },
   { to: 'listing', formatMessageId: 'properties', isActive: ['/listing', '/property'] },
   { to: 'user-collection', formatMessageId: 'selections', isActive: ['/user-collection', '/cl/'] },
 ];

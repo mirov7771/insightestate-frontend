@@ -82,6 +82,11 @@ import IconCheck from './offer-collection/tabler-icon-check.svg?react';
 import IconLayout from './offer-collection/layout.svg?react';
 import FilterIcon from './FilterIcon.svg?react';
 import EstateIcon from './EstateIcon.svg?react';
+import Collections from './Collections.svg?react';
+import Objects from './Objects.svg?react';
+import BestObjects from './BestObjects.svg?react';
+import Units from './Units.svg?react';
+import Beta from './Beta.svg?react';
 
 export {
   Bed,
@@ -169,4 +174,9 @@ export {
   IconCheck,
   IconLayout,
   IconBuildingCommunity,
+  Collections,
+  Units,
+  BestObjects,
+  Objects,
+  Beta
 };
