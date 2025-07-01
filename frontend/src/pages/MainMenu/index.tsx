@@ -5,6 +5,46 @@ import {useIntl} from "react-intl";
 import {BestObjects, Beta, BetaMB, Collections, Objects, Units} from "@/shared/assets/icons";
 import {Spacer} from "@/widgets/Spacer/Spacer";
 import {isMobile} from "react-device-detect";
+import {Gallery} from "@/pages/MainMenu/Gallery/Gallery";
+
+const InfoRu = [
+    'https://insightestate.pro/estate-images/I1RU.png',
+    'https://insightestate.pro/estate-images/I2RU.png',
+    'https://insightestate.pro/estate-images/I3RU.png',
+    'https://insightestate.pro/estate-images/I4RU.png',
+    'https://insightestate.pro/estate-images/I5RU.png'
+]
+
+const InfoEn = [
+    'https://insightestate.pro/estate-images/I1EN.png',
+    'https://insightestate.pro/estate-images/I2EN.png',
+    'https://insightestate.pro/estate-images/I3EN.png',
+    'https://insightestate.pro/estate-images/I4EN.png',
+    'https://insightestate.pro/estate-images/I5EN.png'
+]
+
+const HeartRu = [
+    'https://insightestate.pro/estate-images/H1RU.png',
+    'https://insightestate.pro/estate-images/H2RU.png',
+    'https://insightestate.pro/estate-images/H3RU.png',
+    'https://insightestate.pro/estate-images/H4RU.png'
+]
+
+const HeartEn = [
+    'https://insightestate.pro/estate-images/H1EN.png',
+    'https://insightestate.pro/estate-images/H2EN.png',
+    'https://insightestate.pro/estate-images/H3EN.png',
+    'https://insightestate.pro/estate-images/H4EN.png'
+]
+
+const TRu = [
+    'https://insightestate.pro/estate-images/T1RU.png'
+]
+
+const TEn = [
+    'https://insightestate.pro/estate-images/T1EN.png'
+]
+
 
 const MainMenu: FC = () => {
     const [collections, setCollections] = useState(0)
@@ -56,6 +96,30 @@ const MainMobile: FC<MainProps> = ({
   bestObjects
 }) => {
     const { formatMessage } = useIntl();
+    const [storiesModal, setStoriesModal] = useState(false);
+    const [heartModal, setHeartModal] = useState(false);
+    const [messageModal, setMessageModal] = useState(false);
+
+    const handleOpenModal = () => {
+        setStoriesModal(true);
+    };
+    const handleCloseModal = () => {
+        setStoriesModal(false);
+    };
+
+    const handleOpenHeartModal = () => {
+        setHeartModal(true);
+    };
+    const handleCloseHeartModal = () => {
+        setHeartModal(false);
+    };
+
+    const handleOpenMessageModal = () => {
+        setMessageModal(true);
+    };
+    const handleCloseMessageModal = () => {
+        setMessageModal(false);
+    };
     return (
         <div style={{
             display: 'block',
@@ -87,6 +151,7 @@ const MainMobile: FC<MainProps> = ({
                          style={{
                              backgroundImage: 'url("https://insightestate.pro/estate-images/InfoButton.png")'
                          }}
+                         onClick={handleOpenModal}
                     />
                     <Spacer height={5} width={100}/>
                     <p className={styles.stories_text}>{formatMessage({id: 'main_button_1'})}</p>
@@ -96,6 +161,7 @@ const MainMobile: FC<MainProps> = ({
                          style={{
                              backgroundImage: 'url("https://insightestate.pro/estate-images/HeartButton.png")'
                          }}
+                         onClick={handleOpenHeartModal}
                     />
                     <Spacer height={5} width={100}/>
                     <p className={styles.stories_text}>{formatMessage({id: 'main_button_2'})}</p>
@@ -105,6 +171,7 @@ const MainMobile: FC<MainProps> = ({
                          style={{
                              backgroundImage: 'url("https://insightestate.pro/estate-images/MessageButton.png")'
                          }}
+                         onClick={handleOpenMessageModal}
                     />
                     <Spacer height={5} width={100}/>
                     <p className={styles.stories_text}>{formatMessage({id: 'main_button_3'})}</p>
@@ -141,6 +208,25 @@ const MainMobile: FC<MainProps> = ({
                     </div>
                 </div>
             </div>
+
+            <Gallery
+                anchor={'bottom'}
+                open={storiesModal}
+                onOpen={handleOpenModal}
+                onClose={handleCloseModal}
+                images={localStorage.getItem('language') === 'en' ? InfoEn : InfoRu}/>
+            <Gallery
+                anchor={'bottom'}
+                open={heartModal}
+                onOpen={handleOpenHeartModal}
+                onClose={handleCloseHeartModal}
+                images={localStorage.getItem('language') === 'en' ? HeartEn : HeartRu}/>
+            <Gallery
+                anchor={'bottom'}
+                open={messageModal}
+                onOpen={handleOpenMessageModal}
+                onClose={handleCloseMessageModal}
+                images={localStorage.getItem('language') === 'en' ? TEn : TRu}/>
         </div>
     )
 }
@@ -152,6 +238,32 @@ const MainDesktop: FC<MainProps> = ({
     bestObjects
 }) => {
     const { formatMessage } = useIntl();
+    const [storiesModal, setStoriesModal] = useState(false);
+    const [heartModal, setHeartModal] = useState(false);
+    const [messageModal, setMessageModal] = useState(false);
+
+    const handleOpenModal = () => {
+        setStoriesModal(true);
+    };
+    const handleCloseModal = () => {
+        setStoriesModal(false);
+    };
+
+    const handleOpenHeartModal = () => {
+        setHeartModal(true);
+    };
+    const handleCloseHeartModal = () => {
+        setHeartModal(false);
+    };
+
+    const handleOpenMessageModal = () => {
+        setMessageModal(true);
+    };
+    const handleCloseMessageModal = () => {
+        setMessageModal(false);
+    };
+
+
     return(
         <div className={styles.wrap}>
             <div className={styles.innerWrap}>
@@ -161,6 +273,7 @@ const MainDesktop: FC<MainProps> = ({
                              style={{
                                  backgroundImage: 'url("https://insightestate.pro/estate-images/InfoButton.png")'
                              }}
+                             onClick={handleOpenModal}
                         />
                         <Spacer height={5} width={100}/>
                         <p className={styles.stories_text}>{formatMessage({id: 'main_button_1'})}</p>
@@ -170,6 +283,7 @@ const MainDesktop: FC<MainProps> = ({
                              style={{
                                  backgroundImage: 'url("https://insightestate.pro/estate-images/HeartButton.png")'
                              }}
+                             onClick={handleOpenHeartModal}
                         />
                         <Spacer height={5} width={100}/>
                         <p className={styles.stories_text}>{formatMessage({id: 'main_button_2'})}</p>
@@ -179,6 +293,7 @@ const MainDesktop: FC<MainProps> = ({
                              style={{
                                  backgroundImage: 'url("https://insightestate.pro/estate-images/MessageButton.png")'
                              }}
+                             onClick={handleOpenMessageModal}
                         />
                         <Spacer height={5} width={100}/>
                         <p className={styles.stories_text}>{formatMessage({id: 'main_button_3'})}</p>
@@ -224,6 +339,24 @@ const MainDesktop: FC<MainProps> = ({
                     <Beta/>
                 </div>
             </main>
+            <Gallery
+                anchor={'bottom'}
+                open={storiesModal}
+                onOpen={handleOpenModal}
+                onClose={handleCloseModal}
+                images={localStorage.getItem('language') === 'en' ? InfoEn : InfoRu}/>
+            <Gallery
+                anchor={'bottom'}
+                open={heartModal}
+                onOpen={handleOpenHeartModal}
+                onClose={handleCloseHeartModal}
+                images={localStorage.getItem('language') === 'en' ? HeartEn : HeartRu}/>
+            <Gallery
+                anchor={'bottom'}
+                open={messageModal}
+                onOpen={handleOpenMessageModal}
+                onClose={handleCloseMessageModal}
+                images={localStorage.getItem('language') === 'en' ? TEn : TRu}/>
         </div>
     )
 }
