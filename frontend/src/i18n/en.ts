@@ -182,7 +182,7 @@ export default {
   create_new: 'Create new',
   project_add: 'Property added',
   project_add_info:
-    'The property has been added to your collection «ss»! Head over to the «My Collections» section to view all saved properties and put together a proposal for your client.',
+    'The property has been added to your collection! Head over to the «My Collections» section to view all saved properties and put together a proposal for your client.',
   overallRating: 'Overall rating',
   locationRating: 'Location',
   priceFrom: 'Price, from',
