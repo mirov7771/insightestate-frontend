@@ -10,7 +10,7 @@ import { RegistrationLayout } from '@/widgets/RegistrationLayout/RegistrationLay
 import { NotificationsProvider } from '@/shared/ui';
 import { I18nProvider } from '@/i18n/I18nProvider';
 import { DefaultRu } from '@/pages/DefaultRu';
-import { DefaultEn } from '@/pages/DefaultEn';;
+import { DefaultEn } from '@/pages/DefaultEn';
 // import Listing from "@/pages/Listing";
 
 // Lazy imports for pages

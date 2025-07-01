@@ -19,6 +19,7 @@ export type EstateDetail = {
   interiorImages?: string[];
   level?: string;
   managementCompany?: ManagementCompany;
+  options?: Options;
   paymentPlanList?: string[];
   price?: Price;
   product?: string;
@@ -28,12 +29,11 @@ export type EstateDetail = {
   shortDescriptionEn?: string;
   shortDescriptionRu?: string;
   status?: string;
-  toolTip1?: 'true';
   toolTip2?: 'true';
   toolTip3?: 'true';
   type?: string;
   unitCount?: ProjectUnitCount;
-  options?: Options;
+  toolTip1?: 'true';
 };
 
 export type Developer = {
@@ -121,11 +121,11 @@ export type ManagementCompany = {
 };
 
 export type MainInfoDto = {
-  collections: number,
-  units: number,
-  objects: number,
-  bestObjects: number,
-}
+  bestObjects: number;
+  collections: number;
+  objects: number;
+  units: number;
+};
 
 export const LevelTypeRu = new Map<string, string>([
   ['COMFORT', 'Комфорт'],

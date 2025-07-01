@@ -178,5 +178,5 @@ export {
   Units,
   BestObjects,
   Objects,
-  Beta
+  Beta,
 };
