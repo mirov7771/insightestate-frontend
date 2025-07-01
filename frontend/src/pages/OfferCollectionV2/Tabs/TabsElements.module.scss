@@ -1,0 +1,24 @@
+.wrapper {
+  display: flex;
+  gap: 24px;
+}
+
+.tab {
+  color: var(--ui-color-black-48-opacity);
+  cursor: pointer;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s ease-in-out, color 0.2s ease-in-out;
+
+  &:hover {
+    color: var(--ui-color-black);
+  }
+
+  &_active {
+    color: var(--ui-color-black);
+    border-bottom: 2px solid var(--ui-color-black);
+  }
+}

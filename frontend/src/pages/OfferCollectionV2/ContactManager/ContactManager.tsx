@@ -55,10 +55,14 @@ export const ContactManager: FC<{ id: string; client?: string | null }> = ({ id,
           ref={refQuestion}
         >
           <Button size="l" onClick={handleCopyLink} className={styles.button2}>
-            <Text variant="heading4">{formatMessage({ id: 'copy_link' })}</Text>
+            <Text variant="body1" bold>
+              {formatMessage({ id: 'copy_link' })}
+            </Text>
           </Button>
           <Button size="l" onClick={() => setOpenInfo(true)} className={styles.button3}>
-            <Text variant="heading4">?</Text>
+            <Text variant="body1" bold>
+              ?
+            </Text>
           </Button>
         </div>
       ) : (

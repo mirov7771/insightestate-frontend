@@ -8,6 +8,7 @@ import {
   Profitability,
   RoomLayouts,
 } from '@/widgets/Detail/api/detailApi';
+import { Unit } from '@/shared/api/units';
 
 type ResponseGetEstateCollection = {
   hasMore: boolean;
@@ -45,6 +46,7 @@ export type Estate = {
   facilityImages?: string[];
   floors?: number;
   grade?: Grade;
+  infrastructure?: InfrastructureDto;
   interiorImages?: string[];
   likes?: number;
   location?: Location;
@@ -54,7 +56,7 @@ export type Estate = {
   roomLayouts?: RoomLayouts;
   shortDescriptionEn?: string;
   shortDescriptionRu?: string;
-  infrastructure?: InfrastructureDto;
+  units?: Unit[];
 };
 
 export type CreateCollectionRs = {
@@ -166,14 +168,16 @@ export const estateCollectionApi = {
   },
   addToCollection: async (
     token: string,
-    id: string,
-    estateId: string
+    collectionId: string,
+    estateId: string,
+    unitId?: string
   ): Promise<AxiosResponse<void>> => {
     try {
       return await api.post<void>(
-        `/v1/estate-collections/${id}/estate?estateId=${estateId}`,
+        `/v1/estate-collections/${collectionId}/estate`,
         {},
         {
+          params: { estateId, unitId },
           headers: {
             Authorization: `Basic ${token.replace('Basic ', '')}`,
           },
