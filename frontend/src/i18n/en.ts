@@ -394,7 +394,7 @@ export default {
 
   main_menu: 'Main',
 
-  main_card_1: 'Number of collections',
+  main_card_1: 'Your collections',
   main_card_2: 'Units in the database',
   main_card_3: 'Objects in the database',
   main_card_4: 'Objects with a score of 9 or more',
