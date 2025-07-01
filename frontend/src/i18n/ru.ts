@@ -396,4 +396,8 @@ export default {
 
   main_beta_title: 'Вы участвуете в бета-тесте',
   main_beta_description: 'Активировали вам тариф Pro на время тестирования',
+
+  main_button_1: 'Как работает платформа',
+  main_button_2: 'Наши преимущества',
+  main_button_3: 'Развивай платформу с нами',
 };

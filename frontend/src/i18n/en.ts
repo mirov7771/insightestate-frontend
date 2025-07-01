@@ -397,4 +397,8 @@ export default {
 
   main_beta_title: 'Beta test participation',
   main_beta_description: 'The Pro tariff has been activated for you during testing',
+
+  main_button_1: 'How the platform works',
+  main_button_2: 'Our advantages',
+  main_button_3: 'Develop the platform with us',
 };

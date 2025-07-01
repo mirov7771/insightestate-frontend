@@ -2,7 +2,7 @@ import {FC, useEffect, useState} from "react";
 import styles from './MainMenu.module.scss';
 import {detailApi} from "@/widgets/Detail/api/detailApi";
 import {useIntl} from "react-intl";
-import {BestObjects, Beta, Collections, Objects, Units} from "@/shared/assets/icons";
+import {BestObjects, Beta, Collections, InfoButton, Objects, Units} from "@/shared/assets/icons";
 import {Spacer} from "@/widgets/Spacer/Spacer";
 
 const MainMenu: FC = () => {
@@ -26,8 +26,35 @@ const MainMenu: FC = () => {
         <div className={styles.wrap}>
             <div className={styles.innerWrap}>
                 <div className={styles.stories}>
+                    <div className={styles.stories_wrap}>
+                        <div className={styles.stories_button}
+                            style={{
+                                backgroundImage: 'url("https://insightestate.pro/estate-images/InfoButton.png")'
+                            }}
+                        />
+                        <Spacer height={5} width={100}/>
+                        <p className={styles.stories_text}>{formatMessage({id: 'main_button_1'})}</p>
+                    </div>
+                    <div className={styles.stories_wrap}>
+                        <div className={styles.stories_button}
+                             style={{
+                                 backgroundImage: 'url("https://insightestate.pro/estate-images/HeartButton.png")'
+                             }}
+                        />
+                        <Spacer height={5} width={100}/>
+                        <p className={styles.stories_text}>{formatMessage({id: 'main_button_2'})}</p>
+                    </div>
+                    <div className={styles.stories_wrap}>
+                        <div className={styles.stories_button}
+                             style={{
+                                 backgroundImage: 'url("https://insightestate.pro/estate-images/MessageButton.png")'
+                             }}
+                        />
+                        <Spacer height={5} width={100}/>
+                        <p className={styles.stories_text}>{formatMessage({id: 'main_button_3'})}</p>
+                    </div>
                 </div>
-                <main className={styles.main}>
+                <div className={styles.main}>
                     <div className={styles.infoCard}>
                         <p className={styles.p}>{collections}{' '}{formatMessage({id: 'main_card_1'})}</p>
                         <div className={styles.icon}>
@@ -40,6 +67,9 @@ const MainMenu: FC = () => {
                             <Units />
                         </div>
                     </div>
+                </div>
+
+                <div className={styles.main}>
                     <div className={styles.infoCard}>
                         <p className={styles.p}>{objects}{' '}{formatMessage({id: 'main_card_3'})}</p>
                         <div className={styles.icon}>
@@ -52,7 +82,7 @@ const MainMenu: FC = () => {
                             <BestObjects />
                         </div>
                     </div>
-                </main>
+                </div>
             </div>
             <Spacer height={100} width={20}/>
             <main className={styles.sideCard}>
@@ -61,7 +91,7 @@ const MainMenu: FC = () => {
                 <Spacer height={10} width={100}/>
                 <p className={styles.p_min}>{formatMessage({id: 'main_beta_description'})}</p>
                 <div className={styles.icon_beta}>
-                <Beta/>
+                    <Beta/>
                 </div>
             </main>
         </div>
