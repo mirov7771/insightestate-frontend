@@ -386,4 +386,14 @@ export default {
   to_airport_time: 'До аэропорта:',
 
   roi_card: 'ROI (10 лет)',
+
+  main_menu: 'Главная',
+
+  main_card_1: 'Количество подборок',
+  main_card_2: 'Юнитов в базе',
+  main_card_3: 'Объектов в базе',
+  main_card_4: 'Объектов с оценкой от 9',
+
+  main_beta_title: 'Вы участвуете в бета-тесте',
+  main_beta_description: 'Активировали вам тариф Pro на время тестирования',
 };

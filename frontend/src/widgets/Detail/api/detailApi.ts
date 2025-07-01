@@ -120,6 +120,13 @@ export type ManagementCompany = {
   enabled?: boolean;
 };
 
+export type MainInfoDto = {
+  collections: number,
+  units: number,
+  objects: number,
+  bestObjects: number,
+}
+
 export const LevelTypeRu = new Map<string, string>([
   ['COMFORT', 'Комфорт'],
   ['LUX', 'Люкс'],
@@ -341,6 +348,13 @@ export const detailApi = {
       return await api.post<ShortDto>(`v1/estate-collections/short`, {
         url: url,
       });
+    } catch (error) {
+      throw error;
+    }
+  },
+  mainInfo: async (userId: string): Promise<AxiosResponse<MainInfoDto>> => {
+    try {
+      return await api.get<MainInfoDto>(`/v1/estate/main/info?userId=${userId}`);
     } catch (error) {
       throw error;
     }

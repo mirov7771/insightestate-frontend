@@ -387,4 +387,14 @@ export default {
   to_airport_time: 'Airport:',
 
   roi_card: '10-year ROI',
+
+  main_menu: 'Main',
+
+  main_card_1: 'Number of collections',
+  main_card_2: 'Units in the database',
+  main_card_3: 'Objects in the database',
+  main_card_4: 'Objects with a score of 9 or more',
+
+  main_beta_title: 'Beta test participation',
+  main_beta_description: 'The Pro tariff has been activated for you during testing',
 };
