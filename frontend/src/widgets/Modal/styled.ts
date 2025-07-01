@@ -6,6 +6,7 @@ export const StyledSwipeableDrawer = styled(SwipeableDrawer)<
   SwipeableDrawerProps & {
     bottom: number;
     isMobile: boolean;
+    transparent?: boolean
   }
 >`
   & .MuiDrawer-paper {
@@ -15,6 +16,7 @@ export const StyledSwipeableDrawer = styled(SwipeableDrawer)<
     margin-bottom: ${({ bottom }) => `${bottom}vh`};
     margin-left: ${({ isMobile }) => (isMobile ? '0' : '30vw')};
     width: ${({ isMobile }) => (isMobile ? '100%' : '40%')};
+    background-color: ${({ transparent }) => (transparent ? 'transparent' : 'white')};
   }
 `;
 export const StyledWrapperProgress = styled.div`
