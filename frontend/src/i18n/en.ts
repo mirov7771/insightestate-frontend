@@ -344,7 +344,7 @@ export default {
   'units.annualIncome': 'Annual income',
   'units.plan': 'Layout will appear later',
   'units.payback': 'Payback',
-  'units.bedroom.Studio': 'Studio',
+  'units.bedroom.STUDIO': 'Studio',
   'units.bedroom.1': '1 bedroom',
   'units.bedroom.2': '2 bedrooms',
   'units.bedroom.3': '3 bedrooms',

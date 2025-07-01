@@ -87,9 +87,7 @@ import Objects from './Objects.svg?react';
 import BestObjects from './BestObjects.svg?react';
 import Units from './Units.svg?react';
 import Beta from './Beta.svg?react';
-import InfoButton from './InfoButton.svg?react';
-import HeartButton from './HeartButton.svg?react';
-import MessageButton from './MessageButton.svg?react';
+import BetaMB from './BetaMB.svg?react';
 
 export {
   Bed,
@@ -182,8 +180,5 @@ export {
   BestObjects,
   Objects,
   Beta,
-  Beta,
-  MessageButton,
-  HeartButton,
-  InfoButton
+  BetaMB
 };

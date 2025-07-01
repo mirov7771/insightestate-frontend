@@ -343,7 +343,7 @@ export default {
   'units.annualIncome': 'Доход в год',
   'units.plan': 'Планировка появится позже',
   'units.payback': 'Окупаемость',
-  'units.bedroom.Studio': 'Студия',
+  'units.bedroom.STUDIO': 'Студия',
   'units.bedroom.1': '1 спальня',
   'units.bedroom.2': '2 спальни',
   'units.bedroom.3': '3 спальни',
@@ -396,7 +396,7 @@ export default {
   main_card_1: 'Количество подборок',
   main_card_2: 'Юнитов в базе',
   main_card_3: 'Объектов в базе',
-  main_card_4: 'Объектов с оценкой от 9',
+  main_card_4: 'Объектов с оценкой 9 и выше',
 
   main_beta_title: 'Вы участвуете в бета-тесте',
   main_beta_description: 'Активировали вам тариф Pro на время тестирования',
