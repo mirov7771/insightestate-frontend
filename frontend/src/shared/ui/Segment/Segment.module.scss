@@ -1,3 +1,5 @@
+@use '~@/sass/index' as *;
+
 .tabs {
   display: flex;
   height: 40px;
@@ -26,5 +28,23 @@
 
   &.active {
     background-color: var(--ui-color-white);
+  }
+
+  &.full {
+    width: 44px;
+    height: 36px;
+
+    @media (min-width: $media-md) {
+      width: auto;
+      gap: 4px;
+    }
+  }
+
+  &__text {
+    display: none;
+
+    @media (min-width: $media-md) {
+      display: inline-block;
+    }
   }
 }
