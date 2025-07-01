@@ -37,18 +37,14 @@ export const UserCollectionModal: FC<TModalProps & { id: string; token: string }
   const handleOpenInfoModal = () => {
     setInfoModal(true);
   };
-  const handleCloseInfoModal = () => {
-    setInfoModal(false);
-  };
 
   useEffect(() => {
     if (open) {
       estateCollectionApi
         .getEstateCollection(token!!)
         .then((r) => {
-          setIsNew(r.data.items.length == 0);
           setCollections(r.data.items);
-          console.log(r.data.items.length, isNew, collections);
+          setIsNew(r.data.items.length === 0);
         })
         .catch((e) => console.log(e));
     }
@@ -60,6 +56,17 @@ export const UserCollectionModal: FC<TModalProps & { id: string; token: string }
 
   const handleIsNew = () => {
     setIsNew(true);
+  };
+
+  const addItemToCollection = (id: string, estateId: string) => {
+    estateCollectionApi
+      .addToCollection(token!!, id, estateId)
+      .then(() => {
+        setInfoTitle(formatMessage({ id: 'project_add' }));
+        setInfoText(formatMessage({ id: 'project_add_info' }).replace('ss', name));
+        handleOpenInfoModal();
+      })
+      .catch((e) => console.log(e));
   };
 
   const addToCollection = (e: ChangeEvent) => {
@@ -78,19 +85,7 @@ export const UserCollectionModal: FC<TModalProps & { id: string; token: string }
     }
   };
 
-  const addItemToCollection = (id: string, estateId: string) => {
-    estateCollectionApi
-      .addToCollection(token!!, id, estateId)
-      .then((r) => {
-        setInfoTitle(formatMessage({ id: 'project_add' }));
-        setInfoText(formatMessage({ id: 'project_add_info' }).replace('ss', name));
-        handleOpenInfoModal();
-      })
-      .catch((e) => console.log(e));
-  };
-
   const select = (values: EstateCollection[]) => {
-    console.log(values);
     setCollectionId(values[0].id);
     setName(values[0].name);
   };

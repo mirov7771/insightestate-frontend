@@ -1,8 +1,12 @@
 @use '~@/sass/index' as *;
 
 .paper {
-  border-radius: 24px;
+  border-radius: 0;
   padding: 24px;
+
+  @media (min-width: $media-md) {
+    border-radius: 24px;
+  }
 }
 
 .close {

@@ -332,9 +332,13 @@ export default {
   beach_time_subway: 'Время до пляжа/метро',
   subway: 'Метро',
 
+  'units.objects': 'Объекты',
+  'units.units': 'Юниты',
   'units.available_units': 'Доступные юниты',
   'units.floor': 'Этаж',
+  'units.square': 'Площадь',
   'units.number': 'Номер',
+  'units.price': 'Цена',
   'units.pricePerMeter': 'Цена за м2',
   'units.annualIncome': 'Доход в год',
   'units.plan': 'Планировка появится позже',

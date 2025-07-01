@@ -1,21 +1,13 @@
 import { FC, useState } from 'react';
 import { useIntl } from 'react-intl';
-import { Estate, filterApi, GetEstateParams } from '@/widgets/Filter/api/filterApi';
-import { InfoModal } from '@/shared/ui/modals';
-import { estateCollectionApi } from '@/widgets/EstateCollection/api/estateCollectionApi';
+import { Estate } from '@/widgets/Filter/api/filterApi';
+import { InfoModal, ModalAddToCollection } from '@/shared/ui/modals';
 import { Slider } from './Slider';
 import styles from './CardSlide.module.scss';
 import { Button, Text } from '@/shared/ui';
 import { AdvantagesBadges } from '@/entities/CardSlide/AdvantagesBadges';
-import { UserCollectionModal } from '@/widgets/Modal/UserCollectionModal';
-import {
-  EstateIcon,
-  OfferCollectionCar,
-  OfferCollectionWalk,
-  VectorRating,
-} from '@/shared/assets/icons';
+import { EstateIcon, OfferCollectionCar, OfferCollectionWalk } from '@/shared/assets/icons';
 import { CardSlideSkeleton } from '@/entities/CardSlide/CardSlideSkeleton';
-import { useNavigate } from 'react-router';
 
 type CardSlideProps = {
   clickable: boolean;
@@ -42,26 +34,9 @@ export const CardSlide: FC<CardSlideProps> = ({
     ...(estate.interiorImages || []),
     ...(estate.facilityImages || []),
   ].slice(0, 4);
-  const navigate = useNavigate();
 
   const handleOpenInfoModal = () => {
     setInfoModal(true);
-  };
-  const handleCloseInfoModal = () => {
-    setInfoModal(false);
-  };
-
-  const deleteFromCollection = () => {
-    if (collectionId) {
-      estateCollectionApi
-        .deleteFromCollection(token!!, collectionId, estate.id)
-        .then(() => {
-          setInfoTitle(formatMessage({ id: 'object_delete_title' }));
-          setInfoText(formatMessage({ id: 'object_delete_message' }));
-          handleOpenInfoModal();
-        })
-        .catch((e) => console.log(e));
-    }
   };
 
   const openRatingInfo = () => {
@@ -72,13 +47,6 @@ export const CardSlide: FC<CardSlideProps> = ({
 
   const handleOpenUserCollectionModal = () => {
     setUserCollectionModal(true);
-  };
-  const handleCloseUserCollectionModal = () => {
-    setUserCollectionModal(false);
-  };
-
-  const goToProperty = () => {
-    navigate(`/property/${estate.id}`);
   };
 
   return loading ? (
@@ -198,13 +166,10 @@ export const CardSlide: FC<CardSlideProps> = ({
         </div>
       </div>
       <InfoModal open={infoModal} title={infoTitle} text={infoText} setOpen={setInfoModal} />
-      <UserCollectionModal
+      <ModalAddToCollection
+        estateId={estate.id}
         open={userCollectionModal}
-        onClose={handleCloseUserCollectionModal}
-        onOpen={handleOpenUserCollectionModal}
-        anchor="bottom"
-        id={estate.id}
-        token={token || ''}
+        setOpen={setUserCollectionModal}
       />
     </>
   );

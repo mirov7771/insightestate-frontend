@@ -1,13 +1,19 @@
 import React, { FC, useMemo, useState } from 'react';
 import { Unit } from '@/shared/api/units';
 import styles from './UnitsSlider.module.scss';
-import { Button, Text } from '@/shared/ui';
+import { Button, ModalAddToCollection, Text } from '@/shared/ui';
 import { baseConfig, Slider } from '@/entities/CardSlide/Slider';
 import { useIntl } from 'react-intl';
 import { IconLayout } from '@/shared/assets/icons';
+import { useParams } from 'react-router';
 
-export const UnitsSlider: FC<{ items: Unit[] }> = ({ items }) => {
+type UnitsSliderProps = { items: Unit[] };
+
+export const UnitsSlider: FC<UnitsSliderProps> = ({ items }) => {
   const { formatMessage } = useIntl();
+  const params = useParams();
+  const [userCollectionModal, setUserCollectionModal] = useState(false);
+  const [unitId, setUnitId] = useState('');
   const virtualizationWindow = 7;
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -122,15 +128,29 @@ export const UnitsSlider: FC<{ items: Unit[] }> = ({ items }) => {
                     </div>
                   )}
                 </div>
-                {/*<Button wide variant="primary" className={styles.unit__button}>
-                <Text variant="heading4">Добавить в подборку</Text>
-              </Button>*/}
+                <Button
+                  wide
+                  variant="primary"
+                  className={styles.unit__button}
+                  onClick={() => {
+                    setUnitId(unit.id);
+                    setUserCollectionModal(true);
+                  }}
+                >
+                  <Text variant="body1">{formatMessage({ id: 'add_to_collection' })}</Text>
+                </Button>
               </div>
             </div>
           ) : (
             <div key={unit.id} />
           )
         )}
+      />
+      <ModalAddToCollection
+        open={userCollectionModal}
+        setOpen={setUserCollectionModal}
+        estateId={params.id || ''}
+        unitId={unitId}
       />
     </section>
   );

@@ -1,14 +1,20 @@
-import { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { Unit } from '@/shared/api/units';
 import styles from './UnitsCards.module.scss';
 import PlaceholderImg from '../assets/placeholder.png';
-import { Button, Text } from '@/shared/ui';
+import { Button, ModalAddToCollection, Text } from '@/shared/ui';
 import { Plus } from '@/shared/assets/icons';
 import { useIntl } from 'react-intl';
 import { isMobile } from 'react-device-detect';
+import { useParams } from 'react-router';
 
-export const UnitsCards: FC<{ items: Unit[] }> = ({ items }) => {
+type UnitsCardsProps = { items: Unit[] };
+
+export const UnitsCards: FC<UnitsCardsProps> = ({ items }) => {
   const { formatMessage } = useIntl();
+  const params = useParams();
+  const [userCollectionModal, setUserCollectionModal] = useState(false);
+  const [unitId, setUnitId] = useState('');
 
   return (
     <section className={styles.container}>
@@ -56,12 +62,25 @@ export const UnitsCards: FC<{ items: Unit[] }> = ({ items }) => {
           {/*  <Text variant="heading5">&ndash;</Text>*/}
           {/*</div>*/}
           <div className={`${styles.unit__base} ${styles.unit__base_center}`}>
-            {/*<Button variant="primary" className={styles.unit__button}>
+            <Button
+              variant="primary"
+              className={styles.unit__button}
+              onClick={() => {
+                setUnitId(unit.id);
+                setUserCollectionModal(true);
+              }}
+            >
               <Plus />
-            </Button>*/}
+            </Button>
           </div>
         </div>
       ))}
+      <ModalAddToCollection
+        open={userCollectionModal}
+        setOpen={setUserCollectionModal}
+        estateId={params.id || ''}
+        unitId={unitId}
+      />
     </section>
   );
 };
