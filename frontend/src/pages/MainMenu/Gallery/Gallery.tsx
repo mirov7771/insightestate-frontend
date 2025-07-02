@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import {FC, useEffect, useState} from 'react';
 import ImageGallery, { ReactImageGalleryItem } from 'react-image-gallery';
 import 'react-image-gallery/styles/css/image-gallery.css';
 import './Gallery.scss';
@@ -9,10 +9,46 @@ import {TModalProps} from "@/widgets/Modal/types";
 import {SwipeableDrawerProps} from "@mui/material";
 
 
+const InfoRu = [
+    'https://insightestate.pro/estate-images/I1RU.png',
+    'https://insightestate.pro/estate-images/I2RU.png',
+    'https://insightestate.pro/estate-images/I3RU.png',
+    'https://insightestate.pro/estate-images/I4RU.png',
+    'https://insightestate.pro/estate-images/I5RU.png'
+]
+
+const InfoEn = [
+    'https://insightestate.pro/estate-images/I1EN.png',
+    'https://insightestate.pro/estate-images/I2EN.png',
+    'https://insightestate.pro/estate-images/I3EN.png',
+    'https://insightestate.pro/estate-images/I4EN.png',
+    'https://insightestate.pro/estate-images/I5EN.png'
+]
+
+const HeartRu = [
+    'https://insightestate.pro/estate-images/H1RU.png',
+    'https://insightestate.pro/estate-images/H2RU.png',
+    'https://insightestate.pro/estate-images/H3RU.png',
+    'https://insightestate.pro/estate-images/H4RU.png'
+]
+
+const HeartEn = [
+    'https://insightestate.pro/estate-images/H1EN.png',
+    'https://insightestate.pro/estate-images/H2EN.png',
+    'https://insightestate.pro/estate-images/H3EN.png',
+    'https://insightestate.pro/estate-images/H4EN.png'
+]
+
+const TRu = [
+    'https://insightestate.pro/estate-images/T1RU.png'
+]
+
+const TEn = [
+    'https://insightestate.pro/estate-images/T1EN.png'
+]
 
 type GalleryProps = {
-  images: string[];
-  open: boolean;
+  type: 'INFO_RU' | 'HEART_RU' | 'MESSAGE_RU' | 'INFO_EN' | 'HEART_EN' | 'MESSAGE_EN';
 };
 
 const renderImg =
@@ -44,17 +80,58 @@ const renderImg =
   };
 
 export const Gallery: FC<TModalProps & GalleryProps> = ({
-    images,
     open,
     onClose,
     anchor,
-    onOpen
+    onOpen,
+    type
 }) => {
   const { width } = useWindowResize();
-  const isFullScreen = width <= 768;
-  const renderImages: ReactImageGalleryItem[] = images.map((img) => ({
-    original: img
-  }));
+  const [renderImages, setRenderImages] = useState<ReactImageGalleryItem[]>([])
+
+  useEffect(() => {
+      if (!open) {
+          setRenderImages([])
+      } else {
+          if (type === 'INFO_RU') {
+              setRenderImages(
+                  InfoRu.map((img) => ({
+                      original: img
+                  }))
+              )
+          } else if (type === 'MESSAGE_RU') {
+              setRenderImages(
+                  TRu.map((img) => ({
+                      original: img
+                  }))
+              )
+          } else if (type === 'HEART_RU') {
+              setRenderImages(
+                  HeartRu.map((img) => ({
+                      original: img
+                  }))
+              )
+          } else if (type === 'INFO_EN') {
+              setRenderImages(
+                  InfoEn.map((img) => ({
+                      original: img
+                  }))
+              )
+          } else if (type === 'MESSAGE_EN') {
+              setRenderImages(
+                  TEn.map((img) => ({
+                      original: img
+                  }))
+              )
+          } else if (type === 'HEART_EN') {
+              setRenderImages(
+                  HeartEn.map((img) => ({
+                      original: img
+                  }))
+              )
+          }
+      }
+  }, [open]);
 
   return (
       <StyledSwipeableDrawer
@@ -68,6 +145,7 @@ export const Gallery: FC<TModalProps & GalleryProps> = ({
           transparent
       >
           <StyledUpperWrapperProgress>
+              {renderImages.length > 0 ?
                   <ImageGallery
                       items={renderImages}
                       renderItem={renderImg({ images: renderImages, isFullscreen: true, windowWidth: width, onClick: onClose })}
@@ -79,7 +157,8 @@ export const Gallery: FC<TModalProps & GalleryProps> = ({
                       lazyLoad
                       autoPlay={false}
                       additionalClass="custom-gallery"
-                  />
+                  /> : <></>
+              }
           </StyledUpperWrapperProgress>
       </StyledSwipeableDrawer>
   )

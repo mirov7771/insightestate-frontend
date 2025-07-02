@@ -214,19 +214,19 @@ const MainMobile: FC<MainProps> = ({
                 open={storiesModal}
                 onOpen={handleOpenModal}
                 onClose={handleCloseModal}
-                images={localStorage.getItem('language') === 'en' ? InfoEn : InfoRu}/>
+                type={localStorage.getItem('language') === 'en' ? 'INFO_EN' : 'INFO_RU'}/>
             <Gallery
                 anchor={'bottom'}
                 open={heartModal}
                 onOpen={handleOpenHeartModal}
                 onClose={handleCloseHeartModal}
-                images={localStorage.getItem('language') === 'en' ? HeartEn : HeartRu}/>
+                type={localStorage.getItem('language') === 'en' ? 'HEART_EN' : 'HEART_RU'}/>
             <Gallery
                 anchor={'bottom'}
                 open={messageModal}
                 onOpen={handleOpenMessageModal}
                 onClose={handleCloseMessageModal}
-                images={localStorage.getItem('language') === 'en' ? TEn : TRu}/>
+                type={localStorage.getItem('language') === 'en' ? 'MESSAGE_EN' : 'MESSAGE_RU'}/>
         </div>
     )
 }
@@ -344,19 +344,19 @@ const MainDesktop: FC<MainProps> = ({
                 open={storiesModal}
                 onOpen={handleOpenModal}
                 onClose={handleCloseModal}
-                images={localStorage.getItem('language') === 'en' ? InfoEn : InfoRu}/>
+                type={localStorage.getItem('language') === 'en' ? 'INFO_EN' : 'INFO_RU'}/>
             <Gallery
                 anchor={'bottom'}
                 open={heartModal}
                 onOpen={handleOpenHeartModal}
                 onClose={handleCloseHeartModal}
-                images={localStorage.getItem('language') === 'en' ? HeartEn : HeartRu}/>
+                type={localStorage.getItem('language') === 'en' ? 'HEART_EN' : 'HEART_RU'}/>
             <Gallery
                 anchor={'bottom'}
                 open={messageModal}
                 onOpen={handleOpenMessageModal}
                 onClose={handleCloseMessageModal}
-                images={localStorage.getItem('language') === 'en' ? TEn : TRu}/>
+                type={localStorage.getItem('language') === 'en' ? 'MESSAGE_EN' : 'MESSAGE_RU'}/>
         </div>
     )
 }
