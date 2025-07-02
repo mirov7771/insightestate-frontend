@@ -63,7 +63,7 @@ export const Gallery: FC<TModalProps & GalleryProps> = ({
           onClose={onClose}
           anchor={anchor}
           disableSwipeToOpen
-          bottom={isMobile ? 10 : 15}
+          bottom={isMobile ? 1 : 15}
           isMobile={isMobile}
           transparent
       >
