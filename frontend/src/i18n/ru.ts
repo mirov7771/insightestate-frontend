@@ -344,6 +344,7 @@ export default {
   'units.plan': 'Планировка появится позже',
   'units.payback': 'Окупаемость',
   'units.bedroom.STUDIO': 'Студия',
+  'units.bedroom.Studio': 'Студия',
   'units.bedroom.1': '1 спальня',
   'units.bedroom.2': '2 спальни',
   'units.bedroom.3': '3 спальни',
