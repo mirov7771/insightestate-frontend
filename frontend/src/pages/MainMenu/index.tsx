@@ -128,16 +128,16 @@ const MainMobile: FC<MainProps> = ({
                     <Spacer height={5} width={100}/>
                     <p className={styles.stories_text}>{formatMessage({id: 'main_button_2'})}</p>
                 </div>
-                <div className={styles.stories_wrap}>
-                    <div className={styles.stories_button}
-                         style={{
-                             backgroundImage: 'url("https://insightestate.pro/estate-images/MessageButton.png")'
-                         }}
-                         onClick={handleOpenMessageModal}
-                    />
-                    <Spacer height={5} width={100}/>
-                    <p className={styles.stories_text}>{formatMessage({id: 'main_button_3'})}</p>
-                </div>
+                {/*<div className={styles.stories_wrap}>*/}
+                {/*    <div className={styles.stories_button}*/}
+                {/*         style={{*/}
+                {/*             backgroundImage: 'url("https://insightestate.pro/estate-images/MessageButton.png")'*/}
+                {/*         }}*/}
+                {/*         onClick={handleOpenMessageModal}*/}
+                {/*    />*/}
+                {/*    <Spacer height={5} width={100}/>*/}
+                {/*    <p className={styles.stories_text}>{formatMessage({id: 'main_button_3'})}</p>*/}
+                {/*</div>*/}
             </div>
             </div>
             <div style={{
@@ -270,16 +270,16 @@ const MainDesktop: FC<MainProps> = ({
                         <Spacer height={5} width={100}/>
                         <p className={styles.stories_text}>{formatMessage({id: 'main_button_2'})}</p>
                     </div>
-                    <div className={styles.stories_wrap}>
-                        <div className={styles.stories_button}
-                             style={{
-                                 backgroundImage: 'url("https://insightestate.pro/estate-images/MessageButton.png")'
-                             }}
-                             onClick={handleOpenMessageModal}
-                        />
-                        <Spacer height={5} width={100}/>
-                        <p className={styles.stories_text}>{formatMessage({id: 'main_button_3'})}</p>
-                    </div>
+                    {/*<div className={styles.stories_wrap}>*/}
+                    {/*    <div className={styles.stories_button}*/}
+                    {/*         style={{*/}
+                    {/*             backgroundImage: 'url("https://insightestate.pro/estate-images/MessageButton.png")'*/}
+                    {/*         }}*/}
+                    {/*         onClick={handleOpenMessageModal}*/}
+                    {/*    />*/}
+                    {/*    <Spacer height={5} width={100}/>*/}
+                    {/*    <p className={styles.stories_text}>{formatMessage({id: 'main_button_3'})}</p>*/}
+                    {/*</div>*/}
                 </div>
                 <div className={styles.main}>
                     <div className={styles.infoCard}>
