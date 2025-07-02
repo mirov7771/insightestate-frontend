@@ -7,44 +7,6 @@ import {Spacer} from "@/widgets/Spacer/Spacer";
 import {isMobile} from "react-device-detect";
 import {Gallery} from "@/pages/MainMenu/Gallery/Gallery";
 
-const InfoRu = [
-    'https://insightestate.pro/estate-images/I1RU.png',
-    'https://insightestate.pro/estate-images/I2RU.png',
-    'https://insightestate.pro/estate-images/I3RU.png',
-    'https://insightestate.pro/estate-images/I4RU.png',
-    'https://insightestate.pro/estate-images/I5RU.png'
-]
-
-const InfoEn = [
-    'https://insightestate.pro/estate-images/I1EN.png',
-    'https://insightestate.pro/estate-images/I2EN.png',
-    'https://insightestate.pro/estate-images/I3EN.png',
-    'https://insightestate.pro/estate-images/I4EN.png',
-    'https://insightestate.pro/estate-images/I5EN.png'
-]
-
-const HeartRu = [
-    'https://insightestate.pro/estate-images/H1RU.png',
-    'https://insightestate.pro/estate-images/H2RU.png',
-    'https://insightestate.pro/estate-images/H3RU.png',
-    'https://insightestate.pro/estate-images/H4RU.png'
-]
-
-const HeartEn = [
-    'https://insightestate.pro/estate-images/H1EN.png',
-    'https://insightestate.pro/estate-images/H2EN.png',
-    'https://insightestate.pro/estate-images/H3EN.png',
-    'https://insightestate.pro/estate-images/H4EN.png'
-]
-
-const TRu = [
-    'https://insightestate.pro/estate-images/T1RU.png'
-]
-
-const TEn = [
-    'https://insightestate.pro/estate-images/T1EN.png'
-]
-
 
 const MainMenu: FC = () => {
     const [collections, setCollections] = useState(0)
@@ -183,25 +145,45 @@ const MainMobile: FC<MainProps> = ({
             }}>
                 <div className={styles.main_mobile}>
                     <div className={styles.infoCard_mobile}>
-                        <p className={styles.p_mobile}>{formatMessage({id: 'main_card_1'})}{' '}{collections}</p>
+                        <p className={styles.p_mobile}>{formatMessage({id: 'main_card_1'})}
+                            <br/>
+                            <p className={styles.p_mobile_value}>
+                                {collections}
+                            </p>
+                        </p>
                         <div className={styles.icon_mobile}>
                             <Collections />
                         </div>
                     </div>
                     <div className={styles.infoCard_mobile}>
-                        <p className={styles.p_mobile}>{units}{' '}{formatMessage({id: 'main_card_2'})}</p>
+                        <p className={styles.p_mobile}>{formatMessage({id: 'main_card_2'})}
+                            <br/>
+                            <p className={styles.p_mobile_value}>
+                                {units}
+                            </p>
+                        </p>
                         <div className={styles.icon_mobile}>
                             <Units />
                         </div>
                     </div>
                     <div className={styles.infoCard_mobile}>
-                        <p className={styles.p_mobile}>{objects}{' '}{formatMessage({id: 'main_card_3'})}</p>
+                        <p className={styles.p_mobile}>{formatMessage({id: 'main_card_3'})}
+                            <br/>
+                            <p className={styles.p_mobile_value}>
+                                {objects}
+                            </p>
+                        </p>
                         <div className={styles.icon_mobile}>
                             <Objects />
                         </div>
                     </div>
                     <div className={styles.infoCard_mobile}>
-                        <p className={styles.p_mobile}>{bestObjects}{' '}{formatMessage({id: 'main_card_4'})}</p>
+                        <p className={styles.p_mobile}>{formatMessage({id: 'main_card_4'})}
+                            <br/>
+                            <p className={styles.p_mobile_value}>
+                                {bestObjects}
+                            </p>
+                        </p>
                         <div className={styles.icon_mobile}>
                             <BestObjects />
                         </div>
@@ -301,13 +283,23 @@ const MainDesktop: FC<MainProps> = ({
                 </div>
                 <div className={styles.main}>
                     <div className={styles.infoCard}>
-                        <p className={styles.p}>{formatMessage({id: 'main_card_1'})}{' '}{collections}</p>
+                        <p className={styles.p}>{formatMessage({id: 'main_card_1'})}
+                            <br/>
+                            <p className={styles.p_value}>
+                                {collections}
+                            </p>
+                        </p>
                         <div className={styles.icon}>
                             <Collections />
                         </div>
                     </div>
                     <div className={styles.infoCard}>
-                        <p className={styles.p}>{units}{' '}{formatMessage({id: 'main_card_2'})}</p>
+                        <p className={styles.p}>{formatMessage({id: 'main_card_2'})}
+                            <br/>
+                            <p className={styles.p_value}>
+                                {units}
+                            </p>
+                        </p>
                         <div className={styles.icon}>
                             <Units />
                         </div>
@@ -316,13 +308,23 @@ const MainDesktop: FC<MainProps> = ({
 
                 <div className={styles.main}>
                     <div className={styles.infoCard}>
-                        <p className={styles.p}>{objects}{' '}{formatMessage({id: 'main_card_3'})}</p>
+                        <p className={styles.p}>{formatMessage({id: 'main_card_3'})}
+                            <br/>
+                            <p className={styles.p_value}>
+                                {objects}
+                            </p>
+                        </p>
                         <div className={styles.icon}>
                             <Objects />
                         </div>
                     </div>
                     <div className={styles.infoCard}>
-                        <p className={styles.p}>{bestObjects}{' '}{formatMessage({id: 'main_card_4'})}</p>
+                        <p className={styles.p}>{formatMessage({id: 'main_card_4'})}
+                            <br/>
+                            <p className={styles.p_value}>
+                                {bestObjects}
+                            </p>
+                        </p>
                         <div className={styles.icon}>
                             <BestObjects />
                         </div>
