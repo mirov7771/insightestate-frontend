@@ -25,10 +25,10 @@ export const getNavigate = async () => {
     return '/tariffs';
   } else if (openAuth < 4) {
     localStorage.setItem('openAuth', openAuth + 1 + '');
-    return 'listing';
+    return 'main_menu';
   } else {
     localStorage.setItem('openAuth', '0');
-    return 'listing';
+    return 'main_menu';
   }
 };
 

@@ -24,7 +24,14 @@ export const HeaderV2: FC<HeaderV2Props> = ({ basicToken }) => {
     <header className={styles.header}>
       <div className={styles.top}>
         <div className={styles.logo}>
-          <Logo />
+          <div
+              style={{
+                cursor: 'pointer'
+              }}
+              onClick={() => navigate('/main_menu')}
+          >
+            <Logo />
+          </div>
           <div className={styles.bottom}>
             <Menu />
           </div>
