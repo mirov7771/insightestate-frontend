@@ -25,10 +25,10 @@ export const HeaderV2: FC<HeaderV2Props> = ({ basicToken }) => {
       <div className={styles.top}>
         <div className={styles.logo}>
           <div
-              style={{
-                cursor: 'pointer'
-              }}
-              onClick={() => navigate('/main_menu')}
+            style={{
+              cursor: 'pointer',
+            }}
+            onClick={() => navigate('/main_menu')}
           >
             <Logo />
           </div>

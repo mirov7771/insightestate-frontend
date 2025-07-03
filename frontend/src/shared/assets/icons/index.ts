@@ -180,5 +180,5 @@ export {
   BestObjects,
   Objects,
   Beta,
-  BetaMB
+  BetaMB,
 };

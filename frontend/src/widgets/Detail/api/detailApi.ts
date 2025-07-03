@@ -29,11 +29,11 @@ export type EstateDetail = {
   shortDescriptionEn?: string;
   shortDescriptionRu?: string;
   status?: string;
+  toolTip1?: 'true';
   toolTip2?: 'true';
   toolTip3?: 'true';
   type?: string;
   unitCount?: ProjectUnitCount;
-  toolTip1?: 'true';
 };
 
 export type Developer = {

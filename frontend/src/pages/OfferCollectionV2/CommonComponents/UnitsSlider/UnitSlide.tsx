@@ -1,38 +1,42 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import styles from './UnitsSlider.module.scss';
 import { IconLayout } from '@/shared/assets/icons';
 import { Button, Text } from '@/shared/ui';
 import { Unit } from '@/shared/api/units';
 import { useIntl } from 'react-intl';
-import {useSearchParams} from "react-router";
-import {AgentInfo, Estate, estateCollectionApi} from "@/widgets/EstateCollection/api/estateCollectionApi";
-import {CardLayoutProps} from "@/pages/OfferCollectionV2/CardLayout/CardLayout";
+import { useSearchParams } from 'react-router';
+import {
+  AgentInfo,
+  Estate,
+  estateCollectionApi,
+} from '@/widgets/EstateCollection/api/estateCollectionApi';
+import { CardLayoutProps } from '@/pages/OfferCollectionV2/CardLayout/CardLayout';
 
 export const UnitSlide: FC<{
-    unit: Unit;
-    estate: Estate & { collection: string; collectionId: string; agentInfo?: AgentInfo };
+  estate: Estate & { collection: string; collectionId: string; agentInfo?: AgentInfo };
+  unit: Unit;
 }> = ({ unit, estate }) => {
   const { formatMessage } = useIntl();
   const [searchParams, setSearchParams] = useSearchParams();
   const [like, setLike] = useState(false);
   const handleClickLikeButton = () => {
-      setLike(!like);
+    setLike(!like);
   };
 
   useEffect(() => {
-      if (like) {
-          estateCollectionApi
-              .saveLike({
-                  collection: estate.collection,
-                  collectionId: estate.collectionId!!,
-                  email: estate.agentInfo?.login ?? 'arturmirov777@gmail.com',
-                  title: estate.name,
-                  url: window.location.href,
-                  estateId: estate.id,
-              })
-              .then(() => console.log('success like'))
-              .catch(() => console.log('error like'));
-      }
+    if (like) {
+      estateCollectionApi
+        .saveLike({
+          collection: estate.collection,
+          collectionId: estate.collectionId!!,
+          email: estate.agentInfo?.login ?? 'arturmirov777@gmail.com',
+          title: estate.name,
+          url: window.location.href,
+          estateId: estate.id,
+        })
+        .then(() => console.log('success like'))
+        .catch(() => console.log('error like'));
+    }
   }, [like]);
 
   return (
@@ -88,7 +92,7 @@ export const UnitSlide: FC<{
         <Button
           wide
           disabled={!!searchParams.get('client') && searchParams.get('like') != 'true'}
-          variant={like ? "red" : "base"}
+          variant={like ? 'red' : 'base'}
           className={styles.unit__button}
           onClick={handleClickLikeButton}
         >
