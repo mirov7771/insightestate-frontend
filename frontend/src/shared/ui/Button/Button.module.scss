@@ -93,6 +93,33 @@
     }
   }
 
+
+
+  &__variant-red {
+    background-color: red;
+    color: var(--white);
+
+    &:hover {
+      background-color: var(--bg-1);
+      color: var(--black);
+      cursor: pointer;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:active {
+      background-color: var(--bg-1);
+      color: var(----black);
+    }
+
+    .button_loading:disabled & {
+      background-color: var(--border-light);
+      color: var(--border-dark);
+    }
+  }
+
   &__variant-base {
     background-color: var(--ui-color-white);
     border-radius: 200px;

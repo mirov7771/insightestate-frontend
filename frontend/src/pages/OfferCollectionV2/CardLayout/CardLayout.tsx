@@ -55,7 +55,7 @@ function getPrioritySquare(estate: Estate): string {
   return '110';
 }
 
-type CardLayoutProps = {
+export type CardLayoutProps = {
   estate: Estate & { collection: string; collectionId: string; agentInfo?: AgentInfo };
 };
 
@@ -207,7 +207,7 @@ export const CardLayout: FC<CardLayoutProps> = ({ estate }) => {
           <UnitsSlider
             slides={estate.units.map((unit) => (
               <div key={unit.id}>
-                <UnitSlide unit={unit} />
+                <UnitSlide unit={unit} estate={estate}/>
               </div>
             ))}
           />

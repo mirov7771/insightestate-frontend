@@ -6,7 +6,7 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   icon?: ReactNode;
   loading?: boolean;
   size?: 'l' | 'm' | 's';
-  variant?: 'primary' | 'secondary' | 'cta' | 'base' | 'ai' | 'white';
+  variant?: 'primary' | 'secondary' | 'cta' | 'base' | 'ai' | 'white' | 'red';
   wide?: boolean;
 };
 

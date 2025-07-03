@@ -194,7 +194,7 @@ export const Card: FC<
           <UnitsSlider
             slides={estate.units.map((unit) => (
               <div key={unit.id}>
-                <UnitSlide unit={unit} />
+                <UnitSlide unit={unit} estate={estate}/>
               </div>
             ))}
           />
