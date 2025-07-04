@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 import { Button, ModalChangeEstateName, ModalDeleteEstate, Text } from '@/shared/ui';
 import styles from './BlockView.module.scss';
-import { OfferCollectionEdit, OfferCollectionTrash } from '@/shared/assets/icons';
+import { IconEdit, IconTrash } from '@/shared/assets/icons';
 import { Estate } from '@/widgets/EstateCollection/api/estateCollectionApi';
 import { DEFAULT_IMG } from '@/entities/Card/Card';
 import { FormattedMessage } from 'react-intl';
@@ -47,13 +47,13 @@ export const BlockView: FC<BlockViewProps> = ({
           <div className={styles.actions}>
             <Button
               className={styles.actions__button}
-              icon={<OfferCollectionEdit />}
+              icon={<IconEdit />}
               onClick={handleToggleShowChangeNameModal}
             />
             <Button
               onClick={handleToggleShowDeleteEstateModal}
               className={styles.actions__button}
-              icon={<OfferCollectionTrash />}
+              icon={<IconTrash />}
             />
           </div>
         </div>

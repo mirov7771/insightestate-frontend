@@ -1,0 +1,86 @@
+@use '~@/sass/index' as *;
+
+.wrapper {
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  @media (min-width: $media-lg) {
+    max-width: 528px;
+    max-height: 728px;
+    border-radius: 16px;
+  }
+}
+
+.button {
+  background-color: var(--ui-color-white-12-opacity);
+  padding: 0;
+  position: absolute;
+  z-index: 2;
+
+  & svg {
+    color: var(--ui-color-white);
+    width: 28px;
+    height: 28px;
+  }
+
+  &__close {
+    top: 32px;
+    right: 16px;
+
+    @media (min-width: $media-lg) {
+      top: 0;
+      right: 0;
+    }
+  }
+
+  &__left {
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    @media (min-width: $media-lg) {
+      left: 0;
+    }
+  }
+
+  &__right {
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    @media (min-width: $media-lg) {
+      right: 0;
+    }
+  }
+}
+
+.progress {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  position: absolute;
+  top: 0;
+  height: 35px;
+  width: 100%;
+  max-width: 400px;
+  left: 50%;
+  transform: translatex(-50%);
+  padding: 0 16px;
+  z-index: 2;
+
+  &_root {
+    width: 100%;
+    flex: 1 1 0;
+    border-radius: 200px;
+    background-color: var(--ui-color-white-32-opacity);
+  }
+
+  &_bar1 {
+    background-color: var(--ui-color-white);
+    border-radius: 200px;
+    transition: transform 1000ms linear;
+  }
+}

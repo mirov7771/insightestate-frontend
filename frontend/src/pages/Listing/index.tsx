@@ -6,7 +6,7 @@ import { useFilters } from '@/widgets/Filter/model/useFilters';
 import { useIntl } from 'react-intl';
 import { InfoModal } from '@/shared/ui/modals';
 import { CardSlide } from '@/entities/CardSlide/CardSlide';
-import { OfferCollectionAdjustmentsFilter } from '@/shared/assets/icons';
+import { IconAdjustmentsFilter } from '@/shared/assets/icons';
 import Divider from '@mui/material/Divider';
 import { FastFilter } from '@/widgets/FastFilter/FastFilter';
 import { City } from '@/widgets/Filter/City';
@@ -74,7 +74,7 @@ const Listing: FC = () => {
             size="s"
             onClick={() => setOpenFilters(true)}
           >
-            <OfferCollectionAdjustmentsFilter />
+            <IconAdjustmentsFilter />
             <Text variant="body1" bold className={styles.button__text}>
               {formatMessage({ id: 'all_filters' })}
             </Text>

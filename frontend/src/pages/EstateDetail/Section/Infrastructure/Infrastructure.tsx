@@ -5,11 +5,7 @@ import beach from '@/shared/assets/icons/Beach.svg';
 import shopping from '@/shared/assets/icons/ShoppingCart.svg';
 import airport from '@/shared/assets/icons/Airport.svg';
 import { useIntl } from 'react-intl';
-import {
-  OfferCollectionBarbell,
-  OfferCollectionDeviceLaptop,
-  OfferCollectionHorseToy,
-} from '@/shared/assets/icons';
+import { IconBarbell, IconDeviceLaptop, IconHorseToy } from '@/shared/assets/icons';
 import { Text } from '@/shared/ui';
 import { AdvantagesBadges } from '@/entities/CardSlide/AdvantagesBadges';
 
@@ -42,19 +38,19 @@ export const Infrastructure: FC<{
         <div className={styles.wrapper}>
           {childRoom && (
             <div className={styles.item}>
-              <OfferCollectionHorseToy />
+              <IconHorseToy />
               <Text variant="body1">{formatMessage({ id: 'kids' })}</Text>
             </div>
           )}
           {coworking && (
             <div className={styles.item}>
-              <OfferCollectionDeviceLaptop />
+              <IconDeviceLaptop />
               <Text variant="body1">{formatMessage({ id: 'co_working' })}</Text>
             </div>
           )}
           {gym && (
             <div className={styles.item}>
-              <OfferCollectionBarbell />
+              <IconBarbell />
               <Text variant="body1">{formatMessage({ id: 'gym' })}</Text>
             </div>
           )}

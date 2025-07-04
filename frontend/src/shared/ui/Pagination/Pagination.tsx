@@ -2,7 +2,7 @@ import { FC } from 'react';
 import styles from './Pagination.module.scss';
 import PaginationItem from '@mui/material/PaginationItem';
 import MuiPagination, { PaginationProps as MUIPaginationProps } from '@mui/material/Pagination';
-import { OfferCollectionArrowRight, OfferCollectionChevronLeft } from '@/shared/assets/icons';
+import { IconChevronRight, IconChevronLeft } from '@/shared/assets/icons';
 import { useWindowResize } from '@/shared/utils/useWindowResize';
 
 type PaginationProps = {
@@ -26,8 +26,8 @@ export const Pagination: FC<PaginationProps> = ({ totalPages, pageNumber, onChan
         renderItem={(item) => (
           <PaginationItem
             slotProps={{
-              previous: <OfferCollectionChevronLeft />,
-              last: <OfferCollectionArrowRight />,
+              previous: <IconChevronLeft />,
+              last: <IconChevronRight />,
             }}
             {...item}
           />

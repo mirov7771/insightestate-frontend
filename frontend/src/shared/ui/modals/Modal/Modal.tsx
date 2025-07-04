@@ -2,7 +2,7 @@ import { ComponentProps, FC, PropsWithChildren } from 'react';
 import Dialog from '@mui/material/Dialog';
 import styles from './Modal.module.scss';
 import { Button } from '@/shared/ui';
-import { OfferCollectionX } from '@/shared/assets/icons';
+import { IconX } from '@/shared/assets/icons';
 
 type ModalProps = {
   dialogProps: Omit<ComponentProps<typeof Dialog>, 'children'>;
@@ -25,7 +25,7 @@ export const Modal: FC<PropsWithChildren<ModalProps>> = ({
       {withCloseIcon && (
         <Button
           className={styles.close}
-          icon={<OfferCollectionX />}
+          icon={<IconX />}
           onClick={(e) => dialogProps.onClose?.(e, 'backdropClick')}
         />
       )}

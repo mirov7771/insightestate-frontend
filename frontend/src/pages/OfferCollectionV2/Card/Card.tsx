@@ -1,11 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
 import { BadgeRating, Button, GMap } from '@/shared/ui';
-import {
-  VectorRating,
-  OfferCollectionMapPinFilled,
-  Heart,
-  OfferCollectionHeart,
-} from '@/shared/assets/icons';
+import { VectorRating, IconMapPinFilled, Heart, IconHeart } from '@/shared/assets/icons';
 import { useIntl } from 'react-intl';
 import { useSearchParams } from 'react-router';
 import { Text } from '@/shared/ui';
@@ -156,7 +151,7 @@ export const Card: FC<
             <BadgeRating
               icon={
                 <span className={`${styles.icon} ${styles.icon__primary}`}>
-                  <OfferCollectionMapPinFilled />
+                  <IconMapPinFilled />
                 </span>
               }
               size="sm"
@@ -330,9 +325,7 @@ export const Card: FC<
               size="s"
               disabled={!!searchParams.get('client') && searchParams.get('like') != 'true'}
             >
-              <span className={styles.like__icon}>
-                {like ? <Heart /> : <OfferCollectionHeart />}
-              </span>
+              <span className={styles.like__icon}>{like ? <Heart /> : <IconHeart />}</span>
               <Text variant="heading4">{formatMessage({ id: 'like' })}</Text>
             </Button>
           )}

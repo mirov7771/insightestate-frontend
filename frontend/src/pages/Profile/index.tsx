@@ -1,7 +1,7 @@
 import { ChangeEvent, FC, MouseEventHandler, useEffect, useMemo, useRef, useState } from 'react';
 import MuiAvatar from '@mui/material/Avatar';
 import styles from './Profile.module.scss';
-import { OfferCollectionArrowLeft } from '@/shared/assets/icons';
+import { IconArrowLeft } from '@/shared/assets/icons';
 import { BottomSheet, Button, Text } from '@/shared/ui';
 import { useNavigate } from 'react-router';
 import { useIntl } from 'react-intl';
@@ -143,7 +143,7 @@ const Profile: FC = () => {
       ) : (
         <>
           <Button className={styles.back} variant="base" size="s" onClick={handleGoBack}>
-            <OfferCollectionArrowLeft />
+            <IconArrowLeft />
             <Text variant="body1" bold>
               {formatMessage({ id: 'common.back' })}
             </Text>

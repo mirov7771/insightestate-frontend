@@ -5,7 +5,7 @@ import { useStatus } from '@/shared/utils/useStatus';
 import { BadgeRating, Button, Text } from '@/shared/ui';
 import styles from './EstateDetail.module.scss';
 import { PaymentStepper } from '@/entities/PaymentStepper/PaymentStepper';
-import { OfferCollectionBrandSpark, OfferCollectionMapPinFilled } from '@/shared/assets/icons';
+import { IconBrandSpark, IconMapPinFilled } from '@/shared/assets/icons';
 import { AdvantagesBadges } from '@/entities/CardSlide/AdvantagesBadges';
 
 import { detailApi, EstateDetail as TEstateDetail } from '@/widgets/Detail/api/detailApi';
@@ -72,7 +72,7 @@ const EstateDetail: FC = () => {
       <>
         <div className={styles.badges}>
           <BadgeRating
-            icon={<OfferCollectionBrandSpark />}
+            icon={<IconBrandSpark />}
             text={String(estateDetailData.grade?.main?.toFixed(1) || '')}
             background="white"
             className={isMobile ? styles.rating_mobile : styles.rating}
@@ -80,7 +80,7 @@ const EstateDetail: FC = () => {
           />
           {estateDetailData.location?.name && (
             <BadgeRating
-              icon={<OfferCollectionMapPinFilled />}
+              icon={<IconMapPinFilled />}
               text={estateDetailData.location.beach || estateDetailData.location.name}
               background="white"
               className={isMobile ? styles.rating_mobile : styles.rating}

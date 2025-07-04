@@ -1,12 +1,7 @@
 import { FC, useEffect, useRef, useState } from 'react';
 import { BottomSheet, Button, Text, useNotifications } from '@/shared/ui';
 import styles from './ContactManager.module.scss';
-import {
-  OfferCollectionBrandTelegram,
-  OfferCollectionMail,
-  OfferCollectionPhoneCall,
-  OfferCollectionWhatsUp,
-} from '@/shared/assets/icons';
+import { IconBrandTelegram, IconMail, IconPhoneCall, IconWhatsUp } from '@/shared/assets/icons';
 import { AgentInfo, estateCollectionApi } from '@/widgets/EstateCollection/api/estateCollectionApi';
 import { useIntl } from 'react-intl';
 import { Spacer } from '@/widgets/Spacer/Spacer';
@@ -112,21 +107,21 @@ export const ContactManager: FC<{ id: string; client?: string | null }> = ({ id,
         <ul className={styles.bottomSheetList}>
           {!agentInfo?.mobileNumber && (
             <li className={styles.bottomSheetList__item}>
-              <OfferCollectionPhoneCall />
+              <IconPhoneCall />
               <a href={`tel:${agentInfo?.mobileNumber}`} target="_blank" rel="noreferrer">
                 <Text variant="body1">{formatMessage({ id: 'phone_call' })}</Text>
               </a>
             </li>
           )}
           <li className={styles.bottomSheetList__item}>
-            <OfferCollectionMail />
+            <IconMail />
             <a href={`mailto:${agentInfo?.login}`} target="_blank" rel="noreferrer">
               <Text variant="body1">{formatMessage({ id: 'email' })}</Text>
             </a>
           </li>
           {!!agentInfo?.whatsUp && (
             <li className={styles.bottomSheetList__item}>
-              <OfferCollectionWhatsUp />
+              <IconWhatsUp />
               <a
                 href={`https://wa.me/${agentInfo.whatsUp?.replaceAll('+', '').replaceAll('-', '').replaceAll(' ', '')}`}
                 target="_blank"
@@ -138,7 +133,7 @@ export const ContactManager: FC<{ id: string; client?: string | null }> = ({ id,
           )}
           {!!agentInfo?.tgName && (
             <li className={styles.bottomSheetList__item}>
-              <OfferCollectionBrandTelegram />
+              <IconBrandTelegram />
               <a href={`https://t.me/${agentInfo?.tgName}`} target="_blank" rel="noreferrer">
                 <Text variant="body1">{formatMessage({ id: 'go_tg' })}</Text>
               </a>

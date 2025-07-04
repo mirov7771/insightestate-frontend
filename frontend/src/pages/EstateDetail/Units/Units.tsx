@@ -8,7 +8,7 @@ import { useParams } from 'react-router';
 import { useStatus } from '@/shared/utils/useStatus';
 import { FormattedMessage } from 'react-intl';
 import styles from './Units.module.scss';
-import { CarouselHorizontal, LayoutList } from '@/shared/assets/icons';
+import { IconCarouselHorizontal, IconLayoutList } from '@/shared/assets/icons';
 
 export const Units: FC = () => {
   const params = useParams();
@@ -56,8 +56,8 @@ export const Units: FC = () => {
               value={activeTab}
               onChange={handleChangeActiveTab}
               options={[
-                { value: 1, icon: <CarouselHorizontal /> },
-                { value: 2, icon: <LayoutList /> },
+                { value: 1, icon: <IconCarouselHorizontal /> },
+                { value: 2, icon: <IconLayoutList /> },
               ]}
             />
           }

@@ -11,7 +11,7 @@ import {
   IconLogout,
   IconSettings,
   IconWorld,
-  OfferCollectionBrandTelegram,
+  IconBrandTelegram,
 } from '@/shared/assets/icons';
 import { useIntl } from 'react-intl';
 
@@ -159,7 +159,7 @@ export const UserProfile: FC<UserProfileProps> = ({ basicToken }) => {
             </MaterialMenu>
           </MaterialMenuItem>
           <MaterialMenuItem classes={{ root: styles.menu__item_root }}>
-            <OfferCollectionBrandTelegram />
+            <IconBrandTelegram />
             <Text variant="body1" bold>
               {formatMessage({ id: 'userProfile.tgGroup' })}
             </Text>

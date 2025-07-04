@@ -3,7 +3,7 @@ import { Snackbar } from '@mui/material';
 import { NotificationCenterContext, Notification } from './NotificationCenterContext';
 import { Text } from '@/shared/ui';
 import styles from './NotificationCenter.module.scss';
-import { OfferCollectionCircleCheckFilled } from '@/shared/assets/icons';
+import { IconCircleCheckFilled } from '@/shared/assets/icons';
 
 export const NotificationsProvider = ({ children }: { children: ReactNode }) => {
   const [show, setShow] = useState(false);
@@ -24,14 +24,14 @@ export const NotificationsProvider = ({ children }: { children: ReactNode }) => 
   const renderMessages = () => {
     return typeof snackbarItem?.message === 'string' ? (
       <div className={styles.message}>
-        <OfferCollectionCircleCheckFilled />
+        <IconCircleCheckFilled />
         <Text variant="body1" bold>
           {snackbarItem?.message}
         </Text>
       </div>
     ) : (
       <div className={styles.message}>
-        <OfferCollectionCircleCheckFilled />
+        <IconCircleCheckFilled />
         {snackbarItem?.message}
       </div>
     );

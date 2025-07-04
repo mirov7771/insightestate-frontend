@@ -3,14 +3,14 @@ import SlickSlider, { Settings } from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import styles from './Slider.module.scss';
-import { OfferCollectionArrowRight, OfferCollectionChevronLeft } from '@/shared/assets/icons';
+import { IconChevronRight, IconChevronLeft } from '@/shared/assets/icons';
 
 const SampleNextArrow = (props: any) => {
   const { className, onClick } = props;
 
   return (
     <div className={className} onClick={onClick}>
-      <OfferCollectionArrowRight />
+      <IconChevronRight />
     </div>
   );
 };
@@ -20,7 +20,7 @@ const SamplePrevArrow = (props: any) => {
 
   return (
     <div className={className} onClick={onClick}>
-      <OfferCollectionChevronLeft />
+      <IconChevronLeft />
     </div>
   );
 };

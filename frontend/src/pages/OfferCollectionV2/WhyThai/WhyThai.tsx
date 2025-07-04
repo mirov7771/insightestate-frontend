@@ -3,13 +3,13 @@ import styles from './WhyThai.module.scss';
 import House from './assets/house.png';
 import { Text } from '@/shared/ui';
 import {
-  OfferCollectionCalendarTime,
-  OfferCollectionCurrencyDollar,
-  OfferCollectionHeartRateMonitor,
-  OfferCollectionHomeDollar,
-  OfferCollectionMoodDollar,
-  OfferCollectionTrendingUp,
-  OfferCollectionUsersGroup,
+  IconCalendarTime,
+  IconCurrencyDollar,
+  IconHeartRateMonitor,
+  IconHomeDollar,
+  IconMoodDollar,
+  IconTrendingUp,
+  IconUsersGroup,
 } from '@/shared/assets/icons';
 import { useIntl } from 'react-intl';
 
@@ -27,43 +27,43 @@ export const WhyThai: FC = () => {
           <ul className={styles.list}>
             <li>
               <span className={styles.icon}>
-                <OfferCollectionCurrencyDollar />
+                <IconCurrencyDollar />
               </span>
               <Text variant="body1">{formatMessage({ id: 'why_1' })}</Text>
             </li>
             <li>
               <span className={styles.icon}>
-                <OfferCollectionTrendingUp />
+                <IconTrendingUp />
               </span>
               <Text variant="body1">{formatMessage({ id: 'why_2' })}</Text>
             </li>
             <li>
               <span className={styles.icon}>
-                <OfferCollectionMoodDollar />
+                <IconMoodDollar />
               </span>
               <Text variant="body1">{formatMessage({ id: 'why_3' })}</Text>
             </li>
             <li>
               <span className={styles.icon}>
-                <OfferCollectionUsersGroup />
+                <IconUsersGroup />
               </span>
               <Text variant="body1">{formatMessage({ id: 'why_4' })}</Text>
             </li>
             <li>
               <span className={styles.icon}>
-                <OfferCollectionHeartRateMonitor />
+                <IconHeartRateMonitor />
               </span>
               <Text variant="body1">{formatMessage({ id: 'why_5' })}</Text>
             </li>
             <li>
               <span className={styles.icon}>
-                <OfferCollectionHomeDollar />
+                <IconHomeDollar />
               </span>
               <Text variant="body1">{formatMessage({ id: 'why_6' })}</Text>
             </li>
             <li>
               <span className={styles.icon}>
-                <OfferCollectionCalendarTime />
+                <IconCalendarTime />
               </span>
               <Text variant="body1">{formatMessage({ id: 'why_7' })}</Text>
             </li>

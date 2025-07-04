@@ -10,8 +10,8 @@ import {
 import {
   Heart,
   IconLayout,
-  OfferCollectionHeart,
-  OfferCollectionMapPinFilled,
+  IconHeart,
+  IconMapPinFilled,
   VectorRating,
 } from '@/shared/assets/icons';
 import { useIntl } from 'react-intl';
@@ -146,7 +146,7 @@ export const CardLayout: FC<CardLayoutProps> = ({ estate }) => {
             background="primary"
           />
           <BadgeRating
-            icon={<OfferCollectionMapPinFilled />}
+            icon={<IconMapPinFilled />}
             size="sm"
             text={estate.location?.beach || ''}
             background="white"
@@ -192,9 +192,7 @@ export const CardLayout: FC<CardLayoutProps> = ({ estate }) => {
                 width: '210px',
               }}
             >
-              <span className={styles.like__icon}>
-                {like ? <Heart /> : <OfferCollectionHeart />}
-              </span>
+              <span className={styles.like__icon}>{like ? <Heart /> : <IconHeart />}</span>
               <Text variant="body1" bold>
                 {formatMessage({ id: 'like' })}
               </Text>

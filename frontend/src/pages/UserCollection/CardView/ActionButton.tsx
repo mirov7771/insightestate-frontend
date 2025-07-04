@@ -2,12 +2,7 @@ import { FC, useState, MouseEvent } from 'react';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import styles from './CardView.module.scss';
-import {
-  OfferCollectionCopy,
-  OfferCollectionDots,
-  OfferCollectionEdit,
-  OfferCollectionTrash,
-} from '@/shared/assets/icons';
+import { IconCopy, IconDots, IconEdit, IconTrash } from '@/shared/assets/icons';
 import { Button, ModalChangeEstateName, ModalDeleteEstate, Text } from '@/shared/ui';
 import { Estate } from '@/widgets/EstateCollection/api/estateCollectionApi';
 import { useIntl } from 'react-intl';
@@ -51,7 +46,7 @@ export const ActionButton: FC<ActionButtonProps> = ({
 
   return (
     <>
-      <Button className={styles.button} icon={<OfferCollectionDots />} onClick={handleClick} />
+      <Button className={styles.button} icon={<IconDots />} onClick={handleClick} />
       <Menu
         classes={{ list: styles.list }}
         id="basic-menu"
@@ -61,7 +56,7 @@ export const ActionButton: FC<ActionButtonProps> = ({
       >
         {!!estates.length && (
           <MenuItem classes={{ root: styles.listItem }} onClick={handleCopyLink}>
-            <OfferCollectionCopy />
+            <IconCopy />
             <Text variant="body1" bold>
               {formatMessage({ id: 'userCollection.copyLink' })}
             </Text>
@@ -74,7 +69,7 @@ export const ActionButton: FC<ActionButtonProps> = ({
             handleToggleShowChangeNameModal();
           }}
         >
-          <OfferCollectionEdit />
+          <IconEdit />
           <Text variant="body1" bold>
             {formatMessage({ id: 'userCollection.changeName' })}
           </Text>
@@ -86,7 +81,7 @@ export const ActionButton: FC<ActionButtonProps> = ({
             handleToggleShowDeleteEstateModal();
           }}
         >
-          <OfferCollectionTrash />
+          <IconTrash />
           <Text variant="body1" bold>
             {formatMessage({ id: 'userCollection.deleteCollection' })}
           </Text>

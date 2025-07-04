@@ -363,7 +363,7 @@ export default {
   help_firstName: 'Name',
   help_phone: 'Phone number',
   help_object: 'Object for armor',
-  help_city: "Buyer's country and city",
+  help_city: `Buyer's country and city`,
   help_title: 'Help with a client',
   help_button1: 'Send',
   help_button2: 'I agree',
@@ -406,4 +406,28 @@ export default {
   main_button_1: 'How the platform works',
   main_button_2: 'Our advantages',
   main_button_3: 'Develop the platform with us',
+
+  'stories.0.title': 'Use smart filters and AI assistant',
+  'stories.0.description':
+    'Select properties by district, budget, yield, area, and other parameters',
+  'stories.1.title': 'Create a selection for the client',
+  'stories.1.description': 'Add the required projects to the selection in a few clicks',
+  'stories.2.title': 'Share a unique link',
+  'stories.2.description':
+    'Send the client a personal landing page. No PDFs, presentations, or confusion',
+  'stories.3.title': 'Track interest',
+  'stories.3.description': 'Get notifications when the client likes a specific project',
+  'stories.4.title': 'Close the deal',
+  'stories.4.description': 'Act ahead of the curve without unnecessary guesswork',
+  'stories.4.button.text': 'Ok',
+
+  'storiesV2.0.title': 'CREATED BY AGENTS FOR AGENTS',
+  'storiesV2.0.description': 'Everything you need. Nothing extra',
+  'storiesV2.1.title': 'ONLY VERIFIED PROJECTS',
+  'storiesV2.1.description': 'We do all the checks. You do the selling',
+  'storiesV2.2.title': 'INVESTMENT ANALYTICS',
+  'storiesV2.2.description': 'All the metrics for making an informed decision',
+  'storiesV2.3.title': 'YOUR CLIENTS REMAIN ONLY YOURS',
+  'storiesV2.3.description': 'We guarantee confidentiality',
+  'storiesV2.3.button.text': 'Great',
 };

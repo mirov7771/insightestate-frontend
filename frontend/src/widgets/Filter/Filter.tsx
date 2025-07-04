@@ -16,7 +16,7 @@ import { useIntl } from 'react-intl';
 import { Spacer } from '@/widgets/Spacer/Spacer';
 import { Button, Text } from '@/shared/ui';
 import { AiModal } from '@/widgets/Modal/AiModal';
-import { OfferCollectionX } from '@/shared/assets/icons';
+import { IconX } from '@/shared/assets/icons';
 
 type FilterProps = { open: boolean; setOpen: Dispatch<SetStateAction<boolean>> };
 
@@ -47,7 +47,7 @@ export const Filter: FC<FilterProps> = ({ open, setOpen }) => {
         <div className={styles.header}>
           <Text variant="heading4">{formatMessage({ id: 'filters.header' })}</Text>
           <span className={styles.reset} onClick={handleClose}>
-            <OfferCollectionX />
+            <IconX />
           </span>
         </div>
         <div className={styles.filters__wrapper}>
