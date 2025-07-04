@@ -5,9 +5,8 @@ import { useIntl } from 'react-intl';
 import { BestObjects, Beta, BetaMB, Collections, Objects, Units } from '@/shared/assets/icons';
 import { Spacer } from '@/widgets/Spacer/Spacer';
 import { isMobile } from 'react-device-detect';
-import { Gallery } from '@/pages/MainMenu/Gallery/Gallery';
 import { Stories } from '@/entities/Stories/Stories';
-import { STORIES } from '@/entities/Stories/constants';
+import { STORIES, STORIES_V2 } from '@/entities/Stories/constants';
 
 const MainMenu: FC = () => {
   const [collections, setCollections] = useState(0);
@@ -26,7 +25,6 @@ const MainMenu: FC = () => {
 
   return (
     <>
-      <Stories items={STORIES} />
       {isMobile ? (
         <MainMobile
           collections={collections}
@@ -194,8 +192,10 @@ const MainMobile: FC<MainProps> = ({ collections, units, objects, bestObjects })
           </div>
         </div>
       </div>
+      <Stories items={STORIES} open={storiesModal} setOpen={setStoriesModal} />
+      <Stories items={STORIES_V2} open={heartModal} setOpen={setHeartModal} />
 
-      <Gallery
+      {/*<Gallery
         anchor={'bottom'}
         open={storiesModal}
         onOpen={handleOpenModal}
@@ -215,7 +215,7 @@ const MainMobile: FC<MainProps> = ({ collections, units, objects, bestObjects })
         onOpen={handleOpenMessageModal}
         onClose={handleCloseMessageModal}
         type={localStorage.getItem('language') === 'en' ? 'MESSAGE_EN' : 'MESSAGE_RU'}
-      />
+      />*/}
     </div>
   );
 };
@@ -229,20 +229,11 @@ const MainDesktop: FC<MainProps> = ({ collections, units, objects, bestObjects }
   const handleOpenModal = () => {
     setStoriesModal(true);
   };
-  const handleCloseModal = () => {
-    setStoriesModal(false);
-  };
 
   const handleOpenHeartModal = () => {
     setHeartModal(true);
   };
-  const handleCloseHeartModal = () => {
-    setHeartModal(false);
-  };
 
-  const handleOpenMessageModal = () => {
-    setMessageModal(true);
-  };
   const handleCloseMessageModal = () => {
     setMessageModal(false);
   };
@@ -273,16 +264,16 @@ const MainDesktop: FC<MainProps> = ({ collections, units, objects, bestObjects }
             <Spacer height={5} width={100} />
             <p className={styles.stories_text}>{formatMessage({ id: 'main_button_2' })}</p>
           </div>
-          {/*<div className={styles.stories_wrap}>*/}
-          {/*    <div className={styles.stories_button}*/}
-          {/*         style={{*/}
-          {/*             backgroundImage: 'url("https://insightestate.pro/estate-images/MessageButton.png")'*/}
-          {/*         }}*/}
-          {/*         onClick={handleOpenMessageModal}*/}
-          {/*    />*/}
-          {/*    <Spacer height={5} width={100}/>*/}
-          {/*    <p className={styles.stories_text}>{formatMessage({id: 'main_button_3'})}</p>*/}
-          {/*</div>*/}
+          {/*<div className={styles.stories_wrap}>
+              <div className={styles.stories_button}
+                   style={{
+                       backgroundImage: 'url("https://insightestate.pro/estate-images/MessageButton.png")'
+                   }}
+                   onClick={handleOpenMessageModal}
+              />
+              <Spacer height={5} width={100}/>
+              <p className={styles.stories_text}>{formatMessage({id: 'main_button_3'})}</p>
+          </div>*/}
         </div>
         <div className={styles.main}>
           <div className={styles.infoCard}>
@@ -340,7 +331,9 @@ const MainDesktop: FC<MainProps> = ({ collections, units, objects, bestObjects }
           <Beta />
         </div>
       </main>
-      <Gallery
+      <Stories items={STORIES} open={storiesModal} setOpen={setStoriesModal} />
+      <Stories items={STORIES_V2} open={heartModal} setOpen={setHeartModal} />
+      {/*<Gallery
         anchor={'bottom'}
         open={storiesModal}
         onOpen={handleOpenModal}
@@ -360,7 +353,7 @@ const MainDesktop: FC<MainProps> = ({ collections, units, objects, bestObjects }
         onOpen={handleOpenMessageModal}
         onClose={handleCloseMessageModal}
         type={localStorage.getItem('language') === 'en' ? 'MESSAGE_EN' : 'MESSAGE_RU'}
-      />
+      />*/}
     </div>
   );
 };

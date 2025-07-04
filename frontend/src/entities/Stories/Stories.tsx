@@ -1,7 +1,7 @@
-import { FC, MouseEvent, useEffect, useState } from 'react';
+import { Dispatch, FC, MouseEvent, SetStateAction, useEffect, useState } from 'react';
 import styles from './Stories.module.scss';
 
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import Backdrop from '@mui/material/Backdrop';
 import LinearProgress from '@mui/material/LinearProgress';
 import { Button } from '@/shared/ui';
@@ -17,12 +17,13 @@ const DEFAULT_PROGRESS = {
 
 type StoriesProps = {
   items: StoryProps[];
+  open: boolean;
+  setOpen: Dispatch<SetStateAction<boolean>>;
 };
 
 let timer: NodeJS.Timeout;
 
-export const Stories: FC<StoriesProps> = ({ items }) => {
-  const [open, setOpen] = useState(true);
+export const Stories: FC<StoriesProps> = ({ items, open, setOpen }) => {
   const [activeStory, setActiveStory] = useState(0);
   const [progress, setProgress] = useState<Record<number, { isDone: boolean; value: number }>>(() =>
     items.reduce((acc, _, index) => {
@@ -74,24 +75,26 @@ export const Stories: FC<StoriesProps> = ({ items }) => {
   };
 
   useEffect(() => {
-    timer = setInterval(() => {
-      setProgress((prevState) => {
-        const activeStoryState = prevState[activeStory];
+    if (open) {
+      timer = setInterval(() => {
+        setProgress((prevState) => {
+          const activeStoryState = prevState[activeStory];
 
-        return {
-          ...prevState,
-          [activeStory]: {
-            value: activeStoryState.value === 100 ? 100 : activeStoryState.value + 10,
-            isDone: activeStoryState.value === 100,
-          },
-        };
-      });
-    }, STORY_TIMER);
-
-    return () => {
+          return {
+            ...prevState,
+            [activeStory]: {
+              value: activeStoryState.value === 100 ? 100 : activeStoryState.value + 10,
+              isDone: activeStoryState.value === 100,
+            },
+          };
+        });
+      }, STORY_TIMER);
+    } else {
       clearInterval(timer);
-    };
-  }, [activeStory]);
+    }
+
+    return () => clearInterval(timer);
+  }, [activeStory, open]);
 
   useEffect(() => {
     if (progress[activeStory].isDone) {
@@ -113,39 +116,38 @@ export const Stories: FC<StoriesProps> = ({ items }) => {
   }, [progress[activeStory].isDone]);
 
   return (
-    <div>
-      <Button onClick={() => setOpen(true)}>Open Stories</Button>
-      <Backdrop open={open} onClick={handleCloseStories}>
-        <div className={styles.wrapper}>
-          <Button
-            onClick={handleCloseStories}
-            className={`${styles.button} ${styles.button__close}`}
-            icon={<IconX />}
-          />
-          <Button
-            onClick={handlePrevStory}
-            className={`${styles.button} ${styles.button__left}`}
-            icon={<IconChevronLeft />}
-          />
-          <Button
-            onClick={handleNextStory}
-            className={`${styles.button} ${styles.button__right}`}
-            icon={<IconChevronRight />}
-          />
-          <div className={styles.progress}>
-            {items.map((_, i) => (
-              <LinearProgress
-                classes={{ root: styles.progress_root, bar1: styles.progress_bar1 }}
-                value={progress[i].value}
-                variant="determinate"
-              />
-            ))}
-          </div>
+    <Backdrop open={open} onClick={handleCloseStories}>
+      <div className={styles.wrapper}>
+        <Button
+          onClick={handleCloseStories}
+          className={`${styles.button} ${styles.button__close}`}
+          icon={<IconX />}
+        />
+        <Button
+          onClick={handlePrevStory}
+          className={`${styles.button} ${styles.button__left}`}
+          icon={<IconChevronLeft />}
+        />
+        <Button
+          onClick={handleNextStory}
+          className={`${styles.button} ${styles.button__right}`}
+          icon={<IconChevronRight />}
+        />
+        <div className={styles.progress}>
+          {items.map((_, i) => (
+            <LinearProgress
+              classes={{ root: styles.progress_root, bar1: styles.progress_bar1 }}
+              value={progress[i].value}
+              variant="determinate"
+            />
+          ))}
+        </div>
+        <AnimatePresence mode="wait">
           <motion.div
             key={activeStory}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.4 }}
             style={{ margin: '0 auto', width: '100%' }}
             onClick={(e) => {
               e.preventDefault();
@@ -157,10 +159,20 @@ export const Stories: FC<StoriesProps> = ({ items }) => {
               description={items[activeStory].description}
               img={items[activeStory].img}
               title={items[activeStory].title}
+              button={
+                activeStory === items.length - 1
+                  ? {
+                      text: items[activeStory].button?.text || 'OK',
+                      onClick: handleCloseStories,
+                    }
+                  : undefined
+              }
+              variant={items[activeStory].variant}
+              color={items[activeStory].color}
             />
           </motion.div>
-        </div>
-      </Backdrop>
-    </div>
+        </AnimatePresence>
+      </div>
+    </Backdrop>
   );
 };
