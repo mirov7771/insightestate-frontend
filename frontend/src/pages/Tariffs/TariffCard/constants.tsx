@@ -1,25 +1,21 @@
-import {
-  OfferCollectionGraphMonitor,
-  OfferCollectionHomeStar,
-  OfferCollectionSpark,
-} from '@/shared/assets/icons';
+import { IconGraphMonitor, IconHomeStar, IconSpark } from '@/shared/assets/icons';
 import { Text } from '@/shared/ui';
 
 export const DESCRIPTIONS_RU = {
   Starter: [
-    { icon: <OfferCollectionHomeStar />, text: <Text variant="body1">3 подборки</Text> },
+    { icon: <IconHomeStar />, text: <Text variant="body1">3 подборки</Text> },
     {
-      icon: <OfferCollectionGraphMonitor />,
+      icon: <IconGraphMonitor />,
       text: <Text variant="body1">Ограниченная аналитика по объекту: только оценки</Text>,
     },
     {
-      icon: <OfferCollectionSpark />,
+      icon: <IconSpark />,
       text: <Text variant="body1">3 запроса в AI-подборщике</Text>,
     },
   ],
   Pro: [
     {
-      icon: <OfferCollectionHomeStar />,
+      icon: <IconHomeStar />,
       text: (
         <Text variant="body1">
           <b>Неограниченные подборки</b>
@@ -27,11 +23,11 @@ export const DESCRIPTIONS_RU = {
       ),
     },
     {
-      icon: <OfferCollectionGraphMonitor />,
+      icon: <IconGraphMonitor />,
       text: <Text variant="body1">Вся аналитика по объекту: оценки, расчет экономики</Text>,
     },
     {
-      icon: <OfferCollectionSpark />,
+      icon: <IconSpark />,
       text: (
         <Text variant="body1">
           <b>Неограниченные запросы</b> в AI-подборщике
@@ -40,13 +36,13 @@ export const DESCRIPTIONS_RU = {
     },
   ],
   Standart: [
-    { icon: <OfferCollectionHomeStar />, text: <Text variant="body1">7 подборок</Text> },
+    { icon: <IconHomeStar />, text: <Text variant="body1">7 подборок</Text> },
     {
-      icon: <OfferCollectionGraphMonitor />,
+      icon: <IconGraphMonitor />,
       text: <Text variant="body1">Вся аналитика по объекту: оценки, расчет экономики</Text>,
     },
     {
-      icon: <OfferCollectionSpark />,
+      icon: <IconSpark />,
       text: <Text variant="body1">7 запросов в AI-подборщике</Text>,
     },
   ],
@@ -54,19 +50,19 @@ export const DESCRIPTIONS_RU = {
 
 export const DESCRIPTIONS_ENG = {
   Starter: [
-    { icon: <OfferCollectionHomeStar />, text: <Text variant="body1">3 selections</Text> },
+    { icon: <IconHomeStar />, text: <Text variant="body1">3 selections</Text> },
     {
-      icon: <OfferCollectionGraphMonitor />,
+      icon: <IconGraphMonitor />,
       text: <Text variant="body1">Limited analytics on the object: estimates only</Text>,
     },
     {
-      icon: <OfferCollectionSpark />,
+      icon: <IconSpark />,
       text: <Text variant="body1">3 requests in the AI picker</Text>,
     },
   ],
   Pro: [
     {
-      icon: <OfferCollectionHomeStar />,
+      icon: <IconHomeStar />,
       text: (
         <Text variant="body1">
           <b>Unlimited selections</b>
@@ -74,7 +70,7 @@ export const DESCRIPTIONS_ENG = {
       ),
     },
     {
-      icon: <OfferCollectionGraphMonitor />,
+      icon: <IconGraphMonitor />,
       text: (
         <Text variant="body1">
           All analytics on the object: estimates, calculation of the economy
@@ -82,7 +78,7 @@ export const DESCRIPTIONS_ENG = {
       ),
     },
     {
-      icon: <OfferCollectionSpark />,
+      icon: <IconSpark />,
       text: (
         <Text variant="body1">
           <b>Unlimited requests</b> in the AI picker
@@ -91,9 +87,9 @@ export const DESCRIPTIONS_ENG = {
     },
   ],
   Standart: [
-    { icon: <OfferCollectionHomeStar />, text: <Text variant="body1">7 collections</Text> },
+    { icon: <IconHomeStar />, text: <Text variant="body1">7 collections</Text> },
     {
-      icon: <OfferCollectionGraphMonitor />,
+      icon: <IconGraphMonitor />,
       text: (
         <Text variant="body1">
           All analytics on the object: estimates, calculation of the economy
@@ -101,7 +97,7 @@ export const DESCRIPTIONS_ENG = {
       ),
     },
     {
-      icon: <OfferCollectionSpark />,
+      icon: <IconSpark />,
       text: <Text variant="body1">7 queries in the AI picker</Text>,
     },
   ],

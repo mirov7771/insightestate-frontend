@@ -2,11 +2,7 @@ import { FC, ReactNode } from 'react';
 import { EstateOptions } from '@/widgets/EstateCollection/api/estateCollectionApi';
 import styles from './EstateOptionsInfo.module.scss';
 import { Text } from '@/shared/ui';
-import {
-  OfferCollectionBarbell,
-  OfferCollectionDeviceLaptop,
-  OfferCollectionHorseToy,
-} from '@/shared/assets/icons';
+import { IconBarbell, IconDeviceLaptop, IconHorseToy } from '@/shared/assets/icons';
 import { FormattedMessage } from 'react-intl';
 
 type EstateOptionsInfoProps = EstateOptions;
@@ -15,14 +11,14 @@ const OPTIONS_MAPPER: Record<
   keyof Pick<EstateOptions, 'gym' | 'coworking' | 'childRoom'>,
   { icon: ReactNode; label: ReactNode }
 > = {
-  gym: { label: <FormattedMessage id="offerCollection.gym" />, icon: <OfferCollectionBarbell /> },
+  gym: { label: <FormattedMessage id="offerCollection.gym" />, icon: <IconBarbell /> },
   coworking: {
     label: <FormattedMessage id="offerCollection.coworking" />,
-    icon: <OfferCollectionDeviceLaptop />,
+    icon: <IconDeviceLaptop />,
   },
   childRoom: {
     label: <FormattedMessage id="offerCollection.childRoom" />,
-    icon: <OfferCollectionHorseToy />,
+    icon: <IconHorseToy />,
   },
 };
 

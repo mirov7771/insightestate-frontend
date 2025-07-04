@@ -3,7 +3,7 @@ import styles from './TableComparison.module.scss';
 import { BadgeRating, Text } from '@/shared/ui';
 import { Estate } from '@/widgets/EstateCollection/api/estateCollectionApi';
 import { DEFAULT_IMG } from '@/entities/Card/Card';
-import { IconLayout, OfferCollectionMapPinFilled } from '@/shared/assets/icons';
+import { IconLayout, IconMapPinFilled } from '@/shared/assets/icons';
 import { useIntl } from 'react-intl';
 
 type TRows = { name: string; values: Array<ReactNode | string> }[];
@@ -60,7 +60,7 @@ export const TableComparisonV2: FC<TableComparisonV2Props> = ({ rows, estates })
                     <BadgeRating
                       className={styles.card__badge}
                       size="sm"
-                      icon={<OfferCollectionMapPinFilled />}
+                      icon={<IconMapPinFilled />}
                       text={estate.location.beach}
                     />
                   )}

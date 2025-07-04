@@ -3,7 +3,7 @@ import { Section } from '../Section';
 import { useIntl } from 'react-intl';
 import { GMap, Text } from '@/shared/ui';
 import { EstateDetail } from '@/widgets/Detail/api/detailApi';
-import { OfferCollectionCar, OfferCollectionWalk } from '@/shared/assets/icons';
+import { IconCar, IconWalk } from '@/shared/assets/icons';
 import styles from './Map.module.scss';
 
 const containerStyle = {
@@ -47,7 +47,7 @@ export const Map: FC<MapProps> = ({ url, infrastructure, location, city }) => {
               <div className={styles.infrastructure__text}>
                 {!!infrastructure.beachTime?.car && (
                   <Text variant="body1" className={styles.infrastructure__text_item}>
-                    <OfferCollectionCar />{' '}
+                    <IconCar />{' '}
                     <span>
                       {infrastructure.beachTime.car} {formatMessage({ id: 'min' })}
                     </span>
@@ -55,7 +55,7 @@ export const Map: FC<MapProps> = ({ url, infrastructure, location, city }) => {
                 )}
                 {!!infrastructure.beachTime?.walk && (
                   <Text variant="body1" className={styles.infrastructure__text_item}>
-                    <OfferCollectionWalk />{' '}
+                    <IconWalk />{' '}
                     <span>
                       {infrastructure.beachTime.walk} {formatMessage({ id: 'min' })}
                     </span>
@@ -70,7 +70,7 @@ export const Map: FC<MapProps> = ({ url, infrastructure, location, city }) => {
               <div className={styles.infrastructure__text}>
                 {!!infrastructure.mallTime?.car && (
                   <Text variant="body1" className={styles.infrastructure__text_item}>
-                    <OfferCollectionCar />{' '}
+                    <IconCar />{' '}
                     <span>
                       {infrastructure.mallTime.car} {formatMessage({ id: 'min' })}
                     </span>
@@ -78,7 +78,7 @@ export const Map: FC<MapProps> = ({ url, infrastructure, location, city }) => {
                 )}
                 {!!infrastructure.mallTime?.walk && (
                   <Text variant="body1" className={styles.infrastructure__text_item}>
-                    <OfferCollectionWalk />{' '}
+                    <IconWalk />{' '}
                     <span>
                       {infrastructure.mallTime.walk} {formatMessage({ id: 'min' })}
                     </span>
@@ -93,7 +93,7 @@ export const Map: FC<MapProps> = ({ url, infrastructure, location, city }) => {
               <div className={styles.infrastructure__text}>
                 {!!infrastructure.airportTime?.car && (
                   <Text variant="body1" className={styles.infrastructure__text_item}>
-                    <OfferCollectionCar />{' '}
+                    <IconCar />{' '}
                     <span>
                       {infrastructure.airportTime.car} {formatMessage({ id: 'min' })}
                     </span>
@@ -101,7 +101,7 @@ export const Map: FC<MapProps> = ({ url, infrastructure, location, city }) => {
                 )}
                 {!!infrastructure.airportTime?.walk && (
                   <Text variant="body1" className={styles.infrastructure__text_item}>
-                    <OfferCollectionWalk />{' '}
+                    <IconWalk />{' '}
                     <span>
                       {infrastructure.airportTime.walk} {formatMessage({ id: 'min' })}
                     </span>

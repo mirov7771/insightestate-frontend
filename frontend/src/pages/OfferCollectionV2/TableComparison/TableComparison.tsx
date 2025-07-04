@@ -1,7 +1,7 @@
 import { FC, useMemo } from 'react';
 import styles from './TableComparison.module.scss';
 import { BadgeRating, Text } from '@/shared/ui';
-import { OfferCollectionMapPinFilled } from '@/shared/assets/icons';
+import { IconMapPinFilled } from '@/shared/assets/icons';
 import { Estate } from '@/widgets/EstateCollection/api/estateCollectionApi';
 import { DEFAULT_IMG } from '@/entities/Card/Card';
 import { useIntl } from 'react-intl';
@@ -146,7 +146,7 @@ export const TableComparison: FC<TableComparisonProps> = ({ estates }) => {
                 <BadgeRating
                   className={styles.card__badge}
                   size="sm"
-                  icon={<OfferCollectionMapPinFilled />}
+                  icon={<IconMapPinFilled />}
                   text={estate.location.beach}
                 />
               )}

@@ -1,6 +1,6 @@
 import { FC, ReactNode, useState } from 'react';
 import styles from './Rating.module.scss';
-import { OfferCollectionBrandSpark, OfferCollectionInfoCircle } from '@/shared/assets/icons';
+import { IconBrandSpark, IconInfoCircle } from '@/shared/assets/icons';
 import { Grade } from '@/widgets/Detail/api/detailApi';
 import { InfoModal } from '@/shared/ui/modals';
 import { FormattedMessage, useIntl } from 'react-intl';
@@ -101,7 +101,7 @@ export const Rating: FC<Grade> = ({
       <Text variant="heading4" className={styles.info_icon}>
         {formatMessage({ id: 'our_rating' })}
         <div className={styles.icon} onClick={openRatingInfo}>
-          <OfferCollectionInfoCircle />
+          <IconInfoCircle />
         </div>
       </Text>
       {isMobile ? (
@@ -116,7 +116,7 @@ export const Rating: FC<Grade> = ({
                 className={`${styles.rating__score} ${styles.rating__score_result}`}
                 onClick={openRatingInfo}
               >
-                {main.toPrecision(2)} <OfferCollectionBrandSpark />
+                {main.toPrecision(2)} <IconBrandSpark />
               </Text>
             </div>
           )}
@@ -182,7 +182,7 @@ export const Rating: FC<Grade> = ({
                 className={`${styles.rating__score} ${styles.rating__score_result}`}
                 onClick={openRatingInfo}
               >
-                {main.toPrecision(2)} <OfferCollectionBrandSpark />
+                {main.toPrecision(2)} <IconBrandSpark />
               </Text>
             </div>
           )}

@@ -38,42 +38,42 @@ import Globe from './Globe.svg?react';
 import LogoIcon from './LogoIcon.svg?react';
 import Heart from './Heart.svg?react';
 import TablerIconX from './TablerIconX.svg?react';
-import OfferCollectionCalendarTime from './offer-collection/tabler-icon-calendar-time.svg?react';
-import OfferCollectionCurrencyDollar from './offer-collection/tabler-icon-currency-dollar.svg?react';
-import OfferCollectionHeartRateMonitor from './offer-collection/tabler-icon-heart-rate-monitor.svg?react';
-import OfferCollectionHomeDollar from './offer-collection/tabler-icon-home-dollar.svg?react';
-import OfferCollectionMoodDollar from './offer-collection/tabler-icon-mood-dollar.svg?react';
-import OfferCollectionTrendingUp from './offer-collection/tabler-icon-trending-up.svg?react';
-import OfferCollectionUsersGroup from './offer-collection/tabler-icon-users-group.svg?react';
-import OfferCollectionBrandTelegram from './offer-collection/tabler-icon-brand-telegram.svg?react';
-import OfferCollectionMail from './offer-collection/tabler-icon-mail.svg?react';
-import OfferCollectionPhoneCall from './offer-collection/tabler-icon-phone-call.svg?react';
-import OfferCollectionWhatsUp from './offer-collection/whats-app.svg?react';
-import OfferCollectionMapPinFilled from './offer-collection/tabler-icon-map-pin-filled.svg?react';
-import OfferCollectionHeart from './offer-collection/tabler-icon-heart.svg?react';
-import OfferCollectionArrowRight from './offer-collection/tabler-icon-chevron-right.svg?react';
-import OfferCollectionChevronLeft from './offer-collection/tabler-icon-chevron-left.svg?react';
-import OfferCollectionGraphMonitor from './offer-collection/graph-monitor.svg?react';
-import OfferCollectionSpark from './offer-collection/spark.svg?react';
-import OfferCollectionBrandSpark from './offer-collection/brand-spark.svg?react';
-import OfferCollectionHomeStar from './offer-collection/tabler-icon-home-star.svg?react';
-import OfferCollectionDots from './offer-collection/tabler-icon-dots.svg?react';
-import OfferCollectionCopy from './offer-collection/tabler-icon-copy.svg?react';
-import OfferCollectionEdit from './offer-collection/tabler-icon-edit.svg?react';
-import OfferCollectionTrash from './offer-collection/tabler-icon-trash.svg?react';
-import OfferCollectionX from './offer-collection/tabler-icon-x.svg?react';
-import OfferCollectionCircleCheckFilled from './offer-collection/tabler-icon-circle-check-filled.svg?react';
-import OfferCollectionInfoCircle from './offer-collection/tabler-icon-info-circle.svg?react';
-import OfferCollectionArrowLeft from './offer-collection/tabler-icon-arrow-left.svg?react';
-import OfferCollectionBarbell from './offer-collection/tabler-icon-barbell.svg?react';
-import OfferCollectionDeviceLaptop from './offer-collection/tabler-icon-device-laptop.svg?react';
-import OfferCollectionHorseToy from './offer-collection/tabler-icon-horse-toy.svg?react';
-import OfferCollectionWalk from './offer-collection/tabler-icon-walk.svg?react';
-import OfferCollectionCar from './offer-collection/tabler-icon-car.svg?react';
-import OfferCollectionAdjustmentsFilter from './offer-collection/tabler-icon-adjustments-filter.svg?react';
-import CarouselHorizontal from './offer-collection/tabler-icon-carousel-horizontal.svg?react';
-import LayoutList from './offer-collection/tabler-icon-layout-list.svg?react';
-import Plus from './offer-collection/tabler-icon-plus.svg?react';
+import IconCalendarTime from './offer-collection/tabler-icon-calendar-time.svg?react';
+import IconCurrencyDollar from './offer-collection/tabler-icon-currency-dollar.svg?react';
+import IconHeartRateMonitor from './offer-collection/tabler-icon-heart-rate-monitor.svg?react';
+import IconHomeDollar from './offer-collection/tabler-icon-home-dollar.svg?react';
+import IconMoodDollar from './offer-collection/tabler-icon-mood-dollar.svg?react';
+import IconTrendingUp from './offer-collection/tabler-icon-trending-up.svg?react';
+import IconUsersGroup from './offer-collection/tabler-icon-users-group.svg?react';
+import IconBrandTelegram from './offer-collection/tabler-icon-brand-telegram.svg?react';
+import IconMail from './offer-collection/tabler-icon-mail.svg?react';
+import IconPhoneCall from './offer-collection/tabler-icon-phone-call.svg?react';
+import IconWhatsUp from './offer-collection/whats-app.svg?react';
+import IconMapPinFilled from './offer-collection/tabler-icon-map-pin-filled.svg?react';
+import IconHeart from './offer-collection/tabler-icon-heart.svg?react';
+import IconChevronRight from './offer-collection/tabler-icon-chevron-right.svg?react';
+import IconChevronLeft from './offer-collection/tabler-icon-chevron-left.svg?react';
+import IconGraphMonitor from './offer-collection/graph-monitor.svg?react';
+import IconSpark from './offer-collection/spark.svg?react';
+import IconBrandSpark from './offer-collection/brand-spark.svg?react';
+import IconHomeStar from './offer-collection/tabler-icon-home-star.svg?react';
+import IconDots from './offer-collection/tabler-icon-dots.svg?react';
+import IconCopy from './offer-collection/tabler-icon-copy.svg?react';
+import IconEdit from './offer-collection/tabler-icon-edit.svg?react';
+import IconTrash from './offer-collection/tabler-icon-trash.svg?react';
+import IconX from './offer-collection/tabler-icon-x.svg?react';
+import IconCircleCheckFilled from './offer-collection/tabler-icon-circle-check-filled.svg?react';
+import IconInfoCircle from './offer-collection/tabler-icon-info-circle.svg?react';
+import IconArrowLeft from './offer-collection/tabler-icon-arrow-left.svg?react';
+import IconBarbell from './offer-collection/tabler-icon-barbell.svg?react';
+import IconDeviceLaptop from './offer-collection/tabler-icon-device-laptop.svg?react';
+import IconHorseToy from './offer-collection/tabler-icon-horse-toy.svg?react';
+import IconWalk from './offer-collection/tabler-icon-walk.svg?react';
+import IconCar from './offer-collection/tabler-icon-car.svg?react';
+import IconAdjustmentsFilter from './offer-collection/tabler-icon-adjustments-filter.svg?react';
+import IconCarouselHorizontal from './offer-collection/tabler-icon-carousel-horizontal.svg?react';
+import IconLayoutList from './offer-collection/tabler-icon-layout-list.svg?react';
+import IconPlus from './offer-collection/tabler-icon-plus.svg?react';
 import IconLogout from './offer-collection/tabler-icon-logout.svg?react';
 import IconSettings from './offer-collection/tabler-icon-settings.svg?react';
 import IconWorld from './offer-collection/tabler-icon-world.svg?react';
@@ -131,44 +131,44 @@ export {
   Heart,
   TablerIconX,
   /* OfferCollection */
-  OfferCollectionCalendarTime,
-  OfferCollectionCurrencyDollar,
-  OfferCollectionHeartRateMonitor,
-  OfferCollectionHomeDollar,
-  OfferCollectionMoodDollar,
-  OfferCollectionTrendingUp,
-  OfferCollectionUsersGroup,
-  OfferCollectionBrandTelegram,
-  OfferCollectionMail,
-  OfferCollectionPhoneCall,
-  OfferCollectionWhatsUp,
-  OfferCollectionMapPinFilled,
-  OfferCollectionHeart,
-  OfferCollectionArrowRight,
-  OfferCollectionChevronLeft,
-  OfferCollectionGraphMonitor,
-  OfferCollectionSpark,
-  OfferCollectionBrandSpark,
-  OfferCollectionInfoCircle,
-  OfferCollectionHomeStar,
-  OfferCollectionDots,
-  OfferCollectionCopy,
-  OfferCollectionEdit,
-  OfferCollectionTrash,
-  OfferCollectionX,
-  OfferCollectionCircleCheckFilled,
-  OfferCollectionArrowLeft,
-  OfferCollectionBarbell,
-  OfferCollectionDeviceLaptop,
-  OfferCollectionHorseToy,
-  OfferCollectionWalk,
-  OfferCollectionCar,
+  IconCalendarTime,
+  IconCurrencyDollar,
+  IconHeartRateMonitor,
+  IconHomeDollar,
+  IconMoodDollar,
+  IconTrendingUp,
+  IconUsersGroup,
+  IconBrandTelegram,
+  IconMail,
+  IconPhoneCall,
+  IconWhatsUp,
+  IconMapPinFilled,
+  IconHeart,
+  IconChevronRight,
+  IconChevronLeft,
+  IconGraphMonitor,
+  IconSpark,
+  IconBrandSpark,
+  IconInfoCircle,
+  IconHomeStar,
+  IconDots,
+  IconCopy,
+  IconEdit,
+  IconTrash,
+  IconX,
+  IconCircleCheckFilled,
+  IconArrowLeft,
+  IconBarbell,
+  IconDeviceLaptop,
+  IconHorseToy,
+  IconWalk,
+  IconCar,
   FilterIcon,
-  OfferCollectionAdjustmentsFilter,
+  IconAdjustmentsFilter,
   EstateIcon,
-  CarouselHorizontal,
-  LayoutList,
-  Plus,
+  IconCarouselHorizontal,
+  IconLayoutList,
+  IconPlus,
   IconLogout,
   IconSettings,
   IconWorld,

@@ -1,6 +1,6 @@
 import { FC, InputHTMLAttributes } from 'react';
 import styles from './Select.module.scss';
-import { OfferCollectionChevronLeft } from '@/shared/assets/icons';
+import { IconChevronLeft } from '@/shared/assets/icons';
 
 type SelectProps = InputHTMLAttributes<HTMLSelectElement> & {
   options: Array<{ id: string; name: string }>;
@@ -18,7 +18,7 @@ export const Select: FC<SelectProps> = ({ className, options, ...props }) => {
         ))}
       </select>
       <span className={styles.arrow}>
-        <OfferCollectionChevronLeft />
+        <IconChevronLeft />
       </span>
     </div>
   );

@@ -51,6 +51,8 @@ export const Tabs: FC<{ id: string; client?: string | null }> = ({ id, client })
       .catch((e) => console.log(e));
   }, []);
 
+  const hasUnits = !!estateCollection?.estates?.some((estate) => !!estate.units?.length);
+
   return (
     <>
       <div className={styles.tabsWrapper}>
@@ -59,7 +61,7 @@ export const Tabs: FC<{ id: string; client?: string | null }> = ({ id, client })
           setValue={setValue}
           content={[formatMessage({ id: 'list' }), formatMessage({ id: 'comparison' })]}
         />
-        {value === 1 && (
+        {hasUnits && value === 1 && (
           <Segment
             onChange={setSegmentValue}
             options={[

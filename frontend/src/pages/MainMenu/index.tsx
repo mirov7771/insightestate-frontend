@@ -6,6 +6,8 @@ import { BestObjects, Beta, BetaMB, Collections, Objects, Units } from '@/shared
 import { Spacer } from '@/widgets/Spacer/Spacer';
 import { isMobile } from 'react-device-detect';
 import { Gallery } from '@/pages/MainMenu/Gallery/Gallery';
+import { Stories } from '@/entities/Stories/Stories';
+import { STORIES } from '@/entities/Stories/constants';
 
 const MainMenu: FC = () => {
   const [collections, setCollections] = useState(0);
@@ -24,6 +26,7 @@ const MainMenu: FC = () => {
 
   return (
     <>
+      <Stories items={STORIES} />
       {isMobile ? (
         <MainMobile
           collections={collections}

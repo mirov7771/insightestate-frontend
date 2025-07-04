@@ -1,7 +1,7 @@
 import { FC, ReactNode, useState } from 'react';
 import styles from './Accordion.module.scss';
 import { Text } from '@/shared/ui';
-import { OfferCollectionChevronLeft } from '@/shared/assets/icons';
+import { IconChevronLeft } from '@/shared/assets/icons';
 
 type AccordionProps = {
   children: ReactNode;
@@ -18,7 +18,7 @@ export const Accordion: FC<AccordionProps> = ({ title, children }) => {
         <Text variant="heading5">{title}</Text>
         <div className={styles.accordion__icon_wrapper}>
           <span className={`${styles.accordion__icon} ${isOpen ? `${styles.open}` : ''}`}>
-            <OfferCollectionChevronLeft />
+            <IconChevronLeft />
           </span>
         </div>
       </button>

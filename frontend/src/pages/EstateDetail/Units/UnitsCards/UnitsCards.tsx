@@ -3,7 +3,7 @@ import { Unit } from '@/shared/api/units';
 import styles from './UnitsCards.module.scss';
 import PlaceholderImg from '../assets/placeholder.png';
 import { Button, ModalAddToCollection, Text } from '@/shared/ui';
-import { Plus } from '@/shared/assets/icons';
+import { IconPlus } from '@/shared/assets/icons';
 import { useIntl } from 'react-intl';
 import { isMobile } from 'react-device-detect';
 import { useParams } from 'react-router';
@@ -70,7 +70,7 @@ export const UnitsCards: FC<UnitsCardsProps> = ({ items }) => {
                 setUserCollectionModal(true);
               }}
             >
-              <Plus />
+              <IconPlus />
             </Button>
           </div>
         </div>

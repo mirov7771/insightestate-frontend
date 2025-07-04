@@ -6,7 +6,7 @@ import { Slider } from './Slider';
 import styles from './CardSlide.module.scss';
 import { Button, Text } from '@/shared/ui';
 import { AdvantagesBadges } from '@/entities/CardSlide/AdvantagesBadges';
-import { EstateIcon, OfferCollectionCar, OfferCollectionWalk } from '@/shared/assets/icons';
+import { EstateIcon, IconCar, IconWalk } from '@/shared/assets/icons';
 import { CardSlideSkeleton } from '@/entities/CardSlide/CardSlideSkeleton';
 
 type CardSlideProps = {
@@ -124,11 +124,10 @@ export const CardSlide: FC<CardSlideProps> = ({
                   ? `${formatMessage({ id: 'to_beach' })}: `
                   : `${formatMessage({ id: 'to_subway' })}: `}
                 <span>
-                  <OfferCollectionCar /> {estate.beachTravelTimeCar} {formatMessage({ id: 'min' })}
+                  <IconCar /> {estate.beachTravelTimeCar} {formatMessage({ id: 'min' })}
                 </span>
                 <span>
-                  <OfferCollectionWalk /> {estate.beachTravelTimeWalk}{' '}
-                  {formatMessage({ id: 'min' })}
+                  <IconWalk /> {estate.beachTravelTimeWalk} {formatMessage({ id: 'min' })}
                 </span>
               </Text>
             </div>
