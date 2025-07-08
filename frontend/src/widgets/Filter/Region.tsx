@@ -51,6 +51,13 @@ export const Region: FC = () => {
           {city?.includes('Phuket') || city?.length === 0 ? (
             <>
               <Checkbox
+                  name="beachName"
+                  value="Patong"
+                  onChange={handleClick}
+                  checked={beachName?.includes('Patong')}
+                  label="Patong"
+              />
+              <Checkbox
                 name="beachName"
                 value="Kata"
                 onChange={handleClick}
