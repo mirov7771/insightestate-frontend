@@ -61,11 +61,11 @@ export const filterApi = {
       const userId = localStorage.getItem('userId');
       const response = userId
         ? await api.get<ResponseGetEstate>('v1/estate', {
-            params: { ...params, pageSize: 4 },
+            params: { ...params, pageSize: 12 },
             headers: { 'x-user-id': userId },
           })
         : await api.get<ResponseGetEstate>('v1/estate', {
-            params: { ...params, pageSize: 4 },
+            params: { ...params, pageSize: 12 },
           });
 
       return response;

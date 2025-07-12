@@ -15,13 +15,10 @@ import { CompletionDate } from '@/widgets/Filter/CompletionDate';
 import { NumberOfBedrooms } from '@/widgets/Filter/NumberOfBedrooms';
 import { Potential } from '@/widgets/Filter/Potential';
 import { Beach } from '@/widgets/Filter/Beach';
-import { Airport } from '@/widgets/Filter/Airport';
-import { filterApi } from '@/widgets/Filter/api/filterApi';
 import { useSearchParams } from 'react-router';
-import { types } from 'sass';
-import Number = types.Number;
 import { isMobile } from 'react-device-detect';
 import { Region } from '@/widgets/Filter/Region';
+import {Price} from "@/widgets/Filter/Price";
 
 const Listing: FC = () => {
   const { formatMessage } = useIntl();
@@ -87,6 +84,11 @@ const Listing: FC = () => {
           <Divider orientation="vertical" flexItem />
           <div className={styles.filters}>
             <div className={styles.filters__scroll}>
+              <FastFilter
+                  filter={<Price />}
+                  name={formatMessage({ id: 'price' })}
+                  filterName="price"
+              />
               <FastFilter
                 filter={<City />}
                 name={formatMessage({ id: 'city' })}

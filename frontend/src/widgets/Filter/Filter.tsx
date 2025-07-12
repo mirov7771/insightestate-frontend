@@ -51,12 +51,12 @@ export const Filter: FC<FilterProps> = ({ open, setOpen }) => {
           </span>
         </div>
         <div className={styles.filters__wrapper}>
+          <Price />
           <City />
           <Region />
           <PropertyType />
           <CompletionDate />
           <NumberOfBedrooms />
-          <Price />
           <Potential />
           <Beach renderName />
           <Airport renderName />
