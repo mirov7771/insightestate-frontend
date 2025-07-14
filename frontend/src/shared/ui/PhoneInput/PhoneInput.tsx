@@ -12,7 +12,11 @@ export const PhoneInput: FC<PhoneInputProps & { label?: string }> = (props) => {
           {props.label}
         </Text>
       )}
-      <PhoneInputCountries {...props} inputClass={styles.input} containerClass={styles.input} />
+      <PhoneInputCountries
+        {...props}
+        containerClass={styles.container}
+        country={props.country || 'th'}
+      />
     </div>
   );
 };

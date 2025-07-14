@@ -23,7 +23,7 @@ export const LayoutForm: FC<LayoutFormProps> = ({
       <div className={styles.logo}>
         <LogoIcon />
       </div>
-      <Text variant="heading2" align="center" className={styles.header}>
+      <Text variant="heading3" align="center" className={styles.header}>
         {header}
       </Text>
       {headerHint && (

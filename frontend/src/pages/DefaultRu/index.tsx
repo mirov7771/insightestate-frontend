@@ -1,6 +1,7 @@
 import { FC, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { Dropdown } from '@/widgets/Dropdown/Dropdown';
+import { Text } from '@/shared/ui';
 
 export const DefaultRu: FC = () => {
   const navigate = useNavigate();
@@ -211,7 +212,9 @@ export const DefaultRu: FC = () => {
                 className="navbar1_button-wrapper"
               >
                 <a href="/login" className="button-cc is-navbar2-button w-button">
-                  Войти
+                  <Text variant="body1" bold>
+                    Войти
+                  </Text>
                 </a>
                 <Dropdown changeLocale={handleEn} />
               </div>
@@ -256,14 +259,10 @@ export const DefaultRu: FC = () => {
                       действительно важно
                     </p>
                     <div className="button-group-cc is-right mb-16">
-                      <a
-                        href="/register"
-                        className="button-cc _w-auto sizing-auto w-button"
-                        style={{
-                          fontSize: '22px',
-                        }}
-                      >
-                        Попробовать бесплатно
+                      <a href="/register" className="button-cc _w-auto sizing-auto w-button">
+                        <Text variant="body1" bold>
+                          Попробовать бесплатно
+                        </Text>
                       </a>
                     </div>
                     <p className="text-size-body-2-cc is-opacity-64-black center">

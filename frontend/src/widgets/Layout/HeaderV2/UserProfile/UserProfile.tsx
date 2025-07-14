@@ -127,7 +127,7 @@ export const UserProfile: FC<UserProfileProps> = ({ basicToken }) => {
               open={openLanguage}
               anchorEl={anchorElLanguage}
               onClose={handleCloseLanguage}
-              classes={{ paper: styles.menu__paper }}
+              classes={{ paper: `${styles.menu__paper} ${styles.menu__language}` }}
               className={styles.menu}
               anchorOrigin={{
                 vertical: 'bottom',

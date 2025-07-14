@@ -6,6 +6,7 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import { detailApi } from '@/widgets/Detail/api/detailApi';
 import { getNavigate } from '@/pages/Authorization';
 import { LayoutForm } from '@/widgets/RegistrationLayout/LayoutForm/LayoutForm';
+import { IconEye, IconEyeClose } from '@/shared/assets/icons';
 
 const Register: FC = () => {
   const { formatMessage } = useIntl();
@@ -13,6 +14,7 @@ const Register: FC = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState(localStorage.getItem('email') || '');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState<'password' | 'text'>('password');
   const [phone, setPhone] = useState('');
   const [location, setLocation] = useState('');
 
@@ -20,6 +22,10 @@ const Register: FC = () => {
   const [tgName, setTgName] = useState('');
   const [profileImage, setProfileImage] = useState('');
   const [loading, setLoading] = useState(false);
+
+  const toggleShowPassword = () => {
+    setShowPassword((prev) => (prev === 'password' ? 'text' : 'password'));
+  };
 
   const onChangeUsername = (e: ChangeEvent<HTMLInputElement>) => {
     const username = e.target.value;
@@ -112,11 +118,20 @@ const Register: FC = () => {
             name="username"
             placeholder={formatMessage({ id: 'surname_name' })}
           />
-          <Input name="email" value={email} onChange={onChangeEmail} placeholder="Email" />
+          <Input
+            name="email"
+            value={email}
+            onChange={onChangeEmail}
+            placeholder={formatMessage({ id: 'login.emailPlaceholder' })}
+          />
           <PhoneInput
             value={phone}
             onChange={onChangePhone}
             placeholder={formatMessage({ id: 'phone_number' })}
+            searchPlaceholder="Search"
+            enableSearch
+            autocompleteSearch
+            disableSearchIcon
           />
           <SelectCountry
             name="location"
@@ -161,16 +176,18 @@ const Register: FC = () => {
           {/*  <></>*/}
           {/*)}*/}
           <Input
-            type="password"
+            type={showPassword}
             name="password"
             value={password}
             onChange={onChangePassword}
             placeholder={formatMessage({ id: 'password' })}
+            icon={showPassword === 'text' ? <IconEye /> : <IconEyeClose />}
+            iconOnClick={toggleShowPassword}
           />
 
           <Button onClick={handleLogin} wide size={'l'} loading={loading} type="submit">
             <Text variant="body1" bold align="center" as="span">
-              {formatMessage({ id: 'registration' })}
+              {formatMessage({ id: 'login.continue' })}
             </Text>
           </Button>
         </>
@@ -178,13 +195,14 @@ const Register: FC = () => {
       onSubmit={handleLogin}
       bottomText={
         <>
-          <Text variant="body2" as="p" className={styles.signUp} align="center">
-            {formatMessage({ id: 'politics_1' })}{' '}
+          <Text variant="body1" as="p" className={styles.signUp} align="center">
+            {formatMessage({ id: 'politics_1' })}&nbsp;
             <a
               href="https://www.insightestate.com/privacy"
               target="_blank"
               className="button"
               rel="noreferrer"
+              style={{ whiteSpace: 'nowrap' }}
             >
               {formatMessage({ id: 'politics_2' })}
             </a>

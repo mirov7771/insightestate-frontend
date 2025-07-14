@@ -44,6 +44,33 @@
     }
   }
 
+  &.input__icon {
+    position: relative;
+
+    & .input {
+      padding-right: 48px;
+    }
+
+    .icon {
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      right: 6px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+
+      & > svg {
+        width: 24px;
+        height: 24px;
+        color: var(--ui-color-black);
+      }
+    }
+  }
+
   .label {
     color: var(--ui-color-black);
     margin-bottom: 8px;

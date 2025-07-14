@@ -9,7 +9,7 @@ import { IconChevronLeft, IconChevronRight, IconX } from '@/shared/assets/icons'
 import { Story } from '@/entities/Stories/Story';
 import { StoryProps } from './types';
 
-const STORY_TIMER = 1000;
+const STORY_TIMER = 500;
 const DEFAULT_PROGRESS = {
   value: 0,
   isDone: false,
@@ -136,7 +136,10 @@ export const Stories: FC<StoriesProps> = ({ items, open, setOpen }) => {
         <div className={styles.progress}>
           {items.map((_, i) => (
             <LinearProgress
-              classes={{ root: styles.progress_root, bar1: styles.progress_bar1 }}
+              classes={{
+                root: styles.progress_root,
+                bar1: activeStory === i ? styles.progress_bar1_active : styles.progress_bar1,
+              }}
               value={progress[i].value}
               variant="determinate"
             />

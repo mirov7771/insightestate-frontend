@@ -32,6 +32,10 @@ const ResetPassword: FC = () => {
     }
   };
 
+  const handleBack = () => {
+    navigate('/register');
+  };
+
   useEffect(() => {
     setEmail(localStorage.getItem('email') || '');
 
@@ -55,6 +59,17 @@ const ResetPassword: FC = () => {
           <Button onClick={handeSendEmail} wide size={'l'} loading={status === 'LOADING'}>
             <Text variant="body1" bold align="center" as="span">
               {formatMessage({ id: 'login.continue' })}
+            </Text>
+          </Button>
+          <Button
+            onClick={handleBack}
+            wide
+            variant="text"
+            size={'l'}
+            loading={status === 'LOADING'}
+          >
+            <Text variant="body1" bold align="center" as="span">
+              {formatMessage({ id: 'common.back' })}
             </Text>
           </Button>
         </>

@@ -12,6 +12,143 @@
   }
 }
 
+.container {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 56px;
+  gap: 8px;
+
+  :global {
+    .flag-dropdown {
+      position: relative;
+      width: 88px;
+      height: 56px;
+      border-radius: 200px;
+      border: 1px solid var(--ui-color-black-24-opacity);
+      background-color: var(--ui-color-white);
+      transition: border .25s ease-in-out;
+
+      &:hover {
+        border: 1px solid var(--ui-color-black-64-opacity);
+      }
+
+      &:focus {
+        border: 1px solid var(--ui-color-black);
+      }
+
+      &.open {
+        border-radius: 200px;
+        background: transparent;
+
+        .selected-flag {
+          border-radius: 200px;
+        }
+      }
+
+      .selected-flag {
+        width: 100%;
+        border-radius: 200px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .arrow {
+          left: 30px;
+        }
+
+        .flag {
+          position: absolute;
+          margin-top: 0;
+          top: unset;
+          margin-left: -10px;
+        }
+
+        &:hover {
+          background-color: transparent;
+        }
+      }
+    }
+
+    .form-control {
+      width: 100%;
+      height: 56px;
+      border-radius: 200px;
+      border: 1px solid var(--ui-color-black-24-opacity);
+      background-color: var(--ui-color-white);
+      padding-left: 24px;
+      padding-right: 8px;
+      transition: border .25s ease-in-out;
+      @include text;
+
+      &:hover {
+        border: 1px solid var(--ui-color-black-64-opacity);
+      }
+
+      &:focus {
+        border: 1px solid var(--ui-color-black);
+      }
+
+      &::placeholder {
+        color: var(--ui-color-black-64-opacity);
+      }
+    }
+
+    .country-list {
+      width: 440px;
+      max-height: 300px;
+      background-color: var(--ui-color-white);
+      border-radius: 12px;
+      box-shadow: 0px 4px 24px 0px #0000001f;
+      padding: 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      @include text;
+
+      .country {
+        min-height: 48px;
+        border-radius: 8px;
+        padding: 6px 12px;
+        display: flex;
+        align-items: center;
+        transition: background-color 0.2s linear;
+
+        &.highlight, &:hover {
+          background-color: var(--ui-color-black-24-opacity);
+        }
+      }
+
+      .search {
+        padding: 0;
+      }
+
+      .search-box {
+        border: 1px solid var(--ui-color-black-24-opacity);
+        padding-left: 24px;
+        padding-right: 8px;
+        margin-left: 0;
+        width: 100%;
+        height: 48px;
+        border-radius: 8px;
+        transition: border .25s ease-in-out;
+
+        &:hover {
+          border: 1px solid var(--ui-color-black-64-opacity);
+        }
+
+        &:focus {
+          border: 1px solid var(--ui-color-black);
+        }
+
+        @include text;
+      }
+    }
+  }
+}
+
 .input {
   :global {
     .form-control {

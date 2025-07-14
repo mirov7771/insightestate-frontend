@@ -136,7 +136,7 @@ export default {
   sign_up: 'Sign up',
   sign_up_2: 'Sign up',
   password: 'Password',
-  politics_1: 'By clicking “Log in” or “Sign up”, you agree to the',
+  politics_1: 'By clicking “Continue” you agree to the',
   politics_2: 'Data processing policy',
   receive_code: 'Get code',
   footer_info_text: 'Didn’t receive the email? Check your Spam folder — the code might be there',
@@ -221,7 +221,7 @@ export default {
   'login.forgotPassword': '<a>Forgot password?</a>',
   'login.welcome': 'Welcome',
   'login.details':
-    'Please fill in your details. Your name and phone number will be visible to clients in the offer.',
+    'Create personalized property selections for your clients using our unique property evaluation system',
 
   'reset.password': 'Reset password',
   'reset.enterEmail': 'Enter your email and we’ll send you a code to reset your password',

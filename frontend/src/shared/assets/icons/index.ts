@@ -80,6 +80,8 @@ import IconWorld from './offer-collection/tabler-icon-world.svg?react';
 import IconBuildingCommunity from './offer-collection/tabler-icon-building-community.svg?react';
 import IconCheck from './offer-collection/tabler-icon-check.svg?react';
 import IconLayout from './offer-collection/layout.svg?react';
+import IconEye from './offer-collection/tabler-icon-eye.svg?react';
+import IconEyeClose from './offer-collection/tabler-icon-eye-closed.svg?react';
 import FilterIcon from './FilterIcon.svg?react';
 import EstateIcon from './EstateIcon.svg?react';
 import Collections from './Collections.svg?react';
@@ -181,4 +183,6 @@ export {
   Objects,
   Beta,
   BetaMB,
+  IconEye,
+  IconEyeClose,
 };

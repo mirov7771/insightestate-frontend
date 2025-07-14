@@ -6,6 +6,13 @@
   &__paper {
     border-radius: 10px;
     box-shadow: 0 4px 24px 0 #0000001F;
+
+    :global {
+      .MuiMenu-list {
+        min-width: 232px;
+        padding: 0;
+      }
+    }
   }
   &__info {
     display: flex;
@@ -19,10 +26,11 @@
     }
   }
 
-  :global {
-    .MuiMenu-list {
-      min-width: 232px;
-      padding: 0;
+  &__language {
+    :global {
+      .MuiMenu-list {
+        min-width: 202px;
+      }
     }
   }
 }
