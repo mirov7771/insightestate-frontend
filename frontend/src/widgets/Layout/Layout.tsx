@@ -28,7 +28,6 @@ const Layout = () => {
     <>
       {basicToken ? (
         <>
-          {/*<Header basicToken={basicToken} />*/}
           <main className={styles.main}>
             <HeaderV2 basicToken={basicToken} />
             <Outlet />

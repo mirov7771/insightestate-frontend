@@ -4,9 +4,10 @@ import { estateCollectionApi, TariffRs } from '@/widgets/EstateCollection/api/es
 import { Switcher, Text, Button } from '@/shared/ui';
 import { useNavigate, useSearchParams } from 'react-router';
 import { TariffCard } from '@/pages/Tariffs/TariffCard/TariffCard';
-import { useIntl } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { Spacer } from '@/widgets/Spacer/Spacer';
 import { isMobile } from 'react-device-detect';
+import { Logo } from '@/shared/assets/icons';
 
 const Tariffs: FC = () => {
   const { formatMessage } = useIntl();
@@ -83,8 +84,11 @@ const Tariffs: FC = () => {
   };
 
   return (
-    <>
-      <div>
+    <div className={`${styles.grid} ${styles.grid_center}`}>
+      <div className={styles.top}>
+        <div className={styles.logo}>
+          <Logo />
+        </div>
         <Text variant="heading2" as="h2" align="center">
           {formatMessage({ id: 'tariff_title' })}
         </Text>
@@ -92,14 +96,66 @@ const Tariffs: FC = () => {
           {formatMessage({ id: 'tariff_description' })}
         </Text>
         <Spacer height={35} width={100} />
-        <Text
-          variant="heading4"
-          as="span"
-          className={isMobile ? styles.badge_mobile : styles.badge}
-        >
-          {formatMessage({ id: 'tariff_free_description' })}
+        <Text variant="body1" className={styles.badge} align="center">
+          <FormattedMessage
+            id="tariff_free_description"
+            values={{ br: () => <br />, b: (children) => <strong>{children}</strong> }}
+          />
         </Text>
       </div>
+      <div className={`${styles.grid} ${styles.cards}`}>
+        {tariffs?.main.map((tariff) => (
+          <div className={styles.card}>
+            <TariffCard
+              title={tariff.title}
+              description={tariff.description}
+              price={
+                extra && tariff.price > 0 && tariff.title !== 'Pro'
+                  ? tariff.price + extraPrice
+                  : tariff.price
+              }
+              id={tariff.id}
+              onClick={handleSubsId}
+              selected={tariff.id === mySubsId}
+              extraId={
+                extra && tariff.price > 0 && tariff.title === 'Standart' ? extraId : undefined
+              }
+              userSubscriptionId={localStorage.getItem('subscriptionId')}
+              switcher={
+                tariff.title === 'Standart' ? (
+                  <div className={styles.switcher}>
+                    <div>
+                      <Switcher checked={extra} onChange={handleChangeChecked} id="" value={''} />
+                    </div>
+                    <Text variant="body1" bold>
+                      {formatMessage({ id: 'tariff_ai' })}
+                    </Text>
+                  </div>
+                ) : (
+                  <></>
+                )
+              }
+            />
+          </div>
+        ))}
+      </div>
+      <Button className={styles.button} onClick={handleTariff} size="l">
+        {mySubsId === 'f1628768-72c2-40e4-9e6d-7c4ab7b1909b' ? (
+          <Text variant="body1" bold>
+            {formatMessage({ id: 'tariff_free_continue' })}
+          </Text>
+        ) : (
+          <Text variant="body1" bold>
+            {formatMessage({ id: 'tariff_continue_button' })}{' '}
+            {mySubsId == 'b749d197-846e-49d4-aedc-abf7b3784b11' ? 'Pro' : 'Standart'}
+          </Text>
+        )}
+      </Button>
+    </div>
+  );
+
+  return (
+    <>
       <div className={styles.wrapper}>
         {tariffs?.main.map((tariff) => (
           <TariffCard

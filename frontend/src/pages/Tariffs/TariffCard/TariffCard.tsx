@@ -97,13 +97,11 @@ export const TariffCard: FC<TariffCardProps> = ({
         onClick={handleSelect}
       >
         <div className={styles.card__title}>
-          <Text variant="heading3" as="span">
-            {title}
-          </Text>
+          <Text variant="heading4">{title}</Text>
           {title === 'Pro' && (
             <Text
-              variant="heading4"
-              as="span"
+              variant="body2"
+              bold
               className={isMobile ? styles.card__badge_mobile : styles.card__badge}
             >
               {formatMessage({ id: 'tariff_popular' })}
@@ -114,7 +112,7 @@ export const TariffCard: FC<TariffCardProps> = ({
           {desc[title as keyof typeof desc].map(({ icon, text }) => (
             <li className={styles.item}>
               <span className={styles.icon}>{icon}</span>
-              {text}
+              <Text variant="body1">{text}</Text>
             </li>
           ))}
         </ul>
@@ -124,17 +122,24 @@ export const TariffCard: FC<TariffCardProps> = ({
           <div className={styles.card__border} />
           <Spacer height={25} width={100} />
           {price === 0 ? (
-            <p className={styles.card__text_p}>{getSubscription()}</p>
+            <Text variant="heading4" className={styles.card__text_p}>
+              {getSubscription()}
+            </Text>
           ) : (
             <div
               style={{
                 display: 'inline-flex',
-                gap: '10px',
+                gap: '8px',
+                alignItems: 'center',
               }}
             >
-              <p className={styles.card__text_p_decline}>{getSubscription()}</p>
+              <Text variant="heading4" className={styles.card__text_p_decline}>
+                {getSubscription()}
+              </Text>
               <li className={styles.card__badge_discount}>
-                <Text variant="heading4">-100%</Text>
+                <Text variant="body2" bold>
+                  -100%
+                </Text>
               </li>
             </div>
           )}

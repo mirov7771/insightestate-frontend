@@ -6,6 +6,7 @@
   flex-direction: column;
   gap: 24px;
   flex: 1 1 0;
+  height: 100%;
 
   &__title {
     display: flex;
@@ -69,26 +70,22 @@
   }
 
   &__text_p {
-    font-size: 35px;
     margin-top: auto;
-    text-align: left;
   }
 
   &__text_p_decline {
-    font-size: 35px;
     margin-top: auto;
-    text-align: left;
     text-decoration: line-through;
   }
 
   &__badge_discount {
     background-color: var(--ui-color-red);
-    color: var(--ui-color-black);
+    color: var(--ui-color-white);
     border-radius: 200px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 4px 12px;
-    height: 32px;
+    padding: 4px 8px;
+    height: 24px;
   }
 }
