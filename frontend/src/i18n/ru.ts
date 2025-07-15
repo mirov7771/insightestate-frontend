@@ -429,4 +429,6 @@ export default {
   'storiesV2.3.title': 'ВАШИ КЛИЕНТЫ ОСТАЮТСЯ ТОЛЬКО ВАШИМИ',
   'storiesV2.3.description': 'Гарантируем конфиденциальность',
   'storiesV2.3.button.text': 'Отлично',
+
+  country_of_residence: 'Страна проживания',
 };

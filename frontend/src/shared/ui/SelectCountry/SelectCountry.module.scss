@@ -36,3 +36,37 @@
   color: var(--ui-color-black);
   margin-bottom: 8px;
 }
+
+.root {
+
+  :global {
+    .MuiAutocomplete-inputRoot {
+      width: 100%;
+      border: 1px solid var(--ui-color-black-24-opacity);
+      min-height: 56px;
+      transition: border 0.25s ease-in-out;
+      outline: none;
+      padding-left: 24px;
+      padding-right: 8px;
+      border-radius: 200px;
+
+      &:hover {
+        border: 1px solid var(--ui-color-black-64-opacity);
+      }
+
+      &:focus, &:active {
+        border: 1px solid var(--ui-color-black);
+      }
+
+      &::placeholder {
+        color: var(--ui-color-black-64-opacity);
+      }
+
+      @include text;
+    }
+
+    .MuiOutlinedInput-notchedOutline, .MuiAutocomplete-endAdornment {
+      display: none;
+    }
+  }
+}

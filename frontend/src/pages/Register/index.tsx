@@ -7,6 +7,7 @@ import { detailApi } from '@/widgets/Detail/api/detailApi';
 import { getNavigate } from '@/pages/Authorization';
 import { LayoutForm } from '@/widgets/RegistrationLayout/LayoutForm/LayoutForm';
 import { IconEye, IconEyeClose } from '@/shared/assets/icons';
+import { AutocompleteProps } from '@mui/material';
 
 const Register: FC = () => {
   const { formatMessage } = useIntl();
@@ -37,10 +38,14 @@ const Register: FC = () => {
     setEmail(e.target.value.trim());
   };
 
-  const onChangeLocation = (e: ChangeEvent<HTMLInputElement>) => {
-    const location = e.target.value;
-
-    setLocation(location);
+  const onChangeLocation: AutocompleteProps<string, undefined, true, undefined>['onChange'] = (
+    event,
+    value,
+    reason,
+    details
+  ) => {
+    console.log({ value, reason });
+    setLocation(value);
   };
 
   const onChangePhone = (e: string) => {
@@ -134,8 +139,7 @@ const Register: FC = () => {
             disableSearchIcon
           />
           <SelectCountry
-            name="location"
-            onChange={(val, event) => onChangeLocation(event)}
+            onChange={(event, value, reason) => onChangeLocation(event, value as string, reason)}
             value={location}
           />
           {/*<Input*/}

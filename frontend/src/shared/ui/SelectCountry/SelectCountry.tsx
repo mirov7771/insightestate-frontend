@@ -1,30 +1,31 @@
 import { ComponentProps, FC } from 'react';
-import { CountryDropdown, CountryRegionData } from 'react-country-region-selector';
+import { CountryRegionData } from 'react-country-region-selector';
 import styles from './SelectCountry.module.scss';
-import { Text } from '@/shared/ui';
-import { Autocomplete, TextField } from '@mui/material';
+import { Autocomplete, TextField, AutocompleteProps } from '@mui/material';
+import { useIntl } from 'react-intl';
 
-type SelectCountryProps = ComponentProps<typeof CountryDropdown> & { label?: string };
+type SelectCountryProps = Omit<
+  AutocompleteProps<string, undefined, true, undefined>,
+  'renderInput' | 'options' | 'disableClearable'
+>;
 
 const data = CountryRegionData.default.map(([name]) => name);
 
 export const SelectCountry: FC<SelectCountryProps> = (props) => {
-  return (
-    <Autocomplete
-      renderInput={(params) => <TextField {...params} label="" placeholder="Страна проживания" />}
-      options={data}
-      open
-    />
-  );
+  const { formatMessage } = useIntl();
 
   return (
-    <div>
-      {props.label && (
-        <Text variant="heading4" as="label" className={styles.label}>
-          {props.label}
-        </Text>
+    <Autocomplete
+      {...props}
+      renderInput={(params) => (
+        <TextField
+          {...params}
+          classes={{ root: styles.root }}
+          placeholder={formatMessage({ id: 'country_of_residence' })}
+        />
       )}
-      <CountryDropdown {...props} className={styles.select} />
-    </div>
+      options={data}
+      disableClearable
+    />
   );
 };

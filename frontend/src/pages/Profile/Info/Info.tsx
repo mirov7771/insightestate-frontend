@@ -53,7 +53,13 @@ export const Info: FC<InfoProps> = ({
   const renderInputField = () => {
     switch (dataKey) {
       case 'location': {
-        return <SelectCountry onChange={(val) => setVal(val)} value={val} label={name} />;
+        return (
+          <SelectCountry
+            onChange={(_, val) => setVal(val as string)}
+            value={val}
+            aria-placeholder={name}
+          />
+        );
       }
       case 'phone':
       case 'whatsUp': {
