@@ -37,6 +37,10 @@
   margin-bottom: 8px;
 }
 
+.errorText {
+  color: var(--ui-color-red);
+}
+
 .root {
 
   :global {
@@ -67,6 +71,14 @@
 
     .MuiOutlinedInput-notchedOutline, .MuiAutocomplete-endAdornment {
       display: none;
+    }
+  }
+
+  &__error {
+    :global {
+      .MuiAutocomplete-inputRoot {
+        border: 1px solid var(--ui-color-red);
+      }
     }
   }
 }

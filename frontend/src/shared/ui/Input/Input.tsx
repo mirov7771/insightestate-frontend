@@ -17,7 +17,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         className={`${styles.wrapper} ${error ? styles.input__error : ''} ${!!icon ? styles.input__icon : ''} ${className}`.trim()}
       >
         {label && (
-          <Text variant="heading4" as="label" className={styles.label}>
+          <Text variant="heading5" as="label" className={styles.label}>
             {label}
           </Text>
         )}

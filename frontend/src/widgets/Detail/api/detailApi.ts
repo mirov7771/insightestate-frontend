@@ -246,7 +246,7 @@ export const detailApi = {
       }
       return email;
     } catch (error) {
-      return null;
+      throw error;
     }
   },
   register: async (
@@ -279,7 +279,7 @@ export const detailApi = {
       }
       return email;
     } catch (error) {
-      return null;
+      throw error;
     }
   },
   uploadProfileImage: async (file: File): Promise<string | undefined | null> => {
@@ -293,7 +293,7 @@ export const detailApi = {
 
       return rs.data.imageUrl;
     } catch (error) {
-      return null;
+      throw error;
     }
   },
   profileUpdate: async ({

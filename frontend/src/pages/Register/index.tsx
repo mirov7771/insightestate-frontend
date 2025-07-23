@@ -1,6 +1,6 @@
 import { ChangeEvent, FC, FormEventHandler, useEffect, useState } from 'react';
 import styles from './Register.module.scss';
-import { Button, Input, PhoneInput, SelectCountry, Text } from '@/shared/ui';
+import { Button, Input, PhoneInput, SelectCountry, Text, useNotifications } from '@/shared/ui';
 import { Link, useNavigate } from 'react-router';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { detailApi } from '@/widgets/Detail/api/detailApi';
@@ -8,16 +8,32 @@ import { getNavigate } from '@/pages/Authorization';
 import { LayoutForm } from '@/widgets/RegistrationLayout/LayoutForm/LayoutForm';
 import { IconEye, IconEyeClose } from '@/shared/assets/icons';
 import { AutocompleteProps } from '@mui/material';
+import { FormErrors, validate, validationPhone } from '@/pages/Register/validations';
+import { CountryData } from 'react-phone-input-2';
+import { isAxiosError } from 'axios';
+
+type Country = {
+  countryCode: string;
+  dialCode: string;
+  format: string;
+  iso2: string;
+  name: string;
+  priority: number;
+  regions: string[];
+};
 
 const Register: FC = () => {
   const { formatMessage } = useIntl();
+  const { notify } = useNotifications();
   const navigate = useNavigate();
-  const [username, setUsername] = useState('');
+  const [username, setUsername] = useState('Aleks');
   const [email, setEmail] = useState(localStorage.getItem('email') || '');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState<'password' | 'text'>('password');
   const [phone, setPhone] = useState('');
+  const [countryInfo, setCountryInfo] = useState<Country>();
   const [location, setLocation] = useState('');
+  const [formErrors, setFormErrors] = useState<FormErrors | null>();
 
   const [whatsUp, setWhatsUp] = useState('');
   const [tgName, setTgName] = useState('');
@@ -31,11 +47,13 @@ const Register: FC = () => {
   const onChangeUsername = (e: ChangeEvent<HTMLInputElement>) => {
     const username = e.target.value;
 
+    setFormErrors((prev) => ({ ...prev, username: '' }));
     setUsername(username);
   };
 
   const onChangeEmail = (e: ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value.trim());
+    setFormErrors((prev) => ({ ...prev, email: '' }));
   };
 
   const onChangeLocation: AutocompleteProps<string, undefined, true, undefined>['onChange'] = (
@@ -45,15 +63,19 @@ const Register: FC = () => {
     details
   ) => {
     console.log({ value, reason });
+    setFormErrors((prev) => ({ ...prev, location: '' }));
     setLocation(value);
   };
 
   const onChangePhone = (e: string) => {
     setPhone(e);
+    setFormErrors((prev) => ({ ...prev, phone: '' }));
   };
 
   const onChangePassword = (e: ChangeEvent<HTMLInputElement>) => {
     const password = e.target.value;
+
+    setFormErrors((prev) => ({ ...prev, password: '' }));
 
     setPassword(password);
   };
@@ -72,27 +94,55 @@ const Register: FC = () => {
 
   const handleLogin: FormEventHandler<HTMLButtonElement | HTMLFormElement> = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    const rs = await detailApi.register(
-      username,
-      email,
-      password,
-      phone,
-      location,
-      whatsUp,
-      tgName,
-      profileImage
-    );
+    const errors = validate({ email, password, location, username }, formatMessage);
+    const validatePhone = () => {
+      if (!phone) {
+        return formatMessage({ id: 'form.error.phone.required' });
+      }
 
-    if (rs) {
-      getNavigate()
-        .then((r) => navigate(r))
-        .catch((e) => {
-          console.log(e);
-          navigate('/tariffs');
-        });
+      if (!(validationPhone as Function)(phone, countryInfo as CountryData)) {
+        return formatMessage({ id: 'form.error.phone.invalid' });
+      }
+
+      return '';
+    };
+
+    setFormErrors({ ...errors, phone: validatePhone() });
+
+    if (!Object.values(errors).some((val) => val) && !validatePhone()) {
+      setLoading(true);
+      try {
+        const rs = await detailApi.register(
+          username,
+          email,
+          password,
+          phone,
+          location,
+          whatsUp,
+          tgName,
+          profileImage
+        );
+
+        if (rs) {
+          getNavigate()
+            .then((r) => navigate(r))
+            .catch((e) => {
+              console.log(e);
+              navigate('/tariffs');
+            });
+        }
+      } catch (e) {
+        if (isAxiosError(e)) {
+          notify({
+            message: e.response?.data.status?.description,
+            severity: 'error',
+            duration: 5000,
+          });
+        }
+      } finally {
+        setLoading(false);
+      }
     }
-    setLoading(false);
   };
 
   const onChangeProfileImage = async (e: ChangeEvent<HTMLInputElement>) => {
@@ -122,12 +172,14 @@ const Register: FC = () => {
             value={username}
             name="username"
             placeholder={formatMessage({ id: 'surname_name' })}
+            error={formErrors?.username}
           />
           <Input
             name="email"
             value={email}
             onChange={onChangeEmail}
             placeholder={formatMessage({ id: 'login.emailPlaceholder' })}
+            error={formErrors?.email}
           />
           <PhoneInput
             value={phone}
@@ -137,10 +189,19 @@ const Register: FC = () => {
             enableSearch
             autocompleteSearch
             disableSearchIcon
+            defaultErrorMessage={formErrors?.phone}
+            error={formErrors?.phone}
+            isValid={(value, country) => {
+              setCountryInfo(country as Country);
+              setPhone(value);
+
+              return false;
+            }}
           />
           <SelectCountry
             onChange={(event, value, reason) => onChangeLocation(event, value as string, reason)}
             value={location}
+            error={formErrors?.location}
           />
           {/*<Input*/}
           {/*  name="whatsUp"*/}
@@ -187,6 +248,7 @@ const Register: FC = () => {
             placeholder={formatMessage({ id: 'password' })}
             icon={showPassword === 'text' ? <IconEye /> : <IconEyeClose />}
             iconOnClick={toggleShowPassword}
+            error={formErrors?.password}
           />
 
           <Button onClick={handleLogin} wide size={'l'} loading={loading} type="submit">

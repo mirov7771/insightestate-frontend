@@ -1,15 +1,17 @@
 import { ChangeEvent, FC, FormEventHandler, useState } from 'react';
 import styles from './SignUp.module.scss';
-import { Button, Input, Text } from '@/shared/ui';
+import { Button, Input, Text, useNotifications } from '@/shared/ui';
 import { Link, useNavigate } from 'react-router';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { detailApi } from '@/widgets/Detail/api/detailApi';
 import { isAxiosError } from 'axios';
 import { LayoutForm } from '@/widgets/RegistrationLayout/LayoutForm/LayoutForm';
+import { validationEmail } from '@/pages/Register/validations';
 
 // Регистрация
 const SignUp: FC = () => {
   const { formatMessage } = useIntl();
+  const { notify } = useNotifications();
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
@@ -22,7 +24,10 @@ const SignUp: FC = () => {
 
   const handleLogin: FormEventHandler<HTMLButtonElement | HTMLFormElement> = async (e) => {
     e.preventDefault();
-    if (email) {
+    const err = validationEmail(email, formatMessage);
+
+    setError(err);
+    if (!err) {
       setLoading(true);
       try {
         const rs = await detailApi.signUp(email);
@@ -34,7 +39,7 @@ const SignUp: FC = () => {
             status: { description },
           } = e.response?.data as { status: { code: string; description: string } };
 
-          setError(description);
+          notify({ message: description, severity: 'error', duration: 5000 });
         }
       } finally {
         setLoading(false);

@@ -432,4 +432,16 @@ export default {
   'storiesV2.3.button.text': 'Great',
 
   country_of_residence: 'Страна проживания',
+
+  'form.error.username.required': 'Username is required',
+  'form.error.username.invalid':
+    'Username must be at least 3 characters long and contain only letters and numbers',
+  'form.error.password.required': 'Password is required',
+  'form.error.password.short': 'Password must be at least 6 characters long',
+  'form.error.phone.required': 'Phone number is required',
+  'form.error.phone.invalid': 'Invalid phone number',
+  'form.error.location.required': 'Location is required',
+  'form.error.location.short': 'Location must be at least 2 characters long',
+  'form.error.email.required': 'Email is required',
+  'form.error.email.invalid': 'Invalid email address',
 };

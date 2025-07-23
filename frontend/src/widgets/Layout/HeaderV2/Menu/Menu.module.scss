@@ -20,6 +20,7 @@
 
     &_active {
       color: var(--ui-color-black);
+      border-bottom: 2px solid var(--ui-color-black);
     }
   }
 }

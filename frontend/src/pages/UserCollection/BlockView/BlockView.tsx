@@ -79,7 +79,6 @@ export const BlockView: FC<BlockViewProps> = ({
               );
             })}
           </div>
-          <div className={styles.shadow} />
         </div>
         {!!estates.length && (
           <div className={styles.buttons}>

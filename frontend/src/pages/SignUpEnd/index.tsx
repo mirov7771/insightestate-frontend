@@ -1,13 +1,15 @@
 import { ChangeEvent, FC, FormEventHandler, useEffect, useState } from 'react';
 import styles from './SignUpEnd.module.scss';
-import { Button, Input, Text } from '@/shared/ui';
+import { Button, Input, Text, useNotifications } from '@/shared/ui';
 import { Link, useNavigate } from 'react-router';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { detailApi } from '@/widgets/Detail/api/detailApi';
 import { LayoutForm } from '@/widgets/RegistrationLayout/LayoutForm/LayoutForm';
+import { isAxiosError } from 'axios';
 
 const SignUpEnd: FC = () => {
   const { formatMessage } = useIntl();
+  const { notify } = useNotifications();
   const navigate = useNavigate();
   const [code, setCode] = useState('');
   const [email, setEmail] = useState<string>('');
@@ -27,6 +29,13 @@ const SignUpEnd: FC = () => {
 
         if (rs) navigate('/register');
       } catch (e) {
+        if (isAxiosError(e)) {
+          notify({
+            message: e.response?.data?.status?.description,
+            severity: 'error',
+            duration: 5000,
+          });
+        }
       } finally {
         setLoading(false);
       }
