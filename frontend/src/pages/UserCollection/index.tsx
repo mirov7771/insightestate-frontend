@@ -14,7 +14,6 @@ import { Tabs } from '@/entities/Tabs/Tabs';
 import { Text, useNotifications } from '@/shared/ui';
 import { FETCHING_STATUS } from '@/shared/constants/constants';
 import { copyToClipboard } from '@/shared/utils';
-import { detailApi } from '@/widgets/Detail/api/detailApi';
 
 type TStatus = 'IDLE' | 'SUCCESS' | 'ERROR' | 'LOADING';
 
@@ -158,9 +157,6 @@ const UserCollection: FC = () => {
 
   return (
     <div className={styles.wrap}>
-      <Text variant="heading2" as="h1" className={styles.header}>
-        {formatMessage({ id: 'collection_title' })}
-      </Text>
       {status === 'LOADING' && (
         <Watch
           height="180"

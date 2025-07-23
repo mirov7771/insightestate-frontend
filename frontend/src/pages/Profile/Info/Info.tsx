@@ -58,6 +58,7 @@ export const Info: FC<InfoProps> = ({
             onChange={(_, val) => setVal(val as string)}
             value={val}
             aria-placeholder={name}
+            label={name}
           />
         );
       }

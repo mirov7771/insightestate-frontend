@@ -8,7 +8,7 @@ export const PhoneInput: FC<PhoneInputProps & { error?: string; label?: string }
   return (
     <div>
       {props.label && (
-        <Text variant="heading4" as="label" className={styles.label}>
+        <Text variant="heading5" as="label" className={styles.label}>
           {props.label}
         </Text>
       )}

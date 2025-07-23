@@ -14,6 +14,7 @@ import {
   IconBrandTelegram,
 } from '@/shared/assets/icons';
 import { useIntl } from 'react-intl';
+import { Skeleton } from '@mui/material';
 
 type UserProfileProps = {
   basicToken: string;
@@ -78,7 +79,7 @@ export const UserProfile: FC<UserProfileProps> = ({ basicToken }) => {
   }, []);
 
   if (status === 'LOADING') {
-    return <Text variant="heading3">Loading</Text>;
+    return <Skeleton variant="circular" width={40} height={40} />;
   }
 
   if (status === 'SUCCESS' && userInfo) {

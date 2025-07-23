@@ -53,26 +53,9 @@
 .estates {
   display: flex;
   gap: 16px;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   overflow-x: auto;
   position: relative;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
-}
-
-.shadow {
-  height: 100%;
-  width: 100px;
-  position: absolute;
-  right: 0;
-  top: 0;
-  background: linear-gradient(270deg, #ffffff 40.2%, rgba(255, 255, 255, 0) 100%);
-
-  @media (min-width: $media-md) {
-    width: 128px;
-  }
 }
 
 .estate {
@@ -80,14 +63,6 @@
   flex-direction: column;
   width: 200px;
   flex-shrink: 0;
-
-  &:last-child {
-    margin-right: 100px;
-
-    @media (min-width: $media-md) {
-      margin-right: 128px;
-    }
-  }
 
   &__img {
     border-radius: 16px;

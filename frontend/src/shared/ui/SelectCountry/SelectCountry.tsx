@@ -10,18 +10,25 @@ type SelectCountryProps = Omit<
   'renderInput' | 'options' | 'disableClearable'
 > & {
   error?: string;
+  label?: string;
 };
 
 const data = CountryRegionData.default.map(([name]) => name);
 
 export const SelectCountry: FC<SelectCountryProps> = (props) => {
   const { formatMessage } = useIntl();
+  const { label, ...rest } = props;
 
   return (
     <Autocomplete
-      {...props}
+      {...rest}
       renderInput={(params) => (
         <>
+          {label && (
+            <Text variant="heading5" as="label" className={styles.label}>
+              {label}
+            </Text>
+          )}
           <TextField
             {...params}
             classes={{ root: `${styles.root} ${!!props.error ? styles.root__error : ''}` }}
