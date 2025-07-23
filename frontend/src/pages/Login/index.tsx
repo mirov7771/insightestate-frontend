@@ -7,6 +7,7 @@ import { detailApi } from '@/widgets/Detail/api/detailApi';
 import { isAxiosError } from 'axios';
 import { getNavigate } from '@/pages/Authorization';
 import { LayoutForm } from '@/widgets/RegistrationLayout/LayoutForm/LayoutForm';
+import { validationEmail, validationPassword } from '@/pages/Register/validations';
 
 const Login: FC = () => {
   const { formatMessage } = useIntl();
@@ -15,19 +16,31 @@ const Login: FC = () => {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [formErrors, setFormErrors] = useState<{ password: string; username: string }>({
+    username: '',
+    password: '',
+  });
   const onChangeUsername = (e: ChangeEvent<HTMLInputElement>) => {
     setUsername(e.target.value.trim());
     setError('');
+    setFormErrors((prevState) => ({ ...prevState, username: '' }));
   };
   const onChangePassword = (e: ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value.trim());
     setError('');
+    setFormErrors((prevState) => ({ ...prevState, password: '' }));
   };
 
   const handleLogin: FormEventHandler<HTMLButtonElement | HTMLFormElement> = async (e) => {
     e.preventDefault();
+    const errors: typeof formErrors = {
+      username: validationEmail(username, formatMessage),
+      password: validationPassword(password, formatMessage),
+    };
 
-    if (username && password) {
+    setFormErrors(errors);
+
+    if (!Object.values(errors).some((val) => val)) {
       setLoading(true);
       try {
         const rs = await detailApi.login(username, password);
@@ -45,7 +58,9 @@ const Login: FC = () => {
         if (isAxiosError(e)) {
           const {
             status: { description },
-          } = e.response?.data as { status: { code: string; description: string } };
+          } = (e.response?.data as { status: { code: string; description: string } }) || {
+            status: {},
+          };
 
           console.log('Error,', description);
           setError(formatMessage({ id: 'login.wrongLoginOrPassword' }));
@@ -69,6 +84,7 @@ const Login: FC = () => {
             onChange={onChangeUsername}
             value={username}
             name="username"
+            error={formErrors.username}
           />
           <Input
             placeholder={formatMessage({ id: 'password' })}
@@ -76,6 +92,7 @@ const Login: FC = () => {
             value={password}
             type="password"
             name="password"
+            error={formErrors.password}
           />
           <Button onClick={handleLogin} wide size="l" loading={loading}>
             <Text variant="body1" bold align="center" as="span">

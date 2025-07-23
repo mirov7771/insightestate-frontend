@@ -431,4 +431,16 @@ export default {
   'storiesV2.3.button.text': 'Отлично',
 
   country_of_residence: 'Страна проживания',
+
+  'form.error.username.required': 'Имя пользователя обязательно',
+  'form.error.username.invalid':
+    'Имя пользователя должно содержать минимум 3 символа и состоять только из букв и цифр',
+  'form.error.password.required': 'Пароль обязателен',
+  'form.error.password.short': 'Пароль должен быть не короче 6 символов',
+  'form.error.phone.required': 'Телефон обязателен',
+  'form.error.phone.invalid': 'Некорректный номер телефона',
+  'form.error.location.required': 'Локация обязательна',
+  'form.error.location.short': 'Локация должна содержать минимум 2 символа',
+  'form.error.email.required': 'Почта обязательна',
+  'form.error.email.invalid': 'Некорректный адрес почты',
 };

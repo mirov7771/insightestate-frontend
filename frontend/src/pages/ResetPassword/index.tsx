@@ -5,21 +5,28 @@ import { useIntl } from 'react-intl';
 import { LayoutForm } from '@/widgets/RegistrationLayout/LayoutForm/LayoutForm';
 import { resetPasswordApi } from '@/shared/api/resetPassword/resetPasswordApi';
 import { FETCHING_STATUS } from '@/shared/constants/constants';
+import { validationEmail } from '@/pages/Register/validations';
 
 const ResetPassword: FC = () => {
   const { formatMessage } = useIntl();
   const navigate = useNavigate();
   const [email, setEmail] = useState<string>('');
   const [status, setStatus] = useState<keyof typeof FETCHING_STATUS>('IDLE');
+  const [formErrors, setFormErrors] = useState<{ email: string }>({ email: '' });
 
   const handleChangeEmail = (e: ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
+    setFormErrors({ email: '' });
   };
 
   const handeSendEmail: FormEventHandler<HTMLButtonElement | HTMLFormElement> = async (e) => {
     e.preventDefault();
+    const error = validationEmail(email, formatMessage);
+
+    setFormErrors({ email: error });
+
     try {
-      if (email) {
+      if (!error) {
         setStatus('LOADING');
         await resetPasswordApi.reset(email);
 
@@ -55,6 +62,7 @@ const ResetPassword: FC = () => {
             value={email}
             name="email"
             placeholder={formatMessage({ id: 'login.emailPlaceholder' })}
+            error={formErrors.email}
           />
           <Button onClick={handeSendEmail} wide size={'l'} loading={status === 'LOADING'}>
             <Text variant="body1" bold align="center" as="span">
