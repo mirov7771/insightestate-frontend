@@ -10,7 +10,6 @@ import {
   Estate,
   estateCollectionApi,
 } from '@/widgets/EstateCollection/api/estateCollectionApi';
-import { CardLayoutProps } from '@/pages/OfferCollectionV2/CardLayout/CardLayout';
 
 export const UnitSlide: FC<{
   estate: Estate & { collection: string; collectionId: string; agentInfo?: AgentInfo };

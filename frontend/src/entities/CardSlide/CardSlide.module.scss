@@ -288,7 +288,6 @@
     pointer-events: auto;
     cursor: default;
     width: 32px;
-    height: 24px;
 
     &_text {
       width: 24px;
@@ -309,6 +308,14 @@
 
     &_blue {
       background-color: var(--ui-color-blue);
+    }
+
+    &_m {
+      height: 24px;
+    }
+
+    &_l {
+      height: 32px;
     }
   }
 }

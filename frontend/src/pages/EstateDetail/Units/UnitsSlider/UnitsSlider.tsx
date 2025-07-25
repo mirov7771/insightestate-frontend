@@ -137,7 +137,9 @@ export const UnitsSlider: FC<UnitsSliderProps> = ({ items }) => {
                     setUserCollectionModal(true);
                   }}
                 >
-                  <Text variant="body1">{formatMessage({ id: 'add_to_collection' })}</Text>
+                  <Text variant="body1" bold>
+                    {formatMessage({ id: 'add_to_collection' })}
+                  </Text>
                 </Button>
               </div>
             </div>

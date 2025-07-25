@@ -174,7 +174,7 @@ export const Rating: FC<Grade> = ({
         <div className={styles.rating}>
           {main && (
             <div className={`${styles.rating__item_wrap} ${styles.rating__item_main}`}>
-              <Text variant="body1" className={styles.rating__text_wrap}>
+              <Text variant="body1" className={styles.rating__text}>
                 {formatMessage({ id: 'overall' })}
               </Text>
               <Text
@@ -188,7 +188,7 @@ export const Rating: FC<Grade> = ({
           )}
           {investmentSecurity && (
             <div className={styles.rating__item_wrap}>
-              <Text variant="body1" className={styles.rating__text_wrap}>
+              <Text variant="body1" className={styles.rating__text}>
                 {formatMessage({ id: 'security' })}
               </Text>
               <Text variant="heading3" className={styles.rating__score} onClick={handleSecurity}>
@@ -198,7 +198,7 @@ export const Rating: FC<Grade> = ({
           )}
           {investmentPotential && (
             <div className={styles.rating__item_wrap}>
-              <Text variant="body1" className={styles.rating__text_wrap}>
+              <Text variant="body1" className={styles.rating__text}>
                 {formatMessage({ id: 'invest_potential' })}
               </Text>
               <Text variant="heading3" className={styles.rating__score} onClick={handleInvest}>
@@ -208,7 +208,7 @@ export const Rating: FC<Grade> = ({
           )}
           {projectLocation && (
             <div className={styles.rating__item_wrap}>
-              <Text variant="body1" className={styles.rating__text_wrap}>
+              <Text variant="body1" className={styles.rating__text}>
                 {formatMessage({ id: 'project_location' })}
               </Text>
               <Text variant="heading3" className={styles.rating__score} onClick={handleLocation}>
@@ -218,7 +218,7 @@ export const Rating: FC<Grade> = ({
           )}
           {comfortOfLife && (
             <div className={styles.rating__item_wrap}>
-              <Text variant="body1" className={styles.rating__text_wrap}>
+              <Text variant="body1" className={styles.rating__text}>
                 {formatMessage({ id: 'comfort' })}
               </Text>
               <Text variant="heading3" className={styles.rating__score} onClick={handleComfort}>
