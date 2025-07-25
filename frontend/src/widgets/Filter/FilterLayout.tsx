@@ -1,6 +1,7 @@
 import { FC, ReactElement } from 'react';
 import { Text } from '@/shared/ui';
 import styles from './Filter.module.scss';
+import { FormattedMessage } from 'react-intl';
 
 type FilterLayoutProps = {
   filter: ReactElement;
@@ -22,7 +23,7 @@ export const FilterLayout: FC<FilterLayoutProps> = ({
           {name && <Text variant="heading5">{name}</Text>}
           {isActiveFilter && (
             <Text className={styles.layout__reset} variant="heading5" onClick={onResetFilter}>
-              Reset
+              <FormattedMessage id="filter.reset" />
             </Text>
           )}
         </div>

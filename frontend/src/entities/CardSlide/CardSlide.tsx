@@ -57,18 +57,9 @@ export const CardSlide: FC<CardSlideProps> = ({
         <div className={styles.card__slider}>
           <ul className={styles.badges}>
             <li className={styles.badges__badge} onClick={openRatingInfo}>
+              <EstateIcon />
               <Text variant="body2" bold>
-                <div
-                  style={{
-                    display: 'inline-flex',
-                    gap: '5px',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
-                >
-                  <EstateIcon />
-                  {estate.grade.toPrecision(2)}
-                </div>
+                {estate.grade.toPrecision(2)}
               </Text>
             </li>
             {estate.buildEndDate !== '-' && estate.buildEndDate && (
@@ -137,7 +128,7 @@ export const CardSlide: FC<CardSlideProps> = ({
               {(estate.collectionCount || 0) !== 0 ? (
                 <Button
                   onClick={handleOpenUserCollectionModal}
-                  size="s"
+                  size="m"
                   className={styles.card__button}
                   variant="base"
                 >
@@ -152,7 +143,7 @@ export const CardSlide: FC<CardSlideProps> = ({
               ) : (
                 <Button
                   onClick={handleOpenUserCollectionModal}
-                  size="s"
+                  size="m"
                   className={styles.card__button}
                 >
                   <Text variant="body1" bold>
