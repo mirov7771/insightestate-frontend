@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { useIntl } from 'react-intl';
 import { useStatus } from '@/shared/utils/useStatus';
@@ -147,6 +147,11 @@ const EstateDetail: FC = () => {
               ...(estateDetailData.facilityImages || []),
             ]}
           />
+            <Text as="p" variant="body2" className={styles.text}>
+                {localStorage.getItem('language') === 'en'
+                    ? estateDetailData.shortDescriptionEn
+                    : estateDetailData.shortDescriptionRu}
+            </Text>
           <aside className={`${styles.side} ${styles.side_hidden_desktop}`}>
             <div className={styles.sticky}>{renderSideSection()}</div>
           </aside>

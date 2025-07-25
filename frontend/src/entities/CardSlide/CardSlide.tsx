@@ -64,6 +64,7 @@ export const CardSlide: FC<CardSlideProps> = ({
                     gap: '5px',
                     alignItems: 'center',
                     justifyContent: 'center',
+                    marginTop: '2px'
                   }}
                 >
                   <EstateIcon />

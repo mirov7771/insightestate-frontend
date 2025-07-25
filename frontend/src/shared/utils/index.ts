@@ -1,6 +1,6 @@
 export const formatNumber = (q: number | undefined | string) => {
   if (typeof q === 'string') return q;
-  if (!q) return undefined;
+  if (!q) return 0;
   return q.toLocaleString('ru-RU', {
     trailingZeroDisplay: 'stripIfInteger',
   });
