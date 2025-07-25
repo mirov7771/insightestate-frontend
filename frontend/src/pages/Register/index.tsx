@@ -26,7 +26,7 @@ const Register: FC = () => {
   const { formatMessage } = useIntl();
   const { notify } = useNotifications();
   const navigate = useNavigate();
-  const [username, setUsername] = useState('Aleks');
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState(localStorage.getItem('email') || '');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState<'password' | 'text'>('password');
@@ -107,9 +107,9 @@ const Register: FC = () => {
       return '';
     };
 
-    setFormErrors({ ...errors, phone: validatePhone() });
+    setFormErrors({ ...errors });
 
-    if (!Object.values(errors).some((val) => val) && !validatePhone()) {
+    if (!Object.values(errors).some((val) => val)) {
       setLoading(true);
       try {
         const rs = await detailApi.register(
@@ -190,7 +190,7 @@ const Register: FC = () => {
             autocompleteSearch
             disableSearchIcon
             defaultErrorMessage={formErrors?.phone}
-            error={formErrors?.phone}
+            // error={formErrors?.phone}
             isValid={(value, country) => {
               setCountryInfo(country as Country);
               setPhone(value);
@@ -201,7 +201,7 @@ const Register: FC = () => {
           <SelectCountry
             onChange={(event, value, reason) => onChangeLocation(event, value as string, reason)}
             value={location}
-            error={formErrors?.location}
+            // error={formErrors?.location}
           />
           {/*<Input*/}
           {/*  name="whatsUp"*/}

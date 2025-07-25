@@ -7,7 +7,7 @@ export default {
   type_of_place: 'Property type',
   completion_date: 'Handover date',
   number_of_bedrooms: 'Number of bedrooms',
-  price: 'Price',
+  price: 'Price, $',
   potential: 'Comfort and potential',
   uk: 'Management company',
   properties: 'Objects',

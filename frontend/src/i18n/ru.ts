@@ -7,7 +7,7 @@ export default {
   type_of_place: 'Тип объекта',
   completion_date: 'Дата сдачи объекта',
   number_of_bedrooms: 'Количество спален',
-  price: 'Стоимость',
+  price: 'Стоимость, $',
   potential: 'Комфорт и потенциал',
   uk: 'Наличие УК',
   properties: 'Объекты',
