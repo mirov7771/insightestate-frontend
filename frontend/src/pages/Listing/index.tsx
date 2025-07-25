@@ -18,7 +18,7 @@ import { Beach } from '@/widgets/Filter/Beach';
 import { useSearchParams } from 'react-router';
 import { isMobile } from 'react-device-detect';
 import { Region } from '@/widgets/Filter/Region';
-import {Price} from "@/widgets/Filter/Price";
+import { Price } from '@/widgets/Filter/Price';
 
 const Listing: FC = () => {
   const { formatMessage } = useIntl();
@@ -72,9 +72,6 @@ const Listing: FC = () => {
             onClick={() => setOpenFilters(true)}
           >
             <IconAdjustmentsFilter />
-            <Text variant="body1" bold className={styles.button__text}>
-              {formatMessage({ id: 'all_filters' })}
-            </Text>
             {!!countActiveFilters && (
               <Text variant="caption1" className={styles.button__counter}>
                 {countActiveFilters}
@@ -85,9 +82,9 @@ const Listing: FC = () => {
           <div className={styles.filters}>
             <div className={styles.filters__scroll}>
               <FastFilter
-                  filter={<Price />}
-                  name={formatMessage({ id: 'price' })}
-                  filterName="price"
+                filter={<Price />}
+                name={formatMessage({ id: 'price' })}
+                filterName="price"
               />
               <FastFilter
                 filter={<City />}

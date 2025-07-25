@@ -84,7 +84,7 @@
         background-color: var(--ui-color-white);
         border-radius: 50%;
         opacity: 0;
-        transition: opacity 0.2s ease-in-out;
+        transition: opacity 0.2s ease-in-out, background-color 0.2s ease-in-out;
 
         > svg {
           width: 28px;
@@ -142,6 +142,14 @@
     :global {
       .slick-arrow {
         opacity: 1;
+
+        /*&:hover {
+          background-color: var(--ui-color-black-12-opacity);
+        }
+
+        &:active {
+          background-color: var(--ui-color-black-24-opacity);
+        }*/
       }
     }
   }
@@ -157,6 +165,7 @@
     top: 12px;
     left: 12px;
     display: flex;
+    flex-wrap: wrap;
     gap: 8px;
     list-style: none;
     margin: 0;
@@ -165,12 +174,14 @@
 
     &__badge {
       background-color: var(--ui-color-white);
-      padding: 4px 8px;
+      padding: 0 8px;
       border-radius: 200px;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
+      height: 24px;
+      gap: 2px;
     }
   }
 
@@ -233,7 +244,6 @@
 
   &__title {
     font-size: var(--heading--h6);
-    margin-top: 16px;
     color: var(--dark);
     font-weight: 600;
     text-decoration: none;
@@ -277,6 +287,7 @@
     border-radius: 200px;
     pointer-events: auto;
     cursor: default;
+    width: 32px;
 
     &_text {
       width: 24px;
@@ -297,6 +308,14 @@
 
     &_blue {
       background-color: var(--ui-color-blue);
+    }
+
+    &_m {
+      height: 24px;
+    }
+
+    &_l {
+      height: 32px;
     }
   }
 }

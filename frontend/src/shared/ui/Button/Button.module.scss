@@ -9,6 +9,11 @@
   width: fit-content;
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
   white-space: nowrap;
+  font-family: 'Wix Madefor Text', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0;
 
   &:disabled {
     background-color: #eff2f3;
@@ -224,21 +229,18 @@
   }
 
   &__size-l {
-    font-size: 15px;
-    line-height: 20px;
-    padding: 16px 24px;
+    padding: 0 24px;
+    height: 56px;
   }
 
   &__size-m {
-    font-size: 15px;
-    line-height: 20px;
-    padding: 10px 24px;
+    padding: 0 24px;
+    height: 48px;
   }
 
   &__size-s {
-    font-size: 14px;
-    line-height: 20px;
-    padding: 7px 16px;
+    padding: 0 16px;
+    height: 40px;
   }
 
   &__wide {

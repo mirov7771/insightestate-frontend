@@ -51,6 +51,10 @@
   transition: background-color 0.2s ease-in-out;
   width: fit-content;
 
+  @media (min-width: $media-md) {
+    width: 100%;
+  }
+
   &:hover {
     background-color: var(--ui-color-black-24-opacity);
   }

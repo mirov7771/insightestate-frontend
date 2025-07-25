@@ -316,6 +316,7 @@ export default {
 
   'filters.header': 'Filters',
   'filter.show_objects': 'Show {totalCount, plural, one {# property} other {# properties}}',
+  'filter.reset': 'Reset',
 
   tariff_free_description:
     '🎉 You are participating in the beta test! All tariffs are free for you during the testing period. <br></br>We have already activated the Pro tariff — no restrictions',

@@ -4,7 +4,7 @@ import Slider from '@mui/material/Slider';
 import { Input } from '@/shared/ui';
 import { useFilters } from '@/widgets/Filter/model/useFilters';
 import { useIntl } from 'react-intl';
-import {debounce, formatNumber} from '@/shared/utils';
+import { debounce, formatNumber } from '@/shared/utils';
 import { FilterLayout } from '@/widgets/Filter/FilterLayout';
 import { useSearchParams } from 'react-router';
 
@@ -87,7 +87,7 @@ export const Price: FC = () => {
             }}
             value={value}
             onChange={(event, value) => handleChange(event, value as number[])}
-            valueLabelDisplay="auto"
+            valueLabelDisplay="off"
           />
           <div className={styles.price}>
             <Input value={formatNumber(value[0])} onChange={handleChangeInput('min')} />

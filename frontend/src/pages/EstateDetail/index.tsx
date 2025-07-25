@@ -90,6 +90,7 @@ const EstateDetail: FC = () => {
             toolTip1={estateDetailData.toolTip1 === 'true' ? estateDetailData.toolTip1 : undefined}
             toolTip2={estateDetailData.toolTip2 === 'true' ? estateDetailData.toolTip2 : undefined}
             toolTip3={estateDetailData.toolTip3 === 'true' ? estateDetailData.toolTip3 : undefined}
+            size="l"
           />
         </div>
         <Text variant="heading3" className={styles.name}>
@@ -108,17 +109,17 @@ const EstateDetail: FC = () => {
           city={estateDetailData.city}
         />
         <div className={styles.buttons}>
-          <Button disabled={!token} onClick={handleOpenUserCollectionModal} wide>
+          <Button disabled={!token} onClick={handleOpenUserCollectionModal} size="l" wide>
             <Text variant="body1" bold>
               {formatMessage({ id: 'add_to_collection' })}
             </Text>
           </Button>
-          <Button disabled={!token} onClick={handleOpenAiModal} variant="ai" wide>
+          <Button disabled={!token} onClick={handleOpenAiModal} size="l" variant="ai" wide>
             <Text variant="body1" bold>
               {formatMessage({ id: 'ai_collection' })}
             </Text>
           </Button>
-          <Button disabled={!token} onClick={handleOpenHelpModal} variant="base" wide>
+          <Button disabled={!token} onClick={handleOpenHelpModal} size="l" variant="base" wide>
             <Text variant="body1" bold>
               {formatMessage({ id: 'help_with_client' })}
             </Text>
