@@ -8,11 +8,11 @@ import {
   StyledWrapperText,
 } from './styled';
 import { Spacer } from '../Spacer/Spacer';
-import { Text } from '../Text/Text';
 import { isMobile } from 'react-device-detect';
 import { usersApi } from '@/shared/api/users';
 import { useNavigate } from 'react-router';
 import { useIntl } from 'react-intl';
+import {Button, Text} from "@/shared/ui";
 
 export const UserDeleteModal: FC<
   TModalProps & {
@@ -50,12 +50,12 @@ export const UserDeleteModal: FC<
           <StyledWrapperProgress>
             <Spacer width="100%" height={8} />
             <Spacer width="100%" height={8} />
-            <Text size="xl" align="center" colorTheme={'black200'} isBold>
+            <Text align="center" bold variant='body1'>
               {formatMessage({ id: 'deleteProfile' })}
             </Text>
             <Spacer width="100%" height={8} />
             <StyledWrapperText>
-              <Text size="m" align="left" colorTheme={'black200'}>
+              <Text align="left">
                 {formatMessage({ id: 'deleteProfileMessage' })}
               </Text>
             </StyledWrapperText>
@@ -67,16 +67,23 @@ export const UserDeleteModal: FC<
           style={{
             display: 'inline-flex',
             gap: '20px',
-            width: '90%',
             margin: 'auto',
           }}
         >
-          <StyledButton color="primary" variant="contained" size="small" onClick={deleteUser}>
-            {formatMessage({ id: 'deleteProfileYes' })}
-          </StyledButton>
-          <StyledButton color="secondary" variant="contained" size="small" onClick={onClose}>
-            {formatMessage({ id: 'deleteProfileNo' })}
-          </StyledButton>
+          <Button onClick={onClose} size="l" variant="base" style={{
+            width: '200px'
+          }}>
+            <Text variant="body1">
+              {formatMessage({ id: 'deleteProfileNo' })}
+            </Text>
+          </Button>
+          <Button onClick={deleteUser} size="l" variant="primary" style={{
+            width: '200px'
+          }}>
+            <Text variant="body1">
+              {formatMessage({ id: 'deleteProfileYes' })}
+            </Text>
+          </Button>
         </div>
       </StyledSwipeableDrawer>
     </>

@@ -1,6 +1,7 @@
-import { FC, useState } from 'react';
+import {FC, useEffect, useRef, useState} from 'react';
 import { useNavigate } from 'react-router';
 import { Dropdown } from '@/widgets/Dropdown/Dropdown';
+import {isMobile} from "react-device-detect";
 
 export const DefaultEn: FC = () => {
   const navigate = useNavigate();
@@ -8,8 +9,30 @@ export const DefaultEn: FC = () => {
     localStorage.setItem('language', 'ru');
     navigate('/ru');
   };
+  const [isScrollingDown, setIsScrollingDown] = useState(false);
+  const lastScrollTop = useRef(0);
 
   const [showCookies, setShowCookies] = useState(true);
+
+  const handleScroll = () => {
+    const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (currentScrollTop > 100) {
+      // Scrolling down
+      setIsScrollingDown(true);
+    } else if (currentScrollTop === 0) {
+      // Scrolling up or at the top
+      setIsScrollingDown(false);
+    }
+    lastScrollTop.current = currentScrollTop;
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
     <>
@@ -231,10 +254,15 @@ export const DefaultEn: FC = () => {
               <div
                 id="w-node-_68a79f6a-9d7d-678d-f904-58679220a0c1-04f8ceb0"
                 className="navbar1_button-wrapper"
+                style={{
+                  marginRight: isMobile ? '-15vw' : '-5vw'
+                }}
               >
+                {isScrollingDown ?
                 <a href="/login" className="button-cc is-navbar2-button w-button">
                   Log in
-                </a>
+                </a> : <></>
+                }
                 <Dropdown changeLocale={handleRu} />
               </div>
             </div>

@@ -76,7 +76,7 @@ export const Dropdown: FC<DropdownProps> = ({ changeLocale }) => {
             handleRusLanguage();
           }}
         >
-          <Text variant="heading5">Rus</Text>
+          <Text variant="heading5">Русский</Text>
         </MenuItem>
         <MenuItem
           classes={{ root: styles.listItem }}
@@ -85,7 +85,7 @@ export const Dropdown: FC<DropdownProps> = ({ changeLocale }) => {
             handleEngLanguage();
           }}
         >
-          <Text variant="heading5">Eng</Text>
+          <Text variant="heading5">English</Text>
         </MenuItem>
       </Menu>
     </div>
