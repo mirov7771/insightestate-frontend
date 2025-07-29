@@ -3,6 +3,7 @@ import styles from './Footer.module.scss';
 import { Link } from 'react-router';
 import { BlackWhatsApp, InstagramBlack, TelegramBlack, YoutubeBlack } from '@/shared/assets/icons';
 import { useIntl } from 'react-intl';
+import { Text } from '@/shared/ui';
 
 export const Footer: FC = () => {
   const { formatMessage } = useIntl();
@@ -90,9 +91,10 @@ export const Footer: FC = () => {
       {/*  </div>*/}
       {/*</footer>*/}
       <div className={styles.disclaimer}>
-        <p>{formatMessage({ id: 'footer_info' })}</p>
-        <br />
-        <p>© 2025 Insight Estate. {formatMessage({ id: 'rights_reserved' })}</p>
+        <Text variant="caption1" as="p">
+          {formatMessage({ id: 'footer_info' })}
+          <br />© 2025 Insight Estate. {formatMessage({ id: 'rights_reserved' })}
+        </Text>
       </div>
     </div>
   );
