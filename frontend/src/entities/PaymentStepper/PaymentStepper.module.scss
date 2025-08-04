@@ -1,13 +1,5 @@
 @use '~@/sass/index' as *;
 
-.container {
-  @media (min-width: $media-md) {
-    padding: 24px;
-    border-radius: 24px;
-    border: 1px solid var(--ui-color-black-24-opacity);
-  }
-}
-
 .title {
   font-size: 16px;
   color: var(--ui-color-black-64-opacity);
@@ -16,74 +8,43 @@
 
 .steps {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
-}
-
-.step {
-  font-weight: 600;
-  font-size: 18px;
-  color: var(--ui-color-black);
-  white-space: nowrap;
-
-  &_estate_detail {
-    display: flex;
-    flex-direction: column-reverse;
-    position: relative;
-
-    @media (min-width: $media-md) {
-      flex-direction: column;
-    }
-
-    + .line {
-      position: relative;
-      top: -14px;
-      left: -6px;
-
-      @media (min-width: $media-md) {
-        margin: 0 4px;
-        left: 0;
-        top: 0;
-      }
-    }
-
-    .step__percent {
-      margin-top: 4px;
-    }
-  }
+  height: 58px;
 }
 
 .line {
   flex: 1;
   height: 1px;
   background-color: #ccc;
-  margin: 0 4px;
+  margin: 12px 4px;
 }
 
-.info {
-  color: var(--ui-color-black-64-opacity);
+.wrapper {
+  position: relative;
+
+  &:last-child {
+    padding-right: 16px;
+    @media (min-width: $media-md) {
+      padding-right: 42px;
+    }
+  }
+}
+
+.number {
   width: 24px;
   height: 24px;
-  border-radius: 50%;
-  background-color: var(--ui-color-black-12-opacity);
+  text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
-
-  @media (min-width: $media-md) {
-    width: auto;
-    height: auto;
-    border-radius: unset;
-    background-color: transparent;
-  }
+  border-radius: 50%;
+  color: var(--ui-color-black-64-opacity);
+  background-color: var(--ui-color-black-12-opacity);
 }
 
-.hidden {
-  &_mobile {
-    display: none;
-
-    @media (min-width: $media-md) {
-      display: inline-block;
-    }
-  }
+.percent {
+  position: absolute;
+  top: 32px;
+  left: 0;
 }

@@ -31,3 +31,9 @@
     height: 24px;
   }
 }
+
+.advantages {
+  @media (min-width: $media-md) {
+    width: 50%;
+  }
+}

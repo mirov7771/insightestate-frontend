@@ -64,12 +64,12 @@ export const Filter: FC<FilterProps> = ({ open, setOpen }) => {
           <AiFilter />
         </div>
         <div className={styles.filters__buttons}>
-          <Button variant="primary" onClick={handleClose} wide>
+          <Button variant="primary" onClick={handleClose} wide size="l">
             <Text variant="body1" bold>
               {formatMessage({ id: 'filter.show_objects' }, { totalCount })}
             </Text>
           </Button>
-          <Button variant="base" onClick={resetFilters} wide>
+          <Button variant="base" onClick={resetFilters} wide size="l">
             <Text variant="body1" bold>
               {formatMessage({ id: 'filter_clear' })}
             </Text>

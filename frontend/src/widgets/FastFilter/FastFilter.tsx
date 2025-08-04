@@ -19,7 +19,13 @@ type FasFilterProps = {
 
 export const FastFilter: FC<FasFilterProps> = ({ name, filter, filterName }) => {
   const { width } = useWindowResize();
-  const value = useFilters()[filterName];
+  const filters = useFilters();
+  const value = (() => {
+    if (filterName === 'price') {
+      return { minPrice: filters.minPrice, maxPrice: filters.maxPrice };
+    }
+    return filters[filterName];
+  })();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {

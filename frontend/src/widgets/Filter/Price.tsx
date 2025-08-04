@@ -77,6 +77,10 @@ export const Price: FC = () => {
       onResetFilter={handleReset}
       filter={
         <div className={styles.content}>
+          <div className={styles.price}>
+            <Input value={formatNumber(value[0])} onChange={handleChangeInput('min')} />
+            <Input value={formatNumber(value[1])} onChange={handleChangeInput('max')} />
+          </div>
           <Slider
             className={styles.slider}
             classes={{ thumb: styles.thumb, track: styles.track, rail: styles.track }}
@@ -89,10 +93,6 @@ export const Price: FC = () => {
             onChange={(event, value) => handleChange(event, value as number[])}
             valueLabelDisplay="off"
           />
-          <div className={styles.price}>
-            <Input value={formatNumber(value[0])} onChange={handleChangeInput('min')} />
-            <Input value={formatNumber(value[1])} onChange={handleChangeInput('max')} />
-          </div>
         </div>
       }
     />

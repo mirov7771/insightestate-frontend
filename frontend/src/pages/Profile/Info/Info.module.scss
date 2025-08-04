@@ -1,6 +1,10 @@
 .layout {
   padding-bottom: 24px;
   border-bottom: 1px solid var(--ui-color-black-12-opacity);
+
+  &:last-child {
+    border-bottom: none;
+  }
 }
 
 .wrapper {

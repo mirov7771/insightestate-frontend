@@ -56,12 +56,15 @@ export const Infrastructure: FC<{
           )}
         </div>
         {/* ------ */}
-        <AdvantagesBadges
-          variant="text"
-          toolTip1={toolTip1 === 'true' ? toolTip1 : undefined}
-          toolTip2={toolTip2 === 'true' ? toolTip2 : undefined}
-          toolTip3={toolTip3 === 'true' ? toolTip3 : undefined}
-        />
+        <div className={styles.advantages}>
+          <AdvantagesBadges
+            variant="text"
+            toolTip1={toolTip1 === 'true' ? toolTip1 : undefined}
+            toolTip2={toolTip2 === 'true' ? toolTip2 : undefined}
+            toolTip3={toolTip3 === 'true' ? toolTip3 : undefined}
+            size="s"
+          />
+        </div>
       </div>
       {(beachTime || mallTime || airportTime) && (
         <div className={styles.wrapper}>

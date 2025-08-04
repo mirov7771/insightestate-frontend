@@ -90,10 +90,10 @@ const EstateDetail: FC = () => {
             toolTip1={estateDetailData.toolTip1 === 'true' ? estateDetailData.toolTip1 : undefined}
             toolTip2={estateDetailData.toolTip2 === 'true' ? estateDetailData.toolTip2 : undefined}
             toolTip3={estateDetailData.toolTip3 === 'true' ? estateDetailData.toolTip3 : undefined}
-            size="l"
+            className={styles.badge__wide}
           />
         </div>
-        <Text variant="heading3" className={styles.name}>
+        <Text variant="heading4" className={styles.name}>
           {estateDetailData.name}
         </Text>
         <Info
@@ -148,11 +148,11 @@ const EstateDetail: FC = () => {
               ...(estateDetailData.facilityImages || []),
             ]}
           />
-            <Text as="p" variant="body2" className={styles.text}>
-                {localStorage.getItem('language') === 'en'
-                    ? estateDetailData.shortDescriptionEn
-                    : estateDetailData.shortDescriptionRu}
-            </Text>
+          <Text as="p" variant="body2" className={styles.text}>
+            {localStorage.getItem('language') === 'en'
+              ? estateDetailData.shortDescriptionEn
+              : estateDetailData.shortDescriptionRu}
+          </Text>
           <aside className={`${styles.side} ${styles.side_hidden_desktop}`}>
             <div className={styles.sticky}>{renderSideSection()}</div>
           </aside>
@@ -191,7 +191,7 @@ const EstateDetail: FC = () => {
           {estateDetailData.paymentPlanList && (
             <div>
               <Section title={formatMessage({ id: 'offerCollection.paymentSchedule' })}>
-                <PaymentStepper variant="estate-detail" steps={estateDetailData.paymentPlanList} />
+                <PaymentStepper steps={estateDetailData.paymentPlanList} />
               </Section>
             </div>
           )}

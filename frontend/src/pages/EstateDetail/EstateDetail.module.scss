@@ -57,6 +57,7 @@
   }
 
   .rating {
+    height: 32px;
     & svg {
       color: var(--ui-color-primary-2);
     }
@@ -98,4 +99,8 @@
 
 .badge {
   height: 32px;
+}
+
+div.badge__wide {
+  width: 40px;
 }
