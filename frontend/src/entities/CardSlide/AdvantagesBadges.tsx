@@ -23,7 +23,8 @@ const tooltipProps: Omit<TooltipProps, 'title' | 'children'> = {
 };
 
 type AdvantagesBadgesProps = {
-  size?: 'l' | 'm';
+  className?: string;
+  size?: 's' | 'l' | 'm';
   toolTip1?: string;
   toolTip2?: string;
   toolTip3?: string;
@@ -36,12 +37,16 @@ export const AdvantagesBadges: FC<AdvantagesBadgesProps> = ({
   toolTip3,
   variant = 'tooltip',
   size = 'm',
+  className = '',
 }) => {
   const { formatMessage } = useIntl();
   const classNameSize = (() => {
     switch (size) {
       case 'l': {
         return styles.advantages__item_l;
+      }
+      case 's': {
+        return styles.advantages__item_s;
       }
       default: {
         return styles.advantages__item_m;
@@ -68,7 +73,7 @@ export const AdvantagesBadges: FC<AdvantagesBadgesProps> = ({
             <span>
               <BadgeRating
                 text={formatMessage({ id: 'toolTip2_badge' })}
-                className={`${styles.advantages__item} ${styles.advantages__item_green} ${classNameSize}`}
+                className={`${styles.advantages__item} ${styles.advantages__item_green} ${classNameSize} ${className || ''}`}
               />
             </span>
           </Tooltip>
@@ -85,7 +90,7 @@ export const AdvantagesBadges: FC<AdvantagesBadgesProps> = ({
             <span>
               <BadgeRating
                 text={formatMessage({ id: 'toolTip1_badge' })}
-                className={`${styles.advantages__item} ${styles.advantages__item_yellow} ${classNameSize}`}
+                className={`${styles.advantages__item} ${styles.advantages__item_yellow} ${classNameSize} ${className || ''}`}
               />
             </span>
           </Tooltip>
@@ -102,7 +107,7 @@ export const AdvantagesBadges: FC<AdvantagesBadgesProps> = ({
             <span>
               <BadgeRating
                 text={formatMessage({ id: 'toolTip3_badge' })}
-                className={`${styles.advantages__item} ${styles.advantages__item_blue} ${classNameSize}`}
+                className={`${styles.advantages__item} ${styles.advantages__item_blue} ${classNameSize} ${className || ''}`}
               />
             </span>
           </Tooltip>
@@ -117,7 +122,7 @@ export const AdvantagesBadges: FC<AdvantagesBadgesProps> = ({
         <li className={styles.advantages__text_wrapper}>
           <Text
             variant="heading5"
-            className={`${styles.advantages__item} ${styles.advantages__item_text} ${styles.advantages__item_green} ${classNameSize}`}
+            className={`${styles.advantages__item} ${styles.advantages__item_text} ${styles.advantages__item_green} ${classNameSize} ${className || ''}`}
           >
             {formatMessage({ id: 'toolTip2_badge' })}
           </Text>{' '}
@@ -130,7 +135,7 @@ export const AdvantagesBadges: FC<AdvantagesBadgesProps> = ({
         <li className={styles.advantages__text_wrapper}>
           <Text
             variant="heading5"
-            className={`${styles.advantages__item} ${styles.advantages__item_text} ${styles.advantages__item_yellow} ${classNameSize}`}
+            className={`${styles.advantages__item} ${styles.advantages__item_text} ${styles.advantages__item_yellow} ${classNameSize} ${className || ''}`}
           >
             {formatMessage({ id: 'toolTip1_badge' })}
           </Text>{' '}
@@ -143,7 +148,7 @@ export const AdvantagesBadges: FC<AdvantagesBadgesProps> = ({
         <li className={styles.advantages__text_wrapper}>
           <Text
             variant="heading5"
-            className={`${styles.advantages__item} ${styles.advantages__item_text} ${styles.advantages__item_blue} ${classNameSize}`}
+            className={`${styles.advantages__item} ${styles.advantages__item_text} ${styles.advantages__item_blue} ${classNameSize} ${className || ''}`}
           >
             {formatMessage({ id: 'toolTip3_badge' })}
           </Text>{' '}

@@ -14,6 +14,7 @@ import { usersApi } from '@/shared/api/users';
 import { TData } from './types';
 import { Spacer } from '@/widgets/Spacer/Spacer';
 import { UserDeleteModal } from '@/widgets/Modal/UserDeleteModal';
+import { ModalDeleteUser } from '@/shared/ui/modals/ModalDeleteUser/ModalDeleteUser';
 
 const Profile: FC = () => {
   const { formatMessage } = useIntl();
@@ -149,12 +150,8 @@ const Profile: FC = () => {
             </Text>
           </Button>
           <div>
-            <MuiAvatar
-              className={styles.avatar}
-              onClick={handleClickAvatar}
-              src={data.profileImage}
-            >
-              <Text variant="heading3" align="center">
+            <MuiAvatar className={styles.avatar} onClick={handleClickAvatar} src={''}>
+              <Text variant="heading3" align="center" className={styles.letter}>
                 {data.username[0]}
               </Text>
             </MuiAvatar>
@@ -281,14 +278,7 @@ const Profile: FC = () => {
           </div>
         </>
       )}
-      <UserDeleteModal
-        open={openInfo}
-        onClose={handleCloseInfoModal}
-        onOpen={handleOpenInfoModal}
-        anchor="bottom"
-        bottom={30}
-        id={token!!}
-      />
+      <ModalDeleteUser open={openInfo} setOpen={setOpenInfo} id={token as string} />
     </div>
   );
 };

@@ -301,7 +301,7 @@ export default {
 
   deleteProfile: 'Deleting an account',
   deleteProfileMessage:
-    'Are you sure you want to delete your account? It will be permanently deleted.',
+    'Are you sure you want to delete your account? <br></br> It will be permanently deleted.',
   deleteProfileYes: 'Yes, delete',
   deleteProfileNo: 'Cancel',
 
