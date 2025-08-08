@@ -12,3 +12,13 @@
   border-top-right-radius: 10px;
   padding: 16px 16px 32px;
 }
+
+.active {
+  background-color: var(--ui-color-black);
+  color: var(--ui-color-white);
+
+  &:hover {
+    background-color: var(--ui-color-black);
+    color: var(--ui-color-white);
+  }
+}

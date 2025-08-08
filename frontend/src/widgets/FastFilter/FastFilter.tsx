@@ -37,9 +37,14 @@ export const FastFilter: FC<FasFilterProps> = ({ name, filter, filterName }) => 
 
   return (
     <>
-      <Button variant="base" size="s" onClick={handleClick}>
+      <Button
+        variant="base"
+        size="s"
+        onClick={handleClick}
+        className={!!(value as [])?.length ? styles.active : ''}
+      >
         <Text variant="body1" bold>
-          {name}
+          {name} {!!(value as [])?.length ? `+${(value as [])?.length}` : null}
         </Text>
       </Button>
       {width >= 768 ? (

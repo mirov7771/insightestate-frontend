@@ -37,6 +37,31 @@
   position: relative;
   overflow: hidden;
 
+  &__arrow {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    z-index: 1;
+    width: 100%;
+    max-width: 24px;
+    display: none;
+    justify-content: flex-end;
+    align-items: center;
+    cursor: pointer;
+
+    @media (min-width: $media-md) {
+      display: flex;
+    }
+
+    svg {
+      width: 24px;
+      height: 24px;
+      color: var(--ui-color-black);
+      transform: rotate(180deg);
+    }
+  }
+
   &::before {
     content: '';
     display: none;

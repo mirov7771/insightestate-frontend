@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useEffect, useRef, useState } from 'react';
 import styles from './Listing.module.scss';
 import { Filter } from '@/widgets/Filter/Filter';
 import { Button, Pagination, Text } from '@/shared/ui';
@@ -6,7 +6,7 @@ import { useFilters } from '@/widgets/Filter/model/useFilters';
 import { useIntl } from 'react-intl';
 import { InfoModal } from '@/shared/ui/modals';
 import { CardSlide } from '@/entities/CardSlide/CardSlide';
-import { IconAdjustmentsFilter } from '@/shared/assets/icons';
+import { IconAdjustmentsFilter, IconArrowLeft } from '@/shared/assets/icons';
 import Divider from '@mui/material/Divider';
 import { FastFilter } from '@/widgets/FastFilter/FastFilter';
 import { City } from '@/widgets/Filter/City';
@@ -19,6 +19,8 @@ import { useSearchParams } from 'react-router';
 import { isMobile } from 'react-device-detect';
 import { Region } from '@/widgets/Filter/Region';
 import { Price } from '@/widgets/Filter/Price';
+
+const SCROLL_AMOUNT = 250;
 
 const Listing: FC = () => {
   const { formatMessage } = useIntl();
@@ -39,6 +41,17 @@ const Listing: FC = () => {
   const [infoTitle, setInfoTitle] = useState('');
   const infoText = formatMessage({ id: 'listing.info' });
   const [searchParams, setSearchParams] = useSearchParams();
+  const filtersScrollRef = useRef<HTMLDivElement>(null);
+  const scrollFiltersRight = () => {
+    if (filtersScrollRef.current) {
+      filtersScrollRef.current.scrollBy({ left: SCROLL_AMOUNT, behavior: 'smooth' });
+    }
+  };
+  const scrollFiltersLeft = () => {
+    if (filtersScrollRef.current) {
+      filtersScrollRef.current.scrollBy({ left: -SCROLL_AMOUNT, behavior: 'smooth' });
+    }
+  };
 
   const handleOpenInfoModal = () => {
     setInfoModal(true);
@@ -80,7 +93,7 @@ const Listing: FC = () => {
           </Button>
           <Divider orientation="vertical" flexItem />
           <div className={styles.filters}>
-            <div className={styles.filters__scroll}>
+            <div className={styles.filters__scroll} ref={filtersScrollRef}>
               <FastFilter
                 filter={<Price />}
                 name={formatMessage({ id: 'price' })}
@@ -126,6 +139,9 @@ const Listing: FC = () => {
               {/*  name={formatMessage({ id: 'airport_time' })}*/}
               {/*  filterName="airportTravelTimes"*/}
               {/*/>*/}
+            </div>
+            <div className={styles.filters__arrow} onClick={scrollFiltersRight}>
+              <IconArrowLeft />
             </div>
           </div>
         </div>
