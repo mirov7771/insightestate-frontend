@@ -443,4 +443,13 @@ export default {
   'form.error.location.short': 'Локация должна содержать минимум 2 символа',
   'form.error.email.required': 'Почта обязательна',
   'form.error.email.invalid': 'Некорректный адрес почты',
+
+  profit_irr_title: 'IRR (Внутрянняя норма доходности / Internal Rate of Return)',
+  profit_irr_description: 'Годовая доходность инвестиции с учётом всех денежных потоков.',
+
+  profit_roi_title: 'ROI (Окупаемость / Return on Investment)',
+  profit_roi_description: 'Показатель, сколько прибыли приносит инвестиция по отношению к вложенной сумме.',
+
+  profit_rent_title: 'Чистый арендный доход',
+  profit_rent_description: 'Доход от аренды за вычетом расходов (налоги, ремонт, управление).'
 };

@@ -10,3 +10,20 @@
   flex-wrap: wrap;
   row-gap: 12px;
 }
+
+.info_icon {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  color: var(--ui-color-black-64-opacity);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}

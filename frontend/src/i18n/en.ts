@@ -445,4 +445,13 @@ export default {
   'form.error.location.short': 'Location must be at least 2 characters long',
   'form.error.email.required': 'Email is required',
   'form.error.email.invalid': 'Invalid email address',
+
+  profit_irr_title: 'IRR (Internal Rate of Return)',
+  profit_irr_description: 'Annual return on investment including all cash flows.',
+
+  profit_roi_title: 'ROI (Return on Investment)',
+  profit_roi_description: 'Shows how much profit an investment generates relative to its cost.',
+
+  profit_rent_title: 'Net Rental Income',
+  profit_rent_description: 'Rental income after all expenses (taxes, maintenance, management) are deducted.'
 };
