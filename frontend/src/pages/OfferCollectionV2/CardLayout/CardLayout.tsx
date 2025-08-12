@@ -139,12 +139,12 @@ export const CardLayout: FC<CardLayoutProps> = ({ estate }) => {
       </div>
       <div className={styles.description}>
         <div className={styles.badges} onClick={openRatingInfo}>
-          <BadgeRating
-            icon={<VectorRating />}
-            size="sm"
-            text={estate.grade?.main ? `${estate.grade?.main.toPrecision(2)}` : '9'}
-            background="primary"
-          />
+          {/*<BadgeRating*/}
+          {/*  icon={<VectorRating />}*/}
+          {/*  size="sm"*/}
+          {/*  text={estate.grade?.main ? `${estate.grade?.main.toPrecision(2)}` : '9'}*/}
+          {/*  background="primary"*/}
+          {/*/>*/}
           <BadgeRating
             icon={<IconMapPinFilled />}
             size="sm"
@@ -281,40 +281,40 @@ export const CardLayout: FC<CardLayoutProps> = ({ estate }) => {
           ]}
         />
       </div>
-      <div className={styles.progress}>
-        <Progresses
-          items={[
-            {
-              value: estate.grade?.investmentSecurity || 9,
-              label: formatMessage({ id: 'security' }),
-              icon: <VectorRating />,
-              min: 0,
-              max: 10,
-            },
-            {
-              value: estate.grade?.projectLocation || 9,
-              label: formatMessage({ id: 'project_location' }),
-              icon: <VectorRating />,
-              min: 0,
-              max: 10,
-            },
-            {
-              value: estate.grade?.investmentPotential || 9,
-              label: formatMessage({ id: 'invest_potential' }),
-              icon: <VectorRating />,
-              min: 0,
-              max: 10,
-            },
-            {
-              value: estate.grade?.comfortOfLife || 9,
-              label: formatMessage({ id: 'comfort' }),
-              icon: <VectorRating />,
-              min: 0,
-              max: 10,
-            },
-          ]}
-        />
-      </div>
+      {/*<div className={styles.progress}>*/}
+      {/*  <Progresses*/}
+      {/*    items={[*/}
+      {/*      {*/}
+      {/*        value: estate.grade?.investmentSecurity || 9,*/}
+      {/*        label: formatMessage({ id: 'security' }),*/}
+      {/*        icon: <VectorRating />,*/}
+      {/*        min: 0,*/}
+      {/*        max: 10,*/}
+      {/*      },*/}
+      {/*      {*/}
+      {/*        value: estate.grade?.projectLocation || 9,*/}
+      {/*        label: formatMessage({ id: 'project_location' }),*/}
+      {/*        icon: <VectorRating />,*/}
+      {/*        min: 0,*/}
+      {/*        max: 10,*/}
+      {/*      },*/}
+      {/*      {*/}
+      {/*        value: estate.grade?.investmentPotential || 9,*/}
+      {/*        label: formatMessage({ id: 'invest_potential' }),*/}
+      {/*        icon: <VectorRating />,*/}
+      {/*        min: 0,*/}
+      {/*        max: 10,*/}
+      {/*      },*/}
+      {/*      {*/}
+      {/*        value: estate.grade?.comfortOfLife || 9,*/}
+      {/*        label: formatMessage({ id: 'comfort' }),*/}
+      {/*        icon: <VectorRating />,*/}
+      {/*        min: 0,*/}
+      {/*        max: 10,*/}
+      {/*      },*/}
+      {/*    ]}*/}
+      {/*  />*/}
+      {/*</div>*/}
       <InfoModal
         open={infoModal}
         setOpen={setInfoModal}

@@ -8,11 +8,11 @@ import { useIntl } from 'react-intl';
 import { extractNestedValuesOrFallback, formatNumber } from '@/shared/utils';
 
 type TKeys =
-  | 'overallRating'
-  | 'investmentSafety'
-  | 'locationRating'
-  | 'investmentPotential'
-  | 'qualityOfLife'
+  // | 'overallRating'
+  // | 'investmentSafety'
+  // | 'locationRating'
+  // | 'investmentPotential'
+  // | 'qualityOfLife'
   | 'priceFrom'
   | 'pricePerSquareMeter'
   | 'deliveryDate'
@@ -39,11 +39,11 @@ export const TableComparison: FC<TableComparisonProps> = ({ estates }) => {
   const { formatMessage } = useIntl();
   const fields: Record<TKeys, string> = useMemo(
     () => ({
-      overallRating: formatMessage({ id: 'overallRating' }),
-      investmentSafety: formatMessage({ id: 'security' }),
-      locationRating: formatMessage({ id: 'locationRating' }),
-      investmentPotential: formatMessage({ id: 'invest_potential' }),
-      qualityOfLife: formatMessage({ id: 'comfort' }),
+      // overallRating: formatMessage({ id: 'overallRating' }),
+      // investmentSafety: formatMessage({ id: 'security' }),
+      // locationRating: formatMessage({ id: 'locationRating' }),
+      // investmentPotential: formatMessage({ id: 'invest_potential' }),
+      // qualityOfLife: formatMessage({ id: 'comfort' }),
       priceFrom: formatMessage({ id: 'priceFrom' }),
       priceTo: formatMessage({ id: 'priceTo' }),
       pricePerSquareMeter: formatMessage({ id: 'pricePerSquareMeter' }),
@@ -67,23 +67,23 @@ export const TableComparison: FC<TableComparisonProps> = ({ estates }) => {
     [formatMessage]
   );
   const result: Partial<Record<TKeys, string[] | undefined>> = {
-    overallRating: extractNestedValuesOrFallback(estates, ['grade.main'], '9.0')?.map((rating) =>
-      Number(rating).toFixed(1).replace('.', ',')
-    ),
-    investmentSafety: extractNestedValuesOrFallback(estates, ['grade.comfortOfLife'], '9.0')?.map(
-      (rating) => Number(rating).toFixed(1).replace('.', ',')
-    ),
-    locationRating: extractNestedValuesOrFallback(estates, ['grade.projectLocation'], '9.0')?.map(
-      (rating) => Number(rating).toFixed(1).replace('.', ',')
-    ),
-    investmentPotential: extractNestedValuesOrFallback(
-      estates,
-      ['grade.investmentPotential'],
-      '9.0'
-    )?.map((rating) => Number(rating).toFixed(1).replace('.', ',')),
-    qualityOfLife: extractNestedValuesOrFallback(estates, ['grade.comfortOfLife'], '9.0')?.map(
-      (rating) => Number(rating).toFixed(1).replace('.', ',')
-    ),
+    // overallRating: extractNestedValuesOrFallback(estates, ['grade.main'], '9.0')?.map((rating) =>
+    //   Number(rating).toFixed(1).replace('.', ',')
+    // ),
+    // investmentSafety: extractNestedValuesOrFallback(estates, ['grade.comfortOfLife'], '9.0')?.map(
+    //   (rating) => Number(rating).toFixed(1).replace('.', ',')
+    // ),
+    // locationRating: extractNestedValuesOrFallback(estates, ['grade.projectLocation'], '9.0')?.map(
+    //   (rating) => Number(rating).toFixed(1).replace('.', ',')
+    // ),
+    // investmentPotential: extractNestedValuesOrFallback(
+    //   estates,
+    //   ['grade.investmentPotential'],
+    //   '9.0'
+    // )?.map((rating) => Number(rating).toFixed(1).replace('.', ',')),
+    // qualityOfLife: extractNestedValuesOrFallback(estates, ['grade.comfortOfLife'], '9.0')?.map(
+    //   (rating) => Number(rating).toFixed(1).replace('.', ',')
+    // ),
     priceFrom: extractNestedValuesOrFallback(estates, ['price.min'])?.map(
       (price) => `$${formatNumber(price)}`
     ),

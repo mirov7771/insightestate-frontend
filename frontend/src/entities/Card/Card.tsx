@@ -85,9 +85,9 @@ export const Card: FC<
           >
             <img src={img} alt="" />
           </a>
-          <div className={styles.card__rating} onClick={openRatingInfo}>
-            {grade.toPrecision(2)} <VectorRating />
-          </div>
+          {/*<div className={styles.card__rating} onClick={openRatingInfo}>*/}
+          {/*  {grade.toPrecision(2)} <VectorRating />*/}
+          {/*</div>*/}
           <div className={styles.card__details}>
             {buildEndDate !== '-' && (
               <span className={styles.card__details__item}>{buildEndDate}</span>
@@ -107,9 +107,9 @@ export const Card: FC<
           >
             <img src={img} alt="" />
           </a>
-          <div className={styles.card__rating} onClick={openRatingInfo}>
-            {grade.toPrecision(2)} <VectorRating />
-          </div>
+          {/*<div className={styles.card__rating} onClick={openRatingInfo}>*/}
+          {/*  {grade.toPrecision(2)} <VectorRating />*/}
+          {/*</div>*/}
           <div className={styles.card__details}>
             {buildEndDate !== '-' && (
               <span className={styles.card__details__item}>{buildEndDate}</span>

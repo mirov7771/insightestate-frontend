@@ -138,16 +138,16 @@ export const Card: FC<
         <section>
           {/*Rating*/}
           <div className={styles.badges} onClick={openRatingInfo}>
-            <BadgeRating
-              icon={
-                <span className={styles.icon}>
-                  <VectorRating />
-                </span>
-              }
-              size="sm"
-              text={estate.grade?.main ? `${estate.grade?.main.toPrecision(2)}` : '9'}
-              background="primary"
-            />
+            {/*<BadgeRating*/}
+            {/*  icon={*/}
+            {/*    <span className={styles.icon}>*/}
+            {/*      <VectorRating />*/}
+            {/*    </span>*/}
+            {/*  }*/}
+            {/*  size="sm"*/}
+            {/*  text={estate.grade?.main ? `${estate.grade?.main.toPrecision(2)}` : '9'}*/}
+            {/*  background="primary"*/}
+            {/*/>*/}
             <BadgeRating
               icon={
                 <span className={`${styles.icon} ${styles.icon__primary}`}>
@@ -267,54 +267,54 @@ export const Card: FC<
               />
             </section>
           )}
-          <Progresses
-            items={[
-              {
-                value: estate.grade?.investmentSecurity || 9,
-                label: formatMessage({ id: 'security' }),
-                icon: (
-                  <span className={styles.icon}>
-                    <VectorRating />
-                  </span>
-                ),
-                min: 0,
-                max: 10,
-              },
-              {
-                value: estate.grade?.projectLocation || 9,
-                label: formatMessage({ id: 'project_location' }),
-                icon: (
-                  <span className={styles.icon}>
-                    <VectorRating />
-                  </span>
-                ),
-                min: 0,
-                max: 10,
-              },
-              {
-                value: estate.grade?.investmentPotential || 9,
-                label: formatMessage({ id: 'invest_potential' }),
-                icon: (
-                  <span className={styles.icon}>
-                    <VectorRating />
-                  </span>
-                ),
-                min: 0,
-                max: 10,
-              },
-              {
-                value: estate.grade?.comfortOfLife || 9,
-                label: formatMessage({ id: 'comfort' }),
-                icon: (
-                  <span className={styles.icon}>
-                    <VectorRating />
-                  </span>
-                ),
-                min: 0,
-                max: 10,
-              },
-            ]}
-          />
+          {/*<Progresses*/}
+          {/*  items={[*/}
+          {/*    {*/}
+          {/*      value: estate.grade?.investmentSecurity || 9,*/}
+          {/*      label: formatMessage({ id: 'security' }),*/}
+          {/*      icon: (*/}
+          {/*        <span className={styles.icon}>*/}
+          {/*          <VectorRating />*/}
+          {/*        </span>*/}
+          {/*      ),*/}
+          {/*      min: 0,*/}
+          {/*      max: 10,*/}
+          {/*    },*/}
+          {/*    {*/}
+          {/*      value: estate.grade?.projectLocation || 9,*/}
+          {/*      label: formatMessage({ id: 'project_location' }),*/}
+          {/*      icon: (*/}
+          {/*        <span className={styles.icon}>*/}
+          {/*          <VectorRating />*/}
+          {/*        </span>*/}
+          {/*      ),*/}
+          {/*      min: 0,*/}
+          {/*      max: 10,*/}
+          {/*    },*/}
+          {/*    {*/}
+          {/*      value: estate.grade?.investmentPotential || 9,*/}
+          {/*      label: formatMessage({ id: 'invest_potential' }),*/}
+          {/*      icon: (*/}
+          {/*        <span className={styles.icon}>*/}
+          {/*          <VectorRating />*/}
+          {/*        </span>*/}
+          {/*      ),*/}
+          {/*      min: 0,*/}
+          {/*      max: 10,*/}
+          {/*    },*/}
+          {/*    {*/}
+          {/*      value: estate.grade?.comfortOfLife || 9,*/}
+          {/*      label: formatMessage({ id: 'comfort' }),*/}
+          {/*      icon: (*/}
+          {/*        <span className={styles.icon}>*/}
+          {/*          <VectorRating />*/}
+          {/*        </span>*/}
+          {/*      ),*/}
+          {/*      min: 0,*/}
+          {/*      max: 10,*/}
+          {/*    },*/}
+          {/*  ]}*/}
+          {/*/>*/}
           {clickable && !searchParams.get('client') ? (
             <></>
           ) : (

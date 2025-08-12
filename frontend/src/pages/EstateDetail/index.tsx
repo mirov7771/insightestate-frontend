@@ -71,13 +71,13 @@ const EstateDetail: FC = () => {
     return estateDetailData ? (
       <>
         <div className={styles.badges}>
-          <BadgeRating
-            icon={<IconBrandSpark />}
-            text={String(estateDetailData.grade?.main?.toFixed(1) || '')}
-            background="white"
-            className={isMobile ? styles.rating_mobile : styles.rating}
-            size="md"
-          />
+          {/*<BadgeRating*/}
+          {/*  icon={<IconBrandSpark />}*/}
+          {/*  text={String(estateDetailData.grade?.main?.toFixed(1) || '')}*/}
+          {/*  background="white"*/}
+          {/*  className={isMobile ? styles.rating_mobile : styles.rating}*/}
+          {/*  size="md"*/}
+          {/*/>*/}
           {estateDetailData.location?.name && (
             <BadgeRating
               icon={<IconMapPinFilled />}
@@ -156,9 +156,9 @@ const EstateDetail: FC = () => {
           <aside className={`${styles.side} ${styles.side_hidden_desktop}`}>
             <div className={styles.sticky}>{renderSideSection()}</div>
           </aside>
-          <div>
-            <Rating {...estateDetailData.grade} />
-          </div>
+          {/*<div>*/}
+          {/*  <Rating {...estateDetailData.grade} />*/}
+          {/*</div>*/}
           <div>
             <Units />
             <Spacer height={20} width={100} />

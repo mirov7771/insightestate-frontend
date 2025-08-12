@@ -56,12 +56,12 @@ export const CardSlide: FC<CardSlideProps> = ({
       <div className={styles.card}>
         <div className={styles.card__slider}>
           <ul className={styles.badges}>
-            <li className={styles.badges__badge} onClick={openRatingInfo}>
-              <EstateIcon />
-              <Text variant="body2" bold>
-                {estate.grade.toPrecision(2)}
-              </Text>
-            </li>
+            {/*<li className={styles.badges__badge} onClick={openRatingInfo}>*/}
+            {/*  <EstateIcon />*/}
+            {/*  <Text variant="body2" bold>*/}
+            {/*    {estate.grade.toPrecision(2)}*/}
+            {/*  </Text>*/}
+            {/*</li>*/}
             {estate.buildEndDate !== '-' && estate.buildEndDate && (
               <li className={styles.badges__badge}>
                 <Text variant="body2" bold>
