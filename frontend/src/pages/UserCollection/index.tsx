@@ -51,7 +51,7 @@ const ItemCollection: FC<EstateCollection & { token: string; value: number }> = 
   const { formatMessage } = useIntl();
   const { notify } = useNotifications();
   const collectionLink = `/cl/${id}`;
-  const collectionLinkClientShow = `/cl/${id}?client=true&like=true`;
+  const collectionLinkClientShow = `/cl/${id}`;
   const collectionLinkClient = `/cl/${id}?client=true`;
   const navigate = useNavigate();
   const [status, setStatus] = useState<keyof typeof FETCHING_STATUS>('IDLE');
@@ -88,7 +88,7 @@ const ItemCollection: FC<EstateCollection & { token: string; value: number }> = 
   const handleCopyLink = async () => {
     try {
       setCopyLinkStatus('LOADING');
-      const fullUrl = `${window.location.origin}${collectionLinkClientShow}`;
+      const fullUrl = `https://myselection.properties${collectionLinkClientShow}`;
       const result = await copyToClipboard(fullUrl);
 
       if (result) {

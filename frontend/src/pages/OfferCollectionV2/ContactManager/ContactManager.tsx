@@ -31,7 +31,7 @@ export const ContactManager: FC<{ id: string; client?: string | null }> = ({ id,
 
   const handleCopyLink = async () => {
     try {
-      const result = await copyToClipboard(`${window.location.href}?client=true&like=true`);
+      const result = await copyToClipboard(`https://myselection.properties/cl/${id}`);
 
       if (result) {
         console.log('RUN!');
