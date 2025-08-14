@@ -203,9 +203,7 @@ export const DefaultRu: FC = () => {
                       за&nbsp;минуты
                     </h1>
                     <p className="text-size-body-1-cc mb-40 is-ch mob-size-20">
-                      Мгновенный доступ к проверенным проектам Таиланда. <br />
-                      Создавайте клиентские подборки в&nbsp;несколько кликов и отслеживайте, что
-                      действительно важно
+                      Мгновенный доступ к полной базе проектов Таиланда. Создавайте клиентские подборки в несколько кликов и отслеживайте то, что действительно важно
                     </p>
                     <div className="button-group-cc is-right mb-16">
                       <a href="/register" className="button-cc _w-auto sizing-auto w-button">
@@ -223,74 +221,6 @@ export const DefaultRu: FC = () => {
               </div>
             </div>
           </header>
-          <section className="section_cc_how">
-            <div className="padding-global-cc">
-              <div className="container-main-cc">
-                <div className="how-wrapper">
-                  <h2 className="heading-style-h7-cc mb-8">Как работает платформа</h2>
-                  <p className="text-size-body-3-cc">
-                    От запроса до сделки всего пять простых шагов
-                  </p>
-                  <div className="how-point-wrapper">
-                    <div className="how-point _1-point">
-                      <div className="text-size-body-4-cc opacity-24 mb-32">01</div>
-                      <div className="text-size-body-2-cc mb-8 mob-size-16">
-                        <strong>
-                          Используйте умные фильтры <br />
-                          и&nbsp;ИИ помощника
-                        </strong>
-                      </div>
-                      <div className="text-size-body-2-cc mob-size-16">
-                        Подберите объекты по&nbsp;району, бюджету, доходности, площади и&nbsp;другим
-                        параметрам
-                      </div>
-                    </div>
-                    <div className="mob-line" />
-                    <div className="how-point _1-point">
-                      <div className="text-size-body-4-cc opacity-24 mb-32">02</div>
-                      <div className="text-size-body-2-cc mb-8 mob-size-16">
-                        <strong>Соберите подборку для&nbsp;клиента</strong>
-                      </div>
-                      <div className="text-size-body-2-cc mob-size-16">
-                        Добавьте нужные проекты в&nbsp;подборку в&nbsp;несколько кликов
-                      </div>
-                    </div>
-                    <div className="mob-line" />
-                    <div className="how-point _1-point">
-                      <div className="text-size-body-4-cc opacity-24 mb-32">03</div>
-                      <div className="text-size-body-2-cc mb-8 mob-size-16">
-                        <strong>Поделитесь уникальной ссылкой</strong>
-                      </div>
-                      <div className="text-size-body-2-cc mob-size-16">
-                        Отправьте клиенту персональный лендинг. <br />
-                        Без PDF, презентаций и&nbsp;путаницы
-                      </div>
-                    </div>
-                    <div className="mob-line" />
-                    <div className="how-point _1-point">
-                      <div className="text-size-body-4-cc opacity-24 mb-32">04</div>
-                      <div className="text-size-body-2-cc mb-8 mob-size-16 max-w-9">
-                        <strong>Отслеживайте интерес</strong>
-                      </div>
-                      <div className="text-size-body-2-cc mob-size-16">
-                        Получайте уведомления, когда клиенту понравился конкретный проект
-                      </div>
-                    </div>
-                    <div className="mob-line" />
-                    <div className="how-point _1-point">
-                      <div className="text-size-body-4-cc opacity-24 mb-32">05</div>
-                      <div className="text-size-body-2-cc mb-8 mob-size-16 max-w-9">
-                        <strong>Закрывайте сделку</strong>
-                      </div>
-                      <div className="text-size-body-2-cc mob-size-16">
-                        Действуйте на&nbsp;опережение без лишних догадок
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
           <section id="why-are-we" data-theme="dark" className="section_cc_features">
             <div className="features_cc_content-item is-6">
               <div className="container-main-cc">
@@ -366,17 +296,12 @@ export const DefaultRu: FC = () => {
                     <div>
                       <div className="heading-style-h7-cc mb-8">Только проверенные проекты</div>
                       <p className="text-size-body-3-cc">
-                        Мы проводим все проверки. Вы&nbsp;—&nbsp;продаёте
+                        Все проекты на одной платформе
                       </p>
                     </div>
                     <div>
                       <div className="text-size-body-2-cc is-opacity-64 mb-8 mob-size-16">
-                        Каждый проект проходит анализ по 100+ критериям: от репутации застройщика до
-                        юридического статуса и перспектив роста.
-                        <br />
-                      </div>
-                      <div className="text-size-body-2-cc is-opacity-64 mob-size-16">
-                        Мы используем собственную систему оценки, чтобы вы продавали только лучшее
+                        Все новостройки, актуальные цены, презентации застройщиков и планировки - всё, что нужно для быстрой и выгодной сделки.
                       </div>
                     </div>
                   </div>
@@ -444,6 +369,74 @@ export const DefaultRu: FC = () => {
                       <div className="div-block-57">
                         <div className="text-size-body-2-cc">Чистый арендный доход</div>
                         <div className="heading-style-h4-cc">5,1%</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section className="section_cc_how">
+            <div className="padding-global-cc">
+              <div className="container-main-cc">
+                <div className="how-wrapper">
+                  <h2 className="heading-style-h7-cc mb-8">Как работает платформа</h2>
+                  <p className="text-size-body-3-cc">
+                    От запроса до сделки всего пять простых шагов
+                  </p>
+                  <div className="how-point-wrapper">
+                    <div className="how-point _1-point">
+                      <div className="text-size-body-4-cc opacity-24 mb-32">01</div>
+                      <div className="text-size-body-2-cc mb-8 mob-size-16">
+                        <strong>
+                          Используйте умные фильтры <br />
+                          и&nbsp;ИИ помощника
+                        </strong>
+                      </div>
+                      <div className="text-size-body-2-cc mob-size-16">
+                        Подберите объекты по&nbsp;району, бюджету, доходности, площади и&nbsp;другим
+                        параметрам
+                      </div>
+                    </div>
+                    <div className="mob-line" />
+                    <div className="how-point _1-point">
+                      <div className="text-size-body-4-cc opacity-24 mb-32">02</div>
+                      <div className="text-size-body-2-cc mb-8 mob-size-16">
+                        <strong>Соберите подборку для&nbsp;клиента</strong>
+                      </div>
+                      <div className="text-size-body-2-cc mob-size-16">
+                        Добавьте нужные проекты в&nbsp;подборку в&nbsp;несколько кликов
+                      </div>
+                    </div>
+                    <div className="mob-line" />
+                    <div className="how-point _1-point">
+                      <div className="text-size-body-4-cc opacity-24 mb-32">03</div>
+                      <div className="text-size-body-2-cc mb-8 mob-size-16">
+                        <strong>Поделитесь уникальной ссылкой</strong>
+                      </div>
+                      <div className="text-size-body-2-cc mob-size-16">
+                        Отправьте клиенту персональный лендинг. <br />
+                        Без PDF, презентаций и&nbsp;путаницы
+                      </div>
+                    </div>
+                    <div className="mob-line" />
+                    <div className="how-point _1-point">
+                      <div className="text-size-body-4-cc opacity-24 mb-32">04</div>
+                      <div className="text-size-body-2-cc mb-8 mob-size-16 max-w-9">
+                        <strong>Отслеживайте интерес</strong>
+                      </div>
+                      <div className="text-size-body-2-cc mob-size-16">
+                        Получайте уведомления, когда клиенту понравился конкретный проект
+                      </div>
+                    </div>
+                    <div className="mob-line" />
+                    <div className="how-point _1-point">
+                      <div className="text-size-body-4-cc opacity-24 mb-32">05</div>
+                      <div className="text-size-body-2-cc mb-8 mob-size-16 max-w-9">
+                        <strong>Закрывайте сделку</strong>
+                      </div>
+                      <div className="text-size-body-2-cc mob-size-16">
+                        Действуйте на&nbsp;опережение без лишних догадок
                       </div>
                     </div>
                   </div>

@@ -221,8 +221,7 @@ export const DefaultEn: FC = () => {
                       From lead to offer in minutes, not DAys
                     </h1>
                     <p className="text-size-body-1-cc mb-40 is-ch mob-size-20">
-                      Create personalized Thai real estate selections with live data, built-in
-                      analytics, and zero manual work
+                      Access every Thai real estate project with live data and instantly create tailored selections for your clients - with no manual work.
                     </p>
                     <div className="button-group-cc is-right mb-16">
                       <a
@@ -243,67 +242,6 @@ export const DefaultEn: FC = () => {
               </div>
             </div>
           </header>
-          <section className="section_cc_how">
-            <div className="padding-global-cc">
-              <div className="container-main-cc">
-                <div className="how-wrapper">
-                  <h2 className="heading-style-h7-cc mb-8">How the platform works</h2>
-                  <p className="text-size-body-3-cc">From discovery to deal in five simple steps</p>
-                  <div className="how-point-wrapper">
-                    <div className="how-point _1-point">
-                      <div className="text-size-body-4-cc opacity-24 mb-32">01</div>
-                      <div className="text-size-body-2-cc mb-8 mob-size-16">
-                        <strong>Use smart filters</strong>
-                      </div>
-                      <div className="text-size-body-2-cc mob-size-16">
-                        Quickly narrow property options by location, budget, ROI, size, and more
-                      </div>
-                    </div>
-                    <div className="mob-line" />
-                    <div className="how-point _1-point">
-                      <div className="text-size-body-4-cc opacity-24 mb-32">02</div>
-                      <div className="text-size-body-2-cc mb-8 mob-size-16">
-                        <strong>Drag &amp; drop selections</strong>
-                      </div>
-                      <div className="text-size-body-2-cc mob-size-16">
-                        Build tailored shortlists for each client in seconds
-                      </div>
-                    </div>
-                    <div className="mob-line" />
-                    <div className="how-point _1-point">
-                      <div className="text-size-body-4-cc opacity-24 mb-32">03</div>
-                      <div className="text-size-body-2-cc mb-8 mob-size-16">
-                        <strong>Share a unique link</strong>
-                      </div>
-                      <div className="text-size-body-2-cc mob-size-16">
-                        Send a personalized landing page. No PDFs, no clutter
-                      </div>
-                    </div>
-                    <div className="mob-line" />
-                    <div className="how-point _1-point">
-                      <div className="text-size-body-4-cc opacity-24 mb-32">04</div>
-                      <div className="text-size-body-2-cc mb-8 mob-size-16 max-w-9">
-                        <strong>Track interest</strong>
-                      </div>
-                      <div className="text-size-body-2-cc mob-size-16">
-                        Get notified when your client likes a property
-                      </div>
-                    </div>
-                    <div className="mob-line" />
-                    <div className="how-point _1-point">
-                      <div className="text-size-body-4-cc opacity-24 mb-32">05</div>
-                      <div className="text-size-body-2-cc mb-8 mob-size-16 max-w-9">
-                        <strong>Close with confidence</strong>
-                      </div>
-                      <div className="text-size-body-2-cc mob-size-16">
-                        Follow up with insight and seal the deal faster. No more guesswork
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
           <section id="why-are-we" data-theme="dark" className="section_cc_features">
             <div className="features_cc_content-item is-6">
               <div className="container-main-cc">
@@ -373,18 +311,16 @@ export const DefaultEn: FC = () => {
                     <div>
                       <div className="heading-style-h7-cc mb-8">Vetted Projects Only</div>
                       <p className="text-size-body-3-cc">
-                        We do the due diligence. You do the selling
+                        Every Project. All the Data.
                       </p>
                     </div>
                     <div>
                       <div className="text-size-body-2-cc is-opacity-64 mb-8 mob-size-16">
-                        Every project is assessed against 100+ criteria, from developer reputation
-                        and legal status to location quality and long-term price trends
+                        We give you the full picture - every off-plan development in the market, from budget studios to ultra-luxury villas, all in one place.
                         <br />
                       </div>
                       <div className="text-size-body-2-cc is-opacity-64 mob-size-16">
-                        Our proprietary scoring system makes it easy to spot the top-performing
-                        options at a glance
+                        Our proprietary scoring system turns raw market data into clear, actionable insights, helping you move from browsing to closing faster.
                       </div>
                     </div>
                   </div>
@@ -453,6 +389,67 @@ export const DefaultEn: FC = () => {
                       <div className="div-block-57">
                         <div className="text-size-body-2-cc">Net cash flow</div>
                         <div className="heading-style-h4-cc">5,1%</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section className="section_cc_how">
+            <div className="padding-global-cc">
+              <div className="container-main-cc">
+                <div className="how-wrapper">
+                  <h2 className="heading-style-h7-cc mb-8">How the platform works</h2>
+                  <p className="text-size-body-3-cc">From discovery to deal in five simple steps</p>
+                  <div className="how-point-wrapper">
+                    <div className="how-point _1-point">
+                      <div className="text-size-body-4-cc opacity-24 mb-32">01</div>
+                      <div className="text-size-body-2-cc mb-8 mob-size-16">
+                        <strong>Use smart filters</strong>
+                      </div>
+                      <div className="text-size-body-2-cc mob-size-16">
+                        Quickly narrow property options by location, budget, ROI, size, and more
+                      </div>
+                    </div>
+                    <div className="mob-line" />
+                    <div className="how-point _1-point">
+                      <div className="text-size-body-4-cc opacity-24 mb-32">02</div>
+                      <div className="text-size-body-2-cc mb-8 mob-size-16">
+                        <strong>Drag &amp; drop selections</strong>
+                      </div>
+                      <div className="text-size-body-2-cc mob-size-16">
+                        Build tailored shortlists for each client in seconds
+                      </div>
+                    </div>
+                    <div className="mob-line" />
+                    <div className="how-point _1-point">
+                      <div className="text-size-body-4-cc opacity-24 mb-32">03</div>
+                      <div className="text-size-body-2-cc mb-8 mob-size-16">
+                        <strong>Share a unique link</strong>
+                      </div>
+                      <div className="text-size-body-2-cc mob-size-16">
+                        Send a personalized landing page. No PDFs, no clutter
+                      </div>
+                    </div>
+                    <div className="mob-line" />
+                    <div className="how-point _1-point">
+                      <div className="text-size-body-4-cc opacity-24 mb-32">04</div>
+                      <div className="text-size-body-2-cc mb-8 mob-size-16 max-w-9">
+                        <strong>Track interest</strong>
+                      </div>
+                      <div className="text-size-body-2-cc mob-size-16">
+                        Get notified when your client likes a property
+                      </div>
+                    </div>
+                    <div className="mob-line" />
+                    <div className="how-point _1-point">
+                      <div className="text-size-body-4-cc opacity-24 mb-32">05</div>
+                      <div className="text-size-body-2-cc mb-8 mob-size-16 max-w-9">
+                        <strong>Close with confidence</strong>
+                      </div>
+                      <div className="text-size-body-2-cc mob-size-16">
+                        Follow up with insight and seal the deal faster. No more guesswork
                       </div>
                     </div>
                   </div>
