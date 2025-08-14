@@ -20,7 +20,7 @@ export default {
   juridical_info: 'Legal information',
   politics: 'Data processing policy',
   footer_info:
-    'All data provided in this material is for informational purposes only and does not constitute a commercial offer or public offer of any kind. All prices and availability are presented to the best of our knowledge at the time of publication but are subject to change at any time without prior notice. Pricing, terms, and conditions are solely determined by the respective developers at their sole discretion. Insight Estate acts as an independent intermediary and is not an official representative or sales agent of any developer. Insight Estate shall not be held responsible for any changes in prices, terms, availability, or other conditions in respect of real estate properties listed in this material.',
+    'All data provided in this material is for informational purposes only and does not constitute a commercial offer or public offer of any kind. All prices and availability are presented to the best of our knowledge at the time of publication but are subject to change at any time without prior notice. Pricing, terms, and conditions are solely determined by the respective developers at their sole discretion. Lots Of Properties acts as an independent intermediary and is not an official representative or sales agent of any developer. Lots Of Properties shall not be held responsible for any changes in prices, terms, availability, or other conditions in respect of real estate properties listed in this material.',
   rights_reserved: 'All rights reserved.',
   not_found: 'No properties found matching your criteria.',
   projects: 'Projects',

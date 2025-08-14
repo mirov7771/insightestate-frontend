@@ -93,7 +93,7 @@ export const Footer: FC = () => {
       <div className={styles.disclaimer}>
         <Text variant="caption1" as="p">
           {formatMessage({ id: 'footer_info' })}
-          <br />© 2025 Insight Estate. {formatMessage({ id: 'rights_reserved' })}
+          <br />© 2025 Lots Of Properties. {formatMessage({ id: 'rights_reserved' })}
         </Text>
       </div>
     </div>

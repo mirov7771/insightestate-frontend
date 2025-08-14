@@ -91,6 +91,7 @@ import BestObjects from './BestObjects.svg?react';
 import Units from './Units.svg?react';
 import Beta from './Beta.svg?react';
 import BetaMB from './BetaMB.svg?react';
+import WhiteLogo from './WhiteLogo.svg?react';
 
 export {
   Bed,
@@ -187,4 +188,5 @@ export {
   IconEye,
   IconEyeClose,
   IconMoodSadFilled,
+  WhiteLogo,
 };
