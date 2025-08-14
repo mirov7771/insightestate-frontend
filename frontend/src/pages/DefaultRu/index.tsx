@@ -199,8 +199,7 @@ export const DefaultRu: FC = () => {
                     paddingBottom: '3rem'
                   }}>
                     <h1 className="heading-style-h2-cc mb-16 mob-size-40">
-                      От лида до&nbsp;оффера —<span className="text-span"> </span>
-                      за&nbsp;минуты
+                      От запроса клиента до готового предложения за несколько минут
                     </h1>
                     <p className="text-size-body-1-cc mb-40 is-ch mob-size-20">
                       Мгновенный доступ к полной базе проектов Таиланда. Создавайте клиентские подборки в несколько кликов и отслеживайте то, что действительно важно
