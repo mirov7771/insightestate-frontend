@@ -10,10 +10,12 @@
   text-align: center;
 
   & > svg {
-    width: 75px;
+    width: 150px;
+    height: 50px;
 
     @media (min-width: $media-lg) {
-      width: 117px;
+      width: 177px;
+      height: 50px;
     }
   }
 }

@@ -120,19 +120,19 @@ const MainMenu: FC = () => {
             <img src={ObjectsImg} alt="" />
           </div>
         </div>
-        <div className={styles.card}>
-          <div className={styles.card__content}>
-            <Text variant="body1">{formatMessage({ id: 'main_card_4' })}</Text>
-            {status === 'LOADING' ? (
-              <Skeleton variant="text" height={32} width={32} />
-            ) : (
-              <Text variant="heading4">{bestObjects}</Text>
-            )}
-          </div>
-          <div className={styles.card__img}>
-            <img src={StarsImg} alt="" />
-          </div>
-        </div>
+        {/*<div className={styles.card}>*/}
+        {/*  <div className={styles.card__content}>*/}
+        {/*    <Text variant="body1">{formatMessage({ id: 'main_card_4' })}</Text>*/}
+        {/*    {status === 'LOADING' ? (*/}
+        {/*      <Skeleton variant="text" height={32} width={32} />*/}
+        {/*    ) : (*/}
+        {/*      <Text variant="heading4">{bestObjects}</Text>*/}
+        {/*    )}*/}
+        {/*  </div>*/}
+        {/*  <div className={styles.card__img}>*/}
+        {/*    <img src={StarsImg} alt="" />*/}
+        {/*  </div>*/}
+        {/*</div>*/}
       </section>
       <section className={styles.offer}>
         <div className={styles.offer__content}>
