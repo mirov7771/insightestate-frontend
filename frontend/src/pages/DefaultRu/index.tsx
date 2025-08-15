@@ -703,7 +703,7 @@ export const DefaultRu: FC = () => {
                   </div>
                 </div>
                 <a
-                  href="https://insightestate.pro/register"
+                  href="https://lotsof.properties/register"
                   target="_blank"
                   className="button-cc is-white _w-100 w-button"
                   rel="noreferrer"

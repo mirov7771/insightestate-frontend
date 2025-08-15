@@ -88,7 +88,7 @@ export const UserProfile: FC<UserProfileProps> = ({ basicToken }) => {
         <Avatar
           variant={'pictures'}
           imgSrc={
-            userInfo.profileImage || 'https://insightestate.pro/estate-images/profile_img.png'
+            userInfo.profileImage || 'https://lotsof.properties/estate-images/profile_img.png'
           }
           text={userInfo.fio || 'U'}
           onClick={handleOpen}

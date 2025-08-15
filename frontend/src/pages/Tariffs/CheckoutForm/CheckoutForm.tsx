@@ -39,8 +39,8 @@ export const CheckoutForm: FC<{
       clientSecret: res.data.clientSecret,
       confirmParams: {
         return_url: extraId
-          ? `https://insightestate.pro/tariffs?tariffId=${id}&extraTariffId=${extraId}`
-          : `https://insightestate.pro/tariffs?tariffId=${id}`,
+          ? `https://lotsof.properties/tariffs?tariffId=${id}&extraTariffId=${extraId}`
+          : `https://lotsof.properties/tariffs?tariffId=${id}`,
       },
     });
 

@@ -59,7 +59,7 @@ const MainMenu: FC = () => {
             onClick={handleOpenModal}
           >
             <div className={styles.story__content}>
-              <img src="https://insightestate.pro/estate-images/InfoButton.png" alt="" />
+              <img src="https://lotsof.properties/estate-images/InfoButton.png" alt="" />
             </div>
           </div>
           <Text variant="caption1" align="center">
@@ -72,7 +72,7 @@ const MainMenu: FC = () => {
             onClick={handleOpenHeartModal}
           >
             <div className={styles.story__content}>
-              <img src="https://insightestate.pro/estate-images/HeartButton.png" alt="" />
+              <img src="https://lotsof.properties/estate-images/HeartButton.png" alt="" />
             </div>
           </div>
           <Text variant="caption1" align="center">

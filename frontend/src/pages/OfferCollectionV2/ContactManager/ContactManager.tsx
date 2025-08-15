@@ -68,7 +68,7 @@ export const ContactManager: FC<{ id: string; client?: string | null }> = ({ id,
           <div className={styles.content}>
             <img
               src={
-                agentInfo?.profileImage || 'https://insightestate.pro/estate-images/profile_img.png'
+                agentInfo?.profileImage || 'https://lotsof.properties/estate-images/profile_img.png'
               }
               alt="avatar"
               className={styles.avatar}

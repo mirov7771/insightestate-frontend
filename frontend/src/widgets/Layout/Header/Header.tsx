@@ -13,7 +13,7 @@ export const Header: FC<{ basicToken: string }> = ({ basicToken }) => {
   const navigate = useNavigate();
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [profileImage, setProfileImage] = useState<string>(
-    'https://insightestate.pro/estate-images/profile_img.png'
+    'https://lotsof.properties/estate-images/profile_img.png'
   );
   const goTo = () => {
     navigate('/profile');
@@ -30,7 +30,7 @@ export const Header: FC<{ basicToken: string }> = ({ basicToken }) => {
       .getAgentInfo(basicToken)
       .then((r) => {
         setProfileImage(
-          r.data.profileImage || 'https://insightestate.pro/estate-images/profile_img.png'
+          r.data.profileImage || 'https://lotsof.properties/estate-images/profile_img.png'
         );
       })
       .catch((e) => console.log(e));
