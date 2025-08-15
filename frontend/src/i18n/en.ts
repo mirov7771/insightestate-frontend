@@ -432,7 +432,7 @@ export default {
   'storiesV2.3.description': 'We guarantee confidentiality',
   'storiesV2.3.button.text': 'Great',
 
-  country_of_residence: 'Страна проживания',
+  country_of_residence: 'Country',
 
   'form.error.username.required': 'Username is required',
   'form.error.username.invalid':

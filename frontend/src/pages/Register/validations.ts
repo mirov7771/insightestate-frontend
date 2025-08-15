@@ -83,7 +83,7 @@ export function validate(
   const errors: FormErrors | null = {};
 
   // Username: обязательно, минимум 3 символа, только буквы и цифры
-  errors.username = validationUsername(fields.username, formatMessage);
+  //errors.username = validationUsername(fields.username, formatMessage);
 
   // Password: обязательно, минимум 6 символов
   errors.password = validationPassword(fields.password, formatMessage);
