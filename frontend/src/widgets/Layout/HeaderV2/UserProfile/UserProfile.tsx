@@ -28,6 +28,7 @@ export const UserProfile: FC<UserProfileProps> = ({ basicToken }) => {
   const language = localStorage.getItem('language') || 'en';
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+  const localStorageUserLocale = localStorage.getItem('language') as 'ru' | 'en';
   const handleOpen = (event: MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -80,6 +81,10 @@ export const UserProfile: FC<UserProfileProps> = ({ basicToken }) => {
 
   if (status === 'LOADING') {
     return <Skeleton variant="circular" width={40} height={40} />;
+  }
+
+  const goTo = () => {
+    window.open('https://t.me/lotsofproperties')
   }
 
   if (status === 'SUCCESS' && userInfo) {
@@ -159,12 +164,14 @@ export const UserProfile: FC<UserProfileProps> = ({ basicToken }) => {
               </MaterialMenuItem>
             </MaterialMenu>
           </MaterialMenuItem>
-          <MaterialMenuItem classes={{ root: styles.menu__item_root }}>
-            <IconBrandTelegram />
-            <Text variant="body1" bold>
-              {formatMessage({ id: 'userProfile.tgGroup' })}
-            </Text>
-          </MaterialMenuItem>
+          {localStorageUserLocale == 'ru' ?
+              <MaterialMenuItem classes={{ root: styles.menu__item_root }} onClick={goTo}>
+                <IconBrandTelegram />
+                <Text variant="body1" bold>
+                  {formatMessage({ id: 'userProfile.tgGroup' })}
+                </Text>
+              </MaterialMenuItem> : <></>
+          }
           <MaterialMenuItem
             classes={{ root: styles.menu__item_root }}
             onClick={handleNavigateToSettings}
