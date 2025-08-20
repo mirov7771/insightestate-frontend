@@ -83,6 +83,8 @@ import IconLayout from './offer-collection/layout.svg?react';
 import IconEye from './offer-collection/tabler-icon-eye.svg?react';
 import IconEyeClose from './offer-collection/tabler-icon-eye-closed.svg?react';
 import IconMoodSadFilled from './offer-collection/tabler-icon-mood-sad-filled.svg?react';
+import IconFileTypePdf from './offer-collection/tabler-icon-file-type-pdf.svg?react';
+import IconChevronDown from './offer-collection/tabler-icon-chevron-down.svg?react';
 import FilterIcon from './FilterIcon.svg?react';
 import EstateIcon from './EstateIcon.svg?react';
 import Collections from './Collections.svg?react';
@@ -150,6 +152,7 @@ export {
   IconHeart,
   IconChevronRight,
   IconChevronLeft,
+  IconChevronDown,
   IconGraphMonitor,
   IconSpark,
   IconBrandSpark,
@@ -189,4 +192,5 @@ export {
   IconEyeClose,
   IconMoodSadFilled,
   WhiteLogo,
+  IconFileTypePdf,
 };

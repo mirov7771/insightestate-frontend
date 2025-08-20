@@ -84,8 +84,8 @@ export const UserProfile: FC<UserProfileProps> = ({ basicToken }) => {
   }
 
   const goTo = () => {
-    window.open('https://t.me/lotsofproperties')
-  }
+    window.open('https://t.me/lotsofproperties');
+  };
 
   if (status === 'SUCCESS' && userInfo) {
     return (
@@ -164,14 +164,16 @@ export const UserProfile: FC<UserProfileProps> = ({ basicToken }) => {
               </MaterialMenuItem>
             </MaterialMenu>
           </MaterialMenuItem>
-          {localStorageUserLocale == 'ru' ?
-              <MaterialMenuItem classes={{ root: styles.menu__item_root }} onClick={goTo}>
-                <IconBrandTelegram />
-                <Text variant="body1" bold>
-                  {formatMessage({ id: 'userProfile.tgGroup' })}
-                </Text>
-              </MaterialMenuItem> : <></>
-          }
+          {localStorageUserLocale == 'ru' ? (
+            <MaterialMenuItem classes={{ root: styles.menu__item_root }} onClick={goTo}>
+              <IconBrandTelegram />
+              <Text variant="body1" bold>
+                {formatMessage({ id: 'userProfile.tgGroup' })}
+              </Text>
+            </MaterialMenuItem>
+          ) : (
+            <></>
+          )}
           <MaterialMenuItem
             classes={{ root: styles.menu__item_root }}
             onClick={handleNavigateToSettings}

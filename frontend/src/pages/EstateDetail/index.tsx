@@ -25,6 +25,7 @@ import { BaseUserModal } from '@/widgets/Modal/BaseUserModal';
 import { isMobile } from 'react-device-detect';
 import { Flats } from '@/pages/OfferCollectionV2/CommonComponents/Flats/Flats';
 import { Spacer } from '@/widgets/Spacer/Spacer';
+import { Developer } from '@/pages/EstateDetail/Developer/Developer';
 
 const EstateDetail: FC = () => {
   const { formatMessage } = useIntl();
@@ -159,6 +160,7 @@ const EstateDetail: FC = () => {
           {/*<div>*/}
           {/*  <Rating {...estateDetailData.grade} />*/}
           {/*</div>*/}
+          <Developer />
           <div>
             <Units />
             <Spacer height={20} width={100} />
