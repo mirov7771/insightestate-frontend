@@ -38,6 +38,8 @@ export type EstateDetail = {
 
 export type Developer = {
   name?: string;
+  phone?: string;
+  email?: string;
 };
 
 export type Grade = {

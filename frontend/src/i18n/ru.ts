@@ -451,5 +451,19 @@ export default {
   profit_roi_description: 'Показатель, сколько прибыли приносит инвестиция по отношению к вложенной сумме.',
 
   profit_rent_title: 'Чистый арендный доход',
-  profit_rent_description: 'Доход от аренды за вычетом расходов (налоги, ремонт, управление).'
+  profit_rent_description: 'Доход от аренды за вычетом расходов (налоги, ремонт, управление).',
+
+  developer_title: 'Застройщик',
+  developer_eia: 'Есть сертификат EIA',
+  developer_land: 'Земля выкуплена',
+  developer_presentation_title: 'Презентация от застройщика',
+  developer_presentation_desc: 'Контакты и цены скрыты — версия адаптирована для показа клиентам',
+  developer_presentation_download: 'Скачать',
+  developer_presentation_ru: 'На русском',
+  developer_presentation_en: 'На английском',
+
+  developer_sold: `Продано<br></br>юнитов`,
+  developer_total: `Всего<br></br>проектов`,
+  developer_finished: `Сдано<br></br>проектов`,
+  developer_build: `Строится<br></br>проектов`,
 };

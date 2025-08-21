@@ -160,7 +160,7 @@ const EstateDetail: FC = () => {
           {/*<div>*/}
           {/*  <Rating {...estateDetailData.grade} />*/}
           {/*</div>*/}
-          <Developer />
+          <Developer {...estateDetailData}/>
           <div>
             <Units />
             <Spacer height={20} width={100} />
