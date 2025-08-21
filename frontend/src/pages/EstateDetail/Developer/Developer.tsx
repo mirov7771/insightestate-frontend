@@ -48,6 +48,7 @@ export const Developer: FC<TEstateDetail> = ({
   };
 
   const openPresentation = (lang: string) => {
+    //TODO переделать на бэк
     window.open(`https://lotsof.properties/estate-images/${projectId}_${lang}.pdf`)
   }
 
