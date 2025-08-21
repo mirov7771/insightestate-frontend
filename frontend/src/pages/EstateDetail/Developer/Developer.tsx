@@ -47,10 +47,119 @@ export const Developer: FC<TEstateDetail> = ({
     openPresentation('ENG');
   };
 
+  //TODO переделать на бэк
   const openPresentation = (lang: string) => {
-    //TODO переделать на бэк
     window.open(`https://lotsof.properties/estate-images/${projectId}_${lang}.pdf`)
   }
+
+  const prs = [
+      'TH-UTP-NK-00120',
+      'TH-HKT-SU-00100',
+      'TH-HKT-SU-00073',
+      'TH-HKT-RW-00117',
+      'TH-HKT-RW-00092',
+      'TH-HKT-RW-00084',
+      'TH-HKT-RW-00082',
+      'TH-HKT-RW-00081',
+      'TH-HKT-RW-00076',
+      'TH-HKT-RW-00043',
+      'TH-HKT-RW-00031',
+      'TH-HKT-RW-00029',
+      'TH-HKT-RW-00024',
+      'TH-HKT-RW-00001',
+      'TH-HKT-AY-00147',
+      'TH-HKT-BT-00002',
+      'TH-HKT-BT-00003',
+      'TH-HKT-BT-00006',
+      'TH-HKT-BT-00008',
+      'TH-HKT-PT-00077',
+      'TH-HKT-NY-00013',
+      'TH-HKT-NI-00060',
+      'TH-HKT-NI-00054',
+      'TH-HKT-NH-00136',
+      'TH-HKT-LY-00139',
+      'TH-HKT-LY-00138',
+      'TH-HKT-LY-00048',
+      'TH-HKT-LY-00045',
+      'TH-HKT-LY-00042',
+      'TH-HKT-LY-00016',
+      'TH-HKT-LY-00015',
+      'TH-HKT-KT-00069',
+      'TH-HKT-KT-00005',
+      'TH-HKT-KR-00044',
+      'TH-HKT-KL-00104',
+      'TH-HKT-KL-00074',
+      'TH-HKT-KL-00051',
+      'TH-HKT-BT-00014',
+      'TH-HKT-BT-00012',
+      'TH-HKT-BT-00018',
+      'TH-HKT-BT-00019',
+      'TH-HKT-BT-00020',
+      'TH-HKT-BT-00021',
+      'TH-HKT-BT-00026',
+      'TH-HKT-BT-00034',
+      'TH-HKT-BT-00036',
+      'TH-HKT-BT-00049',
+      'TH-HKT-BT-00057',
+      'TH-HKT-BT-00142',
+      'TH-HKT-BT-00103',
+      'TH-HKT-BT-00102',
+      'TH-HKT-BT-00058',
+      'TH-UTP-WA-00135',
+      'TH-UTP-WA-00135',
+      'TH-UTP-NK-00121',
+      'TH-UTP-JT-00123',
+      'TH-UTP-JT-00122',
+      'TH-UTP-JT-00114',
+      'TH-UTP-JT-00111',
+      'TH-UTP-DT-00118',
+      'TH-UTP-DT-00107',
+      'TH-HKT-SU-00093',
+      'TH-HKT-SU-00038',
+      'TH-HKT-RW-00033',
+      'TH-HKT-PT-00097',
+      'TH-HKT-NY-00078',
+      'TH-HKT-NI-00098',
+      'TH-HKT-NI-00030',
+      'TH-HKT-NI-00010',
+      'TH-HKT-NI-00007',
+      'TH-HKT-MK-00066',
+      'TH-HKT-LY-00146',
+      'TH-HKT-LY-00053',
+      'TH-HKT-LY-00035',
+      'TH-HKT-LY-00032',
+      'TH-HKT-LY-00028',
+      'TH-HKT-KN-00096',
+      'TH-HKT-KL-00050',
+      'TH-HKT-KL-00027',
+      'TH-HKT-BT-00106',
+      'TH-HKT-BT-00068',
+      'TH-HKT-BT-00064',
+      'TH-HKT-BT-00046',
+      'TH-HKT-BT-00039',
+      'TH-HKT-BT-00011',
+      'TH-HKT-BT-00009',
+      'TH-HKT-BT-00004',
+      'TH-HKT-AY-00075',
+      'TH-HKT-AY-00063',
+      'TH-BKK-WT-00130',
+      'TH-BKK-WT-00128',
+      'TH-BKK-WT-00124',
+      'TH-BKK-WT-00094',
+      'TH-BKK-TB-00132',
+      'TH-BKK-RTH-00087',
+      'TH-BKK-RTH-00086',
+      'TH-BKK-LK-00134',
+      'TH-BKK-KT-00125',
+      'TH-BKK-KS-00089',
+      'TH-BKK-CT-00131',
+      'TH-BKK-BR-00127',
+      'TH-BKK-BN-00126'
+  ]
+  const isPresentation = () => {
+    return prs.includes(projectId)
+  }
+  //TODO переделать на бэк
 
   return (
     <div className={styles.developer}>
@@ -139,7 +248,7 @@ export const Developer: FC<TEstateDetail> = ({
           </div>
         </div>
       </div>
-      <div className={styles.developer__presentation}>
+      {isPresentation() ?<div className={styles.developer__presentation}>
         <div className={styles.developer__presentation_info}>
           <Text variant="heading5">{formatMessage({ id: 'developer_presentation_title' })}</Text>
           <Text className={styles.developer__presentation_info_text} variant="body1">
@@ -192,7 +301,7 @@ export const Developer: FC<TEstateDetail> = ({
             </MaterialMenuItem>
           </MaterialMenu>
         </Button>
-      </div>
+      </div> : <></>}
     </div>
   );
 };
