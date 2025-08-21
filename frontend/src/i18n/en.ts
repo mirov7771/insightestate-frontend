@@ -453,5 +453,19 @@ export default {
   profit_roi_description: 'Shows how much profit an investment generates relative to its cost.',
 
   profit_rent_title: 'Net Rental Income',
-  profit_rent_description: 'Rental income after all expenses (taxes, maintenance, management) are deducted.'
+  profit_rent_description: 'Rental income after all expenses (taxes, maintenance, management) are deducted.',
+
+  developer_title: 'Developer',
+  developer_eia: 'EIA certificate',
+  developer_land: 'Land purchased',
+  developer_presentation_title: 'Presentation from the developer',
+  developer_presentation_desc: 'Contacts and prices are hidden — the version is adapted for showing to customers',
+  developer_presentation_download: 'Download',
+  developer_presentation_ru: 'Russian',
+  developer_presentation_en: 'English',
+
+  developer_sold: `Sold<br></br>units`,
+  developer_total: `Total<br></br>projects`,
+  developer_finished: `Completed<br></br>projects`,
+  developer_build: `Projects under construction<br></br>`,
 };
