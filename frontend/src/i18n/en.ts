@@ -351,6 +351,12 @@ export default {
   'units.bedroom.2': '2 bedrooms',
   'units.bedroom.3': '3 bedrooms',
   'units.bedroom.4': '4 bedrooms',
+  //
+  'units.filters': 'Filters',
+  'units.filter.short.price': 'By price',
+  'units.filter.short.area': 'By area',
+  'units.filter.short.income': 'By income per year',
+  'units.filter.short.payback': 'On payback',
 
   'userProfile.language.ru': 'Russian',
   'userProfile.language.en': 'English',
@@ -453,13 +459,15 @@ export default {
   profit_roi_description: 'Shows how much profit an investment generates relative to its cost.',
 
   profit_rent_title: 'Net Rental Income',
-  profit_rent_description: 'Rental income after all expenses (taxes, maintenance, management) are deducted.',
+  profit_rent_description:
+    'Rental income after all expenses (taxes, maintenance, management) are deducted.',
 
   developer_title: 'Developer',
   developer_eia: 'EIA certificate',
   developer_land: 'Land purchased',
   developer_presentation_title: 'Presentation from the developer',
-  developer_presentation_desc: 'Contacts and prices are hidden — the version is adapted for showing to customers',
+  developer_presentation_desc:
+    'Contacts and prices are hidden — the version is adapted for showing to customers',
   developer_presentation_download: 'Download',
   developer_presentation_ru: 'Russian',
   developer_presentation_en: 'English',

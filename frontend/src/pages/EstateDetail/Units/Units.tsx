@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useEffect, useState } from 'react';
+import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
 import { Segment, Text } from '@/shared/ui';
 import { Section } from '@/pages/EstateDetail/Section/Section';
 import { UnitsSlider } from '@/pages/EstateDetail/Units/UnitsSlider';
@@ -9,6 +9,8 @@ import { useStatus } from '@/shared/utils/useStatus';
 import { FormattedMessage } from 'react-intl';
 import styles from './Units.module.scss';
 import { IconCarouselHorizontal, IconLayoutList } from '@/shared/assets/icons';
+import { UnitsFilter } from '@/pages/EstateDetail/Units/UnitsFilter/UnitsFilter';
+import { useWindowResize } from '@/shared/utils/useWindowResize';
 
 export const Units: FC = () => {
   const params = useParams();
@@ -52,14 +54,17 @@ export const Units: FC = () => {
             </>
           }
           rightSide={
-            <Segment
-              value={activeTab}
-              onChange={handleChangeActiveTab}
-              options={[
-                { value: 1, icon: <IconCarouselHorizontal /> },
-                { value: 2, icon: <IconLayoutList /> },
-              ]}
-            />
+            <div className={styles.right}>
+              <UnitsFilter className={styles.filter} />
+              <Segment
+                value={activeTab}
+                onChange={handleChangeActiveTab}
+                options={[
+                  { value: 1, icon: <IconCarouselHorizontal /> },
+                  { value: 2, icon: <IconLayoutList /> },
+                ]}
+              />
+            </div>
           }
         >
           {status === 'LOADING' && <div>Loading</div>}

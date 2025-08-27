@@ -349,6 +349,12 @@ export default {
   'units.bedroom.2': '2 спальни',
   'units.bedroom.3': '3 спальни',
   'units.bedroom.4': '4 спальни',
+  //
+  'units.filters': 'Фильтры',
+  'units.filter.short.price': 'По цене',
+  'units.filter.short.area': 'По площади',
+  'units.filter.short.income': 'По доходу в год',
+  'units.filter.short.payback': 'По окупаемости',
 
   'userProfile.language.ru': 'Русский',
   'userProfile.language.en': 'Английский',
@@ -448,7 +454,8 @@ export default {
   profit_irr_description: 'Годовая доходность инвестиции с учётом всех денежных потоков.',
 
   profit_roi_title: 'ROI (Окупаемость / Return on Investment)',
-  profit_roi_description: 'Показатель, сколько прибыли приносит инвестиция по отношению к вложенной сумме.',
+  profit_roi_description:
+    'Показатель, сколько прибыли приносит инвестиция по отношению к вложенной сумме.',
 
   profit_rent_title: 'Чистый арендный доход',
   profit_rent_description: 'Доход от аренды за вычетом расходов (налоги, ремонт, управление).',

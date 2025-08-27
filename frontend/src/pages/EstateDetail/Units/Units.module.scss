@@ -1,3 +1,5 @@
+@use '~@/sass/index' as *;
+
 .info {
   color: var(--ui-color-black-64-opacity);
   display: inline-block;
@@ -6,4 +8,19 @@
 
 .hidden {
   display: none;
+}
+
+.right {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  @media (min-width: $media-lg) {
+    width: auto;
+    justify-content: flex-start;
+  }
+}
+
+.filter {
+  margin-right: 16px;
 }
