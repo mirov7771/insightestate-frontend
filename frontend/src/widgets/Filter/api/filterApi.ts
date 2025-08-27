@@ -41,6 +41,7 @@ export type GetEstateParams = {
   rooms?: string[];
   types?: string[];
   developer?: string[];
+  petFriendly?: string;
 };
 
 export type GetEstateAi = {

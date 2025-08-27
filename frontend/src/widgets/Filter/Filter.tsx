@@ -18,6 +18,7 @@ import { Button, Text } from '@/shared/ui';
 import { AiModal } from '@/widgets/Modal/AiModal';
 import { IconX } from '@/shared/assets/icons';
 import {Developer} from "@/widgets/Filter/Developer";
+import {PetFriendly} from "@/widgets/Filter/PetFriendly";
 
 type FilterProps = { open: boolean; setOpen: Dispatch<SetStateAction<boolean>> };
 
@@ -62,6 +63,7 @@ export const Filter: FC<FilterProps> = ({ open, setOpen }) => {
           <Beach renderName />
           <Airport renderName />
           <Company />
+          <PetFriendly />
           <Developer />
           <AiFilter />
         </div>

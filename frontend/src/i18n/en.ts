@@ -468,4 +468,6 @@ export default {
   developer_total: `Total<br></br>projects`,
   developer_finished: `Completed<br></br>projects`,
   developer_build: `Projects under construction<br></br>`,
+
+  petFriendly: 'Pet friendly'
 };
