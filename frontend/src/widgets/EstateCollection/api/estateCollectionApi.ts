@@ -72,6 +72,7 @@ export type AgentInfo = {
   profileImage?: string;
   tgName?: string;
   whatsUp?: string;
+  group?: string
 };
 
 export type HelpWithClientRq = {
