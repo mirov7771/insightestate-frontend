@@ -41,8 +41,8 @@ const OfferCollectionV2: FC = () => {
       canvas: {
         mimeType: 'image/png'
       }
-    }).then(r => setVisible(true))
-        .catch(e => setVisible(true))
+    }).then(() => setVisible(true))
+        .catch(() => setVisible(true))
   }
 
   useEffect(() => {
