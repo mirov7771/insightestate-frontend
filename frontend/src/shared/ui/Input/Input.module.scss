@@ -42,6 +42,16 @@
     &__error {
       border: 1px solid var(--ui-color-red);
     }
+
+    &[type='number'] {
+      -moz-appearance: textfield;
+    }
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+    }
+
   }
 
   &.input__icon {
