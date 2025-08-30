@@ -8,6 +8,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   icon?: ReactNode;
   iconOnClick?: () => void;
   label?: string;
+  yClass?: string
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
@@ -23,7 +24,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         )}
         <input
           ref={ref}
-          className={`${styles.input} ${error ? styles.input__error : ''}`}
+          className={`${styles.input} ${error ? styles.input__error : ''} ${props.yClass ? props.yClass : ''}`}
           {...props}
         />
         {!!icon && (

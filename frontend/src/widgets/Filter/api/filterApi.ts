@@ -40,6 +40,8 @@ export type GetEstateParams = {
   price?: string;
   rooms?: string[];
   types?: string[];
+  developer?: string[];
+  petFriendly?: string;
 };
 
 export type GetEstateAi = {

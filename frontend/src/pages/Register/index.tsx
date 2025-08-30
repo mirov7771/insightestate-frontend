@@ -173,6 +173,7 @@ const Register: FC = () => {
             name="username"
             placeholder={formatMessage({ id: 'surname_name' })}
             error={formErrors?.username}
+            yClass=".ym-record-key"
           />
           <Input
             name="email"
@@ -180,6 +181,7 @@ const Register: FC = () => {
             onChange={onChangeEmail}
             placeholder={formatMessage({ id: 'login.emailPlaceholder' })}
             error={formErrors?.email}
+            yClass=".ym-record-key"
           />
           <PhoneInput
             value={phone}
@@ -189,6 +191,7 @@ const Register: FC = () => {
             enableSearch
             autocompleteSearch
             disableSearchIcon
+            inputClass={".ym-record-key"}
             defaultErrorMessage={formErrors?.phone}
             // error={formErrors?.phone}
             isValid={(value, country) => {

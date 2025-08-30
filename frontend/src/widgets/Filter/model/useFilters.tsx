@@ -25,6 +25,8 @@ export const DEFAULT_FILTERS = {
   city: [],
   minPrice: 0,
   maxPrice: undefined,
+  developer: [],
+  petFriendly: undefined,
 };
 
 const activeFiltersCounter = (filters: GetEstateParams): number => {

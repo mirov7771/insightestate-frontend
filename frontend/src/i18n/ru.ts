@@ -483,4 +483,6 @@ export default {
   developer_total: `Всего<br></br>проектов`,
   developer_finished: `Сдано<br></br>проектов`,
   developer_build: `Строится<br></br>проектов`,
+
+  petFriendly: 'Можно с животными'
 };
