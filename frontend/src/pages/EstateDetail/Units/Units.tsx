@@ -18,49 +18,45 @@ export const Units: FC = () => {
 
   return (
     <>
-      {units.length < 1 ? (
-        <></>
-      ) : (
-        <Section
-          title={
-            <>
-              <FormattedMessage id="units.available_units" />
-              {!!units.length && (
-                <Text variant="heading3" className={styles.info}>
-                  {units.length}
-                </Text>
-              )}
-            </>
-          }
-          rightSide={
-            <div className={styles.right}>
-              <UnitsFilter className={styles.filter} />
-              <Segment
-                value={activeTab}
-                onChange={handleChangeActiveTab}
-                options={[
-                  { value: 1, icon: <IconCarouselHorizontal /> },
-                  { value: 2, icon: <IconLayoutList /> },
-                ]}
-              />
+      <Section
+        title={
+          <>
+            <FormattedMessage id="units.available_units" />
+            {!!units.length && (
+              <Text variant="heading3" className={styles.info}>
+                {units.length}
+              </Text>
+            )}
+          </>
+        }
+        rightSide={
+          <div className={styles.right}>
+            <UnitsFilter className={styles.filter} />
+            <Segment
+              value={activeTab}
+              onChange={handleChangeActiveTab}
+              options={[
+                { value: 1, icon: <IconCarouselHorizontal /> },
+                { value: 2, icon: <IconLayoutList /> },
+              ]}
+            />
+          </div>
+        }
+      >
+        {status === 'LOADING' && <div>Loading</div>}
+        {status === 'SUCCESS' && !!units.length && (
+          <div>
+            <div className={activeTab !== 1 ? styles.hidden : ''}>
+              <UnitsSlider items={units} />
             </div>
-          }
-        >
-          {status === 'LOADING' && <div>Loading</div>}
-          {status === 'SUCCESS' && !!units.length && (
-            <div>
-              <div className={activeTab !== 1 ? styles.hidden : ''}>
-                <UnitsSlider items={units} />
-              </div>
-              <div className={activeTab !== 2 ? styles.hidden : ''}>
-                <UnitsCards items={units} />
-              </div>
+            <div className={activeTab !== 2 ? styles.hidden : ''}>
+              <UnitsCards items={units} />
             </div>
-          )}
-          {status === 'SUCCESS' && !units.length && <div>Empty</div>}
-          {status === 'ERROR' && <div>Error</div>}
-        </Section>
-      )}
+          </div>
+        )}
+        {status === 'SUCCESS' && !units.length && <div>Empty</div>}
+        {status === 'ERROR' && <div>Error</div>}
+      </Section>
     </>
   );
 };

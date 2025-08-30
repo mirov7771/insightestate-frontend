@@ -358,6 +358,14 @@ export default {
   'units.filter.short.income': 'By income per year',
   'units.filter.short.payback': 'On payback',
 
+  'units.filter.wide.reset': 'Reset',
+  'units.filter.wide.resetAll': 'Reset all',
+  'units.filter.wide.show': `Show {count, plural, one {# unit} other {# units}}`,
+  'units.filter.wide.price': 'Price',
+  'units.filter.wide.pricePerM2': 'Price per m²',
+  'units.filter.wide.area': 'Area',
+  'units.filter.wide.bedrooms': 'Number of bedrooms',
+
   'userProfile.language.ru': 'Russian',
   'userProfile.language.en': 'English',
   'userProfile.balance': 'Balance',

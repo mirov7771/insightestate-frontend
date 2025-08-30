@@ -25,7 +25,7 @@ export type UnitsFiltersParams = {
   minPriceSq?: number;
   minSize?: number;
   orderBy?: 'price' | 'area' | 'income' | 'payback';
-  rooms?: '1' | '2' | '3' | '4' | 'studio';
+  rooms?: Array<string>;
 };
 
 export const unitsApi = {

@@ -1,33 +1,20 @@
-import { ChangeEvent, FC, useState } from 'react';
+import { ChangeEvent, FC, ReactElement, useMemo, useState } from 'react';
 import styles from './WideFilters.module.scss';
 import { Input, Text } from '@/shared/ui';
 import Slider from '@mui/material/Slider';
-
-const MIN = 0;
-const MAX = 100;
-
-const setDefaultValue = (val: number | string, defaultVal: 'min' | 'max') => {
-  if (typeof val === 'number') {
-    if (val < MIN) {
-      return MIN;
-    }
-    if (val > MAX) {
-      return MAX;
-    }
-    return val;
-  }
-
-  return defaultVal === 'min' ? MIN : MAX;
-};
+import { FormattedMessage } from 'react-intl';
+import { useUnitsFilters } from '@/pages/EstateDetail/Units/UnitsContext';
+import { UnitsFiltersParams } from '@/shared/api/units';
+import { debounce } from '@/shared/utils';
 
 type FilterSliderProps = {
-  filterName: string;
+  filterName: string | ReactElement;
   maxPlaceholder: string;
   maxValue: number;
-  maxValueName: string;
+  maxValueName: Exclude<keyof UnitsFiltersParams, 'orderBy' | 'rooms'>;
   minPlaceholder: string;
   minValue: number;
-  minValueName: string;
+  minValueName: Exclude<keyof UnitsFiltersParams, 'orderBy' | 'rooms'>;
 };
 
 export const FilterSlider: FC<FilterSliderProps> = ({
@@ -39,29 +26,58 @@ export const FilterSlider: FC<FilterSliderProps> = ({
   maxValueName,
   maxValue,
 }) => {
-  const [value, setValue] = useState([minValue, maxValue]);
-  const handleChange = (event: Event, newValue: number[] | number) => {
-    setValue(typeof newValue === 'number' ? [newValue] : newValue);
+  const { filtersParams, setFiltersParams } = useUnitsFilters();
+  const [value, setValue] = useState([
+    filtersParams[minValueName] || '',
+    filtersParams[maxValueName] || '',
+  ]);
+  const handleDebounceSetFiltersParams = useMemo(
+    () =>
+      debounce(
+        (val: number | undefined, param: typeof maxValueName | typeof maxValueName) =>
+          setFiltersParams((prev) => ({ ...prev, [param]: val })),
+        500
+      ),
+    [setFiltersParams]
+  );
+
+  const handleChange = (event: Event, newValue: number[] | number, activeThumb: number) => {
+    if (Array.isArray(newValue)) {
+      const changedValue = newValue[activeThumb];
+
+      setValue((prevState) =>
+        activeThumb === 0 ? [changedValue, prevState[1]] : [prevState[0], changedValue]
+      );
+      handleDebounceSetFiltersParams(changedValue, activeThumb === 0 ? minValueName : maxValueName);
+    }
   };
+
   const handleInputChange = (index: 0 | 1) => (event: ChangeEvent<HTMLInputElement>) => {
+    const val = event.target.value === '' ? '' : Number(event.target.value);
+    const filterVal = val === '' ? undefined : val;
+
     if (index === 0) {
-      setValue((prev) => [Number(event.target.value), prev[1]]);
+      setValue((prev) => [val, prev[1]]);
+      handleDebounceSetFiltersParams(filterVal, minValueName);
     } else {
-      setValue((prev) => [prev[0], Number(event.target.value)]);
+      setValue((prev) => [prev[0], val]);
+      handleDebounceSetFiltersParams(filterVal, maxValueName);
     }
   };
 
   const handleReset = () => {
-    setValue([minValue, maxValue]);
+    setValue(['', '']);
   };
 
   return (
     <div className={styles.rooms}>
       <div className={styles.rooms__header}>
         <Text variant="heading5">{filterName}</Text>
-        <Text variant="body1" bold className={styles.reset} onClick={handleReset}>
-          Сбросить
-        </Text>
+        {!!(value[0] || value[1]) && (
+          <Text variant="body1" bold className={styles.reset} onClick={handleReset}>
+            <FormattedMessage id="units.filter.wide.reset" />
+          </Text>
+        )}
       </div>
       <div className={styles.rooms__container}>
         <div>
@@ -71,21 +87,24 @@ export const FilterSlider: FC<FilterSliderProps> = ({
               onChange={handleInputChange(0)}
               name={minValueName}
               type="number"
-              value={value[0] === minValue || ['', 0].includes(value[0]) ? '' : value[0]}
+              value={value[0]}
             />
             <Input
               placeholder={maxPlaceholder}
               onChange={handleInputChange(1)}
               name={maxValueName}
               type="number"
-              value={value[1] === maxValue || ['', 0].includes(value[1]) ? '' : value[1]}
+              value={value[1]}
             />
           </div>
           <Slider
             className={styles.slider}
             classes={{ thumb: styles.thumb, track: styles.track, rail: styles.track }}
             onChange={handleChange}
-            value={value}
+            value={[
+              typeof value[0] === 'string' ? minValue : value[0],
+              typeof value[1] === 'string' ? maxValue : value[1],
+            ]}
             min={minValue}
             max={maxValue}
           />

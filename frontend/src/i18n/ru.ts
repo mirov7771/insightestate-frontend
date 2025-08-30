@@ -356,6 +356,14 @@ export default {
   'units.filter.short.income': 'По доходу в год',
   'units.filter.short.payback': 'По окупаемости',
 
+  'units.filter.wide.reset': 'Сбросить',
+  'units.filter.wide.resetAll': 'Сбросить все',
+  'units.filter.wide.show': `Показать {count, plural, one {# юнит} few {# юнита} many {# юнитов} other {# юнитов}}`,
+  'units.filter.wide.price': 'Стоимость',
+  'units.filter.wide.pricePerM2': 'Цена за м2',
+  'units.filter.wide.area': 'Площадь',
+  'units.filter.wide.bedrooms': 'Количество спален',
+
   'userProfile.language.ru': 'Русский',
   'userProfile.language.en': 'Английский',
   'userProfile.balance': 'Баланс',

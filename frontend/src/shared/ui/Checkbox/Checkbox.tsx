@@ -1,10 +1,10 @@
-import { FC, InputHTMLAttributes } from 'react';
+import { FC, InputHTMLAttributes, ReactElement } from 'react';
 import styles from './Checkbox.module.scss';
 import Tick from './Tick.svg?react';
 import { Text } from '@/shared/ui';
 
 type CheckboxProps = InputHTMLAttributes<HTMLInputElement> & {
-  label?: string;
+  label?: string | ReactElement;
 };
 
 export const Checkbox: FC<CheckboxProps> = ({ label, checked = false, onChange, ...props }) => {

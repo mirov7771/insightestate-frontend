@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, ReactElement, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import styles from './WideFilters.module.scss';
@@ -6,30 +6,40 @@ import { IconAdjustmentsFilter, IconX } from '@/shared/assets/icons';
 import { Button, Text } from '@/shared/ui';
 import { FilterRooms } from './FilterRooms';
 import { FilterSlider } from './FilterSlider';
+import { useUnitsFilters } from '../../UnitsContext';
+import { UnitsFiltersParams } from '@/shared/api/units';
 
-const FILTERS = [
+const FILTERS: {
+  filterName: string | ReactElement;
+  maxPlaceholder: string;
+  maxValue: number;
+  maxValueName: Exclude<keyof UnitsFiltersParams, 'orderBy' | 'rooms'>;
+  minPlaceholder: string;
+  minValue: number;
+  minValueName: Exclude<keyof UnitsFiltersParams, 'orderBy' | 'rooms'>;
+}[] = [
   {
-    filterName: 'Стоимость',
-    minPlaceholder: 'от $275,000',
-    maxPlaceholder: 'до $600,000',
+    filterName: <FormattedMessage id="units.filter.wide.price" />,
+    minPlaceholder: '$275,000',
+    maxPlaceholder: '$600,000',
     minValue: 275000,
     maxValue: 600000,
     minValueName: 'minPrice',
     maxValueName: 'maxPrice',
   },
   {
-    filterName: 'Цена за м2',
-    minPlaceholder: 'от $3,788 м2',
-    maxPlaceholder: 'до $24,090 м2',
+    filterName: <FormattedMessage id="units.filter.wide.pricePerM2" />,
+    minPlaceholder: '$3,788 м²',
+    maxPlaceholder: '$24,090 м²',
     minValue: 3788,
     maxValue: 24090,
     minValueName: 'minPriceSq',
     maxValueName: 'maxPriceSq',
   },
   {
-    filterName: 'Площадь',
-    minPlaceholder: 'от 0 м2',
-    maxPlaceholder: 'до 312 м2',
+    filterName: <FormattedMessage id="units.filter.wide.area" />,
+    minPlaceholder: '0 м²',
+    maxPlaceholder: '312 м²',
     minValue: 0,
     maxValue: 312,
     minValueName: 'minSize',
@@ -38,9 +48,16 @@ const FILTERS = [
 ];
 
 export const WideFilters: FC = () => {
-  const [open, setOpen] = useState(false);
+  const { units, setFiltersParams, status } = useUnitsFilters();
+  const [open, setOpen] = useState(true);
   const handleClick = () => {
     setOpen(true);
+  };
+  const handleResetAll = () => {
+    setFiltersParams({ orderBy: 'price' });
+  };
+  const handleClose = () => {
+    setOpen(false);
   };
 
   return (
@@ -59,7 +76,9 @@ export const WideFilters: FC = () => {
       >
         <div className={styles.container}>
           <div className={styles.header}>
-            <Text variant="heading4">Фильтры</Text>
+            <Text variant="heading4">
+              <FormattedMessage id="units.filters" />
+            </Text>
             <span onClick={() => setOpen(false)}>
               <IconX />
             </span>
@@ -67,18 +86,23 @@ export const WideFilters: FC = () => {
           <div className={styles.filters}>
             <FilterRooms />
             {FILTERS.map((props) => (
-              <FilterSlider key={props.filterName} {...props} />
+              <FilterSlider key={props.minValue} {...props} />
             ))}
           </div>
           <div className={styles.bottom}>
-            <Button wide>
+            <Button
+              wide
+              loading={status === 'LOADING'}
+              disabled={!units.length}
+              onClick={handleClose}
+            >
               <Text variant="body1" bold>
-                Показать
+                <FormattedMessage id="units.filter.wide.show" values={{ count: units.length }} />
               </Text>
             </Button>
-            <Button variant="base" wide>
+            <Button variant="base" wide onClick={handleResetAll}>
               <Text variant="body1" bold>
-                Сбросить все
+                <FormattedMessage id="units.filter.wide.resetAll" />
               </Text>
             </Button>
           </div>
