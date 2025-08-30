@@ -7,7 +7,7 @@ import styles from './OfferCollectionV2.module.scss';
 import {Tabs} from './Tabs/Tabs';
 import {WhyThai} from './WhyThai/WhyThai';
 import {ContactManager} from './ContactManager/ContactManager';
-import generatePDF, {Margin} from 'react-to-pdf';
+import generatePDF from 'react-to-pdf';
 import {Spacer} from "@/widgets/Spacer/Spacer";
 import {EstateCollection, estateCollectionApi} from "@/widgets/EstateCollection/api/estateCollectionApi";
 
