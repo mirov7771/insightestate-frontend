@@ -38,7 +38,7 @@ const FILTERS = [
 ];
 
 export const WideFilters: FC = () => {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const handleClick = () => {
     setOpen(true);
   };

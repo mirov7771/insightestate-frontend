@@ -1,41 +1,20 @@
-import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
+import React, { FC, useCallback, useState } from 'react';
 import { Segment, Text } from '@/shared/ui';
 import { Section } from '@/pages/EstateDetail/Section/Section';
 import { UnitsSlider } from '@/pages/EstateDetail/Units/UnitsSlider';
 import { UnitsCards } from '@/pages/EstateDetail/Units/UnitsCards';
-import { Unit, unitsApi } from '@/shared/api/units';
-import { useParams } from 'react-router';
-import { useStatus } from '@/shared/utils/useStatus';
 import { FormattedMessage } from 'react-intl';
 import styles from './Units.module.scss';
 import { IconCarouselHorizontal, IconLayoutList } from '@/shared/assets/icons';
 import { UnitsFilter } from '@/pages/EstateDetail/Units/UnitsFilter/UnitsFilter';
-import { useWindowResize } from '@/shared/utils/useWindowResize';
+import { useUnitsFilters } from '@/pages/EstateDetail/Units/UnitsContext';
 
 export const Units: FC = () => {
-  const params = useParams();
-  const token = localStorage.getItem('basicToken') || '';
-  const { status, setStatus } = useStatus();
-  const [units, setUnits] = useState<Unit[]>([]);
+  const { status, units } = useUnitsFilters();
   const [activeTab, setActiveTab] = useState(1);
   const handleChangeActiveTab = useCallback((tab: number) => {
     setActiveTab(tab);
   }, []);
-
-  useEffect(() => {
-    if (params.id) {
-      setStatus('LOADING');
-      unitsApi
-        .getUnitsByEstateId({ id: params.id })
-        .then(({ data }) => {
-          setUnits(data.items);
-          setStatus('SUCCESS');
-        })
-        .catch(() => {
-          setStatus('ERROR');
-        });
-    }
-  }, [token, params.id]);
 
   return (
     <>

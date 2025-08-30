@@ -26,6 +26,7 @@ import { isMobile } from 'react-device-detect';
 import { Flats } from '@/pages/OfferCollectionV2/CommonComponents/Flats/Flats';
 import { Spacer } from '@/widgets/Spacer/Spacer';
 import { Developer } from '@/pages/EstateDetail/Developer/Developer';
+import { UnitsFilterProvider } from '@/pages/EstateDetail/Units/UnitsContext';
 
 const EstateDetail: FC = () => {
   const { formatMessage } = useIntl();
@@ -162,7 +163,9 @@ const EstateDetail: FC = () => {
           {/*</div>*/}
           <Developer {...estateDetailData} />
           <div>
-            <Units />
+            <UnitsFilterProvider id={id}>
+              <Units />
+            </UnitsFilterProvider>
             <Spacer height={20} width={100} />
             <Flats {...estateDetailData.roomLayouts} short={!isMobile} />
           </div>

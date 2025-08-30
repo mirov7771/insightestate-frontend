@@ -5,13 +5,20 @@ import { Button, Text } from '@/shared/ui';
 import { IconChevronDown } from '@/shared/assets/icons';
 import MaterialMenu from '@mui/material/Menu';
 import MaterialMenuItem from '@mui/material/MenuItem';
+import { UnitsFiltersParams } from '@/shared/api/units';
+import { useUnitsFilters } from '@/pages/EstateDetail/Units/UnitsContext';
 
 export const ShortFilter: FC = () => {
+  const { setFiltersParams, filtersParams } = useUnitsFilters();
   const { formatMessage } = useIntl();
-  const [activeFilter, setActiveFilter] = useState(
-    formatMessage({ id: 'units.filter.short.price' })
-  );
-  const FILTERS = useMemo(
+  const [activeFilter, setActiveFilter] = useState<{
+    id: UnitsFiltersParams['orderBy'];
+    text: string;
+  }>({
+    text: formatMessage({ id: `units.filter.short.${filtersParams.orderBy}` }),
+    id: filtersParams.orderBy,
+  });
+  const FILTERS = useMemo<Array<{ id: UnitsFiltersParams['orderBy']; text: string }>>(
     () => [
       { text: formatMessage({ id: 'units.filter.short.price' }), id: 'price' },
       { text: formatMessage({ id: 'units.filter.short.area' }), id: 'area' },
@@ -29,8 +36,9 @@ export const ShortFilter: FC = () => {
     setAnchorEl((prev) => (prev === null ? event.currentTarget : null));
   };
 
-  const handleSetFilter = (filterName: string) => {
+  const handleSetFilter = (filterName: typeof activeFilter) => {
     setActiveFilter(filterName);
+    setFiltersParams({ orderBy: filterName.id });
     setAnchorEl(null);
   };
 
@@ -43,7 +51,7 @@ export const ShortFilter: FC = () => {
       onClick={handleToggleMenuOpen}
     >
       <Text variant="body1" bold>
-        {activeFilter}
+        {activeFilter.text}
       </Text>
       <IconChevronDown />
       <MaterialMenu
@@ -64,7 +72,7 @@ export const ShortFilter: FC = () => {
         {FILTERS.map((filter) => (
           <MaterialMenuItem
             classes={{ root: styles.menu__item_root }}
-            onClick={() => handleSetFilter(filter.text)}
+            onClick={() => handleSetFilter(filter)}
             key={filter.id}
           >
             <Text variant="body2" bold>

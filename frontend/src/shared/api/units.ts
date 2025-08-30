@@ -17,14 +17,26 @@ export type Unit = {
   updatedAt: string;
 };
 
+export type UnitsFiltersParams = {
+  maxPrice?: number;
+  maxPriceSq?: number;
+  maxSize?: number;
+  minPrice?: number;
+  minPriceSq?: number;
+  minSize?: number;
+  orderBy?: 'price' | 'area' | 'income' | 'payback';
+  rooms?: '1' | '2' | '3' | '4' | 'studio';
+};
+
 export const unitsApi = {
   getUnitsByEstateId: async ({
     id,
-  }: {
+    ...params
+  }: UnitsFiltersParams & {
     id: string;
   }): Promise<AxiosResponse<{ id: string; images: string[]; items: Unit[]; name: string }>> => {
     try {
-      return await api.get(`v1/estate/${id}/units`);
+      return await api.get(`v1/estate/${id}/units`, { params });
     } catch (e) {
       throw e;
     }
