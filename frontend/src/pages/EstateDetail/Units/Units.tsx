@@ -43,7 +43,11 @@ export const Units: FC = () => {
           </div>
         }
       >
-        {status === 'LOADING' && <div>Loading</div>}
+        {status === 'LOADING' && (
+          <Text variant="heading4">
+            <FormattedMessage id="units.loading" />
+          </Text>
+        )}
         {status === 'SUCCESS' && !!units.length && (
           <div>
             <div className={activeTab !== 1 ? styles.hidden : ''}>
@@ -54,7 +58,11 @@ export const Units: FC = () => {
             </div>
           </div>
         )}
-        {status === 'SUCCESS' && !units.length && <div>Empty</div>}
+        {status === 'SUCCESS' && !units.length && (
+          <Text variant="heading4">
+            <FormattedMessage id="units.empty" />
+          </Text>
+        )}
         {status === 'ERROR' && <div>Error</div>}
       </Section>
     </>

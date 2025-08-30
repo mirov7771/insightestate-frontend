@@ -353,6 +353,8 @@ export default {
   'units.bedroom.4': '4 bedrooms',
   //
   'units.filters': 'Filters',
+  'units.empty': 'No available units',
+  'units.loading': 'Loading...',
   'units.filter.short.price': 'By price',
   'units.filter.short.area': 'By area',
   'units.filter.short.income': 'By income per year',

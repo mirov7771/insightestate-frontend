@@ -351,6 +351,8 @@ export default {
   'units.bedroom.4': '4 спальни',
   //
   'units.filters': 'Фильтры',
+  'units.empty': 'Нет доступных юнитов',
+  'units.loading': 'Загрузка...',
   'units.filter.short.price': 'По цене',
   'units.filter.short.area': 'По площади',
   'units.filter.short.income': 'По доходу в год',
