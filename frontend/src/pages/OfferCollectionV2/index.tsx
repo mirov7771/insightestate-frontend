@@ -36,7 +36,7 @@ const OfferCollectionV2: FC = () => {
       method: 'open',
       page: {
         margin: 10,
-        format: 'letter'
+        format: 'letter',
       },
       canvas: {
         mimeType: 'image/png'
