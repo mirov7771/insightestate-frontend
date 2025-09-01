@@ -72,11 +72,6 @@ const OfferCollectionV2: FC = () => {
         <meta property="og:url" content={url} />
       </Helmet>
       <div className={styles.wrap}>
-        {visible && token ?
-            <Button onClick={getPdf} size="s">
-              <Text variant="body1">PDF</Text>
-            </Button> : <></>
-        }
         <Spacer width={100} height={8}/>
         <Text variant="heading4_upper" as="h1" align="center">
           {formatMessage({ id: 'projects_for_you' })}
@@ -86,7 +81,11 @@ const OfferCollectionV2: FC = () => {
         {visible ?
             <>
         <WhyThai />
-        {id && <ContactManager id={id} client={searchParams.get('client')} />}
+        {id && <ContactManager id={id} client={searchParams.get('client')} pdf={
+          <Button onClick={getPdf} size="l">
+            <Text variant="body1">PDF</Text>
+          </Button>
+        }/>}
             </> : <></>
         }
       </div>

@@ -89,11 +89,11 @@ const App = () => {
                       <Route path="/user-collection" element={<UserCollection />} />
                       <Route path="/ai-listing" element={<AiListing />} />
                       <Route path="/main_menu" element={<MainMenu />} />
+                      <Route path="/cl">
+                        <Route path=":id" element={<OfferCollectionV2 />} />
+                      </Route>
                     </Route>
                     <Route path="/tariffs" element={<Tariffs />} />
-                    <Route path="/cl">
-                      <Route path=":id" element={<OfferCollectionV2 />} />
-                    </Route>
                   </Routes>
                 </Suspense>
               </BrowserRouter>

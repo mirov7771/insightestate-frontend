@@ -49,6 +49,7 @@ const ItemCollection: FC<EstateCollection & { token: string; value: number }> = 
   agentInfo,
 }) => {
   const { formatMessage } = useIntl();
+  const navigate = useNavigate();
   const { notify } = useNotifications();
   const collectionLink = `/cl/${id}`;
   const collectionLinkClientShow = `/cl/${id}`;
@@ -77,11 +78,11 @@ const ItemCollection: FC<EstateCollection & { token: string; value: number }> = 
   };
 
   const goToCollection = () => {
-    window.open(collectionLink, '_blank');
+    navigate(collectionLink);
   };
 
   const goToCollectionClient = () => {
-    window.open(collectionLinkClient, '_blank');
+    navigate(collectionLinkClient);
   };
 
   const handleCopyLink = async () => {

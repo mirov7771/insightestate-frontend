@@ -1,4 +1,4 @@
-import { FC, useEffect, useRef, useState } from 'react';
+import {FC, ReactNode, useEffect, useRef, useState} from 'react';
 import { BottomSheet, Button, Text, useNotifications } from '@/shared/ui';
 import styles from './ContactManager.module.scss';
 import { IconBrandTelegram, IconMail, IconPhoneCall, IconWhatsUp } from '@/shared/assets/icons';
@@ -7,7 +7,11 @@ import { useIntl } from 'react-intl';
 import { Spacer } from '@/widgets/Spacer/Spacer';
 import { copyToClipboard } from '@/shared/utils';
 
-export const ContactManager: FC<{ id: string; client?: string | null }> = ({ id, client }) => {
+export const ContactManager: FC<{
+  id: string;
+  client?: string | null;
+  pdf?: ReactNode;
+}> = ({ id, client, pdf }) => {
   const { formatMessage } = useIntl();
   const { notify } = useNotifications();
   const refManager = useRef<HTMLDivElement>(null);
@@ -54,6 +58,9 @@ export const ContactManager: FC<{ id: string; client?: string | null }> = ({ id,
               {formatMessage({ id: 'copy_link' })}
             </Text>
           </Button>
+          {pdf ?
+            pdf : <></>
+          }
           <Button size="l" onClick={() => setOpenInfo(true)} className={styles.button3}>
             <Text variant="body1" bold>
               ?
