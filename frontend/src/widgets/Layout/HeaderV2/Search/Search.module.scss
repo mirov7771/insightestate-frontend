@@ -1,0 +1,178 @@
+@use 'sass:color';
+@use '~@/sass/index' as *;
+
+.search {
+  padding: 0;
+  width: 40px;
+  height: 40px;
+
+  & svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.container {
+  width: 100%;
+  max-width: 874px;
+  border-radius: 0;
+  margin: 0;
+  height: 100%;
+  max-height: 100%;
+  padding: 8px 16px;
+
+  @media (min-width: $media-lg) {
+    max-height: 600px;
+    height: 100%;
+    padding: 24px;
+    min-height: 600px;
+    border-radius: 32px;
+    margin: 32px;
+  }
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  gap: 16px;
+}
+
+.input {
+  margin-top: 9px;
+  max-width: calc(100% - 48px);
+
+  @media (min-width: $media-lg) {
+    margin-top: 0;
+    max-width: 100%;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
+  overflow: auto;
+  gap: 8px;
+
+  &_center {
+    justify-content: center;
+    overflow: hidden;
+  }
+}
+
+.description {
+  color: var(--ui-color-black-64-opacity);
+}
+
+.estate {
+  width: 100%;
+  display: flex;
+  height: 72px;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 16px;
+  padding: 8px 12px 8px 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: var(--ui-color-black-4-opacity);
+
+    @media (min-width: $media-lg) {
+      .estate__button {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  &__img {
+    width: 56px;
+    height: 56px;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      object-fit: cover;
+      border-radius: 8px;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  &__button {
+    padding: 0;
+    width: 48px;
+    height: 48px;
+    transition:
+      opacity 0.2s ease-in-out,
+      visibility 0.2s ease-in-out;
+
+    @media (min-width: $media-lg) {
+      visibility: hidden;
+      opacity: 0;
+    }
+
+    svg {
+      width: 28px;
+      height: 28px;
+    }
+
+    &_primary {
+      background-color: #04b0be;
+      color: var(--light);
+
+      &:hover {
+        background-color: color.scale(#04b0be, $lightness: -15%);
+        color: var(--light);
+        cursor: pointer;
+      }
+
+      &:focus {
+        outline: none;
+      }
+
+      &:active {
+        background-color: color.scale(#04b0be, $lightness: -30%);
+        color: var(--light);
+      }
+
+      .button_loading:disabled & {
+        background-color: var(--border-light);
+        color: var(--border-dark);
+      }
+    }
+  }
+}
+
+.loader {
+  color: var(--ui-color-primary-2);
+}
+
+.dialog {
+  &_container {
+    height: 100%;
+    align-items: flex-start;
+
+    @media (min-width: $media-lg) {
+      align-items: center;
+    }
+  }
+}

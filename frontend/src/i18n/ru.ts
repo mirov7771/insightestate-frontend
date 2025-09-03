@@ -484,5 +484,11 @@ export default {
   developer_finished: `Сдано<br></br>проектов`,
   developer_build: `Строится<br></br>проектов`,
 
-  petFriendly: 'Можно с животными'
+  petFriendly: 'Можно с животными',
+
+  'search.objects': 'Поиск объекта',
+  'search.empty': 'Вы пока что ничего не искали',
+  'search.emptyDescription': 'Введите название объекта от 3 символов',
+  'search.noObjects': 'Не нашли объекты с таким названием',
+  'search.noObjectsDescription': `Проверьте, правильно ли вы ввели название<br></br>или этого объекта нет у нас в базе`,
 };

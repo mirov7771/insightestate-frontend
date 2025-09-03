@@ -8,7 +8,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   icon?: ReactNode;
   iconOnClick?: () => void;
   label?: string;
-  yClass?: string
+  yClass?: string;
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(

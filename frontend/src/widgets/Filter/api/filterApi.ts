@@ -31,17 +31,18 @@ export type GetEstateParams = {
   beachTravelTimes?: string[];
   buildEndYears?: number[];
   city?: string[];
+  developer?: string[];
   grades?: string[];
   managementCompanyEnabled?: string;
   maxPrice?: number;
   minPrice?: number;
+  name?: string;
   pageNumber?: number;
   parking?: boolean;
+  petFriendly?: string;
   price?: string;
   rooms?: string[];
   types?: string[];
-  developer?: string[];
-  petFriendly?: string;
 };
 
 export type GetEstateAi = {

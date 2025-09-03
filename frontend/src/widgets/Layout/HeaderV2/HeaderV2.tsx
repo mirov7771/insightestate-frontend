@@ -1,11 +1,12 @@
 import { FC, useEffect, useState } from 'react';
-import { Logo } from '@/shared/assets/icons';
+import { IconSearch, Logo } from '@/shared/assets/icons';
 import styles from './HeaderV2.module.scss';
 import { Menu } from './Menu';
 import { Button, Text } from '@/shared/ui';
 import { UserProfile } from '@/widgets/Layout/HeaderV2/UserProfile';
 import { useIntl } from 'react-intl';
 import { useNavigate } from 'react-router';
+import { Search } from './Search/Search';
 
 type HeaderV2Props = {
   basicToken: string;
@@ -37,6 +38,7 @@ export const HeaderV2: FC<HeaderV2Props> = ({ basicToken }) => {
           </div>
         </div>
         <div className={styles.top_right}>
+          <Search />
           {isFree ? (
             <Button
               className={styles.change_tariff_button}

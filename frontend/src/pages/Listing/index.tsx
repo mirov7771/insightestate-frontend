@@ -19,7 +19,7 @@ import { useSearchParams } from 'react-router';
 import { isMobile } from 'react-device-detect';
 import { Region } from '@/widgets/Filter/Region';
 import { Price } from '@/widgets/Filter/Price';
-import {Developer} from "@/widgets/Filter/Developer";
+import { Developer } from '@/widgets/Filter/Developer';
 
 const SCROLL_AMOUNT = 250;
 
@@ -136,9 +136,9 @@ const Listing: FC = () => {
                 filterName="beachTravelTimes"
               />
               <FastFilter
-                  filter={<Developer />}
-                  name={formatMessage({ id: 'developer' })}
-                  filterName="developer"
+                filter={<Developer />}
+                name={formatMessage({ id: 'developer' })}
+                filterName="developer"
               />
               {/*<FastFilter*/}
               {/*  filter={<Airport />}*/}

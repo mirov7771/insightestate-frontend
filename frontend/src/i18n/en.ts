@@ -487,5 +487,11 @@ export default {
   developer_finished: `Completed<br></br>projects`,
   developer_build: `Projects under construction<br></br>`,
 
-  petFriendly: 'Pet friendly'
+  petFriendly: 'Pet friendly',
+
+  'search.objects': 'Search object',
+  'search.empty': `You haven't searched for anything yet`,
+  'search.emptyDescription': 'Enter the object name (at least 3 characters)',
+  'search.noObjects': 'No objects found with this name',
+  'search.noObjectsDescription': `Please check if you entered the name correctly<br></br>or this object is not in our database`,
 };
