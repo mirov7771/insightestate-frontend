@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from 'react';
-import { IconSearch, Logo } from '@/shared/assets/icons';
+import { Logo } from '@/shared/assets/icons';
 import styles from './HeaderV2.module.scss';
 import { Menu } from './Menu';
 import { Button, Text } from '@/shared/ui';
