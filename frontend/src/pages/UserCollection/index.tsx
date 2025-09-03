@@ -49,11 +49,11 @@ const ItemCollection: FC<EstateCollection & { token: string; value: number }> = 
   agentInfo,
 }) => {
   const { formatMessage } = useIntl();
+  const navigate = useNavigate();
   const { notify } = useNotifications();
   const collectionLink = `/cl/${id}`;
   const collectionLinkClientShow = `/cl/${id}`;
   const collectionLinkClient = `/cl/${id}?client=true`;
-  const navigate = useNavigate();
   const [status, setStatus] = useState<keyof typeof FETCHING_STATUS>('IDLE');
   const [copyLinkStatus, setCopyLinkStatus] = useState<keyof typeof FETCHING_STATUS>('IDLE');
   const allImages = estates!!

@@ -22,7 +22,7 @@ import { UnitsSlider } from '@/pages/OfferCollectionV2/CommonComponents/UnitsSli
 import { UnitSlide } from '@/pages/OfferCollectionV2/CommonComponents/UnitsSlider/UnitSlide';
 
 export const Card: FC<
-  Estate & { collection: string; collectionId: string; agentInfo?: AgentInfo }
+  Estate & { collection: string; collectionId: string; agentInfo?: AgentInfo, visible: boolean }
 > = (estate) => {
   const { formatMessage } = useIntl();
   const [like, setLike] = useState(false);
@@ -118,6 +118,15 @@ export const Card: FC<
         .catch((e) => console.log('error like'));
     }
   }, [like]);
+
+  const getGroupColor = () => {
+    switch (estate?.agentInfo?.group) {
+      case "extra":
+        return "#FF8B57";
+      default:
+        return ""
+    }
+  }
 
   return (
     <section className={styles.item}>
@@ -329,11 +338,12 @@ export const Card: FC<
               <Text variant="heading4">{formatMessage({ id: 'like' })}</Text>
             </Button>
           )}
-          {clickable && !searchParams.get('client') ? (
+          {clickable && !searchParams.get('client') && estate.visible ? (
             <Button
               style={{
                 margin: 'auto',
                 width: '80%',
+                backgroundColor: getGroupColor()
               }}
               onClick={deleteFromCollection}
             >

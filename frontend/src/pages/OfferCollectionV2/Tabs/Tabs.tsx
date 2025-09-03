@@ -37,7 +37,12 @@ const CustomTabPanel = (props: TabPanelProps) => {
   );
 };
 
-export const Tabs: FC<{ id: string; client?: string | null }> = ({ id, client }) => {
+export const Tabs: FC<{
+    id: string;
+    client?: string | null,
+    visible: boolean,
+    agentGroup: string
+}> = ({ id, client, visible, agentGroup }) => {
   const { width } = useWindowResize();
   const { formatMessage } = useIntl();
   const [estateCollection, setEstateCollection] = useState<EstateCollection>();
@@ -95,6 +100,7 @@ export const Tabs: FC<{ id: string; client?: string | null }> = ({ id, client })
                       collectionId: id,
                       collection: estateCollection.name,
                       agentInfo: estateCollection.agentInfo,
+                      visible: visible
                     }}
                   />
                 ) : (
@@ -103,6 +109,7 @@ export const Tabs: FC<{ id: string; client?: string | null }> = ({ id, client })
                     collectionId={id}
                     collection={estateCollection.name}
                     agentInfo={estateCollection.agentInfo}
+                    visible={visible}
                   />
                 )}
               </Fragment>
