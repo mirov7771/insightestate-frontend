@@ -51,12 +51,17 @@ const OfferCollectionV2: FC = () => {
     }
   }, [visible]);
 
+  const getGroupColor = () => {
+    switch (estateCollection?.agentInfo?.group) {
+      case "extra":
+        return "#FF8B57";
+      default:
+        return ""
+    }
+  }
+
   return (
-    <div id="content-id"
-    //      style={{
-    //   backgroundColor: estateCollection?.agentInfo?.group === 'extra' ? 'lightblue' : ''
-    // }}
-    >
+    <div id="content-id">
       <Helmet>
         <title>{formatMessage({ id: 'meta.offerCollection.title' })}</title>
         <meta
@@ -73,19 +78,48 @@ const OfferCollectionV2: FC = () => {
       </Helmet>
       <div className={styles.wrap}>
         <Spacer width={100} height={8}/>
+        {estateCollection?.agentInfo?.group ?
+            <div style={{
+              alignItems: 'center',
+              justifyContent: 'center',
+              display: 'flex'
+            }}>
+              <img
+                  width={400}
+                  height={168}
+                  src={`https://lotsof.properties/estate-images/${estateCollection?.agentInfo?.group}.png`}
+                  alt=""
+              />
+            </div>
+            : <></>
+        }
         <Text variant="heading4_upper" as="h1" align="center">
           {formatMessage({ id: 'projects_for_you' })}
         </Text>
         <Spacer width={100} height={8}/>
-        {id && <Tabs id={id} />}
+        {id && <Tabs
+            id={id}
+            visible={visible}
+            agentGroup={estateCollection?.agentInfo?.group || ''}
+        />}
         {visible ?
             <>
         <WhyThai />
-        {id && <ContactManager id={id} client={searchParams.get('client')} pdf={
-          <Button onClick={getPdf} size="l">
-            <Text variant="body1">PDF</Text>
-          </Button>
-        }/>}
+        {id && <ContactManager
+            id={id}
+            agentGroup={estateCollection?.agentInfo?.group || ''}
+            client={searchParams.get('client')}
+            pdf={
+              <Button
+                  onClick={getPdf}
+                  size="l"
+                  style={{
+                    backgroundColor: getGroupColor()
+                  }}
+              >
+                <Text variant="body1">PDF</Text>
+              </Button>
+            }/>}
             </> : <></>
         }
       </div>

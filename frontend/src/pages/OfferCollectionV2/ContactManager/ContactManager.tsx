@@ -11,7 +11,8 @@ export const ContactManager: FC<{
   id: string;
   client?: string | null;
   pdf?: ReactNode;
-}> = ({ id, client, pdf }) => {
+  agentGroup: string
+}> = ({ id, client, pdf, agentGroup }) => {
   const { formatMessage } = useIntl();
   const { notify } = useNotifications();
   const refManager = useRef<HTMLDivElement>(null);
@@ -33,6 +34,15 @@ export const ContactManager: FC<{
       .catch((e) => console.log(e));
   }, []);
 
+  const getGroupColor = () => {
+    switch (agentGroup) {
+      case "extra":
+        return "#FF8B57";
+      default:
+        return ""
+    }
+  }
+
   const handleCopyLink = async () => {
     try {
       const result = await copyToClipboard(`https://myselection.properties/cl/${id}`);
@@ -53,7 +63,14 @@ export const ContactManager: FC<{
           className={`${styles.wrapper} ${styles.wrapper__question} ${open || openInfo ? styles.wrapper__open : ''}`}
           ref={refQuestion}
         >
-          <Button size="l" onClick={handleCopyLink} className={styles.button2}>
+          <Button
+              size="l"
+              onClick={handleCopyLink}
+              className={styles.button2}
+              style={{
+                backgroundColor: getGroupColor()
+              }}
+          >
             <Text variant="body1" bold>
               {formatMessage({ id: 'copy_link' })}
             </Text>
@@ -61,7 +78,14 @@ export const ContactManager: FC<{
           {pdf ?
             pdf : <></>
           }
-          <Button size="l" onClick={() => setOpenInfo(true)} className={styles.button3}>
+          <Button
+              size="l"
+              onClick={() => setOpenInfo(true)}
+              className={styles.button3}
+              style={{
+                backgroundColor: getGroupColor()
+              }}
+          >
             <Text variant="body1" bold>
               ?
             </Text>
@@ -92,6 +116,9 @@ export const ContactManager: FC<{
             onClick={() => setOpen((prevState) => !prevState)}
             variant={open || openInfo ? 'cta' : 'primary'}
             className={styles.button}
+            style={{
+              backgroundColor: getGroupColor()
+            }}
           >
             <Text variant="body1" bold>
               {formatMessage({ id: open || openInfo ? 'close' : 'connect' })}

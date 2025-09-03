@@ -56,7 +56,7 @@ function getPrioritySquare(estate: Estate): string {
 }
 
 export type CardLayoutProps = {
-  estate: Estate & { collection: string; collectionId: string; agentInfo?: AgentInfo };
+  estate: Estate & { collection: string; collectionId: string; agentInfo?: AgentInfo, visible: boolean };
 };
 
 export const CardLayout: FC<CardLayoutProps> = ({ estate }) => {
@@ -123,6 +123,15 @@ export const CardLayout: FC<CardLayoutProps> = ({ estate }) => {
     }
   }, [like]);
 
+  const getGroupColor = () => {
+    switch (estate?.agentInfo?.group) {
+      case "extra":
+        return "#FF8B57";
+      default:
+        return ""
+    }
+  }
+
   return (
     <section className={styles.grid}>
       <div className={styles.slider}>
@@ -173,8 +182,14 @@ export const CardLayout: FC<CardLayoutProps> = ({ estate }) => {
             : estate.shortDescriptionRu}
         </Text>
         <div className={styles.delete}>
-          {clickable && !searchParams.get('client') ? (
-            <Button onClick={deleteFromCollection} size="l">
+          {clickable && !searchParams.get('client') && estate.visible ? (
+            <Button
+                onClick={deleteFromCollection}
+                size="l"
+                style={{
+                  backgroundColor: getGroupColor()
+                }}
+            >
               <Text variant="body1">{formatMessage({ id: 'remove_button' })}</Text>
             </Button>
           ) : (
