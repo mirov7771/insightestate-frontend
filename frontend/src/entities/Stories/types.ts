@@ -11,4 +11,5 @@ export type StoryProps = {
   };
   color?: string;
   variant?: 'default' | 'revert';
+  link?: boolean;
 };

@@ -448,6 +448,10 @@ export default {
   'storiesV2.3.description': 'We guarantee confidentiality',
   'storiesV2.3.button.text': 'Great',
 
+  'storiesV3.0.title': 'ANY IDEAS OR SUGGESTIONS?',
+  'storiesV3.0.description': 'Join the closed Telegram group —communicate with the team directly!',
+  'storiesV3.0.button': 'Join',
+
   country_of_residence: 'Country',
 
   'form.error.username.required': 'Username is required',

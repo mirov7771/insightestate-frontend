@@ -446,6 +446,10 @@ export default {
   'storiesV2.3.description': 'Гарантируем конфиденциальность',
   'storiesV2.3.button.text': 'Отлично',
 
+  'storiesV3.0.title': 'ЕСТЬ ИДЕИ И ПОЖЕЛАНИЯ?',
+  'storiesV3.0.description': 'Вступайте в закрытую Telegram-группу — общаемся с командой напрямую!',
+  'storiesV3.0.button': 'Присоединиться',
+
   country_of_residence: 'Страна проживания',
 
   'form.error.username.required': 'Имя пользователя обязательно',

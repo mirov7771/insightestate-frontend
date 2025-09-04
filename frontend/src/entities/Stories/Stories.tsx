@@ -53,6 +53,21 @@ export const Stories: FC<StoriesProps> = ({ items, open, setOpen }) => {
     setActiveStory(0);
   };
 
+  const handleCloseTgStories = (e: MouseEvent<HTMLButtonElement>) => {
+    handleClick(e);
+    window.open('https://t.me/Estate_Insight', '_blank')
+    setOpen(false);
+    setProgress(
+        items.reduce((acc, _, index) => {
+          return {
+            ...acc,
+            [index]: DEFAULT_PROGRESS,
+          };
+        }, {})
+    );
+    setActiveStory(0);
+  };
+
   const handlePrevStory = (e: MouseEvent<HTMLButtonElement>) => {
     handleClick(e);
     setActiveStory((prevState) => (prevState === 0 ? prevState : prevState - 1));
@@ -166,7 +181,7 @@ export const Stories: FC<StoriesProps> = ({ items, open, setOpen }) => {
                 activeStory === items.length - 1
                   ? {
                       text: items[activeStory].button?.text || 'OK',
-                      onClick: handleCloseStories,
+                      onClick: items[activeStory].link ? handleCloseTgStories : handleCloseStories,
                     }
                   : undefined
               }

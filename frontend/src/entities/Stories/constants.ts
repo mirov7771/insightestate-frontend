@@ -10,6 +10,8 @@ import Pic2 from './assets/pic-2.png';
 import Pic3 from './assets/pic-3.png';
 import Pic3En from './assets/pic-3-en.png';
 import Pic4 from './assets/pic-4.png';
+
+import Message2 from './assets/1-1.png';
 import { StoryProps } from './types';
 
 export const STORIES: StoryProps[] = [
@@ -77,4 +79,18 @@ export const STORIES_V2: StoryProps[] = [
     color: '#202020',
     button: { text: 'storiesV2.3.button.text' },
   },
+];
+
+export const STORIES_V3: StoryProps[] = [
+  {
+    img: Message2,
+    title: 'storiesV3.0.title',
+    description: 'storiesV3.0.description',
+    backgroundColor: '#8DDBFF',
+    variant: 'revert',
+    button: {
+      text: 'storiesV3.0.button'
+    },
+    link: true
+  }
 ];
