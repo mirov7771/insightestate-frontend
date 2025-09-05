@@ -55,7 +55,7 @@ export const Stories: FC<StoriesProps> = ({ items, open, setOpen }) => {
 
   const handleCloseTgStories = (e: MouseEvent<HTMLButtonElement>) => {
     handleClick(e);
-    window.open('https://t.me/Estate_Insight', '_blank')
+    window.open('https://t.me/+GCijMyqnGL8yYTIy', '_blank')
     setOpen(false);
     setProgress(
         items.reduce((acc, _, index) => {

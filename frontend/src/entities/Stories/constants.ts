@@ -86,8 +86,8 @@ export const STORIES_V3: StoryProps[] = [
     img: Message2,
     title: 'storiesV3.0.title',
     description: 'storiesV3.0.description',
-    backgroundColor: '#8DDBFF',
-    variant: 'revert',
+    backgroundColor: '#72b0d5',
+    variant: 'default',
     button: {
       text: 'storiesV3.0.button'
     },
