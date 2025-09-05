@@ -79,7 +79,8 @@ export const ModalAddToCollection: FC<ModalAddToCollectionProps> = ({
         .catch((e) => {
           setStatus('ERROR');
           console.log(e);
-        });
+        })
+          .finally(() => setIsAddNewColeection(false));
     } else {
       addItemToCollection(collectionId, estateId, unitId);
     }
