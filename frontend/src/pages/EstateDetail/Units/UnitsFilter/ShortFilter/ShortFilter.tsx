@@ -22,8 +22,8 @@ export const ShortFilter: FC = () => {
     () => [
       { text: formatMessage({ id: 'units.filter.short.price' }), id: 'price' },
       { text: formatMessage({ id: 'units.filter.short.area' }), id: 'area' },
-      { text: formatMessage({ id: 'units.filter.short.income' }), id: 'income' },
-      { text: formatMessage({ id: 'units.filter.short.payback' }), id: 'payback' },
+      // { text: formatMessage({ id: 'units.filter.short.income' }), id: 'income' },
+      // { text: formatMessage({ id: 'units.filter.short.payback' }), id: 'payback' },
     ],
     [formatMessage]
   );
