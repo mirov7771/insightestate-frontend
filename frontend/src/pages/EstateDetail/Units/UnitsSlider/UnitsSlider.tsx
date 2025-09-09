@@ -6,6 +6,7 @@ import { baseConfig, Slider } from '@/entities/CardSlide/Slider';
 import { useIntl } from 'react-intl';
 import { IconLayout } from '@/shared/assets/icons';
 import { useParams } from 'react-router';
+import {ModalGallery} from "@/shared/ui/modals/ModalGallery";
 
 type UnitsSliderProps = { items: Unit[] };
 
@@ -118,7 +119,7 @@ export const UnitsSlider: FC<UnitsSliderProps> = ({ items }) => {
               </div>*/}
                 <div className={styles.unit__plan}>
                   {unit.planImage ? (
-                    <img src={unit.planImage} alt="plan" loading="lazy" />
+                      <UnitImageView plan={unit.planImage}/>
                   ) : (
                     <div className={styles.unit__plan_placeholder}>
                       <IconLayout />
@@ -157,3 +158,28 @@ export const UnitsSlider: FC<UnitsSliderProps> = ({ items }) => {
     </section>
   );
 };
+
+export const UnitImageView: FC<{
+    plan: string
+}> = ({ plan }) => {
+    const [galleryModal, setGalleryModal] = useState(false);
+    return (
+        <>
+            <img
+                src={plan}
+                alt="plan"
+                loading="lazy"
+                style={{
+                    objectFit: 'contain',
+                    cursor: 'pointer'
+                }}
+                onClick={() => setGalleryModal(true)}
+            />
+            <ModalGallery
+                planImage={plan}
+                open={galleryModal}
+                setOpen={setGalleryModal}
+            />
+        </>
+    )
+}
