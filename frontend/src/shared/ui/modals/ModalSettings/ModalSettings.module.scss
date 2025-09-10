@@ -1,0 +1,45 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+}
+
+.selected {
+  border: 2px solid var(--ui-color-primary-2);
+  padding: 2px;
+  width: 56px;
+  height: 56px;
+  border-radius: 200px;
+  cursor: pointer;
+}
+
+.not_selected {
+  border: 2px solid white;
+  padding: 2px;
+  width: 56px;
+  height: 56px;
+  border-radius: 200px;
+  cursor: pointer;
+}
+
+.button {
+  width: 48px;
+  height: 48px;
+  border-radius: 200px;
+}
+
+.colors_container {
+  display: inline-flex;
+  gap: 5px;
+}
+
+.logo_loader {
+  width: 200px;
+  height: 200px;
+  border-radius: 16px;
+  margin-bottom: 16px;
+  cursor: pointer;
+  background-color: #f1f1f1;
+}

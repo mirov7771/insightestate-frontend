@@ -25,6 +25,7 @@ export const Price: FC = () => {
   const debouncedSetMaxPrice = useMemo(
     () =>
       debounce((val: number) => {
+        console.log('!!!',val);
         setFilters((prevState) => ({ ...prevState, maxPrice: val }));
       }, 500),
     [setFilters]
@@ -38,7 +39,8 @@ export const Price: FC = () => {
   };
 
   const handleChangeInput = (type: 'min' | 'max') => (e: ChangeEvent<HTMLInputElement>) => {
-    const val = Number(e.target.value) || (type === 'min' ? 0 : 4000000);
+    const value = e.target.value.replaceAll(' ', '').replaceAll(' ', '')
+    const val = Number(value) || (type === 'min' ? 0 : 4000000);
 
     if (type === 'min') {
       setValues((prev) => [val, prev[1]]);

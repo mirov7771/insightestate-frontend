@@ -5,6 +5,16 @@
   width: max-content;
 }
 
+.tabs_header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.settings_button {
+  width: 185px;
+  justify-content: space-between;
+}
+
 .wrap {
   margin: 0 auto;
 }
@@ -103,5 +113,17 @@
 
 .empty {
   color: var(--ui-color-black-64-opacity);
+}
+
+.content {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+
+  &__hidden {
+    @media (min-width: $media-md) {
+      display: none;
+    }
+  }
 }
 

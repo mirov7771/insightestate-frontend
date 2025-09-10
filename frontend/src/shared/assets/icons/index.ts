@@ -95,6 +95,7 @@ import Units from './Units.svg?react';
 import Beta from './Beta.svg?react';
 import BetaMB from './BetaMB.svg?react';
 import WhiteLogo from './WhiteLogo.svg?react';
+import Circles from './Circles.svg?react';
 
 export {
   Bed,
@@ -195,4 +196,5 @@ export {
   WhiteLogo,
   IconFileTypePdf,
   IconSearch,
+  Circles
 };

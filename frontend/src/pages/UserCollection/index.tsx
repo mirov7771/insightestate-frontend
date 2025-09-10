@@ -11,9 +11,12 @@ import { useIntl } from 'react-intl';
 import { CardView } from './CardView/CardView';
 import { BlockView } from '@/pages/UserCollection/BlockView/BlockView';
 import { Tabs } from '@/entities/Tabs/Tabs';
-import { Text, useNotifications } from '@/shared/ui';
+import {BottomSheet, Button, Text, useNotifications} from '@/shared/ui';
 import { FETCHING_STATUS } from '@/shared/constants/constants';
 import { copyToClipboard } from '@/shared/utils';
+import {Circles} from "@/shared/assets/icons";
+import {Spacer} from "@/widgets/Spacer/Spacer";
+import {ModalSettings} from "@/shared/ui/modals/ModalSettings";
 
 type TStatus = 'IDLE' | 'SUCCESS' | 'ERROR' | 'LOADING';
 
@@ -136,6 +139,7 @@ const UserCollection: FC = () => {
   const [collection, setCollection] = useState<EstateCollection[]>([]);
   const [status, setStatus] = useState<TStatus>('IDLE');
   const token = localStorage.getItem('basicToken');
+  const [openSettings, setOpenSettings] = useState(false);
   const classesCollection = {
     0: styles.collection__block,
     1: styles.collection__card,
@@ -168,15 +172,31 @@ const UserCollection: FC = () => {
       )}
       {status === 'SUCCESS' && !!collection.length && (
         <>
-          <div className={styles.tabs}>
-            <Tabs
-              content={[
-                formatMessage({ id: 'userCollection.blocks' }),
-                formatMessage({ id: 'userCollection.cards' }),
-              ]}
-              setValue={setValue}
-              value={value}
-            />
+          <div className={styles.tabs_header}>
+            <div className={styles.tabs}>
+              <Tabs
+                content={[
+                  formatMessage({ id: 'userCollection.blocks' }),
+                  formatMessage({ id: 'userCollection.cards' }),
+                ]}
+                setValue={setValue}
+                value={value}
+              />
+            </div>
+            {/*<div>*/}
+            {/*  <Button*/}
+            {/*      size="s"*/}
+            {/*      className={styles.settings_button}*/}
+            {/*      variant="base"*/}
+            {/*      wide*/}
+            {/*      onClick={() => setOpenSettings(true)}*/}
+            {/*  >*/}
+            {/*    <Circles/>*/}
+            {/*    <Text align="center" variant="body1" bold>*/}
+            {/*      {formatMessage({id : 'theme_settings'})}*/}
+            {/*    </Text>*/}
+            {/*  </Button>*/}
+            {/*</div>*/}
           </div>
           <div className={`${styles.collection} ${classesCollection[value as 1 | 0]}`}>
             {collection.map((item) => (
@@ -195,6 +215,10 @@ const UserCollection: FC = () => {
           {formatMessage({ id: 'userCollection.empty' })}
         </Text>
       )}
+      <ModalSettings
+        open={openSettings}
+        setOpen={setOpenSettings}
+      />
     </div>
   );
 };

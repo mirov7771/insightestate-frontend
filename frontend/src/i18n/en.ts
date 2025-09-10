@@ -498,4 +498,12 @@ export default {
   'search.emptyDescription': 'Enter the object name (at least 3 characters)',
   'search.noObjects': 'No objects found with this name',
   'search.noObjectsDescription': `Please check if you entered the name correctly<br></br>or this object is not in our database`,
+
+  theme_settings: 'Customize theme',
+
+  theme_settings_title: 'Theme setting',
+  theme_settings_description: 'Logo and colors will be applied to all collections',
+  theme_settings_buttons: 'Buttons and elements',
+  theme_settings_logo: 'Logo',
+  theme_settings_logo_description: 'For better quality, upload the logo in .png or .jpeg at least 512x512 px',
 };

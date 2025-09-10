@@ -495,4 +495,12 @@ export default {
   'search.emptyDescription': 'Введите название объекта от 3 символов',
   'search.noObjects': 'Не нашли объекты с таким названием',
   'search.noObjectsDescription': `Проверьте, правильно ли вы ввели название<br></br>или этого объекта нет у нас в базе`,
+
+  theme_settings: 'Настроить тему',
+
+  theme_settings_title: 'Настройка темы',
+  theme_settings_description: 'Логотип и цвета будут применены для всех подборок',
+  theme_settings_buttons: 'Кнопки и элементы',
+  theme_settings_logo: 'Логотип',
+  theme_settings_logo_description: 'Для лучшего качества, загружайте логотип в формате .png или .jpeg не меньше 512х512 px',
 };
