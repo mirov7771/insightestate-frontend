@@ -41,7 +41,8 @@ export const Tabs: FC<{
     id: string;
     client?: string | null,
     visible: boolean,
-    agentGroup: string
+    agentGroup: string,
+    color?: string
 }> = ({ id, client, visible, agentGroup }) => {
   const { width } = useWindowResize();
   const { formatMessage } = useIntl();

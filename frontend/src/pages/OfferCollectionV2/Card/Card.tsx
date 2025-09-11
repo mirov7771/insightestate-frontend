@@ -120,6 +120,9 @@ export const Card: FC<
   }, [like]);
 
   const getGroupColor = () => {
+    if (estate?.agentInfo?.collectionColorValue) {
+      return estate?.agentInfo?.collectionColorValue;
+    }
     switch (estate?.agentInfo?.group) {
       case "extra":
         return "#FF8B57";

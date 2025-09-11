@@ -11,8 +11,9 @@ export const ContactManager: FC<{
   id: string;
   client?: string | null;
   pdf?: ReactNode;
-  agentGroup: string
-}> = ({ id, client, pdf, agentGroup }) => {
+  agentGroup: string,
+  color?: string
+}> = ({ id, client, pdf, agentGroup, color }) => {
   const { formatMessage } = useIntl();
   const { notify } = useNotifications();
   const refManager = useRef<HTMLDivElement>(null);
@@ -35,6 +36,9 @@ export const ContactManager: FC<{
   }, []);
 
   const getGroupColor = () => {
+    if (color) {
+      return color;
+    }
     switch (agentGroup) {
       case "extra":
         return "#FF8B57";
@@ -81,7 +85,7 @@ export const ContactManager: FC<{
           <Button
               size="l"
               onClick={() => setOpenInfo(true)}
-              className={styles.button3}
+              className={getGroupColor() === '' ? styles.button3 : styles.button3_no_border}
               style={{
                 backgroundColor: getGroupColor()
               }}

@@ -361,4 +361,21 @@ export const detailApi = {
       throw error;
     }
   },
+  updateTheme: async (
+      userId: string,
+      logo?: string | null,
+      colorId?: string | null,
+      colorValue?: string | null
+  ) => {
+    try {
+      return await api.post<void>(`users/theme`, {
+        userId,
+        logo,
+        colorId,
+        colorValue
+      });
+    } catch (error) {
+      throw error;
+    }
+  }
 };

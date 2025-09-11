@@ -506,4 +506,6 @@ export default {
   theme_settings_buttons: 'Buttons and elements',
   theme_settings_logo: 'Logo',
   theme_settings_logo_description: 'For better quality, upload the logo in .png or .jpeg at least 512x512 px',
+
+  default_theme: 'Clear',
 };

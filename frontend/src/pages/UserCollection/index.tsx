@@ -183,20 +183,20 @@ const UserCollection: FC = () => {
                 value={value}
               />
             </div>
-            {/*<div>*/}
-            {/*  <Button*/}
-            {/*      size="s"*/}
-            {/*      className={styles.settings_button}*/}
-            {/*      variant="base"*/}
-            {/*      wide*/}
-            {/*      onClick={() => setOpenSettings(true)}*/}
-            {/*  >*/}
-            {/*    <Circles/>*/}
-            {/*    <Text align="center" variant="body1" bold>*/}
-            {/*      {formatMessage({id : 'theme_settings'})}*/}
-            {/*    </Text>*/}
-            {/*  </Button>*/}
-            {/*</div>*/}
+            <div>
+              <Button
+                  size="s"
+                  className={styles.settings_button}
+                  variant="base"
+                  wide
+                  onClick={() => setOpenSettings(true)}
+              >
+                <Circles/>
+                <Text align="center" variant="body1" bold>
+                  {formatMessage({id : 'theme_settings'})}
+                </Text>
+              </Button>
+            </div>
           </div>
           <div className={`${styles.collection} ${classesCollection[value as 1 | 0]}`}>
             {collection.map((item) => (

@@ -1,10 +1,14 @@
-import React, {Dispatch, FC, SetStateAction, useRef, useState} from 'react';
+import React, {ChangeEvent, Dispatch, FC, SetStateAction, useEffect, useRef, useState} from 'react';
 import styles from './ModalSettings.module.scss';
 import {Button, Modal, Text} from '@/shared/ui';
 import { useWindowResize } from '@/shared/utils/useWindowResize';
 import {useIntl} from "react-intl";
 import MuiAvatar from "@mui/material/Avatar";
 import DefaultLogo from './assets/DefaultLogo.png';
+import {detailApi} from "@/widgets/Detail/api/detailApi";
+import {estateCollectionApi} from "@/widgets/EstateCollection/api/estateCollectionApi";
+import {isMobile} from "react-device-detect";
+import {Spacer} from "@/widgets/Spacer/Spacer";
 
 type ModalGalleryProps = {
   open: boolean;
@@ -42,6 +46,8 @@ export const ModalSettings: FC<ModalGalleryProps> = ({
   open,
   setOpen
 }) => {
+  const token = localStorage.getItem('basicToken');
+  const userId = localStorage.getItem('userId')
   const refLogo = useRef<HTMLInputElement>(null);
   const handleClickLogo = () => {
       if (refLogo.current) {
@@ -54,8 +60,67 @@ export const ModalSettings: FC<ModalGalleryProps> = ({
   const handleCloseModal = () => {
     setOpen(false);
   };
+  const [imageUrl, setImageUrl] = useState<string | null>()
   const [id, setId] = useState('Primary')
+  const [color, setColor] = useState<string>('#04B0BE')
+  const onChangeLogo = async (e: ChangeEvent<HTMLInputElement>) => {
+      try {
+          const profileImage = e.target.files;
+          const imageUrl = await detailApi.uploadProfileImage(profileImage!![0]);
 
+          setImageUrl(imageUrl);
+      } catch (e) {
+          console.log({ e });
+      }
+  };
+
+  const onSaveTheme = async () => {
+      try {
+          if (id === 'Primary') {
+              await detailApi.updateTheme(userId!!, imageUrl, null, null)
+          } else {
+              await detailApi.updateTheme(userId!!, imageUrl, id, color)
+          }
+      } catch (e) {
+          console.log(e)
+      } finally {
+          handleCloseModal()
+      }
+  }
+
+  const onClearTheme = async () => {
+      setId('Primary')
+      setColor('#04B0BE')
+      setImageUrl(null)
+  }
+
+  const selectColor = (id: string, color: string) => {
+      setColor(color)
+      setId(id)
+  }
+
+    useEffect(() => {
+        if (open && token) {
+            estateCollectionApi.getAgentInfo(token)
+                .then((r) => {
+                    if (r.data.collectionColorValue) {
+                        setColor(r.data.collectionColorValue)
+                    } else {
+                        setColor('#04B0BE')
+                    }
+                    if (r.data.collectionColorId) {
+                        setId(r.data.collectionColorId)
+                    } else {
+                        setId('Primary')
+                    }
+                    if (r.data.collectionLogo) {
+                        setImageUrl(r.data.collectionLogo)
+                    } else {
+                        setImageUrl(null)
+                    }
+                }).catch(e => console.log(e))
+        }
+    }, [open]);
 
   return (
     <>
@@ -70,20 +135,27 @@ export const ModalSettings: FC<ModalGalleryProps> = ({
         }}
       >
         <div className={styles.container}>
-            <Text variant="heading3">
+            <MobileSpace />
+            <Text variant="heading3" align={'center'}>
                 {formatMessage({ id: 'theme_settings_title' })}
             </Text>
-            <Text variant="body1">
+            <Text variant="body1" align={'center'}>
                 {formatMessage({ id: 'theme_settings_description' })}
             </Text>
-
-            <Text variant="heading5">
+            <MobileSpace />
+            <Text variant="heading5" align={'center'}>
                 {formatMessage({ id: 'theme_settings_logo' })}
             </Text>
             <div>
-                <MuiAvatar className={styles.logo_loader} onClick={handleClickLogo} src={''}>
+                <MuiAvatar className={
+                    imageUrl ? styles.logo_loaded : styles.logo_loader
+                } onClick={handleClickLogo} src={''}>
                     <Text variant="heading3" align="center" className={styles.letter}>
-                        <img src={DefaultLogo} alt="" />
+                        <img
+                            src={imageUrl ? imageUrl : DefaultLogo}
+                            alt=""
+                            className={styles.img_loaded}
+                        />
                     </Text>
                 </MuiAvatar>
                 <input
@@ -93,21 +165,21 @@ export const ModalSettings: FC<ModalGalleryProps> = ({
                         display: 'none',
                     }}
                     ref={refLogo}
-                    onChange={() => {}}
+                    onChange={onChangeLogo}
                 />
             </div>
-            <Text variant="body2">
+            <Text variant="body2" align={'center'}>
                 {formatMessage({ id: 'theme_settings_logo_description' })}
             </Text>
-
-            <Text variant="heading5">
+            <MobileSpace />
+            <Text variant="heading5" align={'center'}>
                 {formatMessage({ id: 'theme_settings_buttons' })}
             </Text>
             <div className={styles.colors_container}>
                 {COLORS.map((item) =>
                     <div
                         className={id === item.id ? styles.selected : styles.not_selected}
-                        onClick={() => setId(item.id)}
+                        onClick={() => selectColor(item.id, item.color)}
                     >
                         <div
                             className={styles.button}
@@ -119,13 +191,27 @@ export const ModalSettings: FC<ModalGalleryProps> = ({
                     </div>
                 )}
             </div>
-            <Button size={'m'}>
-                <Text variant="body1" bold>
-                    {formatMessage({ id: 'save' })}
-                </Text>
-            </Button>
+            <MobileSpace />
+            <div className={styles.buttons}>
+                <Button size={'m'} onClick={onSaveTheme}>
+                    <Text variant="body1" bold>
+                        {formatMessage({ id: 'save' })}
+                    </Text>
+                </Button>
+                <Button variant={'white'} size={'m'} onClick={onClearTheme}>
+                    <Text variant="body1" bold>
+                        {formatMessage({ id: 'default_theme' })}
+                    </Text>
+                </Button>
+            </div>
         </div>
       </Modal>
     </>
   );
 };
+
+export const MobileSpace: FC = () => {
+    return (
+        isMobile ? <Spacer height={20} width={100} /> : <></>
+    )
+}

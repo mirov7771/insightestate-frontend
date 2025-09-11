@@ -36,10 +36,30 @@
 }
 
 .logo_loader {
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
   border-radius: 16px;
   margin-bottom: 16px;
   cursor: pointer;
   background-color: #f1f1f1;
+}
+
+.logo_loaded {
+  width: 250px;
+  height: 250px;
+  cursor: pointer;
+  border-radius: 16px;
+  margin-bottom: 16px;
+  background-color: transparent;
+}
+
+.img_loaded {
+  width: 230px;
+  height: auto;
+  max-height: 230px;
+}
+
+.buttons {
+  display: inline-flex;
+  gap: 5px;
 }

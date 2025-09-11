@@ -503,4 +503,6 @@ export default {
   theme_settings_buttons: 'Кнопки и элементы',
   theme_settings_logo: 'Логотип',
   theme_settings_logo_description: 'Для лучшего качества, загружайте логотип в формате .png или .jpeg не меньше 512х512 px',
+
+  default_theme: 'Сбросить',
 };

@@ -52,11 +52,14 @@ const OfferCollectionV2: FC = () => {
   }, [visible]);
 
   const getGroupColor = () => {
+    if (estateCollection?.agentInfo?.collectionColorValue) {
+      return estateCollection?.agentInfo?.collectionColorValue;
+    }
     switch (estateCollection?.agentInfo?.group) {
       case "extra":
         return "#FF8B57";
       default:
-        return ""
+        return "";
     }
   }
 
@@ -91,7 +94,20 @@ const OfferCollectionV2: FC = () => {
                   alt=""
               />
             </div>
-            : <></>
+            : (estateCollection?.agentInfo?.collectionLogo ?
+                    <div style={{
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      display: 'flex'
+                    }}>
+                      <img
+                          className={styles.img_loaded}
+                          src={estateCollection?.agentInfo?.collectionLogo}
+                          alt=""
+                      />
+                    </div> :
+                <></>
+            )
         }
         <Text variant="heading4_upper" as="h1" align="center">
           {formatMessage({ id: 'projects_for_you' })}
@@ -109,6 +125,7 @@ const OfferCollectionV2: FC = () => {
             id={id}
             agentGroup={estateCollection?.agentInfo?.group || ''}
             client={searchParams.get('client')}
+            color={estateCollection?.agentInfo?.collectionColorValue}
             pdf={
               <Button
                   onClick={getPdf}
