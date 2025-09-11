@@ -496,9 +496,9 @@ export default {
   'search.noObjects': 'Не нашли объекты с таким названием',
   'search.noObjectsDescription': `Проверьте, правильно ли вы ввели название<br></br>или этого объекта нет у нас в базе`,
 
-  theme_settings: 'Настроить тему',
+  theme_settings: 'Стиль подборки',
 
-  theme_settings_title: 'Настройка темы',
+  theme_settings_title: 'Стиль подборки',
   theme_settings_description: 'Логотип и цвета будут применены для всех подборок',
   theme_settings_buttons: 'Кнопки и элементы',
   theme_settings_logo: 'Логотип',

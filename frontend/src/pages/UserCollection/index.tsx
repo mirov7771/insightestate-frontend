@@ -140,6 +140,7 @@ const UserCollection: FC = () => {
   const [status, setStatus] = useState<TStatus>('IDLE');
   const token = localStorage.getItem('basicToken');
   const [openSettings, setOpenSettings] = useState(false);
+  const [group, setGroup] = useState<string>('')
   const classesCollection = {
     0: styles.collection__block,
     1: styles.collection__card,
@@ -157,6 +158,11 @@ const UserCollection: FC = () => {
         setStatus('ERROR');
         console.log(e);
       });
+
+    estateCollectionApi.getAgentInfo(token!!)
+        .then((r) => {
+          setGroup(r.data.group || '')
+        }).catch((e) => {console.log(e);});
   }, []);
 
   return (
@@ -183,6 +189,7 @@ const UserCollection: FC = () => {
                 value={value}
               />
             </div>
+            {group === 'extra' ? <></> :
             <div>
               <Button
                   size="s"
@@ -197,6 +204,7 @@ const UserCollection: FC = () => {
                 </Text>
               </Button>
             </div>
+            }
           </div>
           <div className={`${styles.collection} ${classesCollection[value as 1 | 0]}`}>
             {collection.map((item) => (
