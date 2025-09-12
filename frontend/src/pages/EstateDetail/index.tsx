@@ -207,6 +207,8 @@ const EstateDetail: FC = () => {
                 infrastructure={estateDetailData.infrastructure}
                 location={estateDetailData.location.name}
                 city={estateDetailData.city}
+                latitude={estateDetailData.lat}
+                longitude={estateDetailData.lon}
               />
             </div>
           )}

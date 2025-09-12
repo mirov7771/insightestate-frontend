@@ -16,12 +16,19 @@ type MapProps = {
   city?: string;
   infrastructure?: EstateDetail['infrastructure'];
   location?: EstateDetail['location']['name'];
+  latitude?: string;
+  longitude?: string;
 };
 
-export const Map: FC<MapProps> = ({ url, infrastructure, location, city }) => {
+export const Map: FC<MapProps> = ({ url, infrastructure, location, city, latitude, longitude }) => {
   const { formatMessage } = useIntl();
   const renderMap = () => {
-    return <GMap mapContainerStyle={containerStyle} url={url} />;
+    return <GMap
+        mapContainerStyle={containerStyle}
+        url={url}
+        longitude={longitude ? Number(longitude) : undefined}
+        latitude={latitude ? Number(latitude) : undefined}
+    />;
   };
 
   return (
@@ -112,7 +119,13 @@ export const Map: FC<MapProps> = ({ url, infrastructure, location, city }) => {
           )}
         </div>
       )}
-      {renderMap() && <GMap mapContainerStyle={containerStyle} url={url} />}
+      {renderMap() &&
+          <GMap
+            mapContainerStyle={containerStyle}
+            url={url}
+            longitude={longitude ? Number(longitude) : undefined}
+            latitude={latitude ? Number(latitude) : undefined}
+          />}
     </Section>
   );
 };

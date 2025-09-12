@@ -136,7 +136,12 @@ export const Card: FC<
       <div className={styles.slider}>
         {!!estate.location?.mapUrl && (
           <div className={styles.slider__map}>
-            <GMap url={estate.location?.mapUrl} zoom={16} />
+            <GMap
+                url={estate.location?.mapUrl}
+                zoom={16}
+                latitude={estate.lat ? Number(estate.lat) : undefined}
+                longitude={estate.lon ? Number(estate.lon) : undefined}
+            />
           </div>
         )}
         <Slider
@@ -276,6 +281,8 @@ export const Card: FC<
               <GMap
                 url={estate.location.mapUrl}
                 mapContainerStyle={{ width: '100%', height: '320px' }}
+                longitude={estate.lon ? Number(estate.lon) : undefined}
+                latitude={estate.lat ? Number(estate.lat) : undefined}
               />
             </section>
           )}

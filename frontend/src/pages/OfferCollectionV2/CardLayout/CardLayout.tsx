@@ -140,7 +140,12 @@ export const CardLayout: FC<CardLayoutProps> = ({ estate }) => {
       <div className={styles.slider}>
         {!!estate.location?.mapUrl && (
           <div className={styles.slider__map}>
-            <GMap url={estate.location?.mapUrl} zoom={16} />
+            <GMap
+                url={estate.location?.mapUrl}
+                zoom={16}
+                latitude={estate.lat ? Number(estate.lat) : undefined}
+                longitude={estate.lon ? Number(estate.lon) : undefined}
+            />
           </div>
         )}
         <Slider

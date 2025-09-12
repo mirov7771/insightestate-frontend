@@ -57,6 +57,8 @@ export type Estate = {
   shortDescriptionEn?: string;
   shortDescriptionRu?: string;
   units?: Unit[];
+  lat?: string
+  lon?: string
 };
 
 export type CreateCollectionRs = {

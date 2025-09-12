@@ -34,6 +34,8 @@ export type EstateDetail = {
   toolTip3?: 'true';
   type?: string;
   unitCount?: ProjectUnitCount;
+  lat?: string;
+  lon?: string;
 };
 
 export type Developer = {
