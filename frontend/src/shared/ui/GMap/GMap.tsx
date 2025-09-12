@@ -7,6 +7,7 @@ const getCoordinatesFromUrl = (
     longitude?: number
 ) => {
   if (latitude && longitude) {
+    console.log("latitude = ", latitude, "longitude = ", longitude)
     return {
       lat: latitude,
       lng: longitude
