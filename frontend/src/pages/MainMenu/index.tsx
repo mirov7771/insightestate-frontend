@@ -6,7 +6,6 @@ import { Stories } from '@/entities/Stories/Stories';
 import {STORIES, STORIES_V2, STORIES_V3} from '@/entities/Stories/constants';
 import ObjectsImg from './assets/Objects.png';
 import PodborkyImg from './assets/Podborky.png';
-import StarsImg from './assets/Stars.png';
 import UnitsImg from './assets/Units.png';
 import OfferImg from './assets/Offer.png';
 import { detailApi } from '@/widgets/Detail/api/detailApi';

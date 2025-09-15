@@ -6,7 +6,7 @@ import { useFilters } from '@/widgets/Filter/model/useFilters';
 import { useIntl } from 'react-intl';
 import { InfoModal } from '@/shared/ui/modals';
 import { CardSlide } from '@/entities/CardSlide/CardSlide';
-import { IconAdjustmentsFilter, IconArrowLeft } from '@/shared/assets/icons';
+import {ButtonMap, IconAdjustmentsFilter, IconArrowLeft} from '@/shared/assets/icons';
 import Divider from '@mui/material/Divider';
 import { FastFilter } from '@/widgets/FastFilter/FastFilter';
 import { City } from '@/widgets/Filter/City';
@@ -20,6 +20,7 @@ import { isMobile } from 'react-device-detect';
 import { Region } from '@/widgets/Filter/Region';
 import { Price } from '@/widgets/Filter/Price';
 import { Developer } from '@/widgets/Filter/Developer';
+import {GMapFilter} from "@/shared/ui/GMap/GMapFilter";
 
 const SCROLL_AMOUNT = 250;
 
@@ -37,7 +38,7 @@ const Listing: FC = () => {
   } = useFilters();
   const token = localStorage.getItem('basicToken');
   const [openFilters, setOpenFilters] = useState(false);
-
+  const [openMap, setOpenMap] = useState(false);
   const [infoModal, setInfoModal] = useState(false);
   const [infoTitle, setInfoTitle] = useState('');
   const infoText = formatMessage({ id: 'listing.info' });
@@ -150,9 +151,22 @@ const Listing: FC = () => {
               <IconArrowLeft />
             </div>
           </div>
+          <Divider orientation="vertical" flexItem />
+          <Button
+              className={styles.button_map}
+              variant="base"
+              size="s"
+              onClick={() => setOpenMap(true)}
+          >
+            <ButtonMap />
+            <Text variant="caption1" className={styles.button_map__text}>
+              {formatMessage({id: 'on_map'})}
+            </Text>
+          </Button>
         </div>
       </div>
       <Filter open={openFilters} setOpen={setOpenFilters} />
+      <GMapFilter open={openMap} setOpen={setOpenMap} />
       <div className={styles.layout}>
         <main className={isMobile ? styles.main_mobile : styles.main}>
           {!loading && !estates.length && (

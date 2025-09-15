@@ -24,7 +24,7 @@ const tooltipProps: Omit<TooltipProps, 'title' | 'children'> = {
 
 type AdvantagesBadgesProps = {
   className?: string;
-  size?: 's' | 'l' | 'm';
+  size?: 't' | 's' | 'l' | 'm';
   toolTip1?: string;
   toolTip2?: string;
   toolTip3?: string;
@@ -48,6 +48,9 @@ export const AdvantagesBadges: FC<AdvantagesBadgesProps> = ({
       case 's': {
         return styles.advantages__item_s;
       }
+      case 't': {
+        return styles.advantages__item_t;
+      }
       default: {
         return styles.advantages__item_m;
       }
@@ -65,7 +68,11 @@ export const AdvantagesBadges: FC<AdvantagesBadgesProps> = ({
           <Tooltip
             {...tooltipProps}
             title={
-              <Text variant="caption1" bold className={styles.tooltip__text}>
+              <Text
+                  variant="caption1"
+                  bold
+                  className={size === 't' ? styles.tooltip__text_t : styles.tooltip__text}
+              >
                 {formatMessage({ id: 'toolTip2_desc' })}
               </Text>
             }
@@ -82,7 +89,7 @@ export const AdvantagesBadges: FC<AdvantagesBadgesProps> = ({
           <Tooltip
             {...tooltipProps}
             title={
-              <Text variant="caption1" bold className={styles.tooltip__text}>
+              <Text variant="caption1" bold className={size === 't' ? styles.tooltip__text_t : styles.tooltip__text}>
                 {formatMessage({ id: 'toolTip1_desc' })}
               </Text>
             }
@@ -99,7 +106,7 @@ export const AdvantagesBadges: FC<AdvantagesBadgesProps> = ({
           <Tooltip
             {...tooltipProps}
             title={
-              <Text variant="caption1" bold className={styles.tooltip__text}>
+              <Text variant="caption1" bold className={size === 't' ? styles.tooltip__text_t : styles.tooltip__text}>
                 {formatMessage({ id: 'toolTip3_desc' })}
               </Text>
             }

@@ -508,4 +508,7 @@ export default {
   theme_settings_logo_description: 'For better quality, upload the logo in .png or .jpeg at least 512x512 px',
 
   default_theme: 'Clear',
+
+  on_map: 'On map',
+  g_map: 'Map'
 };

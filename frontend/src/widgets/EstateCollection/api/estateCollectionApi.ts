@@ -135,6 +135,23 @@ export type LikeDto = {
   url: string;
 };
 
+export type GeoRs = {
+  geo: GeoDto[]
+}
+
+export type GeoDto = {
+  id: string,
+  lat: string,
+  lng: string,
+  title: string,
+  image?: string,
+  description: string,
+  toolTip1?: string,
+  toolTip2?: string,
+  toolTip3?: string,
+  roi: string,
+}
+
 export const estateCollectionApi = {
   getEstateCollection: async (
     token: string
@@ -306,4 +323,11 @@ export const estateCollectionApi = {
       throw error;
     }
   },
+  geo: async (): Promise<AxiosResponse<GeoRs>> => {
+    try {
+      return await api.get<GeoRs>('/v1/estate/geo');
+    } catch (error) {
+      throw error;
+    }
+  }
 };

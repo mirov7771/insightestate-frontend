@@ -323,6 +323,12 @@
     &_l {
       height: 40px;
     }
+
+    &_t {
+      height: 18px;
+      width: 14px;
+      font-size: 11px;
+    }
   }
 }
 
@@ -334,6 +340,12 @@
   &__text {
     color: var(--ui-color-black);
     cursor: default;
+  }
+
+  &__text_t {
+    color: var(--ui-color-black);
+    cursor: default;
+    font-size: 11px;
   }
 }
 

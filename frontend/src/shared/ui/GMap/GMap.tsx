@@ -1,5 +1,6 @@
-import { CSSProperties, FC } from 'react';
+import {CSSProperties, FC} from 'react';
 import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api';
+
 
 const getCoordinatesFromUrl = (
     url: string,

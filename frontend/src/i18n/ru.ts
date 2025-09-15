@@ -505,4 +505,7 @@ export default {
   theme_settings_logo_description: 'Для лучшего качества, загружайте логотип в формате .png или .jpeg не меньше 512х512 px',
 
   default_theme: 'Сбросить',
+
+  on_map: 'На карте',
+  g_map: 'Карта'
 };
