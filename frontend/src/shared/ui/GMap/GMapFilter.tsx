@@ -124,6 +124,14 @@ export const GMapFilter: FC<MapFilterProps> = ({open, setOpen}) => {
         }
     }, [open]);
 
+    const getPosition = (lt: string, lg: string) => {
+        const lat = Number(lt)
+        const lng = Number(lg)
+        console.log('lat', lat, lt)
+        console.log('lng', lng, lg)
+        return {lat, lng}
+    }
+
     return (
         <SwipeableDrawer
             onClose={handleClose}
@@ -188,10 +196,7 @@ export const GMapFilter: FC<MapFilterProps> = ({open, setOpen}) => {
                                         transform: `scale(${[hoverId, selectedId].includes(id) ? 1.3 : 1})`,
                                         transformOrigin: AdvancedMarkerAnchorPoint['BOTTOM'].join(' ')
                                     }}
-                                    position={{
-                                        lat: Number(lat),
-                                        lng: Number(lng)
-                                    }}>
+                                    position={getPosition(lat, lng)}>
                                     <Pin
                                         background={selectedId === id ? '#22ccff' : null}
                                         borderColor={selectedId === id ? '#1e89a1' : null}
