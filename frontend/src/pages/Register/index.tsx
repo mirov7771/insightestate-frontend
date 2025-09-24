@@ -128,7 +128,7 @@ const Register: FC = () => {
             .then((r) => navigate(r))
             .catch((e) => {
               console.log(e);
-              navigate('/tariffs');
+              navigate('/create-collection');
             });
         }
       } catch (e) {

@@ -15,6 +15,7 @@ export const Header: FC<{ basicToken: string }> = ({ basicToken }) => {
   const [profileImage, setProfileImage] = useState<string>(
     'https://lotsof.properties/estate-images/profile_img.png'
   );
+  const [collectionCount, setCollectionCount] = useState(0)
   const goTo = () => {
     navigate('/profile');
   };
@@ -32,6 +33,7 @@ export const Header: FC<{ basicToken: string }> = ({ basicToken }) => {
         setProfileImage(
           r.data.profileImage || 'https://lotsof.properties/estate-images/profile_img.png'
         );
+        setCollectionCount(r.data.collectionCount || 0)
       })
       .catch((e) => console.log(e));
   }, []);

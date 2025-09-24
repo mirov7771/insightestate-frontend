@@ -15,12 +15,14 @@ import { CompletionDate } from '@/widgets/Filter/CompletionDate';
 import { NumberOfBedrooms } from '@/widgets/Filter/NumberOfBedrooms';
 import { Potential } from '@/widgets/Filter/Potential';
 import { Beach } from '@/widgets/Filter/Beach';
-import { useSearchParams } from 'react-router';
+import {useNavigate, useSearchParams} from 'react-router';
 import { isMobile } from 'react-device-detect';
 import { Region } from '@/widgets/Filter/Region';
 import { Price } from '@/widgets/Filter/Price';
 import { Developer } from '@/widgets/Filter/Developer';
 import {GMapFilter} from "@/shared/ui/GMap/GMapFilter";
+import {estateCollectionApi} from "@/widgets/EstateCollection/api/estateCollectionApi";
+import {getNavigate} from "@/pages/Authorization";
 
 const SCROLL_AMOUNT = 250;
 
@@ -37,6 +39,7 @@ const Listing: FC = () => {
     countActiveFilters,
   } = useFilters();
   const token = localStorage.getItem('basicToken');
+  const navigate = useNavigate();
   const [openFilters, setOpenFilters] = useState(false);
   const [openMap, setOpenMap] = useState(false);
   const [infoModal, setInfoModal] = useState(false);
@@ -44,6 +47,8 @@ const Listing: FC = () => {
   const infoText = formatMessage({ id: 'listing.info' });
   const [searchParams, setSearchParams] = useSearchParams();
   const filtersScrollRef = useRef<HTMLDivElement>(null);
+  const userId = localStorage.getItem('userId')
+  const [collectionCount, setCollectionCount] = useState(0)
   const scrollFiltersRight = () => {
     if (filtersScrollRef.current) {
       filtersScrollRef.current.scrollBy({ left: SCROLL_AMOUNT, behavior: 'smooth' });
@@ -63,6 +68,10 @@ const Listing: FC = () => {
   };
 
   useEffect(() => {
+    if (userId && token) {
+      getNavigate('/listing').then(r => navigate(r))
+    }
+
     const onboarding = localStorage.getItem('onboarding');
 
     if (!onboarding) {

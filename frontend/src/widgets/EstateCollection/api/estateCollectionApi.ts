@@ -78,6 +78,7 @@ export type AgentInfo = {
   collectionLogo?: string;
   collectionColorId?: string;
   collectionColorValue?: string;
+  collectionCount?: number;
 };
 
 export type HelpWithClientRq = {
@@ -150,6 +151,16 @@ export type GeoDto = {
   toolTip2?: string,
   toolTip3?: string,
   roi: string,
+}
+
+export type TemplateRq = {
+    id: number,
+    userId: string,
+    template: string,
+}
+
+export type TemplateRs = {
+  id: string,
 }
 
 export const estateCollectionApi = {
@@ -272,7 +283,9 @@ export const estateCollectionApi = {
       throw error;
     }
   },
-  getUserSubscription: async (token: string): Promise<AxiosResponse<UserSubscription>> => {
+  getUserSubscription: async (token: string): Promise<{
+    subscription: UserSubscription, collectionCount: number
+  }> => {
     try {
       const userInfo = await api.get<AgentInfo>(`/users/me`, {
         headers: {
@@ -281,7 +294,11 @@ export const estateCollectionApi = {
       });
 
       localStorage.setItem('userId', userInfo.data.id);
-      return await api.get<UserSubscription>(`/v1/subscription?userId=${userInfo.data.id}`);
+      const res = await api.get<UserSubscription>(`/v1/subscription?userId=${userInfo.data.id}`);
+      return {
+        subscription: res.data,
+        collectionCount: userInfo.data.collectionCount || 0
+      }
     } catch (error) {
       throw error;
     }
@@ -326,6 +343,13 @@ export const estateCollectionApi = {
   geo: async (): Promise<AxiosResponse<GeoRs>> => {
     try {
       return await api.get<GeoRs>('/v1/estate/geo');
+    } catch (error) {
+      throw error;
+    }
+  },
+  template: async (rq: TemplateRq): Promise<AxiosResponse<TemplateRs>> => {
+    try {
+      return await api.post<TemplateRs>('/v1/estate-collections/template', rq);
     } catch (error) {
       throw error;
     }

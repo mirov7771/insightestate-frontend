@@ -507,5 +507,16 @@ export default {
   default_theme: 'Сбросить',
 
   on_map: 'На карте',
-  g_map: 'Карта'
+  g_map: 'Карта',
+
+  create_collection_title: 'Выберите готовые подборки исходя из запроса вашего клиента',
+  create_collection_description: 'Вы сможете полностью отредактировать подборку при необходимости убрав лишние объекты и добавив другие',
+  create_collection_button: 'Создать подборку',
+  top_sellers_phuket: 'Лидеры продаж - Пхукет',
+  platforms_choice_villas: 'Выбор платформы — Виллы',
+  first_line: 'Первая линия',
+  platforms_choice_condos: 'Выбор платформы — Кондо',
+  condos_up_to_150000: 'Кондо до 150 000$',
+  for_families_schools_and_kindergartens_nearby: 'Для семьи — школы и сады рядом',
+  our_users_choice: 'Выбор наших пользователей'
 };

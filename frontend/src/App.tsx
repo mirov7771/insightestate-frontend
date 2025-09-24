@@ -31,6 +31,7 @@ const Tariffs = lazy(() => import('@/pages/Tariffs'));
 const ResetPasswordCode = lazy(() => import('@/pages/ResetPassword/ResetPasswordCode'));
 const NewPassword = lazy(() => import('@/pages/ResetPassword/NewPassword'));
 const MainMenu = lazy(() => import('@/pages/MainMenu'));
+const CreateCollection = lazy(() => import('@/pages/CreateCollection'));
 
 const ScrollToTop = () => {
   const location = useLocation();
@@ -94,6 +95,7 @@ const App = () => {
                       </Route>
                     </Route>
                     <Route path="/tariffs" element={<Tariffs />} />
+                    <Route path="/create-collection" element={<CreateCollection />} />
                   </Routes>
                 </Suspense>
               </BrowserRouter>

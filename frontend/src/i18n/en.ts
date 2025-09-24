@@ -510,5 +510,16 @@ export default {
   default_theme: 'Clear',
 
   on_map: 'On map',
-  g_map: 'Map'
+  g_map: 'Map',
+
+  create_collection_title: 'Choose ready-made selections based on your client’s request',
+  create_collection_description: 'You can fully edit the selection if needed by removing or adding properties',
+  create_collection_button: 'Create a selection',
+  top_sellers_phuket: 'Top sellers — Phuket',
+  platforms_choice_villas: 'Platform’s choice — Villas',
+  first_line: 'Beach front',
+  platforms_choice_condos: 'Platform’s choice — Condos',
+  condos_up_to_150000: 'Condos up to $150,000',
+  for_families_schools_and_kindergartens_nearby: 'For families — schools and kindergartens nearby',
+  our_users_choice: 'Our users’ choice'
 };

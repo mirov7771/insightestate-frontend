@@ -7,12 +7,13 @@ import { StyledButton } from '@/widgets/Modal/styled';
 import { useNavigate } from 'react-router';
 import { estateCollectionApi } from '@/widgets/EstateCollection/api/estateCollectionApi';
 
-export const getNavigate = async () => {
-  const subscription = await estateCollectionApi.getUserSubscription(
+export const getNavigate = async (route?: string) => {
+  const res = await estateCollectionApi.getUserSubscription(
     localStorage.getItem('basicToken')!!
   );
-  const payAmount = subscription?.data?.subscription?.main?.payAmount ?? 0;
-  const subscriptionId = subscription?.data?.subscription?.main?.id;
+  const payAmount = res?.subscription?.subscription?.main?.payAmount ?? 0;
+  const subscriptionId = res?.subscription?.subscription?.main?.id;
+  const collectionCount = res?.collectionCount
 
   if (subscriptionId) {
     localStorage.setItem('subscriptionId', subscriptionId);
@@ -20,7 +21,11 @@ export const getNavigate = async () => {
 
   const openAuth = parseInt(localStorage.getItem('openAuth') || '0');
 
-  if (openAuth === 0) {
+  if (collectionCount < 1) {
+    return '/create-collection';
+  } else if (route) {
+    return route
+  } else if (openAuth === 0) {
     localStorage.setItem('openAuth', openAuth + 1 + '');
     return '/tariffs';
   } else if (openAuth < 4) {
