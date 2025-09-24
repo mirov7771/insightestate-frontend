@@ -36,6 +36,7 @@ export type EstateDetail = {
   unitCount?: ProjectUnitCount;
   lat?: string;
   lon?: string;
+  priceDate: string;
 };
 
 export type Developer = {

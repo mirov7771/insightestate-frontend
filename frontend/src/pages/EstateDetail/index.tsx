@@ -109,6 +109,7 @@ const EstateDetail: FC = () => {
           companyEnabled={estateDetailData.managementCompany?.enabled || false}
           price={estateDetailData.price}
           city={estateDetailData.city}
+          priceDate={estateDetailData.priceDate}
         />
         <div className={styles.buttons}>
           <Button disabled={!token} onClick={handleOpenUserCollectionModal} size="l" wide>

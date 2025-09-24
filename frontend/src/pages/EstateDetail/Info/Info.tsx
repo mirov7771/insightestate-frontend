@@ -22,7 +22,8 @@ export const Info: FC<{
   parkingSize?: number;
   price?: EstateDetail['price'];
   project?: ProjectUnitCount;
-}> = ({ floors, project, buildEndDate, level, type, developer, companyEnabled, price, city }) => {
+  priceDate: string
+}> = ({ floors, project, buildEndDate, level, type, developer, companyEnabled, price, city, priceDate }) => {
   const { formatMessage } = useIntl();
   const [locale, setLocale] = useState<string>(localStorage.getItem('language') || 'ru');
 
@@ -106,7 +107,7 @@ export const Info: FC<{
       {price && (
         <div className={styles.info__item}>
           <Text variant="body1" className={`${styles.text} ${styles.text__grey}`}>
-            {formatMessage({ id: 'price' })}
+            {formatMessage({ id: 'price_info' })}{` (${priceDate})`}
           </Text>
           <Text variant="body1" className={styles.text}>
             {price.min}$ — {price.max}$

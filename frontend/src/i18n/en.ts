@@ -521,5 +521,7 @@ export default {
   platforms_choice_condos: 'Platform’s choice — Condos',
   condos_up_to_150000: 'Condos up to $150,000',
   for_families_schools_and_kindergartens_nearby: 'For families — schools and kindergartens nearby',
-  our_users_choice: 'Our users’ choice'
+  our_users_choice: 'Our users’ choice',
+
+  price_info: 'Price'
 };

@@ -518,5 +518,7 @@ export default {
   platforms_choice_condos: 'Выбор платформы — Кондо',
   condos_up_to_150000: 'Кондо до 150 000$',
   for_families_schools_and_kindergartens_nearby: 'Для семьи — школы и сады рядом',
-  our_users_choice: 'Выбор наших пользователей'
+  our_users_choice: 'Выбор наших пользователей',
+
+  price_info: 'Цена'
 };
