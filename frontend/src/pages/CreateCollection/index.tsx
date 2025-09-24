@@ -95,6 +95,18 @@ const CreateCollection: FC = () => {
                             </>
                             )}
                         </div>
+                        <div className={styles.templates_mobile}>
+                            {Templates2.map((t) =>
+                                <>
+                                    <Template
+                                        id={t.id}
+                                        name={formatMessage({id: t.name})}
+                                        images={t.images}
+                                    />
+                                    <Spacer height={10} width={100}/>
+                                </>
+                            )}
+                        </div>
                     </div>
                 </> :
                 <>
