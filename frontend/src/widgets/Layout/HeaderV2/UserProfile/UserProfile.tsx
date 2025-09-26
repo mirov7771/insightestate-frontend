@@ -56,6 +56,7 @@ export const UserProfile: FC<UserProfileProps> = ({ basicToken }) => {
 
   const handleExit = () => {
     localStorage.clear();
+    localStorage.setItem('openAuth', '1')
     navigate('/');
     window.location.reload();
   };

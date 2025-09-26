@@ -35,6 +35,13 @@ export const DefaultEn: FC = () => {
     };
   }, []);
 
+  const token = localStorage.getItem("basicToken")
+  useEffect(() => {
+    if (token) {
+      navigate('/main_menu')
+    }
+  }, [token]);
+
   return (
     <>
       <style

@@ -14,6 +14,8 @@ export const DefaultRu: FC = () => {
     navigate('/en');
   };
 
+  const token = localStorage.getItem("basicToken")
+
   const [showCookies, setShowCookies] = useState(true);
 
   const handleScroll = () => {
@@ -35,6 +37,12 @@ export const DefaultRu: FC = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
+  useEffect(() => {
+    if (token) {
+      navigate('/main_menu')
+    }
+  }, [token]);
 
   return (
     <>

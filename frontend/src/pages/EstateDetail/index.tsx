@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import {useNavigate, useParams} from 'react-router';
 import { useIntl } from 'react-intl';
 import { useStatus } from '@/shared/utils/useStatus';
 import { BadgeRating, Button, Text } from '@/shared/ui';
@@ -30,6 +30,7 @@ import { UnitsFilterProvider } from '@/pages/EstateDetail/Units/UnitsContext';
 
 const EstateDetail: FC = () => {
   const { formatMessage } = useIntl();
+  const navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
   const { status, setStatus } = useStatus();
   const [estateDetailData, setEstateDetailData] = useState<TEstateDetail>();
@@ -57,6 +58,9 @@ const EstateDetail: FC = () => {
   };
 
   useEffect(() => {
+    if (!token) {
+        navigate('/login')
+    }
     setStatus('LOADING');
     detailApi
       .getDetail(id)
