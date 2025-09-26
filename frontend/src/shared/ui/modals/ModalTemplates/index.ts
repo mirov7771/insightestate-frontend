@@ -1,0 +1,1 @@
+export { ModalTemplates } from './ModalTemplates';

@@ -11,12 +11,13 @@ import { useIntl } from 'react-intl';
 import { CardView } from './CardView/CardView';
 import { BlockView } from '@/pages/UserCollection/BlockView/BlockView';
 import { Tabs } from '@/entities/Tabs/Tabs';
-import {BottomSheet, Button, Text, useNotifications} from '@/shared/ui';
+import { Button, Text, useNotifications } from '@/shared/ui';
 import { FETCHING_STATUS } from '@/shared/constants/constants';
 import { copyToClipboard } from '@/shared/utils';
 import {Circles} from "@/shared/assets/icons";
 import {Spacer} from "@/widgets/Spacer/Spacer";
 import {ModalSettings} from "@/shared/ui/modals/ModalSettings";
+import {isMobile} from "react-device-detect";
 
 type TStatus = 'IDLE' | 'SUCCESS' | 'ERROR' | 'LOADING';
 
@@ -135,6 +136,7 @@ const ItemCollection: FC<EstateCollection & { token: string; value: number }> = 
 
 const UserCollection: FC = () => {
   const { formatMessage } = useIntl();
+  const navigate = useNavigate()
   const [value, setValue] = useState(0);
   const [collection, setCollection] = useState<EstateCollection[]>([]);
   const [status, setStatus] = useState<TStatus>('IDLE');
@@ -145,6 +147,10 @@ const UserCollection: FC = () => {
     0: styles.collection__block,
     1: styles.collection__card,
   };
+
+  const handleRedirect = () => {
+    navigate("/create-collection")
+  }
 
   useEffect(() => {
     setStatus('LOADING');
@@ -190,22 +196,71 @@ const UserCollection: FC = () => {
               />
             </div>
             {group === 'extra' ? <></> :
-            <div>
-              <Button
-                  size="s"
-                  className={styles.settings_button}
-                  variant="base"
-                  wide
-                  onClick={() => setOpenSettings(true)}
-              >
-                <Circles/>
-                <Text align="center" variant="body1" bold>
-                  {formatMessage({id : 'theme_settings'})}
-                </Text>
-              </Button>
-            </div>
+                isMobile ? <></> :
+              <div style={{
+              display: 'inline-flex',
+              gap: '5px'
+            }}>
+            <Button
+                size="s"
+                className={styles.settings_button}
+                variant="base"
+                wide
+                onClick={handleRedirect}
+            >
+              <Text align="center" variant="body1" bold>
+                {formatMessage({id: 'templates_settings'})}
+              </Text>
+            </Button>
+            <Button
+                size="s"
+                className={styles.settings_button}
+                variant="base"
+                wide
+                onClick={() => setOpenSettings(true)}
+            >
+              <Circles/>
+              <Text align="center" variant="body1" bold>
+                {formatMessage({id: 'theme_settings'})}
+              </Text>
+            </Button>
+          </div>
             }
           </div>
+
+          {group === 'extra' ? <></> :
+              isMobile ?
+                  <div style={{
+                    display: 'block'
+                  }}>
+                    <Spacer height={5} width={100}/>
+                    <Button
+                        size="s"
+                        className={styles.settings_button}
+                        variant="base"
+                        wide
+                        onClick={handleRedirect}
+                    >
+                      <Text align="center" variant="body1" bold>
+                        {formatMessage({id: 'templates_settings'})}
+                      </Text>
+                    </Button>
+                    <Spacer height={5} width={100}/>
+                    <Button
+                        size="s"
+                        className={styles.settings_button}
+                        variant="base"
+                        wide
+                        onClick={() => setOpenSettings(true)}
+                    >
+                      <Circles/>
+                      <Text align="center" variant="body1" bold>
+                        {formatMessage({id: 'theme_settings'})}
+                      </Text>
+                    </Button>
+                  </div> : <></>
+          }
+
           <div className={`${styles.collection} ${classesCollection[value as 1 | 0]}`}>
             {collection.map((item) => (
               <ItemCollection

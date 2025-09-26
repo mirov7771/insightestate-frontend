@@ -520,5 +520,7 @@ export default {
   for_families_schools_and_kindergartens_nearby: 'Для семьи — школы и сады рядом',
   our_users_choice: 'Выбор наших пользователей',
 
-  price_info: 'Цена'
+  price_info: 'Цена',
+
+  templates_settings: 'Шаблоны подборок',
 };
