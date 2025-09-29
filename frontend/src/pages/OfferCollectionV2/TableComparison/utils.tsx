@@ -9,7 +9,7 @@ export function generateComparisonRows(
 ): { name: string; values: Array<ReactNode | string> }[] {
   // Собираем все units в один массив (сохраняя порядок)
   const allUnits: Unit[] = estates.flatMap((estate) => estate.units ?? []);
-
+  const currency = localStorage.getItem('currency') || '$'
   return [
     {
       name: formatMessage({ id: 'number_of_bedrooms' }),
@@ -33,11 +33,11 @@ export function generateComparisonRows(
     },
     {
       name: formatMessage({ id: 'units.price' }),
-      values: allUnits.map((unit) => (unit.price ? `${unit.price} $` : '—')),
+      values: allUnits.map((unit) => (unit.price ? `${unit.price} ${currency}` : '—')),
     },
     {
       name: formatMessage({ id: 'units.pricePerMeter' }),
-      values: allUnits.map((unit) => (unit.priceSq ? `${unit.priceSq} $` : '—')),
+      values: allUnits.map((unit) => (unit.priceSq ? `${unit.priceSq} ${currency}` : '—')),
     },
   ];
 }

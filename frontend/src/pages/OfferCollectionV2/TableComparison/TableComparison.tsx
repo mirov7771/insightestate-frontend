@@ -66,6 +66,7 @@ export const TableComparison: FC<TableComparisonProps> = ({ estates }) => {
     }),
     [formatMessage]
   );
+  const currency = localStorage.getItem('currency') || '$'
   const result: Partial<Record<TKeys, string[] | undefined>> = {
     // overallRating: extractNestedValuesOrFallback(estates, ['grade.main'], '9.0')?.map((rating) =>
     //   Number(rating).toFixed(1).replace('.', ',')
@@ -85,10 +86,10 @@ export const TableComparison: FC<TableComparisonProps> = ({ estates }) => {
     //   (rating) => Number(rating).toFixed(1).replace('.', ',')
     // ),
     priceFrom: extractNestedValuesOrFallback(estates, ['price.min'])?.map(
-      (price) => `$${formatNumber(price)}`
+      (price) => `${currency}${formatNumber(price)}`
     ),
     priceTo: extractNestedValuesOrFallback(estates, ['price.max'])?.map(
-      (price) => `$${formatNumber(price)}`
+      (price) => `${currency}${formatNumber(price)}`
     ), // priceMax
     pricePerSquareMeter: undefined,
     deliveryDate: extractNestedValuesOrFallback(estates, ['buildEndDate']),

@@ -25,6 +25,7 @@ export const CardSlide: FC<CardSlideProps> = ({
   loading,
 }) => {
   const { formatMessage } = useIntl();
+  const currency = localStorage.getItem('currency') || '$'
   const [infoModal, setInfoModal] = useState(false);
   const [userCollectionModal, setUserCollectionModal] = useState(false);
   const [infoTitle, setInfoTitle] = useState('');
@@ -85,7 +86,8 @@ export const CardSlide: FC<CardSlideProps> = ({
               {formatMessage({ id: 'from' })}{' '}
               {Intl.NumberFormat('en-US', {
                 style: 'currency',
-                currency: 'USD',
+                currency: currency === '₽' ? 'RUB' : (currency === '฿' ? 'THB' : 'USD'),
+                currencyDisplay: 'narrowSymbol',
                 maximumFractionDigits: 0,
               }).format(estate.priceMin)}
             </Text>

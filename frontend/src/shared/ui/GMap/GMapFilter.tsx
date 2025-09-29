@@ -125,8 +125,8 @@ export const GMapFilter: FC<MapFilterProps> = ({open, setOpen}) => {
     }, [open]);
 
     const getPosition = (lt: string, lg: string) => {
-        const lat = Number(lt)
-        const lng = Number(lg)
+        const lat = Number(lt.replaceAll(' ', '').replaceAll(',', ''))
+        const lng = Number(lg.replaceAll(' ', '').replaceAll(',', ''))
         console.log('lat', lat, lt)
         console.log('lng', lng, lg)
         return {lat, lng}

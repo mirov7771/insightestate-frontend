@@ -73,6 +73,8 @@ export const Card: FC<
     setUserCollectionModal(false);
   };
 
+  const currency = localStorage.getItem('currency') || '$'
+
   return (
     <div className={styles.card}>
       {clickable ? (
@@ -133,7 +135,8 @@ export const Card: FC<
         <strong>{formatMessage({ id: 'price_from' })}</strong>{' '}
         {Intl.NumberFormat('en-US', {
           style: 'currency',
-          currency: 'USD',
+          currency: currency === '₽' ? 'RUB' : (currency === '฿' ? 'THB' : 'USD'),
+          currencyDisplay: 'narrowSymbol',
           maximumFractionDigits: 0,
         }).format(priceMin)}
       </p>

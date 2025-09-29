@@ -15,7 +15,7 @@ export const UnitsCards: FC<UnitsCardsProps> = ({ items }) => {
   const params = useParams();
   const [userCollectionModal, setUserCollectionModal] = useState(false);
   const [unitId, setUnitId] = useState('');
-
+  const currency = localStorage.getItem('currency') || '$'
   return (
     <section className={styles.container}>
       {items.map((unit) => (
@@ -30,7 +30,7 @@ export const UnitsCards: FC<UnitsCardsProps> = ({ items }) => {
                 <sup>2</sup>
                 {isMobile && `, ${formatMessage({ id: 'units.number' })} ${unit.number}`}
               </Text>
-              <Text variant="heading5">${unit.price}</Text>
+              <Text variant="heading5">{currency}{unit.price}</Text>
             </div>
           </div>
           {/*<div className={styles.unit__base}>*/}

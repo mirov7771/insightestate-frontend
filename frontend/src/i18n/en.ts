@@ -7,7 +7,7 @@ export default {
   type_of_place: 'Property type',
   completion_date: 'Handover date',
   number_of_bedrooms: 'Number of bedrooms',
-  price: 'Price, $',
+  price: 'Price',
   potential: 'Comfort and potential',
   uk: 'Management company',
   properties: 'Objects',
@@ -73,7 +73,7 @@ export default {
   layouts: 'Available layouts',
   plan: 'Layout',
   size_sqm: 'Area, м2',
-  price_range: 'Price, $',
+  price_range: 'Price',
   bedroom: 'bedroom',
   bedrooms: 'bedrooms',
   bedrooms2: 'bedrooms',
@@ -523,5 +523,7 @@ export default {
   for_families_schools_and_kindergartens_nearby: 'For families — schools and kindergartens nearby',
   our_users_choice: 'Our users’ choice',
 
-  price_info: 'Price'
+  price_info: 'Price',
+
+  templates_settings: 'Selection templates'
 };

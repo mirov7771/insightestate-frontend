@@ -32,7 +32,7 @@ const sortRoomLayouts = (layouts: RoomLayouts): RoomLayouts => {
 export const Flats: FC<RoomLayouts & { short?: boolean }> = (props) => {
   const { formatMessage } = useIntl();
   const sorted = sortRoomLayouts(props);
-
+  const currency = localStorage.getItem('currency') || '$'
   return Object.entries(sorted).length ? (
     <>
       {props.short ? (
@@ -45,7 +45,7 @@ export const Flats: FC<RoomLayouts & { short?: boolean }> = (props) => {
                   {(layout.square?.min || 30) + ''} - {(layout.square?.max || 100) + ''}м2
                 </Text>
                 <Text variant="heading5" className={styles.flat_short__price}>
-                  ${layout.price?.min} - ${layout.price?.max}
+                  {currency}{layout.price?.min} - {currency}{layout.price?.max}
                 </Text>
               </div>
               {index + 1 < targetArray.length ? <div className={styles.divider} /> : ''}
@@ -62,7 +62,7 @@ export const Flats: FC<RoomLayouts & { short?: boolean }> = (props) => {
                   {(layout.square?.min || 30) + ''} - {(layout.square?.max || 100) + ''}м2
                 </Text>
                 <Text variant="heading5" className={styles.flat__price}>
-                  ${layout.price?.min} - ${layout.price?.max}
+                  {currency}{layout.price?.min} - {currency}{layout.price?.max}
                 </Text>
               </div>
               {index + 1 < targetArray.length ? <div className={styles.divider} /> : ''}

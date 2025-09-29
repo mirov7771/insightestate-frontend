@@ -48,6 +48,8 @@ export const UnitsSlider: FC<UnitsSliderProps> = ({ items }) => {
     setActiveIndex(current);
   };
 
+  const currency = localStorage.getItem('currency') || '$'
+
   return (
     <section className={styles.container}>
       <Slider
@@ -90,10 +92,10 @@ export const UnitsSlider: FC<UnitsSliderProps> = ({ items }) => {
                   </Text>
                   {!!unit.price && (
                     <Text variant="heading4" as="p">
-                      ${unit.price}
+                      {currency}{unit.price}
                       {!!unit.priceSq && (
                         <Text variant="body1" className={styles.unit__price_sq}>
-                          &nbsp;${unit.priceSq} м<sup>2</sup>
+                          &nbsp;{currency}{unit.priceSq} м<sup>2</sup>
                         </Text>
                       )}
                     </Text>

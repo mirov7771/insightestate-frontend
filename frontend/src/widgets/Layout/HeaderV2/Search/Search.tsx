@@ -80,6 +80,8 @@ export const Search: FC = () => {
     debouncedSearchRef.current(search);
   }, [search]);
 
+  const currency = localStorage.getItem('currency') || '$'
+
   return (
     <>
       <Button
@@ -138,7 +140,8 @@ export const Search: FC = () => {
                       <Text variant="body2" className={styles.description}>
                         {`${formatMessage({ id: 'from' })} ${Intl.NumberFormat('en-US', {
                           style: 'currency',
-                          currency: 'USD',
+                          currency: currency === '₽' ? 'RUB' : (currency === '฿' ? 'THB' : 'USD'),
+                          currencyDisplay: 'narrowSymbol',  
                           maximumFractionDigits: 0,
                         }).format(estate.priceMin)} • ${estate.city}, ${estate.beach}`}
                       </Text>

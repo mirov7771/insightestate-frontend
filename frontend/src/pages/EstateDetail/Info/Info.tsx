@@ -26,7 +26,7 @@ export const Info: FC<{
 }> = ({ floors, project, buildEndDate, level, type, developer, companyEnabled, price, city, priceDate }) => {
   const { formatMessage } = useIntl();
   const [locale, setLocale] = useState<string>(localStorage.getItem('language') || 'ru');
-
+  const currency = localStorage.getItem('currency') || '$'
   return (
     <div className={styles.info}>
       {city && (
@@ -110,7 +110,7 @@ export const Info: FC<{
             {formatMessage({ id: 'price_info' })}{` (${priceDate})`}
           </Text>
           <Text variant="body1" className={styles.text}>
-            {price.min}$ — {price.max}$
+            {price.min}{currency} — {price.max}{currency}
           </Text>
         </div>
       )}

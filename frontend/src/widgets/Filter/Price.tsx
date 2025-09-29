@@ -11,7 +11,10 @@ import { useSearchParams } from 'react-router';
 export const Price: FC = () => {
   const { formatMessage } = useIntl();
   const { setFilters, minPrice, maxPrice } = useFilters();
-  const [value, setValues] = useState<number[]>([0, 4000000]);
+  const currency = localStorage.getItem('currency') || '$'
+  const maxCurrPrice = currency === '$' ? 4000000 : (currency === '฿' ? 160000000 : 400000000)
+
+  const [value, setValues] = useState<number[]>([0, maxCurrPrice]);
   const [searchParams, setSearchParams] = useSearchParams();
 
   const debouncedSetMinPrice = useMemo(
@@ -40,7 +43,7 @@ export const Price: FC = () => {
 
   const handleChangeInput = (type: 'min' | 'max') => (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.replaceAll(' ', '').replaceAll(' ', '')
-    const val = Number(value) || (type === 'min' ? 0 : 4000000);
+    const val = Number(value) || (type === 'min' ? 0 : maxCurrPrice);
 
     if (type === 'min') {
       setValues((prev) => [val, prev[1]]);
@@ -55,16 +58,16 @@ export const Price: FC = () => {
   const isActiveFilter = useMemo(() => {
     return (
       (typeof minPrice === 'number' && minPrice > 0) ||
-      (typeof maxPrice === 'number' && maxPrice < 4000000)
+      (typeof maxPrice === 'number' && maxPrice < maxCurrPrice)
     );
   }, [maxPrice, minPrice]);
 
   const handleReset = () => {
-    setValues([0, 4000000]);
+    setValues([0, maxCurrPrice]);
     setFilters((filtersState) => ({
       ...filtersState,
       minPrice: 0,
-      maxPrice: 4000000,
+      maxPrice: maxCurrPrice,
     }));
     setSearchParams((params) => {
       params.set('page', '0');
@@ -72,9 +75,10 @@ export const Price: FC = () => {
     });
   };
 
+
   return (
     <FilterLayout
-      name={formatMessage({ id: 'price' })}
+      name={`${formatMessage({ id: 'price' })}, ${currency}`}
       isActiveFilter={isActiveFilter}
       onResetFilter={handleReset}
       filter={

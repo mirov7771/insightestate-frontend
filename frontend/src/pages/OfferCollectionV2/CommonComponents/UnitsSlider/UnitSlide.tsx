@@ -37,7 +37,7 @@ export const UnitSlide: FC<{
         .catch(() => console.log('error like'));
     }
   }, [like]);
-
+  const currency = localStorage.getItem('currency') || '$'
   return (
     <div className={styles.unit}>
       <div className={styles.unit__plan}>
@@ -60,13 +60,11 @@ export const UnitSlide: FC<{
         </Text>
         <div className={styles.unit__price}>
           {!!unit.price && (
-            <Text variant="heading4" as="p">
-              ${unit.price}
-            </Text>
+            <Text variant="heading4" as="p">{currency}{unit.price}</Text>
           )}
           {!!unit.priceSq && (
             <Text variant="body2">
-              &nbsp;${unit.priceSq} м<sup>2</sup>
+              &nbsp;{currency}{unit.priceSq} м<sup>2</sup>
             </Text>
           )}
         </div>

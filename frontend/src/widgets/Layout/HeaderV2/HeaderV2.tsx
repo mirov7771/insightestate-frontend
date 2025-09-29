@@ -7,6 +7,7 @@ import { UserProfile } from '@/widgets/Layout/HeaderV2/UserProfile';
 import { useIntl } from 'react-intl';
 import { useNavigate } from 'react-router';
 import { Search } from './Search/Search';
+import {DropdownCurrency} from "@/widgets/Dropdown/DropdownCurrency";
 
 type HeaderV2Props = {
   basicToken: string;
@@ -38,6 +39,7 @@ export const HeaderV2: FC<HeaderV2Props> = ({ basicToken }) => {
           </div>
         </div>
         <div className={styles.top_right}>
+          <DropdownCurrency/>
           <Search />
           {isFree ? (
             <Button
