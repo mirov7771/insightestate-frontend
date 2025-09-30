@@ -41,6 +41,9 @@ export const ModalGallery: FC<ModalGalleryProps> = ({
                     width: '100%',
                     height: height/1.2
                 }}
+                onError={e => {
+                    e.currentTarget.src = "https://lotsof.properties/7b888085d5a1507587c1.png"
+                }}
             />
         </div>
       </Modal>

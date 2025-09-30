@@ -29,7 +29,14 @@ export const TableComparisonV2: FC<TableComparisonV2Props> = ({ rows, estates })
                 <div className={styles.card}>
                   <div className={styles.unit__plan}>
                     {unit.planImage ? (
-                      <img src={unit.planImage} alt="plan" loading="lazy" />
+                      <img
+                          src={unit.planImage}
+                          alt="plan"
+                          loading="lazy"
+                          onError={e => {
+                              e.currentTarget.src = "https://lotsof.properties/7b888085d5a1507587c1.png"
+                          }}
+                      />
                     ) : (
                       <div className={styles.unit__plan_placeholder}>
                         <IconLayout />

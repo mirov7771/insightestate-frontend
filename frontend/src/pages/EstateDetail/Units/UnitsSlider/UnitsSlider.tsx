@@ -175,6 +175,9 @@ export const UnitImageView: FC<{
                     objectFit: 'contain',
                     cursor: 'pointer'
                 }}
+                onError={e => {
+                    e.currentTarget.src = "https://lotsof.properties/7b888085d5a1507587c1.png"
+                }}
                 onClick={() => setGalleryModal(true)}
             />
             <ModalGallery

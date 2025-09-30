@@ -42,7 +42,14 @@ export const UnitSlide: FC<{
     <div className={styles.unit}>
       <div className={styles.unit__plan}>
         {unit.planImage ? (
-          <img src={unit.planImage} alt="plan" loading="lazy" />
+          <img
+              src={unit.planImage}
+              alt="plan"
+              loading="lazy"
+              onError={e => {
+                  e.currentTarget.src = "https://lotsof.properties/7b888085d5a1507587c1.png"
+              }}
+          />
         ) : (
           <div className={styles.unit__plan_placeholder}>
             <IconLayout />

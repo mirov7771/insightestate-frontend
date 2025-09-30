@@ -22,7 +22,13 @@ export const UnitsCards: FC<UnitsCardsProps> = ({ items }) => {
         <div className={isMobile ? styles.unit_mobile : styles.unit}>
           <div className={styles.unit__plan}>
             <div className={styles.unit__plan__img}>
-              <img src={unit.planImage || PlaceholderImg} alt="plan" />
+              <img
+                  src={unit.planImage || PlaceholderImg}
+                  alt="plan"
+                  onError={e => {
+                      e.currentTarget.src = "https://lotsof.properties/7b888085d5a1507587c1.png"
+                  }}
+              />
             </div>
             <div className={styles.unit__plan__info}>
               <Text variant="body1" className={styles.unit__name}>
