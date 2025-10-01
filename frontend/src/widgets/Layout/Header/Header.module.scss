@@ -130,6 +130,8 @@ $headerHeight: 60px;
 .right_unauth {
   margin-left: auto;
   width: 100%;
+  display: inline-flex;
+  align-items: center;
 }
 
 .profile_icon {
