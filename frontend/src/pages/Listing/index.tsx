@@ -6,7 +6,7 @@ import { useFilters } from '@/widgets/Filter/model/useFilters';
 import { useIntl } from 'react-intl';
 import { InfoModal } from '@/shared/ui/modals';
 import { CardSlide } from '@/entities/CardSlide/CardSlide';
-import {ButtonMap, IconAdjustmentsFilter, IconArrowLeft} from '@/shared/assets/icons';
+import {ButtonMap, IconAdjustmentsFilter, IconArrowLeft, Question} from '@/shared/assets/icons';
 import Divider from '@mui/material/Divider';
 import { FastFilter } from '@/widgets/FastFilter/FastFilter';
 import { City } from '@/widgets/Filter/City';
@@ -21,10 +21,13 @@ import { Region } from '@/widgets/Filter/Region';
 import { Price } from '@/widgets/Filter/Price';
 import { Developer } from '@/widgets/Filter/Developer';
 import {GMapFilter} from "@/shared/ui/GMap/GMapFilter";
-import {estateCollectionApi} from "@/widgets/EstateCollection/api/estateCollectionApi";
+import Tooltip from '@mui/material/Tooltip';
 import {getNavigate} from "@/pages/Authorization";
+import {styled} from "@mui/material/styles";
+import {Cross} from "@/widgets/Icons/Cross";
 
 const SCROLL_AMOUNT = 250;
+
 
 const Listing: FC = () => {
   const { formatMessage } = useIntl();
@@ -49,6 +52,8 @@ const Listing: FC = () => {
   const filtersScrollRef = useRef<HTMLDivElement>(null);
   const userId = localStorage.getItem('userId')
   const [collectionCount, setCollectionCount] = useState(0)
+  const dateLocale = (localStorage.getItem('language') || 'ru') === 'ru' ? 'ru-RU' : 'en-US'
+  const [openTooltip, setOpenTooltip] = useState(false)
   const scrollFiltersRight = () => {
     if (filtersScrollRef.current) {
       filtersScrollRef.current.scrollBy({ left: SCROLL_AMOUNT, behavior: 'smooth' });
@@ -173,6 +178,49 @@ const Listing: FC = () => {
             </Text>
           </Button>
         </div>
+        <Tooltip
+            componentsProps={{
+              tooltip: {
+                sx: {
+                  backgroundColor: '#FFFFFF',
+                  color: '#202020',
+                  borderRadius: '8px',
+                  boxShadow: '0px 4px 24px rgba(0, 0, 0, 0.12)',
+                  maxWidth: '350px'
+                },
+              },
+            }}
+            open={openTooltip}
+            title={
+              <div
+                  className={styles.tool_tip}
+                  onClick={() => setOpenTooltip(false)}
+              >
+                <Text
+                    variant="body2"
+                    className={styles.tool_tip_text}
+                >
+                  {formatMessage({ id: 'current_price_description' })}
+                </Text>
+                <Cross className={styles.tool_tip_cross}/>
+              </div>
+            }
+            placement="top-start"
+        >
+          <div
+              className={isMobile ? styles.price_text_mobile : styles.price_text}
+              onClick={() => setOpenTooltip(true)}
+          >
+            {formatMessage( { id: 'current_price' })}{' '}{
+            new Date().toLocaleDateString(dateLocale, {
+              year: 'numeric',
+              month: 'short',
+              day: 'numeric'
+            })
+          }
+            <Question />
+          </div>
+        </Tooltip>
       </div>
       <Filter open={openFilters} setOpen={setOpenFilters} />
       <GMapFilter open={openMap} setOpen={setOpenMap} />

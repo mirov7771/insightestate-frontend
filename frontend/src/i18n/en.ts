@@ -525,5 +525,8 @@ export default {
 
   price_info: 'Price',
 
-  templates_settings: 'Selection templates'
+  templates_settings: 'Selection templates',
+
+  current_price: 'Prices are current as',
+  current_price_description: 'We check and update prices daily based on data from developers. They update this data every 2-3 weeks.'
 };

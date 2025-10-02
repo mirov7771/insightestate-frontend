@@ -98,6 +98,7 @@ import WhiteLogo from './WhiteLogo.svg?react';
 import Circles from './Circles.svg?react';
 import ButtonMap from './ButtonMap.svg?react';
 import ButtonMapBlack from './ButtonMapBlack.svg?react'
+import Question from './Question.svg?react'
 
 export {
   Bed,
@@ -200,5 +201,6 @@ export {
   IconSearch,
   Circles,
   ButtonMap,
-  ButtonMapBlack
+  ButtonMapBlack,
+  Question
 };
