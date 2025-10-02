@@ -27,6 +27,7 @@ import { Flats } from '@/pages/OfferCollectionV2/CommonComponents/Flats/Flats';
 import { Spacer } from '@/widgets/Spacer/Spacer';
 import { Developer } from '@/pages/EstateDetail/Developer/Developer';
 import { UnitsFilterProvider } from '@/pages/EstateDetail/Units/UnitsContext';
+import {unitsApi, UnitsFiltersParams} from "@/shared/api/units";
 
 const EstateDetail: FC = () => {
   const { formatMessage } = useIntl();
@@ -38,6 +39,7 @@ const EstateDetail: FC = () => {
   const [userCollectionModal, setUserCollectionModal] = useState(false);
   const [aiModal, setAiModal] = useState(false);
   const [helpModal, setHelpModal] = useState(false);
+  const [unitsCount, setUnitsCount] = useState(0)
 
   const handleOpenUserCollectionModal = () => {
     setUserCollectionModal(true);
@@ -56,6 +58,7 @@ const EstateDetail: FC = () => {
   const handleCloseHelpModal = () => {
     setHelpModal(false);
   };
+  const [filtersParams, setFiltersParams] = useState<UnitsFiltersParams>({ orderBy: 'price' });
 
   useEffect(() => {
     if (!token) {
@@ -71,6 +74,14 @@ const EstateDetail: FC = () => {
       .catch(() => {
         setStatus('ERROR');
       });
+
+    if (id) {
+      unitsApi.getUnitsByEstateId({ id, ...filtersParams })
+          .then(r => {
+              setUnitsCount(r.data.items.length || 0)
+          })
+          .catch(e => console.log(e))
+        }
   }, []);
 
   const renderSideSection = () => {
@@ -168,10 +179,14 @@ const EstateDetail: FC = () => {
           {/*</div>*/}
           <Developer {...estateDetailData} />
           <div>
-            <UnitsFilterProvider id={id}>
-              <Units />
-            </UnitsFilterProvider>
-            <Spacer height={20} width={100} />
+              {unitsCount > 0 ?
+                  <>
+                    <UnitsFilterProvider id={id}>
+                      <Units />
+                    </UnitsFilterProvider>
+                    <Spacer height={20} width={100} />
+                  </>: <></>
+              }
             <Flats {...estateDetailData.roomLayouts} short={!isMobile} />
           </div>
           {!estateDetailData.options?.gym &&
