@@ -91,7 +91,7 @@ export const Price: FC = () => {
             className={styles.slider}
             classes={{ thumb: styles.thumb, track: styles.track, rail: styles.track }}
             min={0}
-            max={4000000}
+            max={maxCurrPrice}
             onChangeCommitted={(e, value) => {
               handleChangeCommitted(value as number[]);
             }}

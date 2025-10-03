@@ -46,7 +46,7 @@ export const DropdownCurrency: FC = () => {
   return (
     <div className={styles.container_currency}>
       <button type="button" className={styles.button_currency} onClick={handleClick}>
-        <Text variant="body1">{getCurrencySym()}
+        <Text variant="body1" className={styles.button_currency_text}>{getCurrencySym()}
           {'  '}
           <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M0.558058 1.05806C0.802136 0.813981 1.19786 0.813981 1.44194 1.05806L6 5.61612L10.5581 1.05806C10.8021 0.813981 11.1979 0.813981 11.4419 1.05806C11.686 1.30214 11.686 1.69786 11.4419 1.94194L6.44194 6.94194C6.19786 7.18602 5.80214 7.18602 5.55806 6.94194L0.558058 1.94194C0.313981 1.69786 0.313981 1.30214 0.558058 1.05806Z" fill="#202020"/>
