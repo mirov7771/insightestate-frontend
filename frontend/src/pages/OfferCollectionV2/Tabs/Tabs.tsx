@@ -50,12 +50,23 @@ export const Tabs: FC<{
   const [value, setValue] = useState(0);
   const [segmentValue, setSegmentValue] = useState(2);
 
+  const isAuth =
+      localStorage.getItem('basicToken') !== null &&
+      localStorage.getItem('basicToken') !== undefined &&
+      localStorage.getItem('basicToken') !== '';
+
   useEffect(() => {
     estateCollectionApi
       .getEstateCollectionById(id)
       .then((r) => setEstateCollection(r.data))
       .catch((e) => console.log(e));
+
+    if (!isAuth) {
+        estateCollectionApi.activity(id, window.location.href).then(() => console.log("send"))
+            .catch((e) => console.log(e))
+    }
   }, []);
+
 
   const hasUnits = !!estateCollection?.estates?.some((estate) => !!estate.units?.length);
 

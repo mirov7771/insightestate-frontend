@@ -362,5 +362,14 @@ export const estateCollectionApi = {
     } catch (error) {
       throw error;
     }
+  },
+  activity: async (id: string, url: string) => {
+    try {
+      return await api.post<TemplateRs>('/v1/estate-collections/activity', {
+        id, url
+      });
+    } catch (error) {
+      throw error;
+    }
   }
 };
