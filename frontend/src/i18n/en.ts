@@ -528,5 +528,8 @@ export default {
   templates_settings: 'Selection templates',
 
   current_price: 'Prices are current as',
-  current_price_description: 'We check and update prices daily based on data from developers. They update this data every 2-3 weeks.'
+  current_price_description: 'We check and update prices daily based on data from developers. They update this data every 2-3 weeks.' ,
+
+  'userCollection.duplicate': 'Create duplicate',
+  'userCollection.duplicateCreate': 'A duplicate compilation has been created! The page will refresh within a few seconds.'
 };
