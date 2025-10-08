@@ -1,10 +1,10 @@
 import { FC, useState } from 'react';
-import { Button, ModalChangeEstateName, ModalDeleteEstate, Text } from '@/shared/ui';
+import {Button, ModalChangeEstateName, ModalDeleteEstate, Text, useNotifications} from '@/shared/ui';
 import styles from './BlockView.module.scss';
 import { IconEdit, IconTrash } from '@/shared/assets/icons';
-import { Estate } from '@/widgets/EstateCollection/api/estateCollectionApi';
+import {Estate, estateCollectionApi} from '@/widgets/EstateCollection/api/estateCollectionApi';
 import { DEFAULT_IMG } from '@/entities/Card/Card';
-import { FormattedMessage } from 'react-intl';
+import {FormattedMessage, useIntl} from 'react-intl';
 import { FETCHING_STATUS } from '@/shared/constants/constants';
 
 type BlockViewProps = {
@@ -28,14 +28,23 @@ export const BlockView: FC<BlockViewProps> = ({
   id,
   copyLinkStatus,
 }) => {
+  const { formatMessage } = useIntl();
   const [openChangeNameModal, setOpenChangeNameModal] = useState(false);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
+  const { notify } = useNotifications();
   const handleToggleShowChangeNameModal = () => {
     setOpenChangeNameModal(!openChangeNameModal);
   };
   const handleToggleShowDeleteEstateModal = () => {
     setOpenDeleteModal(!openDeleteModal);
   };
+
+  const handleDuplicate = () => {
+    estateCollectionApi.duplicate(id).then(() => {
+      notify({ message: formatMessage({ id: 'userCollection.duplicateCreate' }), duration: 2000 });
+      setTimeout(() => window.location.reload(), 2200)
+    }).catch(e => console.log(e))
+  }
 
   return (
     <>
@@ -90,6 +99,11 @@ export const BlockView: FC<BlockViewProps> = ({
             <Button onClick={goToCollectionClient}>
               <Text variant="body1" bold>
                 <FormattedMessage id="userCollection.clientView" />
+              </Text>
+            </Button>
+            <Button onClick={handleDuplicate}>
+              <Text variant="body1" bold>
+                <FormattedMessage id="userCollection.duplicate" />
               </Text>
             </Button>
             <Button variant="base" onClick={copyLink} loading={copyLinkStatus === 'LOADING'}>

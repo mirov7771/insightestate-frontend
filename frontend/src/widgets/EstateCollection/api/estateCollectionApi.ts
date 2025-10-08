@@ -353,5 +353,14 @@ export const estateCollectionApi = {
     } catch (error) {
       throw error;
     }
+  },
+  duplicate: async(id: string) => {
+    try {
+      return await api.post<TemplateRs>('/v1/estate-collections/duplicate', {
+        id
+      });
+    } catch (error) {
+      throw error;
+    }
   }
 };
