@@ -88,8 +88,8 @@ const OfferCollectionV2: FC = () => {
               display: 'flex'
             }}>
               <img
-                  width={400}
-                  height={168}
+                  width={estateCollection?.agentInfo?.group === 'SID' ? 210 : 400}
+                  height={estateCollection?.agentInfo?.group === 'SID' ? 210 : 168}
                   src={`https://lotsof.properties/estate-images/${estateCollection?.agentInfo?.group}.png`}
                   alt=""
               />
