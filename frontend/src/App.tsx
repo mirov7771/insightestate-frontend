@@ -56,6 +56,15 @@ const App = () => {
     }
   }, []);
 
+  const locationUrl = window.location.href.indexOf('myselection') > -1 && window.location.href.indexOf('cl') < 0
+  console.log(locationUrl, '!!!!')
+
+  if (locationUrl) {
+    return  (
+        <></>
+    )
+  }
+
   return (
     <HelmetProvider>
       <StyledEngineProvider injectFirst>
