@@ -176,7 +176,7 @@ export const UnitImageView: FC<{
                     cursor: 'pointer'
                 }}
                 onError={e => {
-                    e.currentTarget.src = "https://lotsof.properties/7b888085d5a1507587c1.png"
+                    e.currentTarget.src = "https://lotsof.properties/estate-images/DefaultUnitImg.png"
                 }}
                 onClick={() => setGalleryModal(true)}
             />

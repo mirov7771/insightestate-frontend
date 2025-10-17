@@ -137,6 +137,11 @@ export const Search: FC = () => {
                       <Text variant="body1" bold>
                         {estate.name}
                       </Text>
+                        {estate.priceMin < 90 ?
+                            <Text variant="body2" className={styles.description}>
+                                {`${formatMessage({ id: 'sold_out' })} • ${estate.city}, ${estate.beach}`}
+                            </Text>
+                            :
                       <Text variant="body2" className={styles.description}>
                         {`${formatMessage({ id: 'from' })} ${Intl.NumberFormat('en-US', {
                           style: 'currency',
@@ -145,6 +150,7 @@ export const Search: FC = () => {
                           maximumFractionDigits: 0,
                         }).format(estate.priceMin)} • ${estate.city}, ${estate.beach}`}
                       </Text>
+                        }
                     </div>
                   </div>
                   {estate.collectionCount === 0 ? (

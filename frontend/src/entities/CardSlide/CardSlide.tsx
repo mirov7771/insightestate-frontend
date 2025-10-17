@@ -70,18 +70,22 @@ export const CardSlide: FC<CardSlideProps> = ({
                 </Text>
               </li>
             )}
-            {estate.roiSummary && (
+            {(estate.roiSummary && estate.roiSummary > 0) ? (
               <li className={styles.badges__badge}>
                 <Text variant="body2" bold>
                   {formatMessage({ id: 'roi_card' })} {estate.roiSummary}%
                 </Text>
               </li>
-            )}
+            ) : <></>}
           </ul>
           <a href={`/property/${estate.id}`} target="_blank" rel="noreferrer">
             <Slider images={images} />
           </a>
           <div className={styles.info}>
+            {estate.priceMin < 90 ?
+                <Text variant="heading4" className={styles.info__price}>
+                  {formatMessage({ id: 'sold_out' })}
+                </Text> :
             <Text variant="heading4" className={styles.info__price}>
               {formatMessage({ id: 'from' })}{' '}
               {Intl.NumberFormat('en-US', {
@@ -91,6 +95,7 @@ export const CardSlide: FC<CardSlideProps> = ({
                 maximumFractionDigits: 0,
               }).format(estate.priceMin)}
             </Text>
+            }
             <AdvantagesBadges
               toolTip1={estate.toolTip1 === 'true' ? estate.toolTip1 : undefined}
               toolTip2={estate.toolTip2 === 'true' ? estate.toolTip2 : undefined}
