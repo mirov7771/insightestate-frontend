@@ -19,6 +19,7 @@ export const ModalGallery: FC<ModalGalleryProps> = ({
   const handleCloseModal = () => {
     setOpen(false);
   };
+  const localStorageUserLocale = (localStorage.getItem('language') || 'ru') as 'ru' | 'en';
 
   return (
     <>
@@ -42,7 +43,7 @@ export const ModalGallery: FC<ModalGalleryProps> = ({
                     height: height/1.2
                 }}
                 onError={e => {
-                    e.currentTarget.src = "https://lotsof.properties/estate-images/DefaultUnitImg.png"
+                    e.currentTarget.src = localStorageUserLocale === 'ru' ? "https://lotsof.properties/estate-images/DefaultUnitImg.png" : "https://lotsof.properties/estate-images/DefaultUnitImgEn.png"
                 }}
             />
         </div>

@@ -165,6 +165,7 @@ export const UnitImageView: FC<{
     plan: string
 }> = ({ plan }) => {
     const [galleryModal, setGalleryModal] = useState(false);
+    const localStorageUserLocale = (localStorage.getItem('language') || 'ru') as 'ru' | 'en';
     return (
         <>
             <img
@@ -176,7 +177,7 @@ export const UnitImageView: FC<{
                     cursor: 'pointer'
                 }}
                 onError={e => {
-                    e.currentTarget.src = "https://lotsof.properties/estate-images/DefaultUnitImg.png"
+                    e.currentTarget.src = localStorageUserLocale === 'ru' ? "https://lotsof.properties/estate-images/DefaultUnitImg.png" : "https://lotsof.properties/estate-images/DefaultUnitImgEn.png"
                 }}
                 onClick={() => setGalleryModal(true)}
             />
