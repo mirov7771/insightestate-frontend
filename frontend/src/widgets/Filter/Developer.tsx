@@ -59,9 +59,7 @@ export const Developer: FC = () => {
                 checked={developer?.includes('Sansiri')}
                 label="Sansiri"
             />
-          </>) : (
-              <></>
-          )}
+          </>) : (<></>)}
           {city?.includes('Phuket') || city?.length === 0 ? (<>
             <Checkbox
                 name="developer"
@@ -634,6 +632,52 @@ export const Developer: FC = () => {
           </>) : (
               <></>
             )}
+          {city?.includes('Samui') || city?.length === 0 ? (<>
+            <Checkbox
+                name="developer"
+                value="IO LANTA CO.LTD."
+                onChange={handleClick}
+                checked={developer?.includes('IO LANTA CO.LTD.')}
+                label="IO LANTA CO.LTD."
+            />
+            <Checkbox
+                name="developer"
+                value="Samui Paradise Group"
+                onChange={handleClick}
+                checked={developer?.includes('Samui Paradise Group')}
+                label="Samui Paradise Group"
+            />
+            <Checkbox
+                name="developer"
+                value="Santi Vista Villas Co Ltd."
+                onChange={handleClick}
+                checked={developer?.includes('Santi Vista Villas Co Ltd.')}
+                label="Santi Vista Villas Co Ltd."
+            />
+            <Checkbox
+                name="developer"
+                value="Sense 8 Development"
+                onChange={handleClick}
+                checked={developer?.includes('Sense 8 Development')}
+                label="Sense 8 Development"
+            />
+            <Checkbox
+                name="developer"
+                value="The Amidst Samui"
+                onChange={handleClick}
+                checked={developer?.includes('The Amidst Samui')}
+                label="The Amidst Samui"
+            />
+            <Checkbox
+                name="developer"
+                value="Zhongfa Property (HK) Limited"
+                onChange={handleClick}
+                checked={developer?.includes('Zhongfa Property (HK) Limited')}
+                label="Zhongfa Property (HK) Limited"
+            />
+          </>) : (
+              <></>
+          )}
         </div>
       }
     />

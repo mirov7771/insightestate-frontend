@@ -248,6 +248,54 @@ export const Region: FC = () => {
           ) : (
             <></>
           )}
+          {city?.includes('Samui') || city?.length === 0 ? (
+              <>
+                <Checkbox
+                    name="beachName"
+                    value="Bang Po"
+                    onChange={handleClick}
+                    checked={beachName?.includes('Bang Po')}
+                    label="Bang Po"
+                />
+                <Checkbox
+                    name="beachName"
+                    value="Bang Rak"
+                    onChange={handleClick}
+                    checked={beachName?.includes('Bang Rak')}
+                    label="Bang Rak"
+                />
+                <Checkbox
+                    name="beachName"
+                    value="Bophut"
+                    onChange={handleClick}
+                    checked={beachName?.includes('Bophut')}
+                    label="Bophut"
+                />
+                <Checkbox
+                    name="beachName"
+                    value="Chaweng Noi"
+                    onChange={handleClick}
+                    checked={beachName?.includes('Chaweng Noi')}
+                    label="Chaweng Noi"
+                />
+                <Checkbox
+                    name="beachName"
+                    value="Lamai"
+                    onChange={handleClick}
+                    checked={beachName?.includes('Lamai')}
+                    label="Lamai"
+                />
+                <Checkbox
+                    name="beachName"
+                    value="Thongson Bay"
+                    onChange={handleClick}
+                    checked={beachName?.includes('Thongson Bay')}
+                    label="Thongson Bay"
+                />
+              </>
+          ) : (
+              <></>
+          )}
         </div>
       }
     />
