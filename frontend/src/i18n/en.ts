@@ -533,5 +533,7 @@ export default {
   'userCollection.duplicate': 'Create duplicate',
   'userCollection.duplicateCreate': 'A duplicate compilation has been created! The page will refresh within a few seconds.',
 
-  'sold_out': 'Sold out'
+  'sold_out': 'Sold out',
+
+  'userCollection.comment': 'Comment',
 };

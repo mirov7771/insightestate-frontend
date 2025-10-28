@@ -112,6 +112,29 @@ const OfferCollectionV2: FC = () => {
         <Text variant="heading4_upper" as="h1" align="center">
           {formatMessage({ id: 'projects_for_you' })}
         </Text>
+        {estateCollection?.comment ?
+        <>
+          <Spacer height={100} width={100}/>
+          <div className={styles.content}>
+            <img
+                src={
+                    estateCollection?.agentInfo?.profileImage || 'https://lotsof.properties/estate-images/profile_img.png'
+                }
+                alt="avatar"
+                className={styles.avatar}
+            />
+            <div>
+              <Text variant="heading5">{estateCollection?.agentInfo?.fio}</Text>
+              <Text variant="caption1" className={styles.manager}>
+                {formatMessage({ id: 'your_manager' })}
+              </Text>
+            </div>
+            <Text variant="body1" as="text" align="left">
+              {estateCollection?.comment}
+            </Text>
+          </div>
+        </> : <></>
+        }
         <Spacer width={100} height={8}/>
         {id && <Tabs
             id={id}

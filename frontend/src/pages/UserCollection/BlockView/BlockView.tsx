@@ -6,6 +6,7 @@ import {Estate, estateCollectionApi} from '@/widgets/EstateCollection/api/estate
 import { DEFAULT_IMG } from '@/entities/Card/Card';
 import {FormattedMessage, useIntl} from 'react-intl';
 import { FETCHING_STATUS } from '@/shared/constants/constants';
+import {ModalComment} from "@/shared/ui/modals/ModalComment";
 
 type BlockViewProps = {
   copyLink: () => void;
@@ -31,12 +32,17 @@ export const BlockView: FC<BlockViewProps> = ({
   const { formatMessage } = useIntl();
   const [openChangeNameModal, setOpenChangeNameModal] = useState(false);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
+  const [openCommentModal, setOpenCommentModal] = useState(false);
   const { notify } = useNotifications();
   const handleToggleShowChangeNameModal = () => {
     setOpenChangeNameModal(!openChangeNameModal);
   };
   const handleToggleShowDeleteEstateModal = () => {
     setOpenDeleteModal(!openDeleteModal);
+  };
+
+  const handleToggleCommentModal = () => {
+    setOpenCommentModal(!openChangeNameModal);
   };
 
   const handleDuplicate = () => {
@@ -111,6 +117,11 @@ export const BlockView: FC<BlockViewProps> = ({
                 <FormattedMessage id="userCollection.copyLink" />
               </Text>
             </Button>
+            <Button onClick={handleToggleCommentModal}>
+              <Text variant="body1" bold>
+                <FormattedMessage id="userCollection.comment" />
+              </Text>
+            </Button>
           </div>
         )}
       </div>
@@ -124,6 +135,11 @@ export const BlockView: FC<BlockViewProps> = ({
         setOpen={setOpenDeleteModal}
         open={openDeleteModal}
         onDeleteEstate={deleteCollection}
+      />
+      <ModalComment
+          open={openCommentModal}
+          setOpen={setOpenCommentModal}
+          id={id}
       />
     </>
   );

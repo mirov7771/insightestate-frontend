@@ -1,0 +1,1 @@
+export { ModalComment } from './ModalComment';

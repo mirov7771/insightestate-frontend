@@ -531,5 +531,7 @@ export default {
   'userCollection.duplicate': 'Создать дубль',
   'userCollection.duplicateCreate': 'Дубль подборки создан! Страница обновится в течении нескольких секунд',
 
-  'sold_out': 'Продано'
+  'sold_out': 'Продано',
+
+  'userCollection.comment': 'Комментарий',
 };

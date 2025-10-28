@@ -23,6 +23,7 @@ export type EstateCollection = {
   name: string;
   agentInfo?: AgentInfo;
   estates?: Array<Estate>;
+  comment?: string;
 };
 
 export type EstateOptions = {
@@ -329,6 +330,13 @@ export const estateCollectionApi = {
       return await api.put<void>(`/v1/estate-collections/${id}`, {
         name: name,
       });
+    } catch (error) {
+      throw error;
+    }
+  },
+  updateCollectionComment: async (id: string, comment: string): Promise<AxiosResponse<void>> => {
+    try {
+      return await api.put<void>(`/v1/estate-collections/${id}`, {comment});
     } catch (error) {
       throw error;
     }
