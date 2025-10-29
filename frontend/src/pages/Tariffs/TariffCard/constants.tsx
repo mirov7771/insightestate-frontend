@@ -137,55 +137,127 @@ export const DESCRIPTIONS_RU = {
 
 export const DESCRIPTIONS_ENG = {
   Start: [
-    { icon: <IconCalendarTime />, text: <Text variant="body1">3 selections</Text> },
+    { icon: <IconHomeStar />, text: <Text variant="body1">The trial period is 14 days</Text> },
     {
-      icon: <IconGraphMonitor />,
-      text: <Text variant="body1">Limited analytics on the object: estimates only</Text>,
+      icon: <IconBuildingCommunity />,
+      text: <Text variant="body1">Access to the database of objects</Text>,
+    },
+    {
+      icon: <IconLayoutGrid />,
+      text: <Text variant="body1">Create up to 5 selections</Text>,
+    },
+    {
+      icon: <IconFileTypePdf />,
+      text: <Text variant="body1">Uploading collections to PDF</Text>,
     },
     {
       icon: <IconSpark />,
-      text: <Text variant="body1">3 requests in the AI picker</Text>,
+      text: <Text variant="body1">AI picker</Text>,
     },
   ],
   Pro: [
     {
       icon: <IconCalendarTime />,
       text: (
-        <Text variant="body1">
-          <b>Unlimited selections</b>
-        </Text>
+          <Text variant="body1">
+            The trial period is 14 days
+          </Text>
       ),
     },
     {
-      icon: <IconGraphMonitor />,
+      icon: <IconBuildingCommunity />,
+      text: <Text variant="body1">Access to the database of objects</Text>,
+    },
+    {
+      icon: <IconLayoutGrid />,
       text: (
-        <Text variant="body1">
-          All analytics on the object: estimates, calculation of the economy
-        </Text>
+          <Text variant="body1">
+            Unlimited number of selections
+          </Text>
+      ),
+    },
+    {
+      icon: <IconFileTypePdf />,
+      text: (
+          <Text variant="body1">
+            Uploading collections to PDF
+          </Text>
       ),
     },
     {
       icon: <IconSpark />,
       text: (
-        <Text variant="body1">
-          <b>Unlimited requests</b> in the AI picker
-        </Text>
+          <Text variant="body1">
+            AI picker
+          </Text>
+      ),
+    },
+    {
+      icon: <IconColorSwatch />,
+      text: (
+          <Text variant="body1">
+            Branding of selections
+          </Text>
+      ),
+    },
+    {
+      icon: <IconHeadset />,
+      text: (
+          <Text variant="body1">
+            Priority technical support
+          </Text>
       ),
     },
   ],
   Enterpise: [
-    { icon: <IconCalendarTime />, text: <Text variant="body1">7 collections</Text> },
+    { icon: <IconCalendarTime />, text: <Text variant="body1">Без пробного периода</Text> },
     {
-      icon: <IconGraphMonitor />,
-      text: (
-        <Text variant="body1">
-          All analytics on the object: estimates, calculation of the economy
-        </Text>
-      ),
+      icon: <IconBuildingCommunity />,
+      text: <Text variant="body1">Access to the database of objects</Text>,
+    },
+    {
+      icon: <IconLayoutGrid />,
+      text: <Text variant="body1">Unlimited number of selections</Text>,
+    },
+    {
+      icon: <IconFileTypePdf />,
+      text: <Text variant="body1">Uploading collections to PDF</Text>,
     },
     {
       icon: <IconSpark />,
-      text: <Text variant="body1">7 queries in the AI picker</Text>,
+      text: <Text variant="body1">AI picker</Text>,
+    },
+    {
+      icon: <IconColorSwatch />,
+      text: <Text variant="body1">Branding of selections</Text>,
+    },
+    {
+      icon: <IconHeadset />,
+      text: <Text variant="body1">Priority technical support</Text>,
+    },
+    {
+      icon: <IconWorldWWW />,
+      text: <Text variant="body1">Your subdomain</Text>,
+    },
+    {
+      icon: <IconBP />,
+      text: <Text variant="body1">Account Manager</Text>,
+    },
+    {
+      icon: <IconMessageCode />,
+      text: <Text variant="body1">Direct access to the development team</Text>,
+    },
+    {
+      icon: <IconStar />,
+      text: <Text variant="body1">The possibility of individual improvements</Text>,
+    },
+    {
+      icon: <IconChartArea />,
+      text: <Text variant="body1">Master account and broker statistics</Text>,
+    },
+    {
+      icon: <IconGraphMonitor />,
+      text: <Text variant="body1">Scoring system</Text>,
     },
   ],
 };

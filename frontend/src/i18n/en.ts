@@ -423,6 +423,7 @@ export default {
   main_button_1: 'How the platform works',
   main_button_2: 'Our advantages',
   main_button_3: 'Develop the platform with us',
+  main_button_4: 'The beta test is coming to an end',
 
   'stories.0.title': 'Use smart filters and AI assistant',
   'stories.0.description':

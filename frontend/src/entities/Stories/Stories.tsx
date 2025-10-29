@@ -8,6 +8,7 @@ import { Button } from '@/shared/ui';
 import { IconChevronLeft, IconChevronRight, IconX } from '@/shared/assets/icons';
 import { Story } from '@/entities/Stories/Story';
 import { StoryProps } from './types';
+import {useNavigate} from "react-router";
 
 const STORY_TIMER = 500;
 const DEFAULT_PROGRESS = {
@@ -24,6 +25,7 @@ type StoriesProps = {
 let timer: NodeJS.Timeout;
 
 export const Stories: FC<StoriesProps> = ({ items, open, setOpen }) => {
+  const navigate = useNavigate();
   const [activeStory, setActiveStory] = useState(0);
   const [progress, setProgress] = useState<Record<number, { isDone: boolean; value: number }>>(() =>
     items.reduce((acc, _, index) => {
@@ -56,6 +58,21 @@ export const Stories: FC<StoriesProps> = ({ items, open, setOpen }) => {
   const handleCloseTgStories = (e: MouseEvent<HTMLButtonElement>) => {
     handleClick(e);
     window.open('https://t.me/+GCijMyqnGL8yYTIy', '_blank')
+    setOpen(false);
+    setProgress(
+        items.reduce((acc, _, index) => {
+          return {
+            ...acc,
+            [index]: DEFAULT_PROGRESS,
+          };
+        }, {})
+    );
+    setActiveStory(0);
+  };
+
+  const handleCloseBtStories = (e: MouseEvent<HTMLButtonElement>) => {
+    handleClick(e);
+    navigate('/tariffs')
     setOpen(false);
     setProgress(
         items.reduce((acc, _, index) => {
@@ -181,7 +198,9 @@ export const Stories: FC<StoriesProps> = ({ items, open, setOpen }) => {
                 activeStory === items.length - 1
                   ? {
                       text: items[activeStory].button?.text || 'OK',
-                      onClick: items[activeStory].link ? handleCloseTgStories : handleCloseStories,
+                      onClick: items[activeStory].link ?
+                          handleCloseTgStories :
+                          (items[activeStory].tariff ? handleCloseBtStories : handleCloseStories),
                     }
                   : undefined
               }

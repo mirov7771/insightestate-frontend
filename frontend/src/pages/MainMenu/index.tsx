@@ -3,7 +3,7 @@ import { useIntl } from 'react-intl';
 import styles from './MainMenu.module.scss';
 import { Text } from '@/shared/ui';
 import { Stories } from '@/entities/Stories/Stories';
-import {STORIES, STORIES_V2, STORIES_V3} from '@/entities/Stories/constants';
+import {STORIES, STORIES_V2, STORIES_V3, STORIES_V4} from '@/entities/Stories/constants';
 import ObjectsImg from './assets/Objects.png';
 import PodborkyImg from './assets/Podborky.png';
 import UnitsImg from './assets/Units.png';
@@ -17,7 +17,8 @@ const MainMenu: FC = () => {
   const [storiesModal, setStoriesModal] = useState(false);
   const [heartModal, setHeartModal] = useState(false);
   const [tgModal, setTgModal] = useState(false);
-  const [readStories, setIsReadStories] = useState({ storiesModal: false, heartModal: false, tgModal: false });
+  const [btModal, setBtModal] = useState(false);
+  const [readStories, setIsReadStories] = useState({ storiesModal: false, heartModal: false, tgModal: false, btModal: false });
   const [collections, setCollections] = useState(0);
   const [units, setUnits] = useState(0);
   const [objects, setObjects] = useState(0);
@@ -53,6 +54,11 @@ const MainMenu: FC = () => {
   const handleOpenTgModal = () => {
     setTgModal(true);
     setIsReadStories((prev) => ({ ...prev, tgModal: true }));
+  };
+
+  const handleOpenBtModal = () => {
+    setBtModal(true);
+    setIsReadStories((prev) => ({ ...prev, btModal: true }));
   };
 
   return (
@@ -95,6 +101,19 @@ const MainMenu: FC = () => {
           </div>
           <Text variant="caption1" align="center">
             {formatMessage({ id: 'main_button_3' })}
+          </Text>
+        </div>
+        <div className={styles.story__wrapper}>
+          <div
+              className={`${styles.story} ${readStories.tgModal ? styles.story_read : ''}`}
+              onClick={handleOpenBtModal}
+          >
+            <div className={styles.story__content}>
+              <img src="https://lotsof.properties/estate-images/imageclocks.png" alt="" />
+            </div>
+          </div>
+          <Text variant="caption1" align="center">
+            {formatMessage({ id: 'main_button_4' })}
           </Text>
         </div>
       </section>
@@ -168,6 +187,7 @@ const MainMenu: FC = () => {
       <Stories items={STORIES} open={storiesModal} setOpen={setStoriesModal} />
       <Stories items={STORIES_V2} open={heartModal} setOpen={setHeartModal} />
       <Stories items={STORIES_V3} open={tgModal} setOpen={setTgModal} />
+      <Stories items={STORIES_V4} open={btModal} setOpen={setBtModal} />
     </main>
   );
 };

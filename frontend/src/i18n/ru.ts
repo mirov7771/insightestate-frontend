@@ -421,6 +421,7 @@ export default {
   main_button_1: 'Как работает платформа',
   main_button_2: 'Наш подход',
   main_button_3: 'Развивай платформу с нами',
+  main_button_4: 'Бета-тест завершается',
 
   'stories.0.title': 'Используйте умные фильтры и ИИ помощника',
   'stories.0.description':
@@ -449,6 +450,10 @@ export default {
   'storiesV3.0.title': 'ЕСТЬ ИДЕИ И ПОЖЕЛАНИЯ?',
   'storiesV3.0.description': 'Вступайте в закрытую Telegram-группу — общаемся с командой напрямую!',
   'storiesV3.0.button': 'Присоединиться',
+
+  'storiesV4.0.title': 'Бета-тест завершается',
+  'storiesV4.0.description': 'До 1 ноября все функции бесплатны. Далее — платная подписка',
+  'storiesV4.0.button': 'Смотреть тарифы',
 
   country_of_residence: 'Страна проживания',
 
