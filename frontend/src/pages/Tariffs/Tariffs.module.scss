@@ -10,7 +10,7 @@
 
   &_center {
     @media (min-width: $media-lg) {
-      transform: translateY(20%);
+      transform: translateY(2%);
     }
   }
 
@@ -69,11 +69,11 @@
 
   .logo {
     text-align: center;
-    margin-bottom: 24px;
+    //margin-bottom: 24px;
 
-    @media (min-width: $media-md) {
-      margin-bottom: 32px;
-    }
+    //@media (min-width: $media-md) {
+    //  margin-bottom: 32px;
+    //}
 
     & svg {
       width: 104px;

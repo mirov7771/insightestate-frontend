@@ -99,8 +99,25 @@ import Circles from './Circles.svg?react';
 import ButtonMap from './ButtonMap.svg?react';
 import ButtonMapBlack from './ButtonMapBlack.svg?react'
 import Question from './Question.svg?react'
+import IconLayoutGrid from './offer-collection/tabler-icon-layout-grid.svg?react'
+import IconHeadset from './offer-collection/tabler-icon-headset.svg?react'
+import IconColorSwatch from './offer-collection/tabler-icon-color-swatch.svg?react'
+
+import IconWorldWWW from './offer-collection/tabler-icon-world-www.svg?react'
+import IconBP from './offer-collection/tabler-icon-businessplan.svg?react'
+import IconMessageCode from './offer-collection/tabler-icon-message-code.svg?react'
+import IconStar from './offer-collection/tabler-icon-star.svg?react'
+import IconChartArea from './offer-collection/tabler-icon-chart-area-line.svg?react'
 
 export {
+  IconChartArea,
+  IconStar,
+  IconMessageCode,
+  IconBP,
+  IconWorldWWW,
+  IconColorSwatch,
+  IconHeadset,
+  IconLayoutGrid,
   Bed,
   Calendar,
   Coins,

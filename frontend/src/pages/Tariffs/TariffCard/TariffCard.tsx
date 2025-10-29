@@ -64,13 +64,13 @@ export const TariffCard: FC<TariffCardProps> = ({
   };
 
   const getSubscription = (): string => {
-    if (userSubscriptionId) {
-      if (userSubscriptionId === id) {
-        return price > 0
-          ? formatMessage({ id: 'tariff_my' })
-          : formatMessage({ id: 'tariff_free' });
-      }
-    }
+    // if (userSubscriptionId) {
+    //   if (userSubscriptionId === id) {
+    //     return price > 0
+    //       ? formatMessage({ id: 'tariff_my' })
+    //       : formatMessage({ id: 'tariff_free' });
+    //   }
+    // }
     return price > 0
       ? `${price}$ ${formatMessage({ id: 'tariff_month' })}`
       : formatMessage({ id: 'tariff_free' });
@@ -107,6 +107,11 @@ export const TariffCard: FC<TariffCardProps> = ({
               {formatMessage({ id: 'tariff_popular' })}
             </Text>
           )}
+        </div>
+        <div style={{
+          marginTop: '-10px'
+        }}>
+          <Text variant="body2" className={styles.card__descr}>{description[0].replace('- ', '')}</Text>
         </div>
         <ul className={styles.card__list}>
           {desc[title as keyof typeof desc].map(({ icon, text }) => (

@@ -1,56 +1,143 @@
-import { IconGraphMonitor, IconHomeStar, IconSpark } from '@/shared/assets/icons';
+import {
+  IconBP,
+  IconBuildingCommunity,
+  IconCalendarTime, IconChartArea, IconColorSwatch, IconFileTypePdf,
+  IconGraphMonitor, IconHeadset,
+  IconHomeStar, IconLayoutGrid, IconMessageCode,
+  IconSpark, IconStar, IconWorldWWW
+} from '@/shared/assets/icons';
 import { Text } from '@/shared/ui';
 
 export const DESCRIPTIONS_RU = {
-  Starter: [
-    { icon: <IconHomeStar />, text: <Text variant="body1">3 подборки</Text> },
+  Start: [
+    { icon: <IconHomeStar />, text: <Text variant="body1">Пробный период 14 дней</Text> },
     {
-      icon: <IconGraphMonitor />,
-      text: <Text variant="body1">Ограниченная аналитика по объекту: только оценки</Text>,
+      icon: <IconBuildingCommunity />,
+      text: <Text variant="body1">Доступ к базе объектов</Text>,
+    },
+    {
+      icon: <IconLayoutGrid />,
+      text: <Text variant="body1">Создание до 5 подборок</Text>,
+    },
+    {
+      icon: <IconFileTypePdf />,
+      text: <Text variant="body1">Выгрузка подборок в PDF</Text>,
     },
     {
       icon: <IconSpark />,
-      text: <Text variant="body1">3 запроса в AI-подборщике</Text>,
+      text: <Text variant="body1">ИИ-подборщик</Text>,
     },
   ],
   Pro: [
     {
-      icon: <IconHomeStar />,
+      icon: <IconCalendarTime />,
       text: (
         <Text variant="body1">
-          <b>Неограниченные подборки</b>
+          Пробный период 14 дней
         </Text>
       ),
     },
     {
-      icon: <IconGraphMonitor />,
-      text: <Text variant="body1">Вся аналитика по объекту: оценки, расчет экономики</Text>,
+      icon: <IconBuildingCommunity />,
+      text: <Text variant="body1">Доступ к базе объектов</Text>,
+    },
+    {
+      icon: <IconLayoutGrid />,
+      text: (
+        <Text variant="body1">
+          Безлимитное количество подборок
+        </Text>
+      ),
+    },
+    {
+      icon: <IconFileTypePdf />,
+      text: (
+          <Text variant="body1">
+            Выгрузка подборок в PDF
+          </Text>
+      ),
     },
     {
       icon: <IconSpark />,
       text: (
-        <Text variant="body1">
-          <b>Неограниченные запросы</b> в AI-подборщике
-        </Text>
+          <Text variant="body1">
+            ИИ-подборщик
+          </Text>
+      ),
+    },
+    {
+      icon: <IconColorSwatch />,
+      text: (
+          <Text variant="body1">
+            Брендинг подборок
+          </Text>
+      ),
+    },
+    {
+      icon: <IconHeadset />,
+      text: (
+          <Text variant="body1">
+            Приоритетная техподдержка
+          </Text>
       ),
     },
   ],
-  Standart: [
-    { icon: <IconHomeStar />, text: <Text variant="body1">7 подборок</Text> },
+  Enterpise: [
+    { icon: <IconCalendarTime />, text: <Text variant="body1">Без пробного периода</Text> },
     {
-      icon: <IconGraphMonitor />,
-      text: <Text variant="body1">Вся аналитика по объекту: оценки, расчет экономики</Text>,
+      icon: <IconBuildingCommunity />,
+      text: <Text variant="body1">Доступ к базе объектов</Text>,
+    },
+    {
+      icon: <IconLayoutGrid />,
+      text: <Text variant="body1">Безлимитное количество подборок</Text>,
+    },
+    {
+      icon: <IconFileTypePdf />,
+      text: <Text variant="body1">Выгрузка подборок в PDF</Text>,
     },
     {
       icon: <IconSpark />,
-      text: <Text variant="body1">7 запросов в AI-подборщике</Text>,
+      text: <Text variant="body1">ИИ-подборщик</Text>,
+    },
+    {
+      icon: <IconColorSwatch />,
+      text: <Text variant="body1">Брендинг подборок</Text>,
+    },
+    {
+      icon: <IconHeadset />,
+      text: <Text variant="body1">Приоритетная техподдержка</Text>,
+    },
+    {
+      icon: <IconWorldWWW />,
+      text: <Text variant="body1">Свой поддомен</Text>,
+    },
+    {
+      icon: <IconBP />,
+      text: <Text variant="body1">Аккаунт-менеджер</Text>,
+    },
+    {
+      icon: <IconMessageCode />,
+      text: <Text variant="body1">Прямой доступ к команде разработки</Text>,
+    },
+    {
+      icon: <IconStar />,
+      text: <Text variant="body1">Возможность индивидуальных доработок</Text>,
+    },
+    {
+      icon: <IconChartArea />,
+      text: <Text variant="body1">Мастер-аккаунт и статистика по брокерам</Text>,
+    },
+    {
+      icon: <IconGraphMonitor />,
+      text: <Text variant="body1">Скоринг-система</Text>,
     },
   ],
 };
 
 export const DESCRIPTIONS_ENG = {
-  Starter: [
-    { icon: <IconHomeStar />, text: <Text variant="body1">3 selections</Text> },
+  Start: [
+    { icon: <IconCalendarTime />, text: <Text variant="body1">3 selections</Text> },
     {
       icon: <IconGraphMonitor />,
       text: <Text variant="body1">Limited analytics on the object: estimates only</Text>,
@@ -62,7 +149,7 @@ export const DESCRIPTIONS_ENG = {
   ],
   Pro: [
     {
-      icon: <IconHomeStar />,
+      icon: <IconCalendarTime />,
       text: (
         <Text variant="body1">
           <b>Unlimited selections</b>
@@ -86,8 +173,8 @@ export const DESCRIPTIONS_ENG = {
       ),
     },
   ],
-  Standart: [
-    { icon: <IconHomeStar />, text: <Text variant="body1">7 collections</Text> },
+  Enterpise: [
+    { icon: <IconCalendarTime />, text: <Text variant="body1">7 collections</Text> },
     {
       icon: <IconGraphMonitor />,
       text: (

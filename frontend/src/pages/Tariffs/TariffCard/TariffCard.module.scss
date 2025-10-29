@@ -25,6 +25,14 @@
     height: 32px;
   }
 
+  &__descr {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: rgba(32, 32, 32, 0.64);
+  }
+
   &__badge_mobile {
     background-color: var(--ui-color-yellow);
     color: var(--ui-color-black);

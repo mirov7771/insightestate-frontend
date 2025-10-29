@@ -95,13 +95,13 @@ const Tariffs: FC = () => {
         <Text variant="body1" as="h2" align="center" className={styles.description}>
           {formatMessage({ id: 'tariff_description' })}
         </Text>
-        <Spacer height={35} width={100} />
-        <Text variant="body1" className={styles.badge} align="center">
-          <FormattedMessage
-            id="tariff_free_description"
-            values={{ br: () => <br />, b: (children) => <strong>{children}</strong> }}
-          />
-        </Text>
+        {/*<Spacer height={35} width={100} />*/}
+        {/*<Text variant="body1" className={styles.badge} align="center">*/}
+        {/*  <FormattedMessage*/}
+        {/*    id="tariff_free_description"*/}
+        {/*    values={{ br: () => <br />, b: (children) => <strong>{children}</strong> }}*/}
+        {/*  />*/}
+        {/*</Text>*/}
       </div>
       <div className={`${styles.grid} ${styles.cards}`}>
         {tariffs?.main.map((tariff) => (
