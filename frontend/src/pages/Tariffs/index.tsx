@@ -25,7 +25,13 @@ const Tariffs: FC = () => {
     seMySubsId(id);
   };
 
+  const isAuth =
+      localStorage.getItem('basicToken') !== null &&
+      localStorage.getItem('basicToken') !== undefined &&
+      localStorage.getItem('basicToken') !== '';
+
   useEffect(() => {
+    if (!isAuth) navigate('/ru')
     const tariffId = searchParams.get('tariffId');
     const extraTariffId = searchParams.get('extraTariffId');
 
