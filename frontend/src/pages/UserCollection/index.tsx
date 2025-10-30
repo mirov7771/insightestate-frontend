@@ -152,6 +152,8 @@ const UserCollection: FC = () => {
     navigate("/create-collection")
   }
 
+  const subscriptionId = localStorage.getItem('subscriptionId') || 'f1628768-72c2-40e4-9e6d-7c4ab7b1909b'
+
   useEffect(() => {
     setStatus('LOADING');
     estateCollectionApi
@@ -212,6 +214,7 @@ const UserCollection: FC = () => {
                 {formatMessage({id: 'templates_settings'})}
               </Text>
             </Button>
+            {subscriptionId !== 'f1628768-72c2-40e4-9e6d-7c4ab7b1909b' ?
             <Button
                 size="s"
                 className={styles.settings_button}
@@ -223,7 +226,7 @@ const UserCollection: FC = () => {
               <Text align="center" variant="body1" bold>
                 {formatMessage({id: 'theme_settings'})}
               </Text>
-            </Button>
+            </Button> : <></>}
           </div>
             }
           </div>

@@ -9,6 +9,8 @@ import {
 import { useStatus } from '@/shared/utils/useStatus';
 import { InfoModal } from '@/shared/ui/modals';
 import { useWindowResize } from '@/shared/utils/useWindowResize';
+import {useNavigate} from "react-router";
+import {Spacer} from "@/widgets/Spacer/Spacer";
 
 type ModalAddToCollectionProps = {
   estateId: string;
@@ -24,6 +26,7 @@ export const ModalAddToCollection: FC<ModalAddToCollectionProps> = ({
   unitId,
 }) => {
   const { width } = useWindowResize();
+  const navigate = useNavigate()
   const isFullScreen = width <= 768;
   const { formatMessage } = useIntl();
   const [name, setName] = useState('');
@@ -39,6 +42,7 @@ export const ModalAddToCollection: FC<ModalAddToCollectionProps> = ({
   const [infoTitle, setInfoTitle] = useState('');
   const [infoText, setInfoText] = useState('');
   const token = localStorage.getItem('basicToken') || '';
+  const [sz, setSz] = useState(0)
   const handleOpenInfoModal = () => {
     setInfoModal(true);
   };
@@ -95,6 +99,7 @@ export const ModalAddToCollection: FC<ModalAddToCollectionProps> = ({
           if (!!data.items.length) {
             setCollections(data.items);
             setCollectionId(data.items[0].id);
+            setSz(data.items.length)
           } else {
             setIsAddNewColeection(true);
           }
@@ -106,6 +111,8 @@ export const ModalAddToCollection: FC<ModalAddToCollectionProps> = ({
         });
     }
   }, [open, token]);
+
+  const subscriptionId = localStorage.getItem('subscriptionId') || 'f1628768-72c2-40e4-9e6d-7c4ab7b1909b'
 
   return (
     <>
@@ -119,47 +126,60 @@ export const ModalAddToCollection: FC<ModalAddToCollectionProps> = ({
           onClose: () => handleCloseModal(),
         }}
       >
-        <div className={styles.container}>
-          <Text variant="heading4">{formatMessage({ id: 'add_to_collection' })}</Text>
-          {isAddNewCollection ? (
-            <>
-              <Input placeholder="Insert collection name" value={name} onChange={onChangeName} />
-              <div className={styles.buttons}>
-                <Button variant="base" disabled={status === 'LOADING'}>
-                  <Text variant="body1" onClick={handleToggleAddNewCollection} bold>
-                    {formatMessage({ id: 'common.back' })}
-                  </Text>
+        {(subscriptionId === 'f1628768-72c2-40e4-9e6d-7c4ab7b1909b' && sz > 4) ?
+            <div className={styles.container_2}>
+                <Text variant="heading5">{formatMessage({ id: 'collection_error' })}</Text>
+                <Spacer height={10} width={100}/>
+                <Text variant="body1">{formatMessage({ id: 'collection_error_text' })}</Text>
+                <Spacer height={10} width={100}/>
+                <Button onClick={() => navigate('/tariffs')}>
+                    <Text variant="body1" bold>
+                        {formatMessage({ id: 'change.tariff' })}
+                    </Text>
                 </Button>
-                <Button onClick={addToCollection} loading={status === 'LOADING'}>
-                  <Text variant="body1" bold>
-                    {formatMessage({ id: 'common.add' })}
-                  </Text>
-                </Button>
-              </div>
-            </>
-          ) : (
-            <>
-              <Select
-                options={collections?.map(({ id, name }) => ({ id, name })) || []}
-                onChange={(e) => setSelectValue(e.target.value)}
-                value={selectValue}
-                disabled={status === 'LOADING'}
-              />
-              <div className={styles.buttons}>
-                <Button variant="base" disabled={status === 'LOADING'}>
-                  <Text variant="body1" onClick={handleToggleAddNewCollection} bold>
-                    {formatMessage({ id: 'create_new' })}
-                  </Text>
-                </Button>
-                <Button onClick={addToCollection} loading={status === 'LOADING'}>
-                  <Text variant="body1" bold>
-                    {formatMessage({ id: 'add' })}
-                  </Text>
-                </Button>
-              </div>
-            </>
-          )}
-        </div>
+            </div> :
+            <div className={styles.container}>
+                <Text variant="heading4">{formatMessage({ id: 'add_to_collection' })}</Text>
+                {isAddNewCollection ? (
+                    <>
+                        <Input placeholder="Insert collection name" value={name} onChange={onChangeName} />
+                        <div className={styles.buttons}>
+                            <Button variant="base" disabled={status === 'LOADING'}>
+                                <Text variant="body1" onClick={handleToggleAddNewCollection} bold>
+                                    {formatMessage({ id: 'common.back' })}
+                                </Text>
+                            </Button>
+                            <Button onClick={addToCollection} loading={status === 'LOADING'}>
+                                <Text variant="body1" bold>
+                                    {formatMessage({ id: 'common.add' })}
+                                </Text>
+                            </Button>
+                        </div>
+                    </>
+                ) : (
+                    <>
+                        <Select
+                            options={collections?.map(({ id, name }) => ({ id, name })) || []}
+                            onChange={(e) => setSelectValue(e.target.value)}
+                            value={selectValue}
+                            disabled={status === 'LOADING'}
+                        />
+                        <div className={styles.buttons}>
+                            <Button variant="base" disabled={status === 'LOADING'}>
+                                <Text variant="body1" onClick={handleToggleAddNewCollection} bold>
+                                    {formatMessage({ id: 'create_new' })}
+                                </Text>
+                            </Button>
+                            <Button onClick={addToCollection} loading={status === 'LOADING'}>
+                                <Text variant="body1" bold>
+                                    {formatMessage({ id: 'add' })}
+                                </Text>
+                            </Button>
+                        </div>
+                    </>
+                )}
+            </div>
+        }
       </Modal>
       <InfoModal setOpen={setInfoModal} open={infoModal} title={infoTitle} text={infoText} />
     </>
