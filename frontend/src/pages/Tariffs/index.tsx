@@ -22,9 +22,6 @@ const Tariffs: FC = () => {
   );
 
   const handleSubsId = (id: string) => {
-    if (id === 'f1628768-72c2-40e4-9e6d-7c4ab7b1909b') {
-      localStorage.setItem('isFree', 'true');
-    }
     seMySubsId(id);
   };
 
@@ -72,16 +69,6 @@ const Tariffs: FC = () => {
       })
       .catch((e) => console.log(e));
   }, [extra]);
-
-  const handleTariff = () => {
-    estateCollectionApi
-      .saveUserSubscription('f1628768-72c2-40e4-9e6d-7c4ab7b1909b')
-      .then(async () => {
-        localStorage.setItem('subscriptionId', 'f1628768-72c2-40e4-9e6d-7c4ab7b1909b');
-        navigate('/listing');
-      })
-      .catch((e) => console.log(e));
-  };
 
   return (
     <div className={`${styles.grid} ${styles.grid_center}`}>
@@ -139,76 +126,9 @@ const Tariffs: FC = () => {
           </div>
         ))}
       </div>
-      <Button className={styles.button} onClick={handleTariff} size="l">
-        {mySubsId === 'f1628768-72c2-40e4-9e6d-7c4ab7b1909b' ? (
-          <Text variant="body1" bold>
-            {formatMessage({ id: 'tariff_free_continue' })}
-          </Text>
-        ) : (
-          <Text variant="body1" bold>
-            {formatMessage({ id: 'tariff_continue_button' })}{' '}
-            {mySubsId == 'b749d197-846e-49d4-aedc-abf7b3784b11' ? 'Pro' : 'Standart'}
-          </Text>
-        )}
-      </Button>
     </div>
   );
 
-  return (
-    <>
-      <div className={styles.wrapper}>
-        {tariffs?.main.map((tariff) => (
-          <TariffCard
-            title={tariff.title}
-            description={tariff.description}
-            price={
-              extra && tariff.price > 0 && tariff.title !== 'Pro'
-                ? tariff.price + extraPrice
-                : tariff.price
-            }
-            id={tariff.id}
-            onClick={handleSubsId}
-            selected={tariff.id === mySubsId}
-            extraId={extra && tariff.price > 0 && tariff.title === 'Standart' ? extraId : undefined}
-            userSubscriptionId={localStorage.getItem('subscriptionId')}
-            switcher={
-              tariff.title === 'Standart' ? (
-                <div className={styles.switcher}>
-                  <div>
-                    <Switcher checked={extra} onChange={handleChangeChecked} id="" value={''} />
-                  </div>
-                  <Text variant="heading4">{formatMessage({ id: 'tariff_ai' })}</Text>
-                </div>
-              ) : (
-                <></>
-              )
-            }
-          />
-        ))}
-      </div>
-      <div
-        style={{
-          width: isMobile ? '70%' : '50%',
-          margin: 'auto',
-        }}
-      >
-        <Spacer height={35} width={100} />
-        <Button onClick={handleTariff} wide size="l">
-          {mySubsId === 'f1628768-72c2-40e4-9e6d-7c4ab7b1909b' ? (
-            <Text variant="body1" bold>
-              {formatMessage({ id: 'tariff_free_continue' })}
-            </Text>
-          ) : (
-            <Text variant="body1" bold>
-              {formatMessage({ id: 'tariff_continue_button' })}{' '}
-              {mySubsId == 'b749d197-846e-49d4-aedc-abf7b3784b11' ? 'Pro' : 'Standart'}
-            </Text>
-          )}
-        </Button>
-        <Spacer height={35} width={100} />
-      </div>
-    </>
-  );
 };
 
 export default Tariffs;

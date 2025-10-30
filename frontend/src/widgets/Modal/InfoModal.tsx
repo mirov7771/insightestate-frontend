@@ -50,9 +50,6 @@ export const InfoModal: FC<
           </StyledWrapperProgress>
         </StyledUpperWrapperProgress>
         <Spacer width="100%" height={24} />
-        <StyledButton color="secondary" variant="contained" size="medium" onClick={onClose}>
-          {formatMessage({ id: 'ok' })}
-        </StyledButton>
       </StyledSwipeableDrawer>
     </>
   );

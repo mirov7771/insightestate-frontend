@@ -546,4 +546,6 @@ export default {
   'sold_out': 'Sold out',
 
   'userCollection.comment': 'Comment',
+
+  contact_us: 'Contact us'
 };

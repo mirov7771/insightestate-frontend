@@ -544,4 +544,6 @@ export default {
   'sold_out': 'Продано',
 
   'userCollection.comment': 'Комментарий',
+
+  contact_us: 'Связаться с нами'
 };

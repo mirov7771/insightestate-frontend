@@ -8,6 +8,8 @@ import { DESCRIPTIONS_ENG, DESCRIPTIONS_RU } from './constants';
 import { useIntl } from 'react-intl';
 import { Spacer } from '@/widgets/Spacer/Spacer';
 import { isMobile } from 'react-device-detect';
+import {InfoModal} from "@/widgets/Modal/InfoModal";
+import {IconMail} from "@/shared/assets/icons";
 
 type TariffCardProps = {
   description: string[];
@@ -36,6 +38,7 @@ export const TariffCard: FC<TariffCardProps> = ({
   const { formatMessage } = useIntl();
   const navigate = useNavigate();
   const [infoModal, setInfoModal] = useState(false);
+  const [contactModal, setContactModal] = useState(false);
   const [desc, setDesc] = useState(DESCRIPTIONS_RU);
   const handleOpenInfoModal = () => {
     setInfoModal(true);
@@ -44,8 +47,17 @@ export const TariffCard: FC<TariffCardProps> = ({
     setInfoModal(false);
   };
 
+  const handleOpenContactModal = () => {
+    setContactModal(true);
+  };
+  const handleCloseContactModal = () => {
+    setContactModal(false);
+  };
+
   const handleTariff = () => {
-    if (id === userSubscriptionId) {
+    if (id === '8acf9e68-c4d0-43b1-9c22-b7f712f101a4') {
+      handleOpenContactModal()
+    } else if (id === userSubscriptionId) {
       navigate('/listing');
     } else if (price === 0) {
       estateCollectionApi
@@ -64,13 +76,15 @@ export const TariffCard: FC<TariffCardProps> = ({
   };
 
   const getSubscription = (): string => {
-    // if (userSubscriptionId) {
-    //   if (userSubscriptionId === id) {
-    //     return price > 0
-    //       ? formatMessage({ id: 'tariff_my' })
-    //       : formatMessage({ id: 'tariff_free' });
-    //   }
-    // }
+    if (id === '8acf9e68-c4d0-43b1-9c22-b7f712f101a4')
+      return formatMessage({ id: 'contact_us' })
+    if (userSubscriptionId) {
+      if (userSubscriptionId === id) {
+        return price > 0
+          ? formatMessage({ id: 'tariff_my' })
+          : formatMessage({ id: 'tariff_free' });
+      }
+    }
     return price > 0
       ? `${price}$ ${formatMessage({ id: 'tariff_month' })}`
       : formatMessage({ id: 'tariff_free' });
@@ -124,39 +138,15 @@ export const TariffCard: FC<TariffCardProps> = ({
         {switcher}
         <Spacer height={10} width={100} />
         <div className={styles.card__button}>
-          <div className={styles.card__border} />
-          <Spacer height={25} width={100} />
-          {price === 0 ? (
-            <Text variant="heading4" className={styles.card__text_p}>
-              {getSubscription()}
-            </Text>
-          ) : (
-            <div
-              style={{
-                display: 'inline-flex',
-                gap: '8px',
-                alignItems: 'center',
-              }}
-            >
-              <Text variant="heading4" className={styles.card__text_p_decline}>
-                {getSubscription()}
-              </Text>
-              <li className={styles.card__badge_discount}>
-                <Text variant="body2" bold>
-                  -100%
-                </Text>
-              </li>
-            </div>
-          )}
           <Spacer height={10} width={100} />
-          {/*<Button*/}
-          {/*  onClick={handleTariff}*/}
-          {/*  wide*/}
-          {/*  variant={userSubscriptionId === id ? 'base' : 'primary'}*/}
-          {/*  size="l"*/}
-          {/*>*/}
-          {/*  <Text variant="heading4">{getSubscription()}</Text>*/}
-          {/*</Button>*/}
+          <Button
+            onClick={handleTariff}
+            wide
+            variant={userSubscriptionId === id ? 'base' : 'primary'}
+            size="l"
+          >
+            <Text variant="heading4">{getSubscription()}</Text>
+          </Button>
         </div>
       </div>
       <PayModal
@@ -168,6 +158,28 @@ export const TariffCard: FC<TariffCardProps> = ({
         bottom={0}
         id={id}
         extraId={title === 'Pro' ? undefined : extraId}
+      />
+      <InfoModal
+        title={formatMessage({ id: 'contact_us' })}
+        bottom={30}
+        children={
+        <>
+          <div style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '5px'
+          }}>
+            <a href={`mailto:sales@lotsof.properties`} target="_blank" rel="noreferrer">
+              <Text variant="body1">{formatMessage({ id: 'email' })}{' '}sales@lotsof.properties</Text>
+            </a>
+          </div>
+        </>
+      }
+        onClose={handleCloseContactModal}
+        onOpen={handleOpenContactModal}
+        open={contactModal}
+        anchor={'bottom'}
       />
     </>
   );

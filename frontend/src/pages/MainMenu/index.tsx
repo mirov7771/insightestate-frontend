@@ -12,6 +12,7 @@ import Pp from '@/entities/Stories/assets/RocketPic.png';
 import { detailApi } from '@/widgets/Detail/api/detailApi';
 import { useStatus } from '@/shared/utils/useStatus';
 import { Skeleton } from '@mui/material';
+import {useNavigate} from "react-router";
 
 const MainMenu: FC = () => {
   const { formatMessage } = useIntl();
@@ -26,6 +27,7 @@ const MainMenu: FC = () => {
   const [objects, setObjects] = useState(0);
   const [bestObjects, setBestObjects] = useState(0);
   const { status, setStatus } = useStatus();
+  const navigate = useNavigate();
 
   const year = new Date().getFullYear()
   const month = new Date().getMonth() + 1
@@ -201,9 +203,11 @@ const MainMenu: FC = () => {
         {/*  </div>*/}
         {/*</div>*/}
       </section>
-      <section className={styles.offer} style={{
-        backgroundColor: isBeta ? '#FEE689' : '#E1CBF6'
-      }}>
+      <section
+          className={styles.offer}
+          style={{backgroundColor: isBeta ? '#FEE689' : '#E1CBF6'}}
+          onClick={() => navigate('/tariffs')}
+      >
         <div className={styles.offer__content}>
           <Text className={styles.offer__text} variant="heading5">
             {formatMessage({ id: isBeta ? 'storiesV4.0.title' : 'storiesV5.0.title' })}
