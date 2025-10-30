@@ -422,6 +422,7 @@ export default {
   main_button_2: 'Наш подход',
   main_button_3: 'Развивай платформу с нами',
   main_button_4: 'Бета-тест завершается',
+  main_button_5: 'Новый уровень',
 
   'stories.0.title': 'Используйте умные фильтры и ИИ помощника',
   'stories.0.description':
@@ -454,6 +455,10 @@ export default {
   'storiesV4.0.title': 'Бета-тест завершается',
   'storiesV4.0.description': 'До 1 ноября все функции бесплатны. Далее — платная подписка',
   'storiesV4.0.button': 'Смотреть тарифы',
+
+  'storiesV5.0.title': 'Новый уровень',
+  'storiesV5.0.description': 'Бета-тест завершён. Полный доступ ко всем функциям в платных тарифах',
+  'storiesV5.0.button': 'Выбрать тариф',
 
   country_of_residence: 'Страна проживания',
 

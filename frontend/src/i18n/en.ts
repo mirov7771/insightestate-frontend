@@ -424,6 +424,7 @@ export default {
   main_button_2: 'Our advantages',
   main_button_3: 'Develop the platform with us',
   main_button_4: 'The beta test is coming to an end',
+  main_button_5: 'New level',
 
   'stories.0.title': 'Use smart filters and AI assistant',
   'stories.0.description':
@@ -452,6 +453,14 @@ export default {
   'storiesV3.0.title': 'ANY IDEAS OR SUGGESTIONS?',
   'storiesV3.0.description': 'Join the closed Telegram group —communicate with the team directly!',
   'storiesV3.0.button': 'Join',
+
+  'storiesV4.0.title': 'The beta test is coming to an end',
+  'storiesV4.0.description': 'All functions are free until November 1st. Next is a paid subscription.',
+  'storiesV4.0.button': 'Pricing plans',
+
+  'storiesV5.0.title': 'New level',
+  'storiesV5.0.description': 'The beta test is completed. Full access to all functions in paid plans',
+  'storiesV5.0.button': 'Pricing plans',
 
   country_of_residence: 'Country',
 

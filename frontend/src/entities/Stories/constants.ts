@@ -16,6 +16,8 @@ import { StoryProps } from './types';
 
 import Bt from './assets/bt.png';
 
+import Rocket from './assets/Rocket.png';
+
 export const STORIES: StoryProps[] = [
   {
     img: TelegramCloud,
@@ -106,6 +108,21 @@ export const STORIES_V4: StoryProps[] = [
     variant: 'default',
     button: {
       text: 'storiesV4.0.button'
+    },
+    tariff: true,
+    color: '#000000'
+  }
+];
+
+export const STORIES_V5: StoryProps[] = [
+  {
+    img: Rocket,
+    title: 'storiesV5.0.title',
+    description: 'storiesV5.0.description',
+    backgroundColor: '#E1CBF6',
+    variant: 'default',
+    button: {
+      text: 'storiesV5.0.button'
     },
     tariff: true,
     color: '#000000'
