@@ -163,18 +163,35 @@ export const TariffCard: FC<TariffCardProps> = ({
         title={formatMessage({ id: 'contact_us' })}
         bottom={30}
         children={
-        <>
-          <div style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '5px'
-          }}>
-            <a href={`mailto:sales@lotsof.properties`} target="_blank" rel="noreferrer">
-              <Text variant="body1">{formatMessage({ id: 'email' })}{' '}sales@lotsof.properties</Text>
-            </a>
-          </div>
-        </>
+        <ul>
+          <li>
+            <div style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '5px'
+            }}>
+              <Text variant="body1">{formatMessage({ id: 'email' })}{' '}</Text>
+              <a href={`mailto:sales@lotsof.properties`} target="_blank" rel="noreferrer">
+                <Text variant="body1">sales@lotsof.properties</Text>
+              </a>
+            </div>
+          </li>
+          <Spacer height={10} width={100} />
+          <li>
+            <div style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '5px'
+            }}>
+              <Text variant="body1">{formatMessage({ id: 'phone_call' })}</Text>
+              <a href={`tel:+66 81-442-7717`} target="_blank" rel="noreferrer">
+                <Text variant="body1">+66 81-442-7717</Text>
+              </a>
+            </div>
+          </li>
+        </ul>
       }
         onClose={handleCloseContactModal}
         onOpen={handleOpenContactModal}
