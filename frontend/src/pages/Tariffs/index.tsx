@@ -50,9 +50,9 @@ const Tariffs: FC = () => {
         })
         .catch((e) => console.log(e));
 
-      // estateCollectionApi.stipeRefund()
-      //     .then(() => {})
-      //     .catch((e) => console.log(e))
+      estateCollectionApi.stipeRefund()
+          .then(() => {})
+          .catch((e) => console.log(e))
     } else {
       estateCollectionApi
         .getTariffs()

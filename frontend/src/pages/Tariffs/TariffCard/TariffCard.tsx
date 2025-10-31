@@ -70,9 +70,9 @@ export const TariffCard: FC<TariffCardProps> = ({
         })
         .catch((e) => console.log(e));
 
-      // estateCollectionApi.stipeRefund()
-      //     .then(() => {})
-      //     .catch((e) => console.log(e))
+      estateCollectionApi.stipeRefund()
+          .then(() => {})
+          .catch((e) => console.log(e))
     } else {
       handleOpenInfoModal();
     }
