@@ -547,5 +547,8 @@ export default {
 
   'userCollection.comment': 'Comment',
 
-  contact_us: 'Contact us'
+  contact_us: 'Contact us',
+
+  pay: 'Pay',
+  promo_code: 'Promocode',
 };

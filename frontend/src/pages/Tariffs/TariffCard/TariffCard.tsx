@@ -9,7 +9,6 @@ import { useIntl } from 'react-intl';
 import { Spacer } from '@/widgets/Spacer/Spacer';
 import { isMobile } from 'react-device-detect';
 import {InfoModal} from "@/widgets/Modal/InfoModal";
-import {IconMail} from "@/shared/assets/icons";
 
 type TariffCardProps = {
   description: string[];

@@ -548,5 +548,8 @@ export default {
   contact_us: 'Связаться с нами',
 
   collection_error: 'Достигнут лимит в 5 подборок, согласно вашему тарифу Start',
-  collection_error_text: 'Подключите тариф Pro или Enterpise, для безлимитного создания подборок'
+  collection_error_text: 'Подключите тариф Pro или Enterpise, для безлимитного создания подборок',
+
+  pay: 'Оплатить',
+  promo_code: 'Промокод',
 };

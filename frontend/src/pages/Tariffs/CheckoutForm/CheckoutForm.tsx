@@ -1,8 +1,9 @@
-import { ChangeEvent, FC, useState } from 'react';
+import {ChangeEvent, FC, useEffect, useState} from 'react';
 import { PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import { estateCollectionApi } from '@/widgets/EstateCollection/api/estateCollectionApi';
 import { Spacer } from '@/widgets/Spacer/Spacer';
-import { Button } from '@/shared/ui';
+import {Button, Input, Text} from '@/shared/ui';
+import {useIntl} from "react-intl";
 
 export const CheckoutForm: FC<{
   id: string;
@@ -11,8 +12,25 @@ export const CheckoutForm: FC<{
 }> = ({ price, id, extraId }) => {
   const stripe = useStripe();
   const elements = useElements();
-
+  const { formatMessage } = useIntl();
   const [errorMessage, setErrorMessage] = useState<string>();
+  const [finalPrice, setFinalPrice] = useState<number>(price)
+  const [promoCode, setPromoCode] = useState<string>('')
+
+  const onChangePromoCode = (e: ChangeEvent<HTMLInputElement>) => {
+    const promo = e.target.value;
+
+    setPromoCode(promo?.toUpperCase());
+  };
+
+  useEffect(() => {
+    debugger;
+    if (promoCode === 'ACTIVE50') {
+      setFinalPrice(price/2);
+    } else if (promoCode === 'WEBINAR15') {
+      setFinalPrice(price * 0.85);
+    }
+  }, [promoCode]);
 
   const handleSubmit = async (event: ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -31,7 +49,7 @@ export const CheckoutForm: FC<{
     }
 
     // Create the PaymentIntent and obtain clientSecret from your server endpoint
-    const res = await estateCollectionApi.stripeSession(price);
+    const res = await estateCollectionApi.stripeSession(finalPrice);
 
     const { error } = await stripe!!.confirmPayment({
       //`Elements` instance that was used to create the Payment Element
@@ -60,8 +78,16 @@ export const CheckoutForm: FC<{
     <form onSubmit={handleSubmit}>
       <PaymentElement />
       <Spacer height={20} width={100} />
+      <Input
+          onChange={onChangePromoCode}
+          value={promoCode}
+          name="promo"
+          placeholder={formatMessage({ id: 'promo_code' })}
+          yClass=".ym-record-key"
+      />
+      <Spacer height={10} width={100} />
       <Button type="submit" size="l" wide disabled={!stripe || !elements}>
-        Оплатить
+        {formatMessage({ id: 'pay' })}{' '}{finalPrice/100}$
       </Button>
       {errorMessage && <div>{errorMessage}</div>}
     </form>
