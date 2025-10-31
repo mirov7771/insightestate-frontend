@@ -317,6 +317,15 @@ export const estateCollectionApi = {
       throw error;
     }
   },
+  stipeRefund: async (): Promise<AxiosResponse<void>> => {
+    try {
+      return await api.post<void>('/v1/stripe/refund', {
+        userId: localStorage.getItem('userId')
+      });
+    } catch (error) {
+      throw error;
+    }
+  },
   stripeSession: async (price: number): Promise<AxiosResponse<StripeRs>> => {
     try {
       return await api.post<StripeRs>('/v1/stripe/session', {
