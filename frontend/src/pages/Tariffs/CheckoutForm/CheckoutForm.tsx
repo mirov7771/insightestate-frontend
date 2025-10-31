@@ -31,6 +31,9 @@ export const CheckoutForm: FC<{
     } else if (promoCode === 'WEBINAR15') {
       setFinalPrice(price * 0.85);
       localStorage.setItem('promo', promoCode)
+    } else if (promoCode === 'START95' && id !== 'f1628768-72c2-40e4-9e6d-7c4ab7b1909b') {
+      setFinalPrice(price * 0.05)
+      localStorage.setItem('promo', promoCode)
     }
   }, [promoCode]);
 
