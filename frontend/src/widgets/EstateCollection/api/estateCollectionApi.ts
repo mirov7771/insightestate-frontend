@@ -304,11 +304,14 @@ export const estateCollectionApi = {
       throw error;
     }
   },
-  saveUserSubscription: async (tariffId: string): Promise<AxiosResponse<void>> => {
+  saveUserSubscription: async (
+      tariffId: string
+  ): Promise<AxiosResponse<void>> => {
     try {
       return await api.post<void>('/v1/subscription', {
         userId: localStorage.getItem('userId'),
         tariffId: tariffId,
+        promoCode: localStorage.getItem('promo')
       });
     } catch (error) {
       throw error;

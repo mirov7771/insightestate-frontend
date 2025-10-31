@@ -27,8 +27,10 @@ export const CheckoutForm: FC<{
     debugger;
     if (promoCode === 'ACTIVE50') {
       setFinalPrice(price/2);
+      localStorage.setItem('promo', promoCode)
     } else if (promoCode === 'WEBINAR15') {
       setFinalPrice(price * 0.85);
+      localStorage.setItem('promo', promoCode)
     }
   }, [promoCode]);
 
