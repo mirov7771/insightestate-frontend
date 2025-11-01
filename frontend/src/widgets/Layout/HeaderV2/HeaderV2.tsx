@@ -17,8 +17,12 @@ export const HeaderV2: FC<HeaderV2Props> = ({ basicToken }) => {
   const { formatMessage } = useIntl();
   const navigate = useNavigate();
   const [isFree, setIsFree] = useState(localStorage.getItem('isFree'));
+  const subscription = localStorage.getItem('subscriptionId') || ''
 
   useEffect(() => {
+    if (subscription === ''){
+      navigate('/tariffs')
+    }
     setIsFree(localStorage.getItem('isFree'));
   }, []);
 

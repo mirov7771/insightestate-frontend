@@ -51,6 +51,7 @@ const Listing: FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const filtersScrollRef = useRef<HTMLDivElement>(null);
   const userId = localStorage.getItem('userId')
+  const subscription = localStorage.getItem('subscriptionId')
   const [collectionCount, setCollectionCount] = useState(0)
   const dateLocale = (localStorage.getItem('language') || 'ru') === 'ru' ? 'ru-RU' : 'en-US'
   const [openTooltip, setOpenTooltip] = useState(false)
@@ -73,7 +74,7 @@ const Listing: FC = () => {
   };
 
   useEffect(() => {
-    if (userId && token) {
+    if (userId && token && subscription) {
       getNavigate('/listing').then(r => navigate(r))
     }
 
