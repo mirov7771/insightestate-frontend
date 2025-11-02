@@ -25,9 +25,6 @@ export const getNavigate = async (route?: string) => {
     return '/create-collection';
   } else if (route) {
     return route
-  } else if (openAuth === 0) {
-    localStorage.setItem('openAuth', openAuth + 1 + '');
-    return '/tariffs';
   } else if (openAuth < 4) {
     localStorage.setItem('openAuth', openAuth + 1 + '');
     return '/main_menu';
