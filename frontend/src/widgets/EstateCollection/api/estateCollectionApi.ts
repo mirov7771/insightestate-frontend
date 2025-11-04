@@ -330,7 +330,7 @@ export const estateCollectionApi = {
     try {
       return await api.post<StripeRs>('/v1/stripe/session', {
         amount: price,
-        currency: 'usd',
+        currency: 'thb',
         userId: localStorage.getItem('userId'),
       });
     } catch (error) {

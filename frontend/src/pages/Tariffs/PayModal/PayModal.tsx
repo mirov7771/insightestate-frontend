@@ -40,7 +40,7 @@ export const PayModal: FC<
               options={{
                 mode: 'payment',
                 amount: price > 0 ? price : 1,
-                currency: 'usd',
+                currency: 'thb',
                 setup_future_usage: 'off_session',
                 appearance: {
                   theme: 'flat',

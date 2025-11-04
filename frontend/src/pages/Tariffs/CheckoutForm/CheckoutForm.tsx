@@ -14,7 +14,7 @@ export const CheckoutForm: FC<{
   const elements = useElements();
   const { formatMessage } = useIntl();
   const [errorMessage, setErrorMessage] = useState<string>();
-  const [finalPrice, setFinalPrice] = useState<number>(price)
+  const [finalPrice, setFinalPrice] = useState<number>(price * 33)
   const [promoCode, setPromoCode] = useState<string>('')
 
   const onChangePromoCode = (e: ChangeEvent<HTMLInputElement>) => {
@@ -26,13 +26,13 @@ export const CheckoutForm: FC<{
   useEffect(() => {
     debugger;
     if (promoCode === 'ACTIVE50') {
-      setFinalPrice(price/2);
+      setFinalPrice(finalPrice/2);
       localStorage.setItem('promo', promoCode)
     } else if (promoCode === 'WEBINAR15') {
-      setFinalPrice(price * 0.85);
+      setFinalPrice(finalPrice * 0.85);
       localStorage.setItem('promo', promoCode)
     } else if (promoCode === 'START95' && id !== 'f1628768-72c2-40e4-9e6d-7c4ab7b1909b') {
-      setFinalPrice(price * 0.05)
+      setFinalPrice(finalPrice * 0.05)
       localStorage.setItem('promo', promoCode)
     }
   }, [promoCode]);
@@ -92,7 +92,7 @@ export const CheckoutForm: FC<{
       />
       <Spacer height={10} width={100} />
       <Button type="submit" size="l" wide disabled={!stripe || !elements}>
-        {formatMessage({ id: 'pay' })}{' '}{finalPrice/100}$
+        {formatMessage({ id: 'pay' })}{' '}{finalPrice/100}฿
       </Button>
       {errorMessage && <div>{errorMessage}</div>}
     </form>
