@@ -326,11 +326,11 @@ export const estateCollectionApi = {
       throw error;
     }
   },
-  stripeSession: async (price: number): Promise<AxiosResponse<StripeRs>> => {
+  stripeSession: async (price: number, currency: string): Promise<AxiosResponse<StripeRs>> => {
     try {
       return await api.post<StripeRs>('/v1/stripe/session', {
         amount: price,
-        currency: 'thb',
+        currency: currency,
         userId: localStorage.getItem('userId'),
       });
     } catch (error) {

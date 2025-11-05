@@ -35,6 +35,18 @@
   }
 }
 
+.content_mobile {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+
+  &__hidden {
+    @media (min-width: $media-md) {
+      display: none;
+    }
+  }
+}
+
 .manager {
   color: rgba(32, 32, 32, 0.64);
 }

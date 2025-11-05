@@ -10,6 +10,7 @@ import {ContactManager} from './ContactManager/ContactManager';
 import generatePDF from 'react-to-pdf';
 import {Spacer} from "@/widgets/Spacer/Spacer";
 import {EstateCollection, estateCollectionApi} from "@/widgets/EstateCollection/api/estateCollectionApi";
+import {isMobile} from "react-device-detect";
 
 const OfferCollectionV2: FC = () => {
   const { formatMessage } = useIntl();
@@ -81,7 +82,7 @@ const OfferCollectionV2: FC = () => {
       </Helmet>
       <div className={styles.wrap}>
         <Spacer width={100} height={8}/>
-        {estateCollection?.agentInfo?.group ?
+        {(estateCollection?.agentInfo?.group && estateCollection?.agentInfo?.group !== 'insightestate') ?
             <div style={{
               alignItems: 'center',
               justifyContent: 'center',
@@ -119,7 +120,7 @@ const OfferCollectionV2: FC = () => {
         {estateCollection?.comment ?
         <>
           <Spacer height={100} width={100}/>
-          <div className={styles.content}>
+          <div className={isMobile ? styles.content_mobile : styles.content}>
             <img
                 src={
                     estateCollection?.agentInfo?.profileImage || 'https://lotsof.properties/estate-images/profile_img.png'
@@ -133,7 +134,7 @@ const OfferCollectionV2: FC = () => {
                 {formatMessage({ id: 'your_manager' })}
               </Text>
             </div>
-            <Text variant="body1" as="text" align="left">
+            <Text variant={isMobile ? "body2" : "body1"} as="text" align="left">
               {estateCollection?.comment}
             </Text>
           </div>
