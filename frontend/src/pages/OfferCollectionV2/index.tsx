@@ -90,10 +90,11 @@ const OfferCollectionV2: FC = () => {
             }}>
               <img
                   width={estateCollection?.agentInfo?.group === 'SID' ? 210 : (
-                      estateCollection?.agentInfo?.group === 'neginski' ? 300 : 400
+                      estateCollection?.agentInfo?.group === 'neginski' ? 300 : (
+                          estateCollection?.agentInfo?.group === 'comfort' ? 600/(isMobile ? 2 : 1) :400/(isMobile ? 2 : 1))
                   )}
                   height={estateCollection?.agentInfo?.group === 'SID' ? 210 : (
-                      estateCollection?.agentInfo?.group === 'neginski' ? 68 : 168
+                      estateCollection?.agentInfo?.group === 'neginski' ? 68 : 168/(isMobile ? 2 : 1)
                   )}
                   src={`https://lotsof.properties/estate-images/${estateCollection?.agentInfo?.group}.png`}
                   alt=""
