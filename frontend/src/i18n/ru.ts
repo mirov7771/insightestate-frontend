@@ -371,6 +371,7 @@ export default {
   'userProfile.balance': 'Баланс',
   'userProfile.tgGroup': 'Группа в Telegram',
   'userProfile.settings': 'Настройки профиля',
+  'userProfile.deleteSubscription': 'Удалить подписку',
   'userProfile.exit': 'Выйти из аккаунта',
 
   help_client: 'Данные клиента',
@@ -552,4 +553,9 @@ export default {
 
   pay: 'Оплатить',
   promo_code: 'Промокод',
+
+  deleteSubscription: 'Отмена подписки',
+  deleteSubscriptionMessage: 'Вы уверены что хотите отменить вашу подписку?',
+  deleteSubscriptionYes: 'Да, отменить',
+  deleteSubscriptionNo: 'Отмена',
 };

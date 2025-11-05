@@ -317,6 +317,13 @@ export const estateCollectionApi = {
       throw error;
     }
   },
+  deleteUserSubscription: async () => {
+    try {
+      await api.delete<void>(`/v1/subscription/${localStorage.getItem('userId')}`);
+    } catch (error) {
+      throw error;
+    }
+  },
   stipeRefund: async (): Promise<AxiosResponse<void>> => {
     try {
       return await api.post<void>('/v1/stripe/refund', {

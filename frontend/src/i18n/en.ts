@@ -373,6 +373,7 @@ export default {
   'userProfile.balance': 'Balance',
   'userProfile.tgGroup': 'Telegram group',
   'userProfile.settings': 'Profile settings',
+  'userProfile.deleteSubscription': 'Cancel subscription',
   'userProfile.exit': 'Log out of account',
 
   help_client: 'Client data',
