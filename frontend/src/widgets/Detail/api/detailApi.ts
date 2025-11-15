@@ -43,6 +43,7 @@ export type Developer = {
   name?: string;
   phone?: string;
   email?: string;
+  presentation?: boolean;
 };
 
 export type Grade = {
