@@ -73,7 +73,7 @@ export const Card: FC<
     setUserCollectionModal(false);
   };
 
-  const currency = localStorage.getItem('currency') || '$'
+  const currency = localStorage.getItem('currency') || '฿'
 
   return (
     <div className={styles.card}>

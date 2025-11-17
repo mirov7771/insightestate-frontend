@@ -32,7 +32,7 @@ const sortRoomLayouts = (layouts: RoomLayouts): RoomLayouts => {
 export const Flats: FC<RoomLayouts & { short?: boolean }> = (props) => {
   const { formatMessage } = useIntl();
   const sorted = sortRoomLayouts(props);
-  const currency = localStorage.getItem('currency') || '$'
+  const currency = localStorage.getItem('currency') || '฿'
   return Object.entries(sorted).length ? (
     <>
       {props.short ? (

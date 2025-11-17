@@ -11,7 +11,7 @@ import { useSearchParams } from 'react-router';
 export const Price: FC = () => {
   const { formatMessage } = useIntl();
   const { setFilters, minPrice, maxPrice } = useFilters();
-  const currency = localStorage.getItem('currency') || '$'
+  const currency = localStorage.getItem('currency') || '฿'
   const maxCurrPrice = currency === '$' ? 4000000 : (currency === '฿' ? 160000000 : 400000000)
 
   const [value, setValues] = useState<number[]>([0, maxCurrPrice]);

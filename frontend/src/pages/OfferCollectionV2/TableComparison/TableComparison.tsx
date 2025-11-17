@@ -66,7 +66,7 @@ export const TableComparison: FC<TableComparisonProps> = ({ estates }) => {
     }),
     [formatMessage]
   );
-  const currency = localStorage.getItem('currency') || '$'
+  const currency = localStorage.getItem('currency') || '฿'
   const result: Partial<Record<TKeys, string[] | undefined>> = {
     // overallRating: extractNestedValuesOrFallback(estates, ['grade.main'], '9.0')?.map((rating) =>
     //   Number(rating).toFixed(1).replace('.', ',')

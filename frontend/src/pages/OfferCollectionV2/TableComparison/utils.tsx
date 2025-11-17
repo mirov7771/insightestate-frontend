@@ -9,7 +9,7 @@ export function generateComparisonRows(
 ): { name: string; values: Array<ReactNode | string> }[] {
   // Собираем все units в один массив (сохраняя порядок)
   const allUnits: Unit[] = estates.flatMap((estate) => estate.units ?? []);
-  const currency = localStorage.getItem('currency') || '$'
+  const currency = localStorage.getItem('currency') || '฿'
   return [
     {
       name: formatMessage({ id: 'number_of_bedrooms' }),

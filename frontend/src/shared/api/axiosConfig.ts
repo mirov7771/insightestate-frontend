@@ -1,7 +1,7 @@
 import axios from 'axios';
 import qs from 'qs';
 
-const currency = localStorage.getItem('currency') || '$'
+const currency = localStorage.getItem('currency') || '฿'
 
 export const api = axios.create({
   baseURL: 'https://lotsof.properties/api/',

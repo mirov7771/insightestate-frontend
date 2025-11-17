@@ -15,7 +15,7 @@ export const UnitsCards: FC<UnitsCardsProps> = ({ items }) => {
   const params = useParams();
   const [userCollectionModal, setUserCollectionModal] = useState(false);
   const [unitId, setUnitId] = useState('');
-  const currency = localStorage.getItem('currency') || '$'
+  const currency = localStorage.getItem('currency') || '฿'
   return (
     <section className={styles.container}>
       {items.map((unit) => (

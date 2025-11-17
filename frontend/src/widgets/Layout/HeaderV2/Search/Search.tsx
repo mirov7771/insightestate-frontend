@@ -80,7 +80,7 @@ export const Search: FC = () => {
     debouncedSearchRef.current(search);
   }, [search]);
 
-  const currency = localStorage.getItem('currency') || '$'
+  const currency = localStorage.getItem('currency') || '฿'
 
   return (
     <>

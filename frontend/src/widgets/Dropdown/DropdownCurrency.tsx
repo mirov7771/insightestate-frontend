@@ -14,13 +14,13 @@ export const DropdownCurrency: FC = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const [currency, setCurrency] = useState<string>(localStorage.getItem('currency') || '$');
+  const [currency, setCurrency] = useState<string>(localStorage.getItem('currency') || '฿');
 
   useEffect(() => {
     if (!localStorage.getItem('currency')) {
       setCurrency('usd');
     } else {
-      setCurrency(localStorage.getItem('currency') || '$');
+      setCurrency(localStorage.getItem('currency') || '฿');
     }
   }, []);
 
@@ -40,7 +40,7 @@ export const DropdownCurrency: FC = () => {
   };
 
   const getCurrencySym = () => {
-    return localStorage.getItem('currency') || '$'
+    return localStorage.getItem('currency') || '฿'
   }
 
   return (

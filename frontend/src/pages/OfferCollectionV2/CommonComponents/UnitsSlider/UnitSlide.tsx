@@ -37,7 +37,7 @@ export const UnitSlide: FC<{
         .catch(() => console.log('error like'));
     }
   }, [like]);
-  const currency = localStorage.getItem('currency') || '$'
+  const currency = localStorage.getItem('currency') || '฿'
   return (
     <div className={styles.unit}>
       <div className={styles.unit__plan}>

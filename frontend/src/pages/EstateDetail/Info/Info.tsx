@@ -26,7 +26,7 @@ export const Info: FC<{
 }> = ({ floors, project, buildEndDate, level, type, developer, companyEnabled, price, city, priceDate }) => {
   const { formatMessage } = useIntl();
   const [locale, setLocale] = useState<string>(localStorage.getItem('language') || 'ru');
-  const currency = localStorage.getItem('currency') || '$'
+  const currency = localStorage.getItem('currency') || '฿'
   return (
     <div className={styles.info}>
       {city && (
