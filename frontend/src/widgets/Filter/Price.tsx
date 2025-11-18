@@ -43,13 +43,15 @@ export const Price: FC = () => {
 
   const handleChangeInput = (type: 'min' | 'max') => (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.replaceAll(' ', '').replaceAll(' ', '')
-    const val = Number(value) || (type === 'min' ? 0 : maxCurrPrice);
+    let val = Number(value) || (type === 'min' ? 0 : maxCurrPrice);
+    if (value === '') val = 0
 
     if (type === 'min') {
       setValues((prev) => [val, prev[1]]);
       debouncedSetMinPrice(val);
     }
     if (type === 'max') {
+      debugger
       setValues((prev) => [prev[0], val]);
       debouncedSetMaxPrice(val);
     }
