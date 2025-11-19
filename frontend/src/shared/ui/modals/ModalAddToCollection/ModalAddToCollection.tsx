@@ -34,7 +34,6 @@ export const ModalAddToCollection: FC<ModalAddToCollectionProps> = ({
   const handleCloseModal = () => {
     setOpen(false);
   };
-  const [selectValue, setSelectValue] = useState('');
   const [isAddNewCollection, setIsAddNewColeection] = useState(false);
   const [collectionId, setCollectionId] = useState<string>('');
   const [collections, setCollections] = useState<EstateCollection[]>();
@@ -160,8 +159,8 @@ export const ModalAddToCollection: FC<ModalAddToCollectionProps> = ({
                     <>
                         <Select
                             options={collections?.map(({ id, name }) => ({ id, name })) || []}
-                            onChange={(e) => setSelectValue(e.target.value)}
-                            value={selectValue}
+                            onChange={(e) => setCollectionId(e.target.value)}
+                            value={collectionId}
                             disabled={status === 'LOADING'}
                         />
                         <div className={styles.buttons}>

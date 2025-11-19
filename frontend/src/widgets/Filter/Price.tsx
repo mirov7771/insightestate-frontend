@@ -28,7 +28,6 @@ export const Price: FC = () => {
   const debouncedSetMaxPrice = useMemo(
     () =>
       debounce((val: number) => {
-        console.log('!!!',val);
         setFilters((prevState) => ({ ...prevState, maxPrice: val }));
       }, 500),
     [setFilters]
