@@ -7,7 +7,7 @@ import styles from './OfferCollectionV2.module.scss';
 import {Tabs} from './Tabs/Tabs';
 import {WhyThai} from './WhyThai/WhyThai';
 import {ContactManager} from './ContactManager/ContactManager';
-import generatePDF from 'react-to-pdf';
+import generatePDF, {usePDF} from 'react-to-pdf';
 import {Spacer} from "@/widgets/Spacer/Spacer";
 import {EstateCollection, estateCollectionApi} from "@/widgets/EstateCollection/api/estateCollectionApi";
 import {isMobile} from "react-device-detect";
@@ -32,15 +32,25 @@ const OfferCollectionV2: FC = () => {
         .catch((e) => console.log(e));
   }, []);
 
+
   const callPdf = () => {
     generatePDF(getTargetElement, {
       method: 'open',
       page: {
         margin: 10,
-        format: 'letter',
+        format: 'A4',
+        orientation: 'portrait',
       },
       canvas: {
-        mimeType: 'image/png'
+        mimeType: 'image/jpeg',
+        qualityRatio: 0.9,
+        useCORS: true
+      },
+      resolution: 0.9,
+      overrides: {
+        pdf: {
+          compress: false
+        }
       }
     }).then(() => setVisible(true))
         .catch(() => setVisible(true))
