@@ -54,7 +54,7 @@ export const Flats: FC<RoomLayouts & { short?: boolean }> = (props) => {
         </section>
       ) : (
         <section className={styles.flats}>
-          {Object.entries(sorted).map(([key, layout], index, targetArray) => (
+          {Object.entries(sorted).slice(0, 5).map(([key, layout], index, targetArray) => (
             <>
               <div className={styles.flat}>
                 <Text variant="body1" className={styles.flat__name}>

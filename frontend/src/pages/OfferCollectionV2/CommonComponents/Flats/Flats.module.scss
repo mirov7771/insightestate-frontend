@@ -40,10 +40,12 @@
   gap: 8px;
 
   &__name {
+    font-size: 14px;
     color: var(--ui-color-black-64-opacity);
   }
 
   &__price {
+    font-size: 14px;
     color: var(--ui-color-black);
   }
 }

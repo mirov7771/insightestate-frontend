@@ -1,5 +1,6 @@
 import { FC, ReactNode, useEffect, useState } from 'react';
 import {
+  AgentInfo,
   EstateCollection,
   estateCollectionApi,
 } from '@/widgets/EstateCollection/api/estateCollectionApi';
@@ -91,8 +92,21 @@ const ItemCollection: FC<EstateCollection & { token: string; value: number }> = 
 
   const handleCopyLink = async () => {
     try {
+      const group = agentInfo?.group || ''
+      let urlPart = 'https://myselection.properties';
+      switch (group) {
+        case 'neginski':
+          urlPart = 'https://neginski.myselection.properties';
+          break
+        case 'extra':
+          urlPart = 'https://sunthai.myselection.properties';
+          break
+        case 'insightestate':
+          urlPart = 'https://insightestate.myselection.properties';
+          break
+      }
       setCopyLinkStatus('LOADING');
-      const fullUrl = `https://myselection.properties${collectionLinkClientShow}`;
+      const fullUrl = `${urlPart}${collectionLinkClientShow}`;
       const result = await copyToClipboard(fullUrl);
 
       if (result) {
@@ -141,6 +155,7 @@ const UserCollection: FC = () => {
   const [collection, setCollection] = useState<EstateCollection[]>([]);
   const [status, setStatus] = useState<TStatus>('IDLE');
   const token = localStorage.getItem('basicToken');
+  const [agentInfo, setAgentInfo] = useState<AgentInfo>()
   const [openSettings, setOpenSettings] = useState(false);
   const [group, setGroup] = useState<string>('')
   const classesCollection = {
@@ -170,6 +185,7 @@ const UserCollection: FC = () => {
     estateCollectionApi.getAgentInfo(token!!)
         .then((r) => {
           setGroup(r.data.group || '')
+          setAgentInfo(r.data)
         }).catch((e) => {console.log(e);});
   }, []);
 
@@ -271,6 +287,7 @@ const UserCollection: FC = () => {
                 estates={item.estates || []}
                 value={value}
                 token={token!!}
+                agentInfo={agentInfo}
               />
             ))}
           </div>
