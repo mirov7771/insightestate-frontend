@@ -480,6 +480,7 @@ export default {
 
   profit_irr_title: 'IRR (Internal Rate of Return)',
   profit_irr_description: 'Annual return on investment including all cash flows.',
+  profit_description: 'When we calculate IRR, ROI and Cap Rate, we show the highest values for each type of unit in the project. These numbers are based on our forecast of potential rental income, using average unit size and price. In the model we assume that the owner holds the property for 10 years and then sells it in year 10 at the estimated market price.',
 
   profit_roi_title: 'ROI (Return on Investment)',
   profit_roi_description: 'Shows how much profit an investment generates relative to its cost.',

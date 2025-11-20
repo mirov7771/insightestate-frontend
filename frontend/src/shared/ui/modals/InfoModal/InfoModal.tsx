@@ -66,6 +66,9 @@ export const ProfitInfoModal: FC<ProfitInfoModalProps> = ({
           dialogProps={{ open, maxWidth: 'md', fullWidth: true, onClose: () => handleCloseModal() }}
       >
         <div className={styles.content}>
+          <Text variant="body1" as="span">
+            {formatMessage({id: 'profit_description'})}
+          </Text>
           <Text variant="heading5" as="span">
             {formatMessage({id: 'profit_irr_title'})}
           </Text>
