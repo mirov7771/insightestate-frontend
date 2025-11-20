@@ -408,6 +408,7 @@ export default {
   to_airport_time: 'До аэропорта:',
 
   roi_card: 'ROI (10 лет)',
+  completed_card: 'Сдан',
 
   main_menu: 'Главная',
 

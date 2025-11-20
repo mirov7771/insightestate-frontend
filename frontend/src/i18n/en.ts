@@ -410,6 +410,7 @@ export default {
   to_airport_time: 'Airport:',
 
   roi_card: '10-year ROI',
+  completed_card: 'Completed',
 
   main_menu: 'Main',
 

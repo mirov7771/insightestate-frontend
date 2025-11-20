@@ -23,6 +23,7 @@ export type Estate = {
   toolTip1?: string;
   toolTip2?: string;
   toolTip3?: string;
+  status?: string;
 };
 
 export type GetEstateParams = {

@@ -70,12 +70,19 @@ export const CardSlide: FC<CardSlideProps> = ({
                 </Text>
               </li>
             )}
-            {(estate.roiSummary && estate.roiSummary > 0) ? (
+            {(estate.status && estate.status === 'FINISHED') ? (
               <li className={styles.badges__badge}>
                 <Text variant="body2" bold>
-                  {formatMessage({ id: 'roi_card' })} {estate.roiSummary}%
+                  {formatMessage({ id: 'completed_card' })}
                 </Text>
               </li>
+            ) : <></>}
+            {(estate.roiSummary && estate.roiSummary > 0) ? (
+                <li className={styles.badges__badge}>
+                  <Text variant="body2" bold>
+                    {formatMessage({ id: 'roi_card' })} {estate.roiSummary}%
+                  </Text>
+                </li>
             ) : <></>}
           </ul>
           <a href={`/property/${estate.id}`} target="_blank" rel="noreferrer">

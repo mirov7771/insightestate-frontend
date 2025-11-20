@@ -15,6 +15,7 @@ export const Developer: FC<TEstateDetail> = ({
   landPurchased,
   unitCount,
   projectId,
+  status
 }) => {
   const { formatMessage } = useIntl();
   const { width } = useWindowResize();
@@ -76,6 +77,11 @@ export const Developer: FC<TEstateDetail> = ({
               {formatMessage({ id: 'developer_land' })}
             </Text>
           </span>
+          {(status && status === 'FINISHED') ?
+              <span className={`${styles.developer__tag} ${styles.developer__tag_grey}`}>
+                <Text variant="body2" bold>{formatMessage({ id: 'completed_card' })}</Text>
+              </span> : <></>
+          }
         </div>
       </div>
       <div className={styles.developer__bottom}>
