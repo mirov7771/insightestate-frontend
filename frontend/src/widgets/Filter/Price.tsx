@@ -12,7 +12,7 @@ export const Price: FC = () => {
   const { formatMessage } = useIntl();
   const { setFilters, minPrice, maxPrice } = useFilters();
   const currency = localStorage.getItem('currency') || '฿'
-  const maxCurrPrice = currency === '$' ? 4000000 : (currency === '฿' ? 160000000 : 400000000)
+  const maxCurrPrice = currency === '$' ? 4000000 : (currency === '฿' ? 160000000 : (currency === 'A$' ? 7600000 : 400000000))
 
   const [value, setValues] = useState<number[]>([minPrice || 0, maxPrice || maxCurrPrice]);
   const [searchParams, setSearchParams] = useSearchParams();

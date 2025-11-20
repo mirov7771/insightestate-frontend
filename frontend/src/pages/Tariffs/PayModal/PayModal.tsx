@@ -46,6 +46,12 @@ const currency = [
         name: 'RUB',
         currency: 81,
         symbol: '₽'
+    },
+    {
+        id: 'aud',
+        name: 'AUD',
+        currency: 1.54,
+        symbol: 'A$'
     }
 ]
 

@@ -39,6 +39,11 @@ export const DropdownCurrency: FC = () => {
     window.location.reload();
   };
 
+  const handleAUD = () => {
+    localStorage.setItem('currency', 'A$')
+    window.location.reload();
+  }
+
   const getCurrencySym = () => {
     return localStorage.getItem('currency') || '฿'
   }
@@ -86,6 +91,15 @@ export const DropdownCurrency: FC = () => {
             }}
         >
           <Text variant="heading5">THB, ฿</Text>
+        </MenuItem>
+        <MenuItem
+            classes={{ root: styles.listItem }}
+            onClick={() => {
+              handleClose();
+              handleAUD();
+            }}
+        >
+          <Text variant="heading5">AUD, A$</Text>
         </MenuItem>
       </Menu>
     </div>
