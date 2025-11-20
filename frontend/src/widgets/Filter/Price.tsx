@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, useMemo, useState } from 'react';
+import {ChangeEvent, FC, useEffect, useMemo, useState} from 'react';
 import styles from './Filter.module.scss';
 import Slider from '@mui/material/Slider';
 import { Input } from '@/shared/ui';
@@ -14,7 +14,7 @@ export const Price: FC = () => {
   const currency = localStorage.getItem('currency') || '฿'
   const maxCurrPrice = currency === '$' ? 4000000 : (currency === '฿' ? 160000000 : 400000000)
 
-  const [value, setValues] = useState<number[]>([0, maxCurrPrice]);
+  const [value, setValues] = useState<number[]>([minPrice || 0, maxPrice || maxCurrPrice]);
   const [searchParams, setSearchParams] = useSearchParams();
 
   const debouncedSetMinPrice = useMemo(
@@ -50,7 +50,6 @@ export const Price: FC = () => {
       debouncedSetMinPrice(val);
     }
     if (type === 'max') {
-      debugger
       setValues((prev) => [prev[0], val]);
       debouncedSetMaxPrice(val);
     }
@@ -76,6 +75,9 @@ export const Price: FC = () => {
     });
   };
 
+  useEffect(() => {
+    setValues([minPrice || 0, maxPrice || maxCurrPrice])
+  }, [minPrice, maxPrice]);
 
   return (
     <FilterLayout

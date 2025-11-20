@@ -2,12 +2,12 @@ import React, {FC, useEffect, useState} from 'react';
 import {useIntl} from 'react-intl';
 import {useLocation, useParams, useSearchParams} from 'react-router';
 import {Helmet} from 'react-helmet-async';
-import {Button, Text} from '@/shared/ui';
+import {Button, Text, useNotifications} from '@/shared/ui';
 import styles from './OfferCollectionV2.module.scss';
 import {Tabs} from './Tabs/Tabs';
 import {WhyThai} from './WhyThai/WhyThai';
 import {ContactManager} from './ContactManager/ContactManager';
-import generatePDF, {usePDF} from 'react-to-pdf';
+import generatePDF from 'react-to-pdf';
 import {Spacer} from "@/widgets/Spacer/Spacer";
 import {EstateCollection, estateCollectionApi} from "@/widgets/EstateCollection/api/estateCollectionApi";
 import {isMobile} from "react-device-detect";
@@ -22,8 +22,8 @@ const OfferCollectionV2: FC = () => {
   const [visible, setVisible] = useState(true)
   const getPdf = () => {
     setVisible(false)
+    notify({ message: formatMessage({ id: 'createPdf' }), duration: 3000 });
   }
-  const [token, setToken] = useState<string | undefined | null>(localStorage.getItem('basicToken'));
   const [estateCollection, setEstateCollection] = useState<EstateCollection>();
   useEffect(() => {
     estateCollectionApi
@@ -31,7 +31,7 @@ const OfferCollectionV2: FC = () => {
         .then((r) => setEstateCollection(r.data))
         .catch((e) => console.log(e));
   }, []);
-
+  const { notify } = useNotifications();
 
   const callPdf = () => {
     generatePDF(getTargetElement, {
@@ -46,7 +46,7 @@ const OfferCollectionV2: FC = () => {
         qualityRatio: 0.9,
         useCORS: true
       },
-      resolution: 0.9,
+      resolution: 0.95,
       overrides: {
         pdf: {
           compress: false

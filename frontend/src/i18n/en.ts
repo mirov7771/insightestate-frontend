@@ -552,4 +552,5 @@ export default {
 
   pay: 'Pay',
   promo_code: 'Promocode',
+  createPdf: 'The PDF generation will take a few seconds'
 };

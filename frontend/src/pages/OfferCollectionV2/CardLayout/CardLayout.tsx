@@ -138,7 +138,7 @@ export const CardLayout: FC<CardLayoutProps> = ({ estate }) => {
   return (
     <section className={styles.grid}>
       <div className={styles.slider}>
-        {!!estate.location?.mapUrl && (
+        {(!!estate.location?.mapUrl && estate.visible) && (
           <div className={styles.slider__map}>
             <GMap
                 url={estate.location?.mapUrl}
@@ -150,7 +150,8 @@ export const CardLayout: FC<CardLayoutProps> = ({ estate }) => {
         )}
         <Slider
           images={
-            estate.exteriorImages || estate.facilityImages || estate.interiorImages || [DEFAULT_IMG]
+            estate.visible ? estate.exteriorImages || estate.facilityImages || estate.interiorImages || [DEFAULT_IMG]
+                : [(estate.exteriorImages || estate.facilityImages || estate.interiorImages || [DEFAULT_IMG])[0]]
           }
         />
       </div>

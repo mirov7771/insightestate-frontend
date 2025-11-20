@@ -24,7 +24,7 @@ export const DEFAULT_FILTERS = {
   managementCompanyEnabled: undefined,
   city: [],
   minPrice: 0,
-  maxPrice: undefined,
+  maxPrice: (localStorage.getItem('currency') || '฿') === '$' ? 4000000 : ((localStorage.getItem('currency') || '฿') === '฿' ? 160000000 : 400000000),
   developer: [],
   petFriendly: undefined,
 };

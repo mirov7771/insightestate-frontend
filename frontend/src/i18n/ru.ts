@@ -558,4 +558,5 @@ export default {
   deleteSubscriptionMessage: 'Вы уверены что хотите отменить вашу подписку?',
   deleteSubscriptionYes: 'Да, отменить',
   deleteSubscriptionNo: 'Отмена',
+  createPdf: 'Формирование PDF займет несколько секунд'
 };
