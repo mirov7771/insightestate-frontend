@@ -296,6 +296,26 @@ export const Region: FC = () => {
           ) : (
               <></>
           )}
+          {city?.includes('Hua Hin') || city?.length === 0 ? (
+              <>
+                <Checkbox
+                    name="beachName"
+                    value="Khao Takiab"
+                    onChange={handleClick}
+                    checked={beachName?.includes('Khao Takiab')}
+                    label="Khao Takiab"
+                />
+                <Checkbox
+                    name="beachName"
+                    value="Takiab"
+                    onChange={handleClick}
+                    checked={beachName?.includes('Takiab')}
+                    label="Takiab"
+                />
+              </>
+          ) : (
+              <></>
+          )}
         </div>
       }
     />

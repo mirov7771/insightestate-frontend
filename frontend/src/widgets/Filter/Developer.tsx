@@ -678,6 +678,24 @@ export const Developer: FC = () => {
           </>) : (
               <></>
           )}
+          {city?.includes('Hua Hin') || city?.length === 0 ? (<>
+            <Checkbox
+                name="developer"
+                value="Issara United Co., Ltd."
+                onChange={handleClick}
+                checked={developer?.includes('Issara United Co., Ltd.')}
+                label="Issara United Co., Ltd."
+            />
+            <Checkbox
+                name="developer"
+                value="Orchid Palm Homes"
+                onChange={handleClick}
+                checked={developer?.includes('Orchid Palm Homes')}
+                label="Orchid Palm Homes"
+            />
+          </>) : (
+              <></>
+          )}
         </div>
       }
     />

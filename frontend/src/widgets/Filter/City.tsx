@@ -72,6 +72,13 @@ export const City: FC<{ renderName?: boolean }> = ({ renderName = true }) => {
               checked={city?.includes('Samui')}
               label="Samui"
           />
+          <Checkbox
+              name="city"
+              value="Hua Hin"
+              onChange={handleClick}
+              checked={city?.includes('Hua Hin')}
+              label="Hua Hin"
+          />
         </div>
       }
     />
