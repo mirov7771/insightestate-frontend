@@ -90,7 +90,7 @@ export const CardSlide: FC<CardSlideProps> = ({
               {formatMessage({ id: 'from' })}{' '}
               {Intl.NumberFormat('en-US', {
                 style: 'currency',
-                currency: currency === '₽' ? 'RUB' : (currency === '฿' ? 'THB' : 'USD'),
+                currency: currency === '₽' ? 'RUB' : (currency === '฿' ? 'THB' : (currency === 'A$' ? 'AUD' :'USD')),
                 currencyDisplay: 'narrowSymbol',
                 maximumFractionDigits: 0,
               }).format(estate.priceMin)}

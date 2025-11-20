@@ -145,7 +145,7 @@ export const Search: FC = () => {
                       <Text variant="body2" className={styles.description}>
                         {`${formatMessage({ id: 'from' })} ${Intl.NumberFormat('en-US', {
                           style: 'currency',
-                          currency: currency === '₽' ? 'RUB' : (currency === '฿' ? 'THB' : 'USD'),
+                          currency: currency === '₽' ? 'RUB' : (currency === '฿' ? 'THB' : (currency === 'A$' ? 'AUD' :'USD')),
                           currencyDisplay: 'narrowSymbol',  
                           maximumFractionDigits: 0,
                         }).format(estate.priceMin)} • ${estate.city}, ${estate.beach}`}

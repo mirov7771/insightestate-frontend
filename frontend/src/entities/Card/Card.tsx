@@ -135,7 +135,7 @@ export const Card: FC<
         <strong>{formatMessage({ id: 'price_from' })}</strong>{' '}
         {Intl.NumberFormat('en-US', {
           style: 'currency',
-          currency: currency === '₽' ? 'RUB' : (currency === '฿' ? 'THB' : 'USD'),
+          currency: currency === '₽' ? 'RUB' : (currency === '฿' ? 'THB' : (currency === 'A$' ? 'AUD' :'USD')),
           currencyDisplay: 'narrowSymbol',
           maximumFractionDigits: 0,
         }).format(priceMin)}

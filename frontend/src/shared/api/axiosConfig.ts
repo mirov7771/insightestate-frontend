@@ -8,6 +8,6 @@ export const api = axios.create({
   timeout: 50000,
   paramsSerializer: (params) => qs.stringify(params, { arrayFormat: 'repeat' }),
   headers: {
-    currency: currency === '₽' ? 'RUB' : (currency === '฿' ? 'THB' : 'USD')
+    currency: currency === '₽' ? 'RUB' : (currency === '฿' ? 'THB' : (currency === 'A$' ? 'AUD' :'USD'))
   }
 });
