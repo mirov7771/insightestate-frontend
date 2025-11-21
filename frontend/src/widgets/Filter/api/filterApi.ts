@@ -44,7 +44,7 @@ export type GetEstateParams = {
   price?: string;
   rooms?: string[];
   types?: string[];
-  units?: string[];
+  untis?: string[];
 };
 
 export type GetEstateAi = {

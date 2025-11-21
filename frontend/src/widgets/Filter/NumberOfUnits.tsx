@@ -8,7 +8,7 @@ import { useSearchParams } from 'react-router';
 
 export const NumberOfUnits: FC<{ renderName?: boolean }> = ({ renderName = true }) => {
   const { formatMessage } = useIntl();
-  const { setFilters, units } = useFilters();
+  const { setFilters, untis } = useFilters();
   const [searchParams, setSearchParams] = useSearchParams();
 
   const handleClick = (e: ChangeEvent<HTMLInputElement>) => {
@@ -16,9 +16,9 @@ export const NumberOfUnits: FC<{ renderName?: boolean }> = ({ renderName = true 
       return {
         ...filtersState,
         pageNumber: 0,
-        units: filtersState.units?.includes(e.target.value)
-          ? filtersState.units?.filter((val) => val !== e.target.value)
-          : [...(filtersState.units || []), e.target.value],
+        untis: filtersState.untis?.includes(e.target.value)
+          ? filtersState.untis?.filter((val) => val !== e.target.value)
+          : [...(filtersState.untis || []), e.target.value],
       };
     });
     setSearchParams((params) => {
@@ -32,7 +32,7 @@ export const NumberOfUnits: FC<{ renderName?: boolean }> = ({ renderName = true 
       return {
         ...filtersState,
         pageNumber: 0,
-        units: [],
+        untis: [],
       };
     });
     setSearchParams((params) => {
@@ -44,37 +44,37 @@ export const NumberOfUnits: FC<{ renderName?: boolean }> = ({ renderName = true 
   return (
     <FilterLayout
       name={renderName ? formatMessage({ id: 'unit_filter_name' }) : ''}
-      isActiveFilter={!!units?.length}
+      isActiveFilter={!!untis?.length}
       onResetFilter={handleReset}
       filter={
         <div className={styles.content}>
           <Checkbox
             onChange={handleClick}
-            checked={units?.includes('1')}
+            checked={untis?.includes('1')}
             value="1"
             label={formatMessage({ id: 'unit_filter_1' })}
           />
           <Checkbox
               onChange={handleClick}
-              checked={units?.includes('2')}
+              checked={untis?.includes('2')}
               value="2"
               label={formatMessage({ id: 'unit_filter_2' })}
           />
           <Checkbox
               onChange={handleClick}
-              checked={units?.includes('3')}
+              checked={untis?.includes('3')}
               value="3"
               label={formatMessage({ id: 'unit_filter_3' })}
           />
           <Checkbox
               onChange={handleClick}
-              checked={units?.includes('4')}
+              checked={untis?.includes('4')}
               value="4"
               label={formatMessage({ id: 'unit_filter_4' })}
           />
           <Checkbox
               onChange={handleClick}
-              checked={units?.includes('5')}
+              checked={untis?.includes('5')}
               value="5"
               label={formatMessage({ id: 'unit_filter_5' })}
           />

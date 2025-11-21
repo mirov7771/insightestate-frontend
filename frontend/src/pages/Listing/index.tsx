@@ -165,7 +165,7 @@ const Listing: FC = () => {
               <FastFilter
                   filter={<NumberOfUnits />}
                   name={formatMessage({ id: 'unit_filter_name' })}
-                  filterName="units"
+                  filterName="untis"
               />
             </div>
             <div className={styles.filters__arrow} onClick={scrollFiltersRight}>
