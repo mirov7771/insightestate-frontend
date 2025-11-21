@@ -560,5 +560,12 @@ export default {
   deleteSubscriptionMessage: 'Вы уверены что хотите отменить вашу подписку?',
   deleteSubscriptionYes: 'Да, отменить',
   deleteSubscriptionNo: 'Отмена',
-  createPdf: 'Формирование PDF займет несколько секунд'
+  createPdf: 'Формирование PDF займет несколько секунд',
+
+  unit_filter_name: 'Аппартаменты',
+  unit_filter_1: 'до 10',
+  unit_filter_2: 'от 10 до 50',
+  unit_filter_3: 'от 50 до 200',
+  unit_filter_4: 'от 200 до 500',
+  unit_filter_5: 'свыше 500',
 };

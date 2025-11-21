@@ -554,5 +554,12 @@ export default {
 
   pay: 'Pay',
   promo_code: 'Promocode',
-  createPdf: 'The PDF generation will take a few seconds'
+  createPdf: 'The PDF generation will take a few seconds',
+
+  unit_filter_name: 'Apartments',
+  unit_filter_1: 'up to 10',
+  unit_filter_2: 'from 10 to 50',
+  unit_filter_3: 'from 50 to 200',
+  unit_filter_4: 'from 200 to 500',
+  unit_filter_5: 'over 500',
 };

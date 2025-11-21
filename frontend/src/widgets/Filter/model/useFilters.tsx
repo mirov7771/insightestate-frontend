@@ -27,6 +27,7 @@ export const DEFAULT_FILTERS = {
   maxPrice: undefined,
   developer: [],
   petFriendly: undefined,
+  units: [],
 };
 
 const activeFiltersCounter = (filters: GetEstateParams): number => {

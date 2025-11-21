@@ -25,6 +25,7 @@ import Tooltip from '@mui/material/Tooltip';
 import {getNavigate} from "@/pages/Authorization";
 import {styled} from "@mui/material/styles";
 import {Cross} from "@/widgets/Icons/Cross";
+import {NumberOfUnits} from "@/widgets/Filter/NumberOfUnits";
 
 const SCROLL_AMOUNT = 250;
 
@@ -161,6 +162,11 @@ const Listing: FC = () => {
               {/*  name={formatMessage({ id: 'airport_time' })}*/}
               {/*  filterName="airportTravelTimes"*/}
               {/*/>*/}
+              <FastFilter
+                  filter={<NumberOfUnits />}
+                  name={formatMessage({ id: 'unit_filter_name' })}
+                  filterName="units"
+              />
             </div>
             <div className={styles.filters__arrow} onClick={scrollFiltersRight}>
               <IconArrowLeft />
