@@ -28,6 +28,8 @@ export const DEFAULT_FILTERS = {
   developer: [],
   petFriendly: undefined,
   untis: [],
+  sizeMin: undefined,
+  sizeMax: undefined
 };
 
 const activeFiltersCounter = (filters: GetEstateParams): number => {

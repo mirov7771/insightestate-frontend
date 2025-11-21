@@ -562,4 +562,6 @@ export default {
   unit_filter_3: 'from 50 to 200',
   unit_filter_4: 'from 200 to 500',
   unit_filter_5: 'over 500',
+
+  size_filter: 'Size, sqm'
 };

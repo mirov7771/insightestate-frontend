@@ -45,6 +45,8 @@ export type GetEstateParams = {
   rooms?: string[];
   types?: string[];
   untis?: string[];
+  sizeMin?: number;
+  sizeMax?: number;
 };
 
 export type GetEstateAi = {

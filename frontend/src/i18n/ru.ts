@@ -568,4 +568,6 @@ export default {
   unit_filter_3: 'от 50 до 200',
   unit_filter_4: 'от 200 до 500',
   unit_filter_5: 'свыше 500',
+
+  size_filter: 'Размер, кв.м'
 };

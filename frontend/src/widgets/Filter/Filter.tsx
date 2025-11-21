@@ -20,6 +20,7 @@ import { IconX } from '@/shared/assets/icons';
 import {Developer} from "@/widgets/Filter/Developer";
 import {PetFriendly} from "@/widgets/Filter/PetFriendly";
 import {NumberOfUnits} from "@/widgets/Filter/NumberOfUnits";
+import {Size} from "@/widgets/Filter/Size";
 
 type FilterProps = { open: boolean; setOpen: Dispatch<SetStateAction<boolean>> };
 
@@ -68,6 +69,7 @@ export const Filter: FC<FilterProps> = ({ open, setOpen }) => {
           <Developer />
           <AiFilter />
           <NumberOfUnits />
+          <Size />
         </div>
         <div className={styles.filters__buttons}>
           <Button variant="primary" onClick={handleClose} wide size="l">
