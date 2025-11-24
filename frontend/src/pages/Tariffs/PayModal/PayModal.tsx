@@ -1,4 +1,4 @@
-import {FC, useEffect, useState} from 'react';
+import React, {ChangeEvent, FC, useEffect, useState} from 'react';
 import { TModalProps } from '@/widgets/Modal/types';
 import {
   StyledSwipeableDrawer,
@@ -10,6 +10,10 @@ import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import { CheckoutForm } from '../CheckoutForm/CheckoutForm';
 import Select from "react-dropdown-select";
+import {Button, Input, Text} from "@/shared/ui";
+import styles from "@/pages/OfferCollectionV2/ContactManager/ContactManager.module.scss";
+import {useIntl} from "react-intl";
+import {useNavigate} from "react-router";
 
 const stripePromise = loadStripe(
   'pk_live_51RHeZsCOsdKuuoFoklp479NrFUqz550aF7BqJgCK6xwOje2hjt4rZN2qSCkzHyF1pPnKg2WUo7G9Mx9YMSoQZcTn0046kh5S0c'
@@ -77,6 +81,16 @@ export const PayModal: FC<
   const [currencySymbol, setCurrencySymbol] = useState<string>('฿')
   const [finalPrice, setFinalPrice] = useState<number>(price * currencyRate)
   const [reload, setReload] = useState<boolean>(false)
+  const [isQr, setIsQr] = useState<boolean>(false)
+  const { formatMessage } = useIntl();
+    const [promoCode, setPromoCode] = useState<string>('')
+    const navigate = useNavigate();
+
+    const onChangePromoCode = (e: ChangeEvent<HTMLInputElement>) => {
+        const promo = e.target.value;
+
+        setPromoCode(promo?.toUpperCase());
+    };
 
  const select = (values: Currency[]) => {
      setCurrencyId(values[0].id);
@@ -86,9 +100,41 @@ export const PayModal: FC<
 
     useEffect(() => {
         setReload(false)
-        if (currencyRate) setFinalPrice(currencyRate * price)
-        setTimeout(() => setReload(true), 200)
+        if (currencyRate) {
+            setFinalPrice(currencyRate * price)
+            if (currencyId === 'thb') {
+                setReload(false)
+                setIsQr(true)
+            } else {
+                setIsQr(false)
+                setTimeout(() => setReload(true), 200)
+            }
+        }
     }, [currencyRate]);
+
+    useEffect(() => {
+        if (promoCode === 'ACTIVE50') {
+            setFinalPrice(finalPrice/2);
+            localStorage.setItem('promo', promoCode)
+        } else if (promoCode === 'WEBINAR15') {
+            setFinalPrice(finalPrice * 0.85);
+            localStorage.setItem('promo', promoCode)
+        } else if (promoCode === 'START95' && id !== 'f1628768-72c2-40e4-9e6d-7c4ab7b1909b') {
+            setFinalPrice(finalPrice * 0.05)
+            localStorage.setItem('promo', promoCode)
+        } else if (promoCode === 'WELCOME30') {
+            setFinalPrice(finalPrice * 0.70)
+            localStorage.setItem('promo', promoCode)
+        }
+    }, [promoCode]);
+
+    const enableTariff = () => {
+        navigate({
+            pathname: '/tariffs',
+            search: `tariffId=${id}`
+        })
+        window.location.reload()
+    }
 
   return (
     <>
@@ -135,6 +181,39 @@ export const PayModal: FC<
                   />
                 </Elements> : <></>
               }
+              {isQr ?
+                  <div style={{
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '15px'
+
+                  }}>
+                      <Text variant="body1">
+                          {formatMessage({ id: 'qr_pay_title' })}{' '}${finalPrice / 100} THB
+                      </Text>
+                      <img
+                          width={isMobile ? 300 : 400}
+                          height={isMobile ? 400: 500}
+                          src={`https://lotsof.properties/estate-images/qr_pay.JPG`}
+                          alt=""
+                      />
+                      <Text variant="body2" as="span">
+                          {formatMessage({ id: 'qr_pay_desc' })}
+                      </Text>
+                      <Input
+                          onChange={onChangePromoCode}
+                          value={promoCode}
+                          name="promo"
+                          placeholder={formatMessage({ id: 'promo_code' })}
+                          yClass=".ym-record-key"
+                      />
+                      <Button type="submit" size="l" wide onClick={enableTariff}>
+                          {formatMessage({ id: 'qr_pay_button' })}
+                      </Button>
+                  </div>
+              : <></>}
           </StyledWrapperProgress>
         </StyledUpperWrapperProgress>
       </StyledSwipeableDrawer>

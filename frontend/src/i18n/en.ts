@@ -563,5 +563,9 @@ export default {
   unit_filter_4: 'from 200 to 500',
   unit_filter_5: 'over 500',
 
-  size_filter: 'Size, sqm'
+  size_filter: 'Size, sqm',
+
+  qr_pay_desc: 'Click "Paid" after making the payment in the bank\'s personal account',
+  qr_pay_button: 'Paid',
+  qr_pay_title: 'To be paid '
 };

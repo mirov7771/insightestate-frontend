@@ -569,5 +569,9 @@ export default {
   unit_filter_4: 'от 200 до 500',
   unit_filter_5: 'свыше 500',
 
-  size_filter: 'Размер, кв.м'
+  size_filter: 'Размер, кв.м',
+
+  qr_pay_desc: 'Нажмите "Оплачено", после совершения оплаты в личном кабинете банка',
+  qr_pay_button: 'Оплачено',
+  qr_pay_title: 'К оплате '
 };
