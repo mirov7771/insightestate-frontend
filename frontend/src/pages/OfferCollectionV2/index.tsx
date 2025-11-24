@@ -76,7 +76,7 @@ const OfferCollectionV2: FC = () => {
 
   return (
     <div id="content-id">
-      <Helmet>
+      <Helmet prioritizeSeoTags>
         <title>{formatMessage({ id: 'meta.offerCollection.title' })}</title>
         <meta
           name="description"
