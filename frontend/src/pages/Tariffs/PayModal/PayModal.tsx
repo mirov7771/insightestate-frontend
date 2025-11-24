@@ -102,13 +102,15 @@ export const PayModal: FC<
         setReload(false)
         if (currencyRate) {
             setFinalPrice(currencyRate * price)
-            if (currencyId === 'thb') {
-                setReload(false)
-                setIsQr(true)
-            } else {
-                setIsQr(false)
-                setTimeout(() => setReload(true), 200)
-            }
+            // if (currencyId === 'thb') {
+            //     setReload(false)
+            //     setIsQr(true)
+            // } else {
+            //     setIsQr(false)
+            //     setTimeout(() => setReload(true), 200)
+            // }
+            setIsQr(false)
+            setTimeout(() => setReload(true), 200)
         }
     }, [currencyRate]);
 
