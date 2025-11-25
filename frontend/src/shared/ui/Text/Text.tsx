@@ -45,7 +45,7 @@ export const Text: FC<TextProps> = ({
               className={`${styles.text} ${styles[variant]} ${styles[align]} ${bold ? styles.bold : null} ${className}`}
               onClick={onClick}
           >
-            {children!!}
+            {children ?? ''}
           </Component> : <></>
   );
 };
