@@ -8,6 +8,16 @@ import {FormattedMessage, useIntl} from 'react-intl';
 import { FETCHING_STATUS } from '@/shared/constants/constants';
 import {ModalComment} from "@/shared/ui/modals/ModalComment";
 
+import {
+  EmailIcon,
+  EmailShareButton, FacebookIcon,
+  FacebookShareButton,
+  TelegramIcon,
+  TelegramShareButton,
+  WhatsappIcon,
+  WhatsappShareButton
+} from "react-share";
+
 type BlockViewProps = {
   copyLink: () => void;
   copyLinkStatus: keyof typeof FETCHING_STATUS;
@@ -17,6 +27,7 @@ type BlockViewProps = {
   goToCollectionClient: () => void;
   id: string;
   name: string;
+  url: string;
 };
 
 export const BlockView: FC<BlockViewProps> = ({
@@ -28,6 +39,7 @@ export const BlockView: FC<BlockViewProps> = ({
   copyLink,
   id,
   copyLinkStatus,
+  url
 }) => {
   const { formatMessage } = useIntl();
   const [openChangeNameModal, setOpenChangeNameModal] = useState(false);
@@ -122,6 +134,24 @@ export const BlockView: FC<BlockViewProps> = ({
                 <FormattedMessage id="userCollection.comment" />
               </Text>
             </Button>
+            <div style={{
+              display: 'inline-flex',
+              marginTop: '2px',
+              gap: '10px'
+            }}>
+              <TelegramShareButton url={url}>
+                <TelegramIcon size={45} round />
+              </TelegramShareButton>
+              <WhatsappShareButton url={url}>
+                <WhatsappIcon size={45} round />
+              </WhatsappShareButton>
+              <FacebookShareButton url={url}>
+                <FacebookIcon size={45} round />
+              </FacebookShareButton>
+              <EmailShareButton url={url}>
+                <EmailIcon size={45} round />
+              </EmailShareButton>
+            </div>
           </div>
         )}
       </div>

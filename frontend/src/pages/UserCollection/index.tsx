@@ -90,6 +90,23 @@ const ItemCollection: FC<EstateCollection & { token: string; value: number }> = 
     navigate(collectionLinkClient);
   };
 
+  const url = () => {
+    const group = agentInfo?.group || ''
+    let urlPart = 'https://myselection.properties';
+    switch (group) {
+      case 'neginski':
+        urlPart = 'https://neginski.myselection.properties';
+        break
+      case 'extra':
+        urlPart = 'https://sunthai.myselection.properties';
+        break
+      case 'insightestate':
+        urlPart = 'https://insightestate.myselection.properties';
+        break
+    }
+    return `${urlPart}${collectionLinkClientShow}`
+  }
+
   const handleCopyLink = async () => {
     try {
       const group = agentInfo?.group || ''
@@ -131,6 +148,7 @@ const ItemCollection: FC<EstateCollection & { token: string; value: number }> = 
           copyLink={handleCopyLink}
           id={id}
           copyLinkStatus={copyLinkStatus}
+          url={url()}
         />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>

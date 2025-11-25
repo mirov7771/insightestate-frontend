@@ -11,7 +11,6 @@ import { loadStripe } from '@stripe/stripe-js';
 import { CheckoutForm } from '../CheckoutForm/CheckoutForm';
 import Select from "react-dropdown-select";
 import {Button, Input, Text} from "@/shared/ui";
-import styles from "@/pages/OfferCollectionV2/ContactManager/ContactManager.module.scss";
 import {useIntl} from "react-intl";
 import {useNavigate} from "react-router";
 
