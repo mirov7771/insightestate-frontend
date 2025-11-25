@@ -40,11 +40,12 @@ export const Text: FC<TextProps> = ({
   onClick,
 }) => {
   return (
-    <Component
-      className={`${styles.text} ${styles[variant]} ${styles[align]} ${bold ? styles.bold : null} ${className}`}
-      onClick={onClick}
-    >
-      {children}
-    </Component>
+      children ?
+          <Component
+              className={`${styles.text} ${styles[variant]} ${styles[align]} ${bold ? styles.bold : null} ${className}`}
+              onClick={onClick}
+          >
+            {children}
+          </Component> : <></>
   );
 };
