@@ -39,6 +39,7 @@ export const Text: FC<TextProps> = ({
   bold = false,
   onClick,
 }) => {
+  // @ts-ignore
   return (
       <Component
           className={`${styles.text} ${styles[variant]} ${styles[align]} ${bold ? styles.bold : null} ${className}`}
