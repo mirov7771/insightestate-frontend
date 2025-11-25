@@ -11,8 +11,8 @@ const cssModulesPlugin = require('eslint-plugin-css-modules');
 
 module.exports = [
   {
-    files: ['src/**/*.{js,jsx,ts,tsx}'], // Проверяем файлы в папке src
-    ignores: ['node_modules', 'dist', 'src'], // Игнорируем node_modules и dist
+    // files: ['src/**/*.{js,jsx,ts,tsx}'], // Проверяем файлы в папке src
+    ignores: ['node_modules', 'dist', 'src/**'], // Игнорируем node_modules и dist
     languageOptions: {
       ecmaVersion: 'latest', // Последняя версия ECMAScript
       sourceType: 'module', // Модули ECMAScript

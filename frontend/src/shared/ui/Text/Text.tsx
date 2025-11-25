@@ -21,7 +21,7 @@ type TextVariant =
 type TextAlign = 'left' | 'center' | 'right';
 
 type TextProps = {
-  children?: ReactNode;
+  children: ReactNode;
   align?: TextAlign;
   as?: keyof JSX.IntrinsicElements;
   bold?: boolean;
@@ -45,7 +45,7 @@ export const Text: FC<TextProps> = ({
           className={`${styles.text} ${styles[variant]} ${styles[align]} ${bold ? styles.bold : null} ${className}`}
           onClick={onClick}
       >
-        {children ?? ''}
+        {children}
       </Component>
   );
 };
