@@ -124,14 +124,14 @@ export const BlockView: FC<BlockViewProps> = ({
                 <FormattedMessage id="userCollection.duplicate" />
               </Text>
             </Button>
-            <Button variant="base" onClick={copyLink} loading={copyLinkStatus === 'LOADING'}>
-              <Text variant="body1" bold>
-                <FormattedMessage id="userCollection.copyLink" />
-              </Text>
-            </Button>
             <Button onClick={handleToggleCommentModal}>
               <Text variant="body1" bold>
                 <FormattedMessage id="userCollection.comment" />
+              </Text>
+            </Button>
+            <Button variant="base" onClick={copyLink} loading={copyLinkStatus === 'LOADING'}>
+              <Text variant="body1" bold>
+                <FormattedMessage id="userCollection.copyLink" />
               </Text>
             </Button>
             <div style={{
