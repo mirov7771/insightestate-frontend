@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "noEmitOnError": false,
+    "noEmitOnError": true,
     "target": "ESNext",
     "module": "ESNext",
     "jsx": "react-jsx",
