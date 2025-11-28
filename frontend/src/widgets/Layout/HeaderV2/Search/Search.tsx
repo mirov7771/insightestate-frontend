@@ -137,7 +137,7 @@ export const Search: FC = () => {
                       <Text variant="body1" bold>
                         {estate.name}
                       </Text>
-                        {estate.priceMin < 90 ?
+                        {(estate.priceMin < 90 || estate.priceMax <= 0) ?
                             <Text variant="body2" className={styles.description}>
                                 {`${formatMessage({ id: 'sold_out' })} • ${estate.city}, ${estate.beach}`}
                             </Text>

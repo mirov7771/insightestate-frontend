@@ -9,6 +9,7 @@ export type Estate = {
   level: 'COMFORT' | 'LUX' | 'PREMIUM' | 'UNKNOWN';
   name: string;
   priceMin: number;
+  priceMax: number;
   projectId: string;
   roi: number;
   beach?: string;

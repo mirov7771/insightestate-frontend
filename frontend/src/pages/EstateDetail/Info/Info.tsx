@@ -109,9 +109,14 @@ export const Info: FC<{
           <Text variant="body1" className={`${styles.text} ${styles.text__grey}`}>
             {formatMessage({ id: 'price_info' })}{` (${priceDate})`}
           </Text>
-          <Text variant="body1" className={styles.text}>
-            {price.min}{currency} — {price.max}{currency}
-          </Text>
+          {(price.max === '-1' || price.max === '-0' || price.max === '-2') ?
+              <Text variant="body1" className={styles.text}>
+                {formatMessage({ id: 'sold_out' })}
+              </Text> :
+              <Text variant="body1" className={styles.text}>
+                {price.min}{currency} — {price.max}{currency}
+              </Text>
+          }
         </div>
       )}
     </div>

@@ -89,7 +89,7 @@ export const CardSlide: FC<CardSlideProps> = ({
             <Slider images={images} />
           </a>
           <div className={styles.info}>
-            {estate.priceMin < 90 ?
+            {(estate.priceMin < 90 || estate.priceMax <= 0) ?
                 <Text variant="heading4" className={styles.info__price}>
                   {formatMessage({ id: 'sold_out' })}
                 </Text> :

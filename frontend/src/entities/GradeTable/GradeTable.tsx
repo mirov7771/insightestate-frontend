@@ -94,6 +94,7 @@ export const GradeTable: FC<
               clickable={clickable}
               collectionId={collectionId}
               token={token}
+              priceMax={estate.price?.max ? Number(estate.price?.max) : 1}
             />
           </>
         ))}
