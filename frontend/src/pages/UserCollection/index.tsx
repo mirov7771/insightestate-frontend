@@ -103,6 +103,9 @@ const ItemCollection: FC<EstateCollection & { token: string; value: number }> = 
       case 'insightestate':
         urlPart = 'https://insightestate.myselection.properties';
         break
+      case 'meg':
+        urlPart = 'https://meg.myselection.properties';
+        break
     }
     return `${urlPart}${collectionLinkClientShow}`
   }
@@ -120,6 +123,9 @@ const ItemCollection: FC<EstateCollection & { token: string; value: number }> = 
           break
         case 'insightestate':
           urlPart = 'https://insightestate.myselection.properties';
+          break
+        case 'meg':
+          urlPart = 'https://meg.myselection.properties';
           break
       }
       setCopyLinkStatus('LOADING');

@@ -100,7 +100,7 @@ const OfferCollectionV2: FC = () => {
             }}>
               <img
                   width={estateCollection?.agentInfo?.group === 'SID' ? 210 : (
-                      estateCollection?.agentInfo?.group === 'neginski' ? 300 : (
+                      (estateCollection?.agentInfo?.group === 'neginski' || estateCollection?.agentInfo?.group === 'meg') ? 300 : (
                           estateCollection?.agentInfo?.group === 'comfort' ? 600/(isMobile ? 2 : 1) :400/(isMobile ? 2 : 1))
                   )}
                   height={estateCollection?.agentInfo?.group === 'SID' ? 210 : (
