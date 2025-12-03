@@ -573,5 +573,11 @@ export default {
 
   qr_pay_desc: 'Нажмите "Оплачено", после совершения оплаты в личном кабинете банка',
   qr_pay_button: 'Оплачено',
-  qr_pay_title: 'К оплате '
+  qr_pay_title: 'К оплате ',
+
+  order_by_UPDATED_AT: 'По актуальности',
+  order_by_PRICE_ASC: 'Стоимость (по возрастанию)',
+  order_by_PRICE_DESC: 'Стоимость (по убыванию)',
+  order_by_SIZE_ASC: 'Площадь (по возрастанию)',
+  order_by_SIZE_DESC: 'Площадь (по убыванию)',
 };

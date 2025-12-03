@@ -21,6 +21,7 @@ import {Developer} from "@/widgets/Filter/Developer";
 import {PetFriendly} from "@/widgets/Filter/PetFriendly";
 import {NumberOfUnits} from "@/widgets/Filter/NumberOfUnits";
 import {Size} from "@/widgets/Filter/Size";
+import {OrderFilter} from "@/widgets/Filter/OrderFilter/OrderFilter";
 
 type FilterProps = { open: boolean; setOpen: Dispatch<SetStateAction<boolean>> };
 
@@ -55,6 +56,7 @@ export const Filter: FC<FilterProps> = ({ open, setOpen }) => {
           </span>
         </div>
         <div className={styles.filters__wrapper}>
+          <OrderFilter />
           <Price />
           <City />
           <Region />

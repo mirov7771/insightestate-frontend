@@ -48,6 +48,7 @@ export type GetEstateParams = {
   untis?: string[];
   sizeMin?: number;
   sizeMax?: number;
+  orderBy?: ORDER_BY
 };
 
 export type GetEstateAi = {
@@ -63,31 +64,23 @@ type ResponseGetEstate = {
   totalPages: number;
 };
 
+export type ORDER_BY = 'UPDATED_AT' | 'PRICE_ASC' | 'PRICE_DESC' | 'SIZE_ASC' | 'SIZE_DESC'
+
 export const filterApi = {
   getEstate: async (params?: GetEstateParams): Promise<AxiosResponse<ResponseGetEstate>> => {
+    const orderBy = params?.orderBy || localStorage.getItem('ORDER_BY') || 'UPDATED_AT'
     try {
       const userId = localStorage.getItem('userId');
       const response = userId
         ? await api.get<ResponseGetEstate>('v1/estate', {
-            params: { ...params, pageSize: 12 },
+            params: { ...params, pageSize: 12, orderBy },
             headers: { 'x-user-id': userId },
           })
         : await api.get<ResponseGetEstate>('v1/estate', {
-            params: { ...params, pageSize: 12 },
+            params: { ...params, pageSize: 12, orderBy },
           });
 
       return response;
-    } catch (error) {
-      throw error;
-    }
-  },
-  getEstateWithParams: async (
-    params?: GetEstateParams
-  ): Promise<AxiosResponse<ResponseGetEstate>> => {
-    try {
-      return await api.get<ResponseGetEstate>('v1/estate', {
-        params: { ...params },
-      });
     } catch (error) {
       throw error;
     }

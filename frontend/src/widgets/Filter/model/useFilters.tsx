@@ -29,7 +29,8 @@ export const DEFAULT_FILTERS = {
   petFriendly: undefined,
   untis: [],
   sizeMin: undefined,
-  sizeMax: undefined
+  sizeMax: undefined,
+  orderBy: undefined
 };
 
 const activeFiltersCounter = (filters: GetEstateParams): number => {
