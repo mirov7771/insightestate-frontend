@@ -2,9 +2,9 @@ import { MouseEventHandler } from 'react';
 
 export type StoryProps = {
   backgroundColor: string;
-  description: string;
+  description?: string;
   img: string | { en: string; ru: string };
-  title: string;
+  title?: string;
   button?: {
     text: string;
     onClick?: MouseEventHandler<HTMLButtonElement>;
@@ -13,4 +13,6 @@ export type StoryProps = {
   variant?: 'default' | 'revert';
   link?: boolean;
   tariff?: boolean;
+  noButton?: boolean;
+  itemLink?: string;
 };

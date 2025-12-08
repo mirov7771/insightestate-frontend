@@ -16,7 +16,13 @@ import { StoryProps } from './types';
 
 import Bt from './assets/bt.png';
 
-import Rocket from './assets/Rocket.png';
+import P1 from './assets/P1.webp'
+import P2 from './assets/P2.webp'
+import P3 from './assets/P3.webp'
+import P4 from './assets/P4.webp'
+import P5 from './assets/P5.webp'
+import P6 from './assets/P6.webp'
+import P7 from './assets/P7.webp'
 
 export const STORIES: StoryProps[] = [
   {
@@ -116,15 +122,54 @@ export const STORIES_V4: StoryProps[] = [
 
 export const STORIES_V5: StoryProps[] = [
   {
-    img: Rocket,
-    title: 'storiesV5.0.title',
-    description: 'storiesV5.0.description',
-    backgroundColor: '#E1CBF6',
+    img: P1,
+    backgroundColor: 'transparent',
     variant: 'default',
-    button: {
-      text: 'storiesV5.0.button'
-    },
     tariff: true,
     color: '#000000'
+  },
+  {
+    img: P2,
+    backgroundColor: 'transparent',
+    variant: 'default',
+    tariff: true,
+    color: '#000000'
+  },
+  {
+    img: P3,
+    backgroundColor: 'transparent',
+    variant: 'default',
+    tariff: true,
+    color: '#000000'
+  },
+  {
+    img: P4,
+    backgroundColor: 'transparent',
+    variant: 'default',
+    tariff: true,
+    color: '#000000'
+  },
+  {
+    img: P5,
+    backgroundColor: 'transparent',
+    variant: 'default',
+    tariff: true,
+    color: '#000000'
+  },
+  {
+    img: P6,
+    backgroundColor: 'transparent',
+    variant: 'default',
+    tariff: true,
+    color: '#000000'
+  },
+  {
+    img: P7,
+    backgroundColor: 'transparent',
+    variant: 'default',
+    tariff: true,
+    color: '#000000',
+    noButton: true,
+    itemLink: 'https://lotsof.properties/property/019a81f6-2bfe-77f0-8127-c3ec57ecec86'
   }
 ];

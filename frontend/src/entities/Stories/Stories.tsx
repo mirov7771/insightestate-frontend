@@ -195,17 +195,19 @@ export const Stories: FC<StoriesProps> = ({ items, open, setOpen }) => {
               img={items[activeStory].img}
               title={items[activeStory].title}
               button={
-                activeStory === items.length - 1
-                  ? {
-                      text: items[activeStory].button?.text || 'OK',
-                      onClick: items[activeStory].link ?
-                          handleCloseTgStories :
-                          (items[activeStory].tariff ? handleCloseBtStories : handleCloseStories),
-                    }
-                  : undefined
+                items[activeStory].noButton ? undefined :
+                    (activeStory === items.length - 1
+                    ? {
+                        text: items[activeStory].button?.text || 'OK',
+                        onClick: items[activeStory].link ?
+                            handleCloseTgStories :
+                            (items[activeStory].tariff ? handleCloseBtStories : handleCloseStories),
+                      }
+                    : undefined)
               }
               variant={items[activeStory].variant}
               color={items[activeStory].color}
+              itemLink={items[activeStory].itemLink}
             />
           </motion.div>
         </AnimatePresence>

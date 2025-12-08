@@ -7,7 +7,6 @@ import {STORIES, STORIES_V2, STORIES_V3, STORIES_V4, STORIES_V5} from '@/entitie
 import ObjectsImg from './assets/Objects.png';
 import PodborkyImg from './assets/Podborky.png';
 import UnitsImg from './assets/Units.png';
-import Bt from '@/entities/Stories/assets/ClocksPic.png';
 import Pp from '@/entities/Stories/assets/RocketPic.png';
 import { detailApi } from '@/widgets/Detail/api/detailApi';
 import { useStatus } from '@/shared/utils/useStatus';
@@ -28,12 +27,6 @@ const MainMenu: FC = () => {
   const [bestObjects, setBestObjects] = useState(0);
   const { status, setStatus } = useStatus();
   const navigate = useNavigate();
-
-  const year = new Date().getFullYear()
-  const month = new Date().getMonth() + 1
-  const day = new Date().getDate()
-  const isBeta = year === 2025 && month < 11
-  const isPP = year === 2025 && month === 11 && day < 15
 
   useEffect(() => {
     setStatus('LOADING');
@@ -118,36 +111,19 @@ const MainMenu: FC = () => {
             {formatMessage({ id: 'main_button_3' })}
           </Text>
         </div>
-        {isBeta ?
-        <div className={styles.story__wrapper}>
-          <div
-              className={`${styles.story} ${readStories.btModal ? styles.story_read : ''}`}
-              onClick={handleOpenBtModal}
-          >
-            <div className={styles.story__content}>
-              <img src="https://lotsof.properties/estate-images/imageclocks.png" alt="" />
-            </div>
-          </div>
-          <Text variant="caption1" align="center">
-            {formatMessage({ id: 'main_button_4' })}
-          </Text>
-        </div> : <></>
-        }
-        {isPP ?
         <div className={styles.story__wrapper}>
           <div
               className={`${styles.story} ${readStories.ppModal ? styles.story_read : ''}`}
               onClick={handleOpenPpModal}
           >
             <div className={styles.story__content}>
-              <img src="https://lotsof.properties/estate-images/rocket.png" alt="" />
+              <img src="https://lotsof.properties/estate-images/cover.webp" alt="" />
             </div>
           </div>
           <Text variant="caption1" align="center">
-            {formatMessage({ id: 'main_button_5' })}
+            The Zero Nai Yang
           </Text>
-        </div> : <></>
-        }
+        </div>
       </section>
       <section className={styles.cards}>
         <div className={styles.card}>
@@ -205,19 +181,19 @@ const MainMenu: FC = () => {
       </section>
       <section
           className={styles.offer}
-          style={{backgroundColor: isBeta ? '#FEE689' : '#E1CBF6'}}
+          style={{backgroundColor: '#E1CBF6'}}
           onClick={() => navigate('/tariffs')}
       >
         <div className={styles.offer__content}>
           <Text className={styles.offer__text} variant="heading5">
-            {formatMessage({ id: isBeta ? 'storiesV4.0.title' : 'storiesV5.0.title' })}
+            {formatMessage({ id: 'storiesV5.0.title' })}
           </Text>
           <Text className={`${styles.offer__text} ${styles.offer__text_grey}`} variant="body2">
-            {formatMessage({ id: isBeta ? 'storiesV4.0.description' : 'storiesV5.0.description' })}
+            {formatMessage({ id: 'storiesV5.0.description' })}
           </Text>
         </div>
         <div className={styles.offer__img}>
-          <img src={isBeta ? Bt : Pp} alt="" />
+          <img src={Pp} alt="" />
         </div>
       </section>
       <Stories items={STORIES} open={storiesModal} setOpen={setStoriesModal} />

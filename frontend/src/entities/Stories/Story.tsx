@@ -12,6 +12,7 @@ export const Story: FC<StoryProps> = ({
   button,
   variant = 'default',
   color = '#ffffff',
+  itemLink
 }) => {
   const { locale } = useIntl();
 
@@ -21,6 +22,10 @@ export const Story: FC<StoryProps> = ({
       ? img
       : img[locale as keyof typeof img] || img['en'] || Object.values(img)[0];
 
+  const goToItemLink = () => {
+    window.open(itemLink, '_blank')
+  }
+
   switch (variant) {
     case 'revert': {
       return (
@@ -28,6 +33,7 @@ export const Story: FC<StoryProps> = ({
           className={`${styles.story} ${styles.story_revert}`}
           style={{ backgroundColor, color }}
         >
+          {title ?
           <div className={styles.story__content}>
             <Text variant="heading5_upper">
               <FormattedMessage id={title} />
@@ -35,7 +41,8 @@ export const Story: FC<StoryProps> = ({
             <Text variant="body1">
               <FormattedMessage id={description} />
             </Text>
-          </div>
+          </div> : <></>
+          }
           <div className={styles.story__img}>
             <img src={imgUrl} alt="" />
           </div>
@@ -58,16 +65,23 @@ export const Story: FC<StoryProps> = ({
     default: {
       return (
         <div
+          onClick={
+            itemLink ? goToItemLink : undefined
+          }
           className={styles.story}
           style={{ backgroundColor, backgroundImage: `url(${imgUrl})`, color }}
         >
           <div className={styles.story__content}>
+            {title ?
             <Text variant="heading5_upper">
               <FormattedMessage id={title} />
-            </Text>
+            </Text> : <></>
+            }
+            {description ?
             <Text variant="body1">
               <FormattedMessage id={description} />
-            </Text>
+            </Text> : <></>
+            }
             {!!button && (
               <Button
                 className={styles.story__button}
