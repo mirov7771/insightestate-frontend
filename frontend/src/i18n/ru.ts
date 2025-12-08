@@ -580,4 +580,5 @@ export default {
   order_by_PRICE_DESC: 'Стоимость (по убыванию)',
   order_by_SIZE_ASC: 'Площадь (по возрастанию)',
   order_by_SIZE_DESC: 'Площадь (по убыванию)',
+  confort_island: 'ТОП COMFORTISLAND'
 };

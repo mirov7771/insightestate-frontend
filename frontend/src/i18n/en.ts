@@ -567,5 +567,12 @@ export default {
 
   qr_pay_desc: 'Click "Paid" after making the payment in the bank\'s personal account',
   qr_pay_button: 'Paid',
-  qr_pay_title: 'To be paid '
+  qr_pay_title: 'To be paid ',
+  order_by_UPDATED_AT: 'By relevance',
+
+  order_by_PRICE_ASC: 'Cost (ascending)',
+  order_by_PRICE_DESC: 'Cost (descending)',
+  order_by_SIZE_ASC: 'Area (ascending)',
+  order_by_SIZE_DESC: 'Area (descending)',
+  confort_island: 'TOP COMFORTISLAND'
 };

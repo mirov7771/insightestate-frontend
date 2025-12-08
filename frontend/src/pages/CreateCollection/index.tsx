@@ -68,8 +68,47 @@ const Templates2 = [
     }
 ]
 
+const Templates3 = [
+    {
+        id: 5,
+        name: 'condos_up_to_150000',
+        images: [
+            'TH-HKT-LY-00023_ext_4.webp', 'TH-HKT-LY-00023_ext_6.webp',
+        ]
+    },
+    {
+        id: 6,
+        name: 'for_families_schools_and_kindergartens_nearby',
+        images: [
+            'TH-HKT-BT-00155_ext_2.webp', 'TH-HKT-BT-00155_ext_4.webp'
+        ]
+    },
+    {
+        id: 7,
+        name: 'our_users_choice',
+        images: [
+            'TH-HKT-LY-00048_ext_1.webp', 'TH-HKT-LY-00048_ext_3.webp'
+        ]
+    },
+    {
+        id: 8,
+        name: 'confort_island',
+        images: [
+            'TH-HKT-RW-00148_ext_1.webp', 'TH-HKT-RW-00148_ext_2.webp',
+        ]
+    }
+]
+
 const CreateCollection: FC = () => {
     const { formatMessage } = useIntl();
+    const [group, setGroup] = useState<string>()
+
+    useEffect(() => {
+        estateCollectionApi.getAgentInfo(localStorage.getItem('basicToken')!!)
+            .then((r) => setGroup(r.data.group))
+            .catch((e) => console.log(e))
+    }, []);
+
     return (
         <div className={styles.wrapper}>
             <div className={isMobile ? styles.top_mobile : styles.top}>
@@ -95,6 +134,20 @@ const CreateCollection: FC = () => {
                             </>
                             )}
                         </div>
+                        {
+                            group === 'comfort' ?
+                        <div className={styles.templates_mobile}>
+                            {Templates3.map((t) =>
+                                <>
+                                    <Template
+                                        id={t.id}
+                                        name={formatMessage({id: t.name})}
+                                        images={t.images}
+                                    />
+                                    <Spacer height={10} width={100}/>
+                                </>
+                            )}
+                        </div> :
                         <div className={styles.templates_mobile}>
                             {Templates2.map((t) =>
                                 <>
@@ -107,6 +160,7 @@ const CreateCollection: FC = () => {
                                 </>
                             )}
                         </div>
+                        }
                     </div>
                 </> :
                 <>
@@ -119,6 +173,16 @@ const CreateCollection: FC = () => {
                             />)}
                         </div>
                     </div>
+                    {group === 'comfort' ?
+                    <div className={styles.templates_wrapper}>
+                        <div className={styles.templates}>
+                            {Templates3.map((t) => <Template
+                                id={t.id}
+                                name={formatMessage({id: t.name})}
+                                images={t.images}
+                            />)}
+                        </div>
+                    </div> :
                     <div className={styles.templates_wrapper2}>
                         <div className={styles.templates}>
                             {Templates2.map((t) => <Template
@@ -128,6 +192,7 @@ const CreateCollection: FC = () => {
                             />)}
                         </div>
                     </div>
+                    }
                 </>
             }
         </div>
