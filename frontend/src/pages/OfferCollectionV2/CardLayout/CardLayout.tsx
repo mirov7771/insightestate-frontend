@@ -56,7 +56,7 @@ function getPrioritySquare(estate: Estate): string {
 }
 
 export type CardLayoutProps = {
-  estate: Estate & { collection: string; collectionId: string; agentInfo?: AgentInfo, visible: boolean };
+  estate: Estate & { collection: string; collectionId: string; agentInfo?: AgentInfo, visible: boolean, checked: boolean };
 };
 
 export const CardLayout: FC<CardLayoutProps> = ({ estate }) => {
@@ -248,7 +248,7 @@ export const CardLayout: FC<CardLayoutProps> = ({ estate }) => {
         <TablesInfo
           tables={[
             {
-              items: [
+              items: estate.checked ? [
                 {
                   name: formatMessage({ id: 'completion_date' }),
                   description: estate.buildEndDate,
@@ -269,6 +269,11 @@ export const CardLayout: FC<CardLayoutProps> = ({ estate }) => {
                   name: formatMessage({ id: 'capRateFirstYear' }),
                   description: `${estate.profitability?.capRateFirstYear || 5}%`,
                 },
+              ] : [
+                {
+                  name: formatMessage({ id: 'completion_date' }),
+                  description: estate.buildEndDate,
+                }
               ],
             },
             {

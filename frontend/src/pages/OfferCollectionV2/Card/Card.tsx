@@ -22,7 +22,7 @@ import { UnitsSlider } from '@/pages/OfferCollectionV2/CommonComponents/UnitsSli
 import { UnitSlide } from '@/pages/OfferCollectionV2/CommonComponents/UnitsSlider/UnitSlide';
 
 export const Card: FC<
-  Estate & { collection: string; collectionId: string; agentInfo?: AgentInfo, visible: boolean }
+  Estate & { collection: string; collectionId: string; agentInfo?: AgentInfo, visible: boolean, checked: boolean }
 > = (estate) => {
   const { formatMessage } = useIntl();
   const [like, setLike] = useState(false);
@@ -219,7 +219,7 @@ export const Card: FC<
           <TablesInfo
             tables={[
               {
-                items: [
+                items: estate.checked ? [
                   {
                     name: formatMessage({ id: 'completion_date' }),
                     description: estate.buildEndDate,
@@ -240,6 +240,11 @@ export const Card: FC<
                     name: formatMessage({ id: 'capRateFirstYear' }),
                     description: `${estate.profitability?.capRateFirstYear || 5}%`,
                   },
+                ] : [
+                  {
+                    name: formatMessage({ id: 'completion_date' }),
+                    description: estate.buildEndDate,
+                  }
                 ],
               },
               {

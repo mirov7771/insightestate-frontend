@@ -5,12 +5,12 @@ import {
   EstateCollection,
   estateCollectionApi,
 } from '@/widgets/EstateCollection/api/estateCollectionApi';
-import { useIntl } from 'react-intl';
+import {FormattedMessage, useIntl} from 'react-intl';
 import { TableComparison } from '@/pages/OfferCollectionV2/TableComparison/TableComparison';
 import { CardLayout } from '@/pages/OfferCollectionV2/CardLayout/CardLayout';
 import { useWindowResize } from '@/shared/utils/useWindowResize';
 import { TabsElements } from '@/pages/OfferCollectionV2/Tabs/TabsElements';
-import { Segment } from '@/shared/ui';
+import {Checkbox, Segment} from '@/shared/ui';
 import { IconBuildingCommunity, IconLayout } from '@/shared/assets/icons';
 import { TableComparisonV2 } from '@/pages/OfferCollectionV2/TableComparison/TableComparasionV2';
 import { generateComparisonRows } from '@/pages/OfferCollectionV2/TableComparison/utils';
@@ -49,6 +49,7 @@ export const Tabs: FC<{
   const [estateCollection, setEstateCollection] = useState<EstateCollection>();
   const [value, setValue] = useState(0);
   const [segmentValue, setSegmentValue] = useState(2);
+  const [checked, setChecked] = useState(true)
 
   const isAuth =
       localStorage.getItem('basicToken') !== null &&
@@ -72,6 +73,15 @@ export const Tabs: FC<{
 
   return (
     <>
+        {isAuth ?
+          <Checkbox
+              name="checked"
+              value="checked"
+              label={<FormattedMessage id="fin_information" />}
+              onChange={() => setChecked(!checked)}
+              checked={checked}
+          /> : <></>
+        }
       <div className={styles.tabsWrapper}>
         <TabsElements
           value={value}
@@ -112,7 +122,8 @@ export const Tabs: FC<{
                       collectionId: id,
                       collection: estateCollection.name,
                       agentInfo: estateCollection.agentInfo,
-                      visible: visible
+                      visible: visible,
+                      checked
                     }}
                   />
                 ) : (
@@ -122,6 +133,7 @@ export const Tabs: FC<{
                     collection={estateCollection.name}
                     agentInfo={estateCollection.agentInfo}
                     visible={visible}
+                    checked={checked}
                   />
                 )}
               </Fragment>
