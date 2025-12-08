@@ -574,5 +574,7 @@ export default {
   order_by_PRICE_DESC: 'Cost (descending)',
   order_by_SIZE_ASC: 'Area (ascending)',
   order_by_SIZE_DESC: 'Area (descending)',
-  confort_island: 'TOP COMFORTISLAND'
+  confort_island: 'TOP COMFORTISLAND',
+
+  fin_information: 'Finance information'
 };
