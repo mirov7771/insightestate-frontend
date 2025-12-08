@@ -73,7 +73,7 @@ export const Tabs: FC<{
 
   return (
     <>
-        {isAuth ?
+        {isAuth && visible ?
           <Checkbox
               name="checked"
               value="checked"
