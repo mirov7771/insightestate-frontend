@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 import {Button, ModalChangeEstateName, ModalDeleteEstate, Text, useNotifications} from '@/shared/ui';
 import styles from './BlockView.module.scss';
-import { IconEdit, IconTrash } from '@/shared/assets/icons';
+import {ArchiveSvg, IconEdit, IconTrash} from '@/shared/assets/icons';
 import {Estate, estateCollectionApi} from '@/widgets/EstateCollection/api/estateCollectionApi';
 import { DEFAULT_IMG } from '@/entities/Card/Card';
 import {FormattedMessage, useIntl} from 'react-intl';
@@ -28,6 +28,7 @@ type BlockViewProps = {
   id: string;
   name: string;
   url: string;
+  archiveCollection: () => void;
 };
 
 export const BlockView: FC<BlockViewProps> = ({
@@ -39,12 +40,14 @@ export const BlockView: FC<BlockViewProps> = ({
   copyLink,
   id,
   copyLinkStatus,
-  url
+  url,
+  archiveCollection
 }) => {
   const { formatMessage } = useIntl();
   const [openChangeNameModal, setOpenChangeNameModal] = useState(false);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [openCommentModal, setOpenCommentModal] = useState(false);
+  const [openArchiveModal, setOpenArchiveModal] = useState(false);
   const { notify } = useNotifications();
   const handleToggleShowChangeNameModal = () => {
     setOpenChangeNameModal(!openChangeNameModal);
@@ -56,6 +59,10 @@ export const BlockView: FC<BlockViewProps> = ({
   const handleToggleCommentModal = () => {
     setOpenCommentModal(!openChangeNameModal);
   };
+
+  const handleToggleArchiveModal = () => {
+    setOpenArchiveModal(!openArchiveModal)
+  }
 
   const handleDuplicate = () => {
     estateCollectionApi.duplicate(id).then(() => {
@@ -81,6 +88,11 @@ export const BlockView: FC<BlockViewProps> = ({
               onClick={handleToggleShowDeleteEstateModal}
               className={styles.actions__button}
               icon={<IconTrash />}
+            />
+            <Button
+                onClick={handleToggleArchiveModal}
+                className={styles.actions__button}
+                icon={<ArchiveSvg />}
             />
           </div>
         </div>
@@ -170,6 +182,11 @@ export const BlockView: FC<BlockViewProps> = ({
           open={openCommentModal}
           setOpen={setOpenCommentModal}
           id={id}
+      />
+      <ModalDeleteEstate
+          setOpen={setOpenArchiveModal}
+          open={openArchiveModal}
+          onArchiveEstate={archiveCollection}
       />
     </>
   );

@@ -240,10 +240,10 @@ export default {
   'userCollection.clientView': 'Как видит клиент',
   'userCollection.copyLink': 'Скопировать ссылку',
   'userCollection.rename': 'Изменение названия',
-  'userCollection.cancel': 'Отмена',
+  'userCollection.cancel': 'Нет',
   'userCollection.save': 'Сохранить',
   'userCollection.deleteCollection': 'Удаление подборки',
-  'userCollection.yesDelete': 'Да, удалить',
+  'userCollection.yesDelete': 'Да',
   'userCollection.deleteCollectionDescription':
     'Вы уверены, что хотите удалить всю подборку? <br></br>Ссылка на сформированный оффер будет недействительна',
   'userCollection.copiedLink': 'Ссылка на подборку скопирована',
@@ -582,5 +582,11 @@ export default {
   order_by_SIZE_DESC: 'Площадь (по убыванию)',
   confort_island: 'ТОП COMFORTISLAND',
 
-  fin_information: 'Финансовая информация'
+  fin_information: 'Финансовая информация',
+
+  'userCollection.archive': 'Архив',
+  'userCollection.archiveCollection': 'Перенести в архив',
+  'userCollection.archiveCollectionDescription': 'Восстановить подборку из архива можно будет в любой момент',
+  'userCollection.archiveCollectionOut': 'Восстановить из архива',
+  'userCollection.archiveCollectionOutDescription': 'Перенести подборку в архив можно будет в любой момент',
 };

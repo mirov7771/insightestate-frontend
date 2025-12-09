@@ -2,7 +2,7 @@ import { FC, useState, MouseEvent } from 'react';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import styles from './CardView.module.scss';
-import { IconCopy, IconDots, IconEdit, IconTrash } from '@/shared/assets/icons';
+import {ArchiveSvg, IconCopy, IconDots, IconEdit, IconTrash} from '@/shared/assets/icons';
 import { Button, ModalChangeEstateName, ModalDeleteEstate, Text } from '@/shared/ui';
 import { Estate } from '@/widgets/EstateCollection/api/estateCollectionApi';
 import { useIntl } from 'react-intl';
@@ -13,6 +13,8 @@ type ActionButtonProps = {
   estateName: string;
   estates: Estate[];
   id: string;
+  archiveCollection: () => void;
+  archive: boolean
 };
 
 export const ActionButton: FC<ActionButtonProps> = ({
@@ -21,12 +23,15 @@ export const ActionButton: FC<ActionButtonProps> = ({
   estates,
   copyLink,
   id,
+  archiveCollection,
+  archive
 }) => {
   const { formatMessage } = useIntl();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const [openChangeNameModal, setOpenChangeNameModal] = useState(false);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
+  const [openArchiveModal, setOpenArchiveModal] = useState(false);
   const handleToggleShowChangeNameModal = () => {
     setOpenChangeNameModal(!openChangeNameModal);
   };
@@ -43,6 +48,9 @@ export const ActionButton: FC<ActionButtonProps> = ({
     handleClose();
     copyLink();
   };
+  const handleToggleArchiveModal = () => {
+      setOpenArchiveModal(!openArchiveModal)
+  }
 
   return (
     <>
@@ -86,6 +94,20 @@ export const ActionButton: FC<ActionButtonProps> = ({
             {formatMessage({ id: 'userCollection.deleteCollection' })}
           </Text>
         </MenuItem>
+        <MenuItem
+            classes={{ root: styles.listItem }}
+            onClick={() => {
+                handleClose();
+                handleToggleArchiveModal();
+            }}
+        >
+            <ArchiveSvg />
+            <Text variant="body1" bold>
+                {archive ?
+                    formatMessage({ id: 'userCollection.archiveCollectionOut' }) :
+                    formatMessage({ id: 'userCollection.archiveCollection' })}
+            </Text>
+        </MenuItem>
       </Menu>
       <ModalChangeEstateName
         estateName={estateName}
@@ -97,6 +119,12 @@ export const ActionButton: FC<ActionButtonProps> = ({
         setOpen={setOpenDeleteModal}
         open={openDeleteModal}
         onDeleteEstate={deleteCollection}
+      />
+      <ModalDeleteEstate
+          setOpen={setOpenArchiveModal}
+          open={openArchiveModal}
+          onArchiveEstate={archiveCollection}
+          archive={archive}
       />
     </>
   );

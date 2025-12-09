@@ -4,22 +4,30 @@ import styles from './ModalDeleteEstate.module.scss';
 import { FormattedMessage } from 'react-intl';
 
 type ModalDeleteEstateProps = {
-  onDeleteEstate: () => void;
+  onDeleteEstate?: () => void;
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
+  onArchiveEstate?: () => void;
+  archive?: boolean
 };
 
 export const ModalDeleteEstate: FC<ModalDeleteEstateProps> = ({
   setOpen,
   open,
   onDeleteEstate,
+  onArchiveEstate,
+  archive
 }) => {
   const handleCancel = () => {
     setOpen(false);
   };
 
   const handleDeleteEstate = () => {
-    onDeleteEstate();
+    if (onDeleteEstate) {
+      onDeleteEstate();
+    } else if (onArchiveEstate) {
+      onArchiveEstate()
+    }
     handleCancel();
   };
 
@@ -29,13 +37,19 @@ export const ModalDeleteEstate: FC<ModalDeleteEstateProps> = ({
       withCloseIcon
     >
       <Text variant="heading4">
-        <FormattedMessage id="userCollection.deleteCollection" />
+        {onArchiveEstate ?
+            (archive ? <FormattedMessage id="userCollection.archiveCollectionOut" /> : <FormattedMessage id="userCollection.archiveCollection" />) :
+            <FormattedMessage id="userCollection.deleteCollection" />
+        }
       </Text>
       <Text className={styles.description} variant="body1">
-        <FormattedMessage
-          id="userCollection.deleteCollectionDescription"
-          values={{ br: () => <br /> }}
-        />
+        {onArchiveEstate ?
+            (archive ? <FormattedMessage id="userCollection.archiveCollectionOutDescription"/> : <FormattedMessage id="userCollection.archiveCollectionDescription"/>) :
+            <FormattedMessage
+                id="userCollection.deleteCollectionDescription"
+                values={{ br: () => <br /> }}
+            />
+        }
       </Text>
       <div className={styles.buttons}>
         <Button wide variant="base" onClick={handleCancel}>

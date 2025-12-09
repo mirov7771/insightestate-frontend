@@ -52,6 +52,8 @@ export const Developer: FC = () => {
                 checked={developer?.includes('Origin Property')}
                 label="Origin Property"
             />
+          </>) : (<></>)}
+          {city?.includes('Phuket') || city?.includes('Bangkok') || city?.includes('Chiang Mai') || city?.length === 0 ? (<>
             <Checkbox
                 name="developer"
                 value="Sansiri"

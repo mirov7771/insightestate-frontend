@@ -109,6 +109,8 @@ import IconMessageCode from './offer-collection/tabler-icon-message-code.svg?rea
 import IconStar from './offer-collection/tabler-icon-star.svg?react'
 import IconChartArea from './offer-collection/tabler-icon-chart-area-line.svg?react'
 
+import ArchiveSvg from './offer-collection/archive.svg?react'
+
 export {
   IconChartArea,
   IconStar,
@@ -219,5 +221,6 @@ export {
   Circles,
   ButtonMap,
   ButtonMapBlack,
-  Question
+  Question,
+  ArchiveSvg
 };

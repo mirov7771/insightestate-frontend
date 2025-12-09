@@ -316,6 +316,40 @@ export const Region: FC = () => {
           ) : (
               <></>
           )}
+          {city?.includes('Chiang Mai') || city?.length === 0 ? (
+              <>
+                <Checkbox
+                    name="beachName"
+                    value="Fa Ham"
+                    onChange={handleClick}
+                    checked={beachName?.includes('Fa Ham')}
+                    label="Fa Ham"
+                />
+                <Checkbox
+                    name="beachName"
+                    value="Nong Pa Khrang"
+                    onChange={handleClick}
+                    checked={beachName?.includes('Nong Pa Khrang')}
+                    label="Nong Pa Khrang"
+                />
+                <Checkbox
+                    name="beachName"
+                    value="San Phisuea"
+                    onChange={handleClick}
+                    checked={beachName?.includes('San Phisuea')}
+                    label="San Phisuea"
+                />
+                <Checkbox
+                    name="beachName"
+                    value="Wat Ket"
+                    onChange={handleClick}
+                    checked={beachName?.includes('Wat Ket')}
+                    label="Wat Ket"
+                />
+              </>
+          ) : (
+              <></>
+          )}
         </div>
       }
     />

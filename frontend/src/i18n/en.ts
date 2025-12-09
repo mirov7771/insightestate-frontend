@@ -576,5 +576,7 @@ export default {
   order_by_SIZE_DESC: 'Area (descending)',
   confort_island: 'TOP COMFORTISLAND',
 
-  fin_information: 'Finance information'
+  fin_information: 'Finance information',
+
+  'userCollection.archive': 'Archive'
 };

@@ -24,6 +24,7 @@ export type EstateCollection = {
   agentInfo?: AgentInfo;
   estates?: Array<Estate>;
   comment?: string;
+  archive?: boolean;
 };
 
 export type EstateOptions = {
@@ -166,11 +167,12 @@ export type TemplateRs = {
 
 export const estateCollectionApi = {
   getEstateCollection: async (
-    token: string
+    token: string,
+    archive: boolean = false
   ): Promise<AxiosResponse<ResponseGetEstateCollection>> => {
     try {
       return await api.get<ResponseGetEstateCollection>(
-        '/v1/estate-collections?pageNumber=0&pageSize=25',
+        `/v1/estate-collections?pageNumber=0&pageSize=25&archive=${archive}`,
         {
           headers: {
             Authorization: `Basic ${token.replace('Basic ', '')}`,
@@ -240,6 +242,17 @@ export const estateCollectionApi = {
   deleteCollection: async (token: string, id: string): Promise<AxiosResponse<void>> => {
     try {
       return await api.delete<void>(`/v1/estate-collections/${id}`, {
+        headers: {
+          Authorization: `Basic ${token.replace('Basic ', '')}`,
+        },
+      });
+    } catch (error) {
+      throw error;
+    }
+  },
+  archiveCollection: async (token: string, id: string): Promise<AxiosResponse<void>> => {
+    try {
+      return await api.post<void>(`/v1/estate-collections/${id}`, {
         headers: {
           Authorization: `Basic ${token.replace('Basic ', '')}`,
         },

@@ -52,6 +52,7 @@ const ItemCollection: FC<EstateCollection & { token: string; value: number }> = 
   token,
   value,
   agentInfo,
+  archive
 }) => {
   const { formatMessage } = useIntl();
   const navigate = useNavigate();
@@ -81,6 +82,20 @@ const ItemCollection: FC<EstateCollection & { token: string; value: number }> = 
         setStatus('ERROR');
       });
   };
+
+  const archiveCollection = () => {
+    setStatus('LOADING');
+    estateCollectionApi
+        .archiveCollection(token, id)
+        .then((r) => {
+          setStatus('SUCCESS');
+          window.location.reload();
+        })
+        .catch((e) => {
+          console.log(e);
+          setStatus('ERROR');
+        });
+  }
 
   const goToCollection = () => {
     navigate(collectionLink);
@@ -155,6 +170,7 @@ const ItemCollection: FC<EstateCollection & { token: string; value: number }> = 
           id={id}
           copyLinkStatus={copyLinkStatus}
           url={url()}
+          archiveCollection={archiveCollection}
         />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
@@ -166,6 +182,21 @@ const ItemCollection: FC<EstateCollection & { token: string; value: number }> = 
           deleteCollection={deleteCollection}
           copyLink={handleCopyLink}
           id={id}
+          archiveCollection={archiveCollection}
+          archive={archive || false}
+        />
+      </CustomTabPanel>
+      <CustomTabPanel value={value} index={2}>
+        <CardView
+            images={renderImages}
+            estates={estates!!}
+            name={name}
+            goToCollection={goToCollection}
+            deleteCollection={deleteCollection}
+            copyLink={handleCopyLink}
+            id={id}
+            archiveCollection={archiveCollection}
+            archive={archive || false}
         />
       </CustomTabPanel>
     </>
@@ -177,6 +208,7 @@ const UserCollection: FC = () => {
   const navigate = useNavigate()
   const [value, setValue] = useState(0);
   const [collection, setCollection] = useState<EstateCollection[]>([]);
+  const [archive, setArchive] = useState<EstateCollection[]>([]);
   const [status, setStatus] = useState<TStatus>('IDLE');
   const token = localStorage.getItem('basicToken');
   const [agentInfo, setAgentInfo] = useState<AgentInfo>()
@@ -185,6 +217,7 @@ const UserCollection: FC = () => {
   const classesCollection = {
     0: styles.collection__block,
     1: styles.collection__card,
+    2: styles.collection__card,
   };
 
   const handleRedirect = () => {
@@ -206,6 +239,17 @@ const UserCollection: FC = () => {
         console.log(e);
       });
 
+    estateCollectionApi
+        .getEstateCollection(token!!, true)
+        .then((r) => {
+          setArchive(r.data.items);
+          setStatus('SUCCESS');
+        })
+        .catch((e) => {
+          setStatus('ERROR');
+          console.log(e);
+        });
+
     estateCollectionApi.getAgentInfo(token!!)
         .then((r) => {
           setGroup(r.data.group || '')
@@ -224,14 +268,15 @@ const UserCollection: FC = () => {
           wrapperClass={styles.loader}
         />
       )}
-      {status === 'SUCCESS' && !!collection.length && (
+      {status === 'SUCCESS' && (!!collection.length || !!archive.length) && (
         <>
           <div className={styles.tabs_header}>
             <div className={styles.tabs}>
               <Tabs
                 content={[
-                  formatMessage({ id: 'userCollection.blocks' }),
-                  formatMessage({ id: 'userCollection.cards' }),
+                    formatMessage({ id: 'userCollection.blocks' }),
+                    formatMessage({ id: 'userCollection.cards' }),
+                    formatMessage({ id: 'userCollection.archive' })
                 ]}
                 setValue={setValue}
                 value={value}
@@ -304,16 +349,27 @@ const UserCollection: FC = () => {
                   </div> : <></>
           }
 
-          <div className={`${styles.collection} ${classesCollection[value as 1 | 0]}`}>
-            {collection.map((item) => (
-              <ItemCollection
-                {...item}
-                estates={item.estates || []}
-                value={value}
-                token={token!!}
-                agentInfo={agentInfo}
-              />
-            ))}
+          <div className={`${styles.collection} ${classesCollection[value as 2 | 1 | 0]}`}>
+            {value === 2 ?
+                archive.map((item) => (
+                      <ItemCollection
+                          {...item}
+                          estates={item.estates || []}
+                          value={value}
+                          token={token!!}
+                          agentInfo={agentInfo}
+                      />
+                  )) :
+                collection.map((item) => (
+                      <ItemCollection
+                          {...item}
+                          estates={item.estates || []}
+                          value={value}
+                          token={token!!}
+                          agentInfo={agentInfo}
+                      />
+                  ))
+            }
           </div>
         </>
       )}
