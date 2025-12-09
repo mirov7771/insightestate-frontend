@@ -578,5 +578,10 @@ export default {
 
   fin_information: 'Finance information',
 
-  'userCollection.archive': 'Archive'
+  'userCollection.archive': 'Archive',
+
+  'userCollection.archiveCollection': 'Move to archive',
+  'userCollection.archiveCollectionDescription': 'It will be possible to restore a selection from the archive at any time',
+  'userCollection.archiveCollectionOut': 'Restore from archive',
+  'userCollection.archiveCollectionOutDescription': 'You can transfer the collection to the archive at any time',
 };
