@@ -49,7 +49,27 @@ export const ContactManager: FC<{
 
   const handleCopyLink = async () => {
     try {
-      const result = await copyToClipboard(`https://myselection.properties/cl/${id}`);
+      const group = agentInfo?.group || ''
+      let urlPart = 'https://myselection.properties';
+      switch (group) {
+        case 'neginski':
+          urlPart = 'https://neginski.myselection.properties';
+          break
+        case 'extra':
+          urlPart = 'https://sunthai.myselection.properties';
+          break
+        case 'insightestate':
+          urlPart = 'https://insightestate.myselection.properties';
+          break
+        case 'meg':
+          urlPart = 'https://meg.myselection.properties';
+          break
+        case 'kalinka':
+          urlPart = 'https://kalinka.myselection.properties';
+          break
+      }
+      const fullUrl = `${urlPart}/cl/${id}`;
+      const result = await copyToClipboard(fullUrl);
 
       if (result) {
         console.log('RUN!');
