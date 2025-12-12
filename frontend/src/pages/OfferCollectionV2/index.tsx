@@ -105,7 +105,7 @@ const OfferCollectionV2: FC = () => {
                   )}
                   height={estateCollection?.agentInfo?.group === 'SID' ? 210 :
                       (estateCollection?.agentInfo?.group === 'neginski' ? 68 : (
-                          estateCollection?.agentInfo?.group === 'kalinka' ? 300/(isMobile ? 2 : 1) : 168/(isMobile ? 2 : 1)
+                          estateCollection?.agentInfo?.group === 'kalinka' ? 380/(isMobile ? 2 : 1) : 168/(isMobile ? 2 : 1)
                       ))}
                   src={`https://lotsof.properties/estate-images/${estateCollection?.agentInfo?.group}.png`}
                   alt=""
