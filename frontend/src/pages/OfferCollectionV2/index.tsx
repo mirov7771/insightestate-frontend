@@ -103,9 +103,10 @@ const OfferCollectionV2: FC = () => {
                       (estateCollection?.agentInfo?.group === 'neginski' || estateCollection?.agentInfo?.group === 'meg') ? 300 : (
                           estateCollection?.agentInfo?.group === 'comfort' ? 600/(isMobile ? 2 : 1) :400/(isMobile ? 2 : 1))
                   )}
-                  height={estateCollection?.agentInfo?.group === 'SID' ? 210 : (
-                      estateCollection?.agentInfo?.group === 'neginski' ? 68 : 168/(isMobile ? 2 : 1)
-                  )}
+                  height={estateCollection?.agentInfo?.group === 'SID' ? 210 :
+                      (estateCollection?.agentInfo?.group === 'neginski' ? 68 : (
+                          estateCollection?.agentInfo?.group === 'kalinka' ? 300/(isMobile ? 2 : 1) : 168/(isMobile ? 2 : 1)
+                      ))}
                   src={`https://lotsof.properties/estate-images/${estateCollection?.agentInfo?.group}.png`}
                   alt=""
               />
