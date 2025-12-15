@@ -11,6 +11,7 @@ import {
   estateCollectionApi,
 } from '@/widgets/EstateCollection/api/estateCollectionApi';
 import {ModalGallery} from "@/shared/ui/modals/ModalGallery";
+import {UnitImageView} from "@/pages/EstateDetail/Units/UnitsSlider/UnitsSlider";
 
 export const UnitSlide: FC<{
   estate: Estate & { collection: string; collectionId: string; agentInfo?: AgentInfo };
@@ -46,20 +47,7 @@ export const UnitSlide: FC<{
       <div className={styles.unit__plan}>
         {unit.planImage ? (
           <>
-              <img
-                  src={unit.planImage}
-                  alt="plan"
-                  loading="lazy"
-                  onError={e => {
-                      e.currentTarget.src = "https://lotsof.properties/7b888085d5a1507587c1.png"
-                  }}
-                  onClick={() => setGalleryModal(true)}
-              />
-              <ModalGallery
-                  planImage={unit.planImage}
-                  open={galleryModal}
-                  setOpen={setGalleryModal}
-              />
+              <UnitImageView plan={unit.planImage}/>
           </>
         ) : (
           <div className={styles.unit__plan_placeholder}>
