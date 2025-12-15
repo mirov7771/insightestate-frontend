@@ -698,6 +698,17 @@ export const Developer: FC = () => {
           </>) : (
               <></>
           )}
+          {city?.includes('Koh Phangan') || city?.length === 0 ? (<>
+            <Checkbox
+                name="developer"
+                value="Walee Estate and BKMG developer"
+                onChange={handleClick}
+                checked={developer?.includes('Walee Estate and BKMG developer')}
+                label="Walee Estate and BKMG developer"
+            />
+          </>) : (
+              <></>
+          )}
         </div>
       }
     />

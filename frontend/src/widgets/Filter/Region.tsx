@@ -350,6 +350,20 @@ export const Region: FC = () => {
           ) : (
               <></>
           )}
+
+          {city?.includes('Koh Phangan') || city?.length === 0 ? (
+              <>
+                <Checkbox
+                    name="beachName"
+                    value="Srithanu"
+                    onChange={handleClick}
+                    checked={beachName?.includes('Srithanu')}
+                    label="Srithanu"
+                />
+              </>
+          ) : (
+              <></>
+          )}
         </div>
       }
     />
