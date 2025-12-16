@@ -122,6 +122,7 @@ const ItemCollection: FC<EstateCollection & { token: string; value: number }> = 
         urlPart = 'https://meg.myselection.properties';
         break
       case 'kalinka':
+      case 'kalinka2':
         urlPart = 'https://kalinka.myselection.properties';
         break
     }
@@ -146,6 +147,7 @@ const ItemCollection: FC<EstateCollection & { token: string; value: number }> = 
           urlPart = 'https://meg.myselection.properties';
           break
         case 'kalinka':
+        case 'kalinka2':
           urlPart = 'https://kalinka.myselection.properties';
           break
       }

@@ -65,6 +65,7 @@ export const ContactManager: FC<{
           urlPart = 'https://meg.myselection.properties';
           break
         case 'kalinka':
+        case 'kalinka2':
           urlPart = 'https://kalinka.myselection.properties';
           break
       }
