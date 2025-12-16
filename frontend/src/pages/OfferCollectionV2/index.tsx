@@ -102,11 +102,11 @@ const OfferCollectionV2: FC = () => {
                   width={estateCollection?.agentInfo?.group === 'SID' ? 210 : (
                       (estateCollection?.agentInfo?.group === 'neginski' || estateCollection?.agentInfo?.group === 'meg') ? 300 : (
                           estateCollection?.agentInfo?.group === 'comfort' ? 600/(isMobile ? 2 : 1) :
-                              ((estateCollection?.agentInfo?.group === 'kalinka' || estateCollection?.agentInfo?.group === 'kalinka2') ? 420 : 400/(isMobile ? 2 : 1)))
+                              ((estateCollection?.agentInfo?.group === 'kalinka' || estateCollection?.agentInfo?.group === 'kalinka2') ? 400 : 400/(isMobile ? 2 : 1)))
                   )}
                   height={estateCollection?.agentInfo?.group === 'SID' ? 210 :
                       (estateCollection?.agentInfo?.group === 'neginski' ? 68 : (
-                          (estateCollection?.agentInfo?.group === 'kalinka' || estateCollection?.agentInfo?.group === 'kalinka2') ? 400 : 168/(isMobile ? 2 : 1)
+                          (estateCollection?.agentInfo?.group === 'kalinka' || estateCollection?.agentInfo?.group === 'kalinka2') ? 380 : 168/(isMobile ? 2 : 1)
                       ))}
                   src={`https://lotsof.properties/estate-images/${estateCollection?.agentInfo?.group}.png`}
                   alt=""
@@ -127,6 +127,7 @@ const OfferCollectionV2: FC = () => {
                 <></>
             )
         }
+        <Spacer width={100} height={12}/>
         <Text variant="heading4_upper" as="h1" align="center">
           {formatMessage({ id: 'projects_for_you' })}
         </Text>
