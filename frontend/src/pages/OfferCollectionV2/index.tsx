@@ -91,7 +91,7 @@ const OfferCollectionV2: FC = () => {
         <meta property="og:url" content={url} />
       </Helmet>
       <div className={styles.wrap}>
-        <Spacer width={100} height={8}/>
+        <Spacer width={100} height={12}/>
         {(estateCollection?.agentInfo?.group && estateCollection?.agentInfo?.group !== 'insightestate') ?
             <div style={{
               alignItems: 'center',
@@ -99,15 +99,7 @@ const OfferCollectionV2: FC = () => {
               display: 'flex'
             }}>
               <img
-                  width={estateCollection?.agentInfo?.group === 'SID' ? 210 : (
-                      (estateCollection?.agentInfo?.group === 'neginski' || estateCollection?.agentInfo?.group === 'meg') ? 300 : (
-                          estateCollection?.agentInfo?.group === 'comfort' ? 600/(isMobile ? 2 : 1) :
-                              ((estateCollection?.agentInfo?.group === 'kalinka' || estateCollection?.agentInfo?.group === 'kalinka2') ? 400 : 400/(isMobile ? 2 : 1)))
-                  )}
-                  height={estateCollection?.agentInfo?.group === 'SID' ? 210 :
-                      (estateCollection?.agentInfo?.group === 'neginski' ? 68 : (
-                          (estateCollection?.agentInfo?.group === 'kalinka' || estateCollection?.agentInfo?.group === 'kalinka2') ? 380 : 168/(isMobile ? 2 : 1)
-                      ))}
+                  width={isMobile ? 340 : 400}
                   src={`https://lotsof.properties/estate-images/${estateCollection?.agentInfo?.group}.png`}
                   alt=""
               />
