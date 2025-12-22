@@ -73,7 +73,7 @@ export const Filter: FC<FilterProps> = ({ open, setOpen }) => {
           <Eia />
           <LandPurchased />
           <Developer />
-          <AiFilter />
+          {/*<AiFilter />*/}
           <NumberOfUnits />
           <Size />
         </div>
