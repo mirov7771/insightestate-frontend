@@ -22,8 +22,9 @@ export const Info: FC<{
   parkingSize?: number;
   price?: EstateDetail['price'];
   project?: ProjectUnitCount;
-  priceDate: string
-}> = ({ floors, project, buildEndDate, level, type, developer, companyEnabled, price, city, priceDate }) => {
+  priceDate: string;
+  furniture?: string;
+}> = ({ floors, project, buildEndDate, level, type, developer, companyEnabled, price, city, priceDate, furniture }) => {
   const { formatMessage } = useIntl();
   const [locale, setLocale] = useState<string>(localStorage.getItem('language') || 'ru');
   const currency = localStorage.getItem('currency') || '฿'
@@ -118,6 +119,17 @@ export const Info: FC<{
               </Text>
           }
         </div>
+      )}
+
+      {furniture && (
+          <div className={styles.info__item}>
+            <Text variant="body1" className={`${styles.text} ${styles.text__grey}`}>
+              {formatMessage({ id: 'furniture' })}
+            </Text>
+            <Text variant="body1" className={styles.text}>
+              {furniture}{''}฿
+            </Text>
+          </div>
       )}
     </div>
   );

@@ -48,7 +48,9 @@ export type GetEstateParams = {
   untis?: string[];
   sizeMin?: number;
   sizeMax?: number;
-  orderBy?: ORDER_BY
+  orderBy?: ORDER_BY;
+  landPurchased?: string;
+  eia?: string;
 };
 
 export type GetEstateAi = {

@@ -37,6 +37,7 @@ export type EstateDetail = {
   lat?: string;
   lon?: string;
   priceDate: string;
+  furniture?: string
 };
 
 export type Developer = {
@@ -74,6 +75,7 @@ export type Profitability = {
   irr?: number;
   roi?: number;
   roiSummary?: number;
+  guarantee?: number;
 };
 
 type Time = {

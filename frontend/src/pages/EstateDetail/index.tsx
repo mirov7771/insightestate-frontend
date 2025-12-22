@@ -125,6 +125,7 @@ const EstateDetail: FC = () => {
           price={estateDetailData.price}
           city={estateDetailData.city}
           priceDate={estateDetailData.priceDate}
+          furniture={estateDetailData.furniture}
         />
         <div className={styles.buttons}>
           <Button disabled={!token} onClick={handleOpenUserCollectionModal} size="l" wide>
@@ -211,6 +212,7 @@ const EstateDetail: FC = () => {
               roiSummary={estateDetailData.profitability?.roiSummary}
               irr={estateDetailData.profitability?.irr}
               capRateFirstYear={estateDetailData.profitability?.capRateFirstYear}
+              guarantee={estateDetailData.profitability?.guarantee}
             />
           </div>
           {estateDetailData.paymentPlanList && (

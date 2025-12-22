@@ -59,8 +59,9 @@ export type Estate = {
   shortDescriptionEn?: string;
   shortDescriptionRu?: string;
   units?: Unit[];
-  lat?: string
-  lon?: string
+  lat?: string;
+  lon?: string;
+  furniture?: string;
 };
 
 export type CreateCollectionRs = {

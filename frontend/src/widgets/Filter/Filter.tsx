@@ -22,6 +22,8 @@ import {PetFriendly} from "@/widgets/Filter/PetFriendly";
 import {NumberOfUnits} from "@/widgets/Filter/NumberOfUnits";
 import {Size} from "@/widgets/Filter/Size";
 import {OrderFilter} from "@/widgets/Filter/OrderFilter/OrderFilter";
+import {Eia} from "@/widgets/Filter/Eia";
+import {LandPurchased} from "@/widgets/Filter/LandPurchased";
 
 type FilterProps = { open: boolean; setOpen: Dispatch<SetStateAction<boolean>> };
 
@@ -68,6 +70,8 @@ export const Filter: FC<FilterProps> = ({ open, setOpen }) => {
           <Airport renderName />
           <Company />
           <PetFriendly />
+          <Eia />
+          <LandPurchased />
           <Developer />
           <AiFilter />
           <NumberOfUnits />

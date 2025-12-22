@@ -589,4 +589,11 @@ export default {
   'userCollection.archiveCollectionDescription': 'Восстановить подборку из архива можно будет в любой момент',
   'userCollection.archiveCollectionOut': 'Восстановить из архива',
   'userCollection.archiveCollectionOutDescription': 'Перенести подборку в архив можно будет в любой момент',
+
+  guarantee: 'Гарантированная доходность от застройщика',
+
+  furniture: 'Мебельный пакет',
+
+  eia: 'Наличие EIA сертификата',
+  landPurchased: 'Выкуплена земля'
 };

@@ -30,7 +30,9 @@ export const DEFAULT_FILTERS = {
   untis: [],
   sizeMin: undefined,
   sizeMax: undefined,
-  orderBy: undefined
+  orderBy: undefined,
+  eia: undefined,
+  landPurchased: undefined
 };
 
 const activeFiltersCounter = (filters: GetEstateParams): number => {

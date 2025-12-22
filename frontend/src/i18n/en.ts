@@ -584,4 +584,11 @@ export default {
   'userCollection.archiveCollectionDescription': 'It will be possible to restore a selection from the archive at any time',
   'userCollection.archiveCollectionOut': 'Restore from archive',
   'userCollection.archiveCollectionOutDescription': 'You can transfer the collection to the archive at any time',
+
+  guarantee: 'Guaranteed profitability from the developer',
+
+  furniture: 'Furniture package',
+
+  eia: 'Availability of an EIA certificate',
+  landPurchased: 'Land purchased'
 };
