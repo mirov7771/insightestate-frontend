@@ -68,6 +68,9 @@ export const ContactManager: FC<{
         case 'kalinka2':
           urlPart = 'https://kalinka.myselection.properties';
           break
+        case 'edenvest':
+          urlPart = 'https://edenvest.myselection.properties';
+          break
       }
       const fullUrl = `${urlPart}/cl/${id}`;
       const result = await copyToClipboard(fullUrl);

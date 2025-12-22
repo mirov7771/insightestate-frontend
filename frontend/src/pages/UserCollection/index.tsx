@@ -125,6 +125,9 @@ const ItemCollection: FC<EstateCollection & { token: string; value: number }> = 
       case 'kalinka2':
         urlPart = 'https://kalinka.myselection.properties';
         break
+      case 'edenvest':
+        urlPart = 'https://edenvest.myselection.properties';
+        break
     }
     return `${urlPart}${collectionLinkClientShow}`
   }
@@ -149,6 +152,9 @@ const ItemCollection: FC<EstateCollection & { token: string; value: number }> = 
         case 'kalinka':
         case 'kalinka2':
           urlPart = 'https://kalinka.myselection.properties';
+          break
+        case 'edenvest':
+          urlPart = 'https://edenvest.myselection.properties';
           break
       }
       setCopyLinkStatus('LOADING');
