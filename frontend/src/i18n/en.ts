@@ -538,6 +538,7 @@ export default {
   developer_presentation_desc:
       'Developer contacts and unit prices are hidden — you can  show to your customers',
   developer_presentation_download: 'Download',
+  developer_presentation_download_p: 'Presentation',
   developer_presentation_ru: 'Russian',
   developer_presentation_en: 'English',
 

@@ -183,8 +183,8 @@ export const CardLayout: FC<CardLayoutProps> = ({ estate }) => {
         )}
         <Slider
           images={
-            estate.visible ? estate.exteriorImages || estate.facilityImages || estate.interiorImages || [DEFAULT_IMG]
-                : [(estate.exteriorImages || estate.facilityImages || estate.interiorImages || [DEFAULT_IMG])[0]]
+            estate.visible ? estate.exteriorImages || estate.interiorImages || estate.facilityImages || [DEFAULT_IMG]
+                : [(estate.exteriorImages || estate.interiorImages || estate.facilityImages || [DEFAULT_IMG])[0]]
           }
         />
       </div>
@@ -265,7 +265,7 @@ export const CardLayout: FC<CardLayoutProps> = ({ estate }) => {
               onClick={handleOpenLanguage}
           >
             <Text variant="body1" bold>
-              {formatMessage({ id: 'developer_presentation_download' })}
+              {formatMessage({ id: 'developer_presentation_download_p' })}
             </Text>
             <MaterialMenu
                 classes={{ paper: styles.menu__paper }}

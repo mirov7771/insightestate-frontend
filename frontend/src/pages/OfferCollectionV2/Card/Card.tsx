@@ -164,7 +164,7 @@ export const Card: FC<
         )}
         <Slider
           images={
-            estate.exteriorImages || estate.facilityImages || estate.interiorImages || [DEFAULT_IMG]
+            estate.exteriorImages || estate.interiorImages || estate.facilityImages || [DEFAULT_IMG]
           }
         />
       </div>
@@ -383,7 +383,7 @@ export const Card: FC<
               onClick={handleOpenLanguage}
           >
             <Text variant="body1" bold>
-              {formatMessage({ id: 'developer_presentation_download' })}
+              {formatMessage({ id: 'developer_presentation_download_p' })}
             </Text>
           </Button> : <></> }
 

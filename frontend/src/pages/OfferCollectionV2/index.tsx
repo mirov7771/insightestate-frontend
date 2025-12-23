@@ -11,6 +11,7 @@ import generatePDF from 'react-to-pdf';
 import {Spacer} from "@/widgets/Spacer/Spacer";
 import {EstateCollection, estateCollectionApi} from "@/widgets/EstateCollection/api/estateCollectionApi";
 import {isMobile} from "react-device-detect";
+import {FAQ} from "@/pages/EstateDetail/FAQ/FAQ";
 
 const OfferCollectionV2: FC = () => {
   const { formatMessage } = useIntl();

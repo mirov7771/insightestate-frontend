@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
 import styles from './WhyThai.module.scss';
 import House from './assets/house.png';
 import { Text } from '@/shared/ui';
@@ -12,6 +12,8 @@ import {
   IconUsersGroup,
 } from '@/shared/assets/icons';
 import { useIntl } from 'react-intl';
+import {FAQ} from "@/pages/EstateDetail/FAQ/FAQ";
+import {Spacer} from "@/widgets/Spacer/Spacer";
 
 export const WhyThai: FC = () => {
   const { formatMessage } = useIntl();
@@ -20,54 +22,56 @@ export const WhyThai: FC = () => {
     <section className={styles.root}>
       <div className={styles.content}>
         <div className={styles.content__text}>
-          <Text variant="heading3" as="h2" className={styles.title}>
-            {formatMessage({ id: 'why' })}
-          </Text>
+          <Spacer height={40} width={100}/>
+          <FAQ />
+          {/*<Text variant="heading3" as="h2" className={styles.title}>*/}
+          {/*  {formatMessage({ id: 'why' })}*/}
+          {/*</Text>*/}
 
-          <ul className={styles.list}>
-            <li>
-              <span className={styles.icon}>
-                <IconCurrencyDollar />
-              </span>
-              <Text variant="body1">{formatMessage({ id: 'why_1' })}</Text>
-            </li>
-            <li>
-              <span className={styles.icon}>
-                <IconTrendingUp />
-              </span>
-              <Text variant="body1">{formatMessage({ id: 'why_2' })}</Text>
-            </li>
-            <li>
-              <span className={styles.icon}>
-                <IconMoodDollar />
-              </span>
-              <Text variant="body1">{formatMessage({ id: 'why_3' })}</Text>
-            </li>
-            <li>
-              <span className={styles.icon}>
-                <IconUsersGroup />
-              </span>
-              <Text variant="body1">{formatMessage({ id: 'why_4' })}</Text>
-            </li>
-            <li>
-              <span className={styles.icon}>
-                <IconHeartRateMonitor />
-              </span>
-              <Text variant="body1">{formatMessage({ id: 'why_5' })}</Text>
-            </li>
-            <li>
-              <span className={styles.icon}>
-                <IconHomeDollar />
-              </span>
-              <Text variant="body1">{formatMessage({ id: 'why_6' })}</Text>
-            </li>
-            <li>
-              <span className={styles.icon}>
-                <IconCalendarTime />
-              </span>
-              <Text variant="body1">{formatMessage({ id: 'why_7' })}</Text>
-            </li>
-          </ul>
+          {/*<ul className={styles.list}>*/}
+          {/*  <li>*/}
+          {/*    <span className={styles.icon}>*/}
+          {/*      <IconCurrencyDollar />*/}
+          {/*    </span>*/}
+          {/*    <Text variant="body1">{formatMessage({ id: 'why_1' })}</Text>*/}
+          {/*  </li>*/}
+          {/*  <li>*/}
+          {/*    <span className={styles.icon}>*/}
+          {/*      <IconTrendingUp />*/}
+          {/*    </span>*/}
+          {/*    <Text variant="body1">{formatMessage({ id: 'why_2' })}</Text>*/}
+          {/*  </li>*/}
+          {/*  <li>*/}
+          {/*    <span className={styles.icon}>*/}
+          {/*      <IconMoodDollar />*/}
+          {/*    </span>*/}
+          {/*    <Text variant="body1">{formatMessage({ id: 'why_3' })}</Text>*/}
+          {/*  </li>*/}
+          {/*  <li>*/}
+          {/*    <span className={styles.icon}>*/}
+          {/*      <IconUsersGroup />*/}
+          {/*    </span>*/}
+          {/*    <Text variant="body1">{formatMessage({ id: 'why_4' })}</Text>*/}
+          {/*  </li>*/}
+          {/*  <li>*/}
+          {/*    <span className={styles.icon}>*/}
+          {/*      <IconHeartRateMonitor />*/}
+          {/*    </span>*/}
+          {/*    <Text variant="body1">{formatMessage({ id: 'why_5' })}</Text>*/}
+          {/*  </li>*/}
+          {/*  <li>*/}
+          {/*    <span className={styles.icon}>*/}
+          {/*      <IconHomeDollar />*/}
+          {/*    </span>*/}
+          {/*    <Text variant="body1">{formatMessage({ id: 'why_6' })}</Text>*/}
+          {/*  </li>*/}
+          {/*  <li>*/}
+          {/*    <span className={styles.icon}>*/}
+          {/*      <IconCalendarTime />*/}
+          {/*    </span>*/}
+          {/*    <Text variant="body1">{formatMessage({ id: 'why_7' })}</Text>*/}
+          {/*  </li>*/}
+          {/*</ul>*/}
         </div>
 
         <div className={styles.imageWrapper}>

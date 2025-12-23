@@ -493,6 +493,7 @@ export default {
   developer_presentation_title: 'Презентация от застройщика',
   developer_presentation_desc: 'Контакты и цены скрыты — версия адаптирована для показа клиентам',
   developer_presentation_download: 'Скачать',
+  developer_presentation_download_p: 'Презентация',
   developer_presentation_ru: 'На русском',
   developer_presentation_en: 'На английском',
 

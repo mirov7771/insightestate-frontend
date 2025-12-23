@@ -15,7 +15,7 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    background-color: var(--light);
+    background-color: transparent;
     color: black;
   }
 
@@ -57,7 +57,7 @@
 
   &__body {
     padding-bottom: 24px;
-    background: white;
+    background: transparent;
     font-family: 'Wix Madefor Text', sans-serif;
     font-size: 16px;
     font-weight: 400;
