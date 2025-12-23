@@ -648,5 +648,13 @@ export default {
   furniture: 'Furniture package',
 
   eia: 'Availability of an EIA certificate',
-  landPurchased: 'Land purchased'
+  landPurchased: 'Land purchased',
+
+  collection_error: 'The limit of 5 collections has been reached, according to your Start tariff',
+  collection_error_text: 'Connect the Pro or Enterpise tariff to create unlimited collections',
+
+  finance: 'Display profitability',
+  presentation: 'Display developer presentation',
+  finance_close: 'Hide profitability',
+  presentation_close: 'Hide developer presentation'
 };

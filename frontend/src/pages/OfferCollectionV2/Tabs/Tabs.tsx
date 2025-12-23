@@ -49,7 +49,7 @@ export const Tabs: FC<{
   const [estateCollection, setEstateCollection] = useState<EstateCollection>();
   const [value, setValue] = useState(0);
   const [segmentValue, setSegmentValue] = useState(2);
-  const [checked, setChecked] = useState(true)
+  const [checked, setChecked] = useState<boolean>(true)
 
   const isAuth =
       localStorage.getItem('basicToken') !== null &&
@@ -59,7 +59,10 @@ export const Tabs: FC<{
   useEffect(() => {
     estateCollectionApi
       .getEstateCollectionById(id)
-      .then((r) => setEstateCollection(r.data))
+      .then((r) => {
+          setEstateCollection(r.data);
+          setChecked(r.data.showFinance)
+      })
       .catch((e) => console.log(e));
 
     if (!isAuth) {
@@ -71,6 +74,13 @@ export const Tabs: FC<{
 
   const hasUnits = !!estateCollection?.estates?.some((estate) => !!estate.units?.length);
 
+  const handleCheckedFinance = () => {
+      setChecked(!checked)
+      estateCollectionApi.flags(id, !checked, undefined)
+          .then((r) => console.log(r))
+          .catch((e) => console.log(e))
+  }
+
   return (
     <>
         {isAuth && visible ?
@@ -78,7 +88,7 @@ export const Tabs: FC<{
               name="checked"
               value="checked"
               label={<FormattedMessage id="fin_information" />}
-              onChange={() => setChecked(!checked)}
+              onChange={handleCheckedFinance}
               checked={checked}
           /> : <></>
         }
@@ -123,7 +133,8 @@ export const Tabs: FC<{
                       collection: estateCollection.name,
                       agentInfo: estateCollection.agentInfo,
                       visible: visible,
-                      checked
+                      checked,
+                      presentation: estateCollection.showPresentation || false
                     }}
                   />
                 ) : (
@@ -134,6 +145,7 @@ export const Tabs: FC<{
                     agentInfo={estateCollection.agentInfo}
                     visible={visible}
                     checked={checked}
+                    presentation={estateCollection.showPresentation || false}
                   />
                 )}
               </Fragment>

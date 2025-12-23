@@ -25,6 +25,8 @@ export type EstateCollection = {
   estates?: Array<Estate>;
   comment?: string;
   archive?: boolean;
+  showFinance: boolean;
+  showPresentation?: boolean;
 };
 
 export type EstateOptions = {
@@ -409,6 +411,23 @@ export const estateCollectionApi = {
       return await api.post<TemplateRs>('/v1/estate-collections/activity', {
         id, url
       });
+    } catch (error) {
+      throw error;
+    }
+  },
+  flags: async (id: string, showFinance?: boolean, showPresentation?: boolean): Promise<AxiosResponse<void>> => {
+    try {
+      let uri: string = '';
+      if (showFinance !== null && showFinance !== undefined) {
+        uri += `?showFinance=${showFinance}`
+      }
+      if (showPresentation !== null && showPresentation !== undefined) {
+        if (uri === '')
+          uri += `?showPresentation=${showPresentation}`
+        else
+          uri += `&showPresentation=${showPresentation}`
+      }
+      return await api.get<void>(`/v1/estate-collections/${id}/flags${uri}`);
     } catch (error) {
       throw error;
     }

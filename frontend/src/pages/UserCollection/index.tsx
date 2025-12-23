@@ -52,7 +52,9 @@ const ItemCollection: FC<EstateCollection & { token: string; value: number }> = 
   token,
   value,
   agentInfo,
-  archive
+  archive,
+  showFinance,
+  showPresentation
 }) => {
   const { formatMessage } = useIntl();
   const navigate = useNavigate();
@@ -185,6 +187,8 @@ const ItemCollection: FC<EstateCollection & { token: string; value: number }> = 
           copyLinkStatus={copyLinkStatus}
           url={url()}
           archiveCollection={archiveCollection}
+          finance={showFinance}
+          presentation={showPresentation || false}
         />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>

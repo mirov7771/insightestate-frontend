@@ -17,6 +17,7 @@ import {
   WhatsappIcon,
   WhatsappShareButton
 } from "react-share";
+import {FlagsButton} from "@/pages/UserCollection/CardView/FlagsButton";
 
 type BlockViewProps = {
   copyLink: () => void;
@@ -29,6 +30,8 @@ type BlockViewProps = {
   name: string;
   url: string;
   archiveCollection: () => void;
+  finance: boolean;
+  presentation: boolean;
 };
 
 export const BlockView: FC<BlockViewProps> = ({
@@ -41,7 +44,9 @@ export const BlockView: FC<BlockViewProps> = ({
   id,
   copyLinkStatus,
   url,
-  archiveCollection
+  archiveCollection,
+  finance,
+  presentation
 }) => {
   const { formatMessage } = useIntl();
   const [openChangeNameModal, setOpenChangeNameModal] = useState(false);
@@ -93,6 +98,11 @@ export const BlockView: FC<BlockViewProps> = ({
                 onClick={handleToggleArchiveModal}
                 className={styles.actions__button}
                 icon={<ArchiveSvg />}
+            />
+            <FlagsButton
+              id={id}
+              finance={finance}
+              presentation={presentation}
             />
           </div>
         </div>

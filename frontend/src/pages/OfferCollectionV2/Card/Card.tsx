@@ -1,6 +1,13 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, {FC, MouseEvent, useEffect, useState} from 'react';
 import { BadgeRating, Button, GMap } from '@/shared/ui';
-import { VectorRating, IconMapPinFilled, Heart, IconHeart } from '@/shared/assets/icons';
+import {
+  VectorRating,
+  IconMapPinFilled,
+  Heart,
+  IconHeart,
+  IconFileTypePdf,
+  IconChevronDown
+} from '@/shared/assets/icons';
 import { useIntl } from 'react-intl';
 import { useSearchParams } from 'react-router';
 import { Text } from '@/shared/ui';
@@ -20,9 +27,12 @@ import { EstateOptionsInfo } from '@/pages/OfferCollectionV2/CommonComponents/Es
 import { PaymentStepper } from '@/entities/PaymentStepper/PaymentStepper';
 import { UnitsSlider } from '@/pages/OfferCollectionV2/CommonComponents/UnitsSlider/UnitsSlider';
 import { UnitSlide } from '@/pages/OfferCollectionV2/CommonComponents/UnitsSlider/UnitSlide';
+import MaterialMenu from "@mui/material/Menu";
+import MaterialMenuItem from "@mui/material/MenuItem";
+import {useWindowResize} from "@/shared/utils/useWindowResize";
 
 export const Card: FC<
-  Estate & { collection: string; collectionId: string; agentInfo?: AgentInfo, visible: boolean, checked: boolean }
+  Estate & { collection: string; collectionId: string; agentInfo?: AgentInfo, visible: boolean, checked: boolean, presentation: boolean }
 > = (estate) => {
   const { formatMessage } = useIntl();
   const [like, setLike] = useState(false);
@@ -130,6 +140,14 @@ export const Card: FC<
         return ""
     }
   }
+
+  const handleOpenLanguage = () => {
+    openPresentation('ENG');
+  };
+
+  const openPresentation = (lang: string) => {
+    window.open(`https://lotsof.properties/estate-images/${estate.projectId}_${lang}.pdf`);
+  };
 
   return (
     <section className={styles.item}>
@@ -353,6 +371,22 @@ export const Card: FC<
               <Text variant="heading4">{formatMessage({ id: 'like' })}</Text>
             </Button>
           )}
+
+          {estate.presentation ? <Button
+              variant="base"
+              type="button"
+              size="s"
+              style={{
+                margin: 'auto',
+                width: '80%',
+              }}
+              onClick={handleOpenLanguage}
+          >
+            <Text variant="body1" bold>
+              {formatMessage({ id: 'developer_presentation_download' })}
+            </Text>
+          </Button> : <></> }
+
           {clickable && !searchParams.get('client') && estate.visible ? (
             <Button
               style={{

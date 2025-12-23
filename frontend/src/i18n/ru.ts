@@ -595,5 +595,10 @@ export default {
   furniture: 'Мебельный пакет',
 
   eia: 'Наличие EIA сертификата',
-  landPurchased: 'Выкуплена земля'
+  landPurchased: 'Выкуплена земля',
+
+  finance: 'Отображать доходность',
+  presentation: 'Отображать презентацию застройщика',
+  finance_close: 'Скрыть доходность',
+  presentation_close: 'Скрыть презентацию застройщика'
 };

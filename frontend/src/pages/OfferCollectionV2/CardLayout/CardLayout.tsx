@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, {FC, MouseEvent, useEffect, useState} from 'react';
 import styles from './CardLayout.module.scss';
 import { BadgeRating, Button, GMap, Text } from '@/shared/ui';
 import { DEFAULT_IMG } from '@/entities/Card/Card';
@@ -12,7 +12,7 @@ import {
   IconLayout,
   IconHeart,
   IconMapPinFilled,
-  VectorRating,
+  VectorRating, IconFileTypePdf, IconChevronDown,
 } from '@/shared/assets/icons';
 import { useIntl } from 'react-intl';
 import { Flats } from '../CommonComponents/Flats/Flats';
@@ -25,6 +25,9 @@ import { InfoModal } from '@/shared/ui/modals';
 import { useSearchParams } from 'react-router';
 import { UnitsSlider } from '@/pages/OfferCollectionV2/CommonComponents/UnitsSlider/UnitsSlider';
 import { UnitSlide } from '@/pages/OfferCollectionV2/CommonComponents/UnitsSlider/UnitSlide';
+import MaterialMenu from "@mui/material/Menu";
+import MaterialMenuItem from "@mui/material/MenuItem";
+import {useWindowResize} from "@/shared/utils/useWindowResize";
 
 function getPrioritySquare(estate: Estate): string {
   const layouts = [
@@ -56,11 +59,14 @@ function getPrioritySquare(estate: Estate): string {
 }
 
 export type CardLayoutProps = {
-  estate: Estate & { collection: string; collectionId: string; agentInfo?: AgentInfo, visible: boolean, checked: boolean };
+  estate: Estate & { collection: string; collectionId: string; agentInfo?: AgentInfo, visible: boolean, checked: boolean, presentation: boolean };
 };
 
 export const CardLayout: FC<CardLayoutProps> = ({ estate }) => {
   const { formatMessage } = useIntl();
+  const [anchorElLanguage, setAnchorElLanguage] = useState<null | HTMLElement>(null);
+  const openLanguage = Boolean(anchorElLanguage);
+  const { width } = useWindowResize();
   const [like, setLike] = useState(false);
   const [square, setSquare] = useState('100');
   const [token, setToken] = useState<string | undefined | null>(localStorage.getItem('basicToken'));
@@ -74,10 +80,7 @@ export const CardLayout: FC<CardLayoutProps> = ({ estate }) => {
   const handleOpenInfoModal = () => {
     setInfoModal(true);
   };
-  const handleCloseInfoModal = () => {
-    setInfoModal(false);
-    if (isDelete) window.location.reload();
-  };
+
   const openRatingInfo = () => {
     setInfoTitle(formatMessage({ id: 'object_info_title' }));
     setInfoText(formatMessage({ id: 'object_info_message' }));
@@ -134,6 +137,36 @@ export const CardLayout: FC<CardLayoutProps> = ({ estate }) => {
         return ""
     }
   }
+
+  const handleOpenLanguage = (event: MouseEvent<HTMLElement>) => {
+    event.preventDefault();
+    event.stopPropagation();
+    setAnchorElLanguage(event.currentTarget);
+  };
+
+  const handleCloseLanguage = (event: MouseEvent<HTMLElement>) => {
+    event.preventDefault();
+    event.stopPropagation();
+    setAnchorElLanguage(null);
+  };
+
+  const handleCloseLanguageRus = (event: MouseEvent<HTMLElement>) => {
+    event.preventDefault();
+    event.stopPropagation();
+    setAnchorElLanguage(null);
+    openPresentation('RUS');
+  };
+
+  const handleCloseLanguageEng = (event: MouseEvent<HTMLElement>) => {
+    event.preventDefault();
+    event.stopPropagation();
+    setAnchorElLanguage(null);
+    openPresentation('ENG');
+  };
+
+  const openPresentation = (lang: string) => {
+    window.open(`https://lotsof.properties/estate-images/${estate.projectId}_${lang}.pdf`);
+  };
 
   return (
     <section className={styles.grid}>
@@ -194,7 +227,7 @@ export const CardLayout: FC<CardLayoutProps> = ({ estate }) => {
           {clickable && !searchParams.get('client') && estate.visible ? (
             <Button
                 onClick={deleteFromCollection}
-                size="l"
+                size="s"
                 style={{
                   backgroundColor: getGroupColor()
                 }}
@@ -212,8 +245,9 @@ export const CardLayout: FC<CardLayoutProps> = ({ estate }) => {
               className={styles.like}
               disabled={!!searchParams.get('client') && searchParams.get('like') != 'true'}
               variant="cta"
+              size={'s'}
               style={{
-                width: '210px',
+                width: '180px',
               }}
             >
               <span className={styles.like__icon}>{like ? <Heart /> : <IconHeart />}</span>
@@ -222,6 +256,51 @@ export const CardLayout: FC<CardLayoutProps> = ({ estate }) => {
               </Text>
             </Button>
           )}
+
+          {estate.presentation ?
+          <Button
+              variant="base"
+              type="button"
+              size="s"
+              onClick={handleOpenLanguage}
+          >
+            <Text variant="body1" bold>
+              {formatMessage({ id: 'developer_presentation_download' })}
+            </Text>
+            <MaterialMenu
+                classes={{ paper: styles.menu__paper }}
+                className={styles.menu}
+                open={openLanguage}
+                anchorEl={anchorElLanguage}
+                onClose={handleCloseLanguage}
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: width >= 1200 ? 'right' : 'center',
+                }}
+                transformOrigin={{
+                  vertical: -8,
+                  horizontal: width >= 1200 ? 'right' : 'center',
+                }}
+            >
+              <MaterialMenuItem
+                  classes={{ root: styles.menu__item_root }}
+                  onClick={handleCloseLanguageRus}
+              >
+                <Text variant="body2" bold>
+                  {formatMessage({ id: 'developer_presentation_ru' })}
+                </Text>
+              </MaterialMenuItem>
+              <MaterialMenuItem
+                  classes={{ root: styles.menu__item_root }}
+                  onClick={handleCloseLanguageEng}
+              >
+                <Text variant="body2" bold>
+                  {formatMessage({ id: 'developer_presentation_en' })}
+                </Text>
+              </MaterialMenuItem>
+            </MaterialMenu>
+          </Button> : <></>
+          }
         </div>
       </div>
       <div className={styles.flats}>
