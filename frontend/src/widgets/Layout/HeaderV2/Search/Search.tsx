@@ -12,7 +12,7 @@ import { IconPlus, IconSearch } from '@/shared/assets/icons';
 import { Button, Input, Modal, ModalAddToCollection, Text } from '@/shared/ui';
 import { Estate, filterApi } from '@/widgets/Filter/api/filterApi';
 import { useStatus } from '@/shared/utils/useStatus';
-import { debounce } from '@/shared/utils';
+import {debounce, getCurrency} from '@/shared/utils';
 import { FormattedMessage, useIntl } from 'react-intl';
 import CircularProgress from '@mui/material/CircularProgress';
 import { DEFAULT_IMG } from '@/entities/Card/Card';
@@ -80,8 +80,6 @@ export const Search: FC = () => {
     debouncedSearchRef.current(search);
   }, [search]);
 
-  const currency = localStorage.getItem('currency') || '฿'
-
   return (
     <>
       <Button
@@ -145,7 +143,7 @@ export const Search: FC = () => {
                       <Text variant="body2" className={styles.description}>
                         {`${formatMessage({ id: 'from' })} ${Intl.NumberFormat('en-US', {
                           style: 'currency',
-                          currency: currency === '₽' ? 'RUB' : (currency === '฿' ? 'THB' : (currency === 'A$' ? 'AUD' :'USD')),
+                          currency: getCurrency(),
                           currencyDisplay: 'narrowSymbol',  
                           maximumFractionDigits: 0,
                         }).format(estate.priceMin)} • ${estate.city}, ${estate.beach}`}

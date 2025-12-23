@@ -7,6 +7,7 @@ import { estateCollectionApi } from '@/widgets/EstateCollection/api/estateCollec
 import { InfoModal } from '@/shared/ui/modals';
 import { useIntl } from 'react-intl';
 import { UserCollectionModal } from '@/widgets/Modal/UserCollectionModal';
+import {getCurrency} from "@/shared/utils";
 
 export const DEFAULT_IMG =
   'https://cdn.prod.website-files.com/672b5797ac1486cdfc5122ac/67aa547c02740c42abf52609_675f0debfa47fa6400a3c65a_Exterior_03.jpeg';
@@ -73,8 +74,6 @@ export const Card: FC<
     setUserCollectionModal(false);
   };
 
-  const currency = localStorage.getItem('currency') || '฿'
-
   return (
     <div className={styles.card}>
       {clickable ? (
@@ -135,7 +134,7 @@ export const Card: FC<
         <strong>{formatMessage({ id: 'price_from' })}</strong>{' '}
         {Intl.NumberFormat('en-US', {
           style: 'currency',
-          currency: currency === '₽' ? 'RUB' : (currency === '฿' ? 'THB' : (currency === 'A$' ? 'AUD' :'USD')),
+          currency: getCurrency(),
           currencyDisplay: 'narrowSymbol',
           maximumFractionDigits: 0,
         }).format(priceMin)}

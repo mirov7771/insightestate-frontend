@@ -107,3 +107,19 @@ export async function copyToClipboard(text: string): Promise<boolean> {
     return false;
   }
 }
+
+
+export const getCurrency = (): string => {
+  const currency = localStorage.getItem('currency') || '฿'
+  return currency === '₽' ? 'RUB' : (
+      currency === '฿' ? 'THB' : (
+          currency === 'A$' ? 'AUD' : (
+              currency === '£' ? 'GBP' : (
+                  currency === 'zł' ? 'PLN' : (
+                      currency === '₪' ? 'ILS' : 'USD'
+                  )
+              )
+          )
+      )
+  )
+}

@@ -8,6 +8,7 @@ import { Button, Text } from '@/shared/ui';
 import { AdvantagesBadges } from '@/entities/CardSlide/AdvantagesBadges';
 import { EstateIcon, IconCar, IconWalk } from '@/shared/assets/icons';
 import { CardSlideSkeleton } from '@/entities/CardSlide/CardSlideSkeleton';
+import {getCurrency} from "@/shared/utils";
 
 type CardSlideProps = {
   clickable: boolean;
@@ -25,7 +26,6 @@ export const CardSlide: FC<CardSlideProps> = ({
   loading,
 }) => {
   const { formatMessage } = useIntl();
-  const currency = localStorage.getItem('currency') || '฿'
   const [infoModal, setInfoModal] = useState(false);
   const [userCollectionModal, setUserCollectionModal] = useState(false);
   const [infoTitle, setInfoTitle] = useState('');
@@ -97,7 +97,7 @@ export const CardSlide: FC<CardSlideProps> = ({
               {formatMessage({ id: 'from' })}{' '}
               {Intl.NumberFormat('en-US', {
                 style: 'currency',
-                currency: currency === '₽' ? 'RUB' : (currency === '฿' ? 'THB' : (currency === 'A$' ? 'AUD' :'USD')),
+                currency: getCurrency(),
                 currencyDisplay: 'narrowSymbol',
                 maximumFractionDigits: 0,
               }).format(estate.priceMin)}

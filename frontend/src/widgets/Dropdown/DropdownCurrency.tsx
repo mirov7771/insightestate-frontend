@@ -44,6 +44,21 @@ export const DropdownCurrency: FC = () => {
     window.location.reload();
   }
 
+  const handleILS = () => {
+    localStorage.setItem('currency', '₪');
+    window.location.reload();
+  };
+
+  const handlePLN = () => {
+    localStorage.setItem('currency', 'zł');
+    window.location.reload();
+  };
+
+  const handleGBP = () => {
+    localStorage.setItem('currency', '£')
+    window.location.reload();
+  }
+
   const getCurrencySym = () => {
     return localStorage.getItem('currency') || '฿'
   }
@@ -100,6 +115,33 @@ export const DropdownCurrency: FC = () => {
             }}
         >
           <Text variant="heading5">AUD, A$</Text>
+        </MenuItem>
+        <MenuItem
+            classes={{ root: styles.listItem }}
+            onClick={() => {
+              handleClose();
+              handleILS();
+            }}
+        >
+          <Text variant="heading5">ILS, ₪</Text>
+        </MenuItem>
+        <MenuItem
+            classes={{ root: styles.listItem }}
+            onClick={() => {
+              handleClose();
+              handlePLN();
+            }}
+        >
+          <Text variant="heading5">PLN, zł</Text>
+        </MenuItem>
+        <MenuItem
+            classes={{ root: styles.listItem }}
+            onClick={() => {
+              handleClose();
+              handleGBP();
+            }}
+        >
+          <Text variant="heading5">GBP, £</Text>
         </MenuItem>
       </Menu>
     </div>
