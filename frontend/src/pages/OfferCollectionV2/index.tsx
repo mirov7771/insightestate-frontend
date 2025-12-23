@@ -155,7 +155,8 @@ const OfferCollectionV2: FC = () => {
         />}
         {visible ?
             <>
-        <WhyThai />
+              <FAQ />
+        {/*<WhyThai />*/}
         {id && <ContactManager
             id={id}
             agentGroup={estateCollection?.agentInfo?.group || ''}
