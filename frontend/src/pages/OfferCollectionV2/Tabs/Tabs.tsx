@@ -5,12 +5,12 @@ import {
   EstateCollection,
   estateCollectionApi,
 } from '@/widgets/EstateCollection/api/estateCollectionApi';
-import {FormattedMessage, useIntl} from 'react-intl';
+import { useIntl } from 'react-intl';
 import { TableComparison } from '@/pages/OfferCollectionV2/TableComparison/TableComparison';
 import { CardLayout } from '@/pages/OfferCollectionV2/CardLayout/CardLayout';
 import { useWindowResize } from '@/shared/utils/useWindowResize';
 import { TabsElements } from '@/pages/OfferCollectionV2/Tabs/TabsElements';
-import {Checkbox, Segment} from '@/shared/ui';
+import { Segment } from '@/shared/ui';
 import { IconBuildingCommunity, IconLayout } from '@/shared/assets/icons';
 import { TableComparisonV2 } from '@/pages/OfferCollectionV2/TableComparison/TableComparasionV2';
 import { generateComparisonRows } from '@/pages/OfferCollectionV2/TableComparison/utils';
@@ -74,24 +74,8 @@ export const Tabs: FC<{
 
   const hasUnits = !!estateCollection?.estates?.some((estate) => !!estate.units?.length);
 
-  const handleCheckedFinance = () => {
-      setChecked(!checked)
-      estateCollectionApi.flags(id, !checked, undefined)
-          .then((r) => console.log(r))
-          .catch((e) => console.log(e))
-  }
-
   return (
     <>
-        {isAuth && visible ?
-          <Checkbox
-              name="checked"
-              value="checked"
-              label={<FormattedMessage id="fin_information" />}
-              onChange={handleCheckedFinance}
-              checked={checked}
-          /> : <></>
-        }
       <div className={styles.tabsWrapper}>
         <TabsElements
           value={value}

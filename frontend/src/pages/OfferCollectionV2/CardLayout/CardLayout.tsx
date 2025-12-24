@@ -183,6 +183,7 @@ export const CardLayout: FC<CardLayoutProps> = ({ estate }) => {
             estate.visible ? estate.exteriorImages || estate.interiorImages || estate.facilityImages || [DEFAULT_IMG]
                 : [(estate.exteriorImages || estate.interiorImages || estate.facilityImages || [DEFAULT_IMG])[0]]
           }
+          noClick={false}
         />
       </div>
       <div className={styles.description}>

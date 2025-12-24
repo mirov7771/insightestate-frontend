@@ -2,9 +2,10 @@ import React, { Dispatch, FC, SetStateAction } from 'react';
 import styles from './ModalGallery.module.scss';
 import { Modal } from '@/shared/ui';
 import { useWindowResize } from '@/shared/utils/useWindowResize';
+import {Slider} from "@/pages/OfferCollectionV2/CommonComponents/Slider/Slider";
 
 type ModalGalleryProps = {
-  planImage: string;
+  planImage: string | string[];
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
   full?: boolean
@@ -36,25 +37,28 @@ export const ModalGallery: FC<ModalGalleryProps> = ({
         }}
       >
         <div className={styles.container}>
-            <img
-                src={planImage}
-                alt="plan"
-                style={
-                    full ?
-                        {
-                            objectFit: 'contain',
-                            width: '100%'
-                        } :
-                        {
-                            objectFit: 'contain',
-                            width: '100%',
-                            height: height/1.2
-                        }
-                }
-                onError={e => {
-                    e.currentTarget.src = localStorageUserLocale === 'ru' ? "https://lotsof.properties/estate-images/DefaultUnitImg.png" : "https://lotsof.properties/estate-images/DefaultUnitImgEn.png"
-                }}
-            />
+            {(typeof(planImage) === 'string') ?
+                <img
+                    src={planImage as string}
+                    alt="plan"
+                    style={
+                        full ?
+                            {
+                                objectFit: 'contain',
+                                width: '100%'
+                            } :
+                            {
+                                objectFit: 'contain',
+                                width: '100%',
+                                height: height/1.2
+                            }
+                    }
+                    onError={e => {
+                        e.currentTarget.src = localStorageUserLocale === 'ru' ? "https://lotsof.properties/estate-images/DefaultUnitImg.png" : "https://lotsof.properties/estate-images/DefaultUnitImgEn.png"
+                    }}
+                /> :
+                <Slider images={planImage as string[]} noClick={true}/>
+            }
         </div>
       </Modal>
     </>

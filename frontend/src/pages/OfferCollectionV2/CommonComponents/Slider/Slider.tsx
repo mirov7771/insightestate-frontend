@@ -69,9 +69,9 @@ const settings: Settings = {
   ],
 };
 
-const CustomSlide = (props: { description: string; img: string }) => {
+const CustomSlide = (props: { description: string; img: string; imgs: string[], noClick: boolean }) => {
   const [galleryModal, setGalleryModal] = useState(false);
-  const { img, description } = props;
+  const { img, description, imgs, noClick } = props;
 
   return (
       <>
@@ -79,7 +79,7 @@ const CustomSlide = (props: { description: string; img: string }) => {
           <img
               src={img}
               alt=""
-              onClick={() => setGalleryModal(true)}
+              onClick={noClick ? () => {} : () => setGalleryModal(true)}
           />
           {/*Пока убираем комменты к фото  */}
           {/*<div className={styles.description}>*/}
@@ -87,7 +87,7 @@ const CustomSlide = (props: { description: string; img: string }) => {
           {/*</div>*/}
         </div>
         <ModalGallery
-            planImage={img}
+            planImage={imgs}
             open={galleryModal}
             setOpen={setGalleryModal}
             full={!isMobile}
@@ -96,11 +96,11 @@ const CustomSlide = (props: { description: string; img: string }) => {
   );
 };
 
-export const Slider: FC<{ images: string[] }> = ({ images }) => {
+export const Slider: FC<{ images: string[], noClick: boolean }> = ({ images, noClick }) => {
   return (
     <SlickSlider {...settings} className={styles.customSlider}>
       {images.map((image) => (
-        <CustomSlide img={image} description="Удобный заезд на парковку" />
+        <CustomSlide img={image} description="Удобный заезд на парковку" imgs={images} noClick={noClick} />
       ))}
     </SlickSlider>
   );

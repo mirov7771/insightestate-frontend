@@ -166,6 +166,7 @@ export const Card: FC<
           images={
             estate.exteriorImages || estate.interiorImages || estate.facilityImages || [DEFAULT_IMG]
           }
+          noClick={false}
         />
       </div>
       <div className={styles.wrapper}>
