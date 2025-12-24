@@ -9,16 +9,13 @@ import {
 } from '@/widgets/EstateCollection/api/estateCollectionApi';
 import {
   Heart,
-  IconLayout,
   IconHeart,
   IconMapPinFilled,
-  VectorRating, IconFileTypePdf, IconChevronDown,
 } from '@/shared/assets/icons';
 import { useIntl } from 'react-intl';
 import { Flats } from '../CommonComponents/Flats/Flats';
 import { PaymentStepper } from '@/entities/PaymentStepper/PaymentStepper';
 import { EstateOptionsInfo } from '../CommonComponents/EstateOptionsInfo/EstateOptionsInfo';
-import { Progresses } from '../CommonComponents/Progress/Progresses';
 import { Slider } from '../CommonComponents/Slider/Slider';
 import { TablesInfo } from '@/pages/OfferCollectionV2/CommonComponents/TablesInfo/TablesInfo';
 import { InfoModal } from '@/shared/ui/modals';

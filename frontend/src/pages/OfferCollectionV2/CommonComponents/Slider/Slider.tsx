@@ -1,9 +1,11 @@
-import { FC } from 'react';
+import React, {FC, useState} from 'react';
 import SlickSlider, { Settings } from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import styles from './Slider.module.scss';
 import { IconChevronRight, IconChevronLeft } from '@/shared/assets/icons';
+import {ModalGallery} from "@/shared/ui/modals/ModalGallery";
+import {isMobile} from "react-device-detect";
 
 const SampleNextArrow = (props: any) => {
   const { className, onClick } = props;
@@ -68,16 +70,29 @@ const settings: Settings = {
 };
 
 const CustomSlide = (props: { description: string; img: string }) => {
+  const [galleryModal, setGalleryModal] = useState(false);
   const { img, description } = props;
 
   return (
-    <div className={styles.slide}>
-      <img src={img} alt="" />
-      {/*Пока убираем комменты к фото  */}
-      {/*<div className={styles.description}>*/}
-      {/*  <Text variant="body1">{description}</Text>*/}
-      {/*</div>*/}
-    </div>
+      <>
+        <div className={styles.slide}>
+          <img
+              src={img}
+              alt=""
+              onClick={() => setGalleryModal(true)}
+          />
+          {/*Пока убираем комменты к фото  */}
+          {/*<div className={styles.description}>*/}
+          {/*  <Text variant="body1">{description}</Text>*/}
+          {/*</div>*/}
+        </div>
+        <ModalGallery
+            planImage={img}
+            open={galleryModal}
+            setOpen={setGalleryModal}
+            full={!isMobile}
+        />
+      </>
   );
 };
 

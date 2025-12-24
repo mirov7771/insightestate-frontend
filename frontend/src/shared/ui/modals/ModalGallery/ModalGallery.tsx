@@ -7,12 +7,14 @@ type ModalGalleryProps = {
   planImage: string;
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
+  full?: boolean
 };
 
 export const ModalGallery: FC<ModalGalleryProps> = ({
   open,
   setOpen,
-  planImage
+  planImage,
+  full
 }) => {
   const { width, height } = useWindowResize();
   const isFullScreen = width <= 768;
@@ -37,11 +39,18 @@ export const ModalGallery: FC<ModalGalleryProps> = ({
             <img
                 src={planImage}
                 alt="plan"
-                style={{
-                    objectFit: 'contain',
-                    width: '100%',
-                    height: height/1.2
-                }}
+                style={
+                    full ?
+                        {
+                            objectFit: 'contain',
+                            width: '100%'
+                        } :
+                        {
+                            objectFit: 'contain',
+                            width: '100%',
+                            height: height/1.2
+                        }
+                }
                 onError={e => {
                     e.currentTarget.src = localStorageUserLocale === 'ru' ? "https://lotsof.properties/estate-images/DefaultUnitImg.png" : "https://lotsof.properties/estate-images/DefaultUnitImgEn.png"
                 }}
