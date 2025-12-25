@@ -142,7 +142,7 @@ export const Card: FC<
   }
 
   const handleOpenLanguage = () => {
-    openPresentation('ENG');
+    openPresentation(estate.engPresentation ? 'ENG' : 'RUS');
   };
 
   const openPresentation = (lang: string) => {
@@ -373,7 +373,7 @@ export const Card: FC<
             </Button>
           )}
 
-          {estate.presentation ? <Button
+          {(estate.presentation && (estate.rusPresentation || estate.engPresentation)) ? <Button
               variant="base"
               type="button"
               size="s"

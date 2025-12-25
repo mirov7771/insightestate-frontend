@@ -64,6 +64,8 @@ export type Estate = {
   lat?: string;
   lon?: string;
   furniture?: string;
+  engPresentation?: boolean;
+  rusPresentation?: boolean;
 };
 
 export type CreateCollectionRs = {

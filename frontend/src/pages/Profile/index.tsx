@@ -2,7 +2,7 @@ import { ChangeEvent, FC, MouseEventHandler, useEffect, useMemo, useRef, useStat
 import MuiAvatar from '@mui/material/Avatar';
 import styles from './Profile.module.scss';
 import { IconArrowLeft } from '@/shared/assets/icons';
-import { BottomSheet, Button, Text } from '@/shared/ui';
+import {Avatar, BottomSheet, Button, Text} from '@/shared/ui';
 import { useNavigate } from 'react-router';
 import { useIntl } from 'react-intl';
 import { detailApi } from '@/widgets/Detail/api/detailApi';
@@ -67,6 +67,8 @@ const Profile: FC = () => {
     } catch (e) {
       console.log({ e });
       setUpdateStatus('ERROR');
+    } finally {
+      window.location.reload()
     }
   };
 
@@ -86,30 +88,9 @@ const Profile: FC = () => {
     }
   };
 
-  const handleOpenInfoModal = () => {
-    setOpenInfo(true);
-  };
-
-  const handleCloseInfoModal = () => {
-    setOpenInfo(false);
-  };
 
   const deleteUser = async () => {
     setOpenInfo(true);
-    // try {
-    //   if (token) {
-    //     setUpdateStatus('LOADING');
-    //     await usersApi.deleteUser(token);
-    //     setUpdateStatus('SUCCESS');
-    //     localStorage.removeItem('basicToken');
-    //     navigate('/');
-    //     window.location.reload();
-    //   }
-    // } catch (e) {
-    //   console.log({ e });
-    // } finally {
-    //   localStorage.clear()
-    // }
   };
 
   useEffect(() => {
@@ -150,11 +131,22 @@ const Profile: FC = () => {
             </Text>
           </Button>
           <div>
-            <MuiAvatar className={styles.avatar} onClick={handleClickAvatar} src={''}>
-              <Text variant="heading3" align="center" className={styles.letter}>
-                {data.username[0]}
-              </Text>
-            </MuiAvatar>
+            {(data.profileImage && data.profileImage !== '') ?
+                <Avatar
+                    variant={'pictures'}
+                    imgSrc={
+                        data.profileImage || 'https://lotsof.properties/estate-images/profile_img.png'
+                    }
+                    text={data.username || 'U'}
+                    onClick={handleClickAvatar}
+                    className={styles.avatar}
+                /> :
+                <MuiAvatar className={styles.avatar} onClick={handleClickAvatar} src={''}>
+                  <Text variant="heading3" align="center" className={styles.letter}>
+                    {data.username[0]}
+                  </Text>
+                </MuiAvatar>
+            }
             <input
               type="file"
               accept="image/*"

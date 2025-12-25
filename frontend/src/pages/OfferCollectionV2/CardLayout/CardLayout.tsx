@@ -255,7 +255,7 @@ export const CardLayout: FC<CardLayoutProps> = ({ estate }) => {
             </Button>
           )}
 
-          {estate.presentation ?
+          {(estate.presentation && (estate.rusPresentation || estate.engPresentation)) ?
           <Button
               variant="base"
               type="button"
@@ -280,6 +280,7 @@ export const CardLayout: FC<CardLayoutProps> = ({ estate }) => {
                   horizontal: width >= 1200 ? 'right' : 'center',
                 }}
             >
+              {estate.rusPresentation ?
               <MaterialMenuItem
                   classes={{ root: styles.menu__item_root }}
                   onClick={handleCloseLanguageRus}
@@ -287,7 +288,9 @@ export const CardLayout: FC<CardLayoutProps> = ({ estate }) => {
                 <Text variant="body2" bold>
                   {formatMessage({ id: 'developer_presentation_ru' })}
                 </Text>
-              </MaterialMenuItem>
+              </MaterialMenuItem> : <></>
+              }
+              {estate.engPresentation ?
               <MaterialMenuItem
                   classes={{ root: styles.menu__item_root }}
                   onClick={handleCloseLanguageEng}
@@ -295,7 +298,8 @@ export const CardLayout: FC<CardLayoutProps> = ({ estate }) => {
                 <Text variant="body2" bold>
                   {formatMessage({ id: 'developer_presentation_en' })}
                 </Text>
-              </MaterialMenuItem>
+              </MaterialMenuItem> : <></>
+              }
             </MaterialMenu>
           </Button> : <></>
           }

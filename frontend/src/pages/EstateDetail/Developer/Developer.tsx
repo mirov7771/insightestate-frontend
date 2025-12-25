@@ -15,7 +15,9 @@ export const Developer: FC<TEstateDetail> = ({
   landPurchased,
   unitCount,
   projectId,
-  status
+  status,
+  rusPresentation,
+  engPresentation
 }) => {
   const { formatMessage } = useIntl();
   const { width } = useWindowResize();
@@ -146,6 +148,7 @@ export const Developer: FC<TEstateDetail> = ({
               {formatMessage({ id: 'developer_presentation_desc' })}
             </Text>
           </div>
+          {(rusPresentation || engPresentation) ?
           <Button
             variant="base"
             type="button"
@@ -174,6 +177,7 @@ export const Developer: FC<TEstateDetail> = ({
                 horizontal: width >= 1200 ? 'right' : 'center',
               }}
             >
+              {rusPresentation ?
               <MaterialMenuItem
                 classes={{ root: styles.menu__item_root }}
                 onClick={handleCloseLanguageRus}
@@ -181,7 +185,9 @@ export const Developer: FC<TEstateDetail> = ({
                 <Text variant="body2" bold>
                   {formatMessage({ id: 'developer_presentation_ru' })}
                 </Text>
-              </MaterialMenuItem>
+              </MaterialMenuItem> : <></>
+              }
+              {engPresentation ?
               <MaterialMenuItem
                 classes={{ root: styles.menu__item_root }}
                 onClick={handleCloseLanguageEng}
@@ -189,9 +195,11 @@ export const Developer: FC<TEstateDetail> = ({
                 <Text variant="body2" bold>
                   {formatMessage({ id: 'developer_presentation_en' })}
                 </Text>
-              </MaterialMenuItem>
+              </MaterialMenuItem> : <></>
+              }
             </MaterialMenu>
-          </Button>
+          </Button> : <></>
+          }
         </div>
       ) : (
         <></>

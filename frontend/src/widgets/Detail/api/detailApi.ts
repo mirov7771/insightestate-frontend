@@ -37,7 +37,9 @@ export type EstateDetail = {
   lat?: string;
   lon?: string;
   priceDate: string;
-  furniture?: string
+  furniture?: string;
+  engPresentation?: boolean;
+  rusPresentation?: boolean;
 };
 
 export type Developer = {
