@@ -127,11 +127,7 @@ export const DESCRIPTIONS_RU = {
     {
       icon: <IconChartArea />,
       text: <Text variant="body1">Мастер-аккаунт и статистика по брокерам</Text>,
-    },
-    {
-      icon: <IconGraphMonitor />,
-      text: <Text variant="body1">Скоринг-система</Text>,
-    },
+    }
   ],
 };
 
@@ -254,10 +250,6 @@ export const DESCRIPTIONS_ENG = {
     {
       icon: <IconChartArea />,
       text: <Text variant="body1">Master account and broker statistics</Text>,
-    },
-    {
-      icon: <IconGraphMonitor />,
-      text: <Text variant="body1">Scoring system</Text>,
-    },
+    }
   ],
 };
