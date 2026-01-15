@@ -2,7 +2,7 @@ import { FC, useState } from 'react';
 import { useIntl } from 'react-intl';
 import { Estate } from '@/widgets/Filter/api/filterApi';
 import { InfoModal, ModalAddToCollection } from '@/shared/ui/modals';
-import { Slider } from './Slider';
+import {baseConfig, Slider} from './Slider';
 import styles from './CardSlide.module.scss';
 import { Button, Text } from '@/shared/ui';
 import { AdvantagesBadges } from '@/entities/CardSlide/AdvantagesBadges';
@@ -86,7 +86,7 @@ export const CardSlide: FC<CardSlideProps> = ({
             ) : <></>}
           </ul>
           <a href={`/property/${estate.id}`} target="_blank" rel="noreferrer">
-            <Slider images={images} />
+            <Slider images={images} config={{ ...baseConfig, infinite: images.length > 1 }} />
           </a>
           <div className={styles.info}>
             {(estate.priceMin < 90 || estate.priceMax <= 0) ?
