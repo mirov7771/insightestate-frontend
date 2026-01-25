@@ -33,6 +33,13 @@ export const Price: FC = () => {
     [setFilters]
   );
 
+  useEffect(() => {
+    return () => {
+      debouncedSetMinPrice.cancel();
+      debouncedSetMaxPrice.cancel();
+    };
+  }, [debouncedSetMinPrice, debouncedSetMaxPrice]);
+
   const handleChange = (event: Event, newValue: number[]) => {
     setValues(newValue);
   };

@@ -237,7 +237,13 @@ const Listing: FC = () => {
           {!!estates.length &&
             estates.map((estate) => (
               <div>
-                <CardSlide estate={estate} token={token} loading={loading} clickable />
+                <CardSlide
+                    key={estate.id}
+                    estate={estate}
+                    token={token}
+                    loading={loading}
+                    clickable
+                />
               </div>
             ))}
         </main>

@@ -91,8 +91,9 @@ export const FiltersProvider: FC<PropsWithChildren> = ({ children }) => {
   const [hasMore, setHasMore] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [totalCount, setTotalCount] = useState<number>(0);
-  const [countActiveFilters, setCountActiveFilters] = useState<number>(
-    activeFiltersCounter(filters)
+  const countActiveFilters = useMemo(
+      () => activeFiltersCounter(filters),
+      [filters]
   );
 
   const getEstate = useCallback(async () => {
@@ -112,12 +113,15 @@ export const FiltersProvider: FC<PropsWithChildren> = ({ children }) => {
       setLoading(false);
     }
 
-    setCountActiveFilters(activeFiltersCounter(filters));
   }, [filters]);
 
   useEffect(() => {
-    getEstate();
-  }, [getEstate]);
+    const timeout = setTimeout(() => {
+      getEstate();
+    }, 300);
+
+    return () => clearTimeout(timeout);
+  }, [filters]);
 
   const contextValue = useMemo(
     () => ({

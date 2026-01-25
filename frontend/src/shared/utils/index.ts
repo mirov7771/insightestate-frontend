@@ -9,12 +9,18 @@ export const formatNumber = (q: number | undefined | string) => {
 export function debounce<T extends (...args: any[]) => void>(fn: T, delay: number) {
   let timer: ReturnType<typeof setTimeout>;
 
-  return (...args: Parameters<T>) => {
-    clearTimeout(timer);
+  const debounced = (...args: Parameters<T>) => {
+    if (timer) clearTimeout(timer);
     timer = setTimeout(() => {
       fn(...args);
     }, delay);
   };
+
+  debounced.cancel = () => {
+    if (timer) clearTimeout(timer);
+  };
+
+  return debounced;
 }
 
 export function getValueByPath(obj: any, path: string): any {

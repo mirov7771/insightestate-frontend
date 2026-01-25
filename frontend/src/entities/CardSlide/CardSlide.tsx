@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import {FC, useMemo, useState} from 'react';
 import { useIntl } from 'react-intl';
 import { Estate } from '@/widgets/Filter/api/filterApi';
 import { InfoModal, ModalAddToCollection } from '@/shared/ui/modals';
@@ -30,11 +30,25 @@ export const CardSlide: FC<CardSlideProps> = ({
   const [userCollectionModal, setUserCollectionModal] = useState(false);
   const [infoTitle, setInfoTitle] = useState('');
   const [infoText, setInfoText] = useState('');
-  const images = [
-    ...(estate.exteriorImages || []),
-    ...(estate.interiorImages || []),
-    ...(estate.facilityImages || []),
-  ].slice(0, 4);
+  const images = useMemo(() => {
+    return [
+      ...(estate.exteriorImages || []),
+      ...(estate.interiorImages || []),
+      ...(estate.facilityImages || []),
+    ].slice(0, 4);
+  }, [
+    estate.exteriorImages,
+    estate.interiorImages,
+    estate.facilityImages,
+  ]);
+
+  const sliderConfig= useMemo(
+      () => ({
+        ...baseConfig,
+        infinite: images.length > 1,
+      }),
+      [images.length]
+  );
 
   const handleOpenInfoModal = () => {
     setInfoModal(true);
@@ -86,7 +100,7 @@ export const CardSlide: FC<CardSlideProps> = ({
             ) : <></>}
           </ul>
           <a href={`/property/${estate.id}`} target="_blank" rel="noreferrer">
-            <Slider images={images} config={{ ...baseConfig, infinite: images.length > 1 }} />
+            <Slider images={images} config={sliderConfig} />
           </a>
           <div className={styles.info}>
             {(estate.priceMin < 90 || estate.priceMax <= 0) ?
