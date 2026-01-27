@@ -93,11 +93,11 @@ export const TableComparison: FC<TableComparisonProps> = ({ estates }) => {
     ), // priceMax
     pricePerSquareMeter: undefined,
     deliveryDate: extractNestedValuesOrFallback(estates, ['buildEndDate']),
-    roiOver10Years: extractNestedValuesOrFallback(estates, ['profitability.roi'], '200')?.map(
-      (text) => `${text}%`
+    roiOver10Years: extractNestedValuesOrFallback(estates, ['profitability.roi'], '-')?.map(
+        text => text === '-' ? '-' : `${text}%`
     ),
-    roi: extractNestedValuesOrFallback(estates, ['profitability.roiSummary'], '200')?.map(
-      (text) => `${text}%`
+    roi: extractNestedValuesOrFallback(estates, ['profitability.roiSummary'], '-')?.map(
+        text => text === '-' ? '-' : `${text}%`
     ),
     irrOver10Years: extractNestedValuesOrFallback(estates, ['profitability.irr'], '13')?.map(
       (text) => `${text}%`
