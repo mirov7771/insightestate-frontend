@@ -48,7 +48,7 @@ export const Slider: FC<SliderProps> = ({ images, config = baseConfig, slides })
     <SlickSlider {...config}>
       {Array.isArray(renderSlides) &&
         typeof renderSlides?.[0] === 'string' &&
-        images?.map((img) => <img src={img} key={img} alt="" loading="eager" />)}
+        images?.map((img) => <img src={img} key={img} alt="" loading="lazy" />)}
       {Array.isArray(renderSlides) && typeof renderSlides?.[0] !== 'string' && slides}
     </SlickSlider>
   );
