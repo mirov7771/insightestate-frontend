@@ -34,11 +34,12 @@
           (k.src = r),
           a.parentNode.insertBefore(k, a);
       })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js', 'ym');
+      var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
       ym(102966610, 'init', {
         clickmap: true,
         trackLinks: true,
         accurateTrackBounce: true,
-        webvisor: true,
+        webvisor: !isMobile,
       });
     </script>
     <noscript
