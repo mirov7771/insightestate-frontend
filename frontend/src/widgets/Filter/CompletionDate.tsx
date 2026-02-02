@@ -79,10 +79,6 @@ export const CompletionDate: FC<{ renderName?: boolean }> = ({ renderName = true
     });
   };
 
-  useEffect(() => {
-    console.log('[Filter] buildEndYears changed:', buildEndYears);
-  }, [buildEndYears]);
-
   return (
       <FilterLayout
           name={renderName ? formatMessage({ id: 'completion_date' }) : ''}

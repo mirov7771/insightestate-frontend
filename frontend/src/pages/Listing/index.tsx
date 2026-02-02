@@ -90,19 +90,6 @@ const Listing: FC = () => {
     }));
   }, []);
 
-  useEffect(() => {
-    console.log('[Listing] Rendered at:', new Date().toISOString());
-  }, []);
-
-  useEffect(() => {
-    const handleBeforeUnload = (e: BeforeUnloadEvent) => {
-      console.log('[Listing] beforeunload', new Date().toISOString());
-    };
-    window.addEventListener('beforeunload', handleBeforeUnload);
-
-    return () => window.removeEventListener('beforeunload', handleBeforeUnload);
-  }, []);
-
   return (
     <div className={styles.wrap}>
       <div className={isMobile ? styles.header_mobile : styles.header}>

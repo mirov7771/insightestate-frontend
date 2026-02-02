@@ -44,8 +44,6 @@ type SliderProps = {
 export const Slider: FC<SliderProps> = ({ images, config = baseConfig, slides }) => {
   const renderSlides = slides || images;
 
-  console.log('[Slider] Rendering images count:', images?.length);
-
   return (
     <SlickSlider {...config}>
       {Array.isArray(renderSlides) &&
