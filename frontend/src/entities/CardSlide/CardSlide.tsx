@@ -64,6 +64,8 @@ export const CardSlide: FC<CardSlideProps> = ({
     setUserCollectionModal(true);
   };
 
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
   return loading ? (
     <CardSlideSkeleton />
   ) : (
@@ -100,7 +102,7 @@ export const CardSlide: FC<CardSlideProps> = ({
             ) : <></>}
           </ul>
           <a href={`/property/${estate.id}`} target="_blank" rel="noreferrer">
-            <Slider images={images} config={sliderConfig} />
+            <Slider images={isMobile ? images.slice(0, 1) : images} config={sliderConfig} />
           </a>
           <div className={styles.info}>
             {(estate.priceMin < 90 || estate.priceMax <= 0) ?
