@@ -42,14 +42,6 @@ export const CardSlide: FC<CardSlideProps> = ({
     estate.facilityImages,
   ]);
 
-  const sliderConfig= useMemo(
-      () => ({
-        ...baseConfig,
-        infinite: images.length > 1,
-      }),
-      [images.length]
-  );
-
   const handleOpenInfoModal = () => {
     setInfoModal(true);
   };
@@ -65,6 +57,14 @@ export const CardSlide: FC<CardSlideProps> = ({
   };
 
   const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+  const sliderConfig= useMemo(
+      () => ({
+        ...baseConfig,
+        infinite: !isMobile && images.length > 1,
+      }),
+      [images.length]
+  );
 
   return loading ? (
     <CardSlideSkeleton />
