@@ -349,6 +349,7 @@ export default {
   'units.bedroom.2': '2 спальни',
   'units.bedroom.3': '3 спальни',
   'units.bedroom.4': '4 спальни',
+  'units.bedroom.5': '5 спален',
   //
   'units.filters': 'Фильтры',
   'units.empty': 'Нет доступных юнитов',

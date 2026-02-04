@@ -373,6 +373,7 @@ export default {
   'units.bedroom.2': '2 bedrooms',
   'units.bedroom.3': '3 bedrooms',
   'units.bedroom.4': '4 bedrooms',
+  'units.bedroom.5': '5 bedrooms',
   //
   'units.filters': 'Filters',
   'units.empty': 'No available units',

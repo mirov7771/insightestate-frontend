@@ -22,7 +22,6 @@ export type EstateDetail = {
   options?: Options;
   paymentPlanList?: string[];
   price?: Price;
-  product?: string;
   profitability?: Profitability;
   projectCount?: ProjectUnitCount;
   roomLayouts?: RoomLayouts;
