@@ -425,7 +425,6 @@ export default {
   main_button_2: 'Наш подход',
   main_button_3: 'Развивай платформу с нами',
   main_button_4: 'Бета-тест завершается',
-  main_button_5: 'Новый уровень',
 
   'stories.0.title': 'Используйте умные фильтры и ИИ помощника',
   'stories.0.description':

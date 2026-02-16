@@ -3,11 +3,10 @@ import { useIntl } from 'react-intl';
 import styles from './MainMenu.module.scss';
 import { Text } from '@/shared/ui';
 import { Stories } from '@/entities/Stories/Stories';
-import {STORIES, STORIES_V2, STORIES_V3, STORIES_V4, STORIES_V5} from '@/entities/Stories/constants';
+import {STORIES, STORIES_V2, STORIES_V3, STORIES_V4} from '@/entities/Stories/constants';
 import ObjectsImg from './assets/Objects.png';
 import PodborkyImg from './assets/Podborky.png';
 import UnitsImg from './assets/Units.png';
-import Pp from '@/entities/Stories/assets/RocketPic.png';
 import { detailApi } from '@/widgets/Detail/api/detailApi';
 import { useStatus } from '@/shared/utils/useStatus';
 import { Skeleton } from '@mui/material';
@@ -111,19 +110,6 @@ const MainMenu: FC = () => {
             {formatMessage({ id: 'main_button_3' })}
           </Text>
         </div>
-        <div className={styles.story__wrapper}>
-          <div
-              className={`${styles.story} ${readStories.ppModal ? styles.story_read : ''}`}
-              onClick={handleOpenPpModal}
-          >
-            <div className={styles.story__content}>
-              <img src="https://lotsof.properties/estate-images/cover.webp" alt="" />
-            </div>
-          </div>
-          <Text variant="caption1" align="center">
-            The Zero Nai Yang
-          </Text>
-        </div>
       </section>
       <section className={styles.cards}>
         <div className={styles.card}>
@@ -165,42 +151,11 @@ const MainMenu: FC = () => {
             <img src={ObjectsImg} alt="" />
           </div>
         </div>
-        {/*<div className={styles.card}>*/}
-        {/*  <div className={styles.card__content}>*/}
-        {/*    <Text variant="body1">{formatMessage({ id: 'main_card_4' })}</Text>*/}
-        {/*    {status === 'LOADING' ? (*/}
-        {/*      <Skeleton variant="text" height={32} width={32} />*/}
-        {/*    ) : (*/}
-        {/*      <Text variant="heading4">{bestObjects}</Text>*/}
-        {/*    )}*/}
-        {/*  </div>*/}
-        {/*  <div className={styles.card__img}>*/}
-        {/*    <img src={StarsImg} alt="" />*/}
-        {/*  </div>*/}
-        {/*</div>*/}
-      </section>
-      <section
-          className={styles.offer}
-          style={{backgroundColor: '#E1CBF6'}}
-          onClick={() => navigate('/tariffs')}
-      >
-        <div className={styles.offer__content}>
-          <Text className={styles.offer__text} variant="heading5">
-            {formatMessage({ id: 'storiesV5.0.title' })}
-          </Text>
-          <Text className={`${styles.offer__text} ${styles.offer__text_grey}`} variant="body2">
-            {formatMessage({ id: 'storiesV5.0.description' })}
-          </Text>
-        </div>
-        <div className={styles.offer__img}>
-          <img src={Pp} alt="" />
-        </div>
       </section>
       <Stories items={STORIES} open={storiesModal} setOpen={setStoriesModal} />
       <Stories items={STORIES_V2} open={heartModal} setOpen={setHeartModal} />
       <Stories items={STORIES_V3} open={tgModal} setOpen={setTgModal} />
       <Stories items={STORIES_V4} open={btModal} setOpen={setBtModal} />
-      <Stories items={STORIES_V5} open={ppModal} setOpen={setPpModal} />
     </main>
   );
 };
