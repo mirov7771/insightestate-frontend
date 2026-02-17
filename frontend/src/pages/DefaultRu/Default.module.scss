@@ -1,0 +1,19 @@
+.footer_layout {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer_logo {
+  max-width: 177px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.menu-socials {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
