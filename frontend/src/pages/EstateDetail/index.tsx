@@ -37,19 +37,11 @@ const EstateDetail: FC = () => {
   const [estateDetailData, setEstateDetailData] = useState<TEstateDetail>();
   const token = localStorage.getItem('basicToken');
   const [userCollectionModal, setUserCollectionModal] = useState(false);
-  const [aiModal, setAiModal] = useState(false);
   const [helpModal, setHelpModal] = useState(false);
   const [unitsCount, setUnitsCount] = useState(0)
 
   const handleOpenUserCollectionModal = () => {
     setUserCollectionModal(true);
-  };
-
-  const handleOpenAiModal = () => {
-    setAiModal(true);
-  };
-  const handleCloseAiModal = () => {
-    setAiModal(false);
   };
 
   const handleOpenHelpModal = () => {
@@ -133,11 +125,11 @@ const EstateDetail: FC = () => {
               {formatMessage({ id: 'add_to_collection' })}
             </Text>
           </Button>
-          <Button disabled={!token} onClick={handleOpenAiModal} size="l" variant="ai" wide>
-            <Text variant="body1" bold>
-              {formatMessage({ id: 'ai_collection' })}
-            </Text>
-          </Button>
+          {/*<Button disabled={!token} onClick={handleOpenAiModal} size="l" variant="ai" wide>*/}
+          {/*  <Text variant="body1" bold>*/}
+          {/*    {formatMessage({ id: 'ai_collection' })}*/}
+          {/*  </Text>*/}
+          {/*</Button>*/}
           <Button disabled={!token} onClick={handleOpenHelpModal} size="l" variant="base" wide>
             <Text variant="body1" bold>
               {formatMessage({ id: 'help_with_client' })}
@@ -245,12 +237,6 @@ const EstateDetail: FC = () => {
           open={userCollectionModal}
           setOpen={setUserCollectionModal}
           estateId={id || ''}
-        />
-        <AiModal
-          open={aiModal}
-          onClose={handleCloseAiModal}
-          onOpen={handleOpenAiModal}
-          anchor="bottom"
         />
         <BaseUserModal
           open={helpModal}
