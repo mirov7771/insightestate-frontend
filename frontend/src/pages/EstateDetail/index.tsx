@@ -125,11 +125,6 @@ const EstateDetail: FC = () => {
               {formatMessage({ id: 'add_to_collection' })}
             </Text>
           </Button>
-          {/*<Button disabled={!token} onClick={handleOpenAiModal} size="l" variant="ai" wide>*/}
-          {/*  <Text variant="body1" bold>*/}
-          {/*    {formatMessage({ id: 'ai_collection' })}*/}
-          {/*  </Text>*/}
-          {/*</Button>*/}
           <Button disabled={!token} onClick={handleOpenHelpModal} size="l" variant="base" wide>
             <Text variant="body1" bold>
               {formatMessage({ id: 'help_with_client' })}
