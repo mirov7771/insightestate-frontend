@@ -22,7 +22,11 @@ export const DESCRIPTIONS_RU = {
     {
       icon: <IconFileTypePdf />,
       text: <Text variant="body1">Выгрузка подборок в PDF</Text>,
-    }
+    },
+    {
+      icon: <IconSpark />,
+      text: <Text variant="body1">ИИ-подборщик</Text>,
+    },
   ],
   Pro: [
     {
@@ -50,6 +54,14 @@ export const DESCRIPTIONS_RU = {
       text: (
           <Text variant="body1">
             Выгрузка подборок в PDF
+          </Text>
+      ),
+    },
+    {
+      icon: <IconSpark />,
+      text: (
+          <Text variant="body1">
+            ИИ-подборщик
           </Text>
       ),
     },
@@ -83,6 +95,10 @@ export const DESCRIPTIONS_RU = {
     {
       icon: <IconFileTypePdf />,
       text: <Text variant="body1">Выгрузка подборок в PDF</Text>,
+    },
+    {
+      icon: <IconSpark />,
+      text: <Text variant="body1">ИИ-подборщик</Text>,
     },
     {
       icon: <IconColorSwatch />,
@@ -129,7 +145,11 @@ export const DESCRIPTIONS_ENG = {
     {
       icon: <IconFileTypePdf />,
       text: <Text variant="body1">Uploading collections to PDF</Text>,
-    }
+    },
+    {
+      icon: <IconSpark />,
+      text: <Text variant="body1">AI picker</Text>,
+    },
   ],
   Pro: [
     {
@@ -157,6 +177,14 @@ export const DESCRIPTIONS_ENG = {
       text: (
           <Text variant="body1">
             Uploading collections to PDF
+          </Text>
+      ),
+    },
+    {
+      icon: <IconSpark />,
+      text: (
+          <Text variant="body1">
+            AI picker
           </Text>
       ),
     },
@@ -190,6 +218,10 @@ export const DESCRIPTIONS_ENG = {
     {
       icon: <IconFileTypePdf />,
       text: <Text variant="body1">Uploading collections to PDF</Text>,
+    },
+    {
+      icon: <IconSpark />,
+      text: <Text variant="body1">AI picker</Text>,
     },
     {
       icon: <IconColorSwatch />,
